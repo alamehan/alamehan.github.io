@@ -1,0 +1,736 @@
+/* --------------------------------- CATATAN -------------------------------- */
+
+/* 
+  Responsive Content :
+
+  1 kolom = 97%
+  2 kolom = 47% or 49%
+  3 kolom = 32% 
+
+  Justify Content :
+
+  level 1 = space-between/center
+  level 2 = space-between/spave-evenly/center
+*/
+
+/* -------------------------------------------------------------------------- */
+/*                                SCROLL TO TOP                               */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- GENERAL -------------------------------- */
+
+.btn-scroll {
+  z-index: 1000;
+
+  /* Perfect Fixed Center Position */
+  position: fixed;
+  bottom: -40px;
+  left: 50%;
+  /* Wajib Tambahkan Transform */
+  transform: translate(-50%, 0%);
+
+  border: 0px solid;
+  border-radius: 100px;
+  padding: 0px;
+
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+/* 
+  Hover saat buka di computer
+  Active (click) saat buka di mobile
+*/
+
+.btn-scroll:hover,
+.btn-scroll:active {
+  bottom: 0;
+}
+
+.btn-scroll:hover .ganti-warna,
+.btn-scroll:active .ganti-warna {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(175deg) brightness(97%) contrast(103%);
+}
+
+/* ------------------------------- RESPONSIVE ------------------------------- */
+
+@media (max-width: 771px) {
+  .btn-scroll {
+    bottom: 0px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 1                                 */
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------- TOMBOL GENERAL ----------------------------- */
+
+h3 {
+  display: inline;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 26px;
+  color: #D0D3D4;
+
+  margin: 0px 24px 0px 24px;
+}
+
+.ikon-tombol {
+  margin: -8px 0px 0px 24px;
+}
+
+/* ------------------------------- TOMBOL UNGU ------------------------------ */
+
+.btn-ungu {
+  border: 2px solid;
+  border-radius: 12px;
+  color: #7348D5;
+  background-color: #101117;
+  padding: 18px 0px 18px 0px;
+
+  transition: 0.3s;
+}
+
+.btn-ungu:hover,
+.btn-ungu:active {
+  border: 2px solid #101117;
+  border-radius: 100px;
+  background-color: #7348D5;
+}
+
+.btn-ungu:hover h3,
+.btn-ungu:active h3 {
+  color: #101117;
+}
+
+.btn-ungu:hover .ikon-tombol,
+.btn-ungu:active .ikon-tombol {
+  filter: brightness(0%);
+}
+
+/* ------------------------------- TOMBOL BIRU ------------------------------ */
+
+.btn-biru {
+  border: 2px solid;
+  border-radius: 12px;
+  color: #4B92E3;
+  background-color: #101117;
+  padding: 18px 0px 18px 0px;
+
+  transition: 0.3s;
+}
+
+.btn-biru:hover,
+.btn-biru:active {
+  border: 2px solid #101117;
+  border-radius: 100px;
+  background-color: #4B92E3;
+}
+
+.btn-biru:hover h3,
+.btn-biru:active h3 {
+  color: #101117;
+}
+
+.btn-biru:hover .ikon-tombol,
+.btn-biru:active .ikon-tombol {
+  filter: brightness(0%);
+}
+
+/* ------------------------------- TOMBOL SEA ------------------------------- */
+
+.btn-sea {
+  border: 2px solid;
+  border-radius: 12px;
+  color: #62B8B8;
+  background-color: #101117;
+  padding: 18px 0px 18px 0px;
+
+  transition: 0.3s;
+}
+
+.btn-sea:hover,
+.btn-sea:active {
+  border: 2px solid #101117;
+  border-radius: 100px;
+  background-color: #62B8B8;
+}
+
+.btn-sea:hover h3,
+.btn-sea:active h3 {
+  color: #101117;
+}
+
+.btn-sea:hover .ikon-tombol,
+.btn-sea:active .ikon-tombol {
+  filter: brightness(0%);
+}
+
+/* ------------------------------ TOMBOL MERAH ------------------------------ */
+
+.btn-merah {
+  border: 2px solid;
+  border-radius: 12px;
+  color: #B83746;
+  background-color: #101117;
+  padding: 18px 0px 18px 0px;
+
+  transition: 0.3s;
+}
+
+.btn-merah:hover,
+.btn-merah:active {
+  border: 2px solid #101117;
+  border-radius: 100px;
+  background-color: #B83746;
+}
+
+.btn-merah:hover h3,
+.btn-merah:active h3 {
+  color: #101117;
+}
+
+.btn-merah:hover .ikon-tombol,
+.btn-merah:active .ikon-tombol {
+  filter: brightness(0%);
+}
+
+/* ------------------------------ TOMBOL KUNING ----------------------------- */
+
+.btn-kuning {
+  border: 2px solid;
+  border-radius: 12px;
+  color: #C7AF28;
+  background-color: #101117;
+  padding: 18px 0px 18px 0px;
+
+  transition: 0.3s;
+}
+
+.btn-kuning:hover,
+.btn-kuning:active {
+  border: 2px solid #101117;
+  border-radius: 100px;
+  background-color: #C7AF28;
+}
+
+.btn-kuning:hover h3,
+.btn-kuning:active h3 {
+  color: #101117;
+}
+
+.btn-kuning:hover .ikon-tombol,
+.btn-kuning:active .ikon-tombol {
+  filter: brightness(0%);
+}
+
+/* ------------------------------ TOMBOL HIJAU ------------------------------ */
+
+.btn-hijau {
+  border: 2px solid;
+  border-radius: 12px;
+  color: #45A36C;
+  background-color: #101117;
+  padding: 18px 0px 18px 0px;
+
+  transition: 0.3s;
+}
+
+.btn-hijau:hover,
+.btn-hijau:active {
+  border: 2px solid #101117;
+  border-radius: 100px;
+  background-color: #45A36C;
+}
+
+.btn-hijau:hover h3,
+.btn-hijau:active h3 {
+  color: #101117;
+}
+
+.btn-hijau:hover .ikon-tombol,
+.btn-hijau:hover .ikon-active {
+  filter: brightness(0%);
+}
+
+/* ------------------------------- ANOTHER CSS ------------------------------ */
+
+.sebagai-kotak {
+  width: 460px;
+  height: 96px;
+  background-color: #0C0D12;
+  border-radius: 12px;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  padding-right: 24px;
+  padding-left: 24px;
+
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+/* ------------------------------- RESPONSIVE ------------------------------- */
+
+@media (max-width: 922px) {
+  .tmb2 {
+    margin: -16px 0px 0px 0px;
+  }
+}
+
+@media (max-width: 686px) {
+  .tmb1 {
+    margin: -16px 0px 0px 0px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 2                                 */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- All CSS -------------------------------- */
+
+.flex-container-a {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  /* align-content: ; */
+}
+
+.flex-items-a {
+  /* Lebar 100% : 2 */
+  width: 47%;
+}
+
+.hightlight-text-ungu {
+  font-weight: 400;
+  text-decoration: underline;
+  color: #7348D5;
+}
+
+/* -------------------------------- REPONSIVE ------------------------------- */
+
+@media (max-width: 906px) {
+  .flex-container-a {
+    justify-content: center;
+  }
+
+  .flex-items-a {
+    /* Lebar 100% : 1 */
+    width: 97%;
+  }
+
+  .order-a1 {
+    border-radius: 12px;
+    background-color: #0C0D12;
+  }
+
+  .order-a2 {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .sec2-title {
+    margin-top: 48px;
+    text-align: center;
+  }
+
+  .foto-cropped-1 {
+    width: 430px;
+    height: 300px;
+    object-fit: cover;
+    /* 0px dari kiri & -200px dari atas */
+    object-position: 0px -200px;
+    /* border: 5px solid white; */
+    border-radius: 12px;
+
+    margin-top: -24px;
+    margin-bottom: -24px;
+  }
+
+  .cv-lebar-sec2 {
+    width: 47.5%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 3                                 */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- All CSS -------------------------------- */
+
+.flex-container-b {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: space-between;
+  height: 550px;
+}
+
+.flex-items-b {
+  /* Lebar 100% : 3 */
+  width: 32%;
+  background-color: #0C0D12;
+  border-radius: 12px;
+  padding: 24px 0px 8px 24px;
+}
+
+.order-b2,
+.order-b4,
+.order-b6 {
+  margin-top: 16px;
+}
+
+.ikon-skill {
+  margin: 2px 24px 0px 0px;
+  user-select: none;
+}
+
+.ikon-skill-2 {
+  margin: -10px 24px 0px 0px;
+  user-select: none;
+}
+
+.nomor-skill {
+  /* Parent dari kelas ini 
+  positionnya harus Relative */
+  position: absolute;
+  bottom: -22%;
+  right: 5%;
+
+  font-size: 120px !important;
+  font-weight: 600;
+  color: #101117;
+
+  user-select: none;
+}
+
+/* -------------------------------- REPONSIVE ------------------------------- */
+
+@media (max-width: 928px) {
+  .flex-container-b {
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  .flex-items-b {
+    /* Lebar 100% : 2 */
+    width: 47%;
+  }
+
+  .order-b1,
+  .order-b2,
+  .order-b3,
+  .order-b4,
+  .order-b5,
+  .order-b6 {
+    margin-top: 16px;
+  }
+
+  .nomor-skill {
+    font-size: 240px !important;
+  }
+}
+
+@media (max-width: 748px) {
+  .flex-items-b {
+    /* Lebar 100% : 1 */
+    width: 97%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 4                                 */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- All CSS -------------------------------- */
+
+.flex-container-c {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  /* align-content: space-between; */
+}
+
+.flex-items-c {
+  /* Lebar 100% : 2 */
+  width: 49%;
+}
+
+.link-title {
+  font-style: normal;
+  border-radius: 12px;
+  background-color: #0C0D12;
+  padding: 16px 0px 16px 0px;
+}
+
+.kotak-link {
+  display: inline-block;
+
+  /* Lebar 100% : 3 */
+  width: 32%;
+  text-align: center;
+  border: 3px solid #101117;
+  border-radius: 12px;
+  padding: 24px 0px 16px 0px;
+  margin-right: -6px;
+}
+
+.kotak-link:hover,
+.kotak-link:active {
+  position: relative;
+  border: 3px solid #62B8B8;
+}
+
+.kotak-link:hover h4,
+.kotak-link:active h4 {
+  font-weight: 400;
+  color: #62B8B8;
+}
+
+.order-c3,
+.order-c4 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* -------------------------------- REPONSIVE ------------------------------- */
+
+@media (max-width: 956px) {
+  .flex-container-c {
+    justify-content: space-evenly;
+  }
+
+  .flex-items-c {
+    width: 47%;
+  }
+
+  .kotak-link {
+    width: 97%;
+    display: inline-flex;
+  }
+
+  .kotak-link a {
+    margin: 0px 32px 8px 32px;
+  }
+
+  .kotak-link h4 {
+    margin: 24px 0px 0px 0px;
+  }
+}
+
+@media (max-width: 706px) {
+  .flex-container-c {
+    justify-content: center;
+  }
+
+  .flex-items-c {
+    width: 97%;
+  }
+
+  .kotak-link {
+    width: 32%;
+    display: inline-block;
+  }
+
+  .order-c2,
+  .order-c3,
+  .order-c4 {
+    margin-top: 24px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 5                                 */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- All CSS -------------------------------- */
+
+.flex-container-d {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  /* align-content: space-between; */
+}
+
+.flex-items-d {
+  width: 32%;
+  height: 235px;
+  border-radius: 12px;
+  /* background-color: salmon; */
+}
+
+.order-d4,
+.order-d5,
+.order-d6 {
+  margin-top: 16px;
+}
+
+.img-responsive {
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+}
+
+.detail-project {
+  /* text-align: center; */
+  width: 100%;
+  height: 235px;
+  border: 2px solid #B83746;
+  border-radius: 12px;
+  background-color: #0C0D12;
+
+  /* Hidden Margin Front */
+  transform: scale(1.01);
+}
+
+/* ------------------------------- RESPONSIVE ------------------------------- */
+
+@media (max-width: 940px) {
+  .flex-container-d {
+    justify-content: space-evenly;
+  }
+
+  .flex-items-d {
+    width: 47%;
+    height: 264px;
+  }
+
+  .order-d3,
+  .order-d4,
+  .order-d5,
+  .order-d6 {
+    margin-top: 16px;
+  }
+
+  .sec5-title {
+    text-align: center;
+  }
+
+  .detail-project {
+    width: 100%;
+    height: 264px;
+  }
+}
+
+@media (max-width: 642px) {
+  .flex-items-d {
+    width: 97%;
+    height: 228px;
+  }
+
+  .order-d2,
+  .order-d3,
+  .order-d4,
+  .order-d5,
+  .order-d6 {
+    margin-top: 16px;
+  }
+
+  .img-responsive {
+    object-fit: cover;
+    /* 0px dari kiri & -55px dari atas */
+    object-position: 0px -68px;
+    /* border: 5px solid white; */
+    border-radius: 12px;
+  }
+
+  .detail-project {
+    width: 100%;
+    height: 228px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 6                                 */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- All CSS -------------------------------- */
+
+/* --------------------------------- All CSS -------------------------------- */
+
+.flex-container-e {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  /* align-content: ; */
+}
+
+.flex-items-e {
+  /* Lebar 100% : 2 */
+  width: 47%;
+}
+
+.hightlight-text-kuning {
+  font-weight: 400;
+  color: #C7AF28;
+  margin-right: 16px;
+}
+
+.underline-text-kuning {
+  text-decoration: underline;
+  text-decoration-color: #7348D5;
+}
+
+/* -------------------------------- REPONSIVE ------------------------------- */
+
+@media (max-width: 906px) {
+  .flex-container-e {
+    justify-content: center;
+  }
+
+  .flex-items-e {
+    /* Lebar 100% : 1 */
+    width: 97%;
+  }
+
+  .order-e1 {
+    border-radius: 12px;
+    background-color: #0C0D12;
+  }
+
+  .order-e2 {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .sec6-title {
+    margin-top: 48px;
+    text-align: center;
+  }
+
+  .foto-cropped-2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 430px;
+    height: 300px;
+    object-fit: cover;
+    /* 0px dari kiri & 24px dari atas */
+    object-position: 0px 24px;
+    /* border: 5px solid white; */
+    border-radius: 12px;
+
+    margin-top: -24px;
+    margin-bottom: -24px;
+  }
+
+  .cv-lebar-sec6 {
+    width: 50vw;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 7                                 */
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- All CSS -------------------------------- */
+
