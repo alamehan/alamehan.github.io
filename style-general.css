@@ -292,3 +292,17 @@ hr {
 
   margin: 24px 0px !important;
 }
+
+/* ------------------------------- RESPONSIVE ------------------------------- */
+
+@media (max-width: 480px) {
+  body {
+    zoom: 90%;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    zoom: 65%;
+  }
+}
