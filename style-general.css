@@ -241,7 +241,7 @@ hr {
 }
 
 .garis-bawah {
-  border-bottom: 2px solid #0a223f;
+  border-bottom: 3px solid #0a223f;
 }
 
 /* ------------------ CHANGE FOCUS COLOR OUTLINE BOOTSTRAP ------------------ */
@@ -347,7 +347,7 @@ option:checked {
 
 @media (max-width: 360px) {
   body {
-    zoom: 65%;
+    zoom: 75%;
   }
 }
 
