@@ -10,6 +10,8 @@
    h5 = section title
    h6 = recent works detail
    a  = section body 
+
+   All responsive modes are tested on : http://responsivetesttool.com/
 */
 
 /* ------------------------------- MARGIN TOP ------------------------------- */
@@ -97,6 +99,10 @@
 }
 
 /* Special Margin */
+
+.marbot-90 {
+  margin-bottom: 90px;
+}
 
 .marbot-100 {
   margin-bottom: 100px;
@@ -234,6 +240,38 @@ hr {
   user-select: none;
 }
 
+.garis-bawah {
+  border-bottom: 2px solid #0a223f;
+}
+
+/* ------------------ CHANGE FOCUS COLOR OUTLINE BOOTSTRAP ------------------ */
+
+select:focus,
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: 0px 6px #45A36C !important;
+}
+
+select:hover,
+select:focus {
+  background-color: #101117 !important;
+  border-radius: 12px;
+}
+
+option:checked {
+  color: #45A36C !important;
+}
+
 /* -------------------------------- SLICK JS -------------------------------- */
 
 /* Override Slick js : Enable select texr */
@@ -301,8 +339,20 @@ hr {
   }
 }
 
+@media (max-width: 414px) {
+  body {
+    zoom: 75%;
+  }
+}
+
 @media (max-width: 360px) {
   body {
     zoom: 65%;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    zoom: 55%;
   }
 }

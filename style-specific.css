@@ -11,6 +11,8 @@
 
   level 1 = space-between/center
   level 2 = space-between/spave-evenly/center
+
+  All responsive modes are tested on : http://responsivetesttool.com/
 */
 
 /* -------------------------------------------------------------------------- */
@@ -77,7 +79,15 @@ h3 {
 }
 
 .ikon-tombol {
-  margin: -8px 0px 0px 24px;
+  margin-top: -6px;
+}
+
+.btn-res1 {
+  flex-basis: 25%;
+}
+
+.btn-res2 {
+  flex-basis: 100%;
 }
 
 /* ------------------------------- TOMBOL UNGU ------------------------------ */
@@ -274,17 +284,26 @@ h3 {
 
 /* ------------------------------- RESPONSIVE ------------------------------- */
 
-@media (max-width: 922px) {
-  .tmb2 {
-    margin: -16px 0px 0px 0px;
+@media (max-width: 908px) {
+  .btn-res1 {
+    flex-basis: 19%;
+  }
+
+  .btn-res2 {
+    flex-basis: 20%;
   }
 }
 
-@media (max-width: 686px) {
-  .tmb1 {
-    margin: -16px 0px 0px 0px;
+@media (max-width: 600px) {
+  .btn-res1 {
+    flex-basis: 100%;
+  }
+
+  .btn-res2 {
+    flex-basis: 100%;
   }
 }
+
 
 /* -------------------------------------------------------------------------- */
 /*                                  SECTION 2                                 */
@@ -349,10 +368,6 @@ h3 {
 
     margin-top: -24px;
     margin-bottom: -24px;
-  }
-
-  .cv-lebar-sec2 {
-    width: 47.5%;
   }
 }
 
@@ -460,7 +475,7 @@ h3 {
 
 .flex-items-c {
   /* Lebar 100% : 2 */
-  width: 49%;
+  width: 48.5%;
 }
 
 .link-title {
@@ -474,7 +489,7 @@ h3 {
   display: inline-block;
 
   /* Lebar 100% : 3 */
-  width: 32%;
+  width: 33.75%;
   text-align: center;
   border: 3px solid #101117;
   border-radius: 12px;
@@ -512,7 +527,7 @@ h3 {
   }
 
   .kotak-link {
-    width: 97%;
+    width: 100%;
     display: inline-flex;
   }
 
@@ -531,11 +546,11 @@ h3 {
   }
 
   .flex-items-c {
-    width: 97%;
+    width: 100%;
   }
 
   .kotak-link {
-    width: 32%;
+    width: 33.75%;
     display: inline-block;
   }
 
@@ -638,7 +653,7 @@ h3 {
   .img-responsive {
     object-fit: cover;
     /* 0px dari kiri & -55px dari atas */
-    object-position: 0px -68px;
+    object-position: 0px -90px;
     /* border: 5px solid white; */
     border-radius: 12px;
   }
@@ -649,11 +664,67 @@ h3 {
   }
 }
 
+@media (max-width: 568px) {
+  .img-responsive {
+    /* 0px dari kiri & -55px dari atas */
+    object-position: 0px -75px;
+  }
+}
+
+@media (max-width: 568px) {
+  .img-responsive {
+    /* 0px dari kiri & -55px dari atas */
+    object-position: 0px -65px;
+  }
+}
+
+@media (max-width: 480px) {
+  .img-responsive {
+    /* 0px dari kiri & -55px dari atas */
+    object-position: 0px -65px;
+  }
+}
+
+@media (max-width: 414px) {
+  .flex-items-d {
+    height: 248px;
+  }
+
+  .detail-project {
+    height: 240px;
+  }
+
+  .img-responsive {
+    /* 0px dari kiri & -55px dari atas */
+    object-position: 0px -55px;
+  }
+}
+
+@media (max-width: 360px) {
+  .flex-items-d {
+    height: 264px;
+  }
+
+  .detail-project {
+    height: 264px;
+  }
+
+  .img-responsive {
+    /* 0px dari kiri & -55px dari atas */
+    object-position: 0px -80px;
+  }
+}
+
+@media (max-width: 320px) {
+  .img-responsive {
+    /* 0px dari kiri & -55px dari atas */
+    object-position: 0px -55px;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                  SECTION 6                                 */
 /* -------------------------------------------------------------------------- */
-
-/* --------------------------------- All CSS -------------------------------- */
 
 /* --------------------------------- All CSS -------------------------------- */
 
@@ -679,6 +750,10 @@ h3 {
 .underline-text-kuning {
   text-decoration: underline;
   text-decoration-color: #7348D5;
+}
+
+.btn-res3 {
+  flex-basis: 100%;
 }
 
 /* -------------------------------- REPONSIVE ------------------------------- */
@@ -723,8 +798,8 @@ h3 {
     margin-bottom: -24px;
   }
 
-  .cv-lebar-sec6 {
-    width: 50vw;
+  .btn-res3 {
+    flex-basis: 50%;
   }
 }
 
@@ -732,5 +807,216 @@ h3 {
 /*                                  SECTION 7                                 */
 /* -------------------------------------------------------------------------- */
 
-/* --------------------------------- All CSS -------------------------------- */
+/* ----------------------------- FILTER CONTROL ----------------------------- */
 
+.grid-wrapper {
+  margin: 0 !important;
+}
+
+.filter-controls {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.filter-controls .control {
+  display: inline-block;
+  width: 47.6%;
+  margin: 0 10px;
+}
+
+.filter-controls .control * {
+  box-sizing: border-box;
+  height: 70px !important;
+}
+
+.filter-controls .control .form-control {
+  width: 100%;
+  height: 40px;
+  padding: 0 20px;
+  border: 2px solid #45A36C;
+  border-radius: 12px;
+  background-color: transparent;
+  color: #D0D3D4;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.filter-controls .control .form-control:focus {
+  outline: 0;
+  border-color: #45A36C !important;
+}
+
+/* ----------------------------- GRID FOR IMAGE ----------------------------- */
+
+.grid {
+  position: relative;
+}
+
+.item {
+  position: absolute;
+  /* Custom Margin */
+  margin: 5px;
+  z-index: 1;
+}
+
+.item.muuri-dragging,
+.item.muuri-releasing {
+  z-index: 2;
+}
+
+.item.muuri-hidden {
+  z-index: 0;
+}
+
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: move;
+}
+
+.item.muuri-dragging img,
+.item.muuri-releasing img {
+  opacity: 0.6;
+}
+
+.ilus1-size {
+  max-width: 300px;
+  border-radius: 12px;
+}
+
+/* -------------------------- ALL DEVICE RESPONSIVE ------------------------- */
+
+@media (max-width: 976px) {
+  .grid {
+    margin-left: 12px;
+  }
+
+  .ilus1-size {
+    zoom: 0.72;
+  }
+}
+
+@media (max-width: 962px) {
+  .grid {
+    margin-left: 36px;
+  }
+
+  .ilus1-size {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 962px) {
+  .grid {
+    margin-left: 36px;
+  }
+
+  .ilus1-size {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 896px) {
+  .filter-controls .control {
+    width: 47%;
+  }
+
+  .grid {
+    margin-left: 0px;
+  }
+
+  .ilus1-size {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 771px) {
+  .filter-controls .control {
+    width: 40%;
+  }
+
+  .grid {
+    margin-left: 52px;
+  }
+
+  .ilus1-size {
+    zoom: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-controls .control {
+    width: 46%;
+  }
+
+  .grid {
+    margin-left: 0px;
+  }
+
+  .ilus1-size {
+    zoom: 0.87;
+  }
+}
+
+@media (max-width: 568px) {
+  .filter-controls .control {
+    width: 45%;
+  }
+
+  .ilus1-size {
+    zoom: 0.82;
+  }
+}
+
+@media (max-width: 533px) {
+  .ilus1-size {
+    zoom: 0.76;
+  }
+}
+
+@media (max-width: 531px) {
+  .filter-controls .control {
+    width: 45%;
+  }
+
+  .ilus1-size {
+    zoom: 0.77;
+  }
+}
+
+/* Device 480px kebawah geenralnya ada di style-general.css */
+
+@media (max-width: 480px) {
+  .ilus1-size {
+    zoom: 0.75;
+  }
+}
+
+@media (max-width: 414px) {
+  .filter-controls .control {
+    width: 45%;
+  }
+
+  .ilus1-size {
+    zoom: 0.78;
+  }
+}
+
+@media (max-width: 360px) {
+  .ilus1-size {
+    zoom: 0.92;
+  }
+}
+
+@media (max-width: 320px) {
+  .ilus1-size {
+    zoom: 0.8;
+  }
+}
