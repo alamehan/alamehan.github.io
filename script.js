@@ -6,7 +6,7 @@ $(document).ready(function () {
   // Catatan : Dopake di page portfolios agar tetap bisa scroll saat drag
   // Sumber : https://codepen.io/JTParrett/pen/uzGvy
 
-  $(function () {
+  function enableCliskScroll() {
     var curDown = false,
       curYPos = 0,
       curXPos = 0;
@@ -26,7 +26,10 @@ $(document).ready(function () {
     $(window).mouseup(function () {
       curDown = false;
     });
-  })
+  }
+
+  // ON/OFF
+  enableCliskScroll($('#root-portfolios'));
 
   //---------- jQuery Flip Js
 
