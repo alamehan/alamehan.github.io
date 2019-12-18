@@ -736,7 +736,7 @@ h3 {
 
   .img-responsive {
     object-fit: cover;
-    /* 0px dari kiri & -55px dari atas */
+    /* 0px dari kiri & -90px dari atas */
     object-position: 0px -90px;
     /* border: 5px solid white; */
     border-radius: 12px;
@@ -750,22 +750,22 @@ h3 {
 
 @media (max-width: 568px) {
   .img-responsive {
-    /* 0px dari kiri & -55px dari atas */
+    /* 0px dari kiri & -75px dari atas */
     object-position: 0px -75px;
   }
 }
 
 @media (max-width: 568px) {
   .img-responsive {
-    /* 0px dari kiri & -55px dari atas */
-    object-position: 0px -65px;
+    /* 0px dari kiri & -82px dari atas */
+    object-position: 0px -82px;
   }
 }
 
 @media (max-width: 480px) {
   .img-responsive {
-    /* 0px dari kiri & -55px dari atas */
-    object-position: 0px -65px;
+    /* 0px dari kiri & -70px dari atas */
+    object-position: 0px -70px;
   }
 }
 
@@ -795,7 +795,7 @@ h3 {
 
   .img-responsive {
     /* 0px dari kiri & -55px dari atas */
-    object-position: 0px -80px;
+    object-position: 0px -90px;
   }
 }
 
@@ -1017,7 +1017,7 @@ h3 {
   }
 
   .ilus1-size {
-    zoom: 0.9;
+    zoom: 0.91;
   }
 }
 
@@ -1045,7 +1045,7 @@ h3 {
   }
 
   .ilus1-size {
-    zoom: 0.87;
+    zoom: 0.885;
   }
 }
 
@@ -1055,7 +1055,7 @@ h3 {
   }
 
   .ilus1-size {
-    zoom: 0.82;
+    zoom: 0.83;
   }
 }
 
@@ -1079,7 +1079,7 @@ h3 {
 
 @media (max-width: 480px) {
   .ilus1-size {
-    zoom: 0.75;
+    zoom: 0.775;
   }
 }
 
@@ -1089,20 +1089,32 @@ h3 {
   }
 
   .ilus1-size {
-    zoom: 0.78;
+    zoom: 0.745;
   }
 }
 
 @media (max-width: 360px) {
   .ilus1-size {
-    zoom: 0.92;
+    zoom: 0.95;
   }
 }
 
 @media (max-width: 320px) {
   .ilus1-size {
-    zoom: 0.8;
+    zoom: 0.835;
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION 8                                 */
+/* -------------------------------------------------------------------------- */
+
+/* CSS ada di library/css/testimonials.css */
+
+.testi-bg {
+  background-color: #0C0D12;
+  border: 2px solid #0C0D12;
+  border-radius: 12px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1177,7 +1189,7 @@ h3 {
 
 .ornament-footer-kiri {
   position: absolute;
-  bottom: 15vh;
+  bottom: -180px;
   left: 0;
 
   margin-left: -160px !important;
@@ -1186,7 +1198,7 @@ h3 {
 
 .ornament-footer-kanan {
   position: absolute;
-  bottom: 15vh;
+  bottom: -180px;
   right: 0;
 
   margin-right: -160px !important;

@@ -14,6 +14,10 @@
    All responsive modes are tested on : http://responsivetesttool.com/
 */
 
+/* ------------- PRE-LOADER SCREEN (WAIT TILL IMAGE HAS LOADED) ------------- */
+
+/* Empty - Not Working */
+
 /* ------------------------------- MARGIN TOP ------------------------------- */
 
 .martop-8 {
@@ -346,12 +350,6 @@ option:checked {
 }
 
 @media (max-width: 414px) {
-  body {
-    zoom: 80%;
-  }
-}
-
-@media (max-width: 360px) {
   body {
     zoom: 80%;
   }
