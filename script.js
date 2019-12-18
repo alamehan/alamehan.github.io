@@ -329,7 +329,8 @@ $(document).ready(function () {
 
   // Init the grid layout
   grid = new Muuri(gridElem, {
-    dragEnabled: true
+    // GANTI DENGAN TRUE JIKA INGIN BISA DRAG & DROP (HANYA SAJA KETIKA MODE HP GA BISA SCROLL)
+    dragEnabled: false
   });
 
   // Set inital search query, active filter, active sort value and active layout.
@@ -406,7 +407,8 @@ $(document).ready(function () {
   var grid = new Muuri({
     container: document.getElementsByClassName('grid')[0],
     items: [].slice.call(document.getElementsByClassName('item')),
-    dragEnabled: true
+    // GANTI DENGAN TRUE JIKA INGIN BISA DRAG & DROP (HANYA SAJA KETIKA MODE HP GA BISA SCROLL)
+    dragEnabled: false
   });
 
   // Prevent native image drag for images inside items.
