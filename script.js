@@ -318,7 +318,7 @@ $(document).ready(function () {
   grid.getItems().forEach(item => {
     if (!item._drag) return;
     item._drag.destroy();
-    item._drag = null;
+    // item._drag = null;
   });
 
   // Enable drag for all items.
