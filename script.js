@@ -2,6 +2,32 @@
 
 $(document).ready(function () {
 
+  // --------- Vertical Click and Drag Scrolling
+  // Catatan : Dopake di page portfolios agar tetap bisa scroll saat drag
+  // Sumber : https://codepen.io/JTParrett/pen/uzGvy
+
+  $(function () {
+    var curDown = false,
+      curYPos = 0,
+      curXPos = 0;
+    $(window).mousemove(function (m) {
+      if (curDown === true) {
+        $(window).scrollTop($(window).scrollTop() + (curYPos - m.pageY));
+        $(window).scrollLeft($(window).scrollLeft() + (curXPos - m.pageX));
+      }
+    });
+
+    $(window).mousedown(function (m) {
+      curDown = true;
+      curYPos = m.pageY;
+      curXPos = m.pageX;
+    });
+
+    $(window).mouseup(function () {
+      curDown = false;
+    });
+  })
+
   //---------- jQuery Flip Js
 
   $("#card1").flip({
@@ -315,11 +341,11 @@ $(document).ready(function () {
   // --------- IMPORTANT : DRAG ON/OFF FORCE
 
   // Destroy drag for all items.
-  grid.getItems().forEach(item => {
-    if (!item._drag) return;
-    item._drag.destroy();
-    // item._drag = null;
-  });
+  // grid.getItems().forEach(item => {
+  //   if (!item._drag) return;
+  //   item._drag.destroy();
+  //   item._drag = null;
+  // });
 
   // Enable drag for all items.
   // grid.getItems().forEach(item => {
@@ -344,7 +370,8 @@ $(document).ready(function () {
 
   // Init the grid layout
   grid = new Muuri(gridElem, {
-    dragEnabled: true
+    // MENYALAKAN/MEMATIKAN DRAG & DROP UNTUK DIV IMAGE
+    dragEnabled: false
   });
 
   // Set inital search query, active filter, active sort value and active layout.
@@ -421,7 +448,8 @@ $(document).ready(function () {
   var grid = new Muuri({
     container: document.getElementsByClassName('grid')[0],
     items: [].slice.call(document.getElementsByClassName('item')),
-    dragEnabled: true
+    // MENYALAKAN/MEMATIKAN DRAG & DROP UNTUK DIV IMAGE
+    dragEnabled: false
   });
 
   // Prevent native image drag for images inside items.
