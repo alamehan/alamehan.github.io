@@ -90,7 +90,7 @@ $(document).ready(function () {
   $(".alert-show").click(function () {
     Swal.fire({
       // icon: 'info',
-      title: 'Hello my friend!',
+      title: '👋 Hello my friend!',
       text: 'To get examples of works, you can contact me 😊👌',
 
       imageUrl: 'assets/logo2.svg',
@@ -116,7 +116,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: '𝐇𝐓𝐌𝐋𝟓 & 𝐂𝐒𝐒𝟑 for describing and styling the structure of web pages.',
+      text: 'HTML5 & CSS3 for describing and styling the structure of web pages.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -141,7 +141,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: '𝐁𝐄𝐌, 𝐒𝐀𝐒𝐒, 𝐁𝐨𝐨𝐭𝐬𝐭𝐫𝐚𝐩 for CSS architecture, preprocessors and frameworks.',
+      text: 'BEM, SASS, Bootstrap for CSS architecture, preprocessors and frameworks.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -166,7 +166,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: '𝐉𝐚𝐯𝐚𝐒𝐜𝐫𝐢𝐩𝐭 for web interaction with users. 𝐣𝐐𝐮𝐞𝐫𝐲 & 𝐕𝐮𝐞.𝐣𝐬 for main javascript library and frameworks.',
+      text: 'JavaScript for web interaction with users. jQuery & Vue.js for main javascript library and frameworks.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -191,7 +191,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: '𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐢𝐯𝐞 𝐖𝐞𝐛𝐬𝐢𝐭𝐞 for provide optimal viewing on variety devices (mobile, tablet, desktop)',
+      text: 'Responsive Website for provide optimal viewing on variety devices (mobile, tablet, desktop)',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -216,7 +216,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: '𝐓𝐚𝐬𝐤𝐚𝐝𝐞 for task management. 𝐖𝐡𝐢𝐦𝐬𝐢𝐜𝐚𝐥 for collaborative flowcharts, wireframes, sticky notes and mind maps.',
+      text: 'Taskade for task management. Whimsical for collaborative flowcharts, wireframes, sticky notes and mind maps.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -241,7 +241,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: '𝐅𝐈𝐆𝐌𝐀 & 𝐀𝐝𝐨𝐛𝐞 𝐗𝐃 for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
+      text: 'Figma & Adobe XD for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -266,7 +266,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: '𝐀𝐝𝐨𝐛𝐞 𝐏𝐡𝐨𝐭𝐨𝐬𝐡𝐨𝐩, 𝐈𝐥𝐥𝐮𝐬𝐭𝐫𝐚𝐭𝐨𝐫 & 𝐆𝐫𝐚𝐯𝐢𝐭 𝐃𝐞𝐬𝐢𝐠𝐧𝐞𝐫 as an alternative tool for vector-based design and image manipulation.',
+      text: 'Adobe Photoshop, Illustrator & Gravit Designer as an alternative tool for vector-based design and image manipulation.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -291,7 +291,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: '𝐕𝐢𝐬𝐮𝐚𝐥 𝐒𝐭𝐮𝐝𝐢𝐨 𝐂𝐨𝐝𝐞 for a lightweight and reliable text editor for programming purposes.',
+      text: 'Visual Studio Code for a lightweight and reliable text editor for programming purposes.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,

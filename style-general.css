@@ -347,13 +347,13 @@ option:checked {
 
 @media (max-width: 414px) {
   body {
-    zoom: 75%;
+    zoom: 80%;
   }
 }
 
 @media (max-width: 360px) {
   body {
-    zoom: 75%;
+    zoom: 80%;
   }
 }
 
