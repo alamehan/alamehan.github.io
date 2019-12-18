@@ -312,6 +312,21 @@ $(document).ready(function () {
     })
   })
 
+  // --------- IMPORTANT : DRAG ON/OFF FORCE
+
+  // Destroy drag for all items.
+  grid.getItems().forEach(item => {
+    if (!item._drag) return;
+    item._drag.destroy();
+    item._drag = null;
+  });
+
+  // Enable drag for all items.
+  // grid.getItems().forEach(item => {
+  //   if (item._drag) return;
+  //   item._drag = new Muuri.ItemDrag(item);
+  // });
+
   //---------- Web Animation & Hummber & Muuri Js
 
   var grid = null,
@@ -329,8 +344,7 @@ $(document).ready(function () {
 
   // Init the grid layout
   grid = new Muuri(gridElem, {
-    // GANTI DENGAN TRUE JIKA INGIN BISA DRAG & DROP (HANYA SAJA KETIKA MODE HP GA BISA SCROLL)
-    dragEnabled: false
+    dragEnabled: true
   });
 
   // Set inital search query, active filter, active sort value and active layout.
@@ -407,8 +421,7 @@ $(document).ready(function () {
   var grid = new Muuri({
     container: document.getElementsByClassName('grid')[0],
     items: [].slice.call(document.getElementsByClassName('item')),
-    // GANTI DENGAN TRUE JIKA INGIN BISA DRAG & DROP (HANYA SAJA KETIKA MODE HP GA BISA SCROLL)
-    dragEnabled: false
+    dragEnabled: true
   });
 
   // Prevent native image drag for images inside items.
