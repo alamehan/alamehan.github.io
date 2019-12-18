@@ -7,9 +7,9 @@
    h2 = sub header
    h3 = button
    h4 = paragraph
-   h5 = section title
+   h5 = section title (at recet works, etc)
    h6 = recent works detail
-   a  = section body 
+   a  = section body (at recet works, etc)
 
    All responsive modes are tested on : http://responsivetesttool.com/
 */
@@ -54,6 +54,12 @@
 
 .martop-80 {
   margin-top: 80px;
+}
+
+/* Special Margin */
+
+.martop-120 {
+  margin-top: 180px;
 }
 
 /* ------------------------------ MARGIN BOTTOM ----------------------------- */

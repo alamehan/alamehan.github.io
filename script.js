@@ -54,7 +54,7 @@ $(document).ready(function () {
     slidesToShow: 3,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 1200,
+    autoplaySpeed: 1000,
     responsive: [{
         breakpoint: 995,
         settings: {
@@ -92,6 +92,206 @@ $(document).ready(function () {
       // icon: 'info',
       title: 'Hello my friend!',
       text: 'To get examples of works, you can contact me 😊👌',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-2a").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚙️ Front-End Dev.',
+      text: '𝐇𝐓𝐌𝐋𝟓 & 𝐂𝐒𝐒𝟑 for describing and styling the structure of web pages.',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-2b").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚙️ Front-End Dev.',
+      text: '𝐁𝐄𝐌, 𝐒𝐀𝐒𝐒, 𝐁𝐨𝐨𝐭𝐬𝐭𝐫𝐚𝐩 for CSS architecture, preprocessors and frameworks.',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-2c").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚙️ Front-End Dev.',
+      text: '𝐉𝐚𝐯𝐚𝐒𝐜𝐫𝐢𝐩𝐭 for web interaction with users. 𝐣𝐐𝐮𝐞𝐫𝐲 & 𝐕𝐮𝐞.𝐣𝐬 for main javascript library and frameworks.',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-2d").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚙️ Front-End Dev.',
+      text: '𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐢𝐯𝐞 𝐖𝐞𝐛𝐬𝐢𝐭𝐞 for provide optimal viewing on variety devices (mobile, tablet, desktop)',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-3a").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚔️ Tools',
+      text: '𝐓𝐚𝐬𝐤𝐚𝐝𝐞 for task management. 𝐖𝐡𝐢𝐦𝐬𝐢𝐜𝐚𝐥 for collaborative flowcharts, wireframes, sticky notes and mind maps.',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-3b").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚔️ Tools',
+      text: '𝐅𝐈𝐆𝐌𝐀 & 𝐀𝐝𝐨𝐛𝐞 𝐗𝐃 for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-3c").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚔️ Tools',
+      text: '𝐀𝐝𝐨𝐛𝐞 𝐏𝐡𝐨𝐭𝐨𝐬𝐡𝐨𝐩, 𝐈𝐥𝐥𝐮𝐬𝐭𝐫𝐚𝐭𝐨𝐫 & 𝐆𝐫𝐚𝐯𝐢𝐭 𝐃𝐞𝐬𝐢𝐠𝐧𝐞𝐫 as an alternative tool for vector-based design and image manipulation.',
+
+      imageUrl: 'assets/logo2.svg',
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: 'Custom image',
+
+      width: 510,
+      padding: '3em',
+      background: '#F7F9F9 url()',
+      backdrop: `
+        rgba(13, 13, 13, 0.92)
+        url("assets/image-4CND.gif")
+        top
+        no-repeat
+      `,
+
+      confirmButtonText: "Okay",
+    })
+  })
+
+  $(".alert-show-3d").click(function () {
+    Swal.fire({
+      // icon: 'info',
+      title: '⚔️ Tools',
+      text: '𝐕𝐢𝐬𝐮𝐚𝐥 𝐒𝐭𝐮𝐝𝐢𝐨 𝐂𝐨𝐝𝐞 for a lightweight and reliable text editor for programming purposes.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
