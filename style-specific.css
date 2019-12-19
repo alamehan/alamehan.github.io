@@ -1189,7 +1189,7 @@ h3 {
 
 .ornament-footer-kiri {
   position: absolute;
-  bottom: -180px;
+  bottom: 0;
   left: 0;
 
   margin-left: -160px !important;
@@ -1198,7 +1198,7 @@ h3 {
 
 .ornament-footer-kanan {
   position: absolute;
-  bottom: -180px;
+  bottom: 0;
   right: 0;
 
   margin-right: -160px !important;
