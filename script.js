@@ -6,30 +6,46 @@ $(document).ready(function () {
   // Catatan : Dopake di page portfolios agar tetap bisa scroll saat drag
   // Sumber : https://codepen.io/JTParrett/pen/uzGvy
 
-  function enableCliskScroll() {
-    var curDown = false,
-      curYPos = 0,
-      curXPos = 0;
-    $(window).mousemove(function (m) {
-      if (curDown === true) {
-        $(window).scrollTop($(window).scrollTop() + (curYPos - m.pageY));
-        $(window).scrollLeft($(window).scrollLeft() + (curXPos - m.pageX));
+  // ON when the sreen size is less than 768px (Mobile & Tablet)
+  function triggerClickScroll(x) {
+    if (x.matches) { // If media query matches
+
+      // Only for Check
+      // document.body.style.backgroundColor = "yellow";
+
+      // The Script
+      function enableCliskScroll() {
+        var curDown = false,
+          curYPos = 0,
+          curXPos = 0;
+        $(window).mousemove(function (m) {
+          if (curDown === true) {
+            $(window).scrollTop($(window).scrollTop() + (curYPos - m.pageY));
+            $(window).scrollLeft($(window).scrollLeft() + (curXPos - m.pageX));
+          }
+        });
+
+        $(window).mousedown(function (m) {
+          curDown = true;
+          curYPos = m.pageY;
+          curXPos = m.pageX;
+        });
+
+        $(window).mouseup(function () {
+          curDown = false;
+        });
       }
-    });
+      enableCliskScroll($('#root-portfolios')); // ON/OFF in Here
 
-    $(window).mousedown(function (m) {
-      curDown = true;
-      curYPos = m.pageY;
-      curXPos = m.pageX;
-    });
-
-    $(window).mouseup(function () {
-      curDown = false;
-    });
+    } else {
+      // Only for Check
+      // document.body.style.backgroundColor = "pink";
+    }
   }
 
-  // ON/OFF
-  enableCliskScroll($('#root-portfolios'));
+  var x = window.matchMedia("(max-width: 768px)");
+  triggerClickScroll(x);
+  x.addListener(triggerClickScroll);
 
   //---------- jQuery Flip Js
 

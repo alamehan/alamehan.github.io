@@ -106,6 +106,12 @@ h3 {
   transition: 0.3s;
 }
 
+.btn-glow {
+  animation: getar 0.25s infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: linear;
+}
+
 /* ------------------------------- TOMBOL UNGU ------------------------------ */
 
 .btn-ungu {
@@ -353,6 +359,17 @@ h3 {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes getar {
+
+  0% {
+    transform: rotate(-1.2deg);
+  }
+
+  100% {
+    transform: rotate(1.2deg);
   }
 }
 
