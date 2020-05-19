@@ -29,8 +29,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/alamehan/visualization-sunburst
 
   var layout = {
     autosize: true,
-    // width: 650,
-    // height: 650,
+    width: 720,
+    height: 1020,
     margin: {
       l: 0,
       r: 0,
@@ -39,7 +39,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/alamehan/visualization-sunburst
     },
     font: {
       family: 'Roboto Condensed, sans-serif',
-      size: 21,
+      size: 32,
     },
     colorway: ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#19d3f3",
       "#e763fa", "#FECB52", "#FFA15A", "#FF6692", "#B6E880"
