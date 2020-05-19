@@ -30,7 +30,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/alamehan/visualization-sunburst
   var layout = {
     autosize: true,
     width: 920,
-    height: 1120,
+    height: 1100,
     margin: {
       l: 0,
       r: 0,
