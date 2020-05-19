@@ -1,0 +1,31 @@
+.container {
+  max-width: 710px;
+  /* margin: auto; */
+  /* padding: 0 30px; */
+}
+
+.flex-container {
+  display: flex;
+  /* flex-flow: column wrap; */
+  justify-content: center;
+  /* align-items: stretch; */
+  /* align-content: space-between; */
+  /* height: 550px; */
+}
+
+.unone {
+  user-select: none;
+}
+
+.marbot-40 {
+  margin-bottom: 40px;
+}
+
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+  text-align: right;
+}
