@@ -1,14 +1,14 @@
 /* ----------------------------- All JavaScript ----------------------------- */
 
 $(document).ready(function () {
-
   // --------- Vertical Click and Drag Scrolling
   // Catatan : Dopake di page portfolios agar tetap bisa scroll saat drag
   // Sumber : https://codepen.io/JTParrett/pen/uzGvy
 
   // ON when the sreen size is less than 768px (Mobile & Tablet)
   function triggerClickScroll(x) {
-    if (x.matches) { // If media query matches
+    if (x.matches) {
+      // If media query matches
 
       // Only for Check
       // document.body.style.backgroundColor = "yellow";
@@ -36,61 +36,63 @@ $(document).ready(function () {
         });
       }
       enableCliskScroll($('#root-portfolios')); // ON/OFF in Here
-
     } else {
       // Only for Check
       // document.body.style.backgroundColor = "pink";
     }
   }
 
-  var x = window.matchMedia("(max-width: 768px)");
+  var x = window.matchMedia('(max-width: 768px)');
   triggerClickScroll(x);
   x.addListener(triggerClickScroll);
 
   //---------- jQuery Flip Js
 
-  $("#card1").flip({
+  $('#card1').flip({
     // Optional
     trigger: 'click',
-    autoSize: true
+    autoSize: true,
   });
 
-  $("#card2").flip({
+  $('#card2').flip({
     // Optional
     trigger: 'click',
-    autoSize: true
+    autoSize: true,
   });
 
-  $("#card3").flip({
+  $('#card3').flip({
     // Optional
     trigger: 'click',
-    autoSize: true
+    autoSize: true,
   });
 
-  $("#card4").flip({
+  $('#card4').flip({
     // Optional
     trigger: 'click',
-    autoSize: true
+    autoSize: true,
   });
 
-  $("#card5").flip({
+  $('#card5').flip({
     // Optional
     trigger: 'click',
-    autoSize: true
+    autoSize: true,
   });
 
-  $("#card6").flip({
+  $('#card6').flip({
     // Optional
     trigger: 'click',
-    autoSize: true
+    autoSize: true,
   });
 
   //---------- Slick JS
 
   $('.slick-js').slick({
-    dots: true,
+    dots: false,
     arrows: false,
-    draggable: true
+    draggable: true,
+
+    autoplay: true,
+    autoplaySpeed: 3000,
   });
 
   $('.slider').slick({
@@ -100,14 +102,15 @@ $(document).ready(function () {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 1000,
-    responsive: [{
+    responsive: [
+      {
         breakpoint: 995,
         settings: {
           arrows: false,
           centerMode: true,
           centerPadding: '0px',
-          slidesToShow: 1
-        }
+          slidesToShow: 1,
+        },
       },
       {
         breakpoint: 771,
@@ -115,8 +118,8 @@ $(document).ready(function () {
           arrows: false,
           centerMode: true,
           centerPadding: '0px',
-          slidesToShow: 1
-        }
+          slidesToShow: 1,
+        },
       },
       {
         breakpoint: 531,
@@ -124,15 +127,15 @@ $(document).ready(function () {
           arrows: false,
           centerMode: true,
           centerPadding: '0px',
-          slidesToShow: 1
-        }
-      }
-    ]
+          slidesToShow: 1,
+        },
+      },
+    ],
   });
 
   //---------- Sweet Alert Js
 
-  $(".alert-show").click(function () {
+  $('.alert-show').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '👋 Hello my friend!',
@@ -153,15 +156,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-2a").click(function () {
+  $('.alert-show-2a').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: 'HTML5 & CSS3 for describing and styling the structure of web pages.',
+      text:
+        'HTML5 & CSS3 for describing and styling the structure of web pages.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -178,15 +182,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-2b").click(function () {
+  $('.alert-show-2b').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: 'BEM, SASS, Bootstrap for CSS architecture, preprocessors and frameworks.',
+      text:
+        'BEM, SASS, Bootstrap for CSS architecture, preprocessors and frameworks.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -203,15 +208,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-2c").click(function () {
+  $('.alert-show-2c').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: 'JavaScript for web interaction with users. jQuery & Vue.js for main javascript library and frameworks.',
+      text:
+        'JavaScript for web interaction with users. jQuery & Vue.js for main javascript library and frameworks.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -228,15 +234,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-2d").click(function () {
+  $('.alert-show-2d').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Front-End Dev.',
-      text: 'Responsive Website for provide optimal viewing on variety devices (mobile, tablet, desktop)',
+      text:
+        'Responsive Website for provide optimal viewing on variety devices (mobile, tablet, desktop)',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -253,15 +260,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-3a").click(function () {
+  $('.alert-show-3a').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: 'Taskade for task management. Whimsical for collaborative flowcharts, wireframes, sticky notes and mind maps.',
+      text:
+        'Taskade for task management. Whimsical for collaborative flowcharts, wireframes, sticky notes and mind maps.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -278,15 +286,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-3b").click(function () {
+  $('.alert-show-3b').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: 'Figma & Adobe XD for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
+      text:
+        'Figma & Adobe XD for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -303,15 +312,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-3c").click(function () {
+  $('.alert-show-3c').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: 'Adobe Photoshop, Illustrator & Gravit Designer as an alternative tool for vector-based design and image manipulation.',
+      text:
+        'Adobe Photoshop, Illustrator & Gravit Designer as an alternative tool for vector-based design and image manipulation.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -328,15 +338,16 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
-  $(".alert-show-3d").click(function () {
+  $('.alert-show-3d').click(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: 'Visual Studio Code for a lightweight and reliable text editor for programming purposes.',
+      text:
+        'Visual Studio Code for a lightweight and reliable text editor for programming purposes.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -353,9 +364,9 @@ $(document).ready(function () {
         no-repeat
       `,
 
-      confirmButtonText: "Okay",
-    })
-  })
+      confirmButtonText: 'Okay',
+    });
+  });
 
   // --------- IMPORTANT : DRAG ON/OFF FORCE
 
@@ -390,7 +401,7 @@ $(document).ready(function () {
   // Init the grid layout
   grid = new Muuri(gridElem, {
     // MENYALAKAN/MEMATIKAN DRAG & DROP UNTUK DIV IMAGE
-    dragEnabled: false
+    dragEnabled: false,
   });
 
   // Set inital search query, active filter, active sort value and active layout.
@@ -418,8 +429,14 @@ $(document).ready(function () {
     filterFieldValue = filterField.value;
     grid.filter(function (item) {
       var element = item.getElement(),
-        isSearchMatch = !searchFieldValue ? true : (element.getAttribute(searchAttr) || '').toLowerCase().indexOf(searchFieldValue) > -1,
-        isFilterMatch = !filterFieldValue ? true : (element.getAttribute(filterAttr) || '') === filterFieldValue;
+        isSearchMatch = !searchFieldValue
+          ? true
+          : (element.getAttribute(searchAttr) || '')
+              .toLowerCase()
+              .indexOf(searchFieldValue) > -1,
+        isFilterMatch = !filterFieldValue
+          ? true
+          : (element.getAttribute(filterAttr) || '') === filterFieldValue;
       return isSearchMatch && isFilterMatch;
     });
   }
@@ -440,9 +457,11 @@ $(document).ready(function () {
 
     // Sort the items.
     grid.sort(
-      currentSort === 'title' ? compareItemTitle :
-      currentSort === 'color' ? compareItemColor :
-      dragOrder
+      currentSort === 'title'
+        ? compareItemTitle
+        : currentSort === 'color'
+        ? compareItemColor
+        : dragOrder
     );
     sortFieldValue = currentSort;
   }
@@ -452,7 +471,6 @@ $(document).ready(function () {
     var aVal = a.getElement().getAttribute(searchAttr) || '';
     var bVal = b.getElement().getAttribute(searchAttr) || '';
     return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
-
   }
 
   // Compare data-color
@@ -468,15 +486,19 @@ $(document).ready(function () {
     container: document.getElementsByClassName('grid')[0],
     items: [].slice.call(document.getElementsByClassName('item')),
     // MENYALAKAN/MEMATIKAN DRAG & DROP UNTUK DIV IMAGE
-    dragEnabled: false
+    dragEnabled: false,
   });
 
   // Prevent native image drag for images inside items.
   var images = document.querySelectorAll('.item img');
   for (var i = 0; i < images.length; i++) {
-    images[i].addEventListener('dragstart', function (e) {
-      e.preventDefault();
-    }, false);
+    images[i].addEventListener(
+      'dragstart',
+      function (e) {
+        e.preventDefault();
+      },
+      false
+    );
   }
 
   // Refresh item dimensions and do layout after all images have loaded.
@@ -484,5 +506,4 @@ $(document).ready(function () {
     grid.refresh();
     grid.layout();
   });
-
 });
