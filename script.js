@@ -163,7 +163,7 @@ $(document).ready(function () {
   $('.alert-show-2a').click(function () {
     Swal.fire({
       // icon: 'info',
-      title: '⚙️ Front-End Dev.',
+      title: '⚙️ Frontend Dev.',
       text:
         'HTML5 & CSS3 for describing and styling the structure of web pages.',
 
@@ -189,7 +189,7 @@ $(document).ready(function () {
   $('.alert-show-2b').click(function () {
     Swal.fire({
       // icon: 'info',
-      title: '⚙️ Front-End Dev.',
+      title: '⚙️ Frontend Dev.',
       text:
         'BEM, SASS, Bootstrap for CSS architecture, preprocessors and frameworks.',
 
@@ -215,7 +215,7 @@ $(document).ready(function () {
   $('.alert-show-2c').click(function () {
     Swal.fire({
       // icon: 'info',
-      title: '⚙️ Front-End Dev.',
+      title: '⚙️ Frontend Dev.',
       text:
         'JavaScript for web interaction with users. jQuery & Vue.js for main javascript library and frameworks.',
 
@@ -241,7 +241,7 @@ $(document).ready(function () {
   $('.alert-show-2d').click(function () {
     Swal.fire({
       // icon: 'info',
-      title: '⚙️ Front-End Dev.',
+      title: '⚙️ Frontend Dev.',
       text:
         'Responsive Website for provide optimal viewing on variety devices (mobile, tablet, desktop)',
 
