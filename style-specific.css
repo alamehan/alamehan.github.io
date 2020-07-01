@@ -79,7 +79,19 @@ h3 {
 }
 
 .ikon-tombol {
-  margin-top: -6px;
+  margin: -8px 0px 0px 24px;
+}
+
+@media (max-width: 922px) {
+  .tmb2 {
+    margin: -16px 0px 0px 0px;
+  }
+}
+
+@media (max-width: 686px) {
+  .tmb1 {
+    margin: -16px 0px 0px 0px;
+  }
 }
 
 .btn-res1 {
