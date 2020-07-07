@@ -82,6 +82,10 @@ h3 {
   margin: -8px 0px 0px 24px;
 }
 
+.ikon-tombol-2 {
+  margin: 0px 0px 16px 0px;
+}
+
 @media (max-width: 922px) {
   .tmb2 {
     margin: -16px 0px 0px 0px;

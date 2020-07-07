@@ -101,9 +101,8 @@ $(document).ready(function () {
     slidesToShow: 3,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 1000,
-    responsive: [
-      {
+    autoplaySpeed: 1800,
+    responsive: [{
         breakpoint: 995,
         settings: {
           arrows: false,
@@ -164,8 +163,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Frontend Dev.',
-      text:
-        'HTML5 & CSS3 for describing and styling the structure of web pages.',
+      text: 'HTML5 & CSS3 for describing and styling the structure of web pages.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -190,8 +188,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Frontend Dev.',
-      text:
-        'BEM, SASS, Bootstrap for CSS architecture, preprocessors and frameworks.',
+      text: 'SASS & Bootstrap for CSS preprocessors and frameworks.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -216,8 +213,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Frontend Dev.',
-      text:
-        'JavaScript for web interaction with users. jQuery & Vue.js for main javascript library and frameworks.',
+      text: 'JavaScript for web interaction with users. jQuery & Vue.js for main javascript library and frameworks.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -242,8 +238,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚙️ Frontend Dev.',
-      text:
-        'Responsive Website for provide optimal viewing on variety devices (mobile, tablet, desktop)',
+      text: 'Responsive Website for provide optimal viewing on variety devices (mobile, tablet, desktop)',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -268,8 +263,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text:
-        'Taskade for task management. Whimsical for collaborative flowcharts, wireframes, sticky notes and mind maps.',
+      text: 'Taskade for task management. Whimsical for collaborative flowcharts, wireframes, sticky notes and mind maps.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -294,8 +288,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text:
-        'Figma & Adobe XD for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
+      text: 'Figma & Adobe XD for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -320,8 +313,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text:
-        'Adobe Photoshop, Illustrator & Gravit Designer as an alternative tool for vector-based design and image manipulation.',
+      text: 'Adobe Photoshop for image manipulation, Gravit Designer for vector-based design and Draw.io for diagramming tools.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -346,8 +338,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text:
-        'Visual Studio Code for a lightweight and reliable text editor for programming purposes.',
+      text: 'Visual Studio Code for text editor, Git for versioning and GitHub for project management.',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,
@@ -429,14 +420,14 @@ $(document).ready(function () {
     filterFieldValue = filterField.value;
     grid.filter(function (item) {
       var element = item.getElement(),
-        isSearchMatch = !searchFieldValue
-          ? true
-          : (element.getAttribute(searchAttr) || '')
-              .toLowerCase()
-              .indexOf(searchFieldValue) > -1,
-        isFilterMatch = !filterFieldValue
-          ? true
-          : (element.getAttribute(filterAttr) || '') === filterFieldValue;
+        isSearchMatch = !searchFieldValue ?
+        true :
+        (element.getAttribute(searchAttr) || '')
+        .toLowerCase()
+        .indexOf(searchFieldValue) > -1,
+        isFilterMatch = !filterFieldValue ?
+        true :
+        (element.getAttribute(filterAttr) || '') === filterFieldValue;
       return isSearchMatch && isFilterMatch;
     });
   }
@@ -457,11 +448,11 @@ $(document).ready(function () {
 
     // Sort the items.
     grid.sort(
-      currentSort === 'title'
-        ? compareItemTitle
-        : currentSort === 'color'
-        ? compareItemColor
-        : dragOrder
+      currentSort === 'title' ?
+      compareItemTitle :
+      currentSort === 'color' ?
+      compareItemColor :
+      dragOrder
     );
     sortFieldValue = currentSort;
   }
