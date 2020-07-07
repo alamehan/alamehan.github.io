@@ -1,3 +1,7 @@
+/* --------------------------------- CATATAN -------------------------------- */
+
+/* All responsive modes are tested on : http://responsivetesttool.com/ */
+
 /* ------------------------------- ABOUT TEXT ------------------------------- */
 
 html {
@@ -68,7 +72,8 @@ hr {
 /* ------------------------------- SWEET ALERT ------------------------------ */
 
 .tinggi-modal {
-  height: 550px;
+  /* Kalo On Jadi Gak Responsive */
+  /* height: 550px; */
 }
 
 .swal2-modal {
@@ -81,32 +86,29 @@ hr {
   border: 2px solid lightblue !important;
   border-radius: 12px !important;
   background-color: #101117 !important;
-  margin-top: 530px;
+  margin-top: 530px !important;
 }
 
 /* ------------------------------- RESPONSIVE ------------------------------- */
 
-/* Kalau di ON bakal terlalu kecil nantinya waktu tampil di mobile */
+/* Sebenarnya cara ini tidak baik, seolah seperti dipaksa zoom */
+/* Tested on : http://responsivetesttool.com/ */
 
-/* @media (max-width: 480px) {
+/* Mobile Breakpoint 991x568 px */
+@media (max-width: 568px) {
   body {
-    zoom: 90%;
+    zoom: 100%;
   }
 }
 
-@media (max-width: 414px) {
-  body {
-    zoom: 80%;
-  }
-}
-
+/* Mobile Breakpoint 768x360 px */
 @media (max-width: 360px) {
   body {
-    zoom: 55%;
+    zoom: 84%;
   }
-} */
+}
 
-/* Lainnya */
+/* --------------------------------- LAINNYA --------------------------------- */
 
 .profile {
   width: 160px;

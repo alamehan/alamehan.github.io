@@ -8,9 +8,10 @@ $(function () {
 
 $('.alert-show-niceref').click(function () {
   Swal.fire({
-    width: 429,
+    padding: 0,
+    heightAuto: true,
     customClass: 'tinggi-modal',
-    background: 'url(assets/img-project-niceref.png)',
+    background: 'url(assets/img-project-niceref.png) center no-repeat',
     confirmButtonText: '<a href="assets/img-project-onprogress.png">Open ➜</a>',
 
     backdrop: `
@@ -21,9 +22,10 @@ $('.alert-show-niceref').click(function () {
 
 $('.alert-show-nicelist').click(function () {
   Swal.fire({
-    width: 429,
+    padding: 0,
+    heightAuto: true,
     customClass: 'tinggi-modal',
-    background: 'url(assets/img-project-nicelist.png)',
+    background: 'url(assets/img-project-nicelist.png) center no-repeat',
     confirmButtonText: '<a href="https://github.com/alamehan/nice-list">Open ➜</a>',
 
     backdrop: `
@@ -34,9 +36,10 @@ $('.alert-show-nicelist').click(function () {
 
 $('.alert-show-nicevizual').click(function () {
   Swal.fire({
-    width: 429,
+    padding: 0,
+    heightAuto: true,
     customClass: 'tinggi-modal',
-    background: 'url(assets/img-project-nicevizual.png)',
+    background: 'url(assets/img-project-nicevizual.png) center no-repeat',
     confirmButtonText: '<a href="https://nicevizual.github.io/">Open ➜</a>',
 
     backdrop: `
@@ -47,9 +50,10 @@ $('.alert-show-nicevizual').click(function () {
 
 $('.alert-show-righttr4ck').click(function () {
   Swal.fire({
-    width: 429,
+    padding: 0,
+    heightAuto: true,
     customClass: 'tinggi-modal',
-    background: 'url(assets/img-project-righttr4ck.png)',
+    background: 'url(assets/img-project-righttr4ck.png) center no-repeat',
     confirmButtonText: '<a href="assets/image-righttr4ck.pdf">Open ➜</a>',
 
     backdrop: `
@@ -60,9 +64,10 @@ $('.alert-show-righttr4ck').click(function () {
 
 $('.alert-show-atozmind').click(function () {
   Swal.fire({
-    width: 429,
+    padding: 0,
+    heightAuto: true,
     customClass: 'tinggi-modal',
-    background: 'url(assets/img-project-atozmind.png)',
+    background: 'url(assets/img-project-atozmind.png) center no-repeat',
     confirmButtonText: '<a href="https://bit.ly/atozmind">Open ➜</a>',
 
     backdrop: `
@@ -73,9 +78,10 @@ $('.alert-show-atozmind').click(function () {
 
 $('.alert-show-knowyourself101').click(function () {
   Swal.fire({
-    width: 429,
+    padding: 0,
+    heightAuto: true,
     customClass: 'tinggi-modal',
-    background: 'url(assets/img-project-knowyourself101.png)',
+    background: 'url(assets/img-project-knowyourself101.png) center no-repeat',
     confirmButtonText: '<a href="assets/img-project-onprogress.png">Open ➜</a>',
 
     backdrop: `
