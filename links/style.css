@@ -123,19 +123,42 @@ hr {
 /* ------------------------------- RESPONSIVE ------------------------------- */
 
 /* Sebenarnya cara ini tidak baik, seolah seperti dipaksa zoom */
+/* Catatan : setiap size @media dibawah ini dapat digunakan sebagai
+  acuan responsiveness dalam sebuah proyek website */
 /* Tested on : http://responsivetesttool.com/ */
 
-/* Mobile Breakpoint 991x568 px */
+/* Mobile Breakpoint 991px ➜ 991x568 px */
 @media (max-width: 568px) {
   body {
     zoom: 100%;
   }
 }
 
-/* Mobile Breakpoint 768x360 px */
+/* Mobile Breakpoint 480px ➜ 480x896 px */
+@media (max-width: 480px) {
+  body {
+    zoom: 90%;
+  }
+}
+
+/* Mobile Breakpoint 414px ➜ 414x896 px */
+@media (max-width: 414px) {
+  body {
+    zoom: 80%;
+  }
+}
+
+/* Mobile Breakpoint iPhone 6/6s/7 ➜ 375x667 px */
+@media (max-width: 375px) {
+  body {
+    zoom: 70%;
+  }
+}
+
+/* Mobile Breakpoint 768px ➜ 768x360 px */
 @media (max-width: 360px) {
   body {
-    zoom: 84%;
+    zoom: 67%;
   }
 }
 

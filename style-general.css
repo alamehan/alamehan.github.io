@@ -344,7 +344,8 @@ option:checked {
 /* ------------------------------- RESPONSIVE ------------------------------- */
 
 /* Sebenarnya cara ini tidak baik, seolah seperti dipaksa zoom */
-/* Jangan diubah lagi urutan @media nya nanti berantakan lagi */
+/* Catatan : setiap size @media dibawah ini dapat digunakan sebagai
+  acuan responsiveness dalam sebuah proyek website */
 /* Tested on : http://responsivetesttool.com/ */
 
 /* Mobile Breakpoint 991px ➜ 991x568 px */
@@ -365,6 +366,13 @@ option:checked {
 @media (max-width: 414px) {
   body {
     zoom: 80%;
+  }
+}
+
+/* Mobile Breakpoint iPhone 6/6s/7 ➜ 375x667 px */
+@media (max-width: 375px) {
+  body {
+    zoom: 70%;
   }
 }
 
