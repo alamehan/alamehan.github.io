@@ -726,6 +726,10 @@ h3 {
 
 /* ------------------------------- RESPONSIVE ------------------------------- */
 
+/* Jangan diubah lagi urutan @media nya nanti berantakan lagi */
+/* Tested on : http://responsivetesttool.com/ */
+
+/* Breakpoint Custom 1 */
 @media (max-width: 940px) {
   .flex-container-d {
     justify-content: space-evenly;
@@ -753,6 +757,7 @@ h3 {
   }
 }
 
+/* Breakpoint Custom 2 */
 @media (max-width: 642px) {
   .flex-items-d {
     width: 97%;
@@ -781,27 +786,21 @@ h3 {
   }
 }
 
+/* Mobile Breakpoint 991px ➜ 991x568 px */
 @media (max-width: 568px) {
   .img-responsive {
-    /* 0px dari kiri & -75px dari atas */
-    object-position: 0px -75px;
-  }
-}
-
-@media (max-width: 568px) {
-  .img-responsive {
-    /* 0px dari kiri & -82px dari atas */
     object-position: 0px -82px;
   }
 }
 
+/* Mobile Breakpoint 480px ➜ 480x896 px */
 @media (max-width: 480px) {
   .img-responsive {
-    /* 0px dari kiri & -70px dari atas */
     object-position: 0px -70px;
   }
 }
 
+/* Mobile Breakpoint 414px ➜ 414x896 px */
 @media (max-width: 414px) {
   .flex-items-d {
     height: 248px;
@@ -812,11 +811,11 @@ h3 {
   }
 
   .img-responsive {
-    /* 0px dari kiri & -55px dari atas */
-    object-position: 0px -55px;
+    object-position: 0px -50px;
   }
 }
 
+/* Mobile Breakpoint 768px ➜ 768x360 px */
 @media (max-width: 360px) {
   .flex-items-d {
     height: 264px;
@@ -827,15 +826,14 @@ h3 {
   }
 
   .img-responsive {
-    /* 0px dari kiri & -55px dari atas */
-    object-position: 0px -90px;
+    object-position: 0px -40px;
   }
 }
 
+/* Mobile Breakpoint 320px ➜ 320x533 px */
 @media (max-width: 320px) {
   .img-responsive {
-    /* 0px dari kiri & -55px dari atas */
-    object-position: 0px -55px;
+    object-position: 0px -25px;
   }
 }
 

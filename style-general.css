@@ -344,30 +344,31 @@ option:checked {
 /* ------------------------------- RESPONSIVE ------------------------------- */
 
 /* Sebenarnya cara ini tidak baik, seolah seperti dipaksa zoom */
+/* Jangan diubah lagi urutan @media nya nanti berantakan lagi */
 /* Tested on : http://responsivetesttool.com/ */
 
-/* Mobile Breakpoint 991x568 px */
+/* Mobile Breakpoint 991px ➜ 991x568 px */
 @media (max-width: 568px) {
   body {
     zoom: 100%;
   }
 }
 
-/* Mobile Breakpoint 480x896 px */
+/* Mobile Breakpoint 480px ➜ 480x896 px */
 @media (max-width: 480px) {
   body {
     zoom: 90%;
   }
 }
 
-/* Mobile Breakpoint 414x896 px */
+/* Mobile Breakpoint 414px ➜ 414x896 px */
 @media (max-width: 414px) {
   body {
     zoom: 80%;
   }
 }
 
-/* Mobile Breakpoint 768x360 px */
+/* Mobile Breakpoint 768px ➜ 768x360 px */
 @media (max-width: 360px) {
   body {
     zoom: 67%;
