@@ -1,4 +1,4 @@
-// Bootstrap Tooltip
+//---------- Bootstrap Tooltip
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
@@ -169,6 +169,7 @@ $('.alert-show-oldworks').click(function () {
 
 $('.alert-show-noproject-twitter').click(function () {
   Swal.fire({
+    title: 'Twitter',
     imageUrl: 'assets/logo-twitter.svg',
     customClass: {
       popup: 'popup-noproject',
@@ -184,6 +185,7 @@ $('.alert-show-noproject-twitter').click(function () {
 
 $('.alert-show-noproject-facebook').click(function () {
   Swal.fire({
+    title: 'Facebook',
     imageUrl: 'assets/logo-facebook.svg',
     customClass: {
       popup: 'popup-noproject',
@@ -199,6 +201,7 @@ $('.alert-show-noproject-facebook').click(function () {
 
 $('.alert-show-noproject-alamehan-black').click(function () {
   Swal.fire({
+    title: 'Personal Web',
     imageUrl: 'assets/logo-alamehan-black.svg',
     customClass: {
       popup: 'popup-noproject',
@@ -214,6 +217,7 @@ $('.alert-show-noproject-alamehan-black').click(function () {
 
 $('.alert-show-noproject-linkedin').click(function () {
   Swal.fire({
+    title: 'LinkedIn',
     imageUrl: 'assets/logo-linkedin.svg',
     customClass: {
       popup: 'popup-noproject',
@@ -229,6 +233,7 @@ $('.alert-show-noproject-linkedin').click(function () {
 
 $('.alert-show-noproject-behance').click(function () {
   Swal.fire({
+    title: 'Behance',
     imageUrl: 'assets/logo-behance.svg',
     customClass: {
       popup: 'popup-noproject',
@@ -244,6 +249,7 @@ $('.alert-show-noproject-behance').click(function () {
 
 $('.alert-show-noproject-dribbble').click(function () {
   Swal.fire({
+    title: 'Dribbble',
     imageUrl: 'assets/logo-dribbble.svg',
     customClass: {
       popup: 'popup-noproject',
@@ -259,6 +265,7 @@ $('.alert-show-noproject-dribbble').click(function () {
 
 $('.alert-show-noproject-github').click(function () {
   Swal.fire({
+    title: 'GitHub',
     imageUrl: 'assets/logo-github.svg',
     customClass: {
       popup: 'popup-noproject',
@@ -274,6 +281,7 @@ $('.alert-show-noproject-github').click(function () {
 
 $('.alert-show-noproject-codepen').click(function () {
   Swal.fire({
+    title: 'Codepen',
     imageUrl: 'assets/logo-codepen.svg',
     customClass: {
       popup: 'popup-noproject',
