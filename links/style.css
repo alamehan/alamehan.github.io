@@ -71,22 +71,29 @@ hr {
 
 /* ------------------------------- SWEET ALERT ------------------------------ */
 
-.tinggi-modal {
-  /* Kalo On Jadi Gak Responsive */
-  /* height: 550px; */
-}
-
 .swal2-modal {
-  border-radius: 12px !important;
+  /* Sesuaikan dengan size bg-image */
+  width: 429px;
+  height: 550px;
+  border-radius: 12px;
 }
 
 .swal2-confirm {
-  height: 72px;
-
-  border: 2px solid lightblue !important;
+  height: 64px;
+  padding: 0px 24px 0px 24px;
+  margin-top: 380px !important;
   border-radius: 12px !important;
-  background-color: #101117 !important;
-  margin-top: 530px !important;
+}
+
+.swal2-cancel {
+  /* Font style disamakan dengan style <a> */
+  font-weight: 400 !important;
+  font-size: 24px !important;
+
+  height: 64px;
+  padding: 0px 24px 0px 24px;
+  margin-top: 380px !important;
+  border-radius: 12px !important;
 }
 
 /* ------------------------------- RESPONSIVE ------------------------------- */
