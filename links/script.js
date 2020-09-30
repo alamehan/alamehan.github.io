@@ -6,19 +6,6 @@ $(function () {
 
 //---------- Sweet Alert Js
 
-$('.alert-show-niceref').click(function () {
-  Swal.fire({
-    customClass: {
-      popup: 'popup-project',
-      confirmButton: 'confirm-button-project',
-      cancelButton: 'cancel-button-project',
-    },
-    backdrop: `rgba(13, 13, 13, 0.92)`,
-    background: 'url(assets/img-project-niceref.png) center no-repeat',
-    confirmButtonText: '<a href="#">🔒 Upcoming</a>',
-  });
-});
-
 $('.alert-show-nicelist').click(function () {
   Swal.fire({
     customClass: {
@@ -29,6 +16,21 @@ $('.alert-show-nicelist').click(function () {
     backdrop: `rgba(13, 13, 13, 0.92)`,
     background: 'url(assets/img-project-nicelist.png) center no-repeat',
     confirmButtonText: '<a href="https://github.com/alamehan/nice-list">Open</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
+$('.alert-show-nicebook').click(function () {
+  Swal.fire({
+    customClass: {
+      popup: 'popup-project',
+      confirmButton: 'confirm-button-project',
+      cancelButton: 'cancel-button-project',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    background: 'url(assets/img-project-nicebook.png) center no-repeat',
+    confirmButtonText: '<a href="https://github.com/alamehan/nice-book">Open</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
