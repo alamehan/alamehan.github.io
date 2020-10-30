@@ -14,45 +14,14 @@ html {
 
   /* Perfect Fixed Center Position */
   position: fixed;
-  bottom: -40px;
-  left: 50%;
-  /* Wajib Tambahkan Transform */
-  transform: translate(-50%, 0%);
-
-  border: 0px solid;
-  border-radius: 100px;
-  padding: 0px;
-
-  background-color: transparent;
-  transition: 0.3s;
-}
-
-/* 
-  Hover saat buka di computer
-  Active (click) saat buka di mobile
-*/
-
-.btn-scroll:hover,
-.btn-scroll:active {
   bottom: 0;
-}
+  right: 0;
 
-.btn-scroll:hover .ganti-warna,
-.btn-scroll:active .ganti-warna {
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(175deg) brightness(97%) contrast(103%);
-}
-
-/* ------------------------------- RESPONSIVE ------------------------------- */
-
-@media (max-width: 771px) {
-  .btn-scroll {
-    bottom: 0px;
-  }
-}
-
-/* ------------------------------- GANTI WARNA ------------------------------- */
-
-.btn-scroll:hover .ganti-warna,
-.btn-scroll:active .ganti-warna {
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(175deg) brightness(97%) contrast(103%);
+  /* Style */
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: green;
+  padding: 4px 8px 8px 8px;
 }
