@@ -23,8 +23,10 @@ $ yarn build			(Compile Project)
 C. Catatan Penting
 ------------------
 
+>>>>>>>>>> NOTE 1
+
 Saat Run Project, tampak baik-baik saja, tidak ada permasalahan. Namun saat Compile Project, dan kita
-mencoba membuka project melalui "dis/immerse/index.html", entah kenapa yang tampil di browser hanya
+mencoba membuka project melalui "dist/immerse/index.html", entah kenapa yang tampil di browser hanya
 halaman kosong (blank page), berbeda halnya dengan Koodo Reader yang mana saat project sudah di compile,
 project langsung bisa diakses melalui index.html. Karenanya sebagai solusi, baca tulisan di link berikut:
 
@@ -32,6 +34,39 @@ https://www.reddit.com/r/angular/comments/8qkm1w/ng_build_just_a_white_page_like
 
 Intinya buka "dis/immerse" melalui Visual Studio Code, download extension bernama "Live Server", kemudian
 jalankan project dengan Live Server. Maka hasilnya project akan tampil seperti pada saat Run Project.
+
+>>>>>>>>>> NOTE 2 [UPDATE]
+
+NOTE 1 tidak menjadi solusi, karena saat Immerse di publish sebagai sub-project dari sebuah project utama,
+maka Immerse tetap akan menampilkan halaman kosong (blank page) saat dibuka, karenanya ikuti solusi berikut:
+
+Berdasarkan link stackoverflow.com/questions/54143002/run-angular-7-project-locally-on-file-without-server
+Disana dijelaskan bahwa saat project Angular sudah di compile (build), memang tidak bisa langsung membuka
+index.html, melainkan harus ada server yang berperan untuk menjalankan project tersebut (seperti yarn start),
+lantas sekarang masalahnya bagaimana "Run Angular project locally on file:/// without server?", jawabannya:
+
+1) Buka "src\app\app.module.ts", lalu tambahan script dibawah ini dan save
+
+----------------------------------------------------------------------------------------------
+import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
+
+@NgModule({
+    ...
+    providers: 
+      [
+        ...
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: LocationStrategy, useClass: HashLocationStrategy 
+        ...
+      ]
+     ...
+   })
+----------------------------------------------------------------------------------------------
+
+2) Buka "src\index.html" dan hapus bagian <base href="/"> lalu save
+3) Build project seperti biasa, baik dengan $ yarn build, atau npm, sesuai kebutuhan
+4) Setelah build selesai, buka "dist\immerse\index.html" dan hapus setiap atribut (type="module")
+   dari semua tag di <scripts>, lalu save dan coba buka index.html, selesai! gak perlu server.
 
 -----------------------------------------
 D. Modifikasi Bahasa Menjadi Full English
@@ -44,8 +79,8 @@ D. Modifikasi Bahasa Menjadi Full English
 
 2) Oleh karena itu lakukan covert secara satu-per-satu setiap Unicode yang ada, buka Google Translate,
    translate kedalam Bahasa inggris lalu timpa Unicode tadi dengan hasil translate Text berbahasa inggris.
-   Misalnya Unicode tadi "\u9605\u8BFB\u8BBE\u7F6E", saat di convert menjadi text "缩放比例", lalu saat di
+   Misalnya Unicode tadi "\u9605\u8BFB\u8BBE\u7F6E", saat di convert, menjadi text "缩放比例", lalu saat di
    translate via Google Translate, hasilnya "scaling ratio". Maka timpa "\u9605\u8BFB\u8BBE\u7F6E" dengan
-   "Scaling Ratio".
+   text "Scaling Ratio".
 
-3) Lakukan hal yang sama ke seluruh Unicode China di file "main-es5.js" dan "main-es2015.js"
+3) Lakukan hal yang sama ke seluruh Unicode text China di file "main-es5.js" dan "main-es2015.js"

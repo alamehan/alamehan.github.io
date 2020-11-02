@@ -519,7 +519,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1", 1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Read Settings");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "\u9605\u8BFB\u8BBE\u7F6E");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -531,7 +531,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-label");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Theme");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "\u4E3B\u9898");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -547,7 +547,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-label");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Page mode");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "\u9875\u9762\u6A21\u5F0F");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -563,7 +563,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "mat-label");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Scaling Ratio");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "\u7F29\u653E\u6BD4\u4F8B");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -575,7 +575,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "mat-label");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Font");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "\u5B57\u4F53");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -591,7 +591,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "mat-label");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Font Size");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "\u5B57\u4F53\u5927\u5C0F");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -603,7 +603,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "mat-label");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Row Height");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "\u884C\u9AD8");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3653,6 +3653,12 @@
       var _reader_reader_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! ./reader/reader.module */
       "/KRI");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
@@ -3666,7 +3672,13 @@
         factory: function AppModule_Factory(t) {
           return new (t || AppModule)();
         },
-        providers: [],
+        providers: [{
+          provide: _angular_common__WEBPACK_IMPORTED_MODULE_9__["APP_BASE_HREF"],
+          useValue: '/'
+        }, {
+          provide: _angular_common__WEBPACK_IMPORTED_MODULE_9__["LocationStrategy"],
+          useClass: _angular_common__WEBPACK_IMPORTED_MODULE_9__["HashLocationStrategy"]
+        }],
         imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"], _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBarModule"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_4__["MatProgressSpinnerModule"], _library_library_module__WEBPACK_IMPORTED_MODULE_7__["LibraryModule"], _reader_reader_module__WEBPACK_IMPORTED_MODULE_8__["ReaderModule"]]]
       });
 
@@ -3685,7 +3697,13 @@
           args: [{
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]],
             imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"], _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBarModule"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_4__["MatProgressSpinnerModule"], _library_library_module__WEBPACK_IMPORTED_MODULE_7__["LibraryModule"], _reader_reader_module__WEBPACK_IMPORTED_MODULE_8__["ReaderModule"]],
-            providers: [],
+            providers: [{
+              provide: _angular_common__WEBPACK_IMPORTED_MODULE_9__["APP_BASE_HREF"],
+              useValue: '/'
+            }, {
+              provide: _angular_common__WEBPACK_IMPORTED_MODULE_9__["LocationStrategy"],
+              useClass: _angular_common__WEBPACK_IMPORTED_MODULE_9__["HashLocationStrategy"]
+            }],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
           }]
         }], null, null);
