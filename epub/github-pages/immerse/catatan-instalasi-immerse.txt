@@ -23,6 +23,8 @@ $ yarn build			(Compile Project)
 C. Catatan Penting
 ------------------
 
+>>> SOLUSI STEP 1
+
 Saat Run Project, tampak baik-baik saja, tidak ada permasalahan. Namun saat Compile Project, dan kita
 mencoba membuka project melalui "dis/immerse/index.html", entah kenapa yang tampil di browser hanya
 halaman kosong (blank page), berbeda halnya dengan Koodo Reader yang mana saat project sudah di compile,
@@ -32,6 +34,21 @@ https://www.reddit.com/r/angular/comments/8qkm1w/ng_build_just_a_white_page_like
 
 Intinya buka "dis/immerse" melalui Visual Studio Code, download extension bernama "Live Server", kemudian
 jalankan project dengan Live Server. Maka hasilnya project akan tampil seperti pada saat Run Project.
+
+>>> SOLUSI STEP 2
+
+Baca problem & solution berikut ini:
+- https://stackoverflow.com/questions/54143002/run-angular-7-project-locally-on-file-without-server
+- https://stackoverflow.com/questions/40024147/run-angular2-as-static-app-in-browser-without-a-server
+
+Intinya, Angular butuh Server untuk menjalankan projectnya, meskipun sudah di build, tetap tidak bisa
+langsung mengakses project dengan membuka index.html, melainkan menjalankan project dengan server. Namun
+ada berbagai solusi yang bisa dipakai agar project angular bisa berjalan secara lokal (tanpa server),
+sayangnya hasilnya tidak stabil, terkadang beberapa fungsi dalam project malah tidak berjalan, dsb.
+
+Oleh karena itu sebagai solusi, hosting saja project Angular nya di web penyedia jasa backend gratis,
+misalnya Firebase. Untuk tutorialnya bisa buka di link berikut : 
+https://www.codepolitan.com/web-static-dengan-firebase-hosting-58b36787c3f00
 
 -----------------------------------------
 D. Modifikasi Bahasa Menjadi Full English
