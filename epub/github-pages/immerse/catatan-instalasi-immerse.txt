@@ -47,8 +47,9 @@ ada berbagai solusi yang bisa dipakai agar project angular bisa berjalan secara 
 sayangnya hasilnya tidak stabil, terkadang beberapa fungsi dalam project malah tidak berjalan, dsb.
 
 Oleh karena itu sebagai solusi, hosting saja project Angular nya di web penyedia jasa backend gratis,
-misalnya Firebase. Untuk tutorialnya bisa buka di link berikut : 
-https://www.codepolitan.com/web-static-dengan-firebase-hosting-58b36787c3f00
+misalnya Firebase. Untuk tutorialnya bisa buka di link berikut :
+https://www.codepolitan.com/web-static-dengan-firebase-hosting-58b36787c3f00 (Baca aja sedikit)
+https://console.firebase.google.com/ (Buka console -> Buat Project -> Dst gampang kok)
 
 -----------------------------------------
 D. Modifikasi Bahasa Menjadi Full English
