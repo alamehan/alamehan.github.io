@@ -63,10 +63,13 @@ import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/
    })
 ----------------------------------------------------------------------------------------------
 
-2) Buka "src\index.html" dan hapus bagian <base href="/"> lalu save
-3) Build project seperti biasa, baik dengan $ yarn build, atau npm, sesuai kebutuhan
-4) Setelah build selesai, buka "dist\immerse\index.html" dan hapus setiap atribut (type="module")
-   dari semua tag di <scripts>, lalu save dan coba buka index.html, selesai! gak perlu server.
+2) Buka "src\index.html", timpa bagian <base href="/"> menjadi <base href="./"> lalu save
+3) Build project dengan perintah: ng build --prod --base-href ./
+4) Setelah build selesai, buka "dist\immerse\index.html" dan hapus setiap atribut berikut:
+   type="module"
+   nomodule defer
+5) Sekarang saat index.html dibuka seharusnya sudah terender, tidak blank page lagi
+6) Kasus ini teruji untuk Angular versi 9+
 
 -----------------------------------------
 D. Modifikasi Bahasa Menjadi Full English
