@@ -96,7 +96,7 @@
   "Restore Successfully": "Restore Successfully",
   "Try refresh or restart": "Try refresh or restart",
   "Turn on audio": "Turn on audi",
-  "Warning": "Warnin",
+  "Warning": "Warning",
   "Please import less than 10 books": "Please import less than 10 books",
   "Please delete some books before import": "Please delete some books before import",
   "For better user experince, please visit this site on a computer": "For better user experince, please visit this site on a computer",
