@@ -6,6 +6,21 @@ $(function () {
 
 //---------- Sweet Alert Js
 
+$('.alert-show-thereaderrr').click(function () {
+  Swal.fire({
+    customClass: {
+      popup: 'popup-project',
+      confirmButton: 'confirm-button-project',
+      cancelButton: 'cancel-button-project',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    background: 'url(assets/img-project-thereaderrr.png) center no-repeat',
+    confirmButtonText: '<a href="https://alamehan.github.io/epub/">Open</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
 $('.alert-show-nicelist').click(function () {
   Swal.fire({
     customClass: {
