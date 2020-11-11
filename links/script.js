@@ -15,7 +15,7 @@ $('.alert-show-thereaderrr').click(function () {
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
     background: 'url(assets/img-project-thereaderrr.png) center no-repeat',
-    confirmButtonText: '<a href="https://alamehan.github.io/epub/">Open</a>',
+    confirmButtonText: '<a href="../epub/index.html">Open</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
@@ -226,7 +226,7 @@ $('.alert-show-noproject-alamehan-black').click(function () {
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://alamehan.github.io/">Open</a>',
+    confirmButtonText: '<a href="../index.html">Open</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
