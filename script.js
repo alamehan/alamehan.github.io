@@ -91,8 +91,9 @@ $(document).ready(function () {
     arrows: false,
     draggable: true,
 
-    autoplay: true,
-    autoplaySpeed: 3000,
+    // Auto-geser (A Little Legacy)
+    // autoplay: true,
+    // autoplaySpeed: 3000,
   });
 
   $('.slider').slick({
