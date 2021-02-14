@@ -1,1 +1,1 @@
-<img src="assets/image-ss-pages.png">
+<img src="assets/image-ss-pages.png" alt="alamehan"><br>
