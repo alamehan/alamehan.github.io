@@ -40,6 +40,54 @@ $('.alert-show-linkedin').click(function () {
   });
 });
 
+$('.alert-show-kaggle').click(function () {
+  Swal.fire({
+    title: '🙋‍♂️ Kaggle:\n Data Science Projects',
+    imageUrl: 'assets/logo-kaggle.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="https://www.kaggle.com/raihanallaam">Open</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
+$('.alert-show-github').click(function () {
+  Swal.fire({
+    title: '👨‍💻 GitHub:\n Personal Projects',
+    imageUrl: 'assets/logo-github.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="https://github.com/alamehan">Open</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
+$('.alert-show-codepen').click(function () {
+  Swal.fire({
+    title: '👨‍💻 Codepen:\n Frontend Projects',
+    imageUrl: 'assets/logo-codepen.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="https://codepen.io/alamehan">Open</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
 $('.alert-show-behance').click(function () {
   Swal.fire({
     title: '👨‍🎨 Behance:\n Design & Illustration',
@@ -67,38 +115,6 @@ $('.alert-show-dribbble').click(function () {
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
     confirmButtonText: '<a href="https://dribbble.com/alamehan">Open</a>',
-    showCancelButton: true,
-    cancelButtonText: 'Cancel',
-  });
-});
-
-$('.alert-show-github').click(function () {
-  Swal.fire({
-    title: '👨‍💻 GitHub:\n Code & Project',
-    imageUrl: 'assets/logo-github.svg',
-    customClass: {
-      popup: 'popup-noproject',
-      confirmButton: 'confirm-button-noproject',
-      cancelButton: 'cancel-button-noproject',
-    },
-    backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://github.com/alamehan">Open</a>',
-    showCancelButton: true,
-    cancelButtonText: 'Cancel',
-  });
-});
-
-$('.alert-show-codepen').click(function () {
-  Swal.fire({
-    title: '👨‍💻 Codepen:\n Code & Project',
-    imageUrl: 'assets/logo-codepen.svg',
-    customClass: {
-      popup: 'popup-noproject',
-      confirmButton: 'confirm-button-noproject',
-      cancelButton: 'cancel-button-noproject',
-    },
-    backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://codepen.io/alamehan">Open</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
