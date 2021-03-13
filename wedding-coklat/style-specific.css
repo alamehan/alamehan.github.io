@@ -322,7 +322,6 @@
 /* ----------------------------- COUNTDOWN TIMER ---------------------------- */
 
 .container-countdown {
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -339,7 +338,6 @@ li {
 li span {
   display: block;
   font-size: 40px;
-
   padding: 12px 12px;
   background-color: #C4B5A0;
 }
@@ -370,6 +368,10 @@ li span {
   .flex-items-c2 {
     width: 100%;
     margin-bottom: 64px;
+  }
+
+  .container-countdown {
+    margin-left: -40px;
   }
 }
 
