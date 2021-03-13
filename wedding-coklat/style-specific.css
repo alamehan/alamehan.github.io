@@ -9,7 +9,9 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: stretch;
-  align-content: center;
+  align-content: stretch;
+
+  background-color: #F3EFE3;
 }
 
 /* Lebar 50% */
@@ -38,7 +40,7 @@
   text-align: center;
 
   /* ⚠️For Debugging⚠️ */
-  /* background-color: green; */
+  /* background-color: #F3EFE3; */
 }
 
 /* --------------------------------- CONTENT -------------------------------- */
@@ -98,7 +100,7 @@
 @media (max-width: 906px) {
 
   .flex-container-a {
-    margin-bottom: 56px;
+    padding-bottom: 56px;
   }
 
   /* Lebar 100% */
@@ -122,6 +124,8 @@
   justify-content: center;
   align-items: stretch;
   align-content: center;
+
+  background-color: #F3EFE3;
 }
 
 /* Lebar 50% */
@@ -218,7 +222,7 @@
 @media (max-width: 906px) {
 
   .flex-container-b {
-    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
 
   /* Lebar 100% */
@@ -255,6 +259,8 @@
   justify-content: center;
   align-items: stretch;
   align-content: center;
+
+  background-color: #F3EFE3;
 }
 
 /* Lebar 50% */
@@ -307,16 +313,16 @@
   padding-top: 13px;
   margin-top: 24px;
 
-  color: #4E3F2F;
+  color: #F3EFE3;
   border: 2px solid #4E3F2F;
+  background-color: #4E3F2F;
 
   /* Efek Animasi */
   transition: 0.2s;
 }
 
 .btn-lokasi:hover {
-  color: #ffffff;
-  background-color: #4E3F2F;
+  border-radius: 32px;
 }
 
 /* ----------------------------- COUNTDOWN TIMER ---------------------------- */
@@ -340,7 +346,7 @@ li span {
   font-size: 40px;
 
   padding: 12px 12px;
-  background-color: #C4B5A0;
+  background-color: #F3EFE3;
 }
 
 .message {
@@ -357,7 +363,7 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-c {
-    margin-bottom: 0px;
+    padding-bottom: 0px;
   }
 
   /* Lebar 100% */
@@ -386,6 +392,8 @@ li span {
   justify-content: center;
   align-items: stretch;
   align-content: center;
+
+  background-color: #C4B5A0;
 }
 
 /* Lebar 50% */
@@ -435,7 +443,7 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-d {
-    margin-bottom: 64px;
+    padding-bottom: 64px;
   }
 
   /* Lebar 100% */
@@ -462,6 +470,8 @@ li span {
   justify-content: center;
   align-items: stretch;
   align-content: center;
+
+  background-color: #F3EFE3;
 }
 
 /* Lebar 50% */
@@ -536,13 +546,14 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-e {
-    margin-bottom: 0px;
+    padding-bottom: 0px;
   }
 
   /* Lebar 100% */
   .flex-items-e1-1 {
     order: 1;
     width: 25%;
+    margin-top: 12px;
     margin-bottom: 12px;
   }
 
@@ -550,6 +561,7 @@ li span {
   .flex-items-e1-2 {
     order: 2;
     width: 25%;
+    margin-top: 12px;
     margin-bottom: 12px;
   }
 
@@ -571,6 +583,8 @@ li span {
   justify-content: center;
   align-items: stretch;
   align-content: center;
+
+  background-color: #C4B5A0;
 }
 
 /* Lebar 50% */
@@ -641,7 +655,7 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-f {
-    margin-bottom: 56px;
+    padding-bottom: 56px;
   }
 
   /* Lebar 100% */

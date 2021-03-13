@@ -24,11 +24,6 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #C4B5A0;
-  opacity: 1;
-  background-image: radial-gradient(#b09c81 1px, transparent 1px), radial-gradient(#b09c81 1px, #C4B5A0 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
 }
 
 body {

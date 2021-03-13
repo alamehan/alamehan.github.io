@@ -98,7 +98,7 @@
 @media (max-width: 906px) {
 
   .flex-container-a {
-    margin-bottom: 56px;
+    padding-bottom: 56px;
   }
 
   /* Lebar 100% */
@@ -218,7 +218,7 @@
 @media (max-width: 906px) {
 
   .flex-container-b {
-    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
 
   /* Lebar 100% */
@@ -357,7 +357,7 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-c {
-    margin-bottom: 0px;
+    padding-bottom: 0px;
   }
 
   /* Lebar 100% */
@@ -435,7 +435,7 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-d {
-    margin-bottom: 64px;
+    padding-bottom: 64px;
   }
 
   /* Lebar 100% */
@@ -536,7 +536,7 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-e {
-    margin-bottom: 0px;
+    padding-bottom: 0px;
   }
 
   /* Lebar 100% */
@@ -641,7 +641,7 @@ li span {
 @media (max-width: 906px) {
 
   .flex-container-f {
-    margin-bottom: 56px;
+    padding-bottom: 56px;
   }
 
   /* Lebar 100% */
