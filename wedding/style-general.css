@@ -27,7 +27,8 @@ html {
 }
 
 body {
-  /* Nothing */
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -68,7 +69,7 @@ h4 {
   text-align: center;
 }
 
-.container {
+.container-fluid {
   /* Center Container */
   margin: auto;
 
