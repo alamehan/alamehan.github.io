@@ -4,6 +4,21 @@
 /*                                  SECTION 1                                 */
 /* -------------------------------------------------------------------------- */
 
+#section1 {
+  background-color: #F3EFE3;
+}
+
+.container-1-1 {
+  max-width: 960px;
+  margin: auto;
+}
+
+.container-1-2 {
+  max-width: 100%;
+  margin: auto;
+  padding-bottom: 82px;
+}
+
 .flex-container-a {
   display: flex;
   flex-flow: row wrap;
@@ -11,7 +26,6 @@
   align-items: stretch;
   align-content: stretch;
 
-  padding-bottom: 86px;
   background-color: #F3EFE3;
 }
 
@@ -65,7 +79,7 @@
 }
 
 .img-responsive-a3 {
-  width: 25%;
+  width: 12%;
   height: auto;
   object-fit: cover;
 
@@ -76,7 +90,7 @@
 }
 
 .img-responsive-a4 {
-  width: 25%;
+  width: 12%;
   height: auto;
   object-fit: cover;
 
@@ -96,9 +110,43 @@
   margin-top: 18px;
 }
 
+/* ------------------------------- RESPONSIVE ------------------------------- */
+
+@media (max-width: 906px) {
+
+  .img-responsive-a3 {
+    width: 25%;
+  }
+
+  .img-responsive-a4 {
+    width: 25%;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                  SECTION 2                                 */
 /* -------------------------------------------------------------------------- */
+
+#section2 {
+  background-color: #C4B5A0;
+
+  /* Parent untuk .img-responsive */
+  position: relative;
+}
+
+.container-2-1 {
+  max-width: 960px;
+  margin: auto;
+}
+
+.container-2-2 {
+  max-width: 960px;
+  margin: auto;
+
+  padding-top: 40px;
+  padding-bottom: 86px;
+  background-color: #F3EFE3;
+}
 
 .flex-container-b {
   display: flex;
@@ -107,7 +155,6 @@
   align-items: stretch;
   align-content: center;
 
-  padding-bottom: 40px;
   background-color: #F3EFE3;
 }
 
@@ -163,7 +210,6 @@
 
   /* Parent untuk .img-responsive-c */
   position: relative;
-  margin-bottom: 32px;
 
   /* Center Text */
   text-align: center;
@@ -193,23 +239,25 @@
 }
 
 .img-responsive-b3 {
-  width: 16%;
+  width: 5.5%;
   height: auto;
   object-fit: cover;
 
   position: absolute;
   z-index: 10;
   left: 0;
+  bottom: 6%;
 }
 
 .img-responsive-b4 {
-  width: 16%;
+  width: 5.5%;
   height: auto;
   object-fit: cover;
 
   position: absolute;
   z-index: 10;
   right: 0;
+  bottom: 6%;
 }
 
 .img-border::before {
@@ -247,6 +295,7 @@
 
   .img-responsive-b3 {
     width: 12%;
+    bottom: 32%;
   }
 
   .img-responsive-b4 {
@@ -258,6 +307,24 @@
 /*                                  SECTION 3                                 */
 /* -------------------------------------------------------------------------- */
 
+#section3 {
+  background-color: #C4B5A0;
+}
+
+.container-3-1 {
+  max-width: 960px;
+  margin: auto;
+}
+
+.container-3-2 {
+  max-width: 100%;
+  margin: auto;
+
+  background-color: #F3EFE3;
+  padding-top: 24px;
+  padding-bottom: 56px;
+}
+
 .flex-container-c {
   display: flex;
   flex-flow: row wrap;
@@ -265,7 +332,6 @@
   align-items: stretch;
   align-content: center;
 
-  padding-bottom: 72px;
   background-color: #F3EFE3;
 }
 
@@ -277,7 +343,6 @@
 
   /* Parent untuk .img-responsive */
   position: relative;
-  margin-bottom: 32px;
 
   /* ⚠️For Debugging⚠️ */
   /* background-color: red; */
@@ -369,13 +434,27 @@ li span {
 /*                                  SECTION 4                                 */
 /* -------------------------------------------------------------------------- */
 
+#section4 {
+  background-color: #C4B5A0;
+}
+
+.container-4-1 {
+  max-width: 960px;
+  margin: auto;
+}
+
+.container-4-2 {
+  max-width: 100%;
+  margin: auto;
+}
+
 .flex-container-d {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: stretch;
   align-content: center;
-  background-color: #C4B5A0;
+  background-color: #F3EFE3;
 }
 
 /* Lebar 100% */
@@ -388,8 +467,8 @@ li span {
 
   /* Parent untuk .img-responsive */
   position: relative;
-  padding-top: 56px;
-  padding-bottom: 56px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 
   /* ⚠️For Debugging⚠️ */
   /* background-color: red; */
@@ -426,6 +505,20 @@ li span {
 /*                                  SECTION 5                                 */
 /* -------------------------------------------------------------------------- */
 
+#section5 {
+  background-color: #F3EFE3;
+}
+
+.container-5-1 {
+  max-width: 960px;
+  margin: auto;
+}
+
+.container-5-2 {
+  max-width: 960px;
+  margin: auto;
+}
+
 .flex-container-e {
   display: flex;
   flex-flow: row wrap;
@@ -433,7 +526,7 @@ li span {
   align-items: stretch;
   align-content: center;
 
-  background-color: #F3EFE3;
+  background-color: #C4B5A0;
 }
 
 /* Lebar 100% */
@@ -449,8 +542,8 @@ li span {
 
   /* Parent untuk .img-responsive */
   position: relative;
-  padding-top: 12px;
-  padding-bottom: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 
   /* ⚠️For Debugging⚠️ */
   /* background-color: orange; */
@@ -495,7 +588,7 @@ li span {
 
 .img-responsive-e1 {
   display: inline-block;
-  width: 90%;
+  width: 92%;
   height: auto;
   object-fit: cover;
 }
@@ -510,6 +603,22 @@ li span {
 /* -------------------------------------------------------------------------- */
 /*                                  SECTION 6                                 */
 /* -------------------------------------------------------------------------- */
+
+#section6 {
+  background-color: #C4B5A0;
+}
+
+.container-6-1 {
+  max-width: 960px;
+  margin: auto;
+
+  padding-top: 24px;
+}
+
+.container-6-2 {
+  max-width: 960px;
+  margin: auto;
+}
 
 .flex-container-f {
   display: flex;
