@@ -75,6 +75,29 @@
       display: inline-block;
       max-width: 300px !important;
     }
+
+    .coret {
+      /* text-decoration: line-through; */
+      /* font-weight: bold; */
+      /* border: 1px dashed #d32f2f; */
+      /* color: #d32f2f; */
+    }
+
+    .coret::after {
+      content: ' 💬';
+      font-size: 12px;
+    }
+
+    .uk::before {
+      content: "";
+
+      display: inline-block;
+      background-image: url(@original/uk-flag.svg);
+      background-size: 24px 12px;
+      width: 24px;
+      height: 12px;
+      margin-right: 6px;
+    }
   </style>
 </head>
 
@@ -147,6 +170,18 @@
     <div class="active">
       <h3 style="background-color: #d32f2f;">📚 DK Main Series Books</h3>
 
+      <div style="display: inline;">
+        <span>Note 1: </span>
+        <span class="uk"></span>
+        <span>United Kingdom (UK) Edition</span>
+      </div>
+      <br>
+
+      <span>Note 2: 💬 Not Available At This Time</span>
+      <br>
+
+      <hr><br>
+
       <span><b>100 in History Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
@@ -191,7 +226,7 @@
         <li><a href="">The Law Book (2020)</a></li>
         <li><a href="">The Physics Book (2020)</a></li>
         <li><a href="">The Medicine Book (2021)</a></li>
-        <li><a href="">The Biology Book (2021) 💬</a></li>
+        <li><a href="" class="coret">The Biology Book (2021)</a></li>
       </ol>
 
       <span><b>English for Everyone Series</b></span>
@@ -221,8 +256,8 @@
         <hr class="batas">
         <li><a href="">English for Everyone Teacher's Guide (2018)</a></li>
         <li><a href="">English for Everyone Junior Beginner's Course (2020)</a></li>
-        <li><a href="">English for Everyone Junior 5 Words a Day (2021) 💬</a></li>
-        <li><a href="">English for Everyone Junior English Dictionary (2021) 💬</a></li>
+        <li><a href="" class="coret">English for Everyone Junior 5 Words a Day (2021)</a></li>
+        <li><a href="" class="coret">English for Everyone Junior English Dictionary (2021)</a></li>
       </ol>
 
       <span><b>Explore Series</b></span>
@@ -230,22 +265,22 @@
       <ol>
         <li><a href="">An Anthology of Intriguing Animals (2018)</a></li>
         <li><a href="">The Wonders of Nature (2019)</a></li>
-        <li><a href="">Mischief & Magic (2019) 💬</a></li>
+        <li><a href="" class="coret">Mischief & Magic (2019)</a></li>
         <li><a href="">The Mysteries of the Universe (2020)</a></li>
-        <li><a href="">Birds and Beasts (2021) 💬</a></li>
+        <li><a href="" class="coret">Birds and Beasts (2021)</a></li>
       </ol>
 
       <span><b>Great Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Great Beers (2010)</a></li>
-        <li><a href="">Great Designs (2013) 💬</a></li>
+        <li><a href="" class="coret">Great Designs (2013)</a></li>
         <li><a href="">Great Maps (2014)</a></li>
         <li><a href="">Great City Maps (2016)</a></li>
         <li><a href="">Great Buildings (2017)</a></li>
         <li><a href="">Great Paintings (2018)</a></li>
-        <li><a href="">Great Whiskies (2018) 💬</a></li>
-        <li><a href="">Great Diaries (2020) 💬</a></li>
+        <li><a href="" class="coret">Great Whiskies (2018)</a></li>
+        <li><a href="" class="coret">Great Diaries (2020)</a></li>
       </ol>
 
       <span><b>Handbook Series</b></span>
@@ -260,12 +295,12 @@
         <li><a href="">Digital Photographer's Handbook (2020)</a></li>
         <li><a href="">The Survival Handbook (2020)</a></li>
         <hr class="batas">
-        <li><a href="">The Camping Book (2009) 💬</a></li>
+        <li><a href="" class="coret">The Camping Book (2009)</a></li>
         <li><a href="">The Women’s Fitness Book (2012)</a></li>
         <li><a href="">The Complete Running & Marathon Book (2014)</a></li>
         <li><a href="">The Triathlon Training Book (2016)</a></li>
-        <li><a href="">The Soccer Book [US] (2018)</a></li>
-        <li><a href="">The Football Book [UK] (2020)</a></li>
+        <li><a href="">The Soccer Book (2018)</a></li>
+        <li><a href="" class="uk">The Football Book (2020)</a></li>
         <li><a href="">The Sports Book (2020)</a></li>
       </ol>
 
@@ -301,7 +336,7 @@
         <li><a href="">How The Body Works (2016)</a></li>
         <li><a href="">How Money Works (2017)</a></li>
         <li><a href="">How Food Works (2017)</a></li>
-        <li><a href="">How Science Works (2018) 💬</a></li>
+        <li><a href="" class="coret">How Science Works (2018)</a></li>
         <li><a href="">How Psychology Works (2018)</a></li>
         <li><a href="">How We’re F***ing Up Our Planet (2018)</a></li>
         <li><a href="">How Technology Works (2019)</a></li>
@@ -321,26 +356,26 @@
         <li><a href="">I Can't Believe It! (2017)</a></li>
         <li><a href="">I Can't Believe it! 2 (2018)</a></li>
         <hr class="batas">
-        <li><a href="">Why? Encyclopedia (2014) 💬</a></li>
+        <li><a href="" class="coret">Why? Encyclopedia (2014)</a></li>
         <li><a href="">Strange But True! (2015)</a></li>
         <li><a href="">True or False? (2015)</a></li>
         <li><a href="">The Science of Goo! (2020)</a></li>
         <hr class="batas">
         <li><a href="">[Similiar] Do Not Open (2007)</a></li>
         <li><a href="">[Similiar] Danger! (2010)</a></li>
-        <li><a href="">[Similiar] How To Do Everything (2010) 💬</a></li>
-        <li><a href="">[Similiar] Know It All (2010) 💬</a></li>
-        <li><a href="">[Similiar] What You Need to Know Now (2010) 💬</a></li>
+        <li><a href="" class="coret">[Similiar] How To Do Everything (2010)</a></li>
+        <li><a href="" class="coret">[Similiar] Know It All (2010)</a></li>
+        <li><a href="" class="coret">[Similiar] What You Need to Know Now (2010)</a></li>
         <li><a href="">[Similiar] Big Questions (2011)</a></li>
         <li><a href="">[Similiar] Top Secret (2011)</a></li>
         <li><a href="">[Similiar] Record Breakers! (2018)</a></li>
         <hr class="batas">
-        <li><a href="">[Similiar] Optical Illusions (2012) 💬</a></li>
-        <li><a href="">[Similiar] Optical Illusions 2 (2017) 💬</a></li>
-        <li><a href="">[Similiar] Color Illusions (2014) 💬</a></li>
-        <li><a href="">[Similiar] SENSEational Illusions (2015) 💬</a></li>
-        <li><a href="">[Similiar] Fantastic Optical Illusions (2017) 💬</a></li>
-        <li><a href="">[Similiar] The Magic Show Book (2016) 💬</a></li>
+        <li><a href="" class="coret">[Similiar] Optical Illusions (2012)</a></li>
+        <li><a href="" class="coret">[Similiar] Optical Illusions 2 (2017)</a></li>
+        <li><a href="" class="coret">[Similiar] Color Illusions (2014)</a></li>
+        <li><a href="" class="coret">[Similiar] SENSEational Illusions (2015)</a></li>
+        <li><a href="" class="coret">[Similiar] Fantastic Optical Illusions (2017)</a></li>
+        <li><a href="" class="coret">[Similiar] The Magic Show Book (2016)</a></li>
       </ol>
 
       <span><b>Knowledge Encyclopedias Series</b></span>
@@ -373,10 +408,10 @@
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Nature Guide: Birds (2012)</a></li>
-        <li><a href="">Nature Guide: Trees (2012) 💬</a></li>
+        <li><a href="" class="coret">Nature Guide: Trees (2012)</a></li>
         <li><a href="">Nature Guide: Rocks and Minerals (2012)</a></li>
-        <li><a href="">Nature Guide: Stars and Planets (2012) 💬</a></li>
-        <li><a href="">Nature Guide: Gems (2013) 💬</a></li>
+        <li><a href="" class="coret">Nature Guide: Stars and Planets (2012)</a></li>
+        <li><a href="" class="coret">Nature Guide: Gems (2013)</a></li>
         <li><a href="">Nature Guide: Snakes, Reptiles and Amphibians (2014)</a></li>
       </ol>
 
@@ -386,17 +421,17 @@
         <li><a href="">Dragonology (2003)</a></li>
         <li><a href="">Egyptology (2004)</a></li>
         <li><a href="">Wizardology (2005)</a></li>
-        <li><a href="">Pirateology (2006) 💬</a></li>
-        <li><a href="">Mythology (2007) 💬</a></li>
-        <li><a href="">Monsterology (2008) 💬</a></li>
-        <li><a href="">Spyology (2008) 💬</a></li>
-        <li><a href="">Oceanology (2009) 💬</a></li>
-        <li><a href="">Alienology (2010) 💬</a></li>
-        <li><a href="">Illusionology (2012) 💬</a></li>
-        <li><a href="">Dinosaurology (2013) 💬</a></li>
-        <li><a href="">Dungeonology (2016) 💬</a></li>
-        <li><a href="">Knightology (2017) 💬</a></li>
-        <li><a href="">Ghostology (2020) 💬</a></li>
+        <li><a href="" class="coret">Pirateology (2006)</a></li>
+        <li><a href="" class="coret">Mythology (2007)</a></li>
+        <li><a href="" class="coret">Monsterology (2008)</a></li>
+        <li><a href="" class="coret">Spyology (2008)</a></li>
+        <li><a href="" class="coret">Oceanology (2009)</a></li>
+        <li><a href="" class="coret">Alienology (2010)</a></li>
+        <li><a href="" class="coret">Illusionology (2012)</a></li>
+        <li><a href="" class="coret">Dinosaurology (2013)</a></li>
+        <li><a href="" class="coret">Dungeonology (2016)</a></li>
+        <li><a href="" class="coret">Knightology (2017)</a></li>
+        <li><a href="" class="coret">Ghostology (2020)</a></li>
       </ol>
 
       <span><b>Photography Series</b></span>
@@ -437,8 +472,8 @@
         <li><a href="">Pocket Genius: Elements (2020)</a></li>
         <li><a href="">Pocket Genius: Cats (2020)</a></li>
         <li><a href="">Pocket Genius: Periodic Table (2020)</a></li>
-        <li><a href="">Pocket Genius: Ocean (2021 💬</a></li>
-        <li><a href="">Pocket Genius: Sports (2021) 💬</a></li>
+        <li><a href="" class="coret">Pocket Genius: Ocean (2021</a></li>
+        <li><a href="" class="coret">Pocket Genius: Sports (2021)</a></li>
       </ol>
 
       <span><b>Practical Series</b></span>
@@ -455,13 +490,13 @@
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Remarkable Books (2017)</a></li>
-        <li><a href="">Remarkable Diaries (2020) 💬</a></li>
+        <li><a href="" class="coret">Remarkable Diaries (2020)</a></li>
       </ol>
 
       <span><b>Step by Step Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
-        <li><a href="">Stitch Step by Step (2011) 💬</a></li>
+        <li><a href="" class="coret">Stitch Step by Step (2011)</a></li>
         <li><a href="">Quilting Step By Step (2011)</a></li>
         <li><a href="">Dressmaking Step by Step (2015)</a></li>
         <li><a href="">Pillows, Curtains, and Shades Step by Step (2017)</a></li>
@@ -469,7 +504,7 @@
         <li><a href="">Knit Step by Step (2020)</a></li>
         <li><a href="">Crochet Step by Step (2021)</a></li>
         <li><a href="">Woodwork Step by Step (2021)</a></li>
-        <li><a href="">Knots Step by Step (2022) 💬</a></li>
+        <li><a href="" class="coret">Knots Step by Step (2022)</a></li>
       </ol>
 
       <span><b>Super Encyclopedia Series</b></span>
@@ -480,9 +515,9 @@
         <li><a href="">Super Shark Encyclopedia (2015)</a></li>
         <li><a href="">Super Bug Encyclopedia (2016)</a></li>
         <li><a href="">Super Earth Encyclopedia (2017)</a></li>
-        <li><a href="">Super Space Encyclopedia (2019) 💬</a></li>
+        <li><a href="" class="coret">Super Space Encyclopedia (2019)</a></li>
         <li><a href="">Super Dinosaur Encyclopedia (2020)</a></li>
-        <li><a href="">Super Science Encyclopedia (2021) 💬</a></li>
+        <li><a href="" class="coret">Super Science Encyclopedia (2021)</a></li>
       </ol>
 
       <span><b>SuperSimple Series</b></span>
@@ -491,7 +526,7 @@
         <li><a href="">SuperSimple Biology (2020)</a></li>
         <li><a href="">SuperSimple Chemistry (2020)</a></li>
         <li><a href="">SuperSimple Physics (2021)</a></li>
-        <li><a href="">SuperSimple Math (2021) 💬</a></li>
+        <li><a href="" class="coret">SuperSimple Math (2021)</a></li>
       </ol>
 
       <span><b>That Changed History/World Series</b></span>
@@ -515,7 +550,7 @@
         <li><a href="">Watercolour Techniques for Artists and Illustrators (2020)</a></li>
         <hr class="batas">
         <li><a href="">Sketch Book for The Artist (2009)</a></li>
-        <li><a href="">Drawing for The Artist (2019) 💬</a></li>
+        <li><a href="" class="coret">Drawing for The Artist (2019)</a></li>
         <li><a href="">Anatomy for The Artist (2020)</a></li>
         <li><a href="">Botany for The Artist (2020)</a></li>
       </ol>
@@ -539,22 +574,22 @@
         <li><a href="">The American Civil War: A Visual History (2015)</a></li>
         <li><a href="">American War of Independence: A Visual History (2016)</a></li>
         <hr class="batas">
-        <li><a href="">Art: A Visual History (2020) 💬</a></li>
-        <li><a href="">Architecture: A Visual History (2021) 💬</a></li>
+        <li><a href="" class="coret">Art: A Visual History (2020)</a></li>
+        <li><a href="" class="coret">Architecture: A Visual History (2021)</a></li>
       </ol>
 
       <span><b>The Definitive Illustrated Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
-        <li><a href="">Musicals: The Definitive Illustrated Story (2015) 💬</a></li>
+        <li><a href="" class="coret">Musicals: The Definitive Illustrated Story (2015)</a></li>
         <li><a href="">Ballet: The Definitive Illustrated Story (2018)</a></li>
         <hr class="batas">
         <li><a href="">The Iron Road: An Illustrated History of The Railroad (2014)</a></li>
         <li><a href="">Medicine: The Definitive Illustrated History (2016)</a></li>
-        <li><a href="">The Illustrated Mahabharata: The Definitive Guide (2017) 💬</a></li>
+        <li><a href="" class="coret">The Illustrated Mahabharata: The Definitive Guide (2017)</a></li>
         <li><a href="">The Vietnam War: The Definitive Illustrated History (2017)</a></li>
         <hr class="batas">
-        <li><a href="">[Similiar] Illustrated Encyclopedia of The Ocean (2011) 💬</a></li>
+        <li><a href="" class="coret">[Similiar] Illustrated Encyclopedia of The Ocean (2011)</a></li>
         <li><a href="">[Similiar] Illustrated Encyclopedia of The Universe (2011)</a></li>
         <li><a href="">[Similiar] Illustrated Encyclopedia of Birds (2011)</a></li>
         <li><a href="">[Similiar] The Illustrated Encyclopedia of Warfare (2012)</a></li>
@@ -563,48 +598,45 @@
       <span><b>The Definitive Visual History Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
-        <li><a href="">Photography: The Definitive Visual History (2014) 💬</a></li>
-        <li><a href="">Design: The Definitive Visual History (2015) 💬</a></li>
+        <li><a href="" class="coret">Photography: The Definitive Visual History (2014)</a></li>
+        <li><a href="" class="coret">Design: The Definitive Visual History (2015)</a></li>
         <li><a href="">Music: The Definitive Visual History (2019)</a></li>
         <hr class="batas">
         <li><a href="">World War I: The Definitive Visual History (2018)</a></li>
         <li><a href="">World War II: The Definitive Visual History (2015)</a></li>
         <li><a href="">Machines of War: The Definitive Visual History of Military (2017)</a></li>
-        <li><a href="">Imperial China: The Definitive Visual History (2020) 💬</a></li>
-        <li><a href="">War: The Definitive Visual History (2020) 💬</a></li>
-        <li><a href="">Warfare: The Definitive Visual History (2020) 💬</a></li>
+        <li><a href="" class="coret">Imperial China: The Definitive Visual History (2020)</a></li>
+        <li><a href="" class="coret">War: The Definitive Visual History (2020)</a></li>
+        <li><a href="" class="coret">Warfare: The Definitive Visual History (2020)</a></li>
         <hr class="batas">
-        <li><a href="">[US] Car: The Definitive Visual History of the Automobile (2011)</a></li>
-        <li><a href="">[US] Motorcycle: The Definitive Visual History (2012) 💬</a></li>
-        <li><a href="">[US] Train: The Definitive Visual History (2014)</a></li>
-        <li><a href="">[US] Tractor: The Definitive Visual History (2015) 💬</a></li>
-        <li><a href="">[US] Bicycle: The Definitive Visual History (2016)</a></li>
-        <li><a href="">[US] Tank: The Definitive Visual History of Armored Vehicles (2017)</a></li>
-        <li><a href="">[US] Classic Car: The Definitive Visual History (2016)</a></li>
-        <li><a href="">[US] Aircraft: The Definitive Visual History (2013) 💬</a></li>
-        <li><a href="">[US] Drive: The Definitive History of Driving (2018) 💬</a></li>
+        <li><a href="">Car: The Definitive Visual History of the Automobile (2011)</a></li>
+        <li><a href="" class="coret">Motorcycle: The Definitive Visual History (2012)</a></li>
+        <li><a href="">Train: The Definitive Visual History (2014)</a></li>
+        <li><a href="" class="coret">Tractor: The Definitive Visual History (2015)</a></li>
+        <li><a href="">Bicycle: The Definitive Visual History (2016)</a></li>
+        <li><a href="">Tank: The Definitive Visual History of Armored Vehicles (2017)</a></li>
+        <li><a href="">Classic Car: The Definitive Visual History (2016)</a></li>
+        <li><a href="" class="coret">Aircraft: The Definitive Visual History (2013)</a></li>
+        <li><a href="" class="coret">Drive: The Definitive History of Driving (2018)</a></li>
         <hr class="batas">
-        <li><a href="">[UK] The Car Book (2011) 💬</a></li>
-        <li><a href="">[UK] The Motorbike Book (2012)</a></li>
-        <li><a href="">[UK] The Train Book (2014)</a></li>
-        <li><a href="">[UK] The Tractor Book (2015)</a></li>
-        <li><a href="">[UK] The Bicycle Book (2016) 💬</a></li>
-        <li><a href="">[UK] The Tank Book (2017)</a></li>
-        <li><a href="">[UK] The Classic Car Book (2019)</a></li>
-        <li><a href="">[UK] The Aircraft Book (2021) 💬</a></li>
+        <li><a href="" class="uk coret">The Car Book (2011)</a></li>
+        <li><a href="" class="uk">The Motorbike Book (2012)</a></li>
+        <li><a href="" class="uk">The Train Book (2014)</a></li>
+        <li><a href="" class="uk">The Tractor Book (2015)</a></li>
+        <li><a href="" class="uk coret">The Bicycle Book (2016)</a></li>
+        <li><a href="" class="uk">The Tank Book (2017)</a></li>
+        <li><a href="" class="uk">The Classic Car Book (2019)</a></li>
+        <li><a href="" class="uk coret">The Aircraft Book (2021)</a></li>
       </ol>
 
       <span><b>The Definitive Visual Guide Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
-        <li><a href="">Natural History (2010)</a></li>
-        <li><a href="">The Military History Book (2012)</a></li>
-        <li><a href="">History From the Dawn of Civilization (2012)</a></li>
-        <li><a href="">Firearms An Illustrated History (2014)</a></li>
-        <li><a href="">History of Britain & Ireland (2019)</a></li>
-        <li><a href="">History of Britain & Ireland (2019)</a></li>
-        <li><a href="">World War I: The Definitive Visual Guide (2018)</a></li>
-        <li><a href="">World War II The Definitive Visual Guide (2015)</a></li>  
+        <li><a href="">Natural History: The Ultimate Visual Guide to Everything on Earth (2010)</a></li>
+        <li><a href="">The Military History Book: The Ultimate Visual Guide (2012)</a></li>
+        <li><a href="">History: From The Dawn of Civilization to Present Day (2012)</a></li>
+        <li><a href="">History of Britain & Ireland: The Definitive Visual Guide (2019)</a></li>
+        <li><a href="">Firearms: An Illustrated History (2014)</a></li>
         <hr class="batas">
         <li><a href="">Science (2009)</a></li>
         <li><a href="">Earth (2013)</a></li>
