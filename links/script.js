@@ -1,261 +1,237 @@
-//---------- Bootstrap Tooltip
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
-//---------- Sweet Alert Js
-
-//=== BAGIAN 1: PORTFOLIOS
-
-$('.alert-show-alamehan-black').click(function () {
+$('.alert-personalweb').click(function () {
   Swal.fire({
-    title: '🦸‍♂️ Alamehan\'s\n Personal Website',
-    imageUrl: 'assets/logo-alamehan-black.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🦸‍♂️ Raihan\'s Personal Website</h1>',
+    imageUrl: 'assets/logo-z-personalweb.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="../index.html">Open</a>',
+    confirmButtonText: '<a href="https://alamehan.github.io/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-linkedin').click(function () {
+$('.alert-linkedin').click(function () {
   Swal.fire({
-    title: '👨‍🎓 LinkedIn:\n Curriculum Vitae',
-    imageUrl: 'assets/logo-linkedin.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">👨‍🎓 LinkedIn :\n Curriculum Vitae</h1>',
+    imageUrl: '@original/assets/logo-linkedin.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://www.linkedin.com/in/alamehan">Open</a>',
+    confirmButtonText: '<a href="https://www.linkedin.com/in/alamehan">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-kaggle').click(function () {
+$('.alert-kaggle').click(function () {
   Swal.fire({
-    title: '🙋‍♂️ Kaggle:\n Data Science Projects',
-    imageUrl: 'assets/logo-kaggle.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🙋‍♂️ Kaggle :\n Data Science Projects</h1>',
+    imageUrl: '@original/assets/logo-kaggle.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://www.kaggle.com/raihanallaam">Open</a>',
+    confirmButtonText: '<a href="https://www.kaggle.com/raihanallaam">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-github').click(function () {
+$('.alert-github').click(function () {
   Swal.fire({
-    title: '👨‍💻 GitHub:\n Personal Projects',
-    imageUrl: 'assets/logo-github.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">👨‍💻 GitHub :\n Web-Based Projects</h1>',
+    imageUrl: '@original/assets/logo-github.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://github.com/alamehan">Open</a>',
+    confirmButtonText: '<a href="https://github.com/alamehan">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-codepen').click(function () {
+$('.alert-codepen').click(function () {
   Swal.fire({
-    title: '👨‍💻 Codepen:\n Frontend Projects',
-    imageUrl: 'assets/logo-codepen.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">👨‍💻 Codepen :\n Frontend Projects</h1>',
+    imageUrl: '@original/assets/logo-codepen.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://codepen.io/alamehan">Open</a>',
+    confirmButtonText: '<a href="https://codepen.io/alamehan">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-behance').click(function () {
+$('.alert-behance').click(function () {
   Swal.fire({
-    title: '👨‍🎨 Behance:\n Design & Illustration',
-    imageUrl: 'assets/logo-behance.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">👨‍🎨 Behance :\n Design & Illustration</h1>',
+    imageUrl: '@original/assets/logo-behance.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://www.behance.net/alamehan">Open</a>',
+    confirmButtonText: '<a href="https://www.behance.net/alamehan">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-dribbble').click(function () {
+// =============================================================================================== //
+// =============================================================================================== //
+
+$('.alert-medium').click(function () {
   Swal.fire({
-    title: '👨‍🎨 Dribbble:\n Design & Illustration',
-    imageUrl: 'assets/logo-dribbble.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">✍️ Medium :\n Insight Stories</h1>',
+    imageUrl: '@original/assets/logo-medium.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://dribbble.com/alamehan">Open</a>',
+    confirmButtonText: '<a href="https://alamehan.medium.com/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-//=== BAGIAN 2: MEDIA & SOCIAL
-
-$('.alert-show-insightstories').click(function () {
+$('.alert-spotify').click(function () {
   Swal.fire({
-    title: '✍️ Medium:\n Insight Stories',
-    imageUrl: 'assets/logo-medium.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🎙️ Spotify :\n Podcast Sunday Today</h1>',
+    imageUrl: '@original/assets/logo-spotify.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://medium.com/@alamehan">Open</a>',
+    confirmButtonText: '<a href="https://open.spotify.com/show/7fWzskG3FN2GRgqLAj9nLK">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-podcastsundaytoday').click(function () {
+$('.alert-youtube').click(function () {
   Swal.fire({
-    title: '🎙️ Spotify:\n Podcast Sunday Today', 
-    imageUrl: 'assets/logo-spotify.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🎬 Youtube :\n AlamehanTuts</h1>',
+    imageUrl: '@original/assets/logo-youtube.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://open.spotify.com/show/7fWzskG3FN2GRgqLAj9nLK">Open</a>',
+    confirmButtonText: '<a href="https://www.youtube.com/channel/UC0wdATMzvx8xczyPI2iy3Tw/playlists">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-alamehantuts').click(function () {
+$('.alert-instagram').click(function () {
   Swal.fire({
-    title: '🎬 Youtube:\n AlamehanTuts',
-    imageUrl: 'assets/logo-youtube.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🎯 Instagram :\n Microblog Plus</h1>',
+    imageUrl: '@original/assets/logo-instagram.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://www.youtube.com/channel/UC0wdATMzvx8xczyPI2iy3Tw/playlists">Open</a>',
+    confirmButtonText: '<a href="http://instagram.com/alamehan">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-microblogplus').click(function () {
+$('.alert-twitter').click(function () {
   Swal.fire({
-    title: '🎯 Instagram:\n Microblog Plus',
-    imageUrl: 'assets/logo-instagram.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🎭 Twitter</h1>',
+    imageUrl: '@original/assets/logo-twitter.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="http://instagram.com/alamehan">Open</a>',
+    confirmButtonText: '<a href="https://twitter.com/alamehan98">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-twitter').click(function () {
+$('.alert-discord').click(function () {
   Swal.fire({
-    title: '🎭 Twitter',
-    imageUrl: 'assets/logo-twitter.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">💬 Discord</h1>',
+    imageUrl: '@original/assets/logo-discord.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://twitter.com/alamehan98">Open</a>',
+    confirmButtonText: '<a href="https://discord.com/invite/q5xZJHbp">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-facebook').click(function () {
+// =============================================================================================== //
+// =============================================================================================== //
+
+$('.alert-anggrekclassifier').click(function () {
   Swal.fire({
-    title: '🎭 Facebook',
-    imageUrl: 'assets/logo-facebook.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🤖 Anggrek Classifier :\n Artificial Intelligence</h1>',
+    imageUrl: 'assets/logo-z-anggrekclassifier.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://www.facebook.com/alamehan98/">Open</a>',
+    confirmButtonText: '<a href="http://anggrek-classifier.herokuapp.com/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-//=== BAGIAN 3: A LITTLE LEGACY FOR YOU
-
-$('.alert-show-anggrekclassifier').click(function () {
+$('.alert-thereaderrr').click(function () {
   Swal.fire({
-    title: '🤖 Anggrek Classifier:\n Artificial Intelligence',
-    imageUrl: 'assets/logo-anggrekclassifier.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📝 The Readerrr :\n Raihan\'s Notes</h1>',
+    imageUrl: 'assets/logo-z-thereaderrr.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="http://anggrek-classifier.herokuapp.com/">Open</a>',
+    confirmButtonText: '<a href="https://alamehan.github.io/epub/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-thereaderrr').click(function () {
+$('.alert-niceref').click(function () {
   Swal.fire({
-    title: '📖 The Readerrr:\n Reader Starter Kit',
-    imageUrl: 'assets/logo-thereaderrr.svg',
-    customClass: {
-      popup: 'popup-noproject',
-      confirmButton: 'confirm-button-noproject',
-      cancelButton: 'cancel-button-noproject',
-    },
-    backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="http://alamehan.github.io/epub">Open</a>',
-    showCancelButton: true,
-    cancelButtonText: 'Cancel',
-  });
-});
-
-$('.alert-show-niceref').click(function () {
-  Swal.fire({
-    title: '📘 NiceRef:\n Reference Books',
-    imageUrl: 'assets/logo-niceref.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📘 NiceRef :\n Reference Books</h1>',
+    imageUrl: 'assets/logo-z-niceref.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
@@ -266,90 +242,90 @@ $('.alert-show-niceref').click(function () {
   });
 });
 
-$('.alert-show-nicelist').click(function () {
+$('.alert-nicevizual').click(function () {
   Swal.fire({
-    title: '📜 NiceList:\n Curated List',
-    imageUrl: 'assets/logo-nicelist.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🎲 NiceVizual :\n Interactive Apps</h1>',
+    imageUrl: 'assets/logo-z-nicevizual.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://github.com/alamehan/nice-list">Open</a>',
+    confirmButtonText: '<a href="https://nicevizual.github.io/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-nicebook').click(function () {
+$('.alert-nicelist').click(function () {
   Swal.fire({
-    title: '📚 NiceBook:\n Book Recommendation',
-    imageUrl: 'assets/logo-nicebook.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📜 NiceList :\n Curated List</h1>',
+    imageUrl: 'assets/logo-z-nicelist.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://github.com/alamehan/nice-book">Open</a>',
+    confirmButtonText: '<a href="https://github.com/alamehan/nice-list">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-nicevizual').click(function () {
+$('.alert-nicebook').click(function () {
   Swal.fire({
-    title: '🎲 NiceVizual:\n Interactive Apps',
-    imageUrl: 'assets/logo-nicevizual.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📚 NiceBook :\n Selected Books</h1>',
+    imageUrl: 'assets/logo-z-nicebook.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://nicevizual.github.io/">Open</a>',
+    confirmButtonText: '<a href="https://github.com/alamehan/nice-book">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-righttr4ck').click(function () {
+$('.alert-atozmind').click(function () {
   Swal.fire({
-    title: '🔎 RightTr4ck:\n "How to Learn"',
-    imageUrl: 'assets/logo-righttr4ck.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🧠 ATOZ Mind :\n Mind Map Collections</h1>',
+    imageUrl: 'assets/logo-z-atozmind.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="assets/image-righttr4ck.pdf">Open</a>',
+    confirmButtonText: '<a href="https://bit.ly/atozmind">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-atozmind').click(function () {
+$('.alert-righttr4ck').click(function () {
   Swal.fire({
-    title: '🧠 AtozMind:\n Mind Map Collection',
-    imageUrl: 'assets/logo-atozmind.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🔥 RightTr4ck :\n Learning Frameworks</h1>',
+    imageUrl: 'assets/logo-z-righttr4ck.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://bit.ly/atozmind">Open</a>',
+    confirmButtonText: '<a href="assets/righttr4ck-v2.pdf">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
 });
 
-$('.alert-show-knowyourself101').click(function () {
+$('.alert-knowyourself101').click(function () {
   Swal.fire({
-    title: '👦 Know Yourself 101:\n "Best of You"',
-    imageUrl: 'assets/logo-knowyourself101.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">👦 Know Yourself 101 :\n "Best Version of You"</h1>',
+    imageUrl: 'assets/logo-z-knowyourself101.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
@@ -360,17 +336,49 @@ $('.alert-show-knowyourself101').click(function () {
   });
 });
 
-$('.alert-show-oldworks').click(function () {
+$('.alert-designshowcase').click(function () {
   Swal.fire({
-    title: '📦 Old Works (2012):\n Game & Arts',
-    imageUrl: 'assets/logo-blogger.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">✒️ Design Showcase :\n Design & Illustration</h1>',
+    imageUrl: 'assets/logo-z-designshowcase.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="http://raihan110598blog.blogspot.com/">Open</a>',
+    confirmButtonText: '<a href="https://alamehan.github.io/portfolios.html">Visit</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
+$('.alert-petualanganoemar').click(function () {
+  Swal.fire({
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">⚔️ Petualangan Oemar :\n RPG Maker Game</h1>',
+    imageUrl: 'assets/logo-z-petualanganoemar.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="http://petualanganoemar.blogspot.com/">Visit</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
+$('.alert-oldworks').click(function () {
+  Swal.fire({
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📦 Old Works :\n Animation, Graffiti, Etc</h1>',
+    imageUrl: 'assets/logo-z-oldworks.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="http://raihan110598blog.blogspot.com/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
