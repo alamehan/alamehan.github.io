@@ -60,6 +60,13 @@
       content: " ⇦";
     } */
 
+    table,
+    th,
+    td {
+      border: 0px solid black;
+      border-collapse: collapse;
+    }
+
     .popup span {
       display: none;
       position: absolute;
@@ -159,19 +166,32 @@
     <div class="active">
       <h3 style="background-color: #d32f2f;">📚 DK Main Series Books</h3>
 
-      <div style="display: inline;">
-        <span>Note 1: </span>
-        <span class="uk"></span>
-        <span>United Kingdom (UK) Edition</span>
-      </div>
-      <br>
+      <table>
+        <tr>
+          <th style="text-align:left; padding-bottom: 12px; padding-right: 24px;">Symbol</th>
+          <th style="text-align:left; padding-bottom: 12px;">Meaning</th>
+        </tr>
+        <tr>
+          <td><span class="uk"></span></td>
+          <td>United Kingdom/UK Edition (Not US)</td>
+        </tr>
+        <tr>
+          <td style="padding-left: 4px;">💬</td>
+          <td>Currently Not Available on The Internet</td>
+        </tr>
+        <tr>
+          <td style="padding-left: 4px;">✅</td>
+          <td>Original Series by Dorling Kindersley (DK)</td>
+        </tr>
+        <tr>
+          <td style="padding-left: 4px;">☑️</td>
+          <td>Curated Manually Series by Alamehan</td>
+        </tr>
+      </table>
 
-      <span>Note 2: 💬 Currently Not Available on The Internet</span>
-      <br>
+      <br><hr><br>
 
-      <hr><br>
-
-      <span><b>100 in History Series</b></span>
+      <span><b>✅ 100 in History Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <!-- CONTOH PAKE HOVER IMAGE !!! -->
@@ -184,7 +204,7 @@
         <li><a href="" class="uk">100 Scientists Who Made History (2018)</a></li>
       </ol>
 
-      <span><b>Big Ideas Simply Explained Series</b></span>
+      <span><b>✅ Big Ideas Simply Explained Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">The Philosophy Book (2011)</a></li>
@@ -222,7 +242,7 @@
         </p>
       </ol>
 
-      <span><b>Explore Series</b></span>
+      <span><b>☑️ Explore Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">An Anthology of Intriguing Animals (2018)</a></li>
@@ -232,7 +252,7 @@
         <li><a href="">Birds and Beasts (2021) 💬</a></li>
       </ol>
 
-      <span><b>Great Series</b></span>
+      <span><b>☑️ Great Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="" class="uk">Great Beers (2010)</a></li>
@@ -245,7 +265,7 @@
         <li><a href="">Great Diaries (2020) 💬</a></li>
       </ol>
 
-      <span><b>Handbook Series</b></span>
+      <span><b>☑️ Handbook Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">The Essential Managers Handbook (2016)</a></li>
@@ -266,7 +286,7 @@
         <li><a href="">The Sports Book (2020)</a></li>
       </ol>
 
-      <span><b>Heads Up Series</b></span>
+      <span><b>✅ Heads Up Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Heads Up Philosophy (2016)</a></li>
@@ -275,7 +295,7 @@
         <li><a href="">Heads Up Sociology (2018)</a></li>
       </ol>
 
-      <span><b>Help Your Kids Series</b></span>
+      <span><b>✅ Help Your Kids Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Help Your Kids with Science (2012)</a></li>
@@ -291,7 +311,7 @@
         <li><a href="">Help Your Kids with Music (2019)</a></li>
       </ol>
 
-      <span><b>How Things Work Series</b></span>
+      <span><b>✅ How Things Work Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">How Business Works (2015)</a></li>
@@ -308,7 +328,7 @@
         <li><a href="" class="uk">How Space Works (2021)</a></li>
       </ol>
 
-      <span><b>It Can’t Be True Series</b></span>
+      <span><b>✅ It Can’t Be True Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">It Can't Be True! (2013)</a></li>
@@ -340,7 +360,7 @@
         <li><a href="">[Similiar] The Magic Show Book (2016) 💬</a></li>
       </ol>
 
-      <span><b>Knowledge Encyclopedias Series</b></span>
+      <span><b>✅ Knowledge Encyclopedias Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Knowledge Encyclopedia (2013)</a></li>
@@ -355,7 +375,7 @@
         <li><a href="" class="uk">Ocean! (2020)</a></li>
       </ol>
 
-      <span><b>Little Book of Self Care Series</b></span>
+      <span><b>✅ Little Book of Self Care Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Breathwork (2019)</a></li>
@@ -366,7 +386,7 @@
         <li><a href="">Sleep (2020)</a></li>
       </ol>
 
-      <span><b>Nature Guide Series</b></span>
+      <span><b>✅ Nature Guide Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Nature Guide: Birds (2012)</a></li>
@@ -377,7 +397,7 @@
         <li><a href="">Nature Guide: Snakes, Reptiles and Amphibians (2014) 💬</a></li>
       </ol>
 
-      <span><b>Ologies Series</b></span>
+      <span><b>✅ Ologies Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Dragonology (2003)</a></li>
@@ -396,7 +416,7 @@
         <li><a href="">Ghostology (2020) 💬</a></li>
       </ol>
 
-      <span><b>Photography Series</b></span>
+      <span><b>☑️ Photography Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="" class="uk">The Beginner's Photography Guide (2016)</a></li>
@@ -412,7 +432,7 @@
         <li><a href="">[Similiar] Life In The Wild (2009)</a></li>
       </ol>
 
-      <span><b>Pocket Genius/Eyewitness Series</b></span>
+      <span><b>✅ Pocket Genius/Eyewitness Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Pocket Genius: Human Body (2013)</a></li>
@@ -439,7 +459,7 @@
         <p>UK Edition: Pocket Genius ➜ Pocket Eyewitness</p>
       </ol>
 
-      <span><b>Practical Series</b></span>
+      <span><b>☑️ Practical Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Happiness The Mindful Way (2015)</a></li>
@@ -450,14 +470,14 @@
         <li><a href="" class="uk">Intuition (2020)</a></li>
       </ol>
 
-      <span><b>Remarkable Series</b></span>
+      <span><b>☑️ Remarkable Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Remarkable Books (2017)</a></li>
         <li><a href="">Remarkable Diaries (2020) 💬</a></li>
       </ol>
 
-      <span><b>Step by Step Series</b></span>
+      <span><b>☑️ Step by Step Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Stitch Step by Step (2011) 💬</a></li>
@@ -473,7 +493,7 @@
         <li><a href="" class="uk">Knots Step by Step (2022) 💬</a></li>
       </ol>
 
-      <span><b>Super Encyclopedia Series</b></span>
+      <span><b>✅ Super Encyclopedia Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Super Nature Encyclopedia (2012)</a></li>
@@ -486,7 +506,7 @@
         <li><a href="">Super Science Encyclopedia (2021) 💬</a></li>
       </ol>
 
-      <span><b>SuperSimple Series</b></span>
+      <span><b>✅ SuperSimple Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">SuperSimple Biology (2020)</a></li>
@@ -495,7 +515,7 @@
         <li><a href="">SuperSimple Math (2021) 💬</a></li>
       </ol>
 
-      <span><b>That Changed History/World Series</b></span>
+      <span><b>☑️ That Changed History/World Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">The Big Ideas That Changed The World (2010)</a></li>
@@ -504,7 +524,7 @@
         <li><a href="">Battles That Changed History (2018)</a></li>
       </ol>
 
-      <span><b>The Artist Series</b></span>
+      <span><b>☑️ The Artist Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Watercolor Workshop (2006)</a></li>
@@ -521,7 +541,7 @@
         <li><a href="">Botany for The Artist (2020)</a></li>
       </ol>
 
-      <span><b>The Atlas Series</b></span>
+      <span><b>☑️ The Atlas Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">The Animal Atlas (2020)</a></li>
@@ -529,7 +549,7 @@
         <li><a href="">The Bird Atlas (2021)</a></li>
       </ol>
 
-      <span><b>A Visual History Series</b></span>
+      <span><b>☑️ The-A Visual History Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Weapon: A Visual History of Arms and Armor (2006)</a></li>
@@ -547,7 +567,7 @@
         <li><a href="">Architecture: A Visual History (2021) 💬</a></li>
       </ol>
 
-      <span><b>The Definitive Illustrated Series</b></span>
+      <span><b>☑️ The Definitive Illustrated Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Musicals: The Definitive Illustrated Story (2015) 💬</a></li>
@@ -564,7 +584,7 @@
         <li><a href="">[Similiar] The Illustrated Encyclopedia of Warfare (2012)</a></li>
       </ol>
 
-      <span><b>The Definitive Visual Guide Series</b></span>
+      <span><b>☑️ The Definitive Visual Guide Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Natural History: The Ultimate Visual Guide to Everything on Earth (2010)</a></li>
@@ -607,7 +627,7 @@
         <li><a href="" class="uk">Fashion: The Definitive Visual Guide (2019)</a></li>
       </ol>
 
-      <span><b>The Definitive Visual History Series</b></span>
+      <span><b>☑️ The Definitive Visual History Series</b></span>
       <a href="#"><i class="fa fa-external-link-square-alt fa-1x" style="color: #bdbdbd;"></i></a>
       <ol>
         <li><a href="">Photography: The Definitive Visual History (2014) 💬</a></li>
