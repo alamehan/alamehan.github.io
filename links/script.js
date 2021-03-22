@@ -145,6 +145,22 @@ $('.alert-youtube').click(function () {
   });
 });
 
+$('.alert-discord').click(function () {
+  Swal.fire({
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">💬 Discord : \n Muda Berkarya</h1>',
+    imageUrl: '@original/assets/logo-discord.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="https://discord.com/invite/q5xZJHbp">Visit</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
 $('.alert-instagram').click(function () {
   Swal.fire({
     title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🎯 Instagram :\n Microblog Plus</h1>',
@@ -172,22 +188,6 @@ $('.alert-twitter').click(function () {
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
     confirmButtonText: '<a href="https://twitter.com/alamehan98">Visit</a>',
-    showCancelButton: true,
-    cancelButtonText: 'Cancel',
-  });
-});
-
-$('.alert-discord').click(function () {
-  Swal.fire({
-    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">💬 Discord</h1>',
-    imageUrl: '@original/assets/logo-discord.svg',
-    customClass: {
-      popup: 'popup-noproject',
-      confirmButton: 'confirm-button-noproject',
-      cancelButton: 'cancel-button-noproject',
-    },
-    backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://discord.com/invite/q5xZJHbp">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
