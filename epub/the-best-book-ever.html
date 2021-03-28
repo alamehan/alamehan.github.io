@@ -12,6 +12,7 @@
   <style>
     html {
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     .judul {
@@ -96,7 +97,7 @@
   </style>
 </head>
 
-<body>
+<body id="top">
   <div class="judul">Best Book Ever</div>
   <div class="judul" style="font-size: 24px;">All About Our World in Your Pocket!</div>
   <br>
@@ -104,8 +105,8 @@
 
   <ul id="tabs" class="li-menu">
     <li>Why DK?</li>
-    <li>DK Main Series</li>
-    <li class="active">DK More Series</li>
+    <li class="active">DK Main Series</li>
+    <li>DK More Series</li>
     <li>DK Other Series</li>
     <li>DK Non-Series</li>
     <li>National Geographic</li>
@@ -184,7 +185,7 @@
     </div>
 
     <!-- CONTENT 1 : DK MAIN SERIES -->
-    <div>
+    <div class="active">
       <h3 style="background-color: #d32f2f;">📚 DK Main-Series Books</h3>
 
       <table>
@@ -943,7 +944,7 @@
     </div>
 
     <!-- CONTENT 2 : DK MORE-SERIES -->
-    <div class="active">
+    <div>
       <h3 style="background-color: #d32f2f;">📚 DK More-Series Books</h3>
 
       <table>
@@ -2356,7 +2357,12 @@
   </div>
 
   <div style="color: white; background-color: #455a64; padding: 4px 0px;"><b>📢 Last Update: March 2021</b></div>
-  <h4><a href="index.html">⇦ Back to Homepage</a></h4>
+  <br>
+  <div>
+    <a href="index.html">⇦ Back to Homepage</a>
+    <a href="#top" style="margin-left: 18px;">⇧ Scroll to Top</a>
+  </div>
+  <br>
 
   <script src="@original/jquery-3.2.1.js"></script>
   <script src="@original/tab-show.js"></script>
