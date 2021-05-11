@@ -92,8 +92,8 @@ $(document).ready(function () {
     draggable: true,
 
     // Auto-geser (A Little Legacy)
-    // autoplay: true,
-    // autoplaySpeed: 3000,
+    autoplay: true,
+    autoplaySpeed: 1700,
   });
 
   $('.slider').slick({
@@ -102,7 +102,7 @@ $(document).ready(function () {
     slidesToShow: 3,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 1800,
+    autoplaySpeed: 1700,
     responsive: [{
         breakpoint: 995,
         settings: {
