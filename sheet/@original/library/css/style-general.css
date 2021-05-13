@@ -1,0 +1,140 @@
+html {
+  /* Smooth Scroll */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Hidden Overflow */
+  overflow-x: hidden;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #101117;
+}
+
+.container {
+  text-align: center;
+}
+
+.unone {
+  user-select: none;
+}
+
+h1 {
+  color: #F9F9F9;
+  font-weight: 900;
+  font-size: 4.5em;
+}
+
+.t1 {
+  margin-top: 40px;
+  margin-right: 40px;
+}
+
+.t2 {
+  margin-top: -28px;
+  margin-left: 30px;
+}
+
+.dot {
+  color: #F5D34C;
+}
+
+h6 {
+  margin-top: 8px;
+  color: #F9F9F9;
+  font-weight: 500;
+  font-size: 1.25em;
+}
+
+.bungkus {
+  margin-top: 40px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.k1,
+.k2,
+.k3 {
+  margin: 12px;
+  width: 150px;
+  height: 150px;
+}
+
+/* ========== K1 ========== */
+
+.k1 {
+  border: 3px solid #1C3260;
+  transition: all .1s ease-in;
+}
+
+.k1:hover {
+  border: 6px solid #ADD8E6;
+  background-color: #1C3260;
+}
+
+.k1:hover::after {
+  content: "CSS Layouting";
+  display: inline-block;
+  margin-top: 28px;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #F9F9F9;
+}
+
+.k1 img {
+  margin-top: 12px;
+  transition: all .1s ease-in;
+}
+
+/* ========== K2 ========== */
+
+.k2 {
+  border: 3px solid #32601C;
+  transition: all .1s ease-in;
+}
+
+.k2:hover {
+  border: 6px solid #D8E6AD;
+  background-color: #32601C;
+}
+
+.k2:hover::after {
+  content: "CSS Flexbox";
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #F9F9F9;
+}
+
+.k2 img {
+  margin-top: 21px;
+  transition: all .1s ease-in;
+}
+
+/* ========== K3 ========== */
+
+.k3 {
+  border: 3px solid #601C32;
+  transition: all .1s ease-in;
+}
+
+.k3:hover {
+  border: 6px solid #E6ADD8;
+  background-color: #601C32;
+}
+
+.k3:hover::after {
+  content: "CSS Grid";
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #F9F9F9;
+}
+
+.k3 img {
+  margin-top: 21px;
+  transition: all .1s ease-in;
+}
