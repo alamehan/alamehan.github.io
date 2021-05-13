@@ -228,17 +228,19 @@ $('.alert-thereaderrr').click(function () {
   });
 });
 
-$('.alert-niceref').click(function () {
+$('.alert-cheatsheet').click(function () {
   Swal.fire({
-    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📘 NiceRef :\n Reference Books</h1>',
-    imageUrl: 'assets/logo-z-niceref.svg',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📘 NiceRef :\n Pocket References</h1>',
+    imageUrl: 'assets/logo-z-cheatsheet.svg',
     customClass: {
       popup: 'popup-noproject',
       confirmButton: 'confirm-button-noproject',
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="#">🔒 Upcoming</a>',
+    confirmButtonText: '<a href="https://alamehan.github.io/sheet/">Visit</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
   });
 });
 

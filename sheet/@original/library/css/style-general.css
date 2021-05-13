@@ -58,6 +58,7 @@ h6 {
   height: 150px;
   cursor: pointer;
   user-select: none;
+  transition: all .1s ease-in;
 }
 
 .k1 img,
@@ -66,7 +67,6 @@ h6 {
 .k4 img {
   user-select: none;
   margin-top: 23px;
-  transition: all .1s ease-in;
 }
 
 .k1:hover::after,
