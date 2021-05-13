@@ -50,3 +50,20 @@ $('.alert-k3').click(function () {
     cancelButtonText: 'Cancel',
   });
 });
+
+$('.alert-k4').click(function () {
+  Swal.fire({
+    imageUrl: '@original/assets/cover-javascript.png',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    width: 400,
+    background: '#000',
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="#">🔒 Upcoming</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});

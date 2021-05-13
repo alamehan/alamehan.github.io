@@ -15,10 +15,6 @@ body {
   text-align: center;
 }
 
-.unone {
-  user-select: none;
-}
-
 h1 {
   color: #F9F9F9;
   font-weight: 900;
@@ -55,18 +51,44 @@ h6 {
 
 .k1,
 .k2,
-.k3 {
+.k3,
+.k4 {
   margin: 12px;
   width: 150px;
   height: 150px;
   cursor: pointer;
+  user-select: none;
+}
+
+.k1 img,
+.k2 img,
+.k3 img,
+.k4 img {
+  user-select: none;
+  margin-top: 23px;
+  transition: all .1s ease-in;
+}
+
+.k1:hover::after,
+.k2:hover::after,
+.k3:hover::after,
+.k4:hover::after {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #F9F9F9;
+}
+
+.ukuran-svg {
+  width: 95px;
+  height: 95px;
 }
 
 /* ========== K1 ========== */
 
 .k1 {
   border: 3px solid #1C3260;
-  transition: all .1s ease-in;
 }
 
 .k1:hover {
@@ -76,23 +98,12 @@ h6 {
 
 .k1:hover::after {
   content: "CSS Layouting";
-  display: inline-block;
-  margin-top: 28px;
-  font-size: 1.3em;
-  font-weight: 700;
-  color: #F9F9F9;
-}
-
-.k1 img {
-  margin-top: 12px;
-  transition: all .1s ease-in;
 }
 
 /* ========== K2 ========== */
 
 .k2 {
   border: 3px solid #32601C;
-  transition: all .1s ease-in;
 }
 
 .k2:hover {
@@ -102,23 +113,12 @@ h6 {
 
 .k2:hover::after {
   content: "CSS Flexbox";
-  display: inline-block;
-  margin-top: 32px;
-  font-size: 1.3em;
-  font-weight: 700;
-  color: #F9F9F9;
-}
-
-.k2 img {
-  margin-top: 21px;
-  transition: all .1s ease-in;
 }
 
 /* ========== K3 ========== */
 
 .k3 {
   border: 3px solid #601C32;
-  transition: all .1s ease-in;
 }
 
 .k3:hover {
@@ -128,29 +128,50 @@ h6 {
 
 .k3:hover::after {
   content: "CSS Grid";
-  display: inline-block;
-  margin-top: 32px;
-  font-size: 1.3em;
-  font-weight: 700;
-  color: #F9F9F9;
 }
 
-.k3 img {
-  margin-top: 21px;
-  transition: all .1s ease-in;
+/* ========== K4 ========== */
+
+.k4 {
+  border: 3px solid #616117;
+}
+
+.k4:hover {
+  border: 6px solid #E0E07D;
+  background-color: #616117;
+}
+
+.k4:hover::after {
+  content: "JavaScript";
 }
 
 /* RESPONSIVE */
 
 /* X-Small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
+@media (max-width: 575.98px) {}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
   html {
     zoom: 80%;
   }
-}
 
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {}
+  .k1:hover::after {
+    content: "";
+  }
+
+  .k2:hover::after {
+    content: "";
+  }
+
+  .k3:hover::after {
+    content: "";
+  }
+
+  .k4:hover::after {
+    content: "";
+  }
+}
 
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {}
