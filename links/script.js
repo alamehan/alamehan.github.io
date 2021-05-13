@@ -230,7 +230,7 @@ $('.alert-thereaderrr').click(function () {
 
 $('.alert-cheatsheet').click(function () {
   Swal.fire({
-    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📘 NiceRef :\n Pocket References</h1>',
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">📘 CheatSheet :\n Pocket References</h1>',
     imageUrl: 'assets/logo-z-cheatsheet.svg',
     customClass: {
       popup: 'popup-noproject',
