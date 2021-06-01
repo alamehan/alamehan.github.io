@@ -11,7 +11,7 @@ $('.alert-k1').click(function () {
     width: 400,
     background: '#000',
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="@original/assets/css-layouting.pdf">Download</a>',
+    confirmButtonText: '<a href="https://gum.co/csheet-layouting">Download</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
