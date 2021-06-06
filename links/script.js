@@ -318,7 +318,7 @@ $('.alert-righttr4ck').click(function () {
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="assets/righttr4ck-v2.pdf">Visit</a>',
+    confirmButtonText: '<a href="../road/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
