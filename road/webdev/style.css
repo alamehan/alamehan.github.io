@@ -213,3 +213,11 @@ a {
 .author .btn:visited:active {
   background-color: #1a1a1a;
 }
+
+/* SCREEN FOR MOBILE */
+
+@media screen and (max-width: 768px) {
+  body {
+    zoom: 0.7;
+  }
+}
