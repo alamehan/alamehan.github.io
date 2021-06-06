@@ -1,0 +1,215 @@
+/* Reference: 
+https://freefrontend.com/css-menu/
+https://codepen.io/Devcrud/pen/XWboGgL
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Niramit:300,300i,700");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "K2D", sans-serif;
+  background: #1e1e2f;
+  letter-spacing: 1px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 50px auto;
+}
+
+p {
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+a {
+  color: white;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 4rem;
+  margin: 0 0 0 30px;
+  color: white;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #27293d;
+}
+
+.timeline .timeline-container {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline .timeline-container .timeline-icon {
+  position: absolute;
+  left: -88px;
+  top: 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1.6rem;
+  background: #4f537b;
+
+  padding-top: 10px;
+}
+
+.timeline .timeline-container .timeline-icon i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timeline .timeline-container .timeline-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.timeline .timeline-container .timeline-body {
+  background: #27293d;
+  border-radius: 3px;
+  padding: 20px 20px 15px;
+  box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
+}
+
+.timeline .timeline-container .timeline-body:before {
+  content: "";
+  background: inherit;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  left: -10px;
+  transform: rotate(45deg);
+  border-radius: 0 0 0 2px;
+}
+
+.timeline .timeline-container .timeline-body .timeline-title {
+  margin-bottom: 1.4rem;
+}
+
+.timeline .timeline-container .timeline-body .timeline-title .badge {
+  background: #4f537b;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.timeline .timeline-container .timeline-body .timeline-subtitle {
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.4;
+  margin-top: 16px;
+  font-size: 11px;
+}
+
+.timeline .timeline-container.red .badge,
+.timeline .timeline-container.red .timeline-icon {
+  background: #ef5350 !important;
+}
+
+.timeline .timeline-container.pink .badge,
+.timeline .timeline-container.pink .timeline-icon {
+  background: #ec407a !important;
+}
+
+.timeline .timeline-container.purple .badge,
+.timeline .timeline-container.purple .timeline-icon {
+  background: #ab47bc !important;
+}
+
+.timeline .timeline-container.indigo .badge,
+.timeline .timeline-container.indigo .timeline-icon {
+  background: #5c6bc0 !important;
+}
+
+.timeline .timeline-container.blue .badge,
+.timeline .timeline-container.blue .timeline-icon {
+  background: #42a5f5 !important;
+}
+
+.timeline .timeline-container.teal .badge,
+.timeline .timeline-container.teal .timeline-icon {
+  background: #26a69a !important;
+}
+
+.timeline .timeline-container.green .badge,
+.timeline .timeline-container.green .timeline-icon {
+  background: #66bb6a !important;
+}
+
+.timeline .timeline-container.deeporange .badge,
+.timeline .timeline-container.deeporange .timeline-icon {
+  background: #ff7043 !important;
+}
+
+.timeline .timeline-container.brown .badge,
+.timeline .timeline-container.brown .timeline-icon {
+  background: #8d6e63 !important;
+}
+
+.head {
+  padding: 3em 3em 0em 3em !important;
+}
+
+.author {
+  font-family: inherit;
+  padding: 0em 3em 3em 3em;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+.author a:link,
+.author a:visited {
+  color: white;
+}
+
+.author a:link:hover,
+.author a:visited:hover {
+  text-decoration: none;
+}
+
+.author .btn:link,
+.author .btn:visited {
+  margin-top: 1em;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: black;
+  padding: 1.5em 2rem;
+  border-radius: 1em;
+  transition: 0.5s all;
+}
+
+.author .btn:link:hover,
+.author .btn:link:focus,
+.author .btn:link:active,
+.author .btn:visited:hover,
+.author .btn:visited:focus,
+.author .btn:visited:active {
+  background-color: #1a1a1a;
+}
