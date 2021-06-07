@@ -149,7 +149,10 @@ body {
   text-shadow: 2px 2px 8px #e65100;
   transition: all 200ms linear;
   border-radius: 4px;
-  width: 220px;
+
+  /* Lebar Menu */
+  width: 280px;
+
   letter-spacing: 1px;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
