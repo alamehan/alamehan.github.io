@@ -152,6 +152,7 @@ body {
 
   /* Lebar Menu */
   width: 280px;
+  left: -8px;
 
   letter-spacing: 1px;
   display: -webkit-inline-flex;
@@ -215,7 +216,10 @@ body {
   padding: 5px;
   background-color: #111;
   top: 70px;
-  left: 0;
+
+  /* Center */
+  left: -8px;
+
   width: 100%;
   border-radius: 4px;
   display: block;
@@ -428,5 +432,14 @@ a .uil {
   .dark-light:not(:checked)+label {
     top: 20px;
     right: 20px;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+
+  .dropdown:checked+label,
+  .dropdown:not(:checked)+label {
+    /* Lebar Menu */
+    width: 92vw;
   }
 }
