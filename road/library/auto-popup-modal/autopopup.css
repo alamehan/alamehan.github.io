@@ -35,7 +35,8 @@
   width: 90%;
   max-width: 400px;
   margin: 4em auto;
-  background: #e65100;
+  margin-top: 25vh;
+  background: #212121;
   border-radius: none;
   text-align: center;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
@@ -122,10 +123,4 @@
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
   transform: translateY(0);
-}
-
-@media only screen and (min-width: 1170px) {
-  .bts-popup-container {
-    margin: 8em auto;
-  }
 }
