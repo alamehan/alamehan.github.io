@@ -131,12 +131,18 @@
               especially frontend development, and have an interest in
               creating content.</h4>
             <div class="d-flex">
-              <button class="flex-grow-1 unone btn-ungu mr-2"
+              <a href="assets/cv-raihan-frontend-developer.pdf" class="flex-grow-1 unone btn-ungu mr-2"
+              style="text-align: center;" onclick="return ValidatePassword();">
+                <img src="assets/feather-button-download.svg" class="d-inline-flex ikon-tombol"
+                  style="margin-top: -12px">
+                <h3 class="d-inline-flex">Curriculum Vitae</h3>
+              </a>
+              <!-- <button class="flex-grow-1 unone btn-ungu mr-2"
                 onclick="window.open('assets/cv-raihan-frontend-developer.pdf')">
                 <img src="assets/feather-button-download.svg" class="d-inline-flex ikon-tombol"
                   style="margin-top: -12px">
                 <h3 class="d-inline-flex">Curriculum Vitae</h3>
-              </button>
+              </button> -->
               <!-- <button class="flex-grow-1 unone btn-ungu ml-2" onclick="window.open('assets/image-raihan-cv-data-scientist.pdf')">
                 <h3 class="d-inline-flex">CV Data Science (NEW)</h3>
               </button> -->
@@ -1086,6 +1092,16 @@
     <script src="library/js/muuri.min.js"></script>
     <script src="script.js"></script>
     <script src="library/js/testimonials.js"></script>
+
+    <script>
+      function ValidatePassword() {
+        var password = prompt("Masukkan password:", "");
+        if (password == "tanpapassword123") {
+          return true;
+        }
+        return false;
+      }
+    </script>
   </div>
 </body>
 
