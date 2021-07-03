@@ -1,0 +1,377 @@
+<html>
+
+<head>
+  <style>
+    /* Auto Increment Table (CSS Only)*/
+    table {
+      counter-reset: rowNumber -1;
+      /* -1 untuk penyesuaian dengan table, agar dimulai dari 1 */
+    }
+
+    /* penamaan tidak harus rowNumber, bebas saja, sesuaikan */
+    table tr {
+      counter-increment: rowNumber;
+    }
+
+    table tr td:first-child::before {
+      content: counter(rowNumber);
+      min-width: 1em;
+      margin-right: 0.5em;
+    }
+
+    /* Icon After Text */
+    .uk::after {
+      content: "";
+      display: inline-block;
+      background-image: url(./assets/flag-uk.svg);
+      background-size: 32px 16px;
+      width: 32px;
+      height: 16px;
+      margin-left: 2px;
+    }
+
+    .indo::after {
+      content: "";
+      display: inline-block;
+      background-image: url(./assets/flag-id.svg);
+      background-size: 32px 16px;
+      width: 32px;
+      height: 16px;
+      margin-left: 2px;
+    }
+
+    .incomplete::after {
+      content: "";
+      display: inline-block;
+      background-image: url(./assets/search.svg);
+      background-size: 32px 21px;
+      width: 32px;
+      height: 21px;
+      margin-left: 2px;
+    }
+
+    /* Break Table Row Color */
+    .break-color {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mt-4"></div>
+
+  <!-- █████████████████████████████████████████████████████████████████████████████████████████████████ -->
+
+  <span class="h5 me-1">
+    <i class="bi bi-folder-check me-2"></i>100 in History Series
+  </span>
+  <a href="https://www.dk.com/us/category/series-made-history/">
+    <i class="bi bi-truck"></i>
+  </a>
+  <div class="table-responsive mt-4">
+    <table class="table table-sm table-hover align-middle">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col" style="width: 5%;">No</th>
+          <th scope="col" style="width: 75%;">Judul Buku</th>
+          <th scope="col" style="width: 10%;">Tahun</th>
+          <th scope="col" style="width: 10%;">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>100 People Who Made History</td>
+          <td>2012</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>100 Inventions That Made History</td>
+          <td>2014</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>100 Events That Made History</td>
+          <td>2016</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>100 Women Who Made History</td>
+          <td>2017</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>100 Scientists Who Made History<span class="uk"></span></td>
+          <td>2018</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- █████████████████████████████████████████████████████████████████████████████████████████████████ -->
+
+  <span class="h5 me-1">
+    <i class="bi bi-folder-x me-2"></i>Behind The Scene Series
+  </span>
+  <!-- <a href="#">
+      <i class="bi bi-box-arrow-up-right"></i>
+    </a> -->
+  <div class="table-responsive mt-4">
+    <table class="table table-sm table-hover align-middle">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col" style="width: 5%;">No</th>
+          <th scope="col" style="width: 75%;">Judul Buku</th>
+          <th scope="col" style="width: 10%;">Tahun</th>
+          <th scope="col" style="width: 10%;">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td class="incomplete">Behind The Scenes at The Museum</td>
+          <td>2020</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="incomplete">Behind The Scenes at The Zoo</td>
+          <td>2021</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- █████████████████████████████████████████████████████████████████████████████████████████████████ -->
+
+  <span class="h5 me-1">
+    <i class="bi bi-folder-check me-2"></i>Big Ideas Simply Explained Series
+  </span>
+  <a href="https://www.penguinrandomhouse.com/series/AAY/big-ideas">
+    <i class="bi bi-truck"></i>
+  </a>
+  <div class="table-responsive mt-4">
+    <table class="table table-sm table-hover align-middle">
+      <caption>Catatan: Untuk UK Edition, terdapat logo "Big Ideas Simply Explained" di cover buku bagian kanan bawah.
+      </caption>
+      <thead class="table-primary">
+        <tr>
+          <th scope="col" style="width: 5%;">No</th>
+          <th scope="col" style="width: 75%;">Judul Buku</th>
+          <th scope="col" style="width: 10%;">Tahun</th>
+          <th scope="col" style="width: 10%;">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>The Philosophy Book</td>
+          <td>2011</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Economics Book</td>
+          <td>2012</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Psychology Book</td>
+          <td>2012</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Politics Book</td>
+          <td>2013</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Religions Book</td>
+          <td>2013</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Business Book</td>
+          <td>2014</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Science Book</td>
+          <td>2014</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Shakespeare Book</td>
+          <td>2015</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Sherlock Holmes Book</td>
+          <td>2015</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Sociology Book</td>
+          <td>2015</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The History Book</td>
+          <td>2016</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Literature Book</td>
+          <td>2016</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Movie Book</td>
+          <td>2016</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Art Book</td>
+          <td>2017</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Astronomy Book</td>
+          <td>2017</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Crime Book</td>
+          <td>2017</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Bible Book</td>
+          <td>2018</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Classical Music Book</td>
+          <td>2018</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Mythology Book</td>
+          <td>2018</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Ecology Book</td>
+          <td>2019</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Feminism Book</td>
+          <td>2019</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Math Book</td>
+          <td>2019</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Islam Book</td>
+          <td>2020</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Law Book</td>
+          <td>2020</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Physics Book</td>
+          <td>2020</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>The Medicine Book</td>
+          <td>2021</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="incomplete">The Biology Book</td>
+          <td>2021</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="incomplete">The Black History Book</td>
+          <td>2021</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="incomplete">The World War II Book</td>
+          <td>2022</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr class="break-color">
+          <td></td>
+          <td>The Marvel Book</td>
+          <td>2019</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+          </>
+        <tr class="break-color">
+          <td></td>
+          <td>The Star Wars Book</td>
+          <td>2020</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr class="break-color">
+          <td></td>
+          <td>The Star Trek Book</td>
+          <td>2021</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+        <tr class="break-color">
+          <td></td>
+          <td class="incomplete">The DC Book</td>
+          <td>2021</td>
+          <td><a href="#"><i class="bi bi-arrow-right-circle"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mb-3"></div>
+</body>
+
+</html>

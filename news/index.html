@@ -1,3 +1,8 @@
+<!-- 
+  PROTIPS: Baca Dokumentasi Bootstrap 5:
+  https://getbootstrap.com/docs/5.0/getting-started/introduction/
+ -->
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -7,13 +12,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>NiceList by Alamehan</title>
+  <link rel="icon" href="../assets/favicon.ico">
   <link rel="stylesheet" href="library/css/bootstrap-5.0.2.min.css">
   <link rel="stylesheet" href="library/css/bootstrap-icons.css">
   <link rel="stylesheet" href="library/css/tab-show.css">
   <style>
     /* Modifiy Original Bootstrap */
     .list-group-item {
-      padding: .04rem 1.5rem;
+      padding: .1rem 1.5rem;
     }
     .nav-pills .nav-item .nav-link {
       background-color: #f4f5f6 !important;
@@ -117,10 +123,12 @@
   </div>
 
   <script src="library/js/bootstrap-5.0.2.bundle.min.js"></script>
-  <script src="library/js/jquery-3.2.1.js"></script>
-  <script src="library/js/tab-show.js"></script>
+  <script src="library/js/jquery-3.6.0.min.js"></script>
 
   <script>
+    // Load dengan menggunakan fitur ES6: Fetch
+    // Kekurangan: Tidak bisa untuk kasus Nested
+
     // Load tab1.html
     fetch('./pages/tab1.html')
       .then(function(response) {
@@ -129,6 +137,14 @@
       .then(function(body) {
         document.querySelector('#tab1').innerHTML = body;
       });    
+
+    // Load dengan menggunakan fitur jQuery: Load
+    // Kelebihan: Bisa digunaan untuk kasus Nested
+
+    // Load tab6.html
+    $(function(){
+      $("#tab6").load("./pages/tab6.html"); 
+    });
   </script>
 </body>
 
