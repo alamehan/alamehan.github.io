@@ -2,13 +2,14 @@
 
 <head>
   <style>
-    /* Auto Increment Table (CSS Only)*/
+    /* A. Auto Increment Table (CSS Only)*/
+
     .auto-number {
       counter-reset: rowNumber -1;
       /* -1 untuk penyesuaian dengan table, agar dimulai dari 1 */
+      /* penamaan tidak harus rowNumber, bebas saja, sesuaikan */
     }
 
-    /* penamaan tidak harus rowNumber, bebas saja, sesuaikan */
     .auto-number tr {
       counter-increment: rowNumber;
     }
@@ -19,7 +20,38 @@
       margin-right: 0.5em;
     }
 
-    /* Icon After Text */
+    /* B. DataTable Sort Icon to Left */
+
+    table.dataTable>thead .sorting:before,
+    table.dataTable>thead .sorting_asc:before,
+    table.dataTable>thead .sorting_desc:before,
+    table.dataTable>thead .sorting_asc_disabled:before,
+    table.dataTable>thead .sorting_desc_disabled:before {
+        /* Original */
+        /* right: 1em; */
+        /* content: "↑"; */
+
+        /* Modified */
+        left: 3.5em;
+        content: "↿";
+    }
+
+    table.dataTable>thead .sorting:after,
+    table.dataTable>thead .sorting_asc:after,
+    table.dataTable>thead .sorting_desc:after,
+    table.dataTable>thead .sorting_asc_disabled:after,
+    table.dataTable>thead .sorting_desc_disabled:after {
+        /* Original */
+        /* right: .5em; */
+        /* content: "↓"; */
+
+        /* Modified */
+        left: 4em;
+        content: "⇂";
+    }
+
+    /* C. Icon After Text */
+
     .uk::after {
       content: "";
       display: inline-block;
@@ -50,8 +82,9 @@
       margin-left: 2px;
     }
 
-    /* Lainnya */
-    .alert-terang{
+    /* D. Lainnya */
+
+    .alert-terang {
       background-color: #e8f5e9;
     }
   </style>
@@ -83,7 +116,7 @@
 
   <!-- █████████████████████████████████████████████████████████████████████████████████████████████████ -->
 
-  <div class="mb-2">
+  <div class="mt-4 mb-3">
     <span class="h5 me-1">
       <i class="bi bi-folder-check me-2"></i>100 in History
     </span>
@@ -97,7 +130,7 @@
       <thead class="table-primary">
         <tr>
           <th scope="col" style="width: 5%;">No</th>
-          <th scope="col" style="width: 75%;">Judul Buku</th>
+          <th scope="col" style="width: 75%;">Judul</th>
           <th scope="col" style="width: 10%;">Tahun</th>
           <th scope="col" style="width: 10%;">Link</th>
         </tr>
@@ -139,7 +172,7 @@
 
   <!-- █████████████████████████████████████████████████████████████████████████████████████████████████ -->
 
-  <div class="my-2">
+  <div class="my-3">
     <span class="h5 me-1">
       <i class="bi bi-folder me-2"></i>Behind The Scene
     </span>
@@ -150,7 +183,7 @@
       <thead class="table-primary">
         <tr>
           <th scope="col" style="width: 5%;">No</th>
-          <th scope="col" style="width: 75%;">Judul Buku</th>
+          <th scope="col" style="width: 75%;">Judul</th>
           <th scope="col" style="width: 10%;">Tahun</th>
           <th scope="col" style="width: 10%;">Link</th>
         </tr>
@@ -174,7 +207,7 @@
 
   <!-- █████████████████████████████████████████████████████████████████████████████████████████████████ -->
 
-  <div class="my-2">
+  <div class="my-3">
     <span class="h5 me-1">
       <i class="bi bi-folder-check me-2"></i>Big Ideas Simply Explained
     </span>
@@ -190,7 +223,7 @@
       <thead class="table-primary">
         <tr>
           <th scope="col" style="width: 5%;">No</th>
-          <th scope="col" style="width: 75%;">Judul Buku</th>
+          <th scope="col" style="width: 75%;">Judul</th>
           <th scope="col" style="width: 10%;">Tahun</th>
           <th scope="col" style="width: 10%;">Link</th>
         </tr>
@@ -400,36 +433,51 @@
   <div class="mb-3"></div>
 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
       $('#100-in-history').DataTable({
-        'bPaginate'     : false,    // Hide paginate
-        "bLengthChange" : false,
-        "bInfo"         : false,    // Hide entry text
-        "bAutoWidth"    : false,
-        "bFilter"       : false,    // Hide search box
-        'columnDefs'    : [{ 'orderable': false, 'targets': [0, 3] }],  // Hide sort icon on header of first column & fourth column
-        'aaSorting'     : [[1, 'asc']],                                 // Start to sort data in second column
+        'bPaginate': false, // Hide paginate
+        "bLengthChange": false,
+        "bInfo": false, // Hide entry text
+        "bAutoWidth": false,
+        "bFilter": false, // Hide search box
+        'columnDefs': [{
+          'orderable': false,
+          'targets': [0, 3]
+        }], // Hide sort icon on header of first column & fourth column
+        'aaSorting': [
+          [1, 'asc']
+        ], // Start to sort data in second column
       });
 
       $('#behind-the-scene').DataTable({
-        'bPaginate'     : false,    // Hide paginate
-        "bLengthChange" : false,
-        "bInfo"         : false,    // Hide entry text
-        "bAutoWidth"    : false,
-        "bFilter"       : false,    // Hide search box
-        'columnDefs'    : [{ 'orderable': false, 'targets': [0, 3] }],  // Hide sort icon on header of first column & fourth column
-        'aaSorting'     : [[1, 'asc']],                                 // Start to sort data in second column
+        'bPaginate': false, // Hide paginate
+        "bLengthChange": false,
+        "bInfo": false, // Hide entry text
+        "bAutoWidth": false,
+        "bFilter": false, // Hide search box
+        'columnDefs': [{
+          'orderable': false,
+          'targets': [0, 3]
+        }], // Hide sort icon on header of first column & fourth column
+        'aaSorting': [
+          [1, 'asc']
+        ], // Start to sort data in second column
       });
 
       $('#big-ideas-simply-explained').DataTable({
-        'bPaginate'     : false,    // Hide paginate
-        "bLengthChange" : false,
-        "bInfo"         : false,    // Hide entry text
-        "bAutoWidth"    : false,
-        "bFilter"       : false,    // Hide search box
-        'columnDefs'    : [{ 'orderable': false, 'targets': [0, 3] }],  // Hide sort icon on header of first column & fourth column
-        'aaSorting'     : [[1, 'asc']],                                 // Start to sort data in second column
+        'bPaginate': false, // Hide paginate
+        "bLengthChange": false,
+        "bInfo": false, // Hide entry text
+        "bAutoWidth": false,
+        "bFilter": false, // Hide search box
+        'columnDefs': [{
+          'orderable': false,
+          'targets': [0, 3]
+        }], // Hide sort icon on header of first column & fourth column
+        'aaSorting': [
+          [1, 'asc']
+        ], // Start to sort data in second column
       });
     });
   </script>
