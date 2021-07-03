@@ -44,4 +44,34 @@ $(document).ready(function () {
       [3, 'asc']
     ],
   });
+
+  $('#dk-essential-managers').DataTable({
+    'bPaginate': false,
+    "bLengthChange": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "bFilter": false,
+    'columnDefs': [{
+      'orderable': false,
+      'targets': [0]
+    }],
+    'aaSorting': [
+      [3, 'asc']
+    ],
+  });
+
+  $('#dk-life-stories').DataTable({
+    'bPaginate': false,
+    "bLengthChange": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "bFilter": false,
+    'columnDefs': [{
+      'orderable': false,
+      'targets': [0]
+    }],
+    'aaSorting': [
+      [3, 'asc']
+    ],
+  });
 });
