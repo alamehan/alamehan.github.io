@@ -50,7 +50,7 @@
             <button class="nav-link" id="pills-1-tab" data-bs-toggle="pill" data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills-1" aria-selected="true">Daily Check</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-2-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2" aria-selected="false">Web</button>
+            <button class="nav-link" id="pills-2-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2" aria-selected="false">Website</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-3-tab" data-bs-toggle="pill" data-bs-target="#pills-3" type="button" role="tab" aria-controls="pills-3" aria-selected="false">Youtube</button>
@@ -59,10 +59,10 @@
             <button class="nav-link" id="pills-4-tab" data-bs-toggle="pill" data-bs-target="#pills-4" type="button" role="tab" aria-controls="pills-4" aria-selected="false">Course</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-5-tab" data-bs-toggle="pill" data-bs-target="#pills-5" type="button" role="tab" aria-controls="pills-5" aria-selected="false">Chrome Plugin</button>
+            <button class="nav-link active" id="pills-5-tab" data-bs-toggle="pill" data-bs-target="#pills-5" type="button" role="tab" aria-controls="pills-5" aria-selected="false">Book</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-6-tab" data-bs-toggle="pill" data-bs-target="#pills-6" type="button" role="tab" aria-controls="pills-6" aria-selected="false">Book</button>
+            <button class="nav-link" id="pills-6-tab" data-bs-toggle="pill" data-bs-target="#pills-6" type="button" role="tab" aria-controls="pills-6" aria-selected="false">Extension</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-7-tab" data-bs-toggle="pill" data-bs-target="#pills-7" type="button" role="tab" aria-controls="pills-7" aria-selected="false">Software</button>
@@ -98,11 +98,11 @@
             <div id="tab4"></div>
           </div>
           <!-- TAB 5 -->
-          <div class="tab-pane fade" id="pills-5" role="tabpanel" aria-labelledby="pills-5-tab">
+          <div class="tab-pane fade show active" id="pills-5" role="tabpanel" aria-labelledby="pills-5-tab">
             <div id="tab5"></div>
           </div>
           <!-- TAB 6 -->
-          <div class="tab-pane fade show active" id="pills-6" role="tabpanel" aria-labelledby="pills-6-tab">
+          <div class="tab-pane fade" id="pills-6" role="tabpanel" aria-labelledby="pills-6-tab">
             <div id="tab6"></div>
           </div>
           <!-- TAB 7 -->
@@ -144,6 +144,11 @@
 
     // Load dengan menggunakan fitur jQuery: Load
     // Kelebihan: Bisa digunaan untuk kasus Nested
+
+    // Load tab5.html
+    $(function(){
+      $("#tab5").load("./pages/tab5.html"); 
+    });
 
     // Load tab6.html
     $(function(){
