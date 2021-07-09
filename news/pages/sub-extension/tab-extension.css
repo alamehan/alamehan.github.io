@@ -86,14 +86,6 @@ table.dataTable>thead .sorting_desc_disabled:after {
 
 /* D. Lainnya */
 
-.alert-terang {
-  background-color: #e8f5e9;
-}
-
-.break-color {
-  background-color: #f4f7f9;
-}
-
 .new-bg {
   background-color: lightgreen;
   padding-left: 6px;

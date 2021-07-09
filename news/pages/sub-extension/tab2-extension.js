@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $('#ex-editor-theme').DataTable({
+  $('#exv-editor-theme').DataTable({
     'bPaginate': false, // Hide paginate
     "bLengthChange": false,
     "bInfo": false, // Hide entry text
@@ -15,7 +15,7 @@ $(document).ready(function () {
     ], // Start to sort data: Disable
   });
 
-  $('#ex-starter-pack').DataTable({
+  $('#exv-starter-pack').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -30,7 +30,7 @@ $(document).ready(function () {
     ],
   });
 
-  $('#ex-formatter').DataTable({
+  $('#exv-formatter').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -45,7 +45,7 @@ $(document).ready(function () {
     ],
   });
 
-  $('#ex-time-saving').DataTable({
+  $('#exv-time-saving').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -60,7 +60,7 @@ $(document).ready(function () {
     ],
   });
 
-  $('#ex-time-saving').DataTable({
+  $('#exv-time-saving').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -75,7 +75,7 @@ $(document).ready(function () {
     ],
   });
 
-  $('#ex-intellisense').DataTable({
+  $('#exv-intellisense').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -90,7 +90,7 @@ $(document).ready(function () {
     ],
   });
 
-  $('#ex-useful-tools').DataTable({
+  $('#exv-useful-tools').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -105,7 +105,7 @@ $(document).ready(function () {
     ],
   });
 
-  $('#ex-miscellaneous').DataTable({
+  $('#exv-miscellaneous').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,

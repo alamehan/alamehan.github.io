@@ -4,12 +4,12 @@
     <div class="col">
       <ul class="nav nav-pills nav-fill mt-3" id="pills-tab-extension" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-1-tab-extension" data-bs-toggle="pill"
+          <button class="nav-link active" id="pills-1-tab-extension" data-bs-toggle="pill"
             data-bs-target="#pills-1-extension" type="button" role="tab" aria-controls="pills-1-extension"
             aria-selected="true"><i class="bi bi-google"></i> Chrome Extension</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="pills-2-tab-extension" data-bs-toggle="pill" data-bs-target="#pills-2-extension"
+          <button class="nav-link" id="pills-2-tab-extension" data-bs-toggle="pill" data-bs-target="#pills-2-extension"
             type="button" role="tab" aria-controls="pills-2-extension" aria-selected="false"><i
               class="bi bi-code-square"></i> VS Code Extension</button>
         </li>
@@ -27,12 +27,12 @@
     <div class="col">
       <div class="tab-content" id="pills-tabContent">
         <!-- TAB 1 -->
-        <div class="tab-pane fade" id="pills-1-extension" role="tabpanel"
+        <div class="tab-pane fade show active" id="pills-1-extension" role="tabpanel"
           aria-labelledby="pills-1-tab-extension">
           <div id="tab1-extension"></div>
         </div>
         <!-- TAB 2 -->
-        <div class="tab-pane fade show active" id="pills-2-extension" role="tabpanel" aria-labelledby="pills-2-tab-extension">
+        <div class="tab-pane fade" id="pills-2-extension" role="tabpanel" aria-labelledby="pills-2-tab-extension">
           <div id="tab2-extension"></div>
         </div>
         <!-- TAB 3 -->
@@ -46,9 +46,19 @@
   <script src="../library/js/jquery-3.6.0.min.js"></script>
 
   <script>
+    // Load tab1-book.html
+    $(function () {
+      $("#tab1-extension").load("./pages/sub-extension/tab1-extension.html");
+    });
+
     // Load tab2-book.html
     $(function () {
       $("#tab2-extension").load("./pages/sub-extension/tab2-extension.html");
+    });
+
+    // Load tab2-book.html
+    $(function () {
+      $("#tab3-extension").load("./pages/sub-extension/tab3-extension.html");
     });
   </script>
 </body>
