@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $('#book-100-in-history').DataTable({
+  $('#ex-editor-theme').DataTable({
     'bPaginate': false, // Hide paginate
     "bLengthChange": false,
     "bInfo": false, // Hide entry text
@@ -11,11 +11,11 @@ $(document).ready(function () {
       'targets': [0]
     }], // Hide sort icon on header of first column
     'aaSorting': [
-      [3, 'asc']
-    ], // Start to sort data in fourth column
+      [99, 'asc']
+    ], // Start to sort data: Disable
   });
 
-  $('#book-behind-the-scene').DataTable({
+  $('#ex-starter-pack').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -26,11 +26,11 @@ $(document).ready(function () {
       'targets': [0]
     }],
     'aaSorting': [
-      [3, 'asc']
+      [99, 'asc']
     ],
   });
 
-  $('#book-big-ideas-simply-explained').DataTable({
+  $('#ex-formatter').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -41,11 +41,11 @@ $(document).ready(function () {
       'targets': [0]
     }],
     'aaSorting': [
-      [3, 'asc']
+      [99, 'asc']
     ],
   });
 
-  $('#book-dk-essential-managers').DataTable({
+  $('#ex-time-saving').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -56,11 +56,11 @@ $(document).ready(function () {
       'targets': [0]
     }],
     'aaSorting': [
-      [3, 'asc']
+      [99, 'asc']
     ],
   });
 
-  $('#book-dk-life-stories').DataTable({
+  $('#ex-time-saving').DataTable({
     'bPaginate': false,
     "bLengthChange": false,
     "bInfo": false,
@@ -71,8 +71,53 @@ $(document).ready(function () {
       'targets': [0]
     }],
     'aaSorting': [
-      [3, 'asc']
+      [99, 'asc']
     ],
   });
-  
+
+  $('#ex-intellisense').DataTable({
+    'bPaginate': false,
+    "bLengthChange": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "bFilter": false,
+    'columnDefs': [{
+      'orderable': false,
+      'targets': [0]
+    }],
+    'aaSorting': [
+      [99, 'asc']
+    ],
+  });
+
+  $('#ex-useful-tools').DataTable({
+    'bPaginate': false,
+    "bLengthChange": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "bFilter": false,
+    'columnDefs': [{
+      'orderable': false,
+      'targets': [0]
+    }],
+    'aaSorting': [
+      [99, 'asc']
+    ],
+  });
+
+  $('#ex-miscellaneous').DataTable({
+    'bPaginate': false,
+    "bLengthChange": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "bFilter": false,
+    'columnDefs': [{
+      'orderable': false,
+      'targets': [0]
+    }],
+    'aaSorting': [
+      [99, 'asc']
+    ],
+  });
+
 });
