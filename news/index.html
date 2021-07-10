@@ -56,23 +56,23 @@
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-2-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button"
-              role="tab" aria-controls="pills-2" aria-selected="false"><i class="bi bi-globe"></i> Website</button>
+              role="tab" aria-controls="pills-2" aria-selected="false"><i class="bi bi-globe"></i> Top Website</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-3-tab" data-bs-toggle="pill" data-bs-target="#pills-3" type="button"
-              role="tab" aria-controls="pills-3" aria-selected="false"><i class="bi bi-youtube"></i> Youtube</button>
+              role="tab" aria-controls="pills-3" aria-selected="false"><i class="bi bi-youtube"></i> Top Youtube</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-4-tab" data-bs-toggle="pill" data-bs-target="#pills-4" type="button"
-              role="tab" aria-controls="pills-4" aria-selected="false"><i class="bi bi-easel"></i> Course</button>
+              role="tab" aria-controls="pills-4" aria-selected="false"><i class="bi bi-easel"></i> Top Course</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-5-tab" data-bs-toggle="pill" data-bs-target="#pills-5" type="button"
-              role="tab" aria-controls="pills-5" aria-selected="false"><i class="bi bi-book"></i> Book</button>
+              role="tab" aria-controls="pills-5" aria-selected="false"><i class="bi bi-book"></i> Best Book</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-6-tab" data-bs-toggle="pill" data-bs-target="#pills-6" type="button"
-              role="tab" aria-controls="pills-6" aria-selected="false"><i class="bi bi-gear"></i> Extension</button>
+              role="tab" aria-controls="pills-6" aria-selected="false"><i class="bi bi-gear"></i> Extensions</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-7-tab" data-bs-toggle="pill" data-bs-target="#pills-7" type="button"
@@ -81,12 +81,7 @@
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-8-tab" data-bs-toggle="pill" data-bs-target="#pills-8" type="button"
-              role="tab" aria-controls="pills-8" aria-selected="false"><i class="bi bi-briefcase"></i> Find a
-              Job</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-9-tab" data-bs-toggle="pill" data-bs-target="#pills-9" type="button"
-              role="tab" aria-controls="pills-9" aria-selected="false"><i class="bi bi-gem"></i> Life Advice</button>
+              role="tab" aria-controls="pills-8" aria-selected="false"><i class="bi bi-gem"></i> Life Advice</button>
           </li>
         </ul>
       </div>
@@ -128,13 +123,11 @@
           <div class="tab-pane fade" id="pills-8" role="tabpanel" aria-labelledby="pills-8-tab">
             <div id="tab8"></div>
           </div>
-          <!-- TAB 9 -->
-          <div class="tab-pane fade" id="pills-9" role="tabpanel" aria-labelledby="pills-9-tab">
-            <div id="tab9"></div>
-          </div>
         </div>
       </div>
     </div>
+
+    <div class="mb-3"></div>
   </div>
 
   <!-- Bootstrap 5-->
@@ -166,13 +159,13 @@
         document.querySelector('#tab4').innerHTML = body;
       });
 
-    // Load tab9.html
-    fetch('./pages/tab9.html')
+    // Load tab8.html
+    fetch('./pages/tab8.html')
       .then(function (response) {
         return response.text();
       })
       .then(function (body) {
-        document.querySelector('#tab9').innerHTML = body;
+        document.querySelector('#tab8').innerHTML = body;
       });
 
     // Load dengan menggunakan fitur jQuery: Load
