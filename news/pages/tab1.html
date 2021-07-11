@@ -1,241 +1,60 @@
 <body>
-  <div class="col">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-      <!-- 
-        Jika XS (<576px)    maka isi 1 baris dengan 1 kolom
-        Jika SM (≥576px)    maka isi 1 baris dengan 2 kolom
-        Jika MD (≥768px)    maka isi 1 baris dengan 3 kolom
-        Jika LG (≥992px)    maka isi 1 baris dengan 4 kolom
-        Jika XL (≥1200px)   maka isi 1 baris dengan 4 kolom (ngikut LG)
-        Jika XXL (≥1400px)  maka isi 1 baris dengan 4 kolom (ngikut LG)
-      -->
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">📚 Stay Up-to-Date!</h6>
-          <a href="https://medium.com/" class="list-group-item list-group-item-action">Medium <span class="float-end"><i
-                class="bi bi-star"></i></span></a>
-          <a href="https://feedly.com/" class="list-group-item list-group-item-action">Feedly <span class="float-end"><i
-                class="bi bi-star"></i></span></a>
-          <a href="https://list.ly/" class="list-group-item list-group-item-action">Listly</a>
-          <a href="https://www.blinkist.com/" class="list-group-item list-group-item-action">Blinkist</a>
-          <a href="https://lifeclub.org/" class="list-group-item list-group-item-action">LifeClub</a>
-          <a href="https://www.optimize.me/plus-one/" class="list-group-item list-group-item-action">Optimize +1s</a>
-          <a href="https://github.com/zudochkin/awesome-newsletters"
-            class="list-group-item list-group-item-action">Awesome Newsletters <span class="float-end"><i
-                class="bi bi-emoji-sunglasses"></i></span></a>
+  <!-- TABS | DAILY -->
+  <div class="row">
+    <div class="col">
+      <ul class="nav nav-pills nav-fill mt-3" id="pills-tab-daily" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-1-tab-daily" data-bs-toggle="pill" data-bs-target="#pills-1-daily"
+            type="button" role="tab" aria-controls="pills-1-daily" aria-selected="false"><i class="bi bi-bell"></i> Latest News</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-2-tab-daily" data-bs-toggle="pill" data-bs-target="#pills-2-daily"
+            type="button" role="tab" aria-controls="pills-2-daily" aria-selected="true"><i class="bi bi-cloud-arrow-down"></i> Latest Resources</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-3-tab-daily" data-bs-toggle="pill" data-bs-target="#pills-3-daily"
+            type="button" role="tab" aria-controls="pills-3-daily" aria-selected="false"><i class="bi bi-building"></i> Find a Job</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTENT | DAILY -->
+  <div class="row">
+    <div class="col">
+      <div class="tab-content" id="pills-tabContent">
+        <!-- TAB 1 -->
+        <div class="tab-pane fade show active" id="pills-1-daily" role="tabpanel" aria-labelledby="pills-1-tab-daily">
+          <div id="tab1-daily"></div>
         </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">🚀 Science & Tech News</h6>
-          <a href="https://tldr.tech/" class="list-group-item list-group-item-action">TLDR: Tech & Science
-            <span class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://dailysocial.id/" class="list-group-item list-group-item-action">DailySocialId <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.techinasia.com/" class="list-group-item list-group-item-action">TechInAsia</a>
-          <a href="https://www.makeuseof.com/" class="list-group-item list-group-item-action">MakeUseOf</a>
-          <a href="https://phys.org/weekly-news/" class="list-group-item list-group-item-action">PhysOrg Weekly</a>
-          <a href="https://scitechdaily.com/" class="list-group-item list-group-item-action">SciTech Daily</a>
-          <a href="https://www.sciencedaily.com/news/top/science/"
-            class="list-group-item list-group-item-action">ScienceDaily</a>
+        <!-- TAB 2 -->
+        <div class="tab-pane fade" id="pills-2-daily" role="tabpanel" aria-labelledby="pills-2-tab-daily">
+          <div id="tab2-daily"></div>
         </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">👨‍💻 Web Development News</h6>
-          <a href="https://zerotomastery.io/blog/" class="list-group-item list-group-item-action">ZeroToMastery Blog
-            <span class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.freecodecamp.org/news/tag/web-development/"
-            class="list-group-item list-group-item-action">FreeCodeCamp Blog <span class="float-end"><i
-                class="bi bi-star"></i></span></a>
-          <a href="https://javascriptweekly.com/latest" class="list-group-item list-group-item-action">JavaScript
-            Weekly</a>
-          <a href="http://esnextnews.com/archive.html" class="list-group-item list-group-item-action">ES.Next News</a>
-          <a href="https://frontendfront.com/" class="list-group-item list-group-item-action">Frontend Front</a>
-          <a href="https://www.webdesignernews.com/" class="list-group-item list-group-item-action">WebDesigner News</a>
-          <a href="https://github.com/jondot/awesome-weekly" class="list-group-item list-group-item-action">Awesome
-            Weekly <span class="float-end"><i class="bi bi-emoji-sunglasses"></i></span></a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">🤖 AI & Machine Learning News</h6>
-          <a href=https://aiweekly.co/issues" class="list-group-item list-group-item-action">AI Weekly <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.deeplearningweekly.com/" class="list-group-item list-group-item-action">Deep Learning
-            Weekly <span class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://towardsdatascience.com/" class="list-group-item list-group-item-action">Towards Data
-            Science</a>
-          <a href="https://www.analyticsvidhya.com/blog/" class="list-group-item list-group-item-action">Analytics
-            Vidhya</a>
-          <a href="https://machinelearningmastery.com/"
-            class="list-group-item list-group-item-action">MachineLearningMastery</a>
-          <a href="https://sh-tsang.medium.com/overview-my-reviewed-paper-lists-tutorials-946ce59fbf9e"
-            class="list-group-item list-group-item-action">Sik-Ho Tsang Medium</a>
-          <a href="https://paperswithcode.com/" class="list-group-item list-group-item-action">PapersWithCode</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">👨‍🎨 Product Design News</h6>
-          <a href="https://uxdesign.cc/" class="list-group-item list-group-item-action">UX Collective <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.designnotes.co/" class="list-group-item list-group-item-action">DesignNotes <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.designresourc.es/" class="list-group-item list-group-item-action">DesignResources</a>
-          <a href="https://drive.google.com/file/d/1uqRmKfiZ5W5Ih0oDgMhvL6Cx3-GssSiw/view?usp=sharing"
-            class="list-group-item list-group-item-action">ZTM Design Resources</a>
-          <a href="https://github.com/bradtraversy/design-resources-for-developers"
-            class="list-group-item list-group-item-action">BradTraversy Resources</a>
-          <a href="https://github.com/alamehan/nice-list#sec07" class="list-group-item list-group-item-action">Designer
-            101 @alamehan <span class="float-end"><i class="bi bi-trophy"></i></span></a>
-          <a href="https://github.com/nicolesaidy/awesome-web-design"
-            class="list-group-item list-group-item-action">Awesome Web Design <span class="float-end"><i
-                class="bi bi-emoji-sunglasses"></i></span></a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">👽 Game & Pop Culture News</h6>
-          <a href="https://www.fandom.com/" class="list-group-item list-group-item-action">Fandom <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.gamespot.com/" class="list-group-item list-group-item-action">GameSpot <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="ign.com" class="list-group-item list-group-item-action">IGN Media</a>
-          <a href="https://www.youtube.com/channel/UCbb5TgzYFaLw0_QYxMvxDdg"
-            class="list-group-item list-group-item-action">The Lazy Monday <span class="float-end"><i
-                class="bi bi-translate"></i></span></a>
-          <a href="https://jagatplay.com/" class="list-group-item list-group-item-action">JagatPlay.com <span
-              class="float-end"><i class="bi bi-translate"></i></span></a>
-          <a href="https://www.kaorinusantara.or.id/" class="list-group-item list-group-item-action">KAORI Nusantara
-            <span class="float-end"><i class="bi bi-translate"></i></span></a>
-          <a href="https://www.animenewsnetwork.com/" class="list-group-item list-group-item-action">Anime News
-            Network</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">📰 Latest News (Indonesia)</h6>
-          <a href="https://www.cnnindonesia.com/" class="list-group-item list-group-item-action">CNN (ID)<span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.vice.com/id" class="list-group-item list-group-item-action">VICE (ID)<span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://katadata.co.id/" class="list-group-item list-group-item-action">Tempo.co</a>
-          <a href="https://katadata.co.id/" class="list-group-item list-group-item-action">Katadata</a>
-          <a href="https://20.detik.com/" class="list-group-item list-group-item-action">20 Detik</a>
-          <a href="https://tirto.id/" class="list-group-item list-group-item-action">Tirto.id</a>
-          <a href="https://opini.id/" class="list-group-item list-group-item-action">Opini.id</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">🏆 Latest Product & Project</h6>
-          <a href="https://www.producthunt.com/" class="list-group-item list-group-item-action">Product Hunt <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://github.com/trending" class="list-group-item list-group-item-action">GitHub Trending <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.trendingprojects.com/" class="list-group-item list-group-item-action">Trending
-            Projects</a>
-          <a href="https://stackshare.io/tools/trending" class="list-group-item list-group-item-action">StackShare
-            Trending</a>
-          <a href="https://www.g2.com/" class="list-group-item list-group-item-action">G2 Software Popular</a>
-          <a href="https://bestofjs.org/" class="list-group-item list-group-item-action">Best of JS, HTML & CSS</a>
-          <a href="https://awesomeopensource.com/projects" class="list-group-item list-group-item-action">Awesome Open
-            Source <span class="float-end"><i class="bi bi-emoji-sunglasses"></i></span></a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">🎓 Latest Useful Resources</h6>
-          <a href="https://onehack.us/" class="list-group-item list-group-item-action">OneHack (Community) <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://freesoff.com/" class="list-group-item list-group-item-action">FreeSoff (Community) <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://tutflix.org/forums/udemy-coupon/" class="list-group-item list-group-item-action">TutFlix
-            (Forum)</a>
-          <a href="https://forum.mobilism.me/search.php?keywords=DK&sr=topics&sf=titleonly"
-            class="list-group-item list-group-item-action">Mobilism (Forum)</a>
-          <a href="https://freecourselab.com/" class="list-group-item list-group-item-action">FreeCourseLab</a>
-          <a href="https://tut4dl.com/" class="list-group-item list-group-item-action">Tut4Dl.com</a>
-          <a href="https://z-lib.org/" class="list-group-item list-group-item-action">Z-Library eBook</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">💎 Latest General Resouces</h6>
-          <a href="https://filelisting.com/" class="list-group-item list-group-item-action">FileListing (Torrent)<span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://sanet.st/full/" class="list-group-item list-group-item-action">SoftArchive (Sanet) <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://downloadly.ir/" class="list-group-item list-group-item-action">Downloadly</a>
-          <a href="https://tavaz.xyz/" class="list-group-item list-group-item-action">Tavaz XYZ</a>
-          <a href="https://www.downturk.net/" class="list-group-item list-group-item-action">DownTurk</a>
-          <a href="https://shareappscrack.com/" class="list-group-item list-group-item-action">ShareAppsCrack</a>
-          <a href="https://yts.mx/" class="list-group-item list-group-item-action">Yify Torrents</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">💼 Find a Job: General</h6>
-          <a href="https://www.linkedin.com/" class="list-group-item list-group-item-action">LinkedIn <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.glassdoor.com/" class="list-group-item list-group-item-action">GlassDoor <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://glints.com/id" class="list-group-item list-group-item-action">Glints</a>
-          <a href="https://www.jobstreet.co.id/" class="list-group-item list-group-item-action">JobStreet</a>
-          <a href="https://www.careerjet.co.id/" class="list-group-item list-group-item-action">CareerJet</a>
-          <a href="https://id.indeed.com/" class="list-group-item list-group-item-action">Indeed</a>
-          <a href="https://id.jora.com/" class="list-group-item list-group-item-action">Jobs by Jora</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">👔 Find a Job: Technology (1)</h6>
-          <a href="https://simonas.kominfo.go.id/" class="list-group-item list-group-item-action">SIMONAS Kominfo <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.techinasia.com/jobs" class="list-group-item list-group-item-action">Jobs by Tech in Asia
-            <span class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://www.dicoding.com/jobs/list" class="list-group-item list-group-item-action">Jobs by
-            Dicoding</a>
-          <a href="https://careers.shopee.co.id/jobs/" class="list-group-item list-group-item-action">Shopee Career</a>
-          <a href="https://www.tokopedia.com/careers/jobs/" class="list-group-item list-group-item-action">Tokopedia
-            Career</a>
-          <a href="https://careers.bukalapak.com/jobs" class="list-group-item list-group-item-action">Bukalapak
-            Career</a>
-          <a href="https://careers.blibli.com/" class="list-group-item list-group-item-action">BliBli Career</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">👔 Find a Job: Technology (2)</h6>
-          <a href="https://career.gojek.com/job/" class="list-group-item list-group-item-action">Gojek Career</a>
-          <a href="https://www.traveloka.com/en-id/careers" class="list-group-item list-group-item-action">Traveloka
-            Career</a>
-          <a href="https://www.pegipegi.com/team/career.html" class="list-group-item list-group-item-action">PegiPegi
-            Career</a>
-          <a href="https://www.dana.id/career" class="list-group-item list-group-item-action">DANA Career</a>
-          <a href="https://www.ovo.id/career" class="list-group-item list-group-item-action">OVO Career</a>
-          <a href="https://career.ruangguru.com/" class="list-group-item list-group-item-action">Ruangguru Career</a>
-          <a href="https://kitabisa.com/" class="list-group-item list-group-item-action">Kitabisa Career</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="list-group list-group-numbered">
-          <h6 class="mt-4">😎 Find a Job: Freelancer</h6>
-          <a href="https://www.freelancer.co.id/work/projects"
-            class="list-group-item list-group-item-action">Freelancer.co.id <span class="float-end"><i
-                class="bi bi-star"></i></span></a>
-          <a href="https://fastwork.id/" class="list-group-item list-group-item-action">Fastwork.id <span
-              class="float-end"><i class="bi bi-star"></i></span></a>
-          <a href="https://projects.co.id/public/browse_projects/listing"
-            class="list-group-item list-group-item-action">Project.co.id</a>
-          <a href="https://www.sribulancer.com/id/bj/loker/v3"
-            class="list-group-item list-group-item-action">Sribulancer</a>
-          <a href="https://www.sribu.com/id/contests" class="list-group-item list-group-item-action">Sribu Contest</a>
-          <a href="https://99designs.com/contests" class="list-group-item list-group-item-action">99Design Contest</a>
-          <a href="https://jobs.designcrowd.com/jobs/" class="list-group-item list-group-item-action">DesignCrowd</a>
+        <!-- TAB 3 -->
+        <div class="tab-pane fade" id="pills-3-daily" role="tabpanel" aria-labelledby="pills-3-tab-daily">
+          <div id="tab3-daily"></div>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="../library/js/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // Load tab1-daily.html
+    $(function () {
+      $("#tab1-daily").load("./pages/sub-daily/tab1-daily.html");
+    });
+
+    // Load tab2-daily.html
+    $(function () {
+      $("#tab2-daily").load("./pages/sub-daily/tab2-daily.html");
+    });
+
+    // Load tab3-daily.html
+    $(function () {
+      $("#tab3-daily").load("./pages/sub-daily/tab3-daily.html");
+    });
+  </script>
 </body>

@@ -141,15 +141,6 @@
     // Load dengan menggunakan fitur ES6: Fetch
     // Kekurangan: Tidak bisa untuk kasus Nested
 
-    // Load tab1.html
-    fetch('./pages/tab1.html')
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (body) {
-        document.querySelector('#tab1').innerHTML = body;
-      });
-
     // Load tab2.html
     fetch('./pages/tab2.html')
       .then(function (response) {
@@ -188,6 +179,11 @@
 
     // Load dengan menggunakan fitur jQuery: Load
     // Kelebihan: Bisa digunaan untuk kasus Nested
+
+    // Load tab1.html
+    $(function () {
+      $("#tab1").load("./pages/tab1.html");
+    });
 
     // Load tab5.html
     $(function () {
