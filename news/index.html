@@ -17,7 +17,7 @@
   <link href="library/css/bootstrap-icons.css" rel="stylesheet">
   <link href="library/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   <style>
-    /* Modifiy Original Bootstrap */
+    /* A. Modifiy Original Bootstrap */
     .list-group-item {
       padding: 0.1rem 1.5rem;
     }
@@ -31,10 +31,51 @@
       background-color: #0d6efd !important;
       color: white !important;
     }
+
+    /* B. Button to Top */
+    .btn-scroll {
+      z-index: 1000;
+
+      /* Perfect Fixed Center Position */
+      position: fixed;
+      bottom: -40px;
+      left: 50%;
+      /* Wajib Tambahkan Transform */
+      transform: translate(-50%, 0%);
+      border: 0px solid;
+      border-radius: 100px;
+      padding: 0px;
+      background-color: transparent;
+      transition: 0.3s;
+    }
+
+    /* Hover saat buka di computer Active (click) saat buka di mobile */
+    .btn-scroll:hover,
+    .btn-scroll:active {
+      bottom: 0;
+    }
+
+    .btn-scroll:hover .ganti-warna,
+    .btn-scroll:active .ganti-warna {
+      filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(175deg) brightness(97%) contrast(103%);
+    }
+
+    /* ------------------------------- RESPONSIVE ------------------------------- */
+
+    @media (max-width: 771px) {
+      .btn-scroll {
+        bottom: 0px;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- BUTTON TO TOP -->
+  <button class="btn-scroll">
+    <a href="#atas"><img src="assets/to-top.svg" class="ganti-warna"></a>
+  </button>
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-dark bg-dark">
     <div class="container">
@@ -43,7 +84,7 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container" id="atas">
     <!-- TABS -->
     <div class="row">
       <div class="col">
