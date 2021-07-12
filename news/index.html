@@ -38,12 +38,11 @@
 
       /* Perfect Fixed Center Position */
       position: fixed;
-      bottom: -40px;
-      left: 50%;
+      bottom: 15%;
+      right: -16px;
       /* Wajib Tambahkan Transform */
-      transform: translate(-50%, 0%);
+      /* transform: translate(-50%, 0%); */
       border: 0px solid;
-      border-radius: 100px;
       padding: 0px;
       background-color: transparent;
       transition: 0.3s;
@@ -52,7 +51,7 @@
     /* Hover saat buka di computer Active (click) saat buka di mobile */
     .btn-scroll:hover,
     .btn-scroll:active {
-      bottom: 0;
+      right: 0px;
     }
 
     .btn-scroll:hover .ganti-warna,
@@ -64,7 +63,8 @@
 
     @media (max-width: 771px) {
       .btn-scroll {
-        bottom: 0px;
+        right: 0px;
+        opacity: 75%;
       }
     }
   </style>
