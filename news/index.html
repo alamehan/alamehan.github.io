@@ -12,14 +12,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>NiceList by Alamehan</title>
-  <link rel="icon" href="../assets/favicon.ico">
-  <link rel="stylesheet" href="library/css/bootstrap-5.0.2.min.css">
-  <link rel="stylesheet" href="library/css/bootstrap-icons.css">
-  <link rel="stylesheet" href="library/css/dataTables.bootstrap5.min.css">
+  <link href="../assets/favicon.ico" rel="icon">
+  <link href="library/css/bootstrap-5.0.2.min.css" rel="stylesheet">
+  <link href="library/css/bootstrap-icons.css" rel="stylesheet">
+  <link href="library/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   <style>
     /* Modifiy Original Bootstrap */
     .list-group-item {
-      padding: .1rem 1.5rem;
+      padding: 0.1rem 1.5rem;
     }
 
     .nav-pills .nav-item .nav-link {
@@ -39,8 +39,7 @@
   <nav class="navbar navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand fw-bolder" href="#">✨ NiceList ✨</a>
-      <a class="navbar-text text-light text-decoration-none" href="https://alamehan.github.io/">Alamehan Web <i
-          class="bi bi-arrow-right-circle"></i></a>
+      <a class="navbar-text text-light text-decoration-none" href="https://alamehan.github.io/">Alamehan Web <i class="bi bi-arrow-right-circle"></i></a>
     </div>
   </nav>
 
@@ -50,38 +49,44 @@
       <div class="col">
         <ul class="nav nav-pills nav-fill mt-3" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-1-tab" data-bs-toggle="pill" data-bs-target="#pills-1"
-              type="button" role="tab" aria-controls="pills-1" aria-selected="true"><i class="bi bi-newspaper"></i>
-              Daily Check</button>
+            <button class="nav-link active" id="pills-1-tab" data-bs-target="#pills-1" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-1" aria-selected="true">
+              <i class="bi bi-newspaper"></i> Daily Check
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-2-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button"
-              role="tab" aria-controls="pills-2" aria-selected="false"><i class="bi bi-globe"></i> Top Website</button>
+            <button class="nav-link" id="pills-2-tab" data-bs-target="#pills-2" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-2" aria-selected="false">
+              <i class="bi bi-globe"></i> Top Website
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-3-tab" data-bs-toggle="pill" data-bs-target="#pills-3" type="button"
-              role="tab" aria-controls="pills-3" aria-selected="false"><i class="bi bi-youtube"></i> Top Youtube</button>
+            <button class="nav-link" id="pills-3-tab" data-bs-target="#pills-3" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-3" aria-selected="false">
+              <i class="bi bi-youtube"></i> Top Youtube
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-4-tab" data-bs-toggle="pill" data-bs-target="#pills-4" type="button"
-              role="tab" aria-controls="pills-4" aria-selected="false"><i class="bi bi-easel"></i> Top Course</button>
+            <button class="nav-link" id="pills-4-tab" data-bs-target="#pills-4" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-4" aria-selected="false">
+              <i class="bi bi-easel"></i> Top Course
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-5-tab" data-bs-toggle="pill" data-bs-target="#pills-5" type="button"
-              role="tab" aria-controls="pills-5" aria-selected="false"><i class="bi bi-book"></i> Best Book</button>
+            <button class="nav-link" id="pills-5-tab" data-bs-target="#pills-5" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-5" aria-selected="false">
+              <i class="bi bi-book"></i> Best Book
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-6-tab" data-bs-toggle="pill" data-bs-target="#pills-6" type="button"
-              role="tab" aria-controls="pills-6" aria-selected="false"><i class="bi bi-gear"></i> Extensions</button>
+            <button class="nav-link" id="pills-6-tab" data-bs-target="#pills-6" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-6" aria-selected="false">
+              <i class="bi bi-gear"></i> Extensions
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-7-tab" data-bs-toggle="pill" data-bs-target="#pills-7" type="button"
-              role="tab" aria-controls="pills-7" aria-selected="false"><i class="bi bi-window-sidebar"></i>
-              Software</button>
+            <button class="nav-link" id="pills-7-tab" data-bs-target="#pills-7" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-7" aria-selected="false">
+              <i class="bi bi-window-sidebar"></i> Software
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-8-tab" data-bs-toggle="pill" data-bs-target="#pills-8" type="button"
-              role="tab" aria-controls="pills-8" aria-selected="false"><i class="bi bi-gem"></i> Life Advice</button>
+            <button class="nav-link" id="pills-8-tab" data-bs-target="#pills-8" data-bs-toggle="pill" type="button" role="tab" aria-controls="pills-8" aria-selected="false">
+              <i class="bi bi-gem"></i> Life Advice
+            </button>
           </li>
         </ul>
       </div>
@@ -142,39 +147,39 @@
     // Kekurangan: Tidak bisa untuk kasus Nested
 
     // Load tab2.html
-    fetch('./pages/tab2.html')
+    fetch("./pages/tab2.html")
       .then(function (response) {
         return response.text();
       })
       .then(function (body) {
-        document.querySelector('#tab2').innerHTML = body;
+        document.querySelector("#tab2").innerHTML = body;
       });
 
     // Load tab3.html
-    fetch('./pages/tab3.html')
+    fetch("./pages/tab3.html")
       .then(function (response) {
         return response.text();
       })
       .then(function (body) {
-        document.querySelector('#tab3').innerHTML = body;
+        document.querySelector("#tab3").innerHTML = body;
       });
 
     // Load tab4.html
-    fetch('./pages/tab4.html')
+    fetch("./pages/tab4.html")
       .then(function (response) {
         return response.text();
       })
       .then(function (body) {
-        document.querySelector('#tab4').innerHTML = body;
+        document.querySelector("#tab4").innerHTML = body;
       });
 
     // Load tab8.html
-    fetch('./pages/tab8.html')
+    fetch("./pages/tab8.html")
       .then(function (response) {
         return response.text();
       })
       .then(function (body) {
-        document.querySelector('#tab8').innerHTML = body;
+        document.querySelector("#tab8").innerHTML = body;
       });
 
     // Load dengan menggunakan fitur jQuery: Load
