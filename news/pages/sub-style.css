@@ -74,14 +74,8 @@ table.dataTable>thead .sorting_desc_disabled:after {
   margin-left: 2px;
 }
 
-.incomplete::after {
-  content: "";
-  display: inline-block;
-  background-image: url(../assets/search.svg);
-  background-size: 32px 16px;
-  width: 32px;
-  height: 16px;
-  margin-left: 2px;
+.incomplete {
+  border-bottom: 2px solid #ffccbc;
 }
 
 /* D. Lainnya */
