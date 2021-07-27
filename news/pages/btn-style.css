@@ -11,11 +11,11 @@
 }
 
 .btn-b {
-  background-color: #b2dfdb;
+  background-color: #bbdefb;
 }
 
 .btn-b:hover {
-  background-color: #80cbc4;
+  background-color: #90caf9;
 }
 
 .btn-c {
@@ -32,4 +32,20 @@
 
 .btn-d:hover {
   background-color: #bcaaa4;
+}
+
+.btn-e{
+  background-color: #b2dfdb;
+}
+
+.btn-e:hover{
+  background-color: #80cbc4;
+}
+
+.btn-f{
+  background-color: #dcedc8;
+}
+
+.btn-f:hover{
+  background-color: #c5e1a5;
 }
