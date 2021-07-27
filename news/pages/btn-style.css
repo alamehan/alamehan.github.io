@@ -1,0 +1,35 @@
+.yt a {
+  margin: 8px 4px 0px 4px;
+}
+
+.btn-a {
+  background-color: #c5cae9;
+}
+
+.btn-a:hover {
+  background-color: #9fa8da;
+}
+
+.btn-b {
+  background-color: #b2dfdb;
+}
+
+.btn-b:hover {
+  background-color: #80cbc4;
+}
+
+.btn-c {
+  background-color: #ffe0b2;
+}
+
+.btn-c:hover {
+  background-color: #ffcc80;
+}
+
+.btn-d {
+  background-color: #d7ccc8;
+}
+
+.btn-d:hover {
+  background-color: #bcaaa4;
+}
