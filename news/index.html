@@ -199,15 +199,6 @@
         document.querySelector("#tab2").innerHTML = body;
       });
 
-    // Load tab4.html
-    fetch("./pages/tab4.html")
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (body) {
-        document.querySelector("#tab4").innerHTML = body;
-      });
-
     // Load tab8.html
     fetch("./pages/tab8.html")
       .then(function (response) {
@@ -228,6 +219,11 @@
     // Load tab3.html
     $(function () {
       $("#tab3").load("./pages/tab3.html");
+    });
+
+    // Load tab4.html
+    $(function () {
+      $("#tab4").load("./pages/tab4.html");
     });
 
     // Load tab5.html
