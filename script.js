@@ -50,7 +50,7 @@ $(document).ready(function () {
 
   $('#card1').flip({
     // Optional
-    trigger: 'click',
+    trigger: 'manual',
     autoSize: true,
   });
 
@@ -84,6 +84,24 @@ $(document).ready(function () {
     autoSize: true,
   });
 
+  $('#card7').flip({
+    // Optional
+    trigger: 'click',
+    autoSize: true,
+  });
+
+  $('#card8').flip({
+    // Optional
+    trigger: 'click',
+    autoSize: true,
+  });
+
+  $('#card9').flip({
+    // Optional
+    trigger: 'click',
+    autoSize: true,
+  });
+
   //---------- Slick JS
 
   $('.slick-js').slick({
@@ -93,7 +111,7 @@ $(document).ready(function () {
 
     // Auto-geser (A Little Legacy)
     autoplay: true,
-    autoplaySpeed: 1700,
+    autoplaySpeed: 3000,
   });
 
   $('.slider').slick({
@@ -289,7 +307,7 @@ $(document).ready(function () {
     Swal.fire({
       // icon: 'info',
       title: '⚔️ Tools',
-      text: 'Figma & Adobe XD for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo, etc.)',
+      text: 'Balsamiq, Adobe XD & Figma for vector-based design tools plus prototyping (visual design, UX, UI, illustration, logo)',
 
       imageUrl: 'assets/logo2.svg',
       imageWidth: 80,

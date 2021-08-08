@@ -270,7 +270,7 @@ $('.alert-nicelist').click(function () {
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="https://github.com/alamehan/nice-list">Visit</a>',
+    confirmButtonText: '<a href="https://alamehan.github.io/news">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
@@ -381,6 +381,22 @@ $('.alert-oldworks').click(function () {
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
     confirmButtonText: '<a href="http://raihan110598blog.blogspot.com/">Visit</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
+$('.alert-satuklik').click(function () {
+  Swal.fire({
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">🔗 SatuKlik :\n Modern Bio Link</h1>',
+    imageUrl: 'assets/logo-z-satuklik.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="https://satuklik.github.io/">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });

@@ -62,7 +62,7 @@ $('.alert-k4').click(function () {
     width: 400,
     background: '#000',
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="#">🔒 Upcoming</a>',
+    confirmButtonText: '<a href="https://github.com/alamehan/book-summary/tree/main/the-only-javascript">Visit</a>',
     showCancelButton: true,
     cancelButtonText: 'Cancel',
   });
