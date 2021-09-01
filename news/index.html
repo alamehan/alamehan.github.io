@@ -18,6 +18,17 @@
   <link href="library/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   <!-- External CSS Custom -->
   <link href="pages/btn-style.css" rel="stylesheet">
+  <script>
+    // Yahh.. ketahuan :( emang statis pake JS doang jadi ya wajar muncul di Inspect Element, Chuaks!
+    function ValidatePassword() { 
+      var gaspol = prompt("Enter Password to Unlock 👽\n", ""); 
+      if (gaspol == "gocengdulu") { 
+        return true;
+      } 
+      location.replace("https://alamehan.github.io/");
+    }
+    ValidatePassword();
+  </script>
   <style>
     /* A. Modifiy Original Bootstrap */
     .list-group-item {
