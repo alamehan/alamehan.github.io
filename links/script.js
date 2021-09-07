@@ -94,6 +94,22 @@ $('.alert-behance').click(function () {
   });
 });
 
+$('.alert-dribbble').click(function () {
+  Swal.fire({
+    title: '<h1 style="font-size: 85%; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)">👨‍🎨 Dribbble :\n Design & Illustration</h1>',
+    imageUrl: '@original/assets/logo-dribbble.svg',
+    customClass: {
+      popup: 'popup-noproject',
+      confirmButton: 'confirm-button-noproject',
+      cancelButton: 'cancel-button-noproject',
+    },
+    backdrop: `rgba(13, 13, 13, 0.92)`,
+    confirmButtonText: '<a href="https://dribbble.com/alamehan">Visit</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
+  });
+});
+
 // =============================================================================================== //
 // =============================================================================================== //
 
