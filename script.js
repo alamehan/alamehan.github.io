@@ -50,7 +50,7 @@ $(document).ready(function () {
 
   $('#card1').flip({
     // Optional
-    trigger: 'manual',
+    trigger: 'manual', // Disable only for Soon card
     autoSize: true,
   });
 
@@ -97,6 +97,24 @@ $(document).ready(function () {
   });
 
   $('#card9').flip({
+    // Optional
+    trigger: 'click',
+    autoSize: true,
+  });
+
+  $('#card10').flip({
+    // Optional
+    trigger: 'click',
+    autoSize: true,
+  });
+
+  $('#card11').flip({
+    // Optional
+    trigger: 'click',
+    autoSize: true,
+  });
+
+  $('#card12').flip({
     // Optional
     trigger: 'click',
     autoSize: true,

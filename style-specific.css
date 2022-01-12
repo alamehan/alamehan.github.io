@@ -704,7 +704,10 @@ h3 {
 .order-d6,
 .order-d7,
 .order-d8,
-.order-d9 {
+.order-d9,
+.order-d10,
+.order-d11,
+.order-d12 {
   margin-top: 16px;
 }
 
@@ -743,12 +746,12 @@ h3 {
     height: 264px;
   }
 
-  .order-d3,
+  /* .order-d3,
   .order-d4,
   .order-d5,
   .order-d6 {
     margin-top: 16px;
-  }
+  } */
 
   .sec5-title {
     text-align: center;
@@ -767,13 +770,13 @@ h3 {
     height: 228px;
   }
 
-  .order-d2,
+  /* .order-d2,
   .order-d3,
   .order-d4,
   .order-d5,
   .order-d6 {
     margin-top: 16px;
-  }
+  } */
 
   .img-responsive {
     object-fit: cover;
