@@ -350,7 +350,9 @@ $('.alert-knowyourself101').click(function () {
       cancelButton: 'cancel-button-noproject',
     },
     backdrop: `rgba(13, 13, 13, 0.92)`,
-    confirmButtonText: '<a href="#">🔒 Upcoming</a>',
+    confirmButtonText: '<a href="https://drive.google.com/file/d/17ppJER1j8zDIGJvZKpCg0_Zr-Rejn9X0/view?usp=sharing">Visit</a>',
+    showCancelButton: true,
+    cancelButtonText: 'Cancel',
   });
 });
 
