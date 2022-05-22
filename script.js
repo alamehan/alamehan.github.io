@@ -50,7 +50,8 @@ $(document).ready(function () {
 
   $('#card1').flip({
     // Optional
-    trigger: 'manual', // Disable only for Soon card
+    // trigger: 'manual', // Disable only for Soon card
+    trigger: 'click',
     autoSize: true,
   });
 
