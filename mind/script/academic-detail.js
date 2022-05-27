@@ -56,7 +56,7 @@ let var_data_academic_detail = {
                   ]
                 },
                 { "name": "Early music" },
-                { "name": "Jazz studies (outline)" },
+                { "name": "Jazz studies" },
                 { "name": "Musical composition" },
                 { "name": "Music education" },
                 { "name": "Music history" },
@@ -75,7 +75,7 @@ let var_data_academic_detail = {
                   "children": [
                     { "name": "Organ and historical keyboards" },
                     { "name": "Piano" },
-                    { "name": "Strings, harp, oud, and guitar (outline)" },
+                    { "name": "Strings, harp, oud, and guitar" },
                     { "name": "Singing" },
                     { "name": "Woodwinds, brass, and percussion" },
                   ]
@@ -141,7 +141,7 @@ let var_data_academic_detail = {
                 { "name": "Printmaking" },
                 { "name": "Studio art" },
                 {
-                  "name": "Architecture (Outline of architecture)",
+                  "name": "Architecture",
                   "children": [
                     { "name": "Interior architecture" },
                     {
@@ -167,12 +167,12 @@ let var_data_academic_detail = {
               "children": [
                 {
                   "name": "Graphic arts", "children": [
-                    { "name": "Drawing (outline)" },
-                    { "name": "Painting (outline)" },
-                    { "name": "Photography (outline)" },
+                    { "name": "Drawing" },
+                    { "name": "Painting" },
+                    { "name": "Photography" },
                   ]
                 },
-                { "name": "Sculpture (outline)" },
+                { "name": "Sculpture" },
               ]
             },
           ]
@@ -190,8 +190,8 @@ let var_data_academic_detail = {
               "children": [
                 { "name": "Ancient Egypt" },
                 { "name": "Carthage" },
-                { "name": "Ancient Greek history (outline)" },
-                { "name": "Ancient Roman history (outline)" },
+                { "name": "Ancient Greek history" },
+                { "name": "Ancient Roman history" },
                 { "name": "Assyrian Civilization" },
                 { "name": "Bronze Age Civilizations" },
                 { "name": "Biblical history" },
@@ -207,7 +207,7 @@ let var_data_academic_detail = {
               "name": "Asian history",
               "children": [
                 { "name": "Chinese history" },
-                { "name": "Indian history (outline)" },
+                { "name": "Indian history" },
                 { "name": "Indonesian history" },
                 { "name": "Iranian history" },
               ]
@@ -230,7 +230,7 @@ let var_data_academic_detail = {
                 {
                   "name": "Medieval philosophy",
                   "children": [
-                    { "name": "Humanism (outline)" },
+                    { "name": "Humanism" },
                     { "name": "Scholasticism" },
                   ]
                 },
@@ -258,7 +258,7 @@ let var_data_academic_detail = {
           "name": "👉 1.4 Languages and literature",
           "children": [
             {
-              "name": "Linguistics (Outline of linguistics)",
+              "name": "Linguistics",
               "children": [
                 { "name": "Applied linguistics" },
                 { "name": "Composition studies" },
@@ -282,7 +282,7 @@ let var_data_academic_detail = {
                 { "name": "Psycholinguistics" },
                 { "name": "Rhetoric" },
                 { "name": "Semantics" },
-                { "name": "Semiotics (outline)" },
+                { "name": "Semiotics" },
                 { "name": "Sociolinguistics" },
                 { "name": "Syntax" },
                 { "name": "Usage" },
@@ -293,7 +293,7 @@ let var_data_academic_detail = {
             { "name": "Comparative literature" },
             {
               "name": "Creative writing", "children": [
-                { "name": "Fiction (outline)" },
+                { "name": "Fiction" },
                 { "name": "Non-fiction" },
               ]
             },
@@ -310,7 +310,7 @@ let var_data_academic_detail = {
             {
               "name": "Literary theory",
               "children": [
-                { "name": "Critical theory (outline)" },
+                { "name": "Critical theory" },
                 { "name": "Literary criticism" },
                 { "name": "Poetics" },
               ]
@@ -356,7 +356,7 @@ let var_data_academic_detail = {
                 { "name": "Labor law" },
                 { "name": "Property law" },
                 { "name": "Tax law" },
-                { "name": "Tort law (outline)" },
+                { "name": "Tort law" },
               ]
             },
             { "name": "Comparative law" },
@@ -365,18 +365,18 @@ let var_data_academic_detail = {
             {
               "name": "Criminal law",
               "children": [
-                { "name": "Criminal justice (outline)" },
+                { "name": "Criminal justice" },
                 {
                   "name": "Criminal procedure",
                   "children": [
-                    { "name": "Forensic science (outline)" },
+                    { "name": "Forensic science" },
                     { "name": "Police science" },
                   ]
                 },
               ]
             },
             { "name": "Islamic law" },
-            { "name": "Jewish law (outline)" },
+            { "name": "Jewish law" },
             { "name": "Jurisprudence (Philosophy of Law)" },
             {
               "name": "Legal management",
@@ -395,7 +395,7 @@ let var_data_academic_detail = {
         {
           "name": "👉 1.6 Philosophy",
           "children": [
-            { "name": "Aesthetics (outline)" },
+            { "name": "Aesthetics" },
             {
               "name": "Applied philosophy",
               "children": [
@@ -423,14 +423,14 @@ let var_data_academic_detail = {
               ]
             },
             {
-              "name": "Epistemology (outline)",
+              "name": "Epistemology",
               "children": [
                 { "name": "Justification" },
                 { "name": "Reasoning errors" },
               ]
             },
             {
-              "name": "Ethics (outline)",
+              "name": "Ethics",
               "children": [
                 {
                   "name": "Applied ethics",
@@ -451,7 +451,7 @@ let var_data_academic_detail = {
               ]
             },
             {
-              "name": "Logic (outline)",
+              "name": "Logic",
               "children": [
                 { "name": "Mathematical logic" },
                 { "name": "Philosophical logic" },
@@ -459,7 +459,7 @@ let var_data_academic_detail = {
             },
             { "name": "Meta-philosophy" },
             {
-              "name": "Metaphysics (outline)",
+              "name": "Metaphysics",
               "children": [
                 { "name": "Philosophy of Action" },
                 { "name": "Determinism and Free will" },
@@ -492,9 +492,9 @@ let var_data_academic_detail = {
             {
               "name": "Social philosophy and political philosophy",
               "children": [
-                { "name": "Anarchism (outline)" },
+                { "name": "Anarchism" },
                 { "name": "Feminist philosophy" },
-                { "name": "Libertarianism (outline)" },
+                { "name": "Libertarianism" },
                 { "name": "Marxism" },
               ]
             },
@@ -792,7 +792,7 @@ let var_data_academic_detail = {
             { "name": "Occupational health psychology" },
             { "name": "Occupational psychology" },
             { "name": "Organizational psychology (a.k.a., Industrial Psychology)" },
-            { "name": "Parapsychology (outline)" },
+            { "name": "Parapsychology" },
             { "name": "Pediatric psychology" },
             { "name": "Pedology (children study)" },
             { "name": "Personality psychology" },
@@ -858,7 +858,7 @@ let var_data_academic_detail = {
                     { "name": "Korean studies" },
                     { "name": "Pakistan studies" },
                     { "name": "Sindhology" },
-                    { "name": "Sinology (outline)" },
+                    { "name": "Sinology" },
                     { "name": "Southeast Asian studies" },
                     { "name": "Thai studies" },
                   ]
@@ -900,7 +900,7 @@ let var_data_academic_detail = {
             },
             { "name": "Comparative sociology" },
             { "name": "Conflict theory" },
-            { "name": "Criminology/Criminal justice (outline)" },
+            { "name": "Criminology/Criminal justice" },
             { "name": "Critical management studies" },
             { "name": "Critical sociology" },
             { "name": "Cultural sociology" },
@@ -926,7 +926,7 @@ let var_data_academic_detail = {
             { "name": "Evolutionary sociology" },
             { "name": "Feminist sociology" },
             { "name": "Figurational sociology" },
-            { "name": "Futures studies (outline)" },
+            { "name": "Futures studies" },
             {
               "name": "Gender studies",
               "children": [
@@ -967,7 +967,7 @@ let var_data_academic_detail = {
               "children": [
                 { "name": "Heterosexism" },
                 { "name": "Human sexual behavior" },
-                { "name": "Human sexuality (outline)" },
+                { "name": "Human sexuality" },
                 { "name": "Queer studies/Queer theory" },
                 { "name": "Sex education" },
               ]
@@ -1101,21 +1101,21 @@ let var_data_academic_detail = {
               "name": "Anatomy",
               "children": [
                 { "name": "Comparative anatomy" },
-                { "name": "Human anatomy (outline)" },
+                { "name": "Human anatomy" },
               ]
             },
-            { "name": "Biochemistry (outline)" },
+            { "name": "Biochemistry" },
             { "name": "Bioinformatics" },
-            { "name": "Biophysics (outline)" },
-            { "name": "Biotechnology (outline)" },
+            { "name": "Biophysics" },
+            { "name": "Biotechnology" },
             {
-              "name": "Botany (outline)",
+              "name": "Botany",
               "children": [
                 { "name": "Ethnobotany" },
                 { "name": "Phycology" },
               ]
             },
-            { "name": "Cell biology (outline)" },
+            { "name": "Cell biology" },
             { "name": "Chronobiology" },
             { "name": "Computational biology" },
             { "name": "Cryobiology" },
@@ -1127,7 +1127,7 @@ let var_data_academic_detail = {
               ]
             },
             {
-              "name": "Ecology (outline)",
+              "name": "Ecology",
               "children": [
                 { "name": "Agroecology" },
                 { "name": "Ethnoecology" },
@@ -1145,7 +1145,7 @@ let var_data_academic_detail = {
             },
             { "name": "Evolutionary biology" },
             {
-              "name": "Genetics (outline)",
+              "name": "Genetics",
               "children": [
                 { "name": "Behavioural genetics" },
                 { "name": "Molecular genetics" },
@@ -1154,7 +1154,7 @@ let var_data_academic_detail = {
             },
             { "name": "Histology" },
             { "name": "Human biology" },
-            { "name": "Immunology (outline)" },
+            { "name": "Immunology" },
             { "name": "Limnology" },
             { "name": "Linnaean taxonomy" },
             { "name": "Marine biology" },
@@ -1169,12 +1169,12 @@ let var_data_academic_detail = {
             { "name": "Molecular biology" },
             { "name": "Mycology" },
             {
-              "name": "Neuroscience (outline)",
+              "name": "Neuroscience",
               "children": [
                 { "name": "Behavioral neuroscience" },
               ]
             },
-            { "name": "Nutrition (outline)" },
+            { "name": "Nutrition" },
             {
               "name": "Paleobiology",
               "children": [
@@ -1217,7 +1217,7 @@ let var_data_academic_detail = {
             },
             { "name": "Xenobiology" },
             {
-              "name": "Zoology (outline)",
+              "name": "Zoology",
               "children": [
                 { "name": "Animal communications" },
                 { "name": "Apiology" },
@@ -1238,7 +1238,7 @@ let var_data_academic_detail = {
                 { "name": "Ethology" },
                 { "name": "Helminthology" },
                 { "name": "Herpetology" },
-                { "name": "Ichthyology (outline)" },
+                { "name": "Ichthyology" },
                 { "name": "Invertebrate zoology" },
                 {
                   "name": "Mammalogy",
@@ -1256,11 +1256,11 @@ let var_data_academic_detail = {
                   ]
                 },
                 { "name": "Myriapodology" },
-                { "name": "Myrmecology (outline)" },
+                { "name": "Myrmecology" },
                 { "name": "Nematology" },
                 { "name": "Neuroethology" },
                 { "name": "Oology" },
-                { "name": "Ornithology (outline)" },
+                { "name": "Ornithology" },
                 { "name": "Planktology" },
                 { "name": "Primatology" },
                 { "name": "Zootomy" },
@@ -1279,9 +1279,9 @@ let var_data_academic_detail = {
             { "name": "Analytical chemistry" },
             { "name": "Astrochemistry" },
             { "name": "Atmospheric chemistry" },
-            { "name": "Biochemistry (outline)" },
+            { "name": "Biochemistry" },
             { "name": "Chemical biology" },
-            { "name": "Chemical engineering (outline)" },
+            { "name": "Chemical engineering" },
             { "name": "Cheminformatics" },
             { "name": "Computational chemistry" },
             { "name": "Cosmochemistry" },
@@ -1306,7 +1306,7 @@ let var_data_academic_detail = {
             { "name": "Natural product chemistry" },
             { "name": "Neurochemistry" },
             { "name": "Oenology" },
-            { "name": "Organic chemistry (outline)" },
+            { "name": "Organic chemistry" },
             { "name": "Organometallic chemistry" },
             { "name": "Petrochemistry" },
             { "name": "Pharmacology" },
@@ -1339,23 +1339,23 @@ let var_data_academic_detail = {
             { "name": "Geochemistry" },
             { "name": "Geodesy" },
             {
-              "name": "Physical geography (outline)",
+              "name": "Physical geography",
               "children": [
-                { "name": "Atmospheric science / Meteorology (outline)" },
+                { "name": "Atmospheric science / Meteorology" },
                 { "name": "Biogeography / Phytogeography" },
                 { "name": "Climatology / Paleoclimatology / Palaeogeography" },
                 { "name": "Coastal geography / Oceanography" },
                 { "name": "Edaphology / Pedology or Soil science" },
                 { "name": "Geobiology" },
-                { "name": "Geology (outline) (Geomorphology, Mineralogy, Petrology, Sedimentology, Speleology, Tectonics, Volcanology)" },
+                { "name": "Geology (Geomorphology, Mineralogy, Petrology, Sedimentology, Speleology, Tectonics, Volcanology)" },
                 { "name": "Geostatistics" },
                 { "name": "Glaciology" },
-                { "name": "Hydrology (outline)/ Limnology / Hydrogeology" },
+                { "name": "Hydrology/ Limnology / Hydrogeology" },
                 { "name": "Landscape ecology" },
                 { "name": "Quaternary science" },
               ]
             },
-            { "name": "Geophysics (outline)" },
+            { "name": "Geophysics" },
             {
               "name": "Paleontology",
               "children": [
@@ -1373,7 +1373,7 @@ let var_data_academic_detail = {
           "children": [
             { "name": "Astrobiology" },
             {
-              "name": "Astronomy (outline)",
+              "name": "Astronomy",
               "children": [
                 {
                   "name": "Observational astronomy",
@@ -1440,7 +1440,7 @@ let var_data_academic_detail = {
             { "name": "Applied physics" },
             { "name": "Astrophysics" },
             { "name": "Atomic, molecular, and optical physics" },
-            { "name": "Biophysics (outline)" },
+            { "name": "Biophysics" },
             { "name": "Computational physics" },
             { "name": "Condensed matter physics" },
             { "name": "Cryogenics" },
@@ -1449,7 +1449,7 @@ let var_data_academic_detail = {
             { "name": "Elementary particle physics" },
             { "name": "Experimental physics" },
             { "name": "Fluid dynamics" },
-            { "name": "Geophysics (outline)" },
+            { "name": "Geophysics" },
             { "name": "Mathematical physics" },
             { "name": "Mechanics" },
             { "name": "Medical physics" },
@@ -1510,13 +1510,13 @@ let var_data_academic_detail = {
               ]
             },
             {
-              "name": "Artificial intelligence (outline)",
+              "name": "Artificial intelligence",
               "children": [
                 {
                   "name": "Cognitive science",
                   "children": [
                     { "name": "Automated reasoning" },
-                    { "name": "Computer vision (outline)" },
+                    { "name": "Computer vision" },
                     {
                       "name": "Machine learning",
                       "children": [
@@ -1527,7 +1527,7 @@ let var_data_academic_detail = {
                   ]
                 },
                 { "name": "Expert systems" },
-                { "name": "Robotics (outline)" },
+                { "name": "Robotics" },
               ]
             },
             { "name": "Data structures" },
@@ -1586,10 +1586,10 @@ let var_data_academic_detail = {
                 { "name": "Computational sociology" },
                 { "name": "Digital humanities (Humanities computing)" },
                 { "name": "History of computer hardware" },
-                { "name": "History of computer science (outline)" },
+                { "name": "History of computer science" },
                 { "name": "Humanistic informatics" },
                 {
-                  "name": "Databases (outline)",
+                  "name": "Databases",
                   "children": [
                     { "name": "Distributed databases" },
                     { "name": "Object databases" },
@@ -1679,7 +1679,7 @@ let var_data_academic_detail = {
               ]
             },
             {
-              "name": "Algebra (outline)",
+              "name": "Algebra",
               "children": [
                 { "name": "Associative algebra" },
                 {
@@ -1737,7 +1737,7 @@ let var_data_academic_detail = {
                 {
                   "name": "Real analysis",
                   "children": [
-                    { "name": "Calculus (outline)" },
+                    { "name": "Calculus" },
                   ]
                 },
               ]
@@ -1756,7 +1756,7 @@ let var_data_academic_detail = {
               ]
             },
             {
-              "name": "Geometry (outline) and Topology",
+              "name": "Geometry and Topology",
               "children": [
                 { "name": "Affine geometry" },
                 { "name": "Algebraic geometry" },
@@ -1791,7 +1791,7 @@ let var_data_academic_detail = {
           "children": [
             { "name": "Approximation theory" },
             {
-              "name": "Combinatorics (outline)",
+              "name": "Combinatorics",
               "children": [
                 { "name": "Coding theory" },
               ]
@@ -1839,7 +1839,7 @@ let var_data_academic_detail = {
               ]
             },
             {
-              "name": "Statistics (outline)",
+              "name": "Statistics",
               "children": [
                 { "name": "Actuarial science" },
                 { "name": "Demography" },
@@ -1874,11 +1874,50 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.1 Agriculture",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Aeroponics" },
+            { "name": "Agroecology" },
+            { "name": "Agrology" },
+            { "name": "Agronomy" },
+            {
+              "name": "Animal husbandry (Animal science)",
+              "children": [
+                { "name": "Beekeeping (Apiculture)" },
+              ]
+            },
+            { "name": "Anthroponics" },
+            { "name": "Agricultural economics" },
+            {
+              "name": "Agricultural engineering",
+              "children": [
+                { "name": "Biological systems engineering" },
+                { "name": "Food engineering" },
+              ]
+            },
+            { "name": "Aquaculture" },
+            { "name": "Aquaponics" },
+            { "name": "Enology" },
+            { "name": "Entomology" },
+            { "name": "Fogponics" },
+            {
+              "name": "Food science",
+              "children": [
+                { "name": "Culinary arts" },
+              ]
+            },
+            { "name": "Forestry" },
+            { "name": "Horticulture" },
+            { "name": "Hydrology" },
+            { "name": "Hydroponics" },
+            { "name": "Pedology" },
+            {
+              "name": "Plant science",
+              "children": [
+                { "name": "Pomology" },
+              ]
+            },
+            { "name": "Pest control" },
+            { "name": "Purification" },
+            { "name": "Viticulture" },
           ]
         },
 
@@ -1887,11 +1926,50 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.2 Architecture and design",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            {
+              "name": "Architecture",
+              "children": [
+                { "name": "Interior architecture" },
+                { "name": "Landscape architecture" },
+              ]
+            },
+            { "name": "Architectural analytics" },
+            { "name": "Historic preservation" },
+            { "name": "Interior design (interior architecture)" },
+            { "name": "Landscape architecture (landscape planning)" },
+            { "name": "Landscape design" },
+            { "name": "Urban planning (urban design)" },
+            {
+              "name": "Visual communication",
+              "children": [
+                {
+                  "name": "Graphic design",
+                  "children": [
+                    { "name": "Type design" },
+                  ]
+                },
+                { "name": "Technical drawing" },
+              ]
+            },
+            {
+              "name": "Industrial design (product design)",
+              "children": [
+                { "name": "Ergonomics" },
+                { "name": "Toy and amusement design" },
+              ]
+            },
+            {
+              "name": "User experience design",
+              "children": [
+                { "name": "Interaction design" },
+                { "name": "Information architecture" },
+                { "name": "User interface design" },
+                { "name": "User experience evaluation" },
+              ]
+            },
+            { "name": "Decorative arts" },
+            { "name": "Fashion design" },
+            { "name": "Textile design" },
           ]
         },
 
@@ -1900,11 +1978,46 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.3 Business",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            {
+              "name": "Accounting",
+              "children": [
+                { "name": "Accounting research" },
+                { "name": "Accounting scholarship" },
+              ]
+            },
+            { "name": "Business administration" },
+            { "name": "Business analysis" },
+            { "name": "Business ethics" },
+            { "name": "Business law" },
+            { "name": "Business management" },
+            { "name": "E-Business" },
+            { "name": "Entrepreneurship" },
+            { "name": "Finance" },
+            {
+              "name": "Industrial and labor relations",
+              "children": [
+                { "name": "Collective bargaining" },
+                { "name": "Human resources" },
+                { "name": "Organizational studies" },
+                { "name": "Labor economics" },
+                { "name": "Labor history" },
+              ]
+            },
+            {
+              "name": "Information systems (Business informatics)",
+              "children": [
+                { "name": "Management information systems" },
+                { "name": "Health informatics" },
+              ]
+            },
+            { "name": "Information technology" },
+            { "name": "International trade" },
+            { "name": "Management" },
+            { "name": "Marketing" },
+            { "name": "Operations management" },
+            { "name": "Purchasing" },
+            { "name": "Risk management and insurance" },
+            { "name": "Systems science" },
           ]
         },
 
@@ -1913,11 +2026,45 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.4 Divinity",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Canon law" },
+            { "name": "Church history" },
+            {
+              "name": "Field ministry",
+              "children": [
+                { "name": "Pastoral counseling" },
+                { "name": "Pastoral theology" },
+                { "name": "Religious education techniques" },
+                { "name": "Homiletics" },
+                { "name": "Liturgy" },
+                { "name": "Sacred music" },
+                { "name": "Missiology" },
+              ]
+            },
+            { "name": "Hermeneutics" },
+            {
+              "name": "Scriptural study and languages",
+              "children": [
+                { "name": "Biblical Hebrew" },
+                { "name": "Biblical studies/Sacred scripture" },
+                { "name": "Vedic Study" },
+                { "name": "New Testament Greek" },
+                { "name": "Latin" },
+                { "name": "Old Church Slavonic" },
+              ]
+            },
+            {
+              "name": "Theology",
+              "children": [
+                { "name": "Dogmatic theology" },
+                { "name": "Ecclesiology" },
+                { "name": "Sacramental theology" },
+                { "name": "Systematic theology" },
+                { "name": "Christian ethics" },
+                { "name": "Hindu ethics" },
+                { "name": "Moral theology" },
+                { "name": "Historical theology" },
+              ]
+            },
           ]
         },
 
@@ -1926,11 +2073,49 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.5 Education",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Comparative education" },
+            { "name": "Critical pedagogy" },
+            {
+              "name": "Curriculum and instruction",
+              "children": [
+                { "name": "Alternative education" },
+                { "name": "Early childhood education" },
+                { "name": "Elementary education" },
+                { "name": "Secondary education" },
+                { "name": "Higher education" },
+                { "name": "Mastery learning" },
+                { "name": "Cooperative learning" },
+                { "name": "Agricultural education" },
+                { "name": "Art education" },
+                { "name": "Bilingual education" },
+                { "name": "Chemistry education" },
+                { "name": "Counselor education" },
+                { "name": "Language education" },
+                { "name": "Legal education" },
+                { "name": "Mathematics education" },
+                { "name": "Medical education" },
+                { "name": "Military education and training" },
+                { "name": "Music education" },
+                { "name": "Nursing education" },
+                { "name": "Outdoor education" },
+                { "name": "Peace education" },
+                { "name": "Physical education/Sports coaching" },
+                { "name": "Physics education" },
+                { "name": "Reading education" },
+                { "name": "Religious education" },
+                { "name": "Science education" },
+                { "name": "Special education" },
+                { "name": "Sex education" },
+                { "name": "Sociology of education" },
+                { "name": "Technology education" },
+                { "name": "Vocational education" },
+              ]
+            },
+            { "name": "Educational leadership" },
+            { "name": "Educational philosophy" },
+            { "name": "Educational psychology" },
+            { "name": "Educational technology" },
+            { "name": "Distance education" },
           ]
         },
 
@@ -1939,11 +2124,246 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.6 Engineering and technology",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            {
+              "name": "Chemical Engineering",
+              "children": [
+                {
+                  "name": "Bioengineering",
+                  "children": [
+                    { "name": "Biochemical engineering" },
+                    { "name": "Biomolecular engineering" },
+                  ]
+                },
+                { "name": "Catalysis" },
+                { "name": "Materials engineering" },
+                { "name": "Molecular engineering" },
+                { "name": "Nanotechnology" },
+                { "name": "Polymer engineering" },
+                {
+                  "name": "Process design",
+                  "children": [
+                    { "name": "Petroleum engineering" },
+                    { "name": "Nuclear engineering" },
+                    { "name": "Food engineering" },
+                  ]
+                },
+                { "name": "Process engineering" },
+                { "name": "Reaction engineering" },
+                { "name": "Thermodynamics" },
+                { "name": "Transport phenomena" },
+              ]
+            },
+            {
+              "name": "Civil Engineering",
+              "children": [
+                { "name": "Coastal engineering" },
+                { "name": "Earthquake engineering" },
+                { "name": "Ecological engineering" },
+                { "name": "Environmental engineering" },
+                {
+                  "name": "Geotechnical engineering",
+                  "children": [
+                    { "name": "Engineering geology" },
+                  ]
+                },
+                { "name": "Hydraulic engineering" },
+                { "name": "Mining engineering" },
+                {
+                  "name": "Transportation engineering",
+                  "children": [
+                    { "name": "Highway engineering" },
+                  ]
+                },
+                {
+                  "name": "Structural engineering",
+                  "children": [
+                    { "name": "Architectural engineering" },
+                  ]
+                },
+                { "name": "Structural mechanics" },
+                { "name": "Surveying" },
+              ]
+            },
+            {
+              "name": "Educational Technology",
+              "children": [
+                {
+                  "name": "Instructional design",
+                  "children": [
+                    { "name": "Distance education" },
+                    { "name": "Instructional simulation" },
+                  ]
+                },
+                { "name": "Human performance technology" },
+                { "name": "Knowledge management" },
+              ]
+            },
+            {
+              "name": "Electrical Engineering",
+              "children": [
+                { "name": "Applied physics" },
+                { "name": "Computer engineering" },
+                { "name": "Computer science" },
+                {
+                  "name": "Control systems engineering",
+                  "children": [
+                    { "name": "Control theory" },
+                  ]
+                },
+                {
+                  "name": "Electronic engineering",
+                  "children": [
+                    { "name": "Instrumentation engineering" },
+                  ]
+                },
+                {
+                  "name": "Engineering physics",
+                  "children": [
+                    { "name": "Photonics" },
+                  ]
+                },
+                { "name": "Information theory" },
+                { "name": "Mechatronics" },
+                { "name": "Power engineering" },
+                { "name": "Quantum computing" },
+                { "name": "Robotics" },
+                { "name": "Semiconductors" },
+                { "name": "Telecommunications engineering" },
+              ]
+            },
+            {
+              "name": "Materials Science and Engineering",
+              "children": [
+                { "name": "Biomaterials" },
+                { "name": "Ceramic engineering" },
+                { "name": "Crystallography" },
+                { "name": "Nanomaterials" },
+                { "name": "Photonics" },
+                { "name": "Physical Metallurgy" },
+                { "name": "Polymer engineering" },
+                { "name": "Polymer science" },
+                { "name": "Semiconductors" },
+              ]
+            },
+            {
+              "name": "Mechanical Engineering",
+              "children": [
+                {
+                  "name": "Aerospace engineering",
+                  "children": [
+                    { "name": "Aeronautics" },
+                    { "name": "Astronautics" },
+                  ]
+                },
+                { "name": "Acoustical engineering" },
+                { "name": "Automotive engineering" },
+                {
+                  "name": "Biomedical engineering",
+                  "children": [
+                    { "name": "Biomechanical engineering" },
+                    { "name": "Neural engineering" },
+                  ]
+                },
+                { "name": "Continuum mechanics" },
+                { "name": "Fluid mechanics" },
+                { "name": "Heat transfer" },
+                { "name": "Industrial engineering" },
+                { "name": "Manufacturing engineering" },
+                { "name": "Marine engineering" },
+                { "name": "Mass transfer" },
+                { "name": "Mechatronics" },
+                { "name": "Nanoengineering" },
+                { "name": "Ocean engineering" },
+                { "name": "Optical engineering" },
+                { "name": "Robotics" },
+                { "name": "Thermodynamics" },
+              ]
+            },
+            {
+              "name": "Systems science",
+              "children": [
+                { "name": "Chaos theory" },
+                { "name": "Complex systems" },
+                { "name": "Conceptual systems" },
+                {
+                  "name": "Control theory",
+                  "children": [
+                    { "name": "Affect control theory" },
+                    { "name": "Control engineering" },
+                    { "name": "Control systems" },
+                    { "name": "Dynamical systems" },
+                    { "name": "Perceptual control theory" },
+                  ]
+                },
+                {
+                  "name": "Cybernetics",
+                  "children": [
+                    { "name": "Biocybernetics" },
+                    { "name": "Engineering cybernetics" },
+                    { "name": "Management cybernetics" },
+                    { "name": "Medical cybernetics" },
+                    { "name": "New Cybernetics" },
+                    { "name": "Second-order cybernetics" },
+                    { "name": "Sociocybernetics" },
+                  ]
+                },
+                { "name": "Network science" },
+                { "name": "Operations research" },
+                {
+                  "name": "Systems biology",
+                  "children": [
+                    { "name": "Computational systems biology" },
+                    { "name": "Synthetic biology" },
+                    { "name": "Systems immunology" },
+                    { "name": "Systems neuroscience" },
+                  ]
+                },
+                {
+                  "name": "System dynamics",
+                  "children": [
+                    { "name": "Social dynamics" },
+                  ]
+                },
+                {
+                  "name": "Systems ecology",
+                  "children": [
+                    { "name": "Ecosystem ecology" },
+                  ]
+                },
+                {
+                  "name": "Systems engineering",
+                  "children": [
+                    { "name": "Biological systems engineering" },
+                    { "name": "Earth systems engineering and management" },
+                    { "name": "Enterprise systems engineering" },
+                    { "name": "Systems analysis" },
+                  ]
+                },
+                {
+                  "name": "Systems psychology",
+                  "children": [
+                    { "name": "Ergonomics" },
+                    { "name": "Family systems theory" },
+                    { "name": "Systemic therapy" },
+                  ]
+                },
+                {
+                  "name": "Systems theory",
+                  "children": [
+                    { "name": "Biochemical systems theory" },
+                    { "name": "Ecological systems theory" },
+                    { "name": "Developmental systems theory" },
+                    { "name": "General systems theory" },
+                    { "name": "Living systems theory" },
+                    { "name": "LTI system theory" },
+                    { "name": "Mathematical system theory" },
+                    { "name": "Sociotechnical systems theory" },
+                    { "name": "World-systems theory" },
+                  ]
+                },
+                { "name": "Systems theory in anthropology" },
+              ]
+            },
           ]
         },
 
@@ -1952,11 +2372,29 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.7 Environmental studies and forestry",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            {
+              "name": "Environmental management",
+              "children": [
+                { "name": "Coastal management" },
+                { "name": "Fisheries management" },
+                { "name": "Land management" },
+                { "name": "Natural resource management" },
+                { "name": "Waste management" },
+                { "name": "Wildlife management" },
+              ]
+            },
+            { "name": "Environmental policy" },
+            { "name": "Wildlife observation" },
+            { "name": "Recreation ecology" },
+            { "name": "Silviculture" },
+            {
+              "name": "Sustainability studies",
+              "children": [
+                { "name": "Sustainable development" },
+              ]
+            },
+            { "name": "Toxicology" },
+            { "name": "Ecology" },
           ]
         },
 
@@ -1965,11 +2403,16 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.8 Family and consumer science",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Consumer education" },
+            { "name": "Housing" },
+            { "name": "Interior design" },
+            {
+              "name": "Nutrition",
+              "children": [
+                { "name": "Foodservice management" },
+              ]
+            },
+            { "name": "Textiles" },
           ]
         },
 
@@ -1978,11 +2421,52 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.9 Human physical performance and recreation",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Biomechanics / Sports biomechanics" },
+            { "name": "Sports coaching" },
+            { "name": "Escapology" },
+            { "name": "Ergonomics" },
+            {
+              "name": "Physical fitness",
+              "children": [
+                { "name": "Aerobics" },
+                { "name": "Personal trainer / Personal fitness training" },
+              ]
+            },
+            { "name": "Game design" },
+            { "name": "Exercise physiology" },
+            { "name": "Kinesiology / Exercise physiology / Performance science" },
+            { "name": "Leisure studies" },
+            { "name": "Navigation" },
+            { "name": "Outdoor activity" },
+            { "name": "Physical activity" },
+            { "name": "Physical education / Pedagogy" },
+            { "name": "Sociology of sport" },
+            { "name": "Sexology" },
+            { "name": "Sports / exercise" },
+            { "name": "Sports journalism / sportscasting" },
+            {
+              "name": "Sport management",
+              "children": [
+                { "name": "Athletic director" },
+              ]
+            },
+            { "name": "Sport psychology" },
+            {
+              "name": "Sports medicine",
+              "children": [
+                { "name": "Athletic training" },
+              ]
+            },
+            {
+              "name": "Survival skills",
+              "children": [
+                { "name": "Batoning" },
+                { "name": "Bushcraft" },
+                { "name": "Scoutcraft" },
+                { "name": "Woodcraft" },
+              ]
+            },
+            { "name": "Toy and amusement design" },
           ]
         },
 
@@ -1991,11 +2475,70 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.10 Journalism, media studies and communication",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            {
+              "name": "Journalism",
+              "children": [
+                { "name": "Broadcast journalism" },
+                { "name": "Digital journalism" },
+                { "name": "Literary journalism" },
+                { "name": "New media journalism" },
+                { "name": "Print journalism" },
+                { "name": "Sports journalism / sportscasting" },
+              ]
+            },
+            {
+              "name": "Media studies (Mass media)",
+              "children": [
+                { "name": "Newspaper" },
+                { "name": "Magazine" },
+                { "name": "Radio" },
+                {
+                  "name": "Television",
+                  "children": [
+                    { "name": "Television studies" },
+                  ]
+                },
+                {
+                  "name": "Film",
+                  "children": [
+                    { "name": "Film studies" },
+                  ]
+                },
+                { "name": "Game studies" },
+                { "name": "Fan studies" },
+              ]
+            },
+            {
+              "name": "Narratology",
+              "children": [
+                { "name": "Internet" },
+              ]
+            },
+            {
+              "name": "Communication studies",
+              "children": [
+                { "name": "Advertising" },
+                { "name": "Animal communication" },
+                { "name": "Communication design" },
+                { "name": "Conspiracy theory" },
+                { "name": "Digital media" },
+                { "name": "Electronic media" },
+                { "name": "Environmental communication" },
+                { "name": "Hoax" },
+                { "name": "Information theory" },
+                { "name": "Intercultural communication" },
+                { "name": "Marketing" },
+                { "name": "Mass communication" },
+                { "name": "Nonverbal communication" },
+                { "name": "Organizational communication" },
+                { "name": "Popular culture studies" },
+                { "name": "Propaganda" },
+                { "name": "Public relations" },
+                { "name": "Speech communication" },
+                { "name": "Technical writing" },
+                { "name": "Translation" },
+              ]
+            },
           ]
         },
 
@@ -2004,11 +2547,64 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.11 Law",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            {
+              "name": "Legal management",
+              "children": [
+                { "name": "Corporate law" },
+                { "name": "Mercantile law" },
+                { "name": "Business law" },
+              ]
+            },
+            { "name": "Administrative law" },
+            { "name": "Canon law" },
+            { "name": "Comparative law" },
+            { "name": "Constitutional law" },
+            { "name": "Competition law" },
+            {
+              "name": "Criminal law",
+              "children": [
+                { "name": "Criminal procedure" },
+                {
+                  "name": "Criminal justice",
+                  "children": [
+                    { "name": "Police science" },
+                    { "name": "Forensic science" },
+                  ]
+                },
+              ]
+            },
+            { "name": "Islamic law" },
+            { "name": "Jewish law" },
+            { "name": "Jurisprudence (Philosophy of Law)" },
+            {
+              "name": "Civil law",
+              "children": [
+                { "name": "Admiralty law" },
+                { "name": "Animal law/Animal rights" },
+                { "name": "Common law" },
+                { "name": "Corporations" },
+                { "name": "Civil procedure" },
+                { "name": "Contract law" },
+                { "name": "Environmental law" },
+                { "name": "Family law" },
+                { "name": "Federal law" },
+                {
+                  "name": "International law",
+                  "children": [
+                    { "name": "Public international law" },
+                    { "name": "Supranational law" },
+                  ]
+                },
+                { "name": "Labor law" },
+                { "name": "Paralegal studies" },
+                { "name": "Property law" },
+                { "name": "Tax law" },
+                { "name": "Tort law" },
+              ]
+            },
+            { "name": "Law enforcement" },
+            { "name": "Procedural law" },
+            { "name": "Substantive law" },
           ]
         },
 
@@ -2017,11 +2613,85 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.12 Library and museum studies",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Archival science" },
+            { "name": "Archivist" },
+            { "name": "Bibliographic databases" },
+            { "name": "Bibliometrics" },
+            { "name": "Bookmobile" },
+            {
+              "name": "Cataloging",
+              "children": [
+                { "name": "Citation analysis" },
+              ]
+            },
+            { "name": "Categorization" },
+            {
+              "name": "Classification",
+              "children": [
+                { "name": "Library classification" },
+                { "name": "Taxonomic classification" },
+                { "name": "Scientific classification" },
+                { "name": "Statistical classification" },
+                { "name": "Security classification" },
+                { "name": "Film classification" },
+              ]
+            },
+            { "name": "Collections care" },
+            { "name": "Collection management" },
+            { "name": "Collection Management Policy" },
+            { "name": "Conservation science" },
+            { "name": "Conservation and restoration of cultural heritage" },
+            { "name": "Curator" },
+            { "name": "Data storage" },
+            { "name": "Database management" },
+            { "name": "Data modeling" },
+            { "name": "Digital preservation" },
+            { "name": "Dissemination" },
+            { "name": "Film preservation" },
+            { "name": "Five laws of library science" },
+            { "name": "Historic preservation" },
+            { "name": "History of library science" },
+            { "name": "Human-computer interaction" },
+            { "name": "Indexer" },
+            { "name": "Informatics" },
+            { "name": "Information architecture" },
+            { "name": "Information broker" },
+            { "name": "Information literacy" },
+            { "name": "Information retrieval" },
+            { "name": "Information science" },
+            { "name": "Information systems and technology" },
+            { "name": "Integrated library system" },
+            { "name": "Interlibrary loan" },
+            { "name": "Knowledge engineering" },
+            { "name": "Knowledge management" },
+            { "name": "Library" },
+            { "name": "Library binding" },
+            { "name": "Library circulation" },
+            { "name": "Library instruction" },
+            { "name": "Library portal" },
+            { "name": "Library technical services" },
+            { "name": "Management" },
+            { "name": "Mass deacidification" },
+            { "name": "Museology" },
+            {
+              "name": "Museum education",
+              "children": [
+                { "name": "Museum administration" },
+              ]
+            },
+            { "name": "Object conservation" },
+            { "name": "Preservation" },
+            { "name": "Prospect research" },
+            { "name": "Readers' advisory" },
+            { "name": "Records management" },
+            { "name": "Reference" },
+            { "name": "Reference desk" },
+            { "name": "Reference management software" },
+            { "name": "Registrar" },
+            { "name": "Research methods" },
+            { "name": "Slow fire" },
+            { "name": "Special library" },
+            { "name": "Statistics" },
           ]
         },
 
@@ -2030,11 +2700,153 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.13 Medicine and health",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Alternative medicine" },
+            { "name": "Audiology" },
+            {
+              "name": "Clinical laboratory sciences/Clinical pathology/Laboratory medicine",
+              "children": [
+                { "name": "Clinical biochemistry" },
+                { "name": "Cytogenetics" },
+                { "name": "Cytohematology" },
+                { "name": "Cytology" },
+                { "name": "Haemostasiology" },
+                { "name": "Histology" },
+                { "name": "Clinical immunology" },
+                { "name": "Clinical microbiology" },
+                { "name": "Molecular genetics" },
+                { "name": "Parasitology" },
+              ]
+            },
+            { "name": "Clinical physiology" },
+            {
+              "name": "Dentistry",
+              "children": [
+                { "name": "Dental hygiene and epidemiology" },
+                { "name": "Dental surgery" },
+                { "name": "Endodontics" },
+                { "name": "Implantology" },
+                { "name": "Oral and maxillofacial surgery" },
+                { "name": "Orthodontics" },
+                { "name": "Periodontics" },
+                { "name": "Prosthodontics" },
+              ]
+            },
+            { "name": "Dermatology" },
+            { "name": "Emergency medicine" },
+            { "name": "Epidemiology" },
+            { "name": "Geriatrics" },
+            { "name": "Gynaecology" },
+            { "name": "Health informatics/Clinical informatics" },
+            { "name": "Hematology" },
+            { "name": "Holistic medicine" },
+            { "name": "Infectious disease" },
+            { "name": "Intensive care medicine" },
+            {
+              "name": "Internal medicine",
+              "children": [
+                {
+                  "name": "Cardiology",
+                  "children": [
+                    { "name": "Cardiac electrophysiology" },
+                  ]
+                },
+                { "name": "Endocrinology" },
+                { "name": "Gastroenterology" },
+                { "name": "Hepatology" },
+                { "name": "Nephrology" },
+                { "name": "Neurology" },
+                { "name": "Oncology" },
+                { "name": "Pulmonology" },
+                { "name": "Rheumatology" },
+              ]
+            },
+            { "name": "Medical toxicology" },
+            { "name": "Music therapy" },
+            { "name": "Nursing" },
+            { "name": "Nutrition and dietetics" },
+            { "name": "Obstetrics" },
+            { "name": "Occupational hygiene" },
+            { "name": "Occupational therapy" },
+            { "name": "Occupational toxicology" },
+            {
+              "name": "Ophthalmology",
+              "children": [
+                { "name": "Neuro-ophthalmology" },
+              ]
+            },
+            { "name": "Optometry" },
+            { "name": "Otolaryngology" },
+            { "name": "Pathology" },
+            { "name": "Pediatrics" },
+            {
+              "name": "Pharmaceutical sciences",
+              "children": [
+                { "name": "Pharmaceutical chemistry" },
+                { "name": "Pharmaceutical toxicology" },
+                { "name": "Pharmaceutics" },
+                { "name": "Pharmacocybernetics" },
+                { "name": "Pharmacodynamics" },
+                { "name": "Pharmacogenomics" },
+                { "name": "Pharmacognosy" },
+                { "name": "Pharmacokinetics" },
+                { "name": "Pharmacology" },
+                { "name": "Pharmacy" },
+              ]
+            },
+            {
+              "name": "Physical fitness",
+              "children": [
+                { "name": "Group Fitness / aerobics" },
+                { "name": "Kinesiology / Exercise science / Human performance" },
+                { "name": "Personal fitness training" },
+              ]
+            },
+            { "name": "Physical therapy" },
+            { "name": "Physiotherapy" },
+            { "name": "Podiatry" },
+            { "name": "Preventive medicine" },
+            {
+              "name": "Primary care",
+              "children": [
+                { "name": "General practice" },
+              ]
+            },
+            {
+              "name": "Psychiatry",
+              "children": [
+                { "name": "Forensic psychiatry" },
+              ]
+            },
+            { "name": "Psychology" },
+            { "name": "Public health" },
+            { "name": "Radiology" },
+            { "name": "Recreational therapy" },
+            { "name": "Rehabilitation medicine" },
+            { "name": "Respiratory therapy" },
+            { "name": "Sleep medicine" },
+            { "name": "Speech–language pathology" },
+            { "name": "Sports medicine" },
+            {
+              "name": "Surgery",
+              "children": [
+                { "name": "Bariatric surgery" },
+                { "name": "Cardiothoracic surgery" },
+                { "name": "Neurosurgery" },
+                { "name": "Orthoptics" },
+                { "name": "Orthopedic surgery" },
+                { "name": "Plastic surgery" },
+                { "name": "Trauma surgery" },
+                { "name": "Traumatology" },
+              ]
+            },
+            { "name": "Traditional medicine" },
+            {
+              "name": "Urology",
+              "children": [
+                { "name": "Andrology" },
+              ]
+            },
+            { "name": "Veterinary medicine" },
           ]
         },
 
@@ -2043,11 +2855,177 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.14 Military sciences",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Amphibious warfare" },
+            { "name": "Artillery" },
+            {
+              "name": "Battlespace",
+              "children": [
+                { "name": "Air" },
+                { "name": "Information" },
+                { "name": "Land" },
+                { "name": "Sea" },
+                { "name": "Space" },
+              ]
+            },
+            { "name": "Campaigning" },
+            { "name": "Military engineering" },
+            { "name": "Doctrine" },
+            { "name": "Espionage" },
+            { "name": "Game theory" },
+            {
+              "name": "Grand strategy",
+              "children": [
+                { "name": "Containment" },
+                { "name": "Limited war" },
+                { "name": "Military science" },
+                { "name": "Philosophy of war" },
+                { "name": "Strategic studies" },
+                { "name": "Total war" },
+                { "name": "War" },
+              ]
+            },
+            { "name": "Leadership" },
+            {
+              "name": "Logistics",
+              "children": [
+                { "name": "Materiel" },
+                { "name": "Supply chain management" },
+              ]
+            },
+            { "name": "Military operation" },
+            {
+              "name": "Military history",
+              "children": [
+                { "name": "Prehistoric" },
+                { "name": "Ancient" },
+                { "name": "Medieval" },
+                { "name": "Early modern" },
+                { "name": "Industrial" },
+                { "name": "Modern" },
+                { "name": "Fourth-generation warfare" },
+              ]
+            },
+            { "name": "Military intelligence" },
+            { "name": "Military law" },
+            { "name": "Military medicine" },
+            {
+              "name": "Naval science",
+              "children": [
+                { "name": "Naval engineering" },
+                { "name": "Naval tactics" },
+                { "name": "Naval architecture" },
+              ]
+            },
+            {
+              "name": "Organization",
+              "children": [
+                { "name": "Command and control" },
+                { "name": "Doctrine" },
+                { "name": "Education and training" },
+                { "name": "Engineers" },
+                { "name": "Intelligence" },
+                { "name": "Ranks" },
+                { "name": "Staff" },
+                { "name": "Technology and equipment" },
+                { "name": "Military exercises" },
+                { "name": "Military simulation" },
+                { "name": "Military sports" },
+              ]
+            },
+            {
+              "name": "Strategy",
+              "children": [
+                { "name": "Attrition" },
+                { "name": "Deception" },
+                { "name": "Defensive" },
+                { "name": "Offensive" },
+                { "name": "Counter-offensive" },
+                { "name": "Maneuver" },
+                { "name": "Goal" },
+                { "name": "Naval" },
+              ]
+            },
+            {
+              "name": "Tactics",
+              "children": [
+                { "name": "Aerial" },
+                { "name": "Battle" },
+                { "name": "Cavalry" },
+                { "name": "Charge" },
+                { "name": "Counter-attack" },
+                { "name": "Counter-insurgency" },
+                { "name": "Counter-intelligence" },
+                { "name": "Counter-terrorism" },
+                { "name": "Foxhole" },
+                { "name": "Endemic warfare" },
+                { "name": "Guerrilla warfare" },
+                { "name": "Infiltration" },
+                { "name": "Irregular warfare" },
+                { "name": "Morale" },
+                { "name": "Naval tactics" },
+                { "name": "Siege" },
+                { "name": "Surgical strike" },
+                { "name": "Tactical objective" },
+                { "name": "Trench warfare" },
+              ]
+            },
+            {
+              "name": "Military weapons",
+              "children": [
+                { "name": "Armor" },
+                { "name": "Artillery" },
+                { "name": "Biological" },
+                { "name": "Cavalry" },
+                { "name": "Conventional" },
+                { "name": "Chemical" },
+                { "name": "Cyber" },
+                { "name": "Economic" },
+                { "name": "Electronic" },
+                { "name": "Infantry" },
+                { "name": "Nuclear" },
+                { "name": "Psychological" },
+                { "name": "Unconventional" },
+              ]
+            },
+            {
+              "name": "Other Military",
+              "children": [
+                { "name": "Arms control" },
+                { "name": "Arms race" },
+                { "name": "Assassination" },
+                { "name": "Asymmetric warfare" },
+                { "name": "Civil defense" },
+                { "name": "Clandestine operation" },
+                { "name": "Collateral damage" },
+                { "name": "Cold war (general term)" },
+                { "name": "Combat" },
+                { "name": "Covert operation" },
+                { "name": "Cyberwarfare" },
+                { "name": "Defense industry" },
+                { "name": "Disarmament" },
+                { "name": "Intelligence agency" },
+                { "name": "Laws of war" },
+                { "name": "Mercenary" },
+                { "name": "Military campaign" },
+                { "name": "Military operation" },
+                { "name": "Mock combat" },
+                { "name": "Network-centric warfare" },
+                { "name": "Paramilitary" },
+                { "name": "Principles of war" },
+                { "name": "Private defense agency" },
+                { "name": "Private military company" },
+                { "name": "Proxy war" },
+                { "name": "Religious war" },
+                { "name": "Security" },
+                { "name": "Special forces" },
+                { "name": "Special operations" },
+                { "name": "Theater (warfare)" },
+                { "name": "Theft" },
+                { "name": "Undercover" },
+                { "name": "War crimes" },
+                { "name": "Warrior" },
+              ]
+            },
           ]
         },
 
@@ -2056,11 +3034,100 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.15 Public administration",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Civil service" },
+            { "name": "Corrections" },
+            { "name": "Conservation biology" },
+            { "name": "Criminal justice" },
+            { "name": "Disaster research" },
+            { "name": "Disaster response" },
+            { "name": "Emergency management" },
+            { "name": "Emergency services" },
+            { "name": "Fire safety (Structural fire protection)" },
+            { "name": "Fire ecology (Wildland fire management)" },
+            { "name": "Governmental affairs" },
+            { "name": "International affairs" },
+            { "name": "Law enforcement" },
+            { "name": "Peace and conflict studies" },
+            { "name": "Police science" },
+            {
+              "name": "Policy studies",
+              "children": [
+                { "name": "Policy analysis" },
+              ]
+            },
+            {
+              "name": "Public administration",
+              "children": [
+                { "name": "Nonprofit administration" },
+                { "name": "Non-governmental organization (NGO) administration" },
+                { "name": "Public policy doctrine" },
+                { "name": "Public policy school" },
+                { "name": "Regulation" },
+              ]
+            },
+            { "name": "Public safety" },
+            { "name": "Public service" },
+            {
+              "name": "Public policy",
+              "children": [
+                { "name": "Agricultural policy" },
+                { "name": "Commercial policy" },
+                { "name": "Cultural policy" },
+                { "name": "Domestic policy" },
+                {
+                  "name": "Drug policy",
+                  "children": [
+                    { "name": "Drug policy reform" },
+                  ]
+                },
+                {
+                  "name": "Economic policy",
+                  "children": [
+                    { "name": "Fiscal policy" },
+                    { "name": "Incomes policy" },
+                    { "name": "Industrial policy" },
+                    { "name": "Investment policy" },
+                    { "name": "Monetary policy" },
+                    { "name": "Tax policy" },
+                  ]
+                },
+                { "name": "Education policy" },
+                {
+                  "name": "Energy policy",
+                  "children": [
+                    { "name": "Nuclear energy policy" },
+                    { "name": "Renewable energy policy" },
+                  ]
+                },
+                { "name": "Environmental policy" },
+                { "name": "Food policy" },
+                { "name": "Foreign policy" },
+                {
+                  "name": "Health policy",
+                  "children": [
+                    { "name": "Pharmaceutical policy" },
+                    { "name": "Vaccination policy" },
+                  ]
+                },
+                { "name": "Housing policy" },
+                { "name": "Immigration policy" },
+                { "name": "Knowledge policy" },
+                { "name": "Language policy" },
+                { "name": "Military policy" },
+                {
+                  "name": "Science policy",
+                  "children": [
+                    { "name": "Climate change policy" },
+                    { "name": "Stem cell research policy" },
+                    { "name": "Space policy" },
+                    { "name": "Technology policy" },
+                  ]
+                },
+                { "name": "Security policy" },
+                { "name": "Social policy" },
+                { "name": "Public policy by country" },
+              ]
+            },
           ]
         },
 
@@ -2069,11 +3136,20 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.16 Social work",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Child welfare" },
+            {
+              "name": "Community practice",
+              "children": [
+                { "name": "Community organizing" },
+                { "name": "Social policy" },
+              ]
+            },
+            { "name": "Human Services" },
+            { "name": "Corrections" },
+            { "name": "Gerontology" },
+            { "name": "Medical social work" },
+            { "name": "Mental health" },
+            { "name": "School social work" },
           ]
         },
 
@@ -2082,11 +3158,21 @@ let var_data_academic_detail = {
         {
           "name": "👉 5.17 Transportation",
           "children": [
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
-            { "name": "..." },
+            { "name": "Highway safety" },
+            { "name": "Infographics" },
+            { "name": "Intermodal transportation studies" },
+            { "name": "Logistics" },
+            {
+              "name": "Marine transportation",
+              "children": [
+                { "name": "Port management" },
+                { "name": "Seafaring" },
+              ]
+            },
+            { "name": "Operations research" },
+            { "name": "Mass transit" },
+            { "name": "Travel" },
+            { "name": "Vehicles" },
           ]
         },
 
