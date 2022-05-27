@@ -14,6 +14,7 @@
   <link rel="icon" href="@original/favicon.ico">
   <link href="library/css/bootstrap-5.2.0-beta1.min.css" rel="stylesheet">
   <link href="library/css/bootstrap-icons-1.8.3.min.css" rel="stylesheet">
+  <link href="library/css/autopopup.css" rel="stylesheet">
   <style>
     /* ------------------------------- D3 COLLAPSIBLE TREE ------------------------------- */
 
@@ -33,9 +34,8 @@
       stroke-width: 1px;
     }
 
-    .hierarchy-container-1 {}
-
-    .hierarchy-container-2 {}
+    /* .hierarchy-container-1 {} */
+    /* .hierarchy-container-2 {} */
 
     /* ------------------------------- GENERAL ------------------------------- */
 
@@ -106,6 +106,14 @@
 </head>
 
 <body>
+  <!-- AUTO POPUP MODAL -->
+  <div class="bts-popup" role="alert">
+    <div class="bts-popup-container"> <img src="@original/internet.png" alt="learning-path-roadmap" width="32%" style="padding-top: 40px;" />
+      <p style="padding: 24px 40px 24px 40px;">Buka di desktop untuk mendapatkan pengalaman yang lebih baik.</p>
+      <p style="padding: 0px 40px 32px 40px;"><b><a href="https://alamehan.github.io/links/">alamehan.github.io</a></b></p> <!-- <div class="bts-popup-button" style="margin: 24px 0px;"> <a href="#0">Enter</a> </div> --> <a href="#0" class="bts-popup-close img-replace">Close</a>
+    </div>
+  </div>
+
   <!-- BUTTON TO TOP -->
   <button class="btn-scroll">
     <a href="#atas"><img src="@original/to-top.svg" class="ganti-warna"></a>
@@ -200,6 +208,10 @@
 
   <script src="@original/d3.min.js"></script>
   <script src="library/js/bootstrap-5.2.0-beta1.bundle.min.js"></script>
+
+  <!-- Auto Popup Modal -->
+  <script src="library/js/jquery-2-1-3.min.js"></script>
+  <script src="library/js/autopopup.js"></script>
 
   <!-- ⚠️⚠️⚠️ Urutkan berdasarkan tree yang paling detail, kalau tidak akan ke "crop" ⚠️⚠️⚠️ -->
   <script src="script/academic-detail.js"></script>
