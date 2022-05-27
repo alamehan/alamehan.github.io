@@ -5,7 +5,7 @@ let data = {
     // =========================================================================================================== //
 
     {
-      "name": "1 One",
+      "name": "📕 1 One",
       "children": [
         {
           "name": "👉 1.1 ",
@@ -27,7 +27,7 @@ let data = {
     // =========================================================================================================== //
 
     {
-      "name": "2 Two",
+      "name": "📒 2 Two",
       "children": [
         {
           "name": "👉 2.1 ",
@@ -51,7 +51,9 @@ let data = {
   ]
 };
 
-/* Children only
+/* 
+
+A. Children only
 
 "children": [
   { "name": "..." },
@@ -60,5 +62,13 @@ let data = {
   { "name": "..." },
   { "name": "..." },
 ]
+
+B. RegEx Pattern
+
+^         -> sebagai karakter penanda awal pola       -> { "name": "
+$         -> sebagai karakter penanda akhir pola      -> " },
+\[.\]     -> memilih pola [3], [4], [satu angka]
+\[..\]    -> memilih pola [12], [32], [dua angka]
+\[...\]   -> memilih pola [210], [452], [tiga angka]
 
 */

@@ -8,7 +8,7 @@ Ubah setiap nama variable:
 - var_data_academic_general
 - MyTree_academic_general
 - myTree_academic_general
-.hierarchy-container-academic-general
+- .hierarchy-container-academic-general
 
 Sesuai keperluan. Gunakan CTRL+H untuk "replace all", pastikan Match Case aktif.
 */
