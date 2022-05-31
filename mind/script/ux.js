@@ -81,7 +81,8 @@ let var_data_ux = {
           "name": "👉 1.5 Design frameworks",
           "children": [
             {
-              "name": "User-centered design process", "children": [
+              "name": "User-centered design process",
+              "children": [
                 { "name": "Understand how the user experiences the product" },
                 { "name": "Specify the user’s needs" },
                 { "name": "Design solutions to those user problems" },
@@ -89,7 +90,8 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "The five elements of UX design", "children": [
+              "name": "The five elements of UX design",
+              "children": [
                 { "name": "Strategy" },
                 { "name": "Scope" },
                 { "name": "Structure" },
@@ -98,7 +100,8 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "Design thinking process", "children": [
+              "name": "Design thinking process",
+              "children": [
                 { "name": "Emphatize" },
                 { "name": "Define" },
                 { "name": "Ideate" },
@@ -107,18 +110,25 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "Lean UX", "children": [
-                { "name": "Think" },
-                { "name": "Make" },
-                { "name": "Check" },
-              ]
-            },
-            {
-              "name": "Double diamond", "children": [
-                { "name": "Discover the problem" },
-                { "name": "Define the problem" },
-                { "name": "Develop solutions for the problems" },
-                { "name": "Deliver the product" },
+              "name": "Think like a designer",
+              "children": [
+                {
+                  "name": "Lean UX",
+                  "children": [
+                    { "name": "Think" },
+                    { "name": "Make" },
+                    { "name": "Check" },
+                  ]
+                },
+                {
+                  "name": "Double diamond",
+                  "children": [
+                    { "name": "Discover the problem" },
+                    { "name": "Define the problem" },
+                    { "name": "Develop solutions for the problems" },
+                    { "name": "Deliver the product" },
+                  ]
+                },
               ]
             },
           ]
@@ -145,7 +155,8 @@ let var_data_ux = {
           "name": "👉 1.7 Design sprints",
           "children": [
             {
-              "name": "Methodology", "children": [
+              "name": "Methodology",
+              "children": [
                 { "name": "Understand" },
                 { "name": "Define" },
                 { "name": "Sketch" },
@@ -155,7 +166,8 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "Retrospective", "children": [
+              "name": "Retrospective",
+              "children": [
                 { "name": "What went well?" },
                 { "name": "What can be improved?" },
                 { "name": "Lessons learned" },
@@ -214,13 +226,15 @@ let var_data_ux = {
           "name": "👉 1.9 Networking",
           "children": [
             {
-              "name": "Where to meet professionals/mentor?", "children": [
+              "name": "Where to meet professionals/mentor?",
+              "children": [
                 { "name": "Online (LinkedIn, Medium, Dribbble, etc)" },
                 { "name": "In person (Lectures, seminars, certificate program, etc)" },
               ]
             },
             {
-              "name": "How to reach out?", "children": [
+              "name": "How to reach out?",
+              "children": [
                 { "name": "Fill out and update your profile" },
                 { "name": "Introducte yourself with a personalized message" },
                 { "name": "Keep it short" },
@@ -235,7 +249,8 @@ let var_data_ux = {
           "name": "👉 1.10 Impostor syndrome",
           "children": [
             {
-              "name": "Effects", "children": [
+              "name": "Effects",
+              "children": [
                 { "name": "Impostor syndrome is the belief that you’re unskilled, inferior to others, or bad at your job, despite your successes" },
                 { "name": "Not applying to jobs unless you meet every requirement" },
                 { "name": "Taking on extra work to make sure you’re “doing it all” and to look more capable in front of your peers" },
@@ -245,7 +260,8 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "How to manage?", "children": [
+              "name": "How to manage?",
+              "children": [
                 { "name": "Acknowledge your thoughts" },
                 { "name": "Own your accomplishments" },
                 { "name": "Be honest with yourself" },
