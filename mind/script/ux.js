@@ -187,6 +187,15 @@ let var_data_ux = {
           "name": "👉 1.8 Design sprints",
           "children": [
             {
+              "name": "Planning",
+              "children": [
+                { "name": "Scope and structuring" },
+                { "name": "Gather research and data" },
+                { "name": "Prepare and set the tone" },
+                { "name": "Post sprint" },
+              ]
+            },
+            {
               "name": "Methodology",
               "children": [
                 { "name": "Understand" },
