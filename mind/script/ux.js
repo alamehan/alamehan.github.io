@@ -35,7 +35,7 @@ let var_data_ux = {
       "name": "📕 1 Foundations of UX design",
       "children": [
         {
-          "name": "👉 1.1 Careers",
+          "name": "👉 1.1 UX Careers",
           "children": [
             { "name": "Interaction designer" },
             { "name": "Visual designer" },
@@ -100,7 +100,7 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "Design thinking process ⭐",
+              "name": "Design thinking process 🔥",
               "children": [
                 { "name": "Emphatize" },
                 { "name": "Define" },
@@ -152,7 +152,39 @@ let var_data_ux = {
           ]
         },
         {
-          "name": "👉 1.7 Design sprints",
+          "name": "👉 1.7 Globally accessible products",
+          "children": [
+            {
+              "name": "Awareness is everything",
+              "children": [
+                { "name": "Learn about global user communities and how they use technology" },
+                { "name": "Be mindful about representing users inclusively" },
+                { "name": "Accommodate different levels of literacy and many different languages" },
+                { "name": "Empower your users when it comes to privacy, safety, and security" },
+              ]
+            },
+            {
+              "name": "Context matters",
+              "children": [
+                { "name": "Build great user experiences for modest devices" },
+                { "name": "Ensure that your app functions seamlessly in intermittent networks—and when offline" },
+                { "name": "Keep usage costs low" },
+                { "name": "Treat accessibility settings as critical, not just as a checklist" },
+              ]
+            },
+            {
+              "name": "Be inclusive by default",
+              "children": [
+                { "name": "Consider environmental contrasts like sun and shade" },
+                { "name": "Color has meaning—use it wisely" },
+                { "name": "Design for various screen conditions and input abilities" },
+                { "name": "Go big: Larger tap/touch targets" },
+              ]
+            },
+          ]
+        },
+        {
+          "name": "👉 1.8 Design sprints",
           "children": [
             {
               "name": "Methodology",
@@ -176,7 +208,7 @@ let var_data_ux = {
           ]
         },
         {
-          "name": "👉 1.8 Create portfolio",
+          "name": "👉 1.9 Create portfolio",
           "children": [
             {
               "name": "Website builder",
@@ -223,7 +255,7 @@ let var_data_ux = {
           ]
         },
         {
-          "name": "👉 1.9 Networking",
+          "name": "👉 1.10 Networking",
           "children": [
             {
               "name": "Where to meet professionals/mentor?",
@@ -246,7 +278,7 @@ let var_data_ux = {
           ]
         },
         {
-          "name": "👉 1.10 Impostor syndrome",
+          "name": "👉 1.11 Impostor syndrome",
           "children": [
             {
               "name": "Effects",
