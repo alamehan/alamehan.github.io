@@ -134,7 +134,7 @@ let var_data_ux = {
           ]
         },
         {
-          "name": "👉 1.6 Considerations when designing",
+          "name": "👉 1.6 Key considerations when designing for various platforms",
           "children": [
             { "name": "Screen size" },
             { "name": "Interaction" },
