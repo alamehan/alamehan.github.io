@@ -217,7 +217,7 @@ let var_data_ux = {
           ]
         },
         {
-          "name": "👉 1.9 Create portfolio",
+          "name": "👉 1.9 Create a portfolio",
           "children": [
             {
               "name": "Website builder",
@@ -234,9 +234,9 @@ let var_data_ux = {
                 { "name": "Name and personal logo" },
                 { "name": "Navigation menu" },
                 { "name": "Work samples" },
-                { "name": "About me" },
-                { "name": "Contact information" },
-                { "name": "Color scheme" },
+                { "name": "About me (Interests, experiences, passions)" },
+                { "name": "Contact information (Email, resume link, online profiles link: LinkedIn, etc)" },
+                { "name": "Color scheme (One primary color and one accent color)" },
               ]
             },
             {
@@ -263,12 +263,12 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "Online profiles",
+              "name": "Create an online profiles",
               "children": [
                 { "name": "Your name" },
                 { "name": "Your education, including certificate program" },
-                { "name": "Your work experience or interest" },
-                { "name": "Your skills" },
+                { "name": "Your work experience or interests" },
+                { "name": "Your skills & qualifications" },
                 { "name": "Outstanding achievements" },
                 { "name": "A professional photo of yourself" },
                 { "name": "Contact & links to social media profiles" },
