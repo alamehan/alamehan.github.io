@@ -100,7 +100,7 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "Design thinking process",
+              "name": "Design thinking process ⭐",
               "children": [
                 { "name": "Emphatize" },
                 { "name": "Define" },
