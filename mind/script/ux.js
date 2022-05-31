@@ -229,7 +229,7 @@ let var_data_ux = {
               ]
             },
             {
-              "name": "Plan your portfolio",
+              "name": "Plan your portfolio website",
               "children": [
                 { "name": "Name and personal logo" },
                 { "name": "Navigation menu" },
@@ -242,11 +242,24 @@ let var_data_ux = {
             {
               "name": "Personal branding",
               "children": [
-                { "name": "Create a personal logo" },
-                { "name": "Make the most of fonts and colors" },
-                { "name": "Keep your voice consistent" },
-                { "name": "Use graphics, animations, and photography" },
-                { "name": "Be yourself" },
+                {
+                  "name": "Consistency is key",
+                  "children": [
+                    { "name": "Oprah Winfrey is strongly associated with inspiration and hope" },
+                    { "name": "Sarah Cooper is tied to satirical comedy" },
+                    { "name": "Bill Nye is famous for learning science in a fun way" },
+                  ]
+                },
+                {
+                  "name": "Develop personal brand",
+                  "children": [
+                    { "name": "Create a personal logo" },
+                    { "name": "Make the most of fonts and colors" },
+                    { "name": "Keep your voice consistent" },
+                    { "name": "Use graphics, animations, and photography" },
+                    { "name": "Be yourself" },
+                  ]
+                },
               ]
             },
             {
