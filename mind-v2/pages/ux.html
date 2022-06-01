@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATOZ Mind: User Experience (UX)</title>
-  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" href="../assets/logo-atoz-mind.svg">
   <link rel="stylesheet" href="../library/fonts-google-apis.css">
   <link rel="stylesheet" href="../library/quasar-2.7.1.min.css">
   <style>
@@ -42,7 +42,8 @@
             </q-input>
 
             <!-- B. CONTENT -->
-            <q-tree :nodes="simple" node-key="label" selected-color="green" v-model:selected="selected" :filter="filter" dense default-expand-all></q-tree>
+            <!-- ⚠️ HAPUS "default-expand-all" JIKA INGIN DEFAULT CHILD NODE YANG TERBUKA HANYA SAMPAI LEVEL 3 DARI ROOT (SESUAIKAN DENGAN di "ux.js") ⚠️ -->
+            <q-tree :nodes="simple" node-key="label" selected-color="green" v-model:selected="selected" v-model:expanded="expanded" :filter="filter" dense default-expand-all></q-tree>
 
             <!-- 
             ==============
@@ -60,7 +61,7 @@
         <template v-slot:after>
           <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
 
-            <q-tab-panel name="User Experience (UX)">
+            <q-tab-panel name="User Experience (UX) design">
               <!-- BASIC TEXT -->
               <div class="q-px-sm q-pb-sm">
                 <h4 class="mtitle">User Experience (UX)</h4>
