@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ATOX Mind: User Experience (UX)</title>
+  <title>ATOZ Mind: User Experience (UX)</title>
   <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="../library/fonts-google-apis.css">
   <link rel="stylesheet" href="../library/quasar-2.7.1.min.css">
@@ -56,15 +56,63 @@
           <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
 
             <q-tab-panel name="User Experience (UX)">
-              <div class="text-h4 q-mb-md">User Experience (UX)</div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+              <!-- BASIC TEXT -->
+              <div class="q-px-sm q-pb-sm">
+                <h3 style="margin: 12px 0px 24px 0px">Root</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                <q-img src="../assets/example.png">
+              </div>
+              <!-- TIMELINE -->
+              <div class="q-px-sm q-pb-sm">
+                <q-timeline color="secondary">
+                  <q-timeline-entry heading>
+                    Root
+                  </q-timeline-entry>
+
+                  <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                    <div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </q-timeline-entry>
+
+                  <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                    <div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </q-timeline-entry>
+                </q-timeline>
+              </div>
             </q-tab-panel>
 
             <q-tab-panel name="Pleasing decor">
-              <div class="text-h4 q-mb-md">Pleasing decor</div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+              <!-- BASIC TEXT -->
+              <div class="q-px-sm q-pb-sm">
+                <h3 style="margin: 12px 0px 24px 0px">Pleasing decor</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                <q-img src="../assets/example.png">
+              </div>
+              <!-- TIMELINE -->
+              <div class="q-px-sm q-pb-sm">
+                <q-timeline color="secondary">
+                  <q-timeline-entry heading>
+                    Pleasing decor
+                  </q-timeline-entry>
+
+                  <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                    <div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </q-timeline-entry>
+
+                  <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                    <div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </q-timeline-entry>
+                </q-timeline>
+              </div>
             </q-tab-panel>
 
           </q-tab-panels>

@@ -2,51 +2,51 @@ const { ref } = Vue;
 
 const app = Vue.createApp({
   setup() {
-    const filter = ref('');
+    const filter = ref("");
     const filterRef = ref(null);
 
     return {
       filter,
       filterRef,
 
-      expanded: ref(['Satisfied customers (with avatar)', 'Good food (with icon)']),
+      expanded: ref(["Satisfied customers (with avatar)", "Good food (with icon)"]),
 
       simple: [
         {
-          label: 'Satisfied customers (with avatar)',
-          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+          label: "Satisfied customers (with avatar)",
+          avatar: "../assets/boy-avatar.png",
           children: [
             {
-              label: 'Good food (with icon)',
-              icon: 'restaurant_menu',
+              label: "Good food (with icon)",
+              icon: "restaurant_menu",
               children: [
-                { label: 'Quality ingredients' },
-                { label: 'Good recipe' }]
+                { label: "Quality ingredients" },
+                { label: "Good recipe" }]
             },
             {
-              label: 'Good service (disabled node with icon)',
-              icon: 'room_service',
+              label: "Good service (disabled node with icon)",
+              icon: "room_service",
               disabled: true,
               children: [
-                { label: 'Prompt attention' },
-                { label: 'Professional waiter' }]
+                { label: "Prompt attention" },
+                { label: "Professional waiter" }]
             },
             {
-              label: 'Pleasant surroundings (with icon)',
-              icon: 'photo',
+              label: "Pleasant surroundings (with icon)",
+              icon: "photo",
               children: [
                 {
-                  label: 'Happy atmosphere (with image)',
-                  img: 'https://cdn.quasar.dev/img/logo_calendar_128px.png'
+                  label: "Happy atmosphere (with image)",
+                  img: "../assets/logo_calendar_128px.png"
                 },
-                { label: 'Good table presentation' },
-                { label: 'Pleasing decor' }]
+                { label: "Good table presentation" },
+                { label: "Pleasing decor" }]
             }]
         }
       ],
 
       resetFilter() {
-        filter.value = '';
+        filter.value = "";
         filterRef.value.focus();
       }
     };
@@ -54,4 +54,4 @@ const app = Vue.createApp({
 });
 
 app.use(Quasar, { config: {} });
-app.mount('#q-app');
+app.mount("#q-app");
