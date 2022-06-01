@@ -1,0 +1,47 @@
+<!-- ⚠️ SUMBER: https://quasar.dev/vue-components/tree ⚠️ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example: Basic</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="../library/fonts-google-apis.css">
+  <link rel="stylesheet" href="../library/quasar-2.7.1.min.css">
+</head>
+
+<body>
+  <div id="q-app" style="min-height: 100vh;">
+    <div class="q-pa-md q-gutter-sm">
+      <!-- A. FILTER -->
+      <q-input ref="filterRef" filled v-model="filter" label="Search here">
+        <template v-slot:append>
+          <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+        </template>
+      </q-input>
+
+      <!-- B. CONTENT -->
+      <q-tree :nodes="simple" node-key="label" selected-color="green" v-model:expanded="expanded" :filter="filter" dense default-expand-all></q-tree>
+      
+      <!-- 
+      ==============
+      Daftar Atribut
+      ==============
+      dense               : mode padat
+      dark                : mode gelap (jangan lupa gunakan dark background secara manual)
+      accordion           : mode akordion (sibling nodes tertutup saat yang lain terbuka)
+      no-connectors       : tanpa garis konektor
+      default-expand-all  : buka seluruh nodes secara default
+      -->
+    </div>
+  </div>
+
+  <script src="../library/vue-3.global.prod.js"></script>
+  <script src="../library/quasar-2.7.1.umd.prod.js"></script>
+  <script src="../script/example-basic.js"></script>
+</body>
+
+</html>
