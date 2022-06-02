@@ -9,8 +9,18 @@ const app = Vue.createApp({
       filter,
       filterRef,
 
+      // ⚠️ LAYAR TREE 50% & DETAIL 50%
       splitterModel: ref(50),
+
+      // ⚠️ TAB YANG AKTIF PERTAMA KALI
       selected: ref("Root"),
+
+      // ⚠️ DEFAULT CHILD NODE YANG TERBUKA
+      expanded: ref([
+        "Root",
+        "Good food (with icon)",
+        "Pleasant surroundings (with icon)"
+      ]),
 
       simple: [
         {

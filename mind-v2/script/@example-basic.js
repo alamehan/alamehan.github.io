@@ -9,11 +9,18 @@ const app = Vue.createApp({
       filter,
       filterRef,
 
-      expanded: ref(["Satisfied customers (with avatar)", "Good food (with icon)"]),
+      // ⚠️ TAB YANG AKTIF PERTAMA KALI
+      selected: ref("Root"),
+
+      // ⚠️ DEFAULT CHILD NODE YANG TERBUKA
+      expanded: ref([
+        "Root",
+        "Good food (with icon)"
+      ]),
 
       simple: [
         {
-          label: "Satisfied customers (with avatar)",
+          label: "Root",
           avatar: "../assets/boy-avatar.png",
           children: [
             {

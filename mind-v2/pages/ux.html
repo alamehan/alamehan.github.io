@@ -1,6 +1,3 @@
-<!-- ⚠️ SUMBER: https://quasar.dev/vue-components/tree ⚠️ -->
-<!-- ⚠️ ISSUES: https://forum.quasar-framework.org/topic/7986/expanding-and-collapsing-nodes-extremely-slow/2 ⚠️ -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,14 +23,6 @@
 
         <template v-slot:before>
           <div class="q-pa-md">
-            <!-- 
-            ================
-            Padding & Margin
-            ================
-            p/m                       (padding/margin)
-            a/x/y/t/r/b/l             (all/sumbu-x/sumbu-y/top/right/bottom/left)
-            none/auto/xs/sm/md/lg/xl
-           -->
 
             <!-- A. FILTER -->
             <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
@@ -50,19 +39,7 @@
             </div>
 
             <!-- C. CONTENT -->
-            <!--⚠️ Ganti nilai isExpand di file "ux.js" -->
-            <q-tree :nodes="simple" node-key="label" ref="tree" selected-color="green" v-model:selected="selected" v-model:expanded="expanded" :filter="filter" dense :default-expand-all="isExpand"></q-tree>
-
-            <!-- 
-            ==============
-            Daftar Atribut
-            ==============
-            dense               : mode padat
-            dark                : mode gelap (jangan lupa gunakan dark background secara manual)
-            accordion           : mode akordion (sibling nodes tertutup saat yang lain terbuka)
-            no-connectors       : tanpa garis konektor
-            default-expand-all  : buka seluruh nodes secara default
-            -->
+            <q-tree :nodes="simple" node-key="label" ref="tree" selected-color="green" v-model:selected="selected" v-model:expanded="expanded" :filter="filter" dense :default-expand-all="false"></q-tree>
           </div>
         </template>
 
