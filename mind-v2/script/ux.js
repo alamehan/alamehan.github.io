@@ -19,7 +19,7 @@ const app = Vue.createApp({
       expanded: ref([
         "User Experience (UX) design",
         "1 Foundations of UX design",
-        "2 UX Design Process: Emphatize, Define, Ideate"
+        "2 UX Design Process: Emphatize, Define, Ideate",
       ]),
 
       simple: [
