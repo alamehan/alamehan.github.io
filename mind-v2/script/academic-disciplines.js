@@ -40,6 +40,7 @@ const app = Vue.createApp({
 
                 {
                   label: "1.1 Performing arts",
+                  icon: "feed",
                   children: [
                     {
                       label: "Music",
@@ -130,6 +131,7 @@ const app = Vue.createApp({
 
                 {
                   label: "1.2 Visual arts",
+                  icon: "feed",
                   children: [
                     {
                       label: "Applied arts",
@@ -183,6 +185,7 @@ const app = Vue.createApp({
 
                 {
                   label: "1.3 History",
+                  icon: "feed",
                   children: [
                     { label: "African history" },
                     { label: "American history" },
@@ -258,6 +261,7 @@ const app = Vue.createApp({
 
                 {
                   label: "1.4 Languages and literature",
+                  icon: "feed",
                   children: [
                     {
                       label: "Linguistics",
@@ -334,6 +338,7 @@ const app = Vue.createApp({
 
                 {
                   label: "1.5 Law",
+                  icon: "feed",
                   children: [
                     { label: "Administrative law ➀" },
                     { label: "Canon law ➁" },
@@ -397,6 +402,7 @@ const app = Vue.createApp({
 
                 {
                   label: "1.6 Philosophy",
+                  icon: "feed",
                   children: [
                     { label: "Aesthetics" },
                     {
@@ -508,6 +514,7 @@ const app = Vue.createApp({
 
                 {
                   label: "1.7 Theology",
+                  icon: "feed",
                   children: [
                     {
                       label: "Biblical studies",
@@ -566,6 +573,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.1 Anthropology",
+                  icon: "feed",
                   children: [
                     { label: "Biological anthropology" },
                     { label: "Linguistic anthropology" },
@@ -578,6 +586,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.2 Archaeology",
+                  icon: "feed",
                   children: [
                     { label: "Biocultural anthropology" },
                     { label: "Evolutionary anthropology" },
@@ -592,6 +601,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.3 Economics",
+                  icon: "feed",
                   children: [
                     { label: "Agricultural economics ➀" },
                     { label: "Anarchist economics" },
@@ -651,6 +661,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.4 Geography",
+                  icon: "feed",
                   children: [
                     {
                       label: "Physical geography ➀",
@@ -722,6 +733,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.5 Political science",
+                  icon: "feed",
                   children: [
                     { label: "American politics" },
                     { label: "Canadian politics" },
@@ -751,6 +763,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.6 Psychology",
+                  icon: "feed",
                   children: [
                     { label: "Abnormal psychology" },
                     { label: "Applied psychology" },
@@ -829,6 +842,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.7 Sociology",
+                  icon: "feed",
                   children: [
                     { label: "Analytical sociology" },
                     {
@@ -1074,6 +1088,7 @@ const app = Vue.createApp({
 
                 {
                   label: "2.8 Social work",
+                  icon: "feed",
                   children: [
                     { label: "Clinical social work" },
                     { label: "Community practice ➀" },
@@ -1102,6 +1117,7 @@ const app = Vue.createApp({
 
                 {
                   label: "3.1 Biology",
+                  icon: "feed",
                   children: [
                     { label: "Aerobiology" },
                     {
@@ -1281,6 +1297,7 @@ const app = Vue.createApp({
 
                 {
                   label: "3.2 Chemistry",
+                  icon: "feed",
                   children: [
                     { label: "Agrochemistry" },
                     { label: "Analytical chemistry" },
@@ -1338,6 +1355,7 @@ const app = Vue.createApp({
 
                 {
                   label: "3.3 Earth science",
+                  icon: "feed",
                   children: [
                     { label: "Edaphology" },
                     { label: "Environmental chemistry ➁" },
@@ -1377,6 +1395,7 @@ const app = Vue.createApp({
 
                 {
                   label: "3.4 Space science",
+                  icon: "feed",
                   children: [
                     { label: "Astrobiology" },
                     {
@@ -1441,6 +1460,7 @@ const app = Vue.createApp({
 
                 {
                   label: "3.5 Physics",
+                  icon: "feed",
                   children: [
                     { label: "Acoustics" },
                     { label: "Aerodynamics" },
@@ -1492,6 +1512,7 @@ const app = Vue.createApp({
 
                 {
                   label: "4.1 Computer science",
+                  icon: "feed",
                   children: [
                     {
                       label: "Logic in computer science",
@@ -1674,6 +1695,7 @@ const app = Vue.createApp({
 
                 {
                   label: "4.2 Pure Mathematics",
+                  icon: "feed",
                   children: [
                     {
                       label: "Mathematical logic and Foundations of mathematics",
@@ -1796,6 +1818,7 @@ const app = Vue.createApp({
 
                 {
                   label: "4.3 Applied Mathematics",
+                  icon: "feed",
                   children: [
                     { label: "Approximation theory" },
                     {
@@ -1882,6 +1905,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.1 Agriculture",
+                  icon: "feed",
                   children: [
                     { label: "Aeroponics" },
                     { label: "Agroecology ➁" },
@@ -1934,6 +1958,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.2 Architecture and design",
+                  icon: "feed",
                   children: [
                     {
                       label: "Architecture ➁",
@@ -1986,6 +2011,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.3 Business",
+                  icon: "feed",
                   children: [
                     {
                       label: "Accounting",
@@ -2034,6 +2060,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.4 Divinity",
+                  icon: "feed",
                   children: [
                     { label: "Canon law ➂" },
                     { label: "Church history" },
@@ -2081,6 +2108,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.5 Education",
+                  icon: "feed",
                   children: [
                     { label: "Comparative education" },
                     { label: "Critical pedagogy" },
@@ -2132,6 +2160,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.6 Engineering and technology",
+                  icon: "feed",
                   children: [
                     {
                       label: "Chemical Engineering",
@@ -2380,6 +2409,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.7 Environmental studies and forestry",
+                  icon: "feed",
                   children: [
                     {
                       label: "Environmental management",
@@ -2411,6 +2441,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.8 Family and consumer science",
+                  icon: "feed",
                   children: [
                     { label: "Consumer education" },
                     { label: "Housing" },
@@ -2429,6 +2460,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.9 Human physical performance and recreation",
+                  icon: "feed",
                   children: [
                     { label: "Biomechanics / Sports biomechanics" },
                     { label: "Sports coaching" },
@@ -2483,6 +2515,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.10 Journalism, media studies and communication",
+                  icon: "feed",
                   children: [
                     {
                       label: "Journalism",
@@ -2555,6 +2588,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.11 Law",
+                  icon: "feed",
                   children: [
                     {
                       label: "Legal management ➁",
@@ -2621,6 +2655,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.12 Library and museum studies",
+                  icon: "feed",
                   children: [
                     { label: "Archival science" },
                     { label: "Archivist" },
@@ -2708,6 +2743,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.13 Medicine and health",
+                  icon: "feed",
                   children: [
                     { label: "Alternative medicine" },
                     { label: "Audiology" },
@@ -2863,6 +2899,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.14 Military sciences",
+                  icon: "feed",
                   children: [
                     { label: "Amphibious warfare" },
                     { label: "Artillery ➀" },
@@ -3042,6 +3079,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.15 Public administration",
+                  icon: "feed",
                   children: [
                     { label: "Civil service" },
                     { label: "Corrections ➀" },
@@ -3144,6 +3182,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.16 Social work",
+                  icon: "feed",
                   children: [
                     { label: "Child welfare" },
                     {
@@ -3166,6 +3205,7 @@ const app = Vue.createApp({
 
                 {
                   label: "5.17 Transportation",
+                  icon: "feed",
                   children: [
                     { label: "Highway safety" },
                     { label: "Infographics" },
