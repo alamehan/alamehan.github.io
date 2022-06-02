@@ -16,7 +16,7 @@
 
 <body>
   <div id="q-app" style="min-height: 100vh;">
-    <div class="q-pa-md q-gutter-sm">
+    <div class="q-pa-md">
       <!-- 
       ================
       Padding & Margin
@@ -33,14 +33,19 @@
         </template>
       </q-input>
 
-      <!-- B. BUTTON -->
-      <div class="q-gutter-sm q-my-md">
+      <!-- B. ALERT -->
+      <q-banner inline-actions rounded class="bg-primary text-white">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </q-banner>
+
+      <!-- C. BUTTON -->
+      <div class="q-gutter-sm q-mt-sm q-mb-md">
         <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
         <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
         <q-btn outline color="primary" label="Refresh" icon-right="refresh" onClick="window.location.reload()"></q-btn>
       </div>
 
-      <!-- B. CONTENT -->
+      <!-- D. CONTENT -->
       <q-tree :nodes="simple" node-key="label" ref="tree" selected-color="green" v-model:selected="selected" v-model:expanded="expanded" :filter="filter" dense :default-expand-all="false"></q-tree>
 
       <!-- 
