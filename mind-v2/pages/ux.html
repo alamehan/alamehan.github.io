@@ -21,6 +21,10 @@
     <div>
       <q-splitter v-model="splitterModel" style="height: 100vh">
 
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                          SPLITTER: BAGIAN KIRI                          -->
+        <!-- ----------------------------------------------------------------------- -->
+
         <template v-slot:before>
           <div class="q-pa-md">
 
@@ -30,7 +34,7 @@
                 <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
               </template>
             </q-input>
-            
+
             <!-- B. ALERT -->
             <q-banner inline-actions rounded class="bg-primary text-white">
               Resource: <a href="https://grow.google/certificates/ux-design/" style="color: white;">Google UX Design Professional Certificate</a>
@@ -49,6 +53,18 @@
             <q-tree :nodes="simple" node-key="label" ref="tree" selected-color="green" v-model:selected="selected" v-model:expanded="expanded" :filter="filter" dense :default-expand-all="false"></q-tree>
           </div>
         </template>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                     SPLITTER: PEMBATAS (DRAGGABLE)                      -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <template v-slot:separator>
+          <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+        </template>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                         SPLITTER: BAGIAN KANAN                          -->
+        <!-- ----------------------------------------------------------------------- -->
 
         <template v-slot:after>
           <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">

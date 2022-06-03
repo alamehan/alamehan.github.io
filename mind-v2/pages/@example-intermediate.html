@@ -24,6 +24,10 @@
     <div>
       <q-splitter v-model="splitterModel" style="height: 100vh">
 
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                          SPLITTER: BAGIAN KIRI                          -->
+        <!-- ----------------------------------------------------------------------- -->
+
         <template v-slot:before>
           <div class="q-pa-md">
             <!-- 
@@ -71,6 +75,18 @@
             -->
           </div>
         </template>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                     SPLITTER: PEMBATAS (DRAGGABLE)                      -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <template v-slot:separator>
+          <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+        </template>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                         SPLITTER: BAGIAN KANAN                          -->
+        <!-- ----------------------------------------------------------------------- -->
 
         <template v-slot:after>
           <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">

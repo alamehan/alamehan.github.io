@@ -52,6 +52,8 @@
         <q-tab-panel name="tab1" class="q-pa-none">
           <q-splitter v-model="splitterModel" style="height: 100vh">
 
+            <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
             <template v-slot:before>
               <div class="q-pa-md">
                 <!-- 
@@ -99,6 +101,14 @@
                 -->
               </div>
             </template>
+
+            <!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+            </template>
+
+            <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
 
             <template v-slot:after>
               <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
@@ -195,7 +205,7 @@
 
   <script src="../library/vue-3.global.prod.js"></script>
   <script src="../library/quasar-2.7.1.umd.prod.js"></script>
-  <script src="../script/history.js"></script>
+  <script src="../script/history-01.js"></script>
 </body>
 
 </html>
