@@ -5,22 +5,52 @@ const app = Vue.createApp({
     const filter = ref("");
     const filterRef = ref(null);
 
-    return {
-      filter,
-      filterRef,
+    // 1️⃣ ATUR NODE YANG TERBUKA PERTAMA KALI
+    let nilai = ref([
+      "Outline of Acedemic Disciplines",
+      "1 Humanities",
+      "2 Social science",
+      "3 Natural science",
+      "4 Formal science",
+      "5 Applied science",
+    ])
 
-      // ⚠️ TAB YANG AKTIF PERTAMA KALI
-      selected: ref("Outline of Acedemic Disciplines"),
-
-      // ⚠️ DEFAULT CHILD NODE YANG TERBUKA
-      expanded: ref([
+    // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
+    function defaultNode(nilai) {
+      let node = [
         "Outline of Acedemic Disciplines",
         "1 Humanities",
         "2 Social science",
         "3 Natural science",
         "4 Formal science",
         "5 Applied science",
-      ]),
+      ]
+      setTimeout(() => { nilai.tree.collapseAll() }, 100);                // tutup seluruh node
+      setTimeout(() => { nilai.tree.setExpanded(node[0], true) }, 100);   // true/buka node "Outline of Acedemic Disciplines"
+      setTimeout(() => { nilai.tree.setExpanded(node[1], true) }, 100);   // true/buka node "1 Humanities"
+      setTimeout(() => { nilai.tree.setExpanded(node[2], true) }, 100);   // true/buka node "2 Social science"
+      setTimeout(() => { nilai.tree.setExpanded(node[3], true) }, 100);   // true/buka node "3 Natural science"
+      setTimeout(() => { nilai.tree.setExpanded(node[4], true) }, 100);   // true/buka node "4 Formal science"
+      setTimeout(() => { nilai.tree.setExpanded(node[5], true) }, 100);   // true/buka node "5 Applied science"
+    }
+
+    // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
+    function toggleNode(nilai) {
+      let node = "Outline of Acedemic Disciplines"
+      nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
+    }
+
+    return {
+      filter,
+      filterRef,
+      defaultNode,
+      toggleNode,
+
+      // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
+      selected: ref("Outline of Acedemic Disciplines"),
+
+      // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
+      expanded: nilai,
 
       simple: [
         {
@@ -28,7 +58,6 @@ const app = Vue.createApp({
           avatar: "../assets/academic-disciplines/academic-disciplines-headline.png",
           children: [
 
-            // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
             // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
 
             {
@@ -561,7 +590,6 @@ const app = Vue.createApp({
               ]
             },
 
-            // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
             // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
 
             {
@@ -1106,7 +1134,6 @@ const app = Vue.createApp({
             },
 
             // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
-            // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
 
             {
               label: "3 Natural science",
@@ -1501,7 +1528,6 @@ const app = Vue.createApp({
             },
 
             // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
-            // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
 
             {
               label: "4 Formal science",
@@ -1893,7 +1919,6 @@ const app = Vue.createApp({
               ]
             },
 
-            // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
             // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
 
             {
@@ -3230,7 +3255,6 @@ const app = Vue.createApp({
               ]
             },
 
-            // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
             // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 //
 
           ]

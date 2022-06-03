@@ -5,22 +5,46 @@ const app = Vue.createApp({
     const filter = ref("");
     const filterRef = ref(null);
 
-    return {
-      filter,
-      filterRef,
+    // 1️⃣ ATUR NODE YANG TERBUKA PERTAMA KALI
+    let nilai = ref([
+      "User Experience (UX) design",
+      "1 Foundations of UX design",
+      "2 UX Design Process: Emphatize, Define, Ideate",
+    ])
 
-      // ⚠️ LAYAR TREE 50% & DETAIL 50%
-      splitterModel: ref(50), 
-
-      // ⚠️ TAB YANG AKTIF PERTAMA KALI
-      selected: ref("User Experience (UX) design"),
-
-      // ⚠️ DEFAULT CHILD NODE YANG TERBUKA
-      expanded: ref([
+    // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
+    function defaultNode(nilai) {
+      let node = [
         "User Experience (UX) design",
         "1 Foundations of UX design",
         "2 UX Design Process: Emphatize, Define, Ideate",
-      ]),
+      ]
+      setTimeout(() => { nilai.tree.collapseAll() }, 100);                // tutup seluruh node
+      setTimeout(() => { nilai.tree.setExpanded(node[0], true) }, 100);   // true/buka node "User Experience (UX) design"
+      setTimeout(() => { nilai.tree.setExpanded(node[1], true) }, 100);   // true/buka node "1 Foundations of UX design"
+      setTimeout(() => { nilai.tree.setExpanded(node[2], true) }, 100);   // true/buka node "2 UX Design Process: Emphatize, Define, Ideate"
+    }
+
+    // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
+    function toggleNode(nilai) {
+      let node = "User Experience (UX) design"
+      nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
+    }
+
+    return {
+      filter,
+      filterRef,
+      defaultNode,
+      toggleNode,
+
+      // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50%
+      splitterModel: ref(50),
+
+      // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
+      selected: ref("User Experience (UX) design"),
+
+      // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
+      expanded: nilai,
 
       simple: [
         {

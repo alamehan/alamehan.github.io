@@ -37,9 +37,6 @@ const app = Vue.createApp({
       defaultNode,
       toggleNode,
 
-      // ⚠️ TAB YANG AKTIF (SELECTED) PERTAMA KALI
-      tab: ref('tab1'),
-
       // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50%
       splitterModel: ref(50),
 

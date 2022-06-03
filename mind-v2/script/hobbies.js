@@ -5,22 +5,52 @@ const app = Vue.createApp({
     const filter = ref("");
     const filterRef = ref(null);
 
-    return {
-      filter,
-      filterRef,
+    // 1️⃣ ATUR NODE YANG TERBUKA PERTAMA KALI
+    let nilai = ref([
+      "List of Hobbies",
+      "1 General hobbies",
+      "2 Educational hobbies",
+      "3 Collection hobbies",
+      "4 Competitive hobbies",
+      "5 Observation hobbies",
+    ])
 
-      // ⚠️ TAB YANG AKTIF PERTAMA KALI
-      selected: ref("List of Hobbies"),
-
-      // ⚠️ DEFAULT CHILD NODE YANG TERBUKA
-      expanded: ref([
+    // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
+    function defaultNode(nilai) {
+      let node = [
         "List of Hobbies",
         "1 General hobbies",
         "2 Educational hobbies",
         "3 Collection hobbies",
         "4 Competitive hobbies",
         "5 Observation hobbies",
-      ]),
+      ]
+      setTimeout(() => { nilai.tree.collapseAll() }, 100);                // tutup seluruh node
+      setTimeout(() => { nilai.tree.setExpanded(node[0], true) }, 100);   // true/buka node "Root"
+      setTimeout(() => { nilai.tree.setExpanded(node[1], true) }, 100);   // true/buka node "1 General hobbies"
+      setTimeout(() => { nilai.tree.setExpanded(node[2], true) }, 100);   // true/buka node "2 Educational hobbies"
+      setTimeout(() => { nilai.tree.setExpanded(node[3], true) }, 100);   // true/buka node "3 Collection hobbies"
+      setTimeout(() => { nilai.tree.setExpanded(node[4], true) }, 100);   // true/buka node "4 Competitive hobbies"
+      setTimeout(() => { nilai.tree.setExpanded(node[5], true) }, 100);   // true/buka node "5 Observation hobbies"
+    }
+
+    // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
+    function toggleNode(nilai) {
+      let node = "List of Hobbies"
+      nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
+    }
+
+    return {
+      filter,
+      filterRef,
+      defaultNode,
+      toggleNode,
+
+      // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
+      selected: ref("List of Hobbies"),
+
+      // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
+      expanded: nilai,
 
       simple: [
         {

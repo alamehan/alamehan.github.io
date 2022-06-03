@@ -40,7 +40,9 @@
             <div class="q-gutter-sm q-mt-sm q-mb-md">
               <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
               <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
-              <q-btn outline color="primary" label="Refresh" icon-right="refresh" onClick="window.location.reload()"></q-btn>
+              <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode($refs)"></q-btn>
+              <!-- <q-btn outline color="primary" label="Toggle" icon-right="toggle_on" @click="toggleNode($refs)"></q-btn> -->
+              <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
             </div>
 
             <!-- D. CONTENT -->
