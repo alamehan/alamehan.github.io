@@ -19,6 +19,7 @@ const app = Vue.createApp({
         "1 Foundations of UX design",
         "2 UX Design Process: Emphatize, Define, Ideate",
       ]
+      
       setTimeout(() => { nilai.tree.collapseAll() }, 100);                // tutup seluruh node
       setTimeout(() => { nilai.tree.setExpanded(node[0], true) }, 100);   // true/buka node "User Experience (UX) design"
       setTimeout(() => { nilai.tree.setExpanded(node[1], true) }, 100);   // true/buka node "1 Foundations of UX design"
