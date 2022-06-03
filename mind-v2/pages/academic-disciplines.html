@@ -12,9 +12,46 @@
   <link rel="icon" href="../assets/logo-atoz-mind.svg">
   <link rel="stylesheet" href="../library/fonts-google-apis.css">
   <link rel="stylesheet" href="../library/quasar-2.7.1.min.css">
+  <style>
+    /* BUTTON TO TOP */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .btn-scroll {
+      z-index: 1000;
+      /* Perfect Fixed Center Position */
+      position: fixed;
+      bottom: 15%;
+      right: -16px;
+      /* Wajib Tambahkan Transform */
+      /* transform: translate(-50%, 0%); */
+      border: 0px solid;
+      padding: 0px;
+      background-color: transparent;
+      transition: 0.3s;
+    }
+
+    /* Hover saat buka di computer Active (click) saat buka di mobile */
+    .btn-scroll:hover,
+    .btn-scroll:active {
+      right: 0px;
+    }
+
+    .btn-scroll:hover .ganti-warna,
+    .btn-scroll:active .ganti-warna {
+      filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(175deg) brightness(97%) contrast(103%);
+    }
+  </style>
 </head>
 
 <body>
+  <!-- BUTTON TO TOP (HANYA UNTUK @example-basic) -->
+  <div id="atas"></div>
+  <button class="btn-scroll">
+    <a href="#atas"><img src="../assets/to-top.svg" class="ganti-warna"></a>
+  </button>
+
   <div id="q-app" style="min-height: 100vh;">
     <div class="q-pa-md">
 
