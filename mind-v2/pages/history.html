@@ -1,6 +1,19 @@
 <!-- ⚠️ SUMBER: https://quasar.dev/vue-components/tree ⚠️ -->
 <!-- ⚠️ ISSUES: https://forum.quasar-framework.org/topic/7986/expanding-and-collapsing-nodes-extremely-slow/2 ⚠️ -->
 <!-- ⚠️ CATATAN: Install extension "Comment Anchor", lalu gunakan (di tab kiri VS Code) untuk navigasi cepat ke konten ⚠️ -->
+<!-- ⚠️ CATATAN: Setiap tab konten terdapat beberapa keyword yang perlu diganti/disesuaikan nomor urutnya, yaitu: ⚠️
+
+tab__x, 
+defaultNode__x
+data__x
+selected__x
+expanded__x
+Root__x
+nilai__x
+
+TAMBAHAN: Gunakan extension "Text Marker (Highlighter)", highlight masing-masing keyword diatas (tanpa menyertakan huruf "x")
+Dengan cara ini Anda akan lebih mudah menemukan keyword tersebut.
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,13 +42,13 @@
       <!-- ----------------------------------------------------------------------- -->
 
       <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="primary" align="justify">
-        <q-tab name="tab1" label="🌌 Universe"></q-tab>
-        <q-tab name="tab2" label="🧬 Life"></q-tab>
-        <q-tab name="tab3" label="🦖 Prehistory"></q-tab>
-        <q-tab name="tab4" label="🏺 Ancient Ages"></q-tab>
-        <q-tab name="tab5" label="📜 Middle Ages"></q-tab>
-        <q-tab name="tab6" label="🚀 Modern Ages"></q-tab>
-        <q-tab name="tab7" label="🤖 Future"></q-tab>
+        <q-tab name="tab__1" label="🌌 Universe"></q-tab>
+        <q-tab name="tab__2" label="🧬 Life"></q-tab>
+        <q-tab name="tab__3" label="🦖 Prehistory"></q-tab>
+        <q-tab name="tab__4" label="🏺 Ancient Ages"></q-tab>
+        <q-tab name="tab__5" label="📜 Middle Ages"></q-tab>
+        <q-tab name="tab__6" label="🚀 Modern Ages"></q-tab>
+        <q-tab name="tab__7" label="🤖 Future"></q-tab>
       </q-tabs>
 
       <q-separator></q-separator>
@@ -50,21 +63,13 @@
         <!--                            ANCHOR CONTENT 1                             -->
         <!-- ----------------------------------------------------------------------- -->
 
-        <q-tab-panel name="tab1" class="q-pa-none">
+        <q-tab-panel name="tab__1" class="q-pa-none">
           <q-splitter v-model="splitterModel" style="height: 100vh">
 
             <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
 
             <template v-slot:before>
               <div class="q-pa-md">
-                <!-- 
-                ================
-                Padding & Margin
-                ================
-                p/m                       (padding/margin)
-                a/x/y/t/r/b/l             (all/sumbu-x/sumbu-y/top/right/bottom/left)
-                none/auto/xs/sm/md/lg/xl
-                -->
 
                 <!-- A. FILTER -->
                 <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
@@ -82,24 +87,13 @@
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
                   <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
                   <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
-                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode($refs)"></q-btn>
-                  <!-- <q-btn outline color="primary" label="Toggle" icon-right="toggle_on" @click="toggleNode($refs)"></q-btn> -->
+                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__1($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="simple" node-key="label" ref="tree" selected-color="green" v-model:selected="selected" v-model:expanded="expanded" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__1" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__1" v-model:expanded="expanded__1" :filter="filter" dense :default-expand-all="false"></q-tree>
 
-                <!-- 
-                ==============
-                Daftar Atribut
-                ==============
-                dense               : mode padat
-                dark                : mode gelap (jangan lupa gunakan dark background secara manual)
-                accordion           : mode akordion (sibling nodes tertutup saat yang lain terbuka)
-                no-connectors       : tanpa garis konektor
-                default-expand-all  : buka seluruh nodes secara default
-                -->
               </div>
             </template>
 
@@ -112,12 +106,12 @@
             <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
 
             <template v-slot:after>
-              <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
+              <q-tab-panels v-model="selected__1" animated transition-prev="jump-up" transition-next="jump-up">
 
-                <q-tab-panel name="Root">
+                <q-tab-panel name="Root__1">
                   <!-- BASIC TEXT -->
                   <div class="q-px-sm q-pb-sm">
-                    <h4 class="mtitle">Root</h4>
+                    <h4 class="mtitle">Root__1</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
                     <q-img src="../assets/example.png">
@@ -125,41 +119,7 @@
                   <!-- TIMELINE -->
                   <div class="q-px-sm q-pb-sm">
                     <q-timeline color="secondary">
-                      <!-- <q-timeline-entry heading>
-                        Root
-                      </q-timeline-entry> -->
-                      <h4 class="mtitle">Root</h4>
-
-                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
-                        <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </div>
-                      </q-timeline-entry>
-
-                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
-                        <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </div>
-                      </q-timeline-entry>
-                    </q-timeline>
-                  </div>
-                </q-tab-panel>
-
-                <q-tab-panel name="Pleasing decor">
-                  <!-- BASIC TEXT -->
-                  <div class="q-px-sm q-pb-sm">
-                    <h4 class="mtitle">Pleasing decor</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <q-img src="../assets/example.png">
-                  </div>
-                  <!-- TIMELINE -->
-                  <div class="q-px-sm q-pb-sm">
-                    <q-timeline color="secondary">
-                      <!-- <q-timeline-entry heading>
-                        Pleasing decor
-                      </q-timeline-entry> -->
-                      <h4 class="mtitle">Pleasing decor</h4>
+                      <h4 class="mtitle">Root__1</h4>
 
                       <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
                         <div>
@@ -185,18 +145,492 @@
         <!--                            ANCHOR CONTENT 2                             -->
         <!-- ----------------------------------------------------------------------- -->
 
-        <q-tab-panel name="tab2">
-          <div class="text-h6">Title</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <q-tab-panel name="tab__2" class="q-pa-none">
+          <q-splitter v-model="splitterModel" style="height: 100vh">
+
+            <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
+            <template v-slot:before>
+              <div class="q-pa-md">
+
+                <!-- A. FILTER -->
+                <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
+                  <template v-slot:append>
+                    <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+                  </template>
+                </q-input>
+
+                <!-- B. ALERT -->
+                <q-banner inline-actions rounded class="bg-primary text-white">
+                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                </q-banner>
+
+                <!-- C. BUTTON -->
+                <div class="q-gutter-sm q-mt-sm q-mb-md">
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__2($refs)"></q-btn>
+                  <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
+                </div>
+
+                <!-- D. CONTENT -->
+                <q-tree :nodes="data__2" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__2" v-model:expanded="expanded__2" :filter="filter" dense :default-expand-all="false"></q-tree>
+
+              </div>
+            </template>
+
+            <!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+            </template>
+
+            <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
+
+            <template v-slot:after>
+              <q-tab-panels v-model="selected__2" animated transition-prev="jump-up" transition-next="jump-up">
+
+                <q-tab-panel name="Root__2">
+                  <!-- BASIC TEXT -->
+                  <div class="q-px-sm q-pb-sm">
+                    <h4 class="mtitle">Root__2</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <q-img src="../assets/example.png">
+                  </div>
+                  <!-- TIMELINE -->
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Root__2</h4>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+              </q-tab-panels>
+            </template>
+          </q-splitter>
         </q-tab-panel>
 
         <!-- ----------------------------------------------------------------------- -->
         <!--                            ANCHOR CONTENT 3                             -->
         <!-- ----------------------------------------------------------------------- -->
 
-        <q-tab-panel name="tab3">
-          <div class="text-h6">Title</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <q-tab-panel name="tab__3" class="q-pa-none">
+          <q-splitter v-model="splitterModel" style="height: 100vh">
+
+            <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
+            <template v-slot:before>
+              <div class="q-pa-md">
+
+                <!-- A. FILTER -->
+                <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
+                  <template v-slot:append>
+                    <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+                  </template>
+                </q-input>
+
+                <!-- B. ALERT -->
+                <q-banner inline-actions rounded class="bg-primary text-white">
+                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                </q-banner>
+
+                <!-- C. BUTTON -->
+                <div class="q-gutter-sm q-mt-sm q-mb-md">
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__3($refs)"></q-btn>
+                  <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
+                </div>
+
+                <!-- D. CONTENT -->
+                <q-tree :nodes="data__3" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__3" v-model:expanded="expanded__3" :filter="filter" dense :default-expand-all="false"></q-tree>
+
+              </div>
+            </template>
+
+            <!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+            </template>
+
+            <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
+
+            <template v-slot:after>
+              <q-tab-panels v-model="selected__3" animated transition-prev="jump-up" transition-next="jump-up">
+
+                <q-tab-panel name="Root__3">
+                  <!-- BASIC TEXT -->
+                  <div class="q-px-sm q-pb-sm">
+                    <h4 class="mtitle">Root__3</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <q-img src="../assets/example.png">
+                  </div>
+                  <!-- TIMELINE -->
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Root__3</h4>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+              </q-tab-panels>
+            </template>
+          </q-splitter>
+        </q-tab-panel>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                            ANCHOR CONTENT 4                             -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <q-tab-panel name="tab__4" class="q-pa-none">
+          <q-splitter v-model="splitterModel" style="height: 100vh">
+
+            <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
+            <template v-slot:before>
+              <div class="q-pa-md">
+
+                <!-- A. FILTER -->
+                <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
+                  <template v-slot:append>
+                    <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+                  </template>
+                </q-input>
+
+                <!-- B. ALERT -->
+                <q-banner inline-actions rounded class="bg-primary text-white">
+                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                </q-banner>
+
+                <!-- C. BUTTON -->
+                <div class="q-gutter-sm q-mt-sm q-mb-md">
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__4($refs)"></q-btn>
+                  <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
+                </div>
+
+                <!-- D. CONTENT -->
+                <q-tree :nodes="data__4" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__4" v-model:expanded="expanded__4" :filter="filter" dense :default-expand-all="false"></q-tree>
+
+              </div>
+            </template>
+
+            <!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+            </template>
+
+            <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
+
+            <template v-slot:after>
+              <q-tab-panels v-model="selected__4" animated transition-prev="jump-up" transition-next="jump-up">
+
+                <q-tab-panel name="Root__4">
+                  <!-- BASIC TEXT -->
+                  <div class="q-px-sm q-pb-sm">
+                    <h4 class="mtitle">Root__4</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <q-img src="../assets/example.png">
+                  </div>
+                  <!-- TIMELINE -->
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Root__4</h4>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+              </q-tab-panels>
+            </template>
+          </q-splitter>
+        </q-tab-panel>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                            ANCHOR CONTENT 5                             -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <q-tab-panel name="tab__5" class="q-pa-none">
+          <q-splitter v-model="splitterModel" style="height: 100vh">
+
+            <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
+            <template v-slot:before>
+              <div class="q-pa-md">
+
+                <!-- A. FILTER -->
+                <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
+                  <template v-slot:append>
+                    <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+                  </template>
+                </q-input>
+
+                <!-- B. ALERT -->
+                <q-banner inline-actions rounded class="bg-primary text-white">
+                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                </q-banner>
+
+                <!-- C. BUTTON -->
+                <div class="q-gutter-sm q-mt-sm q-mb-md">
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__5($refs)"></q-btn>
+                  <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
+                </div>
+
+                <!-- D. CONTENT -->
+                <q-tree :nodes="data__5" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__5" v-model:expanded="expanded__5" :filter="filter" dense :default-expand-all="false"></q-tree>
+
+              </div>
+            </template>
+
+            <!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+            </template>
+
+            <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
+
+            <template v-slot:after>
+              <q-tab-panels v-model="selected__5" animated transition-prev="jump-up" transition-next="jump-up">
+
+                <q-tab-panel name="Root__5">
+                  <!-- BASIC TEXT -->
+                  <div class="q-px-sm q-pb-sm">
+                    <h4 class="mtitle">Root__5</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <q-img src="../assets/example.png">
+                  </div>
+                  <!-- TIMELINE -->
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Root__5</h4>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+              </q-tab-panels>
+            </template>
+          </q-splitter>
+        </q-tab-panel>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                            ANCHOR CONTENT 6                             -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <q-tab-panel name="tab__6" class="q-pa-none">
+          <q-splitter v-model="splitterModel" style="height: 100vh">
+
+            <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
+            <template v-slot:before>
+              <div class="q-pa-md">
+
+                <!-- A. FILTER -->
+                <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
+                  <template v-slot:append>
+                    <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+                  </template>
+                </q-input>
+
+                <!-- B. ALERT -->
+                <q-banner inline-actions rounded class="bg-primary text-white">
+                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                </q-banner>
+
+                <!-- C. BUTTON -->
+                <div class="q-gutter-sm q-mt-sm q-mb-md">
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__6($refs)"></q-btn>
+                  <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
+                </div>
+
+                <!-- D. CONTENT -->
+                <q-tree :nodes="data__6" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__6" v-model:expanded="expanded__6" :filter="filter" dense :default-expand-all="false"></q-tree>
+
+              </div>
+            </template>
+
+            <!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+            </template>
+
+            <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
+
+            <template v-slot:after>
+              <q-tab-panels v-model="selected__6" animated transition-prev="jump-up" transition-next="jump-up">
+
+                <q-tab-panel name="Root__6">
+                  <!-- BASIC TEXT -->
+                  <div class="q-px-sm q-pb-sm">
+                    <h4 class="mtitle">Root__6</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <q-img src="../assets/example.png">
+                  </div>
+                  <!-- TIMELINE -->
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Root__6</h4>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+              </q-tab-panels>
+            </template>
+          </q-splitter>
+        </q-tab-panel>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                            ANCHOR CONTENT 7                             -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <q-tab-panel name="tab__7" class="q-pa-none">
+          <q-splitter v-model="splitterModel" style="height: 100vh">
+
+            <!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
+            <template v-slot:before>
+              <div class="q-pa-md">
+
+                <!-- A. FILTER -->
+                <q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
+                  <template v-slot:append>
+                    <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+                  </template>
+                </q-input>
+
+                <!-- B. ALERT -->
+                <q-banner inline-actions rounded class="bg-primary text-white">
+                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                </q-banner>
+
+                <!-- C. BUTTON -->
+                <div class="q-gutter-sm q-mt-sm q-mb-md">
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__7($refs)"></q-btn>
+                  <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
+                </div>
+
+                <!-- D. CONTENT -->
+                <q-tree :nodes="data__7" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__7" v-model:expanded="expanded__7" :filter="filter" dense :default-expand-all="false"></q-tree>
+
+              </div>
+            </template>
+
+            <!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+            </template>
+
+            <!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
+
+            <template v-slot:after>
+              <q-tab-panels v-model="selected__7" animated transition-prev="jump-up" transition-next="jump-up">
+
+                <q-tab-panel name="Root__7">
+                  <!-- BASIC TEXT -->
+                  <div class="q-px-sm q-pb-sm">
+                    <h4 class="mtitle">Root__7</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <q-img src="../assets/example.png">
+                  </div>
+                  <!-- TIMELINE -->
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Root__7</h4>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                        <div>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </q-timeline-entry>
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+              </q-tab-panels>
+            </template>
+          </q-splitter>
         </q-tab-panel>
 
       </q-tab-panels>
@@ -206,7 +640,7 @@
 
   <script src="../library/vue-3.global.prod.js"></script>
   <script src="../library/quasar-2.7.1.umd.prod.js"></script>
-  <script src="../script/history-01.js"></script>
+  <script src="../script/history.js"></script>
 </body>
 
 </html>
