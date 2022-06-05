@@ -8,9 +8,11 @@ const app = Vue.createApp({
     // 1️⃣ ATUR NODE YANG TERBUKA PERTAMA KALI
 
     let nilai__1 = ref([
-      "Root__1",
-      "Good food (with icon)",
-      "Pleasant surroundings (with icon)"
+      "Early Universe",
+      "1. The first 20 minutes",
+      "2. Matter era",
+      "3. Epochs of the formation of the Solar System",
+      "4. Recent history",
     ])
 
     let nilai__2 = ref([
@@ -50,12 +52,14 @@ const app = Vue.createApp({
     ])
 
     // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
-    
+
     function defaultNode__1(pohon) {
       let node = [
-        "Root__1",
-        "Good food (with icon)",
-        "Pleasant surroundings (with icon)"
+        "Early Universe",
+        "1. The first 20 minutes",
+        "2. Matter era",
+        "3. Epochs of the formation of the Solar System",
+        "4. Recent history",
       ]
       console.log(node)
       setTimeout(() => { pohon.tree.collapseAll() }, 100);
@@ -160,7 +164,7 @@ const app = Vue.createApp({
       splitterModel: ref(50),
 
       // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
-      selected__1: ref("Root__1"),
+      selected__1: ref("1.3 Electroweak epoch ⇢"),
       selected__2: ref("Root__2"),
       selected__3: ref("Root__3"),
       selected__4: ref("Root__4"),
@@ -183,35 +187,41 @@ const app = Vue.createApp({
 
       data__1: [
         {
-          label: "Root__1",
-          avatar: "../assets/boy-avatar.png",
+          label: "Early Universe",
+          avatar: "../assets/history/general/history-1-universe.png",
           children: [
             {
-              label: "Good food (with icon)",
-              icon: "restaurant_menu",
+              label: "1. The first 20 minutes",
+              icon: "feed",
               children: [
-                { label: "Quality ingredients" },
-                { label: "Good recipe" }]
+                { label: "1.1 Planck epoch ⇢" },
+                { label: "1.2 Grand unification epoch ⇢" },
+                { label: "1.3 Electroweak epoch ⇢" },
+                { label: "1.4 Quark epoch ⇢" },
+                { label: "1.5 Hadron epoch ⇢" },
+                { label: "1.6 Lepton epoch ⇢" },
+                { label: "1.7 Photon epoch ⇢" },,
+              ]
             },
             {
-              label: "Good service (disabled node with icon)",
-              icon: "room_service",
-              disabled: true,
+              label: "2. Matter era",
+              icon: "feed",
               children: [
-                { label: "Prompt attention" },
-                { label: "Professional waiter" }]
+                { label: "2.1 Matter and radiation equivalence ⇢" },
+                { label: "2.2 Cosmic Dark Age ⇢" },
+                { label: "2.3 Galaxy epoch ⇢" },
+                { label: "2.4 Acceleration ⇢" },
+              ]
             },
             {
-              label: "Pleasant surroundings (with icon)",
-              icon: "photo",
-              children: [
-                {
-                  label: "Happy atmosphere (with image)",
-                  img: "../assets/logo_calendar_128px.png"
-                },
-                { label: "Good table presentation" },
-                { label: "Pleasing decor" }]
-            }]
+              label: "3. Epochs of the formation of the Solar System ⇢",
+              icon: "feed",
+            },
+            {
+              label: "4. Recent history ⇢",
+              icon: "feed",
+            },
+          ]
         }
       ],
 
@@ -222,7 +232,7 @@ const app = Vue.createApp({
       data__2: [
         {
           label: "Root__2",
-          avatar: "../assets/boy-avatar.png",
+          avatar: "../assets/history/general/history-2-life.png",
           children: [
             {
               label: "Good food (with icon)",
@@ -260,7 +270,7 @@ const app = Vue.createApp({
       data__3: [
         {
           label: "Root__3",
-          avatar: "../assets/boy-avatar.png",
+          avatar: "../assets/history/general/history-3-prehistory.png",
           children: [
             {
               label: "Good food (with icon)",
@@ -298,7 +308,7 @@ const app = Vue.createApp({
       data__4: [
         {
           label: "Root__4",
-          avatar: "../assets/boy-avatar.png",
+          avatar: "../assets/history/general/history-4-ancient-ages.png",
           children: [
             {
               label: "Good food (with icon)",
@@ -336,7 +346,7 @@ const app = Vue.createApp({
       data__5: [
         {
           label: "Root__5",
-          avatar: "../assets/boy-avatar.png",
+          avatar: "../assets/history/general/history-5-middle-ages.png",
           children: [
             {
               label: "Good food (with icon)",
@@ -374,7 +384,7 @@ const app = Vue.createApp({
       data__6: [
         {
           label: "Root__6",
-          avatar: "../assets/boy-avatar.png",
+          avatar: "../assets/history/general/history-6-modern-ages.png",
           children: [
             {
               label: "Good food (with icon)",
@@ -412,7 +422,7 @@ const app = Vue.createApp({
       data__7: [
         {
           label: "Root__7",
-          avatar: "../assets/boy-avatar.png",
+          avatar: "../assets/history/general/history-7-future.png",
           children: [
             {
               label: "Good food (with icon)",

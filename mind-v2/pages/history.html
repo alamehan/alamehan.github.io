@@ -13,6 +13,12 @@
     .mtitle {
       margin: 12px 0px 24px 0px;
     }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -28,8 +34,8 @@
         <q-tab name="tab__1" label="🌌 Universe"></q-tab>
         <q-tab name="tab__2" label="🧬 Life"></q-tab>
         <q-tab name="tab__3" label="🦖 Prehistory"></q-tab>
-        <q-tab name="tab__4" label="🏺 Ancient Ages"></q-tab>
-        <q-tab name="tab__5" label="📜 Middle Ages"></q-tab>
+        <q-tab name="tab__4" label="📜 Ancient Ages"></q-tab>
+        <q-tab name="tab__5" label="🏺 Middle Ages"></q-tab>
         <q-tab name="tab__6" label="🚀 Modern Ages"></q-tab>
         <q-tab name="tab__7" label="🤖 Future"></q-tab>
       </q-tabs>
@@ -63,19 +69,24 @@
 
                 <!-- B. ALERT -->
                 <q-banner inline-actions rounded class="bg-primary text-white">
-                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                  Resource:
+                  <a href="https://en.wikipedia.orghttps://en.wikipedia.orghttps://en.wikipedia.org/wiki/Timeline_of_the_early_universe"
+                    style="color: white;">Timelines of the Early Universe</a> | Latest Wikipedia's revision: 00:45, 29 May 2022
                 </q-banner>
 
                 <!-- C. BUTTON -->
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
-                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
-                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()">
+                  </q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen"
+                    @click="$refs.tree.collapseAll()"></q-btn>
                   <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__1($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="data__1" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__1" v-model:expanded="expanded__1" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__1" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__1"
+                  v-model:expanded="expanded__1" :filter="filter" dense :default-expand-all="false"></q-tree>
 
               </div>
             </template>
@@ -91,30 +102,160 @@
             <template v-slot:after>
               <q-tab-panels v-model="selected__1" animated transition-prev="jump-up" transition-next="jump-up">
 
-                <q-tab-panel name="Root__1">
-                  <!-- BASIC TEXT -->
+                <q-tab-panel name="Early Universe">
                   <div class="q-px-sm q-pb-sm">
-                    <h4 class="mtitle">Root__1</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <q-img src="../assets/example.png">
+                    <h4 class="mtitle">Early Universe</h4>
+                    <p>
+                      The <b>timeline of the early universe</b> outlines the formation and subsequent evolution of the <a
+                        href="https://en.wikipedia.org/wiki/Universe" title="Universe">Universe</a> from the <a
+                        href="https://en.wikipedia.org/wiki/Big_Bang" title="Big Bang">Big
+                        Bang</a> (13.799 ± 0.021 billion years ago) to the present day. An <a
+                        href="https://en.wikipedia.org/wiki/Epoch" title="Epoch">epoch</a> is a moment in time from which nature
+                      or situations change to such a degree that
+                      it marks the beginning of a new <i><a href="https://en.wikipedia.org/wiki/Era" title="Era">era</a></i> or
+                      <i><a href="https://en.wikipedia.org/wiki/Periodization#History" title="Periodization">age</a></i>. Times on
+                      this list are measured
+                      from the moment of the Big Bang.
+                    </p>
+                    <q-img src="../assets/history/1-universe/01.jpg">
                   </div>
-                  <!-- TIMELINE -->
+                </q-tab-panel>
+
+                <!-- ----------------------------------------------------------------------- -->
+                <!--                           ANCHOR CONTENT 1.1                            -->
+                <!-- ----------------------------------------------------------------------- -->
+
+                <q-tab-panel name="1.1 Planck epoch ⇢">
                   <div class="q-px-sm q-pb-sm">
                     <q-timeline color="secondary">
-                      <h4 class="mtitle">Root__1</h4>
+                      <h4 class="mtitle">Planck epoch</h4>
 
-                      <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
+                      <q-timeline-entry subtitle="c. 0 seconds (13.799 ± 0.021 Gya)">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Gya" class="mw-redirect" title="Gya">Gya</a>): <a
+                                href="https://en.wikipedia.org/wiki/Planck_epoch" class="mw-redirect" title="Planck epoch">Planck
+                                epoch</a> begins:
+                              earliest meaningful time. The Big Bang occurs in which ordinary space and time develop out of a
+                              primeval state (possibly a <a href="https://en.wikipedia.org/wiki/Virtual_particle"
+                                title="Virtual particle">virtual
+                                particle</a> or <a href="https://en.wikipedia.org/wiki/False_vacuum_decay"
+                                title="False vacuum decay">false vacuum</a>)
+                              described by a <a href="https://en.wikipedia.org/wiki/Quantum_gravity"
+                                title="Quantum gravity">quantum theory of gravity</a>
+                              or "<a href="https://en.wikipedia.org/wiki/Theory_of_Everything" class="mw-redirect"
+                                title="Theory of Everything">Theory of
+                                Everything</a>". All matter and energy of the entire visible universe is contained in a hot, dense
+                              point (<a href="https://en.wikipedia.org/wiki/Gravitational_singularity"
+                                title="Gravitational singularity">gravitational
+                                singularity</a>), a billionth the size of a nuclear particle. This state has been described as a
+                              particle <a href="https://en.wikipedia.org/wiki/Desert_(particle_physics)"
+                                title="Desert (particle physics)">desert</a>.
+                              Other than a few scant details, conjecture dominates discussion about the earliest moments of the
+                              universe's history since no effective means of testing this far back in space-time is presently
+                              available. WIMPS (weakly interacting massive particles) or <a
+                                href="https://en.wikipedia.org/wiki/Dark_matter" title="Dark matter">dark matter</a> and <a
+                                href="https://en.wikipedia.org/wiki/Dark_energy" title="Dark energy">dark
+                                energy</a> may have appeared and been the catalyst for the expansion of the singularity. The
+                              infant universe cools as it begins expanding outward. It is almost completely smooth, with quantum
+                              variations beginning to cause slight variations in density.</li>
+                          </ul>
                         </div>
                       </q-timeline-entry>
 
-                      <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+                <!-- ----------------------------------------------------------------------- -->
+                <!--                           ANCHOR CONTENT 1.2                            -->
+                <!-- ----------------------------------------------------------------------- -->
+
+                <q-tab-panel name="1.2 Grand unification epoch ⇢">
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Grand unification epoch</h4>
+
+                      <q-timeline-entry subtitle="c. 10⁻⁴³ seconds">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Grand_unification_epoch"
+                                title="Grand unification epoch">Grand unification epoch</a> begins: While still at an
+                              infinitesimal size, the universe cools down to 10<sup>32</sup> <a
+                                href="https://en.wikipedia.org/wiki/Kelvin" title="Kelvin">kelvin</a>. <a
+                                href="https://en.wikipedia.org/wiki/Gravity" title="Gravity">Gravity</a> separates and begins
+                              operating on the universe—the remaining fundamental forces stabilize into the <a
+                                href="https://en.wikipedia.org/wiki/Electronuclear_force" class="mw-redirect"
+                                title="Electronuclear force">electronuclear force</a>, also known as the Grand Unified Force or <a
+                                href="https://en.wikipedia.org/wiki/Grand_Unified_Theory" title="Grand Unified Theory">Grand
+                                Unified Theory</a> (GUT), mediated by (the hypothetical) <a
+                                href="https://en.wikipedia.org/wiki/X_and_Y_bosons" title="X and Y bosons">X and Y bosons</a>
+                              which allow early <a href="https://en.wikipedia.org/wiki/Matter" title="Matter">matter</a> at this
+                              stage to fluctuate between <a href="https://en.wikipedia.org/wiki/Baryon" title="Baryon">baryon</a>
+                              and <a href="https://en.wikipedia.org/wiki/Lepton" title="Lepton">lepton</a> states.
+                            </li>
+                          </ul>
                         </div>
                       </q-timeline-entry>
+
+                    </q-timeline>
+                  </div>
+                </q-tab-panel>
+
+                <!-- ----------------------------------------------------------------------- -->
+                <!--                           ANCHOR CONTENT 1.3                            -->
+                <!-- ----------------------------------------------------------------------- -->
+
+
+                <q-tab-panel name="1.3 Electroweak epoch ⇢">
+                  <div class="q-px-sm q-pb-sm">
+                    <q-timeline color="secondary">
+                      <h4 class="mtitle">Electroweak epoch</h4>
+
+                      <q-timeline-entry subtitle="c. 10⁻³⁶ seconds">
+                        <div>
+                          <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Electroweak_epoch" title="Electroweak epoch">Electroweak
+                                epoch</a> begins: The Universe cools down to 10<sup>28</sup>
+                              kelvin. As a result, the <a href="https://en.wikipedia.org/wiki/Strong_nuclear_force"
+                                class="mw-redirect" title="Strong nuclear force">strong nuclear force</a> becomes distinct from
+                              the <a href="https://en.wikipedia.org/wiki/Electroweak_force" class="mw-redirect"
+                                title="Electroweak force">electroweak force</a> perhaps fuelling the <a
+                                href="https://en.wikipedia.org/wiki/Inflation_(cosmology)"
+                                title="Inflation (cosmology)">inflation</a> of the universe. A wide array of exotic elementary
+                              particles result from decay of X and Y bosons which include <a
+                                href="https://en.wikipedia.org/wiki/W_and_Z_bosons" title="W and Z bosons">W and Z bosons</a> and
+                              <a href="https://en.wikipedia.org/wiki/Higgs_bosons" class="mw-redirect" title="Higgs bosons">Higgs
+                                bosons</a>.
+                            </li>
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry subtitle="c. 10⁻³³ seconds">
+                        <div>
+                          <li><a href="https://en.wikipedia.org/wiki/Space" title="Space">Space</a>
+                            is subjected to <a href="https://en.wikipedia.org/wiki/Cosmic_inflation" class="mw-redirect"
+                              title="Cosmic inflation">inflation</a>, expanding by a factor of the order of 10<sup>26</sup> over a
+                            time of the order of 10<sup>−33</sup> to 10<sup>−32</sup> seconds. The universe is <a
+                              href="https://en.wikipedia.org/wiki/Supercooled" class="mw-redirect"
+                              title="Supercooled">supercooled</a> from about 10<sup>27</sup> down to 10<sup>22</sup> kelvin.</li>
+                        </div>
+                      </q-timeline-entry>
+
+                      <q-timeline-entry subtitle="c. 10⁻³² seconds">
+                        <div>
+                          <li>Cosmic inflation ends. The familiar <a href="https://en.wikipedia.org/wiki/Elementary_particle"
+                              title="Elementary particle">elementary
+                              particles</a> now form as a soup of hot ionized gas called <a
+                              href="https://en.wikipedia.org/wiki/Quark%E2%80%93gluon_plasma"
+                              title="Quark–gluon plasma">quark–gluon plasma</a>; hypothetical components of <a
+                              href="https://en.wikipedia.org/wiki/Cold_dark_matter" title="Cold dark matter">cold dark matter</a>
+                            (such as <a href="https://en.wikipedia.org/wiki/Axion" title="Axion">axions</a>) would also have
+                            formed at this <a href="https://en.wikipedia.org/wiki/Time" title="Time">time</a>.</li>
+                          </ul>
+                        </div>
+                      </q-timeline-entry>
+
                     </q-timeline>
                   </div>
                 </q-tab-panel>
@@ -145,19 +286,24 @@
 
                 <!-- B. ALERT -->
                 <q-banner inline-actions rounded class="bg-primary text-white">
-                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                  Resource: <a
+                    href="https://en.wikipedia.orghttps://en.wikipedia.orghttps://en.wikipedia.org/wiki/Timelines_of_world_history"
+                    style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
                 </q-banner>
 
                 <!-- C. BUTTON -->
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
-                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
-                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()">
+                  </q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen"
+                    @click="$refs.tree.collapseAll()"></q-btn>
                   <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__2($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="data__2" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__2" v-model:expanded="expanded__2" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__2" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__2"
+                  v-model:expanded="expanded__2" :filter="filter" dense :default-expand-all="false"></q-tree>
 
               </div>
             </template>
@@ -177,8 +323,12 @@
                   <!-- BASIC TEXT -->
                   <div class="q-px-sm q-pb-sm">
                     <h4 class="mtitle">Root__2</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
                     <q-img src="../assets/example.png">
                   </div>
                   <!-- TIMELINE -->
@@ -188,13 +338,17 @@
 
                       <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
 
                       <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
                     </q-timeline>
@@ -227,19 +381,24 @@
 
                 <!-- B. ALERT -->
                 <q-banner inline-actions rounded class="bg-primary text-white">
-                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                  Resource: <a
+                    href="https://en.wikipedia.orghttps://en.wikipedia.orghttps://en.wikipedia.org/wiki/Timelines_of_world_history"
+                    style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
                 </q-banner>
 
                 <!-- C. BUTTON -->
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
-                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
-                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()">
+                  </q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen"
+                    @click="$refs.tree.collapseAll()"></q-btn>
                   <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__3($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="data__3" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__3" v-model:expanded="expanded__3" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__3" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__3"
+                  v-model:expanded="expanded__3" :filter="filter" dense :default-expand-all="false"></q-tree>
 
               </div>
             </template>
@@ -259,8 +418,12 @@
                   <!-- BASIC TEXT -->
                   <div class="q-px-sm q-pb-sm">
                     <h4 class="mtitle">Root__3</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
                     <q-img src="../assets/example.png">
                   </div>
                   <!-- TIMELINE -->
@@ -270,13 +433,17 @@
 
                       <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
 
                       <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
                     </q-timeline>
@@ -309,19 +476,24 @@
 
                 <!-- B. ALERT -->
                 <q-banner inline-actions rounded class="bg-primary text-white">
-                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                  Resource: <a
+                    href="https://en.wikipedia.orghttps://en.wikipedia.orghttps://en.wikipedia.org/wiki/Timelines_of_world_history"
+                    style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
                 </q-banner>
 
                 <!-- C. BUTTON -->
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
-                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
-                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()">
+                  </q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen"
+                    @click="$refs.tree.collapseAll()"></q-btn>
                   <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__4($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="data__4" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__4" v-model:expanded="expanded__4" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__4" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__4"
+                  v-model:expanded="expanded__4" :filter="filter" dense :default-expand-all="false"></q-tree>
 
               </div>
             </template>
@@ -341,8 +513,12 @@
                   <!-- BASIC TEXT -->
                   <div class="q-px-sm q-pb-sm">
                     <h4 class="mtitle">Root__4</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
                     <q-img src="../assets/example.png">
                   </div>
                   <!-- TIMELINE -->
@@ -352,13 +528,17 @@
 
                       <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
 
                       <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
                     </q-timeline>
@@ -391,19 +571,24 @@
 
                 <!-- B. ALERT -->
                 <q-banner inline-actions rounded class="bg-primary text-white">
-                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                  Resource: <a
+                    href="https://en.wikipedia.orghttps://en.wikipedia.orghttps://en.wikipedia.org/wiki/Timelines_of_world_history"
+                    style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
                 </q-banner>
 
                 <!-- C. BUTTON -->
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
-                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
-                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()">
+                  </q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen"
+                    @click="$refs.tree.collapseAll()"></q-btn>
                   <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__5($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="data__5" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__5" v-model:expanded="expanded__5" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__5" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__5"
+                  v-model:expanded="expanded__5" :filter="filter" dense :default-expand-all="false"></q-tree>
 
               </div>
             </template>
@@ -423,8 +608,12 @@
                   <!-- BASIC TEXT -->
                   <div class="q-px-sm q-pb-sm">
                     <h4 class="mtitle">Root__5</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
                     <q-img src="../assets/example.png">
                   </div>
                   <!-- TIMELINE -->
@@ -434,13 +623,17 @@
 
                       <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
 
                       <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
                     </q-timeline>
@@ -473,19 +666,24 @@
 
                 <!-- B. ALERT -->
                 <q-banner inline-actions rounded class="bg-primary text-white">
-                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                  Resource: <a
+                    href="https://en.wikipedia.orghttps://en.wikipedia.orghttps://en.wikipedia.org/wiki/Timelines_of_world_history"
+                    style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
                 </q-banner>
 
                 <!-- C. BUTTON -->
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
-                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
-                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()">
+                  </q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen"
+                    @click="$refs.tree.collapseAll()"></q-btn>
                   <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__6($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="data__6" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__6" v-model:expanded="expanded__6" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__6" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__6"
+                  v-model:expanded="expanded__6" :filter="filter" dense :default-expand-all="false"></q-tree>
 
               </div>
             </template>
@@ -505,8 +703,12 @@
                   <!-- BASIC TEXT -->
                   <div class="q-px-sm q-pb-sm">
                     <h4 class="mtitle">Root__6</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
                     <q-img src="../assets/example.png">
                   </div>
                   <!-- TIMELINE -->
@@ -516,13 +718,17 @@
 
                       <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
 
                       <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
                     </q-timeline>
@@ -555,19 +761,24 @@
 
                 <!-- B. ALERT -->
                 <q-banner inline-actions rounded class="bg-primary text-white">
-                  Resource: <a href="https://en.wikipedia.org/wiki/Timelines_of_world_history" style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
+                  Resource: <a
+                    href="https://en.wikipedia.orghttps://en.wikipedia.orghttps://en.wikipedia.org/wiki/Timelines_of_world_history"
+                    style="color: white;">Timelins of World History</a> | Latest Wikipedia's revision: 18:19, 9 May 2022
                 </q-banner>
 
                 <!-- C. BUTTON -->
                 <div class="q-gutter-sm q-mt-sm q-mb-md">
-                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"></q-btn>
-                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+                  <q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()">
+                  </q-btn>
+                  <q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen"
+                    @click="$refs.tree.collapseAll()"></q-btn>
                   <q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__7($refs)"></q-btn>
                   <q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
                 </div>
 
                 <!-- D. CONTENT -->
-                <q-tree :nodes="data__7" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__7" v-model:expanded="expanded__7" :filter="filter" dense :default-expand-all="false"></q-tree>
+                <q-tree :nodes="data__7" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__7"
+                  v-model:expanded="expanded__7" :filter="filter" dense :default-expand-all="false"></q-tree>
 
               </div>
             </template>
@@ -587,8 +798,12 @@
                   <!-- BASIC TEXT -->
                   <div class="q-px-sm q-pb-sm">
                     <h4 class="mtitle">Root__7</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem,
+                      quod illum numquam possimus obcaecati commodi minima assumenda
+                      consectetur culpa fuga nulla ullam. In, libero.</p>
                     <q-img src="../assets/example.png">
                   </div>
                   <!-- TIMELINE -->
@@ -598,13 +813,17 @@
 
                       <q-timeline-entry title="Event Title" subtitle="February 22, 1986">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
 
                       <q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
                         <div>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                       </q-timeline-entry>
                     </q-timeline>
