@@ -1,5 +1,6 @@
 <!-- ⚠️ SUMBER: https://quasar.dev/vue-components/tree ⚠️ -->
 <!-- ⚠️ ISSUES: https://forum.quasar-framework.org/topic/7986/expanding-and-collapsing-nodes-extremely-slow/2 ⚠️ -->
+<!-- ⚠️ CATATAN: Install extension "Comment Anchor", lalu gunakan (di tab kiri VS Code) untuk navigasi cepat ke konten ⚠️ -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,6 +92,10 @@
         <template v-slot:after>
           <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
 
+            <!-- ----------------------------------------------------------------------- -->
+            <!--                          ANCHOR CONTENT "Root"                          -->
+            <!-- ----------------------------------------------------------------------- -->
+
             <q-tab-panel name="Root">
               <!-- BASIC TEXT -->
               <div class="q-px-sm q-pb-sm">
@@ -121,6 +126,10 @@
                 </q-timeline>
               </div>
             </q-tab-panel>
+
+            <!-- ----------------------------------------------------------------------- -->
+            <!--                     ANCHOR CONTENT "Pleasing decor"                     -->
+            <!-- ----------------------------------------------------------------------- -->
 
             <q-tab-panel name="Pleasing decor">
               <!-- BASIC TEXT -->
