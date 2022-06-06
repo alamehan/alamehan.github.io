@@ -573,7 +573,7 @@ const app = Vue.createApp({
                   ]
                 },
                 {
-                  label: "2.11 Define a problems statements ✅ ",
+                  label: "2.11 Define a statements ✅ ",
                   icon: "feed",
                   children: [
                     {
@@ -587,6 +587,15 @@ const app = Vue.createApp({
                       children: [
                         { label: "If/then format: If (action) then (outcome)" },
                         { label: "We believe format: We believe that (solution) for (user) will (outcome)" },
+                      ]
+                    },
+                    {
+                      label: "Goal statement",
+                      children: [
+                        { label: "Our (product / what) will let users (perform specific action / what)" },
+                        { label: "which will affect (describe who the action will affect / who)" },
+                        { label: "by (describe how the action will positively affect users / why)" },
+                        { label: "We will measure effectiveness by (describe how you will measure the impact)" },
                       ]
                     },
                   ]
