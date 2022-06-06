@@ -662,7 +662,7 @@ const app = Vue.createApp({
                       ]
                     },
                     {
-                      label: "Evaluate: Answer these questions",
+                      label: "Competitive audit report (answer these)",
                       children: [
                         { label: "Competitive audit goal(s)" },
                         { label: "Who are your key competitors?" },
