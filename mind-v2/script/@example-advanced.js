@@ -26,7 +26,7 @@ const app = Vue.createApp({
     ])
 
     // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
-    
+
     function defaultNode__1(pohon) {
       let node = [
         "Root__1",
@@ -66,12 +66,20 @@ const app = Vue.createApp({
       setTimeout(() => { pohon.tree.setExpanded(node[2], true) }, 100);
     }
 
+    // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
+
+    // function toggleNode__x(nilai) {
+    //   let node = "Root"
+    //   nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
+    // }
+
     return {
       filter,
       filterRef,
       defaultNode__1,
       defaultNode__2,
       defaultNode__3,
+      // toggleNode__x,
 
       // ⚠️ TAB YANG AKTIF (SELECTED) PERTAMA KALI
       tab: ref('tab__1'),
