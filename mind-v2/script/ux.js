@@ -9,7 +9,7 @@ const app = Vue.createApp({
     let nilai = ref([
       "User Experience (UX) design",
       "1 Foundations of UX design",
-      "2 UX Design Process: Emphatize, Define, Ideate",
+      "2 UX Design Process: Empathize, Define, Ideate",
     ])
 
     // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
@@ -17,13 +17,13 @@ const app = Vue.createApp({
       let node = [
         "User Experience (UX) design",
         "1 Foundations of UX design",
-        "2 UX Design Process: Emphatize, Define, Ideate",
+        "2 UX Design Process: Empathize, Define, Ideate",
       ]
-      
+
       setTimeout(() => { nilai.tree.collapseAll() }, 100);                // tutup seluruh node
       setTimeout(() => { nilai.tree.setExpanded(node[0], true) }, 100);   // true/buka node "User Experience (UX) design"
       setTimeout(() => { nilai.tree.setExpanded(node[1], true) }, 100);   // true/buka node "1 Foundations of UX design"
-      setTimeout(() => { nilai.tree.setExpanded(node[2], true) }, 100);   // true/buka node "2 UX Design Process: Emphatize, Define, Ideate"
+      setTimeout(() => { nilai.tree.setExpanded(node[2], true) }, 100);   // true/buka node "2 UX Design Process: Empathize, Define, Ideate"
     }
 
     // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
@@ -38,7 +38,8 @@ const app = Vue.createApp({
       defaultNode,
       toggleNode,
 
-      // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50%
+      // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50% 
+      // 🔴 GANTI LAGI KE 50 🔴
       splitterModel: ref(50),
 
       // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
@@ -53,7 +54,9 @@ const app = Vue.createApp({
           avatar: "../assets/ux/general/ux-headline.png",
           children: [
 
-            // =========================================================================================================== //
+            /* -------------------------------------------------------------------------- */
+            /*                              ANCHOR CONTENT A                              */
+            /* -------------------------------------------------------------------------- */
 
             {
               label: "1 Foundations of UX design",
@@ -132,7 +135,7 @@ const app = Vue.createApp({
                     {
                       label: "Design thinking process 🔥",
                       children: [
-                        { label: "Emphatize ⇢" },
+                        { label: "Empathize ⇢" },
                         { label: "Define ⇢" },
                         { label: "Ideate ⇢" },
                         { label: "Prototype ⇢" },
@@ -369,43 +372,362 @@ const app = Vue.createApp({
               ]
             },
 
-            // =========================================================================================================== //
+            /* -------------------------------------------------------------------------- */
+            /*                              ANCHOR CONTENT B                              */
+            /* -------------------------------------------------------------------------- */
 
             {
-              label: "2 UX Design Process: Emphatize, Define, Ideate",
+              label: "2 UX Design Process: Empathize, Define, Ideate",
               avatar: "../assets/ux/general/ux-course-2.png",
               children: [
                 {
-                  label: "2.1 ",
+                  label: "2.1 UX research",
                   icon: "feed",
                   children: [
-                    { label: "..." },
-                    { label: "..." },
-                    { label: "..." },
-                    { label: "..." },
-                    { label: "..." },
+                    { label: "Foundational research" },
+                    { label: "Design research" },
+                    { label: "Post launch research" },
                   ]
                 },
                 {
-                  label: "2.2 ",
+                  label: "2.2 Types of research",
                   icon: "feed",
+                  children: [
+                    {
+                      label: "Based on who conducts the research",
+                      children: [
+                        {
+                          label: "Primary research",
+                          children: [
+                            { label: "Interviews" },
+                            { label: "Surveys" },
+                            { label: "Usability Studies" },
+                            { label: "Competitive audit" },
+                          ]
+                        },
+                        {
+                          label: "Secondary research",
+                          children: [
+                            { label: "Online data" },
+                            { label: "Data from Government and Non-government Archives" },
+                            { label: "Data from Libraries" },
+                            { label: "Data from Institutions of Learning" },
+                          ]
+                        },
+                      ]
+                    },
+                    {
+                      label: "Based on the type of data collected",
+                      children: [
+                        { label: "Qualitative research" },
+                        { label: "Quantitative research" },
+                      ]
+                    },
+                  ]
                 },
                 {
-                  label: "2.3 ",
+                  label: "2.3 Preventing bias in data collection",
                   icon: "feed",
+                  children: [
+                    { label: "Choose your words carefully" },
+                    { label: "Foster independent thinking" },
+                    { label: "Avoid specific language" },
+                    { label: "Limit the guidance you give users" },
+                    { label: "Consider users' tone and body language" },
+                    { label: "Be careful of your own body language and reactions" },
+                    { label: "Plan your research effectively" },
+                    { label: "Remain open minded" },
+                  ]
                 },
                 {
-                  label: "2.4 ",
+                  label: "2.4 How to empathize with users",
                   icon: "feed",
+                  children: [
+                    { label: "Ask lots of questions" },
+                    { label: "Become more observant" },
+                    { label: "Be an active listener" },
+                    { label: "Reuest input" },
+                    { label: "Have an open minded" },
+                    { label: "Keep current on UX research" },
+                    { label: "Empathize vs. Sympathy" },
+                  ]
                 },
                 {
-                  label: "2.5 ",
+                  label: "2.5 Conduct user interviews",
                   icon: "feed",
+                  children: [
+                    { label: "Determine interview goals" },
+                    { label: "Determine target participant characteristics" },
+                    { label: "Find & reach out research participants" },
+                    { label: "Write interview questions ✅" },
+                    {
+                      label: "Conduct user interview instructions",
+                      children: [
+                        {
+                          label: "Prepare for the interview",
+                          children: [
+                            { label: "Script interview questions" },
+                            { label: "Collect supplies" },
+                            { label: "Research the users" },
+                            { label: "Practice" },
+                          ]
+                        },
+                        {
+                          label: "Meet the participant",
+                          children: [
+                            { label: "Build a rapport" },
+                            { label: "Thanks users for coming" },
+                            { label: "Gather basic details" },
+                          ]
+                        },
+                        {
+                          label: "Conduct the interview",
+                          children: [
+                            { label: "Follow interview etiquette" },
+                            { label: "Ask open-ended questions" },
+                          ]
+                        },
+                        {
+                          label: "Take notes",
+                          children: [
+                            { label: "Highlight compelling quotes" },
+                            { label: "Document observations about participants" },
+                            { label: "Record interviews" },
+                          ]
+                        },
+                        {
+                          label: "End the interview",
+                          children: [
+                            { label: "Give users a chance to share their final thoughts" },
+                            { label: "Thank participants once more" },
+                          ]
+                        },
+                      ]
+                    },
+                    {
+                      label: "Creating an empathy map ✅",
+                      children: [
+                        { label: "User says" },
+                        { label: "User thinks" },
+                        { label: "User does" },
+                        { label: "User feels" },
+                      ]
+                    },
+                  ]
+                },
+                {
+                  label: "2.6 Identify user pain points",
+                  icon: "feed",
+                  children: [
+                    { label: "Financial" },
+                    { label: "Product" },
+                    { label: "Process" },
+                    { label: "Support" },
+                  ]
+                },
+                {
+                  label: "2.7 Building personas ✅",
+                  icon: "feed",
+                  children: [
+                    { label: "Demographic information" },
+                    { label: "Quote" },
+                    { label: "Goals/Frustations" },
+                    { label: "Brief story/scnenario" },
+                    { label: "Image" },
+                  ]
+                },
+                {
+                  label: "2.8 Build a user story ✅",
+                  icon: "feed",
+                  children: [
+                    { label: "As a ... (type of user / who)" },
+                    { label: "I want to ... (action / what)" },
+                    { label: "So that ... (benefit / why)" },
+                  ]
+                },
+                {
+                  label: "2.9 Build a user journey maps ✅",
+                  icon: "feed",
+                  children: [
+                    { label: "Action" },
+                    { label: "Task list" },
+                    { label: "Feeling adjective" },
+                    { label: "Improvement opportunities" },
+                  ]
+                },
+                {
+                  label: "2.10 Consider accessibility during user research",
+                  icon: "feed",
+                  children: [
+                    {
+                      label: "Considerations",
+                      children: [
+                        { label: "Touch" },
+                        { label: "See" },
+                        { label: "Hear" },
+                        { label: "Speak" },
+                      ]
+                    },
+                    { label: "Assistive technologies" },
+                    { label: "Putting inclusive design" },
+                  ]
+                },
+                {
+                  label: "2.11 Define a problems statements ✅ ",
+                  icon: "feed",
+                  children: [
+                    {
+                      label: "Problem statement",
+                      children: [
+                        { label: "(user name) is a (user characteristics) who needs (user need) because (insight)" },
+                      ]
+                    },
+                    {
+                      label: "Hypothesis statement",
+                      children: [
+                        { label: "If/then format: If (action) then (outcome)" },
+                        { label: "We believe format: We believe that (solution) for (user) will (outcome)" },
+                      ]
+                    },
+                  ]
+                },
+                {
+                  label: "2.12 Build a value propositions ✅",
+                  icon: "feed",
+                  children: [
+                    { label: "Answer these: What does your product do? Why should the user care?" },
+                    { label: "Describe your product's features and benefits" },
+                    { label: "Explain the value of the products" },
+                    { label: "Connect these features and benefits with the needs of our users" },
+                    { label: "Review your official value proposition list" },
+                  ]
+                },
+                {
+                  label: "2.13 Preparing for ideation",
+                  icon: "feed",
+                  children: [
+                    { label: "Empathize with your user" },
+                    { label: "Define the problem" },
+                    { label: "Establish a creative environment" },
+                    { label: "Set a time limit" },
+                    { label: "Assemble a diverse team" },
+                    { label: "Think outside the box" },
+                  ]
+                },
+                {
+                  label: "2.14 Conduct competitive research ✅",
+                  icon: "feed",
+                  children: [
+                    {
+                      label: "Why is this important?",
+                      children: [
+                        { label: "Giving you an idea of products already in the market and their designs." },
+                        { label: "Suggesting ideas to solve early problems that you’re facing with your own designs." },
+                        { label: "Revealing the ways that current products in the market are not meeting users’ needs. This is a gap for your product to address!" },
+                        { label: "Demonstrating the expected life cycle of a product in the same market as yours." },
+                        { label: "Informing all the different iterations your product could take and how those performed for your competitors." },
+                      ]
+                    },
+                    {
+                      label: "Conduct competitive research instructions",
+                      children: [
+                        {
+                          label: "Outline the audit goals",
+                          children: [
+                            { label: "Needs work" },
+                            { label: "Okay" },
+                            { label: "Good" },
+                            { label: "Outstanding" },
+                          ]
+                        },
+                        {
+                          label: "List competitors",
+                          children: [
+                            { label: "Direct competitors" },
+                            { label: "Indirect competitors" },
+                          ]
+                        },
+                        {
+                          label: "Determine the specific competitor aspects you want to compare",
+                          children: [
+                            { label: "Audience" },
+                            { label: "First impression" },
+                            { label: "Interaction" },
+                            { label: "Visual design" },
+                            { label: "Content" },
+                          ]
+                        },
+                        { label: "Research each company" },
+                        { label: "Summarize your findings in a report" },
+                      ]
+                    },
+                    {
+                      label: "Evaluate: Answer these questions",
+                      children: [
+                        { label: "Competitive audit goal(s)" },
+                        { label: "Who are your key competitors?" },
+                        { label: "What are the type and quality of competitors' products?" },
+                        { label: "How do competitors position themselves in the market?" },
+                        { label: "How do competitors talk about themselves?" },
+                        { label: "Competitors' strengths" },
+                        { label: "Competitors' weaknesses" },
+                        { label: "Gaps" },
+                        { label: "Opportunities" },
+                      ]
+                    },
+                    {
+                      label: "Present a competitive audit",
+                      children: [
+                        { label: "Get feedback from your team" },
+                        { label: "Limit the amount of text on your slides" },
+                        { label: "Stick to the highlights" },
+                        { label: "Use notes" },
+                        { label: "Practice ahead of time" },
+                        { label: "Use relevant graphics" },
+                        { label: "Keep your biases is check" },
+                        { label: "Be able to defend your conclusions" },
+                      ]
+                    },
+                  ]
+                },
+                {
+                  label: "2.15 Brainstorm design ideas",
+                  icon: "feed",
+                  children: [
+                    {
+                      label: "Frame HMW (How might we) questions",
+                      children: [
+                        { label: "Amp up the good" },
+                        { label: "Explore the opposite" },
+                        { label: "Change a status quo" },
+                        { label: "Break the point-of-view into pieces" },
+                        { label: "Remove the bad" },
+                        { label: "Go after the adjective" },
+                        { label: "Question an assumption" },
+                        { label: "Create an analogy using the established need or context" },
+                        { label: "Indetify unexpected resources that can provide assistance" },
+                      ]
+                    },
+                    {
+                      label: "Crazy Eights ✅",
+                      children: [
+                        { label: "Identify your problem scenario" },
+                        { label: "Provide an image of your Crazy Eights drawing" },
+                        { label: "Describe at least three of the ideas you generated with your Crazy Eights activity" },
+                      ]
+                    },
+                  ]
                 },
               ]
             },
 
-            // =========================================================================================================== //
+            /* -------------------------------------------------------------------------- */
+            /*                              ANCHOR CONTENT C                              */
+            /* -------------------------------------------------------------------------- */
+
+            /* -------------------------------------------------------------------------- */
+            /*                              ANCHOR CONTENT D                              */
+            /* -------------------------------------------------------------------------- */
 
           ]
         }
