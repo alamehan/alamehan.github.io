@@ -164,7 +164,7 @@ const app = Vue.createApp({
       splitterModel: ref(50),
 
       // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
-      selected__1: ref("1.3 Electroweak epoch ⇢"),
+      selected__1: ref("Early Universe"),
       selected__2: ref("Root__2"),
       selected__3: ref("Root__3"),
       selected__4: ref("Root__4"),
