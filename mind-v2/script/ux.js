@@ -446,7 +446,7 @@ const app = Vue.createApp({
                     { label: "Ask lots of questions" },
                     { label: "Become more observant" },
                     { label: "Be an active listener" },
-                    { label: "Reuest input" },
+                    { label: "Request input" },
                     { label: "Have an open minded" },
                     { label: "Keep current on UX research" },
                     { label: "Empathize vs. Sympathy" },
