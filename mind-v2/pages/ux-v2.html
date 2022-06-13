@@ -51,8 +51,11 @@
           </div>
 
           <!-- D. CONTENT -->
-          <q-tree :nodes="simple" node-key="label" ref="tree" selected-color="green" v-model:selected="selected"
-            v-model:expanded="expanded" :filter="filter" dense :default-expand-all="true"></q-tree> <!-- 🔴 GANTI JADI FALSE 🔴 -->
+          <!-- 🔴 :default-expand-all GANTI JADI FALSE 🔴 -->
+          <q-tree :nodes="customize" node-key="label" ref="tree" selected-color="green" v-model:selected="selected"
+            v-model:expanded="expanded" :filter="filter" dense :default-expand-all="true">
+            <template v-slot:body-story="prop">{{ prop.node.story }}</template>
+          </q-tree>
         </div>
       </template>
 

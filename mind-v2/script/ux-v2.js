@@ -48,7 +48,7 @@ const app = Vue.createApp({
       // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
       expanded: nilai,
 
-      simple: [
+      customize: [
         {
           label: "UXD",
           avatar: "../assets/ux/general/ux-headline.png",
@@ -152,28 +152,212 @@ const app = Vue.createApp({
                         { label: "Entry-level jobs" },
                       ]
                     },
-                    { label: "Lorem" },
-                    { label: "Lorem" },
                   ]
                 },
                 {
                   label: "1.2 Thinking like a UX designer",
                   icon: "feed",
                   children: [
-                    { label: "Lorem" },
-                    { label: "Lorem" },
-                    { label: "Lorem" },
-                    { label: "Lorem" },
+                    {
+                      label: "Important terms",
+                      children: [
+                        { label: "User" },
+                        { label: "End user" },
+                        { label: "Potential user" },
+                      ]
+                    },
+                    {
+                      label: "Design frameworks",
+                      children: [
+                        {
+                          label: "User-centered design (UCD)",
+                          children: [
+                            { label: "Understand" },
+                            { label: "Specify" },
+                            { label: "Design" },
+                            { label: "Evaluate" },
+                          ]
+                        },
+                        {
+                          label: "The five elements of UXD",
+                          children: [
+                            { label: "Strategy" },
+                            { label: "Scope" },
+                            { label: "Structure" },
+                            { label: "Skeleton" },
+                            { label: "Surface" },
+                          ]
+                        },
+                        {
+                          label: "Design thinking ✅",
+                          children: [
+                            { label: "Emphatize" },
+                            { label: "Define" },
+                            { label: "Ideate" },
+                            { label: "Prototype" },
+                            { label: "Test" },
+                          ]
+                        },
+                        {
+                          label: "Lean UX",
+                          children: [
+                            { label: "Think" },
+                            { label: "Make" },
+                            { label: "Check" },
+                          ]
+                        },
+                        {
+                          label: "Double diamond",
+                          children: [
+                            { label: "Discover the problem" },
+                            { label: "Define the problem" },
+                            { label: "Develop solutions" },
+                            { label: "Deliver the product" },
+                          ]
+                        },
+                      ]
+                    },
+                    {
+                      label: "Core principles in design frameworks",
+                      children: [
+                        { label: "Focus on the user" },
+                        { label: "Create solutions that address the user’s problems" },
+                        { label: "Collaborate with teammates across departments" },
+                        { label: "Validate your designs" },
+                        { label: "Iterate as needed to design the right UX" },
+                      ]
+                    },
+                    {
+                      label: "Assistive technology",
+                      children: [
+                        { label: "Color modification" },
+                        { label: "Voice control" },
+                        { label: "Screen readers" },
+                        { label: "Alternative text" },
+                      ]
+                    },
+                    {
+                      label: "Big issues facing the Next Billion Users",
+                      body: 'story',
+                      story: '(People who are new to the internet)',
+                      children: [
+                        { label: "Cost" },
+                        { label: "Connectivity" },
+                        { label: "Digital literacy" },
+                        { label: "Literacy in general" },
+                      ]
+                    },
+                    {
+                      label: "User first in your design",
+                      children: [
+                        { label: "Universal design: One solution for everyone" },
+                        { label: "Inclusive design: Solve for one, extend to many" },
+                        {
+                          label: "Equity-focused design: Acessible and fair to all groups",
+                          body: 'story',
+                          story: 'Note: Know the difference between equality vs. equity',
+                        },
+                      ]
+                    },
+                    {
+                      label: "Common platforms",
+                      children: [
+                        { label: "Desktop computers" },
+                        { label: "Laptop computers" },
+                        { label: "Mobile phones" },
+                        { label: "Tablets" },
+                        { label: "Wearables (e.g. smartwatches)" },
+                        { label: "TVs" },
+                        { label: "Smart displays" },
+                      ]
+                    },
+                    {
+                      label: "Key considerations when designing for different platforms",
+                      body: 'story',
+                      story: 'Note: Design should be responsive to the devices',
+                      children: [
+                        { label: "Screen size" },
+                        { label: "Interaction" },
+                        { label: "Content layout" },
+                        { label: "Functionality" },
+                      ]
+                    },
+                    {
+                      label: "The four Cs of designing for multiple platforms",
+                      body: 'story',
+                      story: 'Note: Users behave differently depending on their device',
+                      children: [
+                        { label: "Consistency" },
+                        { label: "Continuity" },
+                        { label: "Context" },
+                        { label: "Complementary" },
+                      ]
+                    },
+                    {
+                      label: "Designing for mobile UX",
+                      body: 'story',
+                      story: 'Note: Mobile device usage has been booming',
+                      children: [
+                        { label: "Call-to-action buttons should be placed front and center" },
+                        { label: "Navigation menus should be short and simple" },
+                        { label: "Gestures should be intuitive and familiar: tapping & swiping" },
+                        { label: "Design for both: Potrait and horizontal landscape view" },
+                        { label: "Reduce visual clutter: Keep the visual experience simple" },
+                      ]
+                    },
+                    {
+                      label: "Designing for Global Accessibility",
+                      body: 'story',
+                      story: 'Best practice: Read the Accessibility Guide for Google Material',
+                      children: [
+                        { label: "Learn about global user communities and how they use technology" },
+                        { label: "Be mindful about representing users inclusively" },
+                        { label: "Accommodate different levels of literacy and many different languages" },
+                        { label: "Empower your users when it comes to privacy, safety, and security" },
+                        { label: "Build great user experiences for modest devices" },
+                        { label: "Ensure that your app functions seamlessly in intermittent networks—and when offline" },
+                        { label: "Keep usage costs low" },
+                        { label: "Treat accessibility settings as critical, not just as a checklist" },
+                        { label: "Consider environmental contrasts like sun and shade" },
+                        { label: "Color has meaning—use it wisely" },
+                        { label: "Design for various screen conditions and input abilities" },
+                        { label: "Go big: Larger screen device, larger tap target, etc" },
+                      ]
+                    },
                   ]
                 },
                 {
                   label: "1.3 Joining design sprints",
                   icon: "feed",
                   children: [
-                    { label: "Lorem" },
-                    { label: "Lorem" },
-                    { label: "Lorem" },
-                    { label: "Lorem" },
+                    {
+                      label: "Planning",
+                      children: [
+                        { label: "Scope and structuring" },
+                        { label: "Gather research and data" },
+                        { label: "Prepare and set the tone" },
+                        { label: "Post sprint" },
+                      ]
+                    },
+                    {
+                      label: "Methodology",
+                      children: [
+                        { label: "Understand" },
+                        { label: "Define" },
+                        { label: "Sketch" },
+                        { label: "Decide" },
+                        { label: "Prototype" },
+                        { label: "Validate" },
+                      ]
+                    },
+                    {
+                      label: "Retrospective",
+                      children: [
+                        { label: "What went well?" },
+                        { label: "What can be improved?" },
+                        { label: "Lessons learned" },
+                      ]
+                    },
                   ]
                 },
                 {
