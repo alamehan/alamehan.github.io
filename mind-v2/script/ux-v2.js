@@ -425,7 +425,7 @@ const app = Vue.createApp({
                     {
                       label: "Methodology: Phases of Design Sprint proccess",
                       body: 'story',
-                      story: 'Note: Deliver an MPV (Minimum Viable Product) first',
+                      story: 'Note: Deliver a MPV (Minimum Viable Product) first',
                       children: [
                         { label: "Understand the scope of design challenge" },
                         { label: "Ideate possible solutions" },
