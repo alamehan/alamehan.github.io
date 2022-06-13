@@ -219,6 +219,8 @@ const app = Vue.createApp({
                     },
                     {
                       label: "Core principles in design frameworks",
+                      body: 'story',
+                      story: 'Note: All frameworks have a few same core principles',
                       children: [
                         { label: "Focus on the user" },
                         { label: "Create solutions that address the user’s problems" },
@@ -327,35 +329,110 @@ const app = Vue.createApp({
                   ]
                 },
                 {
-                  label: "1.3 Joining design sprints",
+                  label: "1.3 Joining Design Sprints",
                   icon: "feed",
                   children: [
                     {
-                      label: "Planning",
+                      label: "When to Sprint? (in case: Design challenge)",
+                      body: 'story',
+                      story: 'Note: If you answered yes to any one of these questions',
                       children: [
-                        { label: "Scope and structuring" },
-                        { label: "Gather research and data" },
-                        { label: "Prepare and set the tone" },
-                        { label: "Post sprint" },
+                        { label: "Are there many potential solutions to your design challenge?" },
+                        { label: "Does a design challenge require cross-functional teams?" },
+                        { label: "Is the design challenge's scope wide enough for a Sprint?" },
                       ]
                     },
                     {
-                      label: "Methodology",
+                      label: "Methodology: Phases of Design Sprint proccess",
+                      body: 'story',
+                      story: 'Note: Deliver an MPV (Minimum Viable Product) first',
                       children: [
-                        { label: "Understand" },
-                        { label: "Define" },
-                        { label: "Sketch" },
-                        { label: "Decide" },
-                        { label: "Prototype" },
-                        { label: "Validate" },
+                        { label: "Understand the scope of design challenge" },
+                        { label: "Ideate possible solutions" },
+                        { label: "Decide on the most viable solution" },
+                        { label: "Create a workable prototype" },
+                        { label: "Test that prototype with actual users" },
                       ]
                     },
                     {
-                      label: "Retrospective",
+                      label: "Benefit of Design Sprint",
                       children: [
-                        { label: "What went well?" },
-                        { label: "What can be improved?" },
-                        { label: "Lessons learned" },
+                        {
+                          label: "It's all about the users",
+                          body: 'story',
+                          story: 'Design challenge is always focused on the user and their needs',
+                        },
+                        {
+                          label: "Value every person in the room",
+                          body: 'story',
+                          story: 'From the office intern to senior stakeholder',
+                        },
+                        {
+                          label: "The best ideas rise to the top",
+                          body: 'story',
+                          story: 'Because considering all angels of the problem and solution',
+                        },
+                        {
+                          label: "Time to focus: Five works days",
+                          body: 'story',
+                          story: 'Disctractionless, gadgetless, creative collaboration',
+                        },
+                        {
+                          label: "Lower the risk of unsuccessful market debut",
+                          body: 'story',
+                          story: 'Critical adjustments before the product launches',
+                        },
+                        {
+                          label: "Versatile scheduling",
+                          body: 'story',
+                          story: 'Scheduled at any point during your project',
+                        },
+                      ]
+                    },
+                    {
+                      label: "Plan Design Sprint",
+                      children: [
+                        { label: "Conduct user research" },
+                        { label: "Schedule talks with experts" },
+                        { label: "Find the right space" },
+                        { label: "Gather supplies" },
+                        { label: "Establish Sprint rules" },
+                        { label: "Plan introduction (e.g. icebreakers)" },
+                        { label: "Plan out post-Sprint action items" },
+                      ]
+                    },
+                    {
+                      label: "Design Sprint brief",
+                      children: [
+                        { label: "Sprint challenge" },
+                        { label: "Key deliverables" },
+                        { label: "Logistics" },
+                        { label: "Approvers" },
+                        { label: "Resources" },
+                        { label: "Project overview" },
+                        { label: "Sprint schedule" },
+                      ]
+                    },
+                    {
+                      label: "Sprint retrospective",
+                      body: 'story',
+                      story: 'Goal: Stop making the same mistakes',
+                      children: [
+                        {
+                          label: "What went well? (Areas where the team did well)",
+                          body: 'story',
+                          story: 'Time to acknowledge a team member’s strong performance',
+                        },
+                        {
+                          label: "What can be improved? (Areas for improvement)",
+                          body: 'story',
+                          story: 'Retrospectives are about empowering, not shaming',
+                        },
+                        {
+                          label: "Lessons learned (into your next Design Sprint)",
+                          body: 'story',
+                          story: 'Optional: Read more about Groupthink',
+                        },
                       ]
                     },
                   ]
