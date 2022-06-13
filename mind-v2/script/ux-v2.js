@@ -119,10 +119,26 @@ const app = Vue.createApp({
                     {
                       label: "Characteristics of a good UX",
                       children: [
-                        { label: "Usable" },
-                        { label: "Equitable" },
-                        { label: "Enjoyable" },
-                        { label: "Useful" },
+                        {
+                          label: "Usable: The design, structure, and purpose of the product are clear and easy to use",
+                          body: 'story',
+                          story: 'e.g. "Add to cart" button clearly indicate what will happen next when users interact with them',
+                        },
+                        {
+                          label: "Equitable: The designs are helpful and marketable to people with diverse abilities and backgrounds",
+                          body: 'story',
+                          story: 'e.g. Translation features, emoji with different skin tones, specify personal pronouns, etc',
+                        },
+                        {
+                          label: "Enjoyable: The design delights the user and fosters a positive connection with them by addressing user thoughts and feelings",
+                          body: 'story',
+                          story: 'e.g. Personalized recommendations based on previous watching habits, customize the appearance, etc',
+                        },
+                        {
+                          label: "Useful: The design solves user problems",
+                          body: 'story',
+                          story: 'e.g. Features that can be used to transfer money, search filter, etc',
+                        },
                       ]
                     },
                     {
@@ -230,12 +246,39 @@ const app = Vue.createApp({
                       ]
                     },
                     {
+                      label: "Types of accessibility issues",
+                      children: [
+                        { label: "Cognitive disabilities" },
+                        { label: "Visual disabilities" },
+                        { label: "Auditory disabilities" },
+                        { label: "Motor disabilities" },
+                        { label: "Speech disabilities" },
+
+                      ]
+                    },
+                    {
                       label: "Assistive technology",
                       children: [
-                        { label: "Color modification" },
-                        { label: "Voice control" },
-                        { label: "Screen readers" },
-                        { label: "Alternative text" },
+                        {
+                          label: "Color modification",
+                          body: 'story',
+                          story: 'Solution for people with low vision, eye strain, etc',
+                        },
+                        {
+                          label: "Voice control",
+                          body: 'story',
+                          story: 'Solution for people with limited dexterity, motor ability, etc',
+                        },
+                        {
+                          label: "Screen readers",
+                          body: 'story',
+                          story: 'Solution for people with limited vision',
+                        },
+                        {
+                          label: "Alternative text",
+                          body: 'story',
+                          story: 'Helps translate a visual UI into a text-based UI',
+                        },
                       ]
                     },
                     {
