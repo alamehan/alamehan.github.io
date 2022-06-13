@@ -279,6 +279,11 @@ const app = Vue.createApp({
                           body: 'story',
                           story: 'Helps translate a visual UI into a text-based UI',
                         },
+                        {
+                          label: "Speech to text",
+                          body: 'story',
+                          story: 'Helps to composes text just by speaking',
+                        },
                       ]
                     },
                     {
@@ -286,10 +291,26 @@ const app = Vue.createApp({
                       body: 'story',
                       story: '(People who are new to the internet)',
                       children: [
-                        { label: "Cost" },
-                        { label: "Connectivity" },
-                        { label: "Digital literacy" },
-                        { label: "Literacy in general" },
+                        {
+                          label: "Cost",
+                          body: 'story',
+                          story: 'e.g. Low Ram & limited storages | Solutions: Disable app feature, etc',
+                        },
+                        {
+                          label: "Connectivity",
+                          body: 'story',
+                          story: 'e.g. Network coverage is inconsistent | Solutions: Offline experience, etc',
+                        },
+                        {
+                          label: "Digital literacy",
+                          body: 'story',
+                          story: 'e.g. Not know how to use an app | Solutions: Video tutorials, clear guidance, etc',
+                        },
+                        {
+                          label: "Literacy in general",
+                          body: 'story',
+                          story: "e.g. Aren't able to read or type | Solutions: Multilingual option, universal icons, etc",
+                        },
                       ]
                     },
                     {
@@ -332,10 +353,26 @@ const app = Vue.createApp({
                       body: 'story',
                       story: 'Note: Users behave differently depending on their device',
                       children: [
-                        { label: "Consistency" },
-                        { label: "Continuity" },
-                        { label: "Context" },
-                        { label: "Complementary" },
+                        {
+                          label: "Consistency",
+                          body: 'story',
+                          story: 'Have a specific design guidelines (Consistent with brand identity)',
+                        },
+                        {
+                          label: "Continuity",
+                          body: 'story',
+                          story: 'Ability to maintain progress when switching platform',
+                        },
+                        {
+                          label: "Context",
+                          body: 'story',
+                          story: 'Certain features on different platforms',
+                        },
+                        {
+                          label: "Complementary",
+                          body: 'story',
+                          story: 'Each platform adds something new for the user',
+                        },
                       ]
                     },
                     {
