@@ -7,7 +7,7 @@ const app = Vue.createApp({
 
     // 1️⃣ ATUR NODE YANG TERBUKA PERTAMA KALI
     let nilai = ref([
-      "UXD",
+      "User experience design (UXD)",
       "1 Foundations of UX design",
       "2 UX Design Process: Empathize, Define, Ideate",
     ])
@@ -15,7 +15,7 @@ const app = Vue.createApp({
     // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
     function defaultNode(nilai) {
       let node = [
-        "UXD",
+        "User experience design (UXD)",
         "1 Foundations of UX design",
         "2 UX Design Process: Empathize, Define, Ideate",
       ]
@@ -28,7 +28,7 @@ const app = Vue.createApp({
 
     // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
     function toggleNode(nilai) {
-      let node = "UXD"
+      let node = "User experience design (UXD)"
       nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
     }
 
@@ -40,17 +40,17 @@ const app = Vue.createApp({
 
       // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50% 
       // 🔴 GANTI LAGI KE 50 🔴
-      splitterModel: ref(80),
+      splitterModel: ref(50),
 
       // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
-      selected: ref("UXD"),
+      selected: ref("User experience design (UXD)"),
 
       // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
       expanded: nilai,
 
       customize: [
         {
-          label: "UXD",
+          label: "User experience design (UXD)",
           avatar: "../assets/ux/general/ux-headline.png",
           children: [
 
