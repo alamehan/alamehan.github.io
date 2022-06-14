@@ -7,7 +7,7 @@ const app = Vue.createApp({
 
     // 1️⃣ ATUR NODE YANG TERBUKA PERTAMA KALI
     let nilai = ref([
-      "User experience design (UXD)",
+      "User experience design (UXD) ⇢",
       "1 Foundations of UX design",
       "2 UX Design Process: Empathize, Define, Ideate",
     ])
@@ -15,7 +15,7 @@ const app = Vue.createApp({
     // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
     function defaultNode(nilai) {
       let node = [
-        "User experience design (UXD)",
+        "User experience design (UXD) ⇢",
         "1 Foundations of UX design",
         "2 UX Design Process: Empathize, Define, Ideate",
       ]
@@ -28,7 +28,7 @@ const app = Vue.createApp({
 
     // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
     function toggleNode(nilai) {
-      let node = "User experience design (UXD)"
+      let node = "User experience design (UXD) ⇢"
       nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
     }
 
@@ -40,17 +40,17 @@ const app = Vue.createApp({
 
       // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50% 
       // 🔴 GANTI LAGI KE 50 🔴
-      splitterModel: ref(50),
+      splitterModel: ref(40),
 
       // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
-      selected: ref("User experience design (UXD)"),
+      selected: ref("User experience design (UXD) ⇢"),
 
       // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
       expanded: nilai,
 
       customize: [
         {
-          label: "User experience design (UXD)",
+          label: "User experience design (UXD) ⇢",
           avatar: "../assets/ux/general/ux-headline.png",
           children: [
 
@@ -67,78 +67,63 @@ const app = Vue.createApp({
                   icon: "feed",
                   children: [
                     {
-                      label: "Study tips",
+                      label: "Study tips ⇢",
                       children: [
-                        { label: "Plan your time" },
-                        { label: "Learn in order" },
-                        { label: "Be curious" },
-                        { label: "Take notes" },
-                        { label: "Chat with other learners" },
+                        { label: "Plan your time ⇢" },
+                        { label: "Learn in order ⇢" },
+                        { label: "Be curious ⇢" },
+                        { label: "Take notes ⇢" },
+                        { label: "Chat with other learners ⇢" },
                       ]
                     },
                     {
-                      label: "UX resources",
+                      label: "UX resources ⇢",
                       children: [
-                        { label: "Interaction Design Foundation" },
-                        { label: "Adobe XD Ideas" },
-                        { label: "UX Collective on Medium" },
-                        { label: "Nielsen Norman Group" },
-                        { label: "UXDatabase.io" },
+                        { label: "Interaction Design Foundation ⇢" },
+                        { label: "Adobe XD Ideas ⇢" },
+                        { label: "UX Collective on Medium ⇢" },
+                        { label: "Nielsen Norman Group ⇢" },
+                        { label: "User Experience Database ⇢" },
                       ]
                     },
                     {
-                      label: "UX careers",
+                      label: "UX careers ⇢",
                       children: [
-                        { label: "Interaction designer" },
-                        { label: "Visual designer" },
-                        { label: "Motion designer" },
-                        { label: "VR/AR designer" },
-                        { label: "UX researcher" },
-                        { label: "UX writer" },
-                        { label: "UX program manager" },
-                        { label: "UX engineer" },
-                        { label: "Conversation designer" },
+                        { label: "Interaction designer ⇢" },
+                        { label: "Visual designer ⇢" },
+                        { label: "Motion designer ⇢" },
+                        { label: "VR/AR designer ⇢" },
+                        { label: "UX researcher ⇢" },
+                        { label: "UX writer ⇢" },
+                        { label: "UX program manager ⇢" },
+                        { label: "UX engineer ⇢" },
+                        { label: "Production designer ⇢" },
+                        { label: "Conversation designer ⇢" },
                       ]
                     },
                     {
-                      label: "Product development life cycle",
+                      label: "Product development life cycle ⇢",
                       children: [
-                        { label: "Brainstorm" },
-                        { label: "Define" },
-                        { label: "Design" },
+                        { label: "Brainstorm ⇢" },
+                        { label: "Define ⇢" },
+                        { label: "Design ⇢" },
                         {
-                          label: "Test",
+                          label: "Test ⇢",
                           children: [
                             { label: "Alpha testing" },
                             { label: "Beta testing" },
                           ]
                         },
-                        { label: "Launch" },
+                        { label: "Launch ⇢" },
                       ]
                     },
                     {
-                      label: "Characteristics of a good UX",
+                      label: "Characteristics of a good UX ⇢",
                       children: [
-                        {
-                          label: "Usable: The design, structure, and purpose of the product are clear and easy to use",
-                          body: 'story',
-                          story: 'e.g. "Add to cart" button clearly indicate what will happen next when users interact with them',
-                        },
-                        {
-                          label: "Equitable: The designs are helpful and marketable to people with diverse abilities and backgrounds",
-                          body: 'story',
-                          story: 'e.g. Translation features, emoji with different skin tones, specify personal pronouns, etc',
-                        },
-                        {
-                          label: "Enjoyable: The design delights the user and fosters a positive connection with them by addressing user thoughts and feelings",
-                          body: 'story',
-                          story: 'e.g. Personalized recommendations based on previous watching habits, customize the appearance, etc',
-                        },
-                        {
-                          label: "Useful: The design solves user problems",
-                          body: 'story',
-                          story: 'e.g. Features that can be used to transfer money, search filter, etc',
-                        },
+                        { label: "Usable ⇢" },
+                        { label: "Equitable ⇢" },
+                        { label: "Enjoyable ⇢" },
+                        { label: "Useful ⇢" },
                       ]
                     },
                     {

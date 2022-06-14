@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="../library/fonts-google-apis.css">
   <link rel="stylesheet" href="../library/quasar-2.7.1.min.css">
   <style>
+    html {
+      zoom: 120%;
+      overflow-y: auto;
+    }
+
     .mtitle {
       margin: 12px 0px 24px 0px;
     }
@@ -17,8 +22,8 @@
 </head>
 
 <body>
-  <div id="q-app" style="min-height: 100vh;">
-    <q-splitter v-model="splitterModel" style="height: 100vh">
+  <div id="q-app">
+    <q-splitter v-model="splitterModel" style="height: 83.3vh">
 
       <!-- ----------------------------------------------------------------------- -->
       <!--                          SPLITTER: BAGIAN KIRI                          -->
@@ -79,48 +84,78 @@
 
         <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
 
-          <q-tab-panel name="User experience design (UXD)">
-            <q-layout container style="height: 95vh">
-              <div class="q-px-sm q-pb-sm">
+          <q-tab-panel name="User experience design (UXD) ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm"><br>
+                <p><b>Next: [03] Explore jobs in UX - 01 - Job responsibilities of entry-level UXD</b></p>
                 <h4 class="mtitle">Google UX Design Professional Certificate</h4>
+                <q-img src="../assets/ux/section-01/hi.png"></q-img>
                 <ul>
                   <li>Because Googlers created this program, you'll learn the most practical information needed to launch your uwn
                     UXD career.</li>
                   <li>Anyone interested in UXD can complete this course, because you don't need any previous experience in design.
+                  </li>
                   <li>This certificate program will help you become an entry-level UX designer, and no previous experience is
                     necessary.</li>
                   <li>When you complete this program, you'll have opportunity to apply job with top employers like Google that
                     hiring entry-level UXD.</li>
-                  </li>
-                  <li>In this program, you'll also complete three unique projects to demonstrate what you've learned.</li>
+                  <li>In this program, you'll also complete 3 unique projects and 3 case studies to demonstrate what you've
+                    learned.</li>
                   <li>When you're finished, you'll have a portfolio of work, a polished resume, and interview skills.</li>
-                  <li>UX designer is one of today’s most in-demand professions. UXD is important for consumers and businesses.
-                  </li>
+                  <br>
                   <li>As the use of technology increases every day, the need for UX designers continues to grow.</li>
-                  <li>Some UX professionals have taught themselves the skills needed to land their first job.</li>
+                  <li>Some UX professionals have taught themselves the skills needed to land their first job (by taking courses,
+                    etc).</li>
+                  <li>UXD is a rapidly changing field with a projected 10-year growth rate of 15% (Burning Glass, 2020).</li>
                   <li>Lots of UX jobs don't require a specific work history or a college degree.</li>
+                  <li>UX designer is one of today’s most in-demand professions.</li>
                 </ul>
                 <h4 class="mtitle">User experience design (UXD)</h4>
-                <ul>
-                  <li>UX is all about how a person, the user, feels about interacting with, or experiencing, a product.</li>
-                  <li>UX designers focus on the experience that users have while using products like websites, apps, and physical
-                    objects. </li>
-                  <li>UX designers make those everyday interactions useful, enjoyable, and accessible.</li>
-                  <li>UX designers help make technology easier to understand and more enjoyable to use.</li>
-                </ul>
                 <p>The phrase "User experience" was first coined in the 1990s by cognitive psychologist, Don Norman. The
                   principles of UX actually stretch back thousands of years, all the way to ancient China, where the practice of
                   Feng Shui began. Practitioners believe that the arrangement of a physical space, like how furniture is
                   positioned in a room, could bring someone luck or improve their health and happiness. Today, lots of different
                   industries still rely on these same basic ideas. In tech world, UX mostly focuses on how people use or interact
-                  with products (a good, service, or feature).</p>
-                <p><b>Lanjut ke: [02] Get to know UXD - 02 - The basics of UXD</b></p>
+                  with products. A product is a good, service, or feature. It might be a physical product (video game controller,
+                  bag of photato chips, etc) or a technology product (app, website, smarthwatch, etc).
+                </p>
+                <ul>
+                  <li>UX is all about how a person, the user, feels about interacting with, or experiencing, a product.</li>
+                  <li>UX designers focus on the experience that users have while using products like websites, apps, and physical
+                    objects.</li>
+                  <li>UX designers make those everyday interactions useful, enjoyable, and accessible.</li>
+                  <li>UX designers help make technology easier to understand and more enjoyable to use.</li>
+                  <li>UX designers have a good sense for visuals, but you don't need to know anything about graphic design or
+                    draw.</li>
+                  <li>UX designers tend to be curious about people and like thinking about how people's mind work.</li>
+                </ul>
+                <p>UX designer is important for consumers and businesses. Why? When people like a product, they use that product a
+                  lot, and they recommended it to their friends. And more people using the product means better bussiness for the
+                  company. Plus, when users have a good experience with the product, they're more likely to have a positive
+                  opinion ot the company that made it. A win-win for the user and the business. Can you think of a product you
+                  loved so much that you shared it with a friend? If you did, that's a gret example of UX design in action. That's
+                  why organizations of all kinds, in varied industries, need to hire UX designers. Because UX designer can play in
+                  improving the business.</p>
+                <p>Graphic designers create visuals that tell a story or message. Graphic designers focus on the physical
+                  appearance of a product, like an invitation or a poster. UX designers focus on how users interact with a
+                  product.</p>
               </div>
             </q-layout>
           </q-tab-panel>
 
-          <q-tab-panel name="Plan your time">
-            <q-layout container style="height: 95vh">
+          <q-tab-panel name="Study tips ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Study tips</h4>
+                <p>As a learner, you’re bringing all of your past experiences and best learning practices to this certificate
+                  program. The designers of this curriculum have also put together a list of helpful habits that they believe will
+                  help you to be the most successful.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Plan your time ⇢">
+            <q-layout container style="height: 80vh">
               <div class="q-px-sm q-pb-sm">
                 <h4 class="mtitle">Plan your time</h4>
                 <p>Setting regular study times and sticking with them each week can help you make learning a part of your routine.
@@ -131,8 +166,8 @@
             </q-layout>
           </q-tab-panel>
 
-          <q-tab-panel name="Learn in order">
-            <q-layout container style="height: 95vh">
+          <q-tab-panel name="Learn in order ⇢">
+            <q-layout container style="height: 80vh">
               <div class="q-px-sm q-pb-sm">
                 <h4 class="mtitle">Learn in order</h4>
                 <p>We recommend taking the seven courses of the certificate program — and the items in each lesson — in the order
@@ -141,8 +176,8 @@
             </q-layout>
           </q-tab-panel>
 
-          <q-tab-panel name="Be curious">
-            <q-layout container style="height: 95vh">
+          <q-tab-panel name="Be curious ⇢">
+            <q-layout container style="height: 80vh">
               <div class="q-px-sm q-pb-sm">
                 <h4 class="mtitle">Be curious</h4>
                 <p>If you find an idea that gets you excited, act on it! Search for more details online, ask questions on the
@@ -153,8 +188,8 @@
             </q-layout>
           </q-tab-panel>
 
-          <q-tab-panel name="Take notes">
-            <q-layout container style="height: 95vh">
+          <q-tab-panel name="Take notes ⇢">
+            <q-layout container style="height: 80vh">
               <div class="q-px-sm q-pb-sm">
                 <h4 class="mtitle">Take notes</h4>
                 <p>Notes are useful for remembering information that you think might be important in the future, especially as
@@ -165,8 +200,8 @@
             </q-layout>
           </q-tab-panel>
 
-          <q-tab-panel name="Chat with other learners">
-            <q-layout container style="height: 95vh">
+          <q-tab-panel name="Chat with other learners ⇢">
+            <q-layout container style="height: 80vh">
               <div class="q-px-sm q-pb-sm">
                 <h4 class="mtitle">Chat with other learners</h4>
                 <p>If you have a question, chances are, you’re not alone. Reach out in the discussion forum to chat and ask for
@@ -176,11 +211,550 @@
             </q-layout>
           </q-tab-panel>
 
-          <q-tab-panel name="...">
-            <q-layout container style="height: 95vh">
+          <q-tab-panel name="UX resources ⇢">
+            <q-layout container style="height: 80vh">
               <div class="q-px-sm q-pb-sm">
-                <h4 class="mtitle">...</h4>
-                <p>...</p>
+                <h4 class="mtitle">UX resources</h4>
+                <q-banner inline-actions rounded class="bg-negative text-white q-pb-none q-mb-lg">
+                  <p>Things change fast in this growing field, so it is critical that you do your own research and stay up-to-date
+                    on the field of UX design. Here are some helpful UX design resources to keep in mind as you learn.</p>
+                </q-banner>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Interaction Design Foundation ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Interaction Design Foundation</h4>
+                <p><a href="https://www.interaction-design.org/literature">Interaction Design Foundation</a>: A library of
+                  open-source UX design resources, including new articles published every day. There are also local meet-ups
+                  (virtual and in-person) that are free to attend and open to everyone.
+                </p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Adobe XD Ideas ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Adobe XD Ideas</h4>
+                <p><a href="https://xd.adobe.com/ideas/">Adobe XD Ideas</a>: A blog curated for entry-level UX designers. You’ll
+                  find inspiring examples of great design, valuable career tips, and more.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="UX Collective on Medium ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">UX Collective on Medium</h4>
+                <p><a href="https://uxdesign.cc/">UX Collective on Medium</a>: An article platform with stories on user
+                  experience, visual design, product design, and more. Articles on Medium are written by a large variety of
+                  writers and cover a range of topics. </p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Nielsen Norman Group ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Nielsen Norman Group</h4>
+                <p><a href="nngroup.com/articles/">Nielsen Norman Group</a>: Research-based UX guidance, including a ton of
+                  helpful articles about the design process, research methods, and user testing, which you'll learn about later in
+                  the certificate program. </p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="User Experience Database ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">User Experience Database</h4>
+                <p><a href="https://www.uxdatabase.io/">User Experience Database</a>: The largest collection of resources for
+                  learning and working with digital product. Discover tools to optimise your design flow or learn and improve your
+                  skills with the most comprehensive course, ever.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Interaction designer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Interaction designer</h4>
+                <p>Interaction designers focus on designing the experience of a product and how it functions. They strive to
+                  understand the user flow, or the path, that a typical user takes to complete a task on an app, website, or other
+                  platform. Make the product easy to navigate and simple for users to interact with.</p>
+                <ul>
+                  <li>What should happen if a user taps on this button?</li>
+                  <li>How do we make this action easier for users to complete?</li>
+                  <li>And, how are the design elements within the website laid out?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="UX careers ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">UX careers</h4>
+                <p>It’s important context to know that “UX designer” is just one of many job titles within the broader UX field.
+                  As you continue with this certificate program, you might become interested in a certain specialty or career path
+                  within the field. In addition, as an entry-level UX designer, you will likely work alongside other UX
+                  professionals with various areas of expertise.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Visual designer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Visual designer</h4>
+                <p>Visual designers focus on how a product or technology looks. They are often responsible for designing logos,
+                  illustrations, and icons, as well as deciding on font color, size, and placement. Visual designers focus on the
+                  layout of each page or screen and make all of the design elements fit together in a visually appealing way. The
+                  goal of a visual designer is to delight users with designs that inspire, engage, and excite them.</p>
+                <ul>
+                  <li>What kind of visual style should icons have, in order to fit the product's branding?</li>
+                  <li>Which color and font should we use for this button?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Motion designer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Motion designer</h4>
+                <p>Motion designers think about what it feels like for a user to move through a product and how to create smooth
+                  transitions between pages on an app or website. They may also create animations or visual effects to bring their
+                  design ideas to life. Motion designers focus on design elements that move, rather than traditional static
+                  designs.</p>
+                <ul>
+                  <li>How should an app transition between pages?</li>
+                  <li>How do we show the connection between these actions?</li>
+                  <li>What’s an engaging animation that will help tell our story?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="VR/AR designer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">VR/AR designer</h4>
+                <p>Virtual reality involves a wearable headset that takes over a user’s vision; it blocks out their physical
+                  surroundings and immerses them in a completely virtual world. For example, VR can feel like you're entering the
+                  setting of a magical imaginary land.</p>
+                <p>Augmented reality uses the physical world as a backdrop and adds virtual elements on top of it. Users are still
+                  contextually aware of their surroundings, but their reality is augmented, or enhanced, by adding elements
+                  through a screen. For example, you can sit in your actual kitchen, and an AR experience can add digital images,
+                  like a new barstool or a piece of artwork, to the room around you.</p>
+                <p>Virtual reality (VR) and augmented reality (AR) designers create products that provide users with immersive
+                  experiences, unbounded by the limits of the physical world. To ensure users are comfortable immersing in a VR or
+                  AR experience, designers need to carefully consider everything from sound to lighting. </p>
+                <ul>
+                  <li>How do we create a user experience that leverages 3D space?</li>
+                  <li>Will this action cause a user motion sickness?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="UX researcher ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">UX researcher</h4>
+                <p>UX researchers conduct studies or interviews that examine how people use a product. UX researchers often
+                  identify pain points that users are experiencing and explore how products can help solve those problems. They
+                  also explore the usability of existing products, by asking users to complete tasks in an app or website, for
+                  example. The goal of UX researchers is often to understand how a product can provide a solution to a real
+                  problem users are having.</p>
+                <ul>
+                  <li>What problems are users facing?</li>
+                  <li>Is the design of this product easy to use?</li>
+                  <li>Would people be interested in this new design feature?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="UX writer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">UX writer</h4>
+                <p>UX writers think about how to make the language within a product clearer so that the user experience is more
+                  intuitive. UX writers also help define a brand’s voice and personality. The work of UX writers often includes
+                  writing labels for buttons and determining the tone of language used within an app or website. UX writers often
+                  become subject matter experts in order to present content that’s easy to understand for all users. </p>
+                <ul>
+                  <li>What words should be used to communicate this idea clearly?</li>
+                  <li>Should the tone for this app be friendly or technical?</li>
+                  <li>What should the language on this button label say?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="UX program manager ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">UX program manager</h4>
+                <p>UX program managers ensure clear and timely communication, so that the process of building a useful product
+                  moves smoothly from start to finish. This might include setting goals, writing project plans, and allocating
+                  team resources. UX program managers work across departments to make sure that UX is involved throughout a
+                  project lifecycle.</p>
+                <ul>
+                  <li>What are the overall goals for this project, and what’s the plan to achieve them?</li>
+                  <li>How can we create and improve processes within the team?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="UX engineer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">UX engineer</h4>
+                <p>UX engineers translate the design’s intent into a functioning experience, like an app or a website. They help
+                  UX teams figure out if designs are intuitive and technically feasible. UX engineers synthesize design and
+                  development, bringing product concepts to life.</p>
+                <ul>
+                  <li>How do we implement each interaction?</li>
+                  <li>How do we build this design in a way that stays true to its original intent?</li>
+                  <li>How might we explore alternatives to determine the best user experience?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Production designer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Production designer</h4>
+                <p>Make sure first and final designs match in the finished product materials and that the assets are ready to be
+                  handed off to the engineering team. Assets are everything from text and images to the design specifications,
+                  like font style, color, size, and spacing.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Conversation designer ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Conversation designer</h4>
+                <p>Conversation designers make it possible for users to have natural conversations to get things done. They
+                  leverage user research, psychology, technical knowledge, and linguistics to create user experiences that are
+                  intuitive and engaging. Conversation designers develop the “persona” or personality of the voice, as well as the
+                  flow and dialog of the interaction.</p>
+                <p>Conversational interfaces are everywhere, from intelligent virtual assistants like Google Assistant and Siri,
+                  to interactive voice response systems like customer service systems you can talk to. Conversational interfaces
+                  even include automobile navigation systems and chatbots! Conversation design incorporates natural, real-world
+                  conversational behaviors into the interactions between users and these systems.</p>
+                <ul>
+                  <li>What’s the ideal language and flow based on who users are, the task to be accomplished, and the context of
+                    the conversation?</li>
+                  <li>Does the personality of the virtual assistant seem genuine, engaging, and reflective of the brand values?
+                  </li>
+                  <li>How does the conversation work with on-screen elements?</li>
+                  <li>Does the virtual assistant offer a consistent, usable, and useful experience end-to-end?</li>
+                </ul>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Product development life cycle ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Product development life cycle</h4>
+                <p>Every new product, whether it’s an app or a physical object, follows a specific set of steps that take it from
+                  the first spark of an idea to the release of the final product. This is called the product development life
+                  cycle, and it has five stages: brainstorm, define, design, test, and launch. Depending on where you work, the
+                  exact names of each stage might be a little different, but the overall process is generally the same. As a
+                  product moves through the development life cycle, the team might need to spend longer working in one stage than
+                  in others, or repeat certain stages based on feedback. The success of each stage depends on the previous stage’s
+                  completion, so it’s important to do them in order.</p>
+                <q-img src="../assets/ux/section-01/product-development-life-cycle.png"></q-img>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Brainstorm ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Brainstorm</h4>
+                <p><b>An active discovery stage that's all about generating ideas about the user and potential needs or challenges
+                    the user might have.</b> During the brainstorm stage, the team generates ideas to solve a problem, understands
+                  the audience they're designing for, and identifies needs or challenges the audience may have. Research plays a
+                  key role in this stage, because you're exploring different ways to get to know the audience you're designing
+                  for. UX researchers and writes are often heavily involved in this stage, where the team might conduct interviews
+                  with potential users or conduct other research.</p>
+                <hr>
+                <p>When the team starts thinking of an idea for a product. Your team might already know the user problem that
+                  you want to solve when you begin the product development life cycle. If not, coming up with a list of user
+                  problems is a great place to start. It’s important to pay attention to the diversity of your team at this stage.
+                  Teams that have meaningful diversity across identifiers like race, gender, abilities, family structure, age, and
+                  ethnicity are generally more effective at brainstorming because they bring together a lot of different lived
+                  experiences.</p>
+                <p>The brainstorm stage is also an ideal time to check out your product's competitors and identify if there are
+                  already similar products available in the market. You want your product to fill a gap in the market or solve a
+                  problem better than existing products. Completing research into both your competitors and your users helps
+                  determine what problems need to be addressed by the product’s design.</p>
+                <hr>
+                <p>Consider this example: If you’re designing a new app to help working parents and guardians, your team
+                  might start the brainstorming stage by listing common problems that working parents and guardians face, like a
+                  lack of reliable childcare, transportation concerns, or trouble managing schedules. Your team might review user
+                  feedback about other similar products or the results of user surveys to help guide your ideas. After you’ve
+                  brainstormed lots of user problems, your team chooses one and starts coming up with ideas for solutions to
+                  that problem.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Define ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Define</h4>
+                <p><b>Using the insights from the brainstorm stage and starting to narrow the focus.</b> During the define stage,
+                  the team determines concrete ways that the product being developed will impact the user. As a UX designer,
+                  you'll begin to think more about specific details related to the product:</p>
+                <ul>
+                  <li>Who the product is for?</li>
+                  <li>What the product will do?</li>
+                  <li>What features need to be included for the product to be successful?</li>
+                </ul>
+                <hr>
+                <p>During the define stage, your team narrows the focus of your idea. One product can’t solve every user problem.
+                  In this stage, a UX designer might help the team pin down the focus of the idea, but a product lead will
+                  probably be the one to define the scope of the project. The research you completed in the brainstorm stage comes
+                  in handy now. Using what you've learned, you will pinpoint your potential users’ problems. Your team can’t
+                  assume they know what problems users are experiencing without asking the users directly.</p>
+                <hr>
+                <p>Continuing with the example for an app to help working parents and guardians, your idea should focus on
+                  helping parents and guardians find reliable childcare or manage their schedules, not both.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Design ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Design</h4>
+                <p><b>Implementing insights into new designs using various tools</b>. UX designers begin to actively develop
+                  ideas, and they also check that all specifications from the define stage are realistic. You'll create many
+                  different assets, including storyboards, wireframes, and prototype.</p>
+                <hr>
+                <p>At this stage, UX designers develop the ideas for the product. Generally, UX designers start by drawing
+                  wireframes, which are outlines or sketches of the product, then move on to creating prototypes, which are early
+                  models of a product that convey its functionality. UX writers are also involved in the design stage and might do
+                  things like write button labels or other copy within the product's wireframes and prototypes. At this point in
+                  the life cycle, UX designers make sure to include all of the product specifications that were outlined in the
+                  define stage. You might also check to ensure that each part of the design fits together in an intuitive way.</p>
+                <hr>
+                <p>For example, UX designers might check that the screens of an app flow in a way that makes sense to the user.
+                  Or that each interaction, like tapping a button, has a correlating action, like an item getting added to a
+                  cart. On the other hand, with a physical product, UX designers might check that one piece of a physical object
+                  matches up to the connecting piece. UX designers also make sure that each task a user needs to complete is clear
+                  and easy to understand, like navigating from the homepage to the checkout confirmation page in an app.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Test ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Test</h4>
+                <p><b>Evaluating the product design based on the feedback of potential users.</b> Testing designs with users is
+                  really important because it helps the team focus on the user first and foremost. Testing helps identify areas to
+                  refine or improve the designs.</p>
+                <hr>
+                <p>UX designers work with engineers to develop functional prototypes that match the original designs, including
+                  details and features that fit the company’s brand, like font and color choices. This also means writing the code
+                  and finalizing the overall structure of the product. Or, if you want to test your designs earlier, another
+                  option is to test a functioning prototype of the product, using a design tool like Figma or Adobe XD</p>
+                <hr>
+                <p>At this stage, the designs go through at least three phases of testing: internal tests within your company,
+                  reviews with stakeholders, and external tests with potential users. A stakeholder is a person you need to work
+                  with to complete the project or anyone who has some interest in the project, either within or outside of the
+                  company.</p>
+                <ul>
+                  <li>First, the team tests the product internally to look for technical glitches and usability problems. This is
+                    often referred to as <b>alpha testing</b>.</li>
+                  <li>Then, the product undergoes a test with stakeholders to make sure the product is aligned with the company’s
+                    vision, meets legal guidelines for accessibility, and follows government regulations for privacy, for example.
+                  </li>
+                  <li>Finally, there’s an external test with potential users. This is the time to figure out whether the product
+                    provides a good user experience, meaning it’s usable, equitable, enjoyable, and useful. This is often referred
+                    to as <b>beta testing</b>.</li>
+                </ul>
+                <p>Gathering and implementing feedback at this stage is absolutely critical. If users are frustrated or confused
+                  by your product, UX designers make adjustments or even create new versions of the design. Then, the designs are
+                  tested again, until there’s little or no friction between the product and the user. It’s important to call out
+                  that the product development life cycle isn’t a completely linear process. Your team might cycle between
+                  designing and testing a few times before you're ready to launch the product!</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Launch ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Launch</h4>
+                <p><b>Sharing a finished version of the product with the public.</b> This might involve listing an app in the
+                  Google Play Store or Apple’s App Store, making a website go live, or putting a physical product on store
+                  shelves. However, the work on a product isn't quite finished after launch. You may still identify opportunities
+                  to improve on the designs or learn even more about the UX based on feedback. This could involve going back to
+                  the design or testing stages and figuring out ways to produce a more enhanced version of the product.</p>
+                <hr>
+                <p>The launch stage is a time to celebrate your work and start promoting the product. Marketing professionals on
+                  your team might post about the new product on social media or publish a press release. The customer support team
+                  might get ready to help new users learn how the product works. Program managers also meet with the
+                  cross-functional team to reflect on the entsire product development life cycle and ask questions like:</p>
+                <ul>
+                  <li>What worked and what could be improved?</li>
+                  <li>Were goals achieved?</li>
+                  <li>Were timelines met?</li>
+                </ul>
+                <hr>
+                <p>For a physical product, the launch stage might be the end of the product development life cycle. But for a
+                  digital product, like an app or website, launching the product to a wider audience provides another opportunity
+                  to improve on the user experience. New users might find problems with the product’s functionality or features to
+                  improve that no one noticed before. So, after the launch stage, teams will often cycle back to the design and
+                  testing stages to start working on the next version of a digital product.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Characteristics of a good UX ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Characteristics of a good UX</h4>
+                <p>Predicting user roadblocks and potential design mishaps is what good UX design is all about. Good design
+                  considers the user's needs.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Usable ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Usable</h4>
+                <p>The design, structure, and purpose of the product are clear and easy to use.</p>
+                <ul>
+                  <li>Is everything in the design easy to find?</li>
+                  <li>Is the design’s functionality easy to understand?</li>
+                  <li>Can users accomplish specific tasks within the design?</li>
+                </ul>
+                <p>Examples:</p>
+                <ul>
+                  <li>Imagine you are evaluating the usability of an airline app. Assuming the primary purpose of this app is to
+                    book a flight, the design should provide a clear and easy way to complete that task. For example, a section
+                    where you can easily enter travel and flight details on the homepage would be an example of good usability.
+                  </li>
+                  <li>In grocery app, users can navigate to the cart icon in the header and easily check out from anywhere in the
+                    app.</li>
+                  <li>Ketchup came in a glass bottle. The user had to hit the bottom of the glass to make ketchup come out. Often,
+                    no ketchup or too much ketchup would come out of the bottle. Today, the ketchup bottle has been redesigned
+                    into a plastic squeezable bottle, which make it easier to use and allow users to control how much ketchup
+                    comes out.</li>
+                </ul>
+                <hr>
+                <q-img src="../assets/ux/section-01/foodieland-app.png"></q-img>
+                <p>The “Add to cart”, “Back to browse”, and “Checkout” buttons in the Foodieland app are examples of usable design
+                  because they clearly indicate what will happen next when users interact with them.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Equitable ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Equitable</h4>
+                <p>The designs are helpful and marketable to people with diverse abilities and backgrounds.</p>
+                <ul>
+                  <li>Are the needs of a diverse group of users considered?</li>
+                  <li>Does the product’s design address the needs of traditionally underrepresented and excluded groups?</li>
+                </ul>
+                <p>Examples:</p>
+                <ul>
+                  <li>Imagine you are evaluating how equitable a social messaging app is. You might consider the design more
+                    equitable if the keyboard emoji list includes different skin tones and gender-neutral avatar options.</li>
+                  <li>Dating app gives users the option to specify personal pronouns. This option ensures users can accurately
+                    represent themselves.</li>
+                  <li>One user might find an app with a lot of text easy to use. On the other hand, a user with a visual
+                    impairment might want different features like sound.</li>
+                </ul>
+                <hr>
+                <p><b>Equity</b> means providing people with the tools they need to accomplish their goals and support improved
+                  quality of life. Equity goes beyond the concept of <b>equality</b>, where everyone is given equal resources,
+                  because people often need different tools and support based on their needs. This is especially important to keep
+                  in mind for those in commonly disenfranchised groups.</p>
+                <hr>
+                <q-img src="../assets/ux/section-01/foodieland-app.png"></q-img>
+                <p>The Foodieland app’s translation feature is an example of equitable design because it is helpful for people who
+                  speak different languages.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Enjoyable ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Enjoyable</h4>
+                <p>The design delights the user and fosters a positive connection between the user and the product by addressing
+                  user thoughts and feelings.</p>
+                <ul>
+                  <li>Are there aspects of the design that consider the user’s feelings?</li>
+                  <li>Does the design inspire delight in the user?</li>
+                  <li>Does the design keep the user engaged throughout their experience?</li>
+                </ul>
+                <p>Examples:</p>
+                <ul>
+                  <li>Imagine you are evaluating how enjoyable a video streaming app is. Design aspects that might increase how
+                    much you enjoy the product include personalized recommendations based on previous watching habits, or the
+                    ability to customize the appearance of your account.</li>
+                  <li>Workout app presents an encouraging message and graphic when the user is halfway to heir goal. This delights
+                    the user and promotes a positive connection with the app.</li>
+                  <li>When you search for a restaurant in Google, you can see photos of dishes and read reviews from other people
+                    who have eaten there. This experience is enjoyable because you can make a more informed choice about what to
+                    order, leaving you feeling happier about the product.</li>
+                </ul>
+                <hr>
+                <q-img src="../assets/ux/section-01/foodieland-app.png"></q-img>
+                <p>The images used in the Foodieland app are examples of enjoyable design because they are visually appealing and
+                  help the user understand what they’re ordering.</p>
+              </div>
+            </q-layout>
+          </q-tab-panel>
+
+          <q-tab-panel name="Useful ⇢">
+            <q-layout container style="height: 80vh">
+              <div class="q-px-sm q-pb-sm">
+                <h4 class="mtitle">Useful</h4>
+                <p>The design solves user problems.</p>
+                <ul>
+                  <li>Does the design add value to the user’s experience?</li>
+                  <li>Does the design solve a problem for the user?</li>
+                  <li>Does the design help the user achieve a specific goal?</li>
+                </ul>
+                <p>Examples:</p>
+                <ul>
+                  <li>Imagine you’re evaluating how useful a banking app is. Users typically download these apps because they need
+                    a place to manage their money. With this in mind, aspects of the app that might be considered useful are
+                    features that can be used to transfer money between accounts and pay bills.</li>
+                  <li>If you're lost, a map app telling you how to get home is useful. Maps app automatically marks paths with
+                    delays while suggesting a better route. This helps users avoid the pain of traffic and get to their
+                    destination faster.</li>
+                </ul>
+                <hr>
+                <p>It’s important to note that, while similar, useful and usable have different meanings. A product that is useful
+                  isn’t always usable. The same is true for the opposite. The distinction between the two is that usability refers
+                  to the product working well and being easy to use, while usefulness refers directly to the ability to solve user
+                  problems.</p>
+                <hr>
+                <q-img src="../assets/ux/section-01/foodieland-app.png"></q-img>
+                <p>The Foodieland app’s filter feature allows users to narrow down their search. This is an example of useful
+                  design because it helps the user easily select a pizza to order.</p>
               </div>
             </q-layout>
           </q-tab-panel>
