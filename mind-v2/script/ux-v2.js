@@ -127,30 +127,30 @@ const app = Vue.createApp({
                       ]
                     },
                     {
-                      label: "Types of UX designer",
+                      label: "Types of UX designer ⇢",
                       children: [
-                        { label: "Generalist" },
-                        { label: "Specialist" },
-                        { label: "T-shaped" },
+                        { label: "Generalist ⇢" },
+                        { label: "Specialist ⇢" },
+                        { label: "T-shaped ⇢" },
                       ]
                     },
                     {
-                      label: "Types of companies that hire UX designer",
+                      label: "Types of companies that hire UX designer ⇢",
                       children: [
-                        { label: "Startups and small businesses" },
-                        { label: "Big companies" },
-                        { label: "Design agencies" },
-                        { label: "Advertising agencies" },
-                        { label: "Freelancers" },
+                        { label: "Startups and small businesses ⇢" },
+                        { label: "Big companies ⇢" },
+                        { label: "Design agencies ⇢" },
+                        { label: "Advertising agencies ⇢" },
+                        { label: "Freelancers ➀ ⇢" },
                       ]
                     },
                     {
-                      label: "Start your career",
+                      label: "Pursue a career in UXD",
                       children: [
-                        { label: "Internship" },
-                        { label: "Apprenticeships" },
-                        { label: "Freelancers" },
-                        { label: "Entry-level jobs" },
+                        { label: "Internship ⇢" },
+                        { label: "Apprenticeships ⇢" },
+                        { label: "Freelancers ➁ ⇢" },
+                        { label: "Entry-level jobs ⇢" },
                       ]
                     },
                   ]
