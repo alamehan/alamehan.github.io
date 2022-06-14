@@ -118,7 +118,7 @@ const app = Vue.createApp({
                       ]
                     },
                     {
-                      label: "Characteristics of a good UX ⇢",
+                      label: "Characteristics of a good UX 📋 ⇢",
                       children: [
                         { label: "Usable ⇢" },
                         { label: "Equitable ⇢" },
