@@ -162,9 +162,64 @@ const app = Vue.createApp({
                     {
                       label: "Important terms",
                       children: [
-                        { label: "User" },
-                        { label: "End user" },
-                        { label: "Potential user" },
+                        { label: "User ⇢" },
+                        { label: "End user ⇢" },
+                        { label: "Potential user ⇢" },
+                        { label: "Who are my users? ⇢" },
+                      ]
+                    },
+                    {
+                      label: "User first in your design",
+                      children: [
+                        { label: "Universal design ⇢" },
+                        { label: "Inclusive design ⇢" },
+                        {
+                          label: "Equity-focused design ⇢",
+                          children: [
+                            { label: "Equality vs. equity" },
+                          ]
+                        },
+                      ]
+                    },
+                    {
+                      label: "Types of accessibility issues",
+                      children: [
+                        { label: "Cognitive disabilities" },
+                        { label: "Visual disabilities" },
+                        { label: "Auditory disabilities" },
+                        { label: "Motor disabilities" },
+                        { label: "Speech disabilities" },
+
+                      ]
+                    },
+                    {
+                      label: "Assistive technology",
+                      children: [
+                        {
+                          label: "Color modification",
+                          body: 'story',
+                          story: 'Solution for people with low vision, eye strain, etc',
+                        },
+                        {
+                          label: "Voice control",
+                          body: 'story',
+                          story: 'Solution for people with limited dexterity, motor ability, etc',
+                        },
+                        {
+                          label: "Screen readers",
+                          body: 'story',
+                          story: 'Solution for people with limited vision',
+                        },
+                        {
+                          label: "Alternative text",
+                          body: 'story',
+                          story: 'Helps translate a visual UI into a text-based UI',
+                        },
+                        {
+                          label: "Speech to text",
+                          body: 'story',
+                          story: 'Helps to composes text just by speaking',
+                        },
                       ]
                     },
                     {
@@ -228,86 +283,6 @@ const app = Vue.createApp({
                         { label: "Collaborate with teammates across departments" },
                         { label: "Validate your designs" },
                         { label: "Iterate as needed to design the right UX" },
-                      ]
-                    },
-                    {
-                      label: "Types of accessibility issues",
-                      children: [
-                        { label: "Cognitive disabilities" },
-                        { label: "Visual disabilities" },
-                        { label: "Auditory disabilities" },
-                        { label: "Motor disabilities" },
-                        { label: "Speech disabilities" },
-
-                      ]
-                    },
-                    {
-                      label: "Assistive technology",
-                      children: [
-                        {
-                          label: "Color modification",
-                          body: 'story',
-                          story: 'Solution for people with low vision, eye strain, etc',
-                        },
-                        {
-                          label: "Voice control",
-                          body: 'story',
-                          story: 'Solution for people with limited dexterity, motor ability, etc',
-                        },
-                        {
-                          label: "Screen readers",
-                          body: 'story',
-                          story: 'Solution for people with limited vision',
-                        },
-                        {
-                          label: "Alternative text",
-                          body: 'story',
-                          story: 'Helps translate a visual UI into a text-based UI',
-                        },
-                        {
-                          label: "Speech to text",
-                          body: 'story',
-                          story: 'Helps to composes text just by speaking',
-                        },
-                      ]
-                    },
-                    {
-                      label: "Big issues facing the Next Billion Users",
-                      body: 'story',
-                      story: '(People who are new to the internet)',
-                      children: [
-                        {
-                          label: "Cost",
-                          body: 'story',
-                          story: 'e.g. Low Ram & limited storages | Solutions: Disable app feature, etc',
-                        },
-                        {
-                          label: "Connectivity",
-                          body: 'story',
-                          story: 'e.g. Network coverage is inconsistent | Solutions: Offline experience, etc',
-                        },
-                        {
-                          label: "Digital literacy",
-                          body: 'story',
-                          story: 'e.g. Not know how to use an app | Solutions: Video tutorials, clear guidance, etc',
-                        },
-                        {
-                          label: "Literacy in general",
-                          body: 'story',
-                          story: "e.g. Aren't able to read or type | Solutions: Multilingual option, universal icons, etc",
-                        },
-                      ]
-                    },
-                    {
-                      label: "User first in your design",
-                      children: [
-                        { label: "Universal design: One solution for everyone" },
-                        { label: "Inclusive design: Solve for one, extend to many" },
-                        {
-                          label: "Equity-focused design: Acessible and fair to all groups",
-                          body: 'story',
-                          story: 'Note: Know the difference between equality vs. equity',
-                        },
                       ]
                     },
                     {
