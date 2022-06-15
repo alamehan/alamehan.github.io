@@ -172,7 +172,12 @@ const app = Vue.createApp({
                       label: "User first in your design",
                       children: [
                         { label: "Universal design ⇢" },
-                        { label: "Inclusive design ⇢" },
+                        {
+                          label: "Inclusive design ⇢",
+                          children: [
+                            { label: "Accessibility" },
+                          ]
+                        },
                         {
                           label: "Equity-focused design ⇢",
                           children: [
