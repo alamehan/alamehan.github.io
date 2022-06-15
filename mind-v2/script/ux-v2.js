@@ -182,17 +182,6 @@ const app = Vue.createApp({
                       ]
                     },
                     {
-                      label: "Types of accessibility issues",
-                      children: [
-                        { label: "Cognitive disabilities" },
-                        { label: "Visual disabilities" },
-                        { label: "Auditory disabilities" },
-                        { label: "Motor disabilities" },
-                        { label: "Speech disabilities" },
-
-                      ]
-                    },
-                    {
                       label: "Assistive technology",
                       children: [
                         {
