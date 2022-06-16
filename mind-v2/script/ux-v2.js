@@ -105,8 +105,8 @@ const app = Vue.createApp({
                       label: "Product development life cycle ⇢",
                       children: [
                         { label: "Brainstorm ⇢" },
-                        { label: "Define ⇢" },
-                        { label: "Design ⇢" },
+                        { label: "Define ➀ ⇢" },
+                        { label: "Design ➀ ⇢" },
                         {
                           label: "Test ⇢",
                           children: [
@@ -187,96 +187,63 @@ const app = Vue.createApp({
                       ]
                     },
                     {
-                      label: "Assistive technology",
+                      label: "Assistive technology ⇢",
                       children: [
-                        {
-                          label: "Color modification",
-                          body: 'story',
-                          story: 'Solution for people with low vision, eye strain, etc',
-                        },
-                        {
-                          label: "Voice control",
-                          body: 'story',
-                          story: 'Solution for people with limited dexterity, motor ability, etc',
-                        },
-                        {
-                          label: "Screen readers",
-                          body: 'story',
-                          story: 'Solution for people with limited vision',
-                        },
-                        {
-                          label: "Alternative text",
-                          body: 'story',
-                          story: 'Helps translate a visual UI into a text-based UI',
-                        },
-                        {
-                          label: "Speech to text",
-                          body: 'story',
-                          story: 'Helps to composes text just by speaking',
-                        },
+                        { label: "Color modification ⇢" },
+                        { label: "Voice control ⇢" },
+                        { label: "Screen readers ⇢" },
+                        { label: "Alternative text ⇢" },
+                        { label: "Speech to text ⇢" },
                       ]
                     },
                     {
-                      label: "Design frameworks",
+                      label: "Design frameworks ⇢",
                       children: [
                         {
-                          label: "User-centered design (UCD)",
+                          label: "User-centered design (UCD) ⇢",
                           children: [
-                            { label: "Understand" },
-                            { label: "Specify" },
-                            { label: "Design" },
-                            { label: "Evaluate" },
+                            { label: "Understand ⇢" },
+                            { label: "Specify ⇢" },
+                            { label: "Design ➁ ⇢" },
+                            { label: "Evaluate ⇢" },
                           ]
                         },
                         {
-                          label: "The five elements of UXD",
+                          label: "The five elements of UXD ⇢",
                           children: [
-                            { label: "Strategy" },
-                            { label: "Scope" },
-                            { label: "Structure" },
-                            { label: "Skeleton" },
-                            { label: "Surface" },
+                            { label: "Strategy ⇢" },
+                            { label: "Scope ⇢" },
+                            { label: "Structure ⇢" },
+                            { label: "Skeleton ⇢" },
+                            { label: "Surface ⇢" },
                           ]
                         },
                         {
-                          label: "Design thinking ✅",
+                          label: "Design thinking ✅ ⇢",
                           children: [
-                            { label: "Emphatize" },
-                            { label: "Define" },
-                            { label: "Ideate" },
-                            { label: "Prototype" },
-                            { label: "Test" },
+                            { label: "Emphatize ⇢" },
+                            { label: "Define ➁ ⇢" },
+                            { label: "Ideate ⇢" },
+                            { label: "Prototype & Test ⇢" },
                           ]
                         },
                         {
-                          label: "Lean UX",
+                          label: "Lean UX ⇢",
                           children: [
-                            { label: "Think" },
-                            { label: "Make" },
-                            { label: "Check" },
+                            { label: "Think ⇢" },
+                            { label: "Make ⇢" },
+                            { label: "Check ⇢" },
                           ]
                         },
                         {
-                          label: "Double diamond",
+                          label: "Double diamond ⇢",
                           children: [
-                            { label: "Discover the problem" },
-                            { label: "Define the problem" },
-                            { label: "Develop solutions" },
-                            { label: "Deliver the product" },
+                            { label: "Discover the problem ⇢" },
+                            { label: "Define the problem ⇢" },
+                            { label: "Develop solutions ⇢" },
+                            { label: "Deliver the product ⇢" },
                           ]
                         },
-                      ]
-                    },
-                    {
-                      label: "Core principles in design frameworks",
-                      body: 'story',
-                      story: 'Note: All frameworks have a few same core principles',
-                      children: [
-                        { label: "Focus on the user" },
-                        { label: "Create solutions that address the user’s problems" },
-                        { label: "Collaborate with teammates across departments" },
-                        { label: "Validate your designs" },
-                        { label: "Iterate as needed to design the right UX" },
                       ]
                     },
                     {
