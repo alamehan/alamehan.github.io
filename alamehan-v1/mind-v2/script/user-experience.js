@@ -6,61 +6,218 @@ const app = Vue.createApp({
     const filterRef = ref(null);
 
     // 1️⃣ ATUR NODE YANG TERBUKA PERTAMA KALI
-    let nilai = ref([
-      "User experience design (UXD) ⇢",
-      "1 Foundations of UX design",
-      "2 UX Design Process: Empathize, Define, Ideate",
+
+    let nilai__1 = ref([
+      "Learn UX Today",
+      "An introduction to UX",
+      "UX Design Process",
+      "UX Fundamentals",
+    ])
+
+    let nilai__2 = ref([
+      "Google UX Design ⇢",
+    ])
+
+    let nilai__3 = ref([
+      "Useful Resources",
     ])
 
     // 2️⃣ ATUR DEFAULT NODE YANG TERBUKA (SAMA KAYA POINT 1 DI ATAS)
-    function defaultNode(nilai) {
-      let node = [
-        "User experience design (UXD) ⇢",
-        "1 Foundations of UX design",
-        "2 UX Design Process: Empathize, Define, Ideate",
-      ]
 
-      setTimeout(() => { nilai.tree.collapseAll() }, 100);                // tutup seluruh node
-      setTimeout(() => { nilai.tree.setExpanded(node[0], true) }, 100);   // true/buka node "UXD"
-      setTimeout(() => { nilai.tree.setExpanded(node[1], true) }, 100);   // true/buka node "1 Foundations of UX design"
-      setTimeout(() => { nilai.tree.setExpanded(node[2], true) }, 100);   // true/buka node "2 UX Design Process: Empathize, Define, Ideate"
+    function defaultNode__1(pohon) {
+      let node = [
+        "Learn UX Today",
+        "An introduction to UX",
+        "UX Design Process",
+        "UX Fundamentals",
+      ]
+      console.log(node)
+      setTimeout(() => { pohon.tree.collapseAll() }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[0], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[1], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[2], true) }, 100);
+    }
+
+    function defaultNode__2(pohon) {
+      let node = [
+        "Google UX Design ⇢",
+      ]
+      console.log(node)
+      setTimeout(() => { pohon.tree.collapseAll() }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[0], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[1], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[2], true) }, 100);
+    }
+
+    function defaultNode__3(pohon) {
+      let node = [
+        "Useful Resources",
+      ]
+      console.log(node)
+      setTimeout(() => { pohon.tree.collapseAll() }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[0], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[1], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[2], true) }, 100);
     }
 
     // 3️⃣ JIKA DIPERLUKAN GUNAKAN TOGGLE UNTUK NODE TERTENTU
-    function toggleNode(nilai) {
-      let node = "User experience design (UXD) ⇢"
-      nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
-    }
+
+    // function toggleNode__x(nilai) {
+    //   let node = "Root"
+    //   nilai.tree.isExpanded(node) === true ? nilai.tree.setExpanded(node, false) : nilai.tree.setExpanded(node, true)
+    // }
 
     return {
       filter,
       filterRef,
-      defaultNode,
-      toggleNode,
+      defaultNode__1,
+      defaultNode__2,
+      defaultNode__3,
+      // toggleNode__x,
 
-      // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50% 
-      // 🔴 GANTI LAGI KE 50 🔴
-      splitterModel: ref(40),
+      // ⚠️ TAB YANG AKTIF (SELECTED) PERTAMA KALI
+      tab: ref('tab__1'),
+
+      // ⚠️ PEMBAGIAN (SPLIT) TREE 50% & DETAIL 50%
+      splitterModel: ref(50),
 
       // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
-      selected: ref("User experience design (UXD) ⇢"),
+      selected__1: ref("Learn UX Today"),
+      selected__2: ref("Google UX Design ⇢"),
+      selected__3: ref("Useful Resources"),
 
       // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
-      expanded: nilai,
+      expanded__1: nilai__1,
+      expanded__2: nilai__2,
+      expanded__3: nilai__3,
 
-      customize: [
+      // ANCHOR Learn UX Today
+
+      /* -------------------------------------------------------------------------- */
+      /*                                ANCHOR DATA 1                               */
+      /* -------------------------------------------------------------------------- */
+
+      data__1: [
         {
-          label: "User experience design (UXD) ⇢",
-          avatar: "../assets/ux/general/ux-headline.png",
+          label: "Learn UX Today",
+          avatar: "../assets/user-experience/learn-ux-today/general/ux-headline.png",
           children: [
-
-            /* -------------------------------------------------------------------------- */
-            /*                              ANCHOR CONTENT A                              */
-            /* -------------------------------------------------------------------------- */
-
             {
-              label: "1 Foundations of UX design",
-              avatar: "../assets/ux/general/ux-course-1.png",
+              label: "An introduction to UX",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-1.png",
+              children: [
+                {
+                  label: "What is UX, really?",
+                  icon: "feed",
+                },
+                {
+                  label: "A brief history uf UX",
+                  icon: "feed",
+                },
+                {
+                  label: "UX Components",
+                  icon: "feed",
+                },
+                {
+                  label: "UX Inputs",
+                  icon: "feed",
+                },
+                {
+                  label: "The Value of UX",
+                  icon: "feed",
+                },
+                {
+                  label: "UX Disciplines",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "UX Design Process",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-2.png",
+              children: [
+                {
+                  label: "Design Thinking",
+                  icon: "feed",
+                },
+                {
+                  label: "Empathize",
+                  icon: "feed",
+                },
+                {
+                  label: "Define",
+                  icon: "feed",
+                },
+                {
+                  label: "Ideate",
+                  icon: "feed",
+                },
+                {
+                  label: "Prototype",
+                  icon: "feed",
+                },
+                {
+                  label: "Test",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "UX Fundamentals",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-3.png",
+              children: [
+                {
+                  label: "Usability",
+                  icon: "feed",
+                },
+                {
+                  label: "Accessibility",
+                  icon: "feed",
+                },
+                {
+                  label: "User Research",
+                  icon: "feed",
+                },
+                {
+                  label: "Cognitive Psychology",
+                  icon: "feed",
+                },
+                {
+                  label: "Information Architecture (IA)",
+                  icon: "feed",
+                },
+                {
+                  label: "Content Strategy",
+                  icon: "feed",
+                },
+                {
+                  label: "Interaction Design",
+                  icon: "feed",
+                },
+                {
+                  label: "Visual Design",
+                  icon: "feed",
+                },
+              ]
+            },
+          ]
+        }
+      ],
+
+      // ANCHOR Google UX Design
+
+      /* -------------------------------------------------------------------------- */
+      /*                                ANCHOR DATA 2                               */
+      /* -------------------------------------------------------------------------- */
+
+      data__2: [
+        {
+          label: "Google UX Design ⇢",
+          avatar: "../assets/user-experience/google-ux-design/general/ux-headline.png",
+          children: [
+            {
+              label: "1. Foundations of UX Design",
+              avatar: "../assets/user-experience/google-ux-design/general/ux-course-1.png",
               children: [
                 {
                   label: "1.1 Introducing UX design",
@@ -450,47 +607,164 @@ const app = Vue.createApp({
                 },
               ]
             },
-
-            /* -------------------------------------------------------------------------- */
-            /*                              ANCHOR CONTENT B                              */
-            /* -------------------------------------------------------------------------- */
-
             {
-              label: "2 UX Design Process: Empathize, Define, Ideate",
-              avatar: "../assets/ux/general/ux-course-2.png",
+              label: "2. Start the UX Design Process: Empathize, Define, and Ideate",
+              avatar: "../assets/user-experience/google-ux-design/general/ux-course-2.png",
               children: [
                 {
-                  label: "2.1 Lorem",
+                  label: "...",
                   icon: "feed",
-                  children: [
-                    { label: "Lorem" },
-                    { label: "Lorem" },
-                    {
-                      label: "Lorem",
-                      children: [
-                        { label: "Lorem" },
-                        { label: "Lorem" },
-                        { label: "Lorem" },
-                        { label: "Lorem" },
-                      ]
-                    },
-                  ]
                 },
               ]
             },
-
-            /* -------------------------------------------------------------------------- */
-            /*                              ANCHOR CONTENT C                              */
-            /* -------------------------------------------------------------------------- */
-
-            /* -------------------------------------------------------------------------- */
-            /*                              ANCHOR CONTENT D                              */
-            /* -------------------------------------------------------------------------- */
-
+            {
+              label: "3. UX Build Wireframes and Low-Fidelity Prototypes",
+              avatar: "../assets/user-experience/google-ux-design/general/ux-course-3.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "4. Conduct UX Research and Test Early Concepts",
+              avatar: "../assets/user-experience/google-ux-design/general/ux-course-4.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "5. Create High-Fidelity Designs and Prototypes in Figma",
+              avatar: "../assets/user-experience/google-ux-design/general/ux-course-5.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "6. Responsive Web Design in Adobe XD",
+              avatar: "../assets/user-experience/google-ux-design/general/ux-course-6.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "7. Design a User Experience for Social Good & Prepare for Jobs",
+              avatar: "../assets/user-experience/google-ux-design/general/ux-course-7.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
           ]
         }
       ],
 
+      // ANCHOR Useful Resources
+
+      /* -------------------------------------------------------------------------- */
+      /*                                ANCHOR DATA 3                               */
+      /* -------------------------------------------------------------------------- */
+
+      data__3: [
+        {
+          label: "Useful Resources",
+          avatar: "../assets/user-experience/useful-resources/general/resources.png",
+          children: [
+            {
+              label: "Links",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-1.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Courses",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-2.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Ebooks",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-3.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Tools",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-4.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Jobs",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-5.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "R.I.P.",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-6.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Case Studies",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-7.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Design Systems",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-8.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+          ]
+        }
+      ],
       resetFilter() {
         filter.value = "";
         filterRef.value.focus();
