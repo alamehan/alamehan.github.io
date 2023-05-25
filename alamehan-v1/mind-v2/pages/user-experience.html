@@ -58,8 +58,9 @@ Yang di show root dari setiap isi content page secara general.
 
 			<q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="primary" align="justify">
 				<q-tab name="tab__1" label="Learn UX Today"></q-tab>
-				<q-tab name="tab__2" label="Google UX Design"></q-tab>
-				<q-tab name="tab__3" label="Useful Resources"></q-tab>
+				<q-tab name="tab__2" label="Design Thinking Toolbox"></q-tab>
+				<q-tab name="tab__3" label="Google UX Design"></q-tab>
+				<q-tab name="tab__4" label="Useful Resources"></q-tab>
 			</q-tabs>
 
 			<q-separator></q-separator>
@@ -115,9 +116,6 @@ Yang di show root dari setiap isi content page secara general.
 
 						<template v-slot:after>
 							<q-tab-panels v-model="selected__1" animated transition-prev="jump-up" transition-next="jump-up">
-								<!-- ----------------------------------------------------------------------- -->
-								<!--                              ANCHOR A-1-1                               -->
-								<!-- ----------------------------------------------------------------------- -->
 
 								<q-tab-panel name="Learn UX Today">
 									<q-layout container style="height: 95vh">
@@ -128,32 +126,19 @@ Yang di show root dari setiap isi content page secara general.
 											<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
 											<q-img src="../assets/example.png"></q-img>
 										</div>
-										<!-- TIMELINE -->
-										<div class="q-px-sm q-pb-sm">
-											<q-timeline color="secondary">
-												<h4 class="mtitle">Learn UX Today</h4>
-
-												<q-timeline-entry title="Event Title" subtitle="February 22, 1986">
-													<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-												</q-timeline-entry>
-
-												<q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
-													<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-												</q-timeline-entry>
-											</q-timeline>
-										</div>
 
 										<q-page-scroller position="bottom-right" :scroll-offset="0" :offset="[18, 18]">
 											<q-btn fab icon="keyboard_arrow_up" color="primary"></q-btn>
 										</q-page-scroller>
 									</q-layout>
 								</q-tab-panel>
+
 							</q-tab-panels>
 						</template>
 					</q-splitter>
 				</q-tab-panel>
 
-				<!-- ANCHOR Google UX Design -->
+				<!-- ANCHOR Design Thinking Toolbox -->
 
 				<!-- ----------------------------------------------------------------------- -->
 				<!--                            ANCHOR CONTENT B                             -->
@@ -173,7 +158,7 @@ Yang di show root dari setiap isi content page secara general.
 								</q-input>
 
 								<!-- B. ALERT -->
-								<q-banner inline-actions rounded class="bg-primary text-white"> Resource: <a href="https://www.coursera.org/professional-certificates/google-ux-design" style="color: white">Google UX Design</a> | May 2023 </q-banner>
+								<q-banner inline-actions rounded class="bg-primary text-white"> Resource: <a href="https://responsive-strategy.academy/en/" style="color: white">Responsive Strategy Academy</a> | May 2023 </q-banner>
 
 								<!-- C. BUTTON -->
 								<div class="q-gutter-sm q-mt-sm q-mb-md">
@@ -199,9 +184,69 @@ Yang di show root dari setiap isi content page secara general.
 
 						<template v-slot:after>
 							<q-tab-panels v-model="selected__2" animated transition-prev="jump-up" transition-next="jump-up">
-								<!-- ----------------------------------------------------------------------- -->
-								<!--                              ANCHOR A-2-1                               -->
-								<!-- ----------------------------------------------------------------------- -->
+
+								<q-tab-panel name="Design Thinking Toolbox">
+									<q-layout container style="height: 80vh">
+										<div class="q-px-sm q-pb-sm">
+											<h4 class="mtitle">Design Thinking Toolbox</h4>
+											<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+											<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+											<q-img src="../assets/example.png"></q-img>
+										</div>
+									</q-layout>
+								</q-tab-panel>
+
+							</q-tab-panels>
+						</template>
+					</q-splitter>
+				</q-tab-panel>
+
+				<!-- ANCHOR Google UX Design -->
+
+				<!-- ----------------------------------------------------------------------- -->
+				<!--                            ANCHOR CONTENT C                             -->
+				<!-- ----------------------------------------------------------------------- -->
+
+				<q-tab-panel name="tab__3" class="q-pa-none">
+					<q-splitter v-model="splitterModel" style="height: 100vh">
+						<!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
+
+						<template v-slot:before>
+							<div class="q-pa-md">
+								<!-- A. FILTER -->
+								<q-input ref="filterRef" filled v-model="filter" label="Search here" class="q-mb-md">
+									<template v-slot:append>
+										<q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"></q-icon>
+									</template>
+								</q-input>
+
+								<!-- B. ALERT -->
+								<q-banner inline-actions rounded class="bg-primary text-white"> Resource: <a href="https://www.coursera.org/professional-certificates/google-ux-design" style="color: white">Google UX Design</a> | May 2023 </q-banner>
+
+								<!-- C. BUTTON -->
+								<div class="q-gutter-sm q-mt-sm q-mb-md">
+									<q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"> </q-btn>
+									<q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
+									<q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__3($refs)"></q-btn>
+									<!-- <q-btn outline color="primary" label="Toggle" icon-right="toggle_on" @click="toggleNode__x($refs)"></q-btn> -->
+									<q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
+								</div>
+
+								<!-- D. CONTENT -->
+								<q-tree :nodes="data__3" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__3" v-model:expanded="expanded__3" :filter="filter" dense :default-expand-all="false"></q-tree>
+							</div>
+						</template>
+
+						<!-- ------------------- SPLITTER: PEMBATAS (DRAGGABLE) -------------------- -->
+
+						<template v-slot:separator>
+							<q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator"></q-avatar>
+						</template>
+
+						<!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
+
+						<template v-slot:after>
+							<q-tab-panels v-model="selected__3" animated transition-prev="jump-up" transition-next="jump-up">
 
 								<q-tab-panel name="Google UX Design ⇢">
 									<q-layout container style="height: 80vh">
@@ -925,9 +970,6 @@ Yang di show root dari setiap isi content page secara general.
 									</q-layout>
 								</q-tab-panel>
 
-								<!-- ----------------------------------------------------------------------- -->
-								<!--                              ANCHOR A-2-2                               -->
-								<!-- ----------------------------------------------------------------------- -->
 							</q-tab-panels>
 						</template>
 					</q-splitter>
@@ -936,10 +978,10 @@ Yang di show root dari setiap isi content page secara general.
 				<!-- ANCHOR Useful Resources -->
 
 				<!-- ----------------------------------------------------------------------- -->
-				<!--                            ANCHOR CONTENT C                             -->
+				<!--                            ANCHOR CONTENT D                             -->
 				<!-- ----------------------------------------------------------------------- -->
 
-				<q-tab-panel name="tab__3" class="q-pa-none">
+				<q-tab-panel name="tab__4" class="q-pa-none">
 					<q-splitter v-model="splitterModel" style="height: 100vh">
 						<!-- ------------------------ SPLITTER: BAGIAN KIRI ------------------------ -->
 
@@ -959,13 +1001,13 @@ Yang di show root dari setiap isi content page secara general.
 								<div class="q-gutter-sm q-mt-sm q-mb-md">
 									<q-btn outline color="primary" label="Expand All" icon-right="open_in_full" @click="$refs.tree.expandAll()"> </q-btn>
 									<q-btn outline color="primary" label="Collapse All" icon-right="close_fullscreen" @click="$refs.tree.collapseAll()"></q-btn>
-									<q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__3($refs)"></q-btn>
+									<q-btn outline color="primary" label="Reset" icon-right="refresh" @click="defaultNode__4($refs)"></q-btn>
 									<!-- <q-btn outline color="primary" label="Toggle" icon-right="toggle_on" @click="toggleNode__x($refs)"></q-btn> -->
 									<q-btn outline color="primary" label="Home" icon-right="home" href="../index.html"></q-btn>
 								</div>
 
 								<!-- D. CONTENT -->
-								<q-tree :nodes="data__3" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__3" v-model:expanded="expanded__3" :filter="filter" dense :default-expand-all="false"></q-tree>
+								<q-tree :nodes="data__4" node-key="label" ref="tree" selected-color="green" v-model:selected="selected__4" v-model:expanded="expanded__4" :filter="filter" dense :default-expand-all="false"></q-tree>
 							</div>
 						</template>
 
@@ -978,10 +1020,7 @@ Yang di show root dari setiap isi content page secara general.
 						<!-- ----------------------- SPLITTER: BAGIAN KANAN ------------------------ -->
 
 						<template v-slot:after>
-							<q-tab-panels v-model="selected__3" animated transition-prev="jump-up" transition-next="jump-up">
-								<!-- ----------------------------------------------------------------------- -->
-								<!--                              ANCHOR A-3-1                               -->
-								<!-- ----------------------------------------------------------------------- -->
+							<q-tab-panels v-model="selected__4" animated transition-prev="jump-up" transition-next="jump-up">
 
 								<q-tab-panel name="Useful Resources">
 									<q-layout container style="height: 95vh">
@@ -991,20 +1030,6 @@ Yang di show root dari setiap isi content page secara general.
 											<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
 											<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
 											<q-img src="../assets/example.png"></q-img>
-										</div>
-										<!-- TIMELINE -->
-										<div class="q-px-sm q-pb-sm">
-											<q-timeline color="secondary">
-												<h4 class="mtitle">Useful Resources</h4>
-
-												<q-timeline-entry title="Event Title" subtitle="February 22, 1986">
-													<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-												</q-timeline-entry>
-
-												<q-timeline-entry title="Event Title" subtitle="February 21, 1986" icon="delete">
-													<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-												</q-timeline-entry>
-											</q-timeline>
 										</div>
 
 										<q-page-scroller position="bottom-right" :scroll-offset="0" :offset="[18, 18]">

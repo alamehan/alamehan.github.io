@@ -15,10 +15,14 @@ const app = Vue.createApp({
     ])
 
     let nilai__2 = ref([
-      "Google UX Design ⇢",
+      "Design Thinking Toolbox",
     ])
 
     let nilai__3 = ref([
+      "Google UX Design ⇢",
+    ])
+
+    let nilai__4 = ref([
       "Useful Resources",
     ])
 
@@ -40,7 +44,7 @@ const app = Vue.createApp({
 
     function defaultNode__2(pohon) {
       let node = [
-        "Google UX Design ⇢",
+        "Design Thinking Toolbox",
       ]
       console.log(node)
       setTimeout(() => { pohon.tree.collapseAll() }, 100);
@@ -50,6 +54,17 @@ const app = Vue.createApp({
     }
 
     function defaultNode__3(pohon) {
+      let node = [
+        "Google UX Design ⇢",
+      ]
+      console.log(node)
+      setTimeout(() => { pohon.tree.collapseAll() }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[0], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[1], true) }, 100);
+      setTimeout(() => { pohon.tree.setExpanded(node[2], true) }, 100);
+    }
+
+    function defaultNode__4(pohon) {
       let node = [
         "Useful Resources",
       ]
@@ -73,6 +88,7 @@ const app = Vue.createApp({
       defaultNode__1,
       defaultNode__2,
       defaultNode__3,
+      defaultNode__4,
       // toggleNode__x,
 
       // ⚠️ TAB YANG AKTIF (SELECTED) PERTAMA KALI
@@ -83,13 +99,15 @@ const app = Vue.createApp({
 
       // ⚠️ NODE YANG AKTIF (SELECTED) PERTAMA KALI
       selected__1: ref("Learn UX Today"),
-      selected__2: ref("Google UX Design ⇢"),
-      selected__3: ref("Useful Resources"),
+      selected__2: ref("Design Thinking Toolbox"),
+      selected__3: ref("Google UX Design ⇢"),
+      selected__4: ref("Useful Resources"),
 
       // ⚠️ NODE YANG TERBUKA (EXPANDED) PERTAMA KALI
       expanded__1: nilai__1,
       expanded__2: nilai__2,
       expanded__3: nilai__3,
+      expanded__4: nilai__4,
 
       // ANCHOR Learn UX Today
 
@@ -204,13 +222,108 @@ const app = Vue.createApp({
         }
       ],
 
-      // ANCHOR Google UX Design
+      // ANCHOR Design Thinking Toolbox
 
       /* -------------------------------------------------------------------------- */
       /*                                ANCHOR DATA 2                               */
       /* -------------------------------------------------------------------------- */
 
       data__2: [
+        {
+          label: "Design Thinking Toolbox",
+          avatar: "../assets/user-experience/google-ux-design/general/ux-headline.png",
+          children: [
+            {
+              label: "Links",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-1.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Courses",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-2.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Ebooks",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-3.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Tools",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-4.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Jobs",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-5.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "R.I.P.",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-6.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Case Studies",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-7.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+            {
+              label: "Design Systems",
+              avatar: "../assets/user-experience/learn-ux-today/general/number-8.png",
+              children: [
+                {
+                  label: "...",
+                  icon: "feed",
+                },
+              ]
+            },
+          ]
+        }
+      ],
+
+      // ANCHOR Google UX Design
+
+      /* -------------------------------------------------------------------------- */
+      /*                                ANCHOR DATA 3                               */
+      /* -------------------------------------------------------------------------- */
+
+      data__3: [
         {
           label: "Google UX Design ⇢",
           avatar: "../assets/user-experience/google-ux-design/general/ux-headline.png",
@@ -674,10 +787,10 @@ const app = Vue.createApp({
       // ANCHOR Useful Resources
 
       /* -------------------------------------------------------------------------- */
-      /*                                ANCHOR DATA 3                               */
+      /*                                ANCHOR DATA 4                               */
       /* -------------------------------------------------------------------------- */
 
-      data__3: [
+      data__4: [
         {
           label: "Useful Resources",
           avatar: "../assets/user-experience/useful-resources/general/resources.png",
