@@ -1,6 +1,6 @@
-# GPT-4: Start Your Own Business by Raihan Allaam
+# GPT-4: Start Your Own Business
 
-Personal Web Page : [Click here](https://alamehan.github.io/)
+By Raihan Allaam ✦ Personal Web Page: [Click here](https://alamehan.github.io/) [Click here](https://alamehan.github.io/)
 
 ------------------
 

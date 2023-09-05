@@ -1,6 +1,6 @@
-# GPT-4: Design System 101 by Raihan Allaam
+# GPT-4: Design System 101
 
-Personal Web Page : [Click here](https://alamehan.github.io/)
+By Raihan Allaam ✦ Personal Web Page: [Click here](https://alamehan.github.io/)
 
 ------------------
 
