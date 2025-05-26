@@ -8,168 +8,184 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Konfigurasi Tailwind untuk font Inter dan mode gelap berbasis kelas
+        tailwind.config = {
+            darkMode: 'class', // atau 'media'
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))',
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))',
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))',
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))',
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))',
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))',
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))',
+                        },
+                    },
+                    borderRadius: {
+                        lg: `var(--radius)`,
+                        md: `calc(var(--radius) - 2px)`,
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        /* --- General Setup --- */
+        /* CSS Variables for shadcn/ui-like theming */
+        :root {
+            --background: 0 0% 100%; /* white */
+            --foreground: 240 10% 3.9%; /* dark slate gray */
+            --card: 0 0% 100%;
+            --card-foreground: 240 10% 3.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 240 10% 3.9%;
+            --primary: 240 5.9% 10%; /* almost black */
+            --primary-foreground: 0 0% 98%; /* almost white */
+            --secondary: 240 4.8% 95.9%; /* light gray */
+            --secondary-foreground: 240 5.9% 10%;
+            --muted: 240 4.8% 95.9%;
+            --muted-foreground: 240 3.8% 46.1%; /* mid gray */
+            --accent: 240 4.8% 95.9%;
+            --accent-foreground: 240 5.9% 10%;
+            --destructive: 0 84.2% 60.2%; /* red */
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 5.9% 90%; /* light gray border */
+            --input: 240 5.9% 90%;
+            --ring: 240 5.9% 10%; /* focus ring */
+            --radius: 0.5rem; /* default border radius */
+        }
+
+        .dark {
+            --background: 240 10% 3.9%; /* very dark blue/slate */
+            --foreground: 0 0% 98%; /* almost white */
+            --card: 240 10% 3.9%;
+            --card-foreground: 0 0% 98%;
+            --popover: 240 10% 3.9%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 0 0% 98%; /* almost white */
+            --primary-foreground: 240 5.9% 10%; /* almost black */
+            --secondary: 240 3.7% 15.9%; /* dark gray */
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%; /* light gray for dark mode */
+            --accent: 240 3.7% 15.9%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 62.8% 30.6%; /* dark red */
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 3.7% 15.9%;
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%; /* light gray focus ring for dark */
+        }
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-
-        /* --- Light Mode --- */
-        .light {
-            background-color: #f8fafc; /* slate-50 */
-            color: #334155; /* slate-700 */
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
         }
-        .light .main-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0; /* slate-200 */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+        ::-webkit-scrollbar-track {
+            background: hsl(var(--background));
         }
-        .light .section-card { background-color: #f8fafc; border: 1px solid #e2e8f0; }
-        .light .output-area, .light .output-div { background-color: #f1f5f9; border: 1px solid #cbd5e1; color: #1e293b; }
-        .light .input-field, .light .api-key-input { background-color: #ffffff; border: 1px solid #cbd5e1; color: #1e293b; }
-        .light .input-field:focus, .light .api-key-input:focus { border-color: #3b82f6; ring: 1px; ring-color: #3b82f6; }
-        .light .header-title { color: #1e3a8a; } /* blue-900 */
-        .light .header-subtitle { color: #64748b; }
-        .light .stage-title { color: #1e40af; border-color: #bfdbfe; }
-        .light .input-label { color: #475569; }
-        .light .pat-suggestion-card { background-color: #ffffff; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease; }
-        .light .pat-suggestion-card:hover { border-color: #93c5fd; background-color: #eff6ff; }
-        .light .pat-suggestion-card.selected { border-color: #3b82f6; background-color: #eff6ff; box-shadow: 0 0 0 2px #3b82f6; }
-        .light .theme-toggle-button { color: #64748b; background-color: #f1f5f9; }
-        .light .theme-toggle-button:hover { background-color: #e2e8f0; }
-        .light .api-key-status.success { background-color: #dcfce7; border-color: #86efac; color: #166534; }
-        .light .api-key-status.error { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
-        .light .model-selection label { border: 1px solid #cbd5e1; background-color: #fff; }
-        .light .model-selection label:hover { background-color: #f1f5f9; }
-        .light .model-selection input:checked + label {
-            border-color: #3b82f6; /* blue-600 */
-            background-color: #eff6ff; /* blue-50 */
-            color: #1e3a8a; /* blue-900 */
-            outline: 2px solid #2563eb; /* blue-700 */
-            outline-offset: 2px;
+        ::-webkit-scrollbar-thumb {
+            background: hsl(var(--muted-foreground) / 0.5);
+            border-radius: var(--radius);
         }
-        .light .model-selection input:disabled + label { background-color: #f1f5f9; color: #94a3b8; cursor: not-allowed; opacity: 0.7; }
-        .light .loading-spinner { border-color: #bfdbfe; border-top-color: #3b82f6; }
-        .light .footer-text, .light .disclaimer-text { color: #94a3b8; }
-
-        /* --- Dark Mode --- */
-        .dark {
-            background-color: #020617; /* slate-950 */
-            color: #cbd5e1; /* slate-300 */
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--muted-foreground) / 0.7);
         }
-        .dark .main-card {
-            background-color: #0f172a; /* slate-900 */
-            border: 1px solid #334155; /* slate-700 */
-            box-shadow: 0 4px 6px -1px rgb(255 255 255 / 0.05), 0 2px 4px -2px rgb(255 255 255 / 0.05);
-        }
-        .dark .section-card { background-color: #1e293b; border: 1px solid #334155; }
-        .dark .output-area, .dark .output-div { background-color: #0f172a; border: 1px solid #475569; color: #e2e8f0; }
-        .dark .input-field, .dark .api-key-input { background-color: #1e293b; border: 1px solid #475569; color: #e2e8f0; }
-        .dark .input-field:focus, .dark .api-key-input:focus { border-color: #60a5fa; ring: 1px; ring-color: #60a5fa; }
-        .dark .header-title { color: #93c5fd; } /* blue-300 */
-        .dark .header-subtitle { color: #94a3b8; }
-        .dark .stage-title { color: #93c5fd; border-color: #374151; }
-        .dark .input-label { color: #94a3b8; }
-        .dark .pat-suggestion-card { background-color: #1e293b; border: 1px solid #334155; cursor: pointer; transition: all 0.2s ease; }
-        .dark .pat-suggestion-card:hover { border-color: #3b82f6; background-color: #374151; }
-        .dark .pat-suggestion-card.selected { border-color: #60a5fa; background-color: #374151; box-shadow: 0 0 0 2px #60a5fa; }
-        .dark .theme-toggle-button { color: #94a3b8; background-color: #1e293b; }
-        .dark .theme-toggle-button:hover { background-color: #334155; }
-        .dark .api-key-status.success { background-color: #14532d; border-color: #22c55e; color: #bbf7d0; }
-        .dark .api-key-status.error { background-color: #7f1d1d; border-color: #ef4444; color: #fecaca; }
-        .dark .model-selection label { border: 1px solid #475569; background-color: #1e293b; }
-        .dark .model-selection label:hover { background-color: #334155; }
-        .dark .model-selection input:checked + label {
-            border-color: #60a5fa; /* blue-400 */
-            background-color: #2563eb; /* blue-600 */
-            color: #ffffff;
-            outline: 2px solid #93c5fd; /* blue-300 */
-            outline-offset: 2px;
-        }
-        .dark .model-selection input:disabled + label { background-color: #334155; color: #64748b; cursor: not-allowed; opacity: 0.7; }
-        .dark .loading-spinner { border-color: #334155; border-top-color: #60a5fa; }
-        .dark .footer-text, .dark .disclaimer-text { color: #64748b; }
-
-        /* --- Button Styles --- */
-        .primary-button { @apply bg-blue-600 hover:bg-blue-700 text-white; }
-        .secondary-button { @apply bg-slate-200 hover:bg-slate-300 text-slate-700; } /* Adjusted for light mode */
-        .dark .secondary-button { @apply bg-slate-700 hover:bg-slate-600 text-slate-200; }
-        .validate-api-button { @apply bg-green-600 hover:bg-green-700 text-white !py-2 !px-4 !text-xs; }
-        .dark .validate-api-button { @apply bg-green-500 hover:bg-green-600; }
-        .copy-button { @apply bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-300 text-xs px-3 py-1.5; }
-        .dark .copy-button { @apply bg-slate-700 hover:bg-slate-600 text-slate-300 border-slate-600; }
-
-        /* --- Generic Component Styles --- */
-        .button-base { @apply font-medium rounded-lg shadow-sm transition-all duration-150 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-[1.03] py-2.5 px-5; }
-        .input-field, .api-key-input { @apply w-full p-3 border rounded-lg shadow-sm transition-colors text-base; }
-        .api-key-input { @apply text-sm; }
-        .output-area, .output-div { 
-            @apply p-4 border rounded-lg whitespace-pre-wrap text-sm overflow-auto font-mono;
-            overflow-wrap: break-word; /* Ensures long words break to prevent horizontal overflow */
-            /* word-break: break-all; */ /* More aggressive alternative if break-word is not enough, but break-word is usually preferred */
-        }
-        .loading-spinner { border-radius: 50%; width: 24px; height: 24px; animation: spin 0.8s linear infinite; margin: 0 auto; border: 3px solid; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .scroll-to-top { @apply fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg transition-opacity transform hover:scale-110 bg-blue-600/80 hover:bg-blue-600 text-white; }
     </style>
 </head>
 <body class="flex flex-col items-center min-h-screen py-8 px-4">
-    <div class="main-card w-full max-w-3xl lg:max-w-4xl my-auto rounded-xl">
-        <header class="p-6 sm:p-8 border-b dark:border-slate-800 light:border-slate-200">
+    <div class="bg-card text-card-foreground w-full max-w-3xl lg:max-w-4xl my-auto rounded-lg border border-border shadow-sm">
+        <header class="p-6 sm:p-8 border-b border-border">
             <div class="flex justify-between items-start mb-6">
                 <div class="text-center w-full">
-                    <h1 class="header-title text-3xl sm:text-4xl font-bold tracking-tight">✨ PromptCraft Pro ✨</h1>
-                    <p class="header-subtitle mt-2 text-base max-w-xl mx-auto">
+                    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-primary">✨ PromptCraft Pro ✨</h1>
+                    <p class="text-muted-foreground mt-2 text-base max-w-xl mx-auto">
                         Articulate & Standardize Your AI Prompts: From Raw Idea to Precision.
                     </p>
                 </div>
-                <button id="themeToggle" title="Toggle theme" class="theme-toggle-button p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 flex-shrink-0 ml-4">
+                <button id="themeToggle" title="Toggle theme" class="ml-4 flex-shrink-0 h-10 w-10 inline-flex items-center justify-center rounded-md border border-input bg-transparent text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                     <span id="themeIcon" class="text-xl">☀️</span>
                 </button>
             </div>
-            <div class="space-y-4 py-4 border-t border-b dark:border-slate-700/50 light:border-slate-200/50">
-                <div id="modelSelection" class="model-selection flex flex-wrap justify-center items-center gap-3">
-                    <span class="text-sm font-medium input-label self-center mr-2">🤖 AI Model:</span>
+            <div class="space-y-4 py-4 border-t border-b border-border/60">
+                <div id="modelSelection" class="flex flex-wrap justify-center items-center gap-3">
+                    <span class="text-sm font-medium text-foreground self-center mr-2">🤖 AI Model:</span>
                     <div>
-                        <input type="radio" name="aiModel" id="geminiFlash" value="gemini-2.0-flash" class="sr-only" checked>
-                        <label for="geminiFlash" class="px-4 py-2 text-sm border rounded-full cursor-pointer transition-all">Gemini 2.0 Flash</label>
+                        <input type="radio" name="aiModel" id="geminiFlash" value="gemini-2.0-flash" class="sr-only peer" checked>
+                        <label for="geminiFlash" class="h-9 px-3 inline-flex items-center justify-center rounded-md text-xs border border-input bg-transparent transition-all hover:bg-accent hover:text-accent-foreground peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Gemini 2.0 Flash</label>
                     </div>
                     <div>
-                        <input type="radio" name="aiModel" id="gemini15Pro" value="gemini-1.5-pro-latest" class="sr-only">
-                        <label for="gemini15Pro" class="px-4 py-2 text-sm border rounded-full cursor-pointer transition-all">Gemini 1.5 Pro</label>
+                        <input type="radio" name="aiModel" id="gemini15Pro" value="gemini-1.5-pro-latest" class="sr-only peer">
+                        <label for="gemini15Pro" class="h-9 px-3 inline-flex items-center justify-center rounded-md text-xs border border-input bg-transparent transition-all hover:bg-accent hover:text-accent-foreground peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Gemini 1.5 Pro</label>
                     </div>
                     <div>
-                        <input type="radio" name="aiModel" id="geminiUltra" value="gemini-ultra" class="sr-only" disabled>
-                        <label for="geminiUltra" class="px-4 py-2 text-sm border rounded-full cursor-pointer transition-all" title="Gemini Ultra (API Key & specific setup may be required)">🔒 Gemini Ultra <span class="text-xs opacity-70">(Future)</span></label>
+                        <input type="radio" name="aiModel" id="geminiUltra" value="gemini-ultra" class="sr-only peer" disabled>
+                        <label for="geminiUltra" class="h-9 px-3 inline-flex items-center justify-center rounded-md text-xs border border-input bg-transparent transition-all hover:bg-accent hover:text-accent-foreground peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70" title="Gemini Ultra (API Key & specific setup may be required)">🔒 Gemini Ultra <span class="text-xs opacity-70 ml-1">(Future)</span></label>
                     </div>
-                    <div>
-                        <input type="radio" name="aiModel" id="chatGPT" value="chatgpt-4" class="sr-only" disabled>
-                        <label for="chatGPT" class="px-4 py-2 text-sm border rounded-full cursor-pointer transition-all" title="ChatGPT (Requires separate API setup & key)">🔒 ChatGPT (GPT-4) <span class="text-xs opacity-70">(Ext. API)</span></label>
+                     <div>
+                        <input type="radio" name="aiModel" id="chatGPT" value="chatgpt-4" class="sr-only peer" disabled>
+                        <label for="chatGPT" class="h-9 px-3 inline-flex items-center justify-center rounded-md text-xs border border-input bg-transparent transition-all hover:bg-accent hover:text-accent-foreground peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70" title="ChatGPT (Requires separate API setup & key)">🔒 ChatGPT <span class="text-xs opacity-70 ml-1">(Ext. API)</span></label>
                     </div>
                 </div>
                 <div class="flex items-stretch gap-2 max-w-md mx-auto">
                     <label for="userApiKeyInput" class="sr-only">Google API Key</label>
-                    <input type="password" id="userApiKeyInput" class="api-key-input flex-grow" placeholder="🔑 Enter your Google API Key...">
-                    <button id="validateApiKeyButton" class="validate-api-button button-base flex-shrink-0">Validate</button>
+                    <input type="password" id="userApiKeyInput" class="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" placeholder="🔑 Enter your Google API Key...">
+                    <button id="validateApiKeyButton" class="h-10 px-4 py-2 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 bg-green-600 text-primary-foreground hover:bg-green-600/90 dark:bg-green-500 dark:hover:bg-green-500/90 flex-shrink-0 !text-xs">Validate</button>
                 </div>
-                <div id="apiKeyStatusMessage" class="api-key-status hidden p-2 rounded-md border text-sm my-2 text-center max-w-md mx-auto"></div>
+                <div id="apiKeyStatusMessage" class="hidden p-3 rounded-md border text-sm my-2 text-center max-w-md mx-auto"></div>
             </div>
         </header>
 
         <main class="p-6 sm:p-8 space-y-12">
             <section id="patStage">
-                <h2 class="stage-title text-2xl font-semibold mb-6 pb-3 border-b-2 flex items-center">
+                <h2 class="text-2xl font-semibold mb-6 pb-3 border-b-2 border-border flex items-center text-primary">
                     <span class="text-3xl mr-4">🧠</span> Step 1: Articulate with PAT
                 </h2>
                 <div class="space-y-6">
                     <div>
-                        <label for="rawPromptInput" class="input-label block text-md font-medium mb-2">💡 Enter Your Raw Prompt Idea:</label>
-                        <textarea id="rawPromptInput" class="input-field min-h-[100px] w-full" rows="4" placeholder="e.g., 'A story about a space explorer finding an ancient alien artifact'"></textarea>
+                        <label for="rawPromptInput" class="block text-sm font-medium mb-2 text-foreground">💡 Enter Your Raw Prompt Idea:</label>
+                        <textarea id="rawPromptInput" class="flex min-h-[100px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" rows="4" placeholder="e.g., 'A story about a space explorer finding an ancient alien artifact'"></textarea>
                     </div>
                     <div class="text-center">
-                        <button id="articulatePatButton" class="primary-button button-base w-full sm:w-auto" disabled>
+                        <button id="articulatePatButton" class="h-10 px-4 py-2 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto" disabled>
                             <span class="flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2"><path d="M10 3.75a.75.75 0 01.75.75v1.5h1.5a.75.75 0 010 1.5h-1.5v1.5a.75.75 0 01-1.5 0v-1.5h-1.5a.75.75 0 010-1.5h1.5v-1.5a.75.75 0 01.75-.75z" /><path fill-rule="evenodd" d="M11.954 1.616a.75.75 0 01.47 1.033l-.395 1.085a3.713 3.713 0 003.865 3.865l1.085-.395a.75.75 0 011.034.47l.25.685a.75.75 0 01-.47 1.033l-1.085.395a3.713 3.713 0 00-3.865 3.865l.395 1.085a.75.75 0 01-.47 1.034l-.685.25a.75.75 0 01-1.033-.47l-.395-1.085a3.713 3.713 0 00-3.865-3.865l-1.085.395a.75.75 0 01-1.034-.47l-.25-.685a.75.75 0 01.47-1.033l1.085-.395a3.713 3.713 0 003.865-3.865l-.395-1.085a.75.75 0 01.47-1.034l.685-.25zM6 6.5A.5.5 0 016.5 6h1A.5.5 0 018 6.5v1A.5.5 0 017.5 8h-1A.5.5 0 016 7.5v-1zM6.5 10a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h1a.5.5 0 00.5-.5v-1a.5.5 0 00-.5-.5h-1zM10 6.5A.5.5 0 0110.5 6h1A.5.5 0 0112 6.5v1A.5.5 0 0111.5 8h-1A.5.5 0 0110 7.5v-1zM10.5 10a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h1a.5.5 0 00.5-.5v-1a.5.5 0 00-.5-.5h-1zM14 6.5A.5.5 0 0114.5 6h1A.5.5 0 018 6.5v1A.5.5 0 017.5 8h-1A.5.5 0 016 7.5v-1zM14.5 10a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h1a.5.5 0 00.5-.5v-1a.5.5 0 00-.5-.5h-1z" clip-rule="evenodd" /></svg>
                                 Articulate with PAT
@@ -177,85 +193,91 @@
                         </button>
                     </div>
                     <div id="patLoadingIndicator" class="flex justify-center py-4 hidden">
-                        <div class="loading-spinner"></div>
+                        <svg class="animate-spin h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
                     </div>
                     <div id="patOutputContainer" class="space-y-6 hidden">
-                        <div class="section-card p-6 rounded-lg">
-                            <h3 class="font-semibold text-lg mb-3">🌟 Essential Level Suggestions:</h3>
-                            <div id="patEssentialOutput" class="output-div space-y-3 p-0 bg-transparent border-none min-h-[50px]">
-                                <p class="output-placeholder italic text-sm">AI's Essential Level suggestions will appear here...</p>
+                        <div class="bg-card text-card-foreground p-6 rounded-md border border-border">
+                            <h3 class="font-semibold text-lg mb-3 text-foreground">🌟 Essential Level Suggestions:</h3>
+                            <div id="patEssentialOutput" class="space-y-3 min-h-[50px] text-sm text-muted-foreground">
+                                <p class="output-placeholder italic">AI's Essential Level suggestions will appear here...</p>
                             </div>
                         </div>
-                        <div class="section-card p-6 rounded-lg">
-                                <h3 class="font-semibold text-lg mb-3">▶️ Concise Level Transformation:</h3>
-                            <div id="patConciseOutput" class="output-div min-h-[50px]"><span class="output-placeholder italic text-sm">AI's Concise Level transformation will appear here...</span></div>
+                        <div class="bg-card text-card-foreground p-6 rounded-md border border-border">
+                            <h3 class="font-semibold text-lg mb-3 text-foreground">▶️ Concise Level Transformation:</h3>
+                            <div id="patConciseOutput" class="min-h-[50px] p-3 rounded-md border border-input bg-background text-sm text-foreground whitespace-pre-wrap break-words"><span class="output-placeholder italic text-muted-foreground">AI's Concise Level transformation will appear here...</span></div>
                         </div>
-                        <div class="section-card p-6 rounded-lg">
-                            <h3 class="font-semibold text-lg mb-3">🔍 Detailed Level Transformation:</h3>
-                            <div id="patDetailedOutput" class="output-div min-h-[50px]"><span class="output-placeholder italic text-sm">AI's Detailed Level transformation will appear here...</span></div>
+                        <div class="bg-card text-card-foreground p-6 rounded-md border border-border">
+                            <h3 class="font-semibold text-lg mb-3 text-foreground">🔍 Detailed Level Transformation:</h3>
+                            <div id="patDetailedOutput" class="min-h-[50px] p-3 rounded-md border border-input bg-background text-sm text-foreground whitespace-pre-wrap break-words"><span class="output-placeholder italic text-muted-foreground">AI's Detailed Level transformation will appear here...</span></div>
                         </div>
-                        <div id="patGeneralErrorOutput" class="text-red-600 dark:text-red-400 text-sm text-center"></div>
-                            <div class="pt-4 space-y-2">
-                                <label for="patSelection" class="input-label block text-md font-medium">👇 Select or paste a PAT Output to Standardize with PPP:</label>
-                                <select id="patSelection" class="input-field !min-h-0 py-2.5 w-full" disabled>
-                                    <option value="">-- PAT Articulation output needed first --</option>
-                                </select>
-                            </div>
+                        <div id="patGeneralErrorOutput" class="text-destructive text-sm text-center"></div>
+                        <div class="pt-4 space-y-2">
+                            <label for="patSelection" class="block text-sm font-medium text-foreground">👇 Select or paste a PAT Output to Standardize with PPP:</label>
+                            <select id="patSelection" class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" disabled>
+                                <option value="">-- PAT Articulation output needed first --</option>
+                            </select>
                         </div>
                     </div>
+                </div>
             </section>
 
             <section id="pppStage" class="pt-6">
-                <h2 class="stage-title text-2xl font-semibold mb-6 pb-3 border-b-2 flex items-center">
+                <h2 class="text-2xl font-semibold mb-6 pb-3 border-b-2 border-border flex items-center text-primary">
                     <span class="text-3xl mr-4">🎯</span> Step 2: Standardize with PPP
                 </h2>
                 <div class="space-y-6">
                     <div>
-                        <label for="pppInputFromPat" class="input-label block text-md font-medium mb-2">✍️ Prompt for PPP Standardization:</label>
-                        <textarea id="pppInputFromPat" class="input-field min-h-[150px] w-full" rows="6" placeholder="Select a PAT output above, or paste your articulated prompt here..."></textarea>
+                        <label for="pppInputFromPat" class="block text-sm font-medium mb-2 text-foreground">✍️ Prompt for PPP Standardization:</label>
+                        <textarea id="pppInputFromPat" class="flex min-h-[150px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" rows="6" placeholder="Select a PAT output above, or paste your articulated prompt here..."></textarea>
                     </div>
                     <div class="text-center">
-                        <button id="standardizePppButton" class="primary-button button-base w-full sm:w-auto" disabled>
-                                <span class="flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                    Standardize with PPP
-                                </span>
+                        <button id="standardizePppButton" class="h-10 px-4 py-2 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto" disabled>
+                            <span class="flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                Standardize with PPP
+                            </span>
                         </button>
                     </div>
                     <div id="pppLoadingIndicator" class="flex justify-center py-4 hidden">
-                        <div class="loading-spinner"></div>
+                        <svg class="animate-spin h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
                     </div>
                     <div id="pppOutputContainer" class="pt-4 hidden">
-                        <div class="section-card p-6 rounded-lg">
+                        <div class="bg-card text-card-foreground p-6 rounded-md border border-border">
                             <div class="flex justify-between items-center mb-4">
-                                <h3 class="font-semibold text-lg">✅ Final Standardized Prompt:</h3>
-                                <button id="copyPppButton" title="Copy PPP Prompt" class="copy-button flex items-center rounded-md">
+                                <h3 class="font-semibold text-lg text-foreground">✅ Final Standardized Prompt:</h3>
+                                <button id="copyPppButton" title="Copy PPP Prompt" class="h-9 px-3 py-1.5 inline-flex items-center justify-center rounded-md text-xs font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-input">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m9.75 11.375c.621 0 1.125-.504 1.125-1.125V7.875c0-.621-.504-1.125-1.125-1.125H15m-1.125-3.375a3.375 3.375 0 00-3.375-3.375h-1.5a3.375 3.375 0 00-3.375 3.375V7.5" /></svg>
                                     Copy
                                 </button>
                             </div>
-                            <pre id="pppOutput" class="output-area min-h-[250px]"><span class="output-placeholder italic text-sm">Your PPP standardized prompt will appear here...</span></pre>
+                            <pre id="pppOutput" class="min-h-[250px] p-4 rounded-md border border-input bg-muted text-muted-foreground whitespace-pre-wrap text-sm overflow-auto font-mono break-words"><span class="output-placeholder italic">Your PPP standardized prompt will appear here...</span></pre>
                         </div>
-                        <div id="pppGeneralErrorOutput" class="text-red-600 dark:text-red-400 text-sm text-center mt-2"></div>
+                        <div id="pppGeneralErrorOutput" class="text-destructive text-sm text-center mt-2"></div>
                     </div>
                 </div>
             </section>
-                <div class="text-center pt-8 border-t dark:border-slate-800 light:border-slate-200">
-                    <button id="resetAllButton" class="secondary-button button-base w-full sm:w-auto">
-                        <span class="flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001a.75.75 0 01.3.702l1.007 7.153a3.375 3.375 0 01-.82 3.375M16.023 9.348C14.977 9.787 13.873 10 12.75 10c-1.123 0-2.227-.213-3.273-.652M16.023 9.348V7.875c0-.621-.504-1.125-1.125-1.125H9.102c-.621 0-1.125.504-1.125 1.125v1.473M16.023 9.348a2.25 2.25 0 00-2.25-2.25H12a2.25 2.25 0 00-2.25 2.25m2.25 7.5H10.5a2.25 2.25 0 00-2.25 2.25V18.75c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V16.5a2.25 2.25 0 00-2.25-2.25m0 0A2.25 2.25 0 0112 18.75v2.625a1.125 1.125 0 11-2.25 0v-2.625a2.25 2.25 0 012.25-2.25m0 0A2.25 2.25 0 0012 14.25v-.821a2.25 2.25 0 012.25-2.25m-5.625 5.625a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" /></svg>
-                            🔄 Reset All Fields
-                        </span>
-                    </button>
-                </div>
-            <p class="text-xs disclaimer-text mt-6 text-center">This tool uses AI to articulate and standardize prompts. Please review all outputs for accuracy and alignment with your intent.</p>
+            <div class="text-center pt-8 border-t border-border">
+                <button id="resetAllButton" class="h-10 px-4 py-2 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 w-full sm:w-auto">
+                    <span class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001a.75.75 0 01.3.702l1.007 7.153a3.375 3.375 0 01-.82 3.375M16.023 9.348C14.977 9.787 13.873 10 12.75 10c-1.123 0-2.227-.213-3.273-.652M16.023 9.348V7.875c0-.621-.504-1.125-1.125-1.125H9.102c-.621 0-1.125.504-1.125 1.125v1.473M16.023 9.348a2.25 2.25 0 00-2.25-2.25H12a2.25 2.25 0 00-2.25 2.25m2.25 7.5H10.5a2.25 2.25 0 00-2.25 2.25V18.75c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V16.5a2.25 2.25 0 00-2.25-2.25m0 0A2.25 2.25 0 0112 18.75v2.625a1.125 1.125 0 11-2.25 0v-2.625a2.25 2.25 0 012.25-2.25m0 0A2.25 2.25 0 0012 14.25v-.821a2.25 2.25 0 012.25-2.25m-5.625 5.625a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" /></svg>
+                        🔄 Reset All Fields
+                    </span>
+                </button>
+            </div>
+            <p class="text-xs text-muted-foreground mt-6 text-center">This tool uses AI to articulate and standardize prompts. Please review all outputs for accuracy and alignment with your intent.</p>
         </main>
-        <footer class="text-center text-xs footer-text py-6 border-t dark:border-slate-800 light:border-slate-200">
+        <footer class="text-center text-xs text-muted-foreground py-6 border-t border-border">
             <p>&copy; <span id="currentYear"></span> Alamehan Studio. PromptCraft Pro Tool.</p>
         </footer>
     </div>
 
-    <button id="scrollToTopBtn" title="Scroll to Top" class="scroll-to-top hidden">
+    <button id="scrollToTopBtn" title="Scroll to Top" class="fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg transition-opacity transform hover:scale-110 bg-primary/80 hover:bg-primary text-primary-foreground hidden h-10 w-10 inline-flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
         </svg>
@@ -297,38 +319,43 @@
 
             let patOutputs = {}; 
 
-            // Function to apply the selected theme
             function applyTheme(theme) {
                 if (theme === 'dark') {
                     htmlElement.classList.add('dark');
                     htmlElement.classList.remove('light');
-                    themeIcon.textContent = '🌙'; 
+                    if(themeIcon) themeIcon.textContent = '🌙'; 
                 } else {
                     htmlElement.classList.add('light');
                     htmlElement.classList.remove('dark');
-                    themeIcon.textContent = '☀️'; 
+                    if(themeIcon) themeIcon.textContent = '☀️'; 
                 }
             }
 
-            // Event listener for theme toggle button
-            themeToggle.addEventListener('click', () => {
-                const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
-                applyTheme(newTheme);
-                localStorage.setItem('promptCraftProTheme', newTheme);
-            });
+            if(themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                    localStorage.setItem('promptCraftProTheme', newTheme);
+                });
+            }
 
-            // Load saved theme or system preference
             const savedTheme = localStorage.getItem('promptCraftProTheme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             applyTheme(savedTheme);
 
-            // Function to update the state of AI-related buttons
             function updateAiButtonsState() {
-                if (articulatePatButton) articulatePatButton.disabled = !apiKeyIsValid;
-                if (standardizePppButton) standardizePppButton.disabled = !apiKeyIsValid;
+                if (articulatePatButton) {
+                     articulatePatButton.disabled = !apiKeyIsValid;
+                     articulatePatButton.classList.toggle('disabled:pointer-events-none', !apiKeyIsValid);
+                     articulatePatButton.classList.toggle('opacity-50', !apiKeyIsValid);
+                }
+                if (standardizePppButton) {
+                    standardizePppButton.disabled = !apiKeyIsValid;
+                    standardizePppButton.classList.toggle('disabled:pointer-events-none', !apiKeyIsValid);
+                    standardizePppButton.classList.toggle('opacity-50', !apiKeyIsValid);
+                }
             }
             updateAiButtonsState(); 
 
-            // Event listener for AI model selection
             aiModelRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (this.checked && !this.disabled) { 
@@ -337,69 +364,71 @@
                     }
                 });
             });
-
-            // Event listener for API key validation button
-            validateApiKeyButton.addEventListener('click', async () => {
-                const userApiKey = userApiKeyInput.value.trim();
-                if (!userApiKey) {
-                    if (apiKeyStatusMessage) {
-                        apiKeyStatusMessage.textContent = '🔑 Please enter an API Key.';
-                        apiKeyStatusMessage.className = 'api-key-status error';
-                        apiKeyStatusMessage.classList.remove('hidden');
-                    }
-                    apiKeyIsValid = false;
-                    updateAiButtonsState();
-                    return;
-                }
-
-                if (apiKeyStatusMessage) {
-                    apiKeyStatusMessage.textContent = '⏳ Validating API Key...';
-                    apiKeyStatusMessage.className = 'api-key-status'; 
-                    apiKeyStatusMessage.classList.remove('hidden');
-                }
-                validateApiKeyButton.disabled = true;
-                validateApiKeyButton.classList.add('opacity-70');
-
-                const validationModel = 'gemini-2.0-flash'; 
-                const validationUrl = `https://generativelanguage.googleapis.com/v1beta/models/${validationModel}?key=${userApiKey}`;
-
-                try {
-                    const response = await fetch(validationUrl);
-                    if (response.ok) {
-                        if (apiKeyStatusMessage) {
-                            apiKeyStatusMessage.textContent = '✅ API Key Validated! Tools are ready to use.';
-                            apiKeyStatusMessage.className = 'api-key-status success';
-                        }
-                        apiKeyIsValid = true;
-                    } else {
-                        const errorData = await response.json();
-                        let specificError = errorData.error?.message || `HTTP error ${response.status}`;
-                        if (response.status === 400 && specificError.toLowerCase().includes("api key not valid")) {
-                                specificError = "API Key not valid. Please check your key.";
-                        } else if (response.status === 403) {
-                            specificError = "API Key lacks permissions for this model/service.";
-                        }
-                        if (apiKeyStatusMessage) {
-                            apiKeyStatusMessage.textContent = `❌ Invalid API Key: ${specificError} You can get one at aistudio.google.com/app/apikey`;
-                            apiKeyStatusMessage.className = 'api-key-status error';
-                        }
-                        apiKeyIsValid = false;
-                    }
-                } catch (error) {
-                    console.error('API Key validation error:', error);
-                    if (apiKeyStatusMessage) {
-                        apiKeyStatusMessage.textContent = '❌ Error validating API Key. Check network or console.';
-                        apiKeyStatusMessage.className = 'api-key-status error';
-                    }
-                    apiKeyIsValid = false;
-                } finally {
-                    validateApiKeyButton.disabled = false;
-                    validateApiKeyButton.classList.remove('opacity-70');
-                    updateAiButtonsState();
-                }
-            });
             
-            // Master prompt for PAT articulation
+            function setApiKeyStatus(message, type) {
+                if (!apiKeyStatusMessage) return;
+                apiKeyStatusMessage.textContent = message;
+                // Reset classes
+                apiKeyStatusMessage.classList.remove('border-green-500/50', 'text-green-700', 'dark:text-green-400', 'border-red-500/50', 'text-red-700', 'dark:text-red-400', 'border-border', 'text-muted-foreground');
+                apiKeyStatusMessage.classList.add('p-3', 'rounded-md', 'border', 'text-sm', 'my-2', 'text-center', 'max-w-md', 'mx-auto');
+
+
+                if (type === 'success') {
+                    apiKeyStatusMessage.classList.add('border-green-500/50', 'text-green-700', 'dark:text-green-400');
+                } else if (type === 'error') {
+                    apiKeyStatusMessage.classList.add('border-red-500/50', 'text-red-700', 'dark:text-red-400');
+                } else { // Neutral / loading
+                    apiKeyStatusMessage.classList.add('border-border', 'text-muted-foreground');
+                }
+                apiKeyStatusMessage.classList.remove('hidden');
+            }
+
+
+            if(validateApiKeyButton) {
+                validateApiKeyButton.addEventListener('click', async () => {
+                    const userApiKey = userApiKeyInput.value.trim();
+                    if (!userApiKey) {
+                        setApiKeyStatus('🔑 Please enter an API Key.', 'error');
+                        apiKeyIsValid = false;
+                        updateAiButtonsState();
+                        return;
+                    }
+
+                    setApiKeyStatus('⏳ Validating API Key...', 'neutral');
+                    validateApiKeyButton.disabled = true;
+                    validateApiKeyButton.classList.add('opacity-70');
+
+                    const validationModel = 'gemini-2.0-flash'; 
+                    const validationUrl = `https://generativelanguage.googleapis.com/v1beta/models/${validationModel}?key=${userApiKey}`;
+
+                    try {
+                        const response = await fetch(validationUrl);
+                        if (response.ok) {
+                            setApiKeyStatus('✅ API Key Validated! Tools are ready to use.', 'success');
+                            apiKeyIsValid = true;
+                        } else {
+                            const errorData = await response.json();
+                            let specificError = errorData.error?.message || `HTTP error ${response.status}`;
+                            if (response.status === 400 && specificError.toLowerCase().includes("api key not valid")) {
+                                specificError = "API Key not valid. Please check your key.";
+                            } else if (response.status === 403) {
+                                specificError = "API Key lacks permissions for this model/service.";
+                            }
+                            setApiKeyStatus(`❌ Invalid API Key: ${specificError} You can get one at aistudio.google.com/app/apikey`, 'error');
+                            apiKeyIsValid = false;
+                        }
+                    } catch (error) {
+                        console.error('API Key validation error:', error);
+                        setApiKeyStatus('❌ Error validating API Key. Check network or console.', 'error');
+                        apiKeyIsValid = false;
+                    } finally {
+                        validateApiKeyButton.disabled = false;
+                        validateApiKeyButton.classList.remove('opacity-70');
+                        updateAiButtonsState();
+                    }
+                });
+            }
+            
             const patMasterPrompt = `
 Objective for this Interaction:
 The purpose of providing this context is to establish a shared understanding of the Prompt Articulation Triad (PAT) Framework. Following this context, I will provide a "raw" prompt idea from a user. Your task will be to analyze that raw prompt and then sequentially generate and clearly label the following outputs: 1) 2-3 potential variations of a high-quality Essential Level prompt, 2) a single optimized Concise Level prompt derived from the best aspects of the Essential Level considerations, and 3) a single optimized Detailed Level prompt derived from the Concise Level.
@@ -444,7 +473,6 @@ Output Rules:
 [📌 User's Raw Prompt Idea: {{USER_RAW_PROMPT_HERE}} 📌]
 `;
 
-            // Master prompt for PPP standardization
             const pppMasterPrompt = `🎯 Objective: To automatically analyze a user's provided prompt (which has already been articulated through the PAT framework) and restructure it strictly according to the Precision Prompt Protocol (PPP) for optimal clarity and AI comprehension by another AI.
 📥 Input: A PAT-articulated prompt (Essential, Concise, or Detailed level) provided by the user below the {{PAT_ARTICULATED_PROMPT_HERE}} marker.
 📤 Output: The user's PAT-articulated prompt, reformatted into the relevant sections of the PPP, using the emoji and compact format. Sections not clearly identifiable in the input prompt will be omitted.
@@ -463,7 +491,6 @@ Output Rules:
 
 {{PAT_ARTICULATED_PROMPT_HERE}}`;
 
-            // Function to display PAT output
             function displayPatOutput(fullResponse) {
                 patOutputs = {}; 
                 if (patSelectionDropdown) {
@@ -499,36 +526,51 @@ Output Rules:
                     
                     const suggestions = essentialText.split(/\n\s*\d\.\s*/).map(s => s.trim()).filter(s => s !== "");
                         if (patEssentialOutput) {
-                                if (suggestions.length > 0 && (suggestions.length > 1 || !essentialText.startsWith("1."))) { 
-                                    patEssentialOutput.innerHTML = suggestions.map((s, i) => 
-                                        `<div class="pat-suggestion-card mb-2 p-3" data-pat-key="essential_${i+1}" data-pat-content="${s.replace(/"/g, '&quot;')}"><strong>Suggestion ${i+1}:</strong><br>${s.replace(/\n/g, '<br>')}</div>`
-                                    ).join('');
-                                    suggestions.forEach((s, i) => {
-                                        patOutputs[`essential_${i+1}`] = s;
-                                        if (patSelectionDropdown) {
-                                            const option = document.createElement('option');
-                                            option.value = `essential_${i+1}`;
-                                            option.textContent = `Essential Suggestion ${i+1}`;
-                                            patSelectionDropdown.appendChild(option);
-                                        }
-                                    });
-                                } else { 
-                                    patEssentialOutput.innerHTML = `<div class="pat-suggestion-card p-3" data-pat-key="essential_0" data-pat-content="${essentialText.replace(/"/g, '&quot;')}">${essentialText.replace(/\n/g, '<br>')}</div>`;
-                                    patOutputs[`essential_0`] = essentialText;
+                            // Clear previous placeholder
+                            patEssentialOutput.innerHTML = ''; 
+                            if (suggestions.length > 0 && (suggestions.length > 1 || !essentialText.startsWith("1."))) { 
+                                suggestions.forEach((s, i) => {
+                                    const card = document.createElement('div');
+                                    card.className = 'pat-suggestion-card mb-2 p-3 rounded-md border border-input bg-background hover:border-primary hover:bg-accent cursor-pointer transition-colors';
+                                    card.dataset.patKey = `essential_${i+1}`;
+                                    card.dataset.patContent = s; // Store raw content
+                                    card.innerHTML = `<strong>Suggestion ${i+1}:</strong><br>${s.replace(/\n/g, '<br>')}`;
+                                    patEssentialOutput.appendChild(card);
+
+                                    patOutputs[`essential_${i+1}`] = s;
                                     if (patSelectionDropdown) {
                                         const option = document.createElement('option');
-                                        option.value = `essential_0`;
-                                        option.textContent = `Essential Level Output (Single)`;
+                                        option.value = `essential_${i+1}`;
+                                        option.textContent = `Essential Suggestion ${i+1}`;
                                         patSelectionDropdown.appendChild(option);
                                     }
+                                });
+                            } else { 
+                                const card = document.createElement('div');
+                                card.className = 'pat-suggestion-card p-3 rounded-md border border-input bg-background hover:border-primary hover:bg-accent cursor-pointer transition-colors';
+                                card.dataset.patKey = `essential_0`;
+                                card.dataset.patContent = essentialText;
+                                card.innerHTML = essentialText.replace(/\n/g, '<br>');
+                                patEssentialOutput.appendChild(card);
+
+                                patOutputs[`essential_0`] = essentialText;
+                                if (patSelectionDropdown) {
+                                    const option = document.createElement('option');
+                                    option.value = `essential_0`;
+                                    option.textContent = `Essential Level Output (Single)`;
+                                    patSelectionDropdown.appendChild(option);
                                 }
                             }
+                        }
                 }
                 
                 if (conciseIndex !== -1) {
                     const endOfConcise = detailedIndex !== -1 ? detailedIndex : fullResponse.length;
                     conciseText = fullResponse.substring(conciseIndex + conciseMarker.length, endOfConcise).trim();
-                    if (patConciseOutput) patConciseOutput.innerHTML = conciseText.replace(/\n/g, '<br>');
+                    if (patConciseOutput) {
+                        patConciseOutput.innerHTML = conciseText.replace(/\n/g, '<br>');
+                        patConciseOutput.classList.remove('text-muted-foreground', 'italic'); // Remove placeholder style
+                    }
                     patOutputs['concise'] = conciseText;
                     if (patSelectionDropdown) {
                         const option = document.createElement('option');
@@ -540,7 +582,10 @@ Output Rules:
 
                 if (detailedIndex !== -1) {
                     detailedText = fullResponse.substring(detailedIndex + detailedMarker.length).trim();
-                    if (patDetailedOutput) patDetailedOutput.innerHTML = detailedText.replace(/\n/g, '<br>');
+                    if (patDetailedOutput) {
+                         patDetailedOutput.innerHTML = detailedText.replace(/\n/g, '<br>');
+                         patDetailedOutput.classList.remove('text-muted-foreground', 'italic'); // Remove placeholder style
+                    }
                     patOutputs['detailed'] = detailedText;
                     if (patSelectionDropdown) {
                         const option = document.createElement('option');
@@ -554,8 +599,8 @@ Output Rules:
 
                 document.querySelectorAll('.pat-suggestion-card').forEach(card => {
                     card.addEventListener('click', function() {
-                        document.querySelectorAll('.pat-suggestion-card').forEach(c => c.classList.remove('selected'));
-                        this.classList.add('selected');
+                        document.querySelectorAll('.pat-suggestion-card').forEach(c => c.classList.remove('selected', 'border-primary', 'bg-accent'));
+                        this.classList.add('selected', 'border-primary', 'bg-accent');
                         const selectedKey = this.getAttribute('data-pat-key');
                         if (patSelectionDropdown) patSelectionDropdown.value = selectedKey;
                         updatePppInputArea(patOutputs[selectedKey]);
@@ -563,7 +608,6 @@ Output Rules:
                 });
             }
 
-            // Function to update PPP input area based on PAT selection
             function updatePppInputArea(selectedPrompt) {
                 if (selectedPrompt) {
                     if(pppInputFromPatTextarea) pppInputFromPatTextarea.value = selectedPrompt;
@@ -574,39 +618,34 @@ Output Rules:
                 if(pppGeneralErrorOutput) pppGeneralErrorOutput.classList.add('hidden');
             }
 
-            // Event listener for PAT selection dropdown
             if(patSelectionDropdown) {
                 patSelectionDropdown.addEventListener('change', function() {
                     const selectedKey = this.value;
-                    document.querySelectorAll('.pat-suggestion-card').forEach(c => c.classList.remove('selected'));
+                    document.querySelectorAll('.pat-suggestion-card').forEach(c => c.classList.remove('selected', 'border-primary', 'bg-accent'));
                     const selectedCard = document.querySelector(`.pat-suggestion-card[data-pat-key="${selectedKey}"]`);
                     if (selectedCard) {
-                        selectedCard.classList.add('selected');
+                        selectedCard.classList.add('selected', 'border-primary', 'bg-accent');
                     }
                     updatePppInputArea(patOutputs[selectedKey]);
                 });
             }
 
-            // Function to call Gemini API
             async function callGeminiAPI(promptText, generalErrorElement, loadingIndicatorElement, buttonElement) {
                 const userApiKey = userApiKeyInput.value.trim();
                     if (!apiKeyIsValid || !userApiKey) { 
-                            if (apiKeyStatusMessage) {
-                                apiKeyStatusMessage.textContent = '🔑 API Key is not validated or is missing. Please enter and validate your API Key.';
-                                apiKeyStatusMessage.className = 'api-key-status error';
-                                apiKeyStatusMessage.classList.remove('hidden');
-                            }
-                            if (generalErrorElement) {
-                                generalErrorElement.textContent = 'API Key not validated or missing.';
-                                generalErrorElement.classList.remove('hidden');
-                            }
-                            if (loadingIndicatorElement) loadingIndicatorElement.classList.add('hidden');
-                            if (buttonElement) {
-                                    buttonElement.disabled = !apiKeyIsValid; 
-                                    buttonElement.classList.toggle('opacity-70', !apiKeyIsValid);
-                            }
-                            return null;
+                        setApiKeyStatus('🔑 API Key is not validated or is missing. Please enter and validate your API Key.', 'error');
+                        if (generalErrorElement) {
+                            generalErrorElement.textContent = 'API Key not validated or missing.';
+                            generalErrorElement.classList.remove('hidden');
                         }
+                        if (loadingIndicatorElement) loadingIndicatorElement.classList.add('hidden');
+                        if (buttonElement) {
+                                buttonElement.disabled = !apiKeyIsValid; 
+                                buttonElement.classList.toggle('opacity-50', !apiKeyIsValid);
+                                buttonElement.classList.toggle('disabled:pointer-events-none', !apiKeyIsValid);
+                        }
+                        return null;
+                    }
                 
                 if (apiKeyStatusMessage && !apiKeyStatusMessage.textContent.includes("Validated")) { 
                         apiKeyStatusMessage.classList.add('hidden');
@@ -637,19 +676,11 @@ Output Rules:
                         let errorMessage = `API Error (${response.status}): ${errorData.error?.message || 'Unknown API error'}`;
                         if (response.status === 400 && errorData.error?.message.toLowerCase().includes("api key not valid")) {
                             errorMessage = "API Key is invalid. Please check your key and try again.";
-                                if (apiKeyStatusMessage) {
-                                    apiKeyStatusMessage.textContent = `❌ Invalid API Key. Please check your key or generate a new one at aistudio.google.com/app/apikey`;
-                                    apiKeyStatusMessage.className = 'api-key-status error';
-                                    apiKeyStatusMessage.classList.remove('hidden');
-                                }
+                            setApiKeyStatus(`❌ Invalid API Key. Please check your key or generate a new one at aistudio.google.com/app/apikey`, 'error');
                             apiKeyIsValid = false;
                         } else if (response.status === 403) {
                                 errorMessage = "API Key lacks permissions for the selected model or service.";
-                                if (apiKeyStatusMessage) {
-                                    apiKeyStatusMessage.textContent = `❌ API Key lacks permissions.`;
-                                    apiKeyStatusMessage.className = 'api-key-status error';
-                                    apiKeyStatusMessage.classList.remove('hidden');
-                                }
+                                setApiKeyStatus(`❌ API Key lacks permissions.`, 'error');
                             apiKeyIsValid = false;
                         }
                         updateAiButtonsState(); 
@@ -661,9 +692,7 @@ Output Rules:
                         result.candidates[0].content.parts.length > 0) {
                         if (apiKeyStatusMessage && !apiKeyStatusMessage.textContent.includes("Validated!")) {
                                 if (apiKeyStatusMessage.textContent.includes("API Key is required") || apiKeyStatusMessage.textContent.includes("Invalid API Key") || apiKeyStatusMessage.textContent.includes("lacks permissions")) {
-                                    apiKeyStatusMessage.textContent = '✅ API Key seems to be working for this model!';
-                                    apiKeyStatusMessage.className = 'api-key-status success';
-                                    apiKeyStatusMessage.classList.remove('hidden');
+                                    setApiKeyStatus('✅ API Key seems to be working for this model!', 'success');
                                 }
                         }
                         apiKeyIsValid = true; 
@@ -690,79 +719,76 @@ Output Rules:
                     if (buttonElement) {
                         buttonElement.disabled = !apiKeyIsValid; 
                         buttonElement.classList.toggle('opacity-70', !apiKeyIsValid);
+                        buttonElement.classList.toggle('disabled:pointer-events-none', !apiKeyIsValid);
                     }
                 }
             }
 
-            // Event listener for "Articulate with PAT" button
-            articulatePatButton.addEventListener('click', async () => {
-                if (!apiKeyIsValid) {
-                    if (apiKeyStatusMessage) {
-                        apiKeyStatusMessage.textContent = '🔑 Please validate your API Key first to use AI features.';
-                        apiKeyStatusMessage.className = 'api-key-status error';
-                        apiKeyStatusMessage.classList.remove('hidden');
-                    }
-                    return;
-                }
-                const userRawPrompt = rawPromptInput.value.trim();
-                if (!userRawPrompt) {
-                    if(patGeneralErrorOutput) {
-                        patGeneralErrorOutput.textContent = 'Please enter a raw prompt idea to articulate.';
-                        patGeneralErrorOutput.classList.remove('hidden');
-                    }
-                    if(patOutputContainer) patOutputContainer.classList.add('hidden');
-                    return;
-                }
-                
-                if(patOutputContainer) patOutputContainer.classList.add('hidden');
-                if(patGeneralErrorOutput) patGeneralErrorOutput.classList.add('hidden');
-                if(pppOutputContainer) pppOutputContainer.classList.add('hidden');
-                if(pppInputFromPatTextarea) pppInputFromPatTextarea.value = "";
-                if(patSelectionDropdown) {
-                    patSelectionDropdown.innerHTML = '<option value="">-- PAT Articulation output needed first --</option>';
-                    patSelectionDropdown.disabled = true;
-                }
-
-                const finalPromptToGemini = patMasterPrompt.replace("{{USER_RAW_PROMPT_HERE}}", userRawPrompt);
-                const aiResponseText = await callGeminiAPI(finalPromptToGemini, patGeneralErrorOutput, patLoadingIndicator, articulatePatButton);
-                
-                if (aiResponseText) {
-                    displayPatOutput(aiResponseText);
-                }
-            });
-
-            // Event listener for "Standardize with PPP" button
-            standardizePppButton.addEventListener('click', async () => {
+            if(articulatePatButton) {
+                articulatePatButton.addEventListener('click', async () => {
                     if (!apiKeyIsValid) {
-                            if (apiKeyStatusMessage) {
-                                apiKeyStatusMessage.textContent = '🔑 Please validate your API Key first to use AI features.';
-                                apiKeyStatusMessage.className = 'api-key-status error';
-                                apiKeyStatusMessage.classList.remove('hidden');
-                            }
+                        setApiKeyStatus('🔑 Please validate your API Key first to use AI features.', 'error');
+                        return;
+                    }
+                    const userRawPrompt = rawPromptInput.value.trim();
+                    if (!userRawPrompt) {
+                        if(patGeneralErrorOutput) {
+                            patGeneralErrorOutput.textContent = 'Please enter a raw prompt idea to articulate.';
+                            patGeneralErrorOutput.classList.remove('hidden');
+                        }
+                        if(patOutputContainer) patOutputContainer.classList.add('hidden');
+                        return;
+                    }
+                    
+                    if(patOutputContainer) patOutputContainer.classList.add('hidden');
+                    if(patGeneralErrorOutput) patGeneralErrorOutput.classList.add('hidden');
+                    if(pppOutputContainer) pppOutputContainer.classList.add('hidden');
+                    if(pppInputFromPatTextarea) pppInputFromPatTextarea.value = "";
+                    if(patSelectionDropdown) {
+                        patSelectionDropdown.innerHTML = '<option value="">-- PAT Articulation output needed first --</option>';
+                        patSelectionDropdown.disabled = true;
+                    }
+
+                    const finalPromptToGemini = patMasterPrompt.replace("{{USER_RAW_PROMPT_HERE}}", userRawPrompt);
+                    const aiResponseText = await callGeminiAPI(finalPromptToGemini, patGeneralErrorOutput, patLoadingIndicator, articulatePatButton);
+                    
+                    if (aiResponseText) {
+                        displayPatOutput(aiResponseText);
+                    }
+                });
+            }
+
+            if(standardizePppButton) {
+                standardizePppButton.addEventListener('click', async () => {
+                        if (!apiKeyIsValid) {
+                            setApiKeyStatus('🔑 Please validate your API Key first to use AI features.', 'error');
                             return;
                         }
-                const selectedPatPrompt = pppInputFromPatTextarea ? pppInputFromPatTextarea.value.trim() : ""; 
-                if (!selectedPatPrompt) {
-                    if(pppGeneralErrorOutput) {
-                        pppGeneralErrorOutput.textContent = 'Please provide a prompt in the PPP input area or select a PAT output first.';
-                        pppGeneralErrorOutput.classList.remove('hidden');
+                    const selectedPatPrompt = pppInputFromPatTextarea ? pppInputFromPatTextarea.value.trim() : ""; 
+                    if (!selectedPatPrompt) {
+                        if(pppGeneralErrorOutput) {
+                            pppGeneralErrorOutput.textContent = 'Please provide a prompt in the PPP input area or select a PAT output first.';
+                            pppGeneralErrorOutput.classList.remove('hidden');
+                        }
+                        return;
                     }
-                    return;
-                }
 
-                if(pppOutputContainer) pppOutputContainer.classList.add('hidden');
-                if(pppGeneralErrorOutput) pppGeneralErrorOutput.classList.add('hidden');
-                
-                const finalPromptToGemini = pppMasterPrompt.replace("{{PAT_ARTICULATED_PROMPT_HERE}}", `[📌 ${selectedPatPrompt} 📌]`);
-                const aiResponseText = await callGeminiAPI(finalPromptToGemini, pppGeneralErrorOutput, pppLoadingIndicator, standardizePppButton);
+                    if(pppOutputContainer) pppOutputContainer.classList.add('hidden');
+                    if(pppGeneralErrorOutput) pppGeneralErrorOutput.classList.add('hidden');
+                    
+                    const finalPromptToGemini = pppMasterPrompt.replace("{{PAT_ARTICULATED_PROMPT_HERE}}", `[📌 ${selectedPatPrompt} 📌]`);
+                    const aiResponseText = await callGeminiAPI(finalPromptToGemini, pppGeneralErrorOutput, pppLoadingIndicator, standardizePppButton);
 
-                if (aiResponseText) {
-                    if(pppOutput) pppOutput.textContent = aiResponseText;
-                    if(pppOutputContainer) pppOutputContainer.classList.remove('hidden');
-                }
-            });
+                    if (aiResponseText) {
+                        if(pppOutput) {
+                            pppOutput.textContent = aiResponseText;
+                            pppOutput.classList.remove('text-muted-foreground', 'italic'); // Remove placeholder style
+                        }
+                        if(pppOutputContainer) pppOutputContainer.classList.remove('hidden');
+                    }
+                });
+            }
             
-            // Function to copy text to clipboard
             function copyToClipboard(text, buttonElement) {
                 const originalButtonHTML = buttonElement.innerHTML; 
 
@@ -775,7 +801,6 @@ Output Rules:
                     setTimeout(() => { buttonElement.innerHTML = originalButtonHTML; }, 2000);
                 };
 
-                // Check if text is null, undefined, empty, whitespace-only, or placeholder
                 if (!text || text.trim() === "" || text.includes("will appear here...") || text.includes("Your PPP standardized prompt will appear here...")) {
                     buttonElement.innerHTML = '🤷‍♀️ Empty';
                     setTimeout(() => { buttonElement.innerHTML = originalButtonHTML; }, 2000);
@@ -785,11 +810,10 @@ Output Rules:
                 const fallbackCopyTextToClipboard = (textToCopy) => {
                     const textArea = document.createElement("textarea");
                     textArea.value = textToCopy;
-                    // Style to make it non-intrusive and off-screen
                     textArea.style.position = "fixed";
                     textArea.style.top = "-9999px";
                     textArea.style.left = "-9999px";
-                    textArea.style.opacity = "0"; // Ensure it's not visible
+                    textArea.style.opacity = "0";
                     document.body.appendChild(textArea);
                     textArea.focus();
                     textArea.select();
@@ -813,49 +837,56 @@ Output Rules:
                             updateButtonUI(fallbackSuccess);
                         });
                 } else {
-                    // Fallback for browsers that don't support navigator.clipboard at all
                     const fallbackSuccess = fallbackCopyTextToClipboard(text);
                     updateButtonUI(fallbackSuccess);
                 }
             }
             
-            // Add event listeners to copy buttons
-            if (copyPppButton && pppOutput) { // Ensure elements exist
+            if (copyPppButton && pppOutput) {
                 copyPppButton.addEventListener('click', function() { 
                     copyToClipboard(pppOutput.textContent, this);
                 });
             }
             
-            // Event listener for "Reset All Fields" button
-            resetAllButton.addEventListener('click', () => {
-                if(rawPromptInput) rawPromptInput.value = '';
-                if (patEssentialOutput) patEssentialOutput.innerHTML = '<p class="output-placeholder italic text-sm">AI\'s Essential Level suggestions will appear here...</p>';
-                if (patConciseOutput) patConciseOutput.innerHTML = '<span class="output-placeholder italic text-sm">AI\'s Concise Level transformation will appear here...</span>';
-                if (patDetailedOutput) patDetailedOutput.innerHTML = '<span class="output-placeholder italic text-sm">AI\'s Detailed Level transformation will appear here...</span>';
-                if (patGeneralErrorOutput) patGeneralErrorOutput.classList.add('hidden');
-                if (patOutputContainer) patOutputContainer.classList.add('hidden');
-                
-                if (patSelectionDropdown) {
-                    patSelectionDropdown.innerHTML = '<option value="">-- PAT Articulation output needed first --</option>';
-                    patSelectionDropdown.disabled = true;
-                }
-                if (pppInputFromPatTextarea) pppInputFromPatTextarea.value = '';
-                
-                // Reset pppOutput to its initial placeholder state
-                if (pppOutput) {
-                    pppOutput.innerHTML = '<span class="output-placeholder italic text-sm">Your PPP standardized prompt will appear here...</span>';
-                }
+            if(resetAllButton) {
+                resetAllButton.addEventListener('click', () => {
+                    if(rawPromptInput) rawPromptInput.value = '';
+                    if (patEssentialOutput) {
+                        patEssentialOutput.innerHTML = '<p class="output-placeholder italic text-muted-foreground">AI\'s Essential Level suggestions will appear here...</p>';
+                    }
+                    if (patConciseOutput) {
+                        patConciseOutput.innerHTML = '<span class="output-placeholder italic text-muted-foreground">AI\'s Concise Level transformation will appear here...</span>';
+                        patConciseOutput.classList.add('text-muted-foreground', 'italic');
+                    }
+                    if (patDetailedOutput) {
+                        patDetailedOutput.innerHTML = '<span class="output-placeholder italic text-muted-foreground">AI\'s Detailed Level transformation will appear here...</span>';
+                        patDetailedOutput.classList.add('text-muted-foreground', 'italic');
+                    }
+                    if (patGeneralErrorOutput) patGeneralErrorOutput.classList.add('hidden');
+                    if (patOutputContainer) patOutputContainer.classList.add('hidden');
+                    
+                    if (patSelectionDropdown) {
+                        patSelectionDropdown.innerHTML = '<option value="">-- PAT Articulation output needed first --</option>';
+                        patSelectionDropdown.disabled = true;
+                    }
+                    if (pppInputFromPatTextarea) pppInputFromPatTextarea.value = '';
+                    
+                    if (pppOutput) {
+                        pppOutput.innerHTML = '<span class="output-placeholder italic text-muted-foreground">Your PPP standardized prompt will appear here...</span>';
+                        pppOutput.classList.add('text-muted-foreground', 'italic');
 
-                if (pppOutputContainer) pppOutputContainer.classList.add('hidden');
-                if (pppGeneralErrorOutput) pppGeneralErrorOutput.classList.add('hidden');
-                if (apiKeyStatusMessage) apiKeyStatusMessage.classList.add('hidden');
+                    }
+
+                    if (pppOutputContainer) pppOutputContainer.classList.add('hidden');
+                    if (pppGeneralErrorOutput) pppGeneralErrorOutput.classList.add('hidden');
+                    if (apiKeyStatusMessage) apiKeyStatusMessage.classList.add('hidden');
 
 
-                document.querySelectorAll('.pat-suggestion-card.selected').forEach(card => card.classList.remove('selected'));
-                console.log("All fields reset.");
-            });
+                    document.querySelectorAll('.pat-suggestion-card.selected').forEach(card => card.classList.remove('selected', 'border-primary', 'bg-accent'));
+                    console.log("All fields reset.");
+                });
+            }
 
-            // Event listener for scroll events (show/hide scroll-to-top button)
             window.addEventListener('scroll', () => {
                 if (window.pageYOffset > 200) {
                     if(scrollToTopBtn) scrollToTopBtn.classList.remove('hidden');
@@ -863,11 +894,10 @@ Output Rules:
                     if(scrollToTopBtn) scrollToTopBtn.classList.add('hidden');
                 }
             });
-            // Event listener for scroll-to-top button click
             if(scrollToTopBtn) scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            const currentYearEl = document.getElementById('currentYear');
+            if(currentYearEl) currentYearEl.textContent = new Date().getFullYear();
         });
     </script>
 </body>
