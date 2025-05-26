@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAP Framework Tools | AI Content Processor</title>
+    <script src="https://cdn.tailwindcss.com/3.4.3?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        // Tailwind CSS Configuration for Inter font and class-based dark mode
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))',
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))',
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))',
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))',
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))',
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))',
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))',
+                        },
+                    },
+                    borderRadius: {
+                        lg: `var(--radius)`,
+                        md: `calc(var(--radius) - 2px)`,
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    keyframes: {
+                        spin: {
+                            to: { transform: 'rotate(360deg)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0'},
+                            '100%': { transform: 'translateY(0)', opacity: '1'},
+                        }
+                    },
+                    animation: {
+                        spin: 'spin 1s linear infinite',
+                        fadeIn: 'fadeIn 0.5s ease-out',
+                        slideUp: 'slideUp 0.5s ease-out forwards',
+                    },
+                    // Add prose styles for dark mode if using Tailwind Typography
+                    typography: (theme) => ({
+                        DEFAULT: {
+                          css: {
+                            color: theme('colors.foreground'),
+                            a: {
+                              color: theme('colors.primary.DEFAULT'),
+                              '&:hover': {
+                                color: theme('colors.primary.DEFAULT / 0.8'),
+                              },
+                            },
+                          },
+                        },
+                        invert: { 
+                          css: {
+                            color: theme('colors.foreground'), 
+                            a: {
+                              color: theme('colors.primary.DEFAULT'), 
+                              '&:hover': {
+                                color: theme('colors.primary.DEFAULT / 0.8'),
+                              },
+                            },
+                          },
+                        },
+                    }),
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Variables for shadcn/ui-like theming */
+        :root {
+            --background: 0 0% 100%; /* White */
+            --foreground: 240 10% 3.9%; /* Dark gray for text */
+            --card: 0 0% 100%;
+            --card-foreground: 240 10% 3.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 240 10% 3.9%;
+            --primary: 240 5.9% 10%; /* Dark blue/Black for primary elements */
+            --primary-foreground: 0 0% 98%; /* White for text on primary elements */
+            --secondary: 240 4.8% 95.9%; /* Light gray */
+            --secondary-foreground: 240 5.9% 10%;
+            --muted: 240 4.8% 95.9%;
+            --muted-foreground: 240 3.8% 46.1%; /* Medium gray for muted text */
+            --accent: 240 4.8% 95.9%;
+            --accent-foreground: 240 5.9% 10%;
+            --destructive: 0 84.2% 60.2%; /* Red */
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 5.9% 90%; /* Very light gray for borders */
+            --input: 240 5.9% 90%;
+            --ring: 240 5.9% 10%;
+            --radius: 0.5rem;
+        }
+
+        .dark {
+            --background: 240 10% 3.9%; /* Dark bluish-black */
+            --foreground: 0 0% 98%; /* White for text */
+            --card: 240 10% 3.9%;
+            --card-foreground: 0 0% 98%;
+            --popover: 240 10% 3.9%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 0 0% 98%; /* White for primary elements */
+            --primary-foreground: 240 5.9% 10%; /* Bluish-black for text on primary elements */
+            --secondary: 240 3.7% 15.9%; /* Dark gray */
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%; /* Medium gray for muted text */
+            --accent: 240 3.7% 15.9%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 62.8% 30.6%; /* Dark red */
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 3.7% 15.9%; /* Dark gray for borders */
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%;
+        }
+
+        @keyframes animatedBodyBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            color: hsl(var(--foreground));
+            background-color: hsl(var(--background)); /* Fallback background */
+            transition: color 0.3s ease, background-color 0.3s ease;
+            
+            background-size: 300% 300%;
+            animation: animatedBodyBackground 25s ease infinite;
+
+            background-image: linear-gradient(120deg, 
+                                            hsl(210, 40%, 98%), 
+                                            hsl(200, 50%, 97%), 
+                                            hsl(220, 40%, 98%), 
+                                            hsl(200, 50%, 97%), 
+                                            hsl(210, 40%, 98%));
+        }
+
+        html.dark body {
+            background-image: linear-gradient(120deg, 
+                                            hsl(220, 15%, 12%), 
+                                            hsl(230, 12%, 15%), 
+                                            hsl(240, 15%, 12%), 
+                                            hsl(230, 12%, 15%), 
+                                            hsl(220, 15%, 12%));
+        }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: hsl(var(--background) / 0.5); }
+        ::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.5); border-radius: var(--radius); }
+        ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.7); }
+        button:disabled, input[type="radio"]:disabled + label { cursor: not-allowed !important; opacity: 0.6 !important; filter: grayscale(50%); }
+        .tool-button-active { background-color: hsl(var(--primary)) !important; color: hsl(var(--primary-foreground)) !important; border-color: hsl(var(--primary)) !important; font-weight: 600; }
+        .tool-button-active:hover { background-color: hsl(var(--primary) / 0.9) !important; }
+    </style>
+</head>
+<body class="flex flex-col items-center min-h-screen py-8 px-4 text-foreground bg-background transition-colors duration-300">
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
+
+        // 🟥🟥🟥 SECTION 1: TOOL DEFINITIONS (MAP FRAMEWORK DATA) 🟥🟥🟥
+        // TO ACTIVATE A NEW TOOL OR MODIFY AN EXISTING ONE:
+        // 1. Find the tool within its category in the 'baseMapFrameworkData' array below.
+        // 2. To ACTIVATE:
+        //    a. Change 'isActive: false' to 'isActive: true'.
+        //    b. ADD 'specificFocusLabel': "A descriptive label for the optional specific focus input field (in English)."
+        //       (This label is based on '{{SPECIFIC_FOCUS_POINTS_OR_CRITERIA}}' from the MAP PDF Action Guide for that tool).
+        //       If the tool doesn't need a specific focus input, you can omit this or set it to null/empty string.
+        //    c. ADD 'actionGuideKey': "a_unique_snake_case_key" (e.g., "my_tool_key"). This key MUST match the key
+        //       you will use in the 'masterPrompts' object (SECTION 2).
+        // 3. To DEACTIVATE: Change 'isActive: true' to 'isActive: false'. You can leave or remove
+        //    'specificFocusLabel' and 'actionGuideKey' for inactive tools.
+        // 4. Ensure the 'emoji' is appropriate and unique if possible.
+        //
+        // EXAMPLE - Activating a hypothetical 'Synthesize' tool:
+        /*
+        // Before:
+        // { name: "Synthesize", emoji: "🧩", isActive: false }
+        //
+        // After:
+        // {
+        //   name: "Synthesize",
+        //   emoji: "🧩",
+        //   isActive: true, // CHANGED
+        //   specificFocusLabel: "Synthesis goal/purpose, key themes/questions, desired structure", // ADDED
+        //   actionGuideKey: "synthesize" // ADDED
+        // },
+        */
+
+        const baseMapFrameworkData = [
+            {
+                name: "Comprehension & Interpretation",
+                emoji: "🧠",
+                activities: [
+                    { name: "Understand", emoji: "💡", isActive: true, specificFocusLabel: "Specific focus points or criteria for understanding (e.g., areas, questions, perspectives, desired depth)", actionGuideKey: "understand" },
+                    { name: "Explore", emoji: "🗺️", isActive: true, specificFocusLabel: "Specific focus points or criteria for exploration (e.g., questions, angles, themes, details)", actionGuideKey: "explore" },
+                    { name: "Analyze", emoji: "📊", isActive: true, specificFocusLabel: "Specific focus points or criteria for analysis (e.g., components, relationships, analytical frameworks)", actionGuideKey: "analyze" },
+                    { name: "Deconstruct", emoji: "🛠️", isActive: false, specificFocusLabel: "Specific structural elements, argumentative techniques, or construction methods to focus on", actionGuideKey: "deconstruct" },
+                    { name: "Interpret", emoji: "🗣️", isActive: false, specificFocusLabel: "Specific questions, themes, contexts, or implications to focus on for interpretation", actionGuideKey: "interpret" },
+                    { name: "Contextualize", emoji: "🌍", isActive: false, specificFocusLabel: "Specific types of context (e.g., historical, authorial) or elements within content requiring contextual explanation", actionGuideKey: "contextualize" },
+                    { name: "Identify Patterns", emoji: "🔍", isActive: false, specificFocusLabel: "Specific types of patterns (e.g., thematic, structural, linguistic) or elements to track", actionGuideKey: "identify_patterns" },
+                    { name: "Extract Insights", emoji: "✨", isActive: false, specificFocusLabel: "Specific themes, questions, areas of interest, or types of insights to focus on", actionGuideKey: "extract_insights" },
+                    { name: "Discern Deeper Meaning", emoji: "🤔", isActive: false, specificFocusLabel: "Specific layers of meaning (e.g., philosophical, symbolic), themes, or interpretive lenses to focus on", actionGuideKey: "deeper_meaning" },
+                    { name: "Gain Wisdom", emoji: "🧘", isActive: false, specificFocusLabel: "Specific questions to explore, life areas to apply wisdom to, or types of truths to seek", actionGuideKey: "gain_wisdom" },
+                    { name: "Formulate Critical Questions", emoji: "❓", isActive: false, specificFocusLabel: "Specific areas, themes, or types of questions (e.g., ethical implications, methodological soundness) to target", actionGuideKey: "formulate_questions" }
+                ]
+            },
+            {
+                name: "Extraction & Elaboration",
+                emoji: "📑",
+                activities: [
+                    { name: "Extract Key Information", emoji: "🔑", isActive: false, specificFocusLabel: "Specific types of information (e.g., names, dates, figures), questions to answer, or areas of interest for extraction", actionGuideKey: "extract_key_info" },
+                    { name: "Quote", emoji: "💬", isActive: false, specificFocusLabel: "Specific instructions on what to quote (e.g., related to a theme, statements by an individual)", actionGuideKey: "quote" },
+                    { name: "Detail", emoji: "✍️", isActive: false, specificFocusLabel: "Specific areas, concepts, or elements requiring detailed facts or descriptions", actionGuideKey: "detail" },
+                    { name: "Elaborate", emoji: "➕", isActive: false, specificFocusLabel: "Specific areas, statements, or concepts requiring further explanation or depth", actionGuideKey: "elaborate" },
+                    { name: "Expand", emoji: "↔️", isActive: false, specificFocusLabel: "Specific areas to develop further, new topics to include, or types of information to add", actionGuideKey: "expand" },
+                    { name: "Supplement", emoji: "📎", isActive: false, specificFocusLabel: "Specific claims needing evidence, concepts requiring examples, or type of supporting information desired", actionGuideKey: "supplement" },
+                    { name: "Provide Context", emoji: "📖", isActive: false, specificFocusLabel: "Specific aspects needing contextualization or the type/depth of context required", actionGuideKey: "provide_context" }, 
+                    { name: "Annotate", emoji: "📝", isActive: false, specificFocusLabel: "Specific terms to define, passages requiring explanation, or types of annotations desired", actionGuideKey: "annotate" },
+                    { name: "Comment On", emoji: "🗨️", isActive: false, specificFocusLabel: "Specific aspects to comment on, type of commentary desired (e.g., analytical, critical), or criteria for evaluation", actionGuideKey: "comment_on" },
+                    { name: "Cross-Reference", emoji: "🔗", isActive: false, specificFocusLabel: "Specific terms/concepts to link, or types of cross-referencing desired (internal/external)", actionGuideKey: "cross_reference" }
+                ]
+            },
+            {
+                name: "Structuring & Organization",
+                emoji: "🏗️",
+                activities: [
+                    { name: "Organize", emoji: "🗂️", isActive: false, specificFocusLabel: "Desired organizational pattern (e.g., chronological, thematic), target audience considerations, or output format", actionGuideKey: "organize" },
+                    { name: "Structure", emoji: "🏛️", isActive: false, specificFocusLabel: "Desired structural model (e.g., outline, mind map), key elements to emphasize, or intended use of structured content", actionGuideKey: "structure_content" },
+                    { name: "Categorize", emoji: "🏷️", isActive: false, specificFocusLabel: "Basis for categorization (e.g., by function, theme), desired level of granularity, or predefined categories", actionGuideKey: "categorize" },
+                    { name: "Classify", emoji: "📚", isActive: false, specificFocusLabel: "Pre-defined classification system/typology to be used, instructions on handling ambiguities", actionGuideKey: "classify" },
+                    { name: "Sort", emoji: "↕️", isActive: false, specificFocusLabel: "Specific criteria for sorting (e.g., date, name) and desired order (ascending/descending)", actionGuideKey: "sort" },
+                    { name: "Sequence", emoji: "➡️", isActive: false, specificFocusLabel: "Desired logical principle for sequencing (e.g., chronological, step-by-step, cause-effect)", actionGuideKey: "sequence" },
+                    { name: "Hierarchy Establishment", emoji: "🔺", isActive: true, specificFocusLabel: "Specific criteria for determining importance or desired hierarchy levels", actionGuideKey: "hierarchy_establishment" },
+                    { name: "Outlining", emoji: "🧾", isActive: true, specificFocusLabel: "Desired depth of outline, format, or specific aspects to emphasize", actionGuideKey: "outlining" },
+                    { name: "Map Content", emoji: "📍", isActive: false, specificFocusLabel: "Type of map desired (e.g., mind map, concept map), central theme, or specific elements/connections to highlight", actionGuideKey: "map_content" },
+                    { name: "Mind Map", emoji: "💡🧠", isActive: false, specificFocusLabel: "Designated central idea, desired depth of branches, or particular themes/keywords to emphasize", actionGuideKey: "mind_map" }, 
+                    { name: "Taxonomize", emoji: "🌳", isActive: true, specificFocusLabel: "Pre-defined hierarchical taxonomy (levels, categories, criteria)", actionGuideKey: "taxonomize" },
+                    { name: "Restructure", emoji: "🔄", isActive: false, specificFocusLabel: "Reasons for restructuring, desired new organizational patterns, or elements to re-prioritize", actionGuideKey: "restructure" },
+                    { name: "Ensure Logical Flow", emoji: "🌊", isActive: false, specificFocusLabel: "Specific sections where flow is a concern, or desired characteristics of the flow (e.g., for a non-expert audience)", actionGuideKey: "ensure_logical_flow" }
+                ]
+            },
+            {
+                name: "Simplification & Clarification",
+                emoji: "✨", 
+                activities: [
+                    { name: "Simplify", emoji: "➖", isActive: false, specificFocusLabel: "Target audience or desired reading level, specific sections to focus on, or types of complexity to address", actionGuideKey: "simplify" },
+                    { name: "Condense", emoji: "🤏", isActive: false, specificFocusLabel: "Target length/word count, core ideas to retain, or aspects that can be omitted", actionGuideKey: "condense" },
+                    { name: "Summarize", emoji: "📜", isActive: true, specificFocusLabel: "Desired length of summary, key aspects to include, or purpose of the summary", actionGuideKey: "summarize" },
+                    { name: "Abstract (as a verb)", emoji: "📄", isActive: false, specificFocusLabel: "Target length, specific type of abstract (descriptive/informative), key elements to include", actionGuideKey: "abstract" },
+                    { name: "Paraphrase", emoji: "⇔", isActive: false, specificFocusLabel: "Target audience for paraphrase, specific purpose (e.g., clarify complexity, simplify jargon)", actionGuideKey: "paraphrase" },
+                    { name: "Explain", emoji: "🧑‍🏫", isActive: false, specificFocusLabel: "Target audience for explanation, specific terms/concepts to explain, desired depth or type of explanation", actionGuideKey: "explain" },
+                    { name: "Clarify", emoji: "🔦", isActive: false, specificFocusLabel: "Specific sections, terms, or statements requiring clarification, or desired outcome (e.g., remove ambiguities)", actionGuideKey: "clarify" }
+                ]
+            },
+            {
+                name: "Enhancement & Refinement",
+                emoji: "💎",
+                activities: [
+                    { name: "Improvement", emoji: "👍", isActive: true, specificFocusLabel: "Specific areas or quality dimensions to improve (e.g., clarity, argument strength)", actionGuideKey: "improvement" },
+                    { name: "Strengthen", emoji: "💪", isActive: false, specificFocusLabel: "Aspects to strengthen (e.g., main argument, evidence), type of strengthening desired (e.g., add data, clarify reasoning)", actionGuideKey: "strengthen" },
+                    { name: "Enrich", emoji: "🎁", isActive: false, specificFocusLabel: "How to enrich (e.g., add historical context, examples), or specific sections/ideas to focus on", actionGuideKey: "enrich" }, 
+                    { name: "Optimize", emoji: "⚙️", isActive: false, specificFocusLabel: "Specific optimization goals (e.g., for SEO, readability), relevant constraints, key metrics", actionGuideKey: "optimize" },
+                    { name: "Clean Up", emoji: "🧹", isActive: false, specificFocusLabel: "Specific types of issues to target (e.g., passive voice, formatting inconsistencies, redundant phrases)", actionGuideKey: "clean_up" },
+                    { name: "Eliminate Redundancy", emoji: "🚫✂️", isActive: false, specificFocusLabel: "Types of redundancy to target (e.g., repetitive sentence structures, redundant adjectives)", actionGuideKey: "eliminate_redundancy" },
+                    { name: "Edit", emoji: "✏️", isActive: false, specificFocusLabel: "Scope of edit (e.g., clarity, conciseness, style adherence, tone modification)", actionGuideKey: "edit" },
+                    { name: "Revise", emoji: "🧐", isActive: false, specificFocusLabel: "Aspects to revise (e.g., argument strength, flow, tone), or specific desired changes", actionGuideKey: "revise" },
+                    { name: "Fact-Check", emoji: "✔️", isActive: false, specificFocusLabel: "Specific claims/data to verify, or types of information to focus on (e.g., statistics, historical dates)", actionGuideKey: "fact_check" },
+                    { name: "Ensure Accuracy", emoji: "✅", isActive: false, specificFocusLabel: "Aspects requiring accuracy check (e.g., calculations, names, consistency)", actionGuideKey: "ensure_accuracy" },
+                    { name: "Proofread", emoji: "👀", isActive: false, specificFocusLabel: "Specific areas of focus for error correction (e.g., comma usage, spelling of proper nouns)", actionGuideKey: "proofread" },
+                    { name: "Refine", emoji: "💅", isActive: false, specificFocusLabel: "Aspects for fine-tuning (e.g., word choice for impact, sentence flow for readability, polishing introduction)", actionGuideKey: "refine" },
+                    { name: "Polishing", emoji: "🌟", isActive: true, specificFocusLabel: "Specific aspects for polishing (e.g., word choice, sentence flow, impact)", actionGuideKey: "polishing" },
+                    { name: "Perfection", emoji: "🏆", isActive: true, specificFocusLabel: "Parameters of 'perfection' for this context (e.g., target audience, stylistic goals)", actionGuideKey: "perfection" }
+                ]
+            },
+            {
+                name: "Evaluation & Validation",
+                emoji: "⚖️",
+                activities: [
+                    { name: "Assess", emoji: "🧐", isActive: false, specificFocusLabel: "Aspects to assess (e.g., quality, nature, relevance), explicit criteria, or questions to answer", actionGuideKey: "assess" }, 
+                    { name: "Evaluate", emoji: "📈", isActive: false, specificFocusLabel: "Explicit criteria for evaluation (e.g., effectiveness, impact, originality), benchmarks for comparison", actionGuideKey: "evaluate_content" },
+                    { name: "Appraise", emoji: "💰", isActive: false, specificFocusLabel: "Explicit criteria for appraisal (e.g., market value, condition, authenticity), methodology", actionGuideKey: "appraise" },
+                    { name: "Critique", emoji: "🧑‍⚖️", isActive: true, specificFocusLabel: "Explicit criteria for critique (e.g., logical soundness, clarity, originality)", actionGuideKey: "critique" },
+                    { name: "Rate/Score", emoji: "💯", isActive: true, specificFocusLabel: "Specific criteria/attributes to rate, rating scale, and definitions for each level", actionGuideKey: "rating_scoring" },
+                    { name: "Compare", emoji: "🆚", isActive: false, specificFocusLabel: "Specific criteria/features for comparison, purpose of comparison", actionGuideKey: "compare" },
+                    { name: "Contrast", emoji: "≠", isActive: false, specificFocusLabel: "Specific criteria/features for identifying differences, purpose of contrast", actionGuideKey: "contrast" },
+                    { name: "Benchmark", emoji: "📏", isActive: false, specificFocusLabel: "The benchmark (standard/competitor), specific metrics/KPIs for comparison, purpose of benchmarking", actionGuideKey: "benchmark" },
+                    { name: "Validate", emoji: "🛡️", isActive: false, specificFocusLabel: "Specific claims/data to validate, sources of truth/standards to use, purpose of validation", actionGuideKey: "validate_content" },
+                    { name: "Verify", emoji: "🕵️", isActive: false, specificFocusLabel: "Specific claims/data to verify, sources of evidence/truth, purpose of verification", actionGuideKey: "verify" },
+                    { name: "Cross-Check", emoji: "🔗✔️", isActive: false, specificFocusLabel: "Aspects to cross-check, multiple independent sources/methods to use, purpose of cross-checking", actionGuideKey: "cross_check" },
+                    { name: "Peer-Evaluate", emoji: "🧑‍🤝‍🧑", isActive: false, specificFocusLabel: "Evaluation criteria/rubric for peers, peer identification (conceptual), feedback format", actionGuideKey: "peer_evaluate" }
+                ]
+            },
+            {
+                name: "Creative Transformation & Adaptation",
+                emoji: "🎨",
+                activities: [
+                    { name: "Transform", emoji: "🪄", isActive: false, specificFocusLabel: "Transformation goal, target nature/form/function, key elements to preserve/adapt/discard", actionGuideKey: "transform" },
+                    { name: "Reimagine", emoji: "🌌", isActive: false, specificFocusLabel: "Reimagination goal/vision, new creative direction, core essence to retain/transform", actionGuideKey: "reimagine" },
+                    { name: "Rewrite", emoji: "✍️🔄", isActive: false, specificFocusLabel: "Rewrite goals, target audience, desired style/tone, key changes required, elements to preserve/omit", actionGuideKey: "rewrite" },
+                    { name: "Reformat", emoji: "📄➡️📱", isActive: false, specificFocusLabel: "Target format/medium, purpose of reformatting, elements to prioritize/preserve", actionGuideKey: "reformat" },
+                    { name: "Adapt", emoji: "🔄🔗", isActive: false, specificFocusLabel: "New use/purpose, new target audience, new medium/platform, core message to preserve", actionGuideKey: "adapt" },
+                    { name: "Repurpose", emoji: "♻️", isActive: false, specificFocusLabel: "New goal/purpose for content, new target audience/context, key information to leverage", actionGuideKey: "repurpose" },
+                    { name: "Convert", emoji: "🔄💾", isActive: false, specificFocusLabel: "Target format/medium, purpose of conversion, key information/functionality to preserve", actionGuideKey: "convert" },
+                    { name: "Develop Scenarios/New Forms", emoji: "🎭", isActive: false, specificFocusLabel: "Desired new form (e.g., narrative scenarios, interactive dialogue), purpose of transformation, key elements to highlight", actionGuideKey: "develop_scenarios" },
+                    { name: "Adaptation into a Novel", emoji: "📖🖋️", isActive: true, specificFocusLabel: "Novelistic vision (genre, audience, tone), key elements to adapt, narrative choices", actionGuideKey: "adaptation_novel" },
+                    { name: "Socratic Dialogue Transformation", emoji: "🗣️❓", isActive: true, specificFocusLabel: "Central theme/question for dialogue, interlocutor roles (optional), desired depth/outcome", actionGuideKey: "socratic_dialogue" },
+                    { name: "Translate", emoji: "🌐", isActive: false, specificFocusLabel: "Source language, target language, purpose of translation, target audience, desired style/tone", actionGuideKey: "translate" },
+                    { name: "Localize", emoji: "🌍📍", isActive: false, specificFocusLabel: "Source language/locale, target locale, purpose of localization, specific elements for adaptation", actionGuideKey: "localize" },
+                    { name: "Synthesize", emoji: "🧩", isActive: false, specificFocusLabel: "Synthesis goal/purpose, key themes/questions to address, desired structure/format of new whole", actionGuideKey: "synthesize" },
+                    { name: "Combine/Merge", emoji: "➕🔗", isActive: false, specificFocusLabel: "Combination/merging goal, desired structure, handling of overlaps/redundancies", actionGuideKey: "combine_merge" },
+                    { name: "Integrate", emoji: "🔗🧩", isActive: false, specificFocusLabel: "Integration goal/purpose, desired architecture, points of interface/interaction, functional requirements", actionGuideKey: "integrate" }, 
+                    { name: "Gamify", emoji: "🎮", isActive: false, specificFocusLabel: "Gamification goals, target audience, desired behaviors, content/process to gamify", actionGuideKey: "gamify" }
+                ]
+            },
+            {
+                name: "Visualization & Presentation",
+                emoji: "🖼️",
+                activities: [
+                    { name: "Visualize", emoji: "👁️‍🗨️", isActive: false, specificFocusLabel: "Type of visualization, data points to emphasize, target audience, desired style", actionGuideKey: "visualize" },
+                    { name: "Diagram", emoji: "🧬", isActive: false, specificFocusLabel: "Aspects of structure/function to emphasize, preferred diagram type, target audience", actionGuideKey: "diagram" },
+                    { name: "Illustrate", emoji: "🖌️", isActive: false, specificFocusLabel: "Concepts to illustrate, preferred type of illustration (diagram/picture), desired style", actionGuideKey: "illustrate" }, 
+                    { name: "Create Infographics", emoji: "📰📊", isActive: false, specificFocusLabel: "Key message/goal, target audience, specific data/points to highlight, desired visual style", actionGuideKey: "create_infographics" },
+                    { name: "Highlight Key Information", emoji: "💡✨", isActive: false, specificFocusLabel: "Information to highlight, desired method/intensity of highlighting, purpose of emphasis", actionGuideKey: "highlight_key_info" },
+                    { name: "Present", emoji: "📽️", isActive: false, specificFocusLabel: "Target audience, presentation goal, medium/platform, key messages to emphasize", actionGuideKey: "present" }
+                ]
+            },
+            {
+                name: "Personalization & Application",
+                emoji: "👤",
+                activities: [
+                    { name: "Personalize", emoji: "👤✨", isActive: false, specificFocusLabel: "Target user profile, personalization goals, content aspects for personalization", actionGuideKey: "personalize" },
+                    { name: "Customize", emoji: "🛠️👤", isActive: false, specificFocusLabel: "Target task/context profile, customization goals, content aspects for customization", actionGuideKey: "customize" },
+                    { name: "Tailor", emoji: "🧵", isActive: false, specificFocusLabel: "Precise target profile, tailoring goals, content aspects for precise adjustment, exact modifications required", actionGuideKey: "tailor" },
+                    { name: "Adapt for Learning Styles", emoji: "🧠🎨", isActive: false, specificFocusLabel: "Target learning style(s), learner profile, adaptation goals", actionGuideKey: "adapt_learning_styles" },
+                    { name: "Balance Detail and Scope", emoji: "⚖️↔️", isActive: false, specificFocusLabel: "Target user profile/context, balancing goals, specific instructions on detail/scope", actionGuideKey: "balance_detail_scope" },
+                    { name: "Relate to Personal Experience", emoji: "🔗❤️", isActive: false, specificFocusLabel: "User's personal context (experiences, knowledge, values), relation goals", actionGuideKey: "relate_personal_experience" },
+                    { name: "Apply to Real-World Scenarios", emoji: "🌍💡", isActive: false, specificFocusLabel: "Target real-world scenarios/contexts, application goals, types of applications sought", actionGuideKey: "apply_real_world" },
+                    { name: "Reflect On", emoji: "🤔💭", isActive: false, specificFocusLabel: "Questions to ponder, themes to explore, personal experiences to connect with, desired outcomes of reflection", actionGuideKey: "reflect_on" },
+                    { name: "Internalize", emoji: "🧠💡", isActive: false, specificFocusLabel: "Learning goals, key concepts to focus on, context of application, preferred methods for internalization", actionGuideKey: "internalize" },
+                    { name: "Articulate for Understanding (Teach-Back)", emoji: "🗣️🎓", isActive: false, specificFocusLabel: "Hypothetical audience for teach-back, key concepts to emphasize, desired outcome of articulation", actionGuideKey: "teach_back" }
+                ]
+            },
+            {
+                name: "Collaboration & Dissemination",
+                emoji: "👥",
+                activities: [
+                    { name: "Collaborate", emoji: "🤝", isActive: false, specificFocusLabel: "Collaboration goal, collaborator roles (conceptual), specific tasks/sections for collaboration", actionGuideKey: "collaborate" }, 
+                    { name: "Co-Author", emoji: "✍️🤝", isActive: false, specificFocusLabel: "Co-authoring goal, co-author roles/writing assignments, target audience, style/tone guidelines", actionGuideKey: "co_author" },
+                    { name: "Discuss", emoji: "💬🤝", isActive: false, specificFocusLabel: "Discussion goal(s), participant roles/perspectives, key questions/topics for discussion", actionGuideKey: "discuss" },
+                    { name: "Debate", emoji: "🗣️⚔️", isActive: true, specificFocusLabel: "Debate resolution/proposition, sides/stances, key arguments/evidence to explore", actionGuideKey: "debate" },
+                    { name: "Peer-Review", emoji: "👀🤝", isActive: false, specificFocusLabel: "Review goals/purpose, review criteria/rubric, peer profile (conceptual), feedback format", actionGuideKey: "peer_review" },
+                    { name: "Crowdsource Feedback", emoji: "👥💬", isActive: false, specificFocusLabel: "Feedback goals, target crowd profile, key questions/aspects for feedback", actionGuideKey: "crowdsource_feedback" }, 
+                    { name: "Share", emoji: "📤", isActive: false, specificFocusLabel: "Sharing goals, target audience, preferred channels/platforms, key message/call to action", actionGuideKey: "share" },
+                    { name: "Circulate", emoji: "🔄📧", isActive: false, specificFocusLabel: "Circulation purpose, target group/recipients, specific instructions for recipients (if for review)", actionGuideKey: "circulate" },
+                    { name: "Distribute", emoji: "🌐📡", isActive: false, specificFocusLabel: "Distribution goals, target audience(s), key message(s), preferred distribution channels/methods", actionGuideKey: "distribute" },
+                    { name: "Publish", emoji: "📰🚀", isActive: false, specificFocusLabel: "Publishing goals, target audience(s), intended publishing platform(s), rights management/licensing", actionGuideKey: "publish" }
+                ]
+            },
+            {
+                name: "Management & Preservation",
+                emoji: "🗄️",
+                activities: [
+                    { name: "Digitize", emoji: "💻📄", isActive: false, specificFocusLabel: "Digitization goals, desired digital format(s), quality requirements, metadata requirements", actionGuideKey: "digitize" },
+                    { name: "Catalog", emoji: "🗂️🏷️", isActive: false, specificFocusLabel: "Cataloging goals, items to be cataloged, cataloging scheme/metadata fields, organizational structure", actionGuideKey: "catalog" },
+                    { name: "Index", emoji: "🔍🔢", isActive: false, specificFocusLabel: "Indexing goals, scope of indexing, depth of indexing, locator type, cross-referencing needs", actionGuideKey: "index_content" }, 
+                    { name: "Document Metadata", emoji: "📝ℹ️", isActive: false, specificFocusLabel: "Metadata purpose/goals, metadata schema/standard, required/recommended metadata fields", actionGuideKey: "document_metadata" },
+                    { name: "Backup", emoji: "💾🔄", isActive: false, specificFocusLabel: "Backup goals, recovery objectives (RPO/RTO), content to backup, backup type/frequency, retention policy", actionGuideKey: "backup" },
+                    { name: "Version Control", emoji: "🌿", isActive: false, specificFocusLabel: "Version control goals, nature of content, collaboration needs, branching strategy needs (conceptual)", actionGuideKey: "version_control" },
+                    { name: "Log History", emoji: "📜🕰️", isActive: false, specificFocusLabel: "Logging goals, events to log, information to capture per event, log format/storage (conceptual)", actionGuideKey: "log_history" },
+                    { name: "Archive", emoji: "🏛️", isActive: false, specificFocusLabel: "Archival goals, content to archive, retention period, access requirements, preferred archival formats", actionGuideKey: "archive" }, 
+                    { name: "Preserve", emoji: "🛡️⏳", isActive: false, specificFocusLabel: "Preservation goals, identified risks, desired lifespan, access/usability requirements (future)", actionGuideKey: "preserve" },
+                    { name: "Curate", emoji: "🖼️✨", isActive: false, specificFocusLabel: "Curation purpose/goal, target audience, selection criteria, scope of curation, organizational principles", actionGuideKey: "curate" }
+                ]
+            }
+        ];
+        
+        // Create "Featured Tools" category by extracting active tools
+        const activeTools = baseMapFrameworkData.flatMap(category => 
+            category.activities.filter(activity => activity.isActive)
+        );
+
+        const mapFrameworkDataWithFeatured = [
+            {
+                name: "Featured Tools",
+                emoji: "⭐",
+                activities: activeTools 
+            },
+            ...baseMapFrameworkData
+        ];
+
+        // 🟥🟥🟥 SECTION 2: MASTER PROMPTS FOR AI TOOLS 🟥🟥🟥
+        // TO ACTIVATE A NEW TOOL (after completing STEP 1 in 'baseMapFrameworkData'):
+        // 1. Add a new entry (function) to this 'masterPrompts' object.
+        // 2. The key for this new function MUST EXACTLY MATCH the 'actionGuideKey' you defined for the tool in STEP 1.
+        // 3. This function takes two arguments:
+        //    - 'userContent': The main text input from the user.
+        //    - 'specificFocus': The optional text input from the user for specific criteria/focus.
+        // 4. The function MUST return a string that will be the complete prompt sent to the AI.
+        // 5. CRITICAL: Design this prompt based on the corresponding "Action Guide" for that tool in the MAP Framework PDF.
+        //    Ensure your prompt clearly states the Objective, expected Input structure (referencing userContent and specificFocus),
+        //    and the desired Output format from the AI. All prompt text should be in ENGLISH.
+        //
+        // EXAMPLE - Adding a master prompt for a hypothetical 'Synthesize' tool (assuming actionGuideKey was 'synthesize'):
+        /*
+        synthesize: (userContent, specificFocus) => `Objective: To combine elements from multiple pieces of content or diverse components within a single complex piece, integrating them into a new, coherent, and meaningful whole.
+Input:
+User Content (Sources to be synthesized): "${userContent}"
+Specific Focus Points or Criteria (Synthesis goal, key themes, desired structure, relationships to emphasize): "${specificFocus || 'Synthesize the main ideas into a cohesive summary, identifying key themes and relationships.'}"
+Output: A new, integrated piece of content that represents the synthesis. It should have a coherent structure, articulate relationships between combined elements, and offer new insights or perspectives.`,
+        */
+
+        const masterPrompts = {
+            understand: (userContent, specificFocus) => `Objective: To achieve a comprehensive understanding of the provided content by applying the principles of a Universal Content Understanding Checklist. This involves identifying its core subject, main ideas, supporting details, purpose, audience, underlying assumptions, and key implications, as well as exploring its context and structure to grasp its fundamental meaning and concepts. The process will also consider any specific focus points or criteria provided by the user.
+Input:
+User Content: "${userContent}"
+Specific Focus Points or Criteria: "${specificFocus || 'None provided. If the user wants to specify areas, questions, perspectives, or desired depth of understanding, they should provide it here.'}"
+Output: A structured report detailing the comprehensive understanding of the User Content. This report will typically include: A concise summary of the content's core subject, main purpose, and overall message. An outline or list of the key ideas, arguments, themes, or findings presented. Identification and explanation of crucial supporting details, evidence, or examples. An analysis of the content's structure and organization. An assessment of the intended audience and the author's/source's perspective or tone. Clarification of key terminology. Discussion of relevant context. Identification of underlying assumptions. Exploration of potential implications. A list of insights gained. Specific findings related to any focus points provided.`,
+
+            explore: (userContent, specificFocus) => `Objective: To conduct a thorough exploration of the provided content by applying the principles of a Universal Content Exploration Checklist. This involves actively investigating its specific details, subtle nuances, underlying ideas, implicit assumptions, internal and external connections, and potential implications, going beyond surface-level understanding to uncover deeper layers of meaning. The exploration will specifically address any specific focus points or criteria provided by the user.
+Input:
+User Content: "${userContent}"
+Specific Focus Points or Criteria for Exploration: "${specificFocus || 'None provided. If the user wants to specify questions, angles, themes, or details to investigate, they should provide it here.'}"
+Output: A detailed exploration report presenting the findings derived from investigating the User Content. This report will typically include: Identification and explanation of significant details and specific data points. Analysis of nuances in language, tone, style, or argument. Articulation of the underlying ideas, concepts, theories, or assumptions. Discussion of connections found within the content and potentially to external knowledge. Examination of potential implications or alternative interpretations. A set of clarifying or probing questions raised. Insights gained regarding subtleties and deeper layers. Specific findings related to any focus points.`,
+
+            analyze: (userContent, specificFocus) => `Objective: To systematically analyze the provided content by applying the principles of a Universal Content Analysis Checklist. This involves decomposing the content into its constituent parts (such as arguments, themes, evidence, data points, structural elements) and meticulously examining the relationships between these parts to understand how they interact and contribute to the overall meaning, structure, purpose, or effect. The analysis will incorporate any specific focus points or criteria provided by the user.
+Input:
+User Content: "${userContent}"
+Specific Focus Points or Criteria for Analysis: "${specificFocus || 'None provided. If the user wants to focus on specific components, relationships, or analytical frameworks, they should provide it here.'}"
+Output: A structured analysis report detailing the findings from dissecting the User Content. This report will typically include: Identification and description of the key components. Detailed examination of the significant relationships observed between these components. An explanation of how these components and their interrelationships contribute to the content's overall message, argument, or purpose. Insights derived from understanding the internal structure and dynamics. Specific findings related to any focus points.`,
+
+            hierarchy_establishment: (userContent, specificFocus) => `Objective: To systematically organize the provided content by establishing a clear hierarchy based on levels of importance, using criteria specified by the user or inferred.
+Input:
+User Content: "${userContent}"
+Specific Criteria for Importance or Desired Hierarchy Levels: "${specificFocus || 'Determine importance based on relevance to the main topic and impact. Aim for a 3-level hierarchy unless content suggests otherwise.'}"
+Output: The User Content presented in a clear hierarchical structure, or a detailed outline describing this hierarchy. Show distinct levels of importance and superordinate/subordinate relationships. Use headings, indentation, or nested lists for clarity.`,
+
+            outlining: (userContent, specificFocus) => `Objective: To create a concise, hierarchical summary (an outline) of the provided content, identifying main topics, subtopics, and supporting details, arranged in a structured format.
+Input:
+User Content: "${userContent}"
+Desired Depth of Outline, Format, or Specific Aspects to Emphasize: "${specificFocus || 'Create a standard alphanumeric outline (I, A, 1, a) to a depth of 3 levels, focusing on main arguments and key supporting points.'}"
+Output: A structured outline of the User Content. Main topics as top-level points, with subtopics and supporting details nested hierarchically. Use consistent formatting (e.g., indentation, standard numbering/lettering) to represent the hierarchy.`,
+
+            taxonomize: (userContent, specificFocus) => `Objective: To systematically classify items or information within the provided content by assigning them to appropriate categories within a pre-defined or developed structured, hierarchical taxonomy.
+Input:
+User Content: "${userContent}"
+Pre-defined Hierarchical Taxonomy (including levels, categories, and criteria for inclusion): "${specificFocus || 'If no taxonomy is provided, attempt to infer logical categories and a simple two-level hierarchy based on the content. State the inferred taxonomy clearly.'}"
+Output: The User Content with each relevant item assigned to its correct place within the defined hierarchical taxonomy, or a report detailing these assignments. The output should clearly show the taxonomy levels and the relationships of the classified items.`,
+            
+            summarize: (userContent, specificFocus) => `Objective: To create a concise and coherent summary of the User Content by identifying, extracting, and synthesizing the main points and essential information, while omitting non-essential details and elaborations. The summary must accurately reflect the core message and purpose of the original content.
+Input:
+User Content: "${userContent}"
+Specific Focus Points or Criteria (e.g., desired length, key aspects to include, purpose/audience of the summary): "${specificFocus || 'Summarize the main points and key findings concisely.'}"
+Output: A concise, coherent, and accurate summary of the User Content. It should present the main ideas and essential information in largely new wording, have a logical flow, and preserve the original content's core meaning and perspective.`,
+
+            improvement: (userContent, specificFocus) => `Objective: To comprehensively improve the provided text by applying principles of enhancement and refinement. This involves enhancing clarity, conciseness, structure, accuracy, engagement, grammar, style, and overall polish, while carefully considering any specific focus points.
+Input:
+User Content: "${userContent}"
+Specific Areas or Quality Dimensions to Improve (e.g., clarity for a non-expert audience, strengthen the main argument, improve flow): "${specificFocus || 'Focus on general improvement across clarity, conciseness, grammatical correctness, and logical flow.'}"
+Output: The User Content, revised to reflect enhancements in clarity, conciseness, structure, accuracy, engagement, grammar, and style. The core meaning of the original content should be preserved.`,
+
+            polishing: (userContent, specificFocus) => `Objective: To meticulously polish the provided content by perfecting its style, tone, word choice, sentence flow, and overall presentation to achieve the highest standard of quality, readability, and impact.
+Input:
+User Content: "${userContent}"
+Specific Aspects for Polishing (e.g., word choice for stronger impact, sentence flow for better readability, perfecting introduction/conclusion): "${specificFocus || 'Focus on eloquent phrasing, smooth transitions, and impactful word choices throughout the text.'}"
+Output: The User Content, reflecting a high degree of refinement in style, tone, and presentation, with enhanced clarity and impact.`,
+
+            perfection: (userContent, specificFocus) => `Objective: To meticulously refine and elevate the provided content to an ideal, flawless, and exceptionally high-quality state by applying principles of perfection. This involves achieving the utmost standards in clarity, accuracy, coherence, conciseness, style, impact, and overall polish, aligning with any defined parameters of 'perfection' for the context.
+Input:
+User Content: "${userContent}"
+Parameters of 'Perfection' for this Context (e.g., target audience, specific stylistic goals, non-negotiable elements): "${specificFocus || 'Aim for a flawless, highly persuasive professional tone suitable for executive review. Ensure zero grammatical errors and optimal clarity.'}"
+Output: The User Content, reflecting a state of near-perfection according to the defined criteria, with rigorous refinement in all aspects including clarity, accuracy, coherence, conciseness, style, and impact.`,
+
+            critique: (userContent, specificFocus) => `Objective: To provide a detailed analysis and balanced assessment of the content, examining its components, evaluating its strengths and weaknesses against relevant criteria, and forming a reasoned judgment of its overall quality, effectiveness, or merit.
+Input:
+User Content: "${userContent}"
+Explicit Criteria for Critique (e.g., logical soundness, clarity of writing, originality, effectiveness in achieving purpose): "${specificFocus || 'Critique based on logical soundness of arguments, clarity of presentation, and sufficiency of supporting evidence.'}"
+Output: A structured critique report. This will include: a brief overview of the content and critique criteria; a detailed analysis of key components; discussion of notable strengths and weaknesses with specific examples; and a balanced overall assessment of the content's quality or effectiveness.`,
+
+            rating_scoring: (userContent, specificFocus) => `Objective: To systematically assign a quantitative (numerical) or qualitative (descriptive label) value to the content, evaluating it against pre-defined criteria and a specific rating/scoring scale.
+Input:
+User Content: "${userContent}"
+Specific Criteria/Attributes to Rate, the Rating/Scoring Scale to be Used, and Clear Definitions for Each Point/Level on the Scale: "${specificFocus || 'Rate on Clarity, Accuracy, and Completeness using a 1-5 scale (1=Poor, 3=Average, 5=Excellent). Define what constitutes each score level for each criterion.'}"
+Output: A structured rating/scoring report. This will include: the final quantitative score or qualitative rating; a clear statement of the criteria and rating/scoring scale used (with definitions for each level); a breakdown of performance against each criterion, if applicable; and detailed justification for the assigned rating/score, supported by evidence from the content.`,
+
+            adaptation_novel: (userContent, specificFocus) => `Objective: To creatively transform the core essence, themes, characters, or events of the content into a fictional narrative in the form of a novel (or a detailed novel outline/synopsis).
+Input:
+User Content: "${userContent}"
+Novelistic Vision (desired genre, target audience, intended tone), Key Elements to Adapt/Preserve from User Content, Narrative Choices (point of view, tense, approximate length): "${specificFocus || 'Adapt into a short science fiction story for a general audience, focusing on the ethical dilemmas presented. Third-person POV, past tense.'}"
+Output: A fictional narrative (or a comprehensive novel outline and synopsis if a full draft is beyond scope). This will include: developed characters with motivations and arcs; a structured plot with engaging conflicts and resolutions; a described setting and atmosphere; dialogue and descriptive prose; and clear thematic development derived from or inspired by the User Content.`,
+
+            socratic_dialogue: (userContent, specificFocus) => `Objective: To creatively transform the content into a Socratic dialogue, reformatting core concepts, arguments, and underlying assumptions into an exploratory question-and-answer format designed to stimulate critical thinking and deeper understanding.
+Input:
+User Content: "${userContent}"
+Central Theme/Question for Dialogue, Interlocutor Roles (e.g., Questioner, Respondent), Desired Depth/Outcome of Dialogue: "${specificFocus || 'Explore the main argument of the content. Use roles: Inquisitive Student (Questioner) and Knowledgeable Expert (Respondent reflecting content views). Aim for clarification of core assumptions.'}"
+Output: A textual representation of a Socratic dialogue based on the User Content. This will include: clearly identified speakers; a structured sequence of questions and answers that progressively explore the central theme; examination of definitions, assumptions, logical consistency, and implications related to the content.`,
+
+            debate: (userContent, specificFocus) => `Objective: To guide a structured and reasoned debate about the content, or a proposition derived from it, critically examining different points of view, interpretations, or arguments.
+Input:
+User Content: "${userContent}"
+Debate Resolution/Proposition, Sides/Stances to be Argued (e.g., Affirmative/Pro, Negative/Con), Key Arguments/Evidence to Explore for Each Side: "${specificFocus || 'Resolution: The methodology described in the content is the most effective approach. Sides: Pro (arguing for effectiveness), Con (arguing against or for alternatives). Focus on arguments related to feasibility and impact.'}"
+Output: A textual summary or script of the debate. This may include: clearly articulated arguments for each side; supporting evidence or reasoning for each argument (ideally drawn from or related to User Content); rebuttals and counter-arguments; identification of key points of contention; and summaries of each side's main position.`,
+             // 🟥 ADD NEW MASTER PROMPT FUNCTIONS HERE, MATCHING THE 'actionGuideKey' 🟥
+        };
+
+        // API Call Function
+        const callGeminiAPI = async (promptText, apiKey, selectedModel = 'gemini-2.0-flash') => {
+            // This function calls the Google Generative AI API.
+            // It requires a valid API key and the constructed prompt.
+            if (!apiKey) {
+                return Promise.reject({ message: "API Key is missing. Please enter and validate your API Key." });
+            }
+            
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: promptText }] }]
+            };
+            
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    let errorMessage = `API Error (${response.status}): ${errorData.error?.message || 'Unknown API error'}`;
+                    if (response.status === 400 && errorData.error?.message?.toLowerCase().includes("api key not valid")) {
+                        errorMessage = "API Key is invalid. Please check your key and try again.";
+                    } else if (response.status === 403) {
+                         errorMessage = "API Key lacks permissions for the selected model or service.";
+                    }
+                    throw new Error(errorMessage);
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text.trim();
+                } else if (result.promptFeedback && result.promptFeedback.blockReason) {
+                     throw new Error(`Prompt blocked by API due to: ${result.promptFeedback.blockReason}. Please revise your prompt.`);
+                } else if (result.candidates && result.candidates.length > 0 && result.candidates[0].finishReason === "SAFETY") {
+                    throw new Error("Prompt blocked by API for safety reasons. Please revise your prompt.");
+                } else {
+                    console.error("Unexpected API response structure:", result);
+                    throw new Error('Unexpected API response structure. No content found.');
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                throw error; // Re-throw to be handled by the calling function
+            }
+        };
+        
+        // Floating Action Buttons Component
+        function FloatingActionButtons({ toggleTheme, currentTheme, resetAll }) {
+            const [showScrollTop, setShowScrollTop] = useState(false);
+
+            // Effect to show/hide scroll-to-top button based on scroll position
+            useEffect(() => {
+                const checkScrollTop = () => {
+                    if (!showScrollTop && window.pageYOffset > 200){
+                        setShowScrollTop(true);
+                    } else if (showScrollTop && window.pageYOffset <= 200){
+                        setShowScrollTop(false);
+                    }
+                };
+                window.addEventListener('scroll', checkScrollTop);
+                return () => window.removeEventListener('scroll', checkScrollTop); // Cleanup listener
+            }, [showScrollTop]);
+
+            const scrollToTop = () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            return (
+                <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center space-y-2">
+                    {showScrollTop && (
+                         <button 
+                            onClick={scrollToTop} 
+                            title="Scroll to Top" 
+                            className="h-10 w-10 inline-flex items-center justify-center rounded-md border border-input bg-card text-card-foreground shadow-lg transition-opacity hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 animate-fadeIn"
+                         >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                            </svg>
+                        </button>
+                    )}
+                    <button 
+                        onClick={toggleTheme} 
+                        title="Toggle Theme" 
+                        className="h-10 w-10 inline-flex items-center justify-center rounded-md border border-input bg-card text-card-foreground shadow-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                        <span className="text-xl">{currentTheme === 'light' ? '☀️' : '🌙'}</span>
+                    </button>
+                    <button 
+                        onClick={resetAll} 
+                        title="Reset All Inputs" 
+                        className="h-10 w-10 inline-flex items-center justify-center rounded-md border border-input bg-card text-card-foreground shadow-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                        <span className="text-xl">🔁</span>
+                    </button>
+                </div>
+            );
+        }
+        
+        // Main Application Component (wrapped with forwardRef for parent access to its methods)
+        const MainApp = React.forwardRef((props, ref) => {
+            // State variables for the application
+            const [userContent, setUserContent] = useState(''); // Main text input from user
+            const [specificFocus, setSpecificFocus] = useState(''); // Optional specific focus input for certain tools
+            const [apiKey, setApiKey] = useState(''); // User's Google API Key
+            const [isApiKeyValid, setIsApiKeyValid] = useState(false); // Tracks if API key has been validated
+            const [apiKeyStatusMessage, setApiKeyStatusMessage] = useState({ text: '', type: '' }); // Message for API key validation status
+            const [selectedTool, setSelectedTool] = useState(null); // Currently selected MAP tool object
+            const [output, setOutput] = useState(''); // Output from the AI
+            const [isLoading, setIsLoading] = useState(false); // Loading state for API calls
+            const [error, setError] = useState(''); // Error messages
+            const [currentAiModel, setCurrentAiModel] = useState('gemini-2.0-flash'); // Selected AI model
+            const [outputViewMode, setOutputViewMode] = useState('raw'); // View mode for output: 'raw' or 'preview'
+
+            // Handler for API Key validation
+            const handleApiKeyValidation = async () => {
+                if (!apiKey) {
+                    setApiKeyStatusMessage({ text: '🔑 Please enter your Google API Key.', type: 'error' });
+                    setIsApiKeyValid(false);
+                    return;
+                }
+                setApiKeyStatusMessage({ text: '⏳ Validating API Key...', type: 'neutral' });
+                setIsLoading(true); // Use general loading indicator
+                try {
+                    // A simple GET request to a model endpoint can validate the key's existence and basic permissions
+                    const validationUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash?key=${apiKey}`;
+                    const response = await fetch(validationUrl);
+                    if (response.ok) {
+                        setApiKeyStatusMessage({ text: '✅ API Key Validated! Tools are ready to use.', type: 'success' });
+                        setIsApiKeyValid(true);
+                    } else {
+                        const errorData = await response.json();
+                        let specificError = errorData.error?.message || `HTTP error ${response.status}`;
+                         if (response.status === 400 && specificError.toLowerCase().includes("api key not valid")) {
+                            specificError = "API Key is not valid. Please check your key.";
+                        } else if (response.status === 403) {
+                            specificError = "API Key lacks permissions for this model/service.";
+                        }
+                        setApiKeyStatusMessage({ text: `❌ Invalid API Key: ${specificError} You can get one at aistudio.google.com/app/apikey`, type: 'error' });
+                        setIsApiKeyValid(false);
+                    }
+                } catch (err) {
+                    console.error('API Key validation error:', err);
+                    setApiKeyStatusMessage({ text: '❌ Error validating API Key. Check network or console.', type: 'error' });
+                    setIsApiKeyValid(false);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+            
+            // Handler for selecting a MAP tool
+            const handleToolSelect = (tool) => {
+                if (!tool.isActive) return; // Do nothing if tool is not active
+                setSelectedTool(tool);
+                setOutput(''); // Clear previous output
+                setError(''); // Clear previous error
+                setSpecificFocus(''); // Reset specific focus input
+                setOutputViewMode('raw'); // Reset output view to raw when a new tool is selected
+            };
+
+            // Handler for submitting content to the AI for processing
+            const handleSubmit = async () => {
+                if (!selectedTool || !userContent) {
+                    setError('Please select a tool and enter content.');
+                    return;
+                }
+                if (!isApiKeyValid) {
+                    setError('API Key is not valid or has not been validated. Please enter and validate your API Key.');
+                    const apiKeyInput = document.getElementById('userApiKeyInput'); // Attempt to focus API key input
+                    if (apiKeyInput) {
+                        apiKeyInput.focus();
+                    }
+                    return;
+                }
+
+                setIsLoading(true);
+                setError('');
+                setOutput('');
+                setOutputViewMode('raw'); // Default to raw view for new output
+
+                const masterPromptGenerator = masterPrompts[selectedTool.actionGuideKey];
+                if (!masterPromptGenerator) {
+                    setError(`Master prompt for tool "${selectedTool.name}" not found.`);
+                    setIsLoading(false);
+                    return;
+                }
+                
+                const promptText = masterPromptGenerator(userContent, specificFocus);
+
+                try {
+                    const result = await callGeminiAPI(promptText, apiKey, currentAiModel);
+                    setOutput(result);
+                } catch (err) {
+                    // Error is already an Error object from callGeminiAPI
+                    setError(err.message || 'An error occurred while calling the API.');
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+
+            // Internal function to reset relevant states, exposed via ref
+            const handleResetAllInternal = () => {
+                setUserContent('');
+                setSpecificFocus('');
+                setSelectedTool(null);
+                setOutput('');
+                setError('');
+                setIsLoading(false);
+                setOutputViewMode('raw');
+                // Note: API key and its validation status are intentionally NOT reset here
+                // to avoid forcing the user to re-enter and re-validate frequently.
+            };
+
+            // Expose handleResetAll to parent component (AppContainer) via ref
+            React.useImperativeHandle(ref, () => ({
+                handleResetAll: handleResetAllInternal
+            }));
+            
+            // Handler for copying output to clipboard
+            const handleCopyToClipboard = () => {
+                if (!output) return;
+                // Using document.execCommand as a fallback for navigator.clipboard.writeText
+                // which might have issues in certain iframe contexts.
+                const textArea = document.createElement("textarea");
+                textArea.value = output; // Always copy the raw output
+                textArea.style.position = "fixed"; 
+                textArea.style.top = "-9999px"; // Move out of screen
+                textArea.style.left = "-9999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                let success = false;
+                try {
+                    success = document.execCommand('copy');
+                } catch (err) {
+                    console.error('Fallback copy: Failed to copy', err);
+                }
+                document.body.removeChild(textArea);
+
+                const copyBtn = document.getElementById('copyOutputButton');
+                if (copyBtn) {
+                    const originalButtonTextContainer = copyBtn.querySelector('span:last-child'); // Get the span containing the text
+                    const originalText = originalButtonTextContainer ? originalButtonTextContainer.textContent : 'Copy'; // Default to 'Copy'
+                    
+                    if (success) {
+                        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2 text-green-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span>Copied!</span>`;
+                    } else {
+                         copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2 text-red-500"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path></svg> <span>Failed</span>`;
+                         setError('Failed to copy output. Please copy manually.');
+                    }
+                    // Restore button text after 2 seconds
+                    setTimeout(() => {
+                         copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" class="w-4 h-4 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m9.75 11.375c.621 0 1.125-.504 1.125-1.125V7.875c0-.621-.504-1.125-1.125-1.125H15m-1.125-3.375a3.375 3.375 0 00-3.375-3.375h-1.5a3.375 3.375 0 00-3.375 3.375V7.5"></path></svg> <span>${originalText === 'Copied!' || originalText === 'Failed' ? 'Copy' : originalText }</span>`; // Restore original or default text
+                    }, 2000);
+                }
+            };
+
+            // Memoized value for selected tool details to avoid re-computation on every render
+            const selectedToolDetails = useMemo(() => {
+                if (!selectedTool) return null;
+                // Iterate through combined data (including Featured Tools) to find the selected tool
+                for (const category of mapFrameworkDataWithFeatured) { 
+                    // Match by both name and actionGuideKey for more precise identification,
+                    // especially since a tool might appear in "Featured" and its original category.
+                    const toolDetail = category.activities.find(act => act.name === selectedTool.name && act.actionGuideKey === selectedTool.actionGuideKey);
+                    if (toolDetail) return toolDetail;
+                }
+                return null; // Should not happen if selectedTool is valid
+            }, [selectedTool]);
+
+            // Function to render AI output based on view mode (raw or preview)
+            const renderOutput = () => {
+                if (isLoading) return null; // Don't render output area while loading new output
+
+                if (outputViewMode === 'preview' && output) {
+                    // Use marked.js to parse Markdown string to HTML
+                    // Ensure marked.js is loaded via CDN in the <head>
+                    const htmlOutput = marked.parse(output); 
+                    // Render HTML using dangerouslySetInnerHTML. 
+                    // Tailwind's Typography plugin classes (`prose dark:prose-invert`) are used for styling.
+                    return <div className="prose dark:prose-invert max-w-none p-4 border border-input rounded-md bg-muted/10 dark:bg-muted/20 whitespace-normal break-words min-h-[200px] max-h-[calc(100vh-450px)] overflow-auto" dangerouslySetInnerHTML={{ __html: htmlOutput }} />;
+                } else { // 'raw' mode or no output
+                    // Render raw output in a <pre> tag to preserve formatting
+                    return (
+                        <pre 
+                            className="min-h-[200px] max-h-[calc(100vh-450px)] p-4 rounded-md border border-input bg-muted/10 dark:bg-muted/20 text-sm text-foreground whitespace-pre-wrap overflow-auto font-mono break-words"
+                        >
+                            {output || "AI output will appear here..."}
+                        </pre>
+                    );
+                }
+            };
+
+            // JSX for the MainApp component
+            return (
+                 <div className="w-full max-w-5xl lg:max-w-6xl my-auto space-y-6 animate-fadeIn">
+                    {/* Header Section */}
+                    <div className="bg-card text-card-foreground rounded-lg border border-border shadow-lg p-6 sm:p-8 text-center">
+                        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-primary">🛠️ MAP Framework Tools Processor 🛠️</h1>
+                        <p className="text-muted-foreground mt-2 text-base max-w-xl mx-auto">
+                            Methodically process your content using various AI tools based on the MAP Framework.
+                        </p>
+                    </div>
+
+                    {/* API Key and Model Selection Card */}
+                     <div className="bg-card text-card-foreground rounded-lg border border-border shadow-lg p-6 sm:p-8">
+                        <h2 className="text-xl font-semibold mb-4 text-primary text-center">AI Settings</h2>
+                        <div className="space-y-4">
+                            {/* AI Model Selection Radio Buttons */}
+                            <div id="modelSelection" className="flex flex-wrap justify-center items-center gap-3 mb-3">
+                                <span className="text-sm font-medium text-foreground self-center mr-2">🤖 AI Model:</span>
+                                <div>
+                                    <input 
+                                        type="radio" 
+                                        name="aiModel" 
+                                        id="geminiFlash" 
+                                        value="gemini-2.0-flash" 
+                                        className="sr-only peer" 
+                                        checked={currentAiModel === 'gemini-2.0-flash'}
+                                        onChange={(e) => setCurrentAiModel(e.target.value)}
+                                    />
+                                    <label htmlFor="geminiFlash" className="h-9 px-3 inline-flex items-center justify-center rounded-md text-xs border border-input bg-transparent transition-all hover:bg-accent hover:text-accent-foreground peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary cursor-pointer">Gemini 2.0 Flash</label>
+                                </div>
+                                <div>
+                                    <input 
+                                        type="radio" 
+                                        name="aiModel" 
+                                        id="gemini15Pro" 
+                                        value="gemini-1.5-pro-latest" 
+                                        className="sr-only peer"
+                                        checked={currentAiModel === 'gemini-1.5-pro-latest'}
+                                        onChange={(e) => setCurrentAiModel(e.target.value)}
+                                    />
+                                    <label htmlFor="gemini15Pro" className="h-9 px-3 inline-flex items-center justify-center rounded-md text-xs border border-input bg-transparent transition-all hover:bg-accent hover:text-accent-foreground peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary cursor-pointer">Gemini 1.5 Pro</label>
+                                </div>
+                            </div>
+
+                            {/* API Key Input and Validation Button */}
+                            <div className="flex flex-col sm:flex-row items-stretch gap-2 max-w-md mx-auto">
+                                <label htmlFor="userApiKeyInput" className="sr-only">Google API Key</label>
+                                <input 
+                                    type="password" 
+                                    id="userApiKeyInput" 
+                                    value={apiKey}
+                                    onChange={(e) => setApiKey(e.target.value)}
+                                    className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" 
+                                    placeholder="🔑 Enter your Google API Key..."
+                                />
+                                <button 
+                                    id="validateApiKeyButton" 
+                                    onClick={handleApiKeyValidation}
+                                    disabled={isLoading && apiKeyStatusMessage.text.includes("Validating")} // Disable while validating
+                                    className="h-10 px-4 py-2 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-green-600 text-primary-foreground hover:bg-green-600/90 dark:bg-green-500 dark:hover:bg-green-500/90 flex-shrink-0 !text-xs"
+                                >
+                                    {(isLoading && apiKeyStatusMessage.text.includes("Validating")) ? (
+                                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                    ) : "Validate"}
+                                </button>
+                            </div>
+                            {/* API Key Status Message */}
+                            {apiKeyStatusMessage.text && (
+                                <div 
+                                    id="apiKeyStatusMessage" 
+                                    className={`p-3 rounded-md border text-sm my-2 text-center max-w-md mx-auto animate-fadeIn
+                                        ${apiKeyStatusMessage.type === 'success' ? 'border-green-500/50 text-green-700 dark:text-green-400 bg-green-500/10 dark:bg-green-500/20' : ''}
+                                        ${apiKeyStatusMessage.type === 'error' ? 'border-red-500/50 text-red-700 dark:text-red-400 bg-red-500/10 dark:bg-red-500/20' : ''}
+                                        ${apiKeyStatusMessage.type === 'neutral' ? 'border-border text-muted-foreground bg-muted/50' : ''}
+                                    `}
+                                >
+                                    {apiKeyStatusMessage.text}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Main Content Area: Tool Selection and Input/Output */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {/* Tool Selection Column */}
+                        <div className="md:col-span-1 bg-card text-card-foreground rounded-lg border border-border shadow-lg p-6 space-y-4 max-h-[calc(100vh-250px)] overflow-y-auto">
+                            <h2 className="text-xl font-semibold text-primary mb-3 text-center sticky top-0 bg-card/80 backdrop-blur-sm py-2 -mt-6 pt-6 z-10">Select MAP Tool</h2>
+                            {/* Iterate over mapFrameworkDataWithFeatured which includes "Featured Tools" first */}
+                            {mapFrameworkDataWithFeatured.map(category => (
+                                <div key={category.name} className="mb-4">
+                                    <h3 className="text-lg font-medium text-foreground mb-2">{category.emoji} {category.name}</h3>
+                                    <div className="space-y-2">
+                                        {category.activities.map((tool, index) => ( 
+                                            <button
+                                                key={`${tool.name}-${category.name}-${index}`} // Unique key for each button instance
+                                                onClick={() => handleToolSelect(tool)}
+                                                // Disable button if tool is not active OR if general loading is active AND this tool is the one being processed
+                                                disabled={!tool.isActive || (isLoading && selectedTool?.name === tool.name && selectedTool?.actionGuideKey === tool.actionGuideKey)}
+                                                title={!tool.isActive ? "This tool is not active yet" : tool.name}
+                                                className={`w-full text-left h-auto px-3 py-2 inline-flex items-center justify-start rounded-md text-sm border border-input bg-background hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all duration-150 ease-in-out
+                                                    ${selectedTool?.name === tool.name && selectedTool?.actionGuideKey === tool.actionGuideKey ? 'tool-button-active shadow-md' : ''}
+                                                    ${!tool.isActive ? 'opacity-60 cursor-not-allowed filter grayscale-[30%]' : 'cursor-pointer'}
+                                                `}
+                                            >
+                                                <span className="mr-2 text-lg">{tool.emoji}</span>
+                                                <span className="flex-grow">{tool.name}</span>
+                                                {!tool.isActive && <span className="ml-auto text-xs text-muted-foreground/70">(Disabled)</span>}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Input and Output Column */}
+                        <div className="md:col-span-2 bg-card text-card-foreground rounded-lg border border-border shadow-lg p-6 space-y-6">
+                            {/* Main Content Input Area */}
+                            <div>
+                                <label htmlFor="userContentInput" className="block text-sm font-medium mb-2 text-foreground">📝 Enter Your Content:</label>
+                                <textarea 
+                                    id="userContentInput"
+                                    value={userContent}
+                                    onChange={(e) => setUserContent(e.target.value)}
+                                    className="flex min-h-[150px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    rows="6"
+                                    placeholder="Type or paste the content you want to process here..."
+                                >
+                                </textarea>
+                            </div>
+
+                            {/* Specific Focus Input Area (conditional) */}
+                            {selectedToolDetails && selectedToolDetails.isActive && selectedToolDetails.specificFocusLabel && (
+                                <div className="animate-slideUp">
+                                    <label htmlFor="specificFocusInput" className="block text-sm font-medium mb-2 text-foreground">🎯 {selectedToolDetails.specificFocusLabel}:</label>
+                                    <textarea 
+                                        id="specificFocusInput"
+                                        value={specificFocus}
+                                        onChange={(e) => setSpecificFocus(e.target.value)}
+                                        className="flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        rows="3"
+                                        placeholder={`Enter specific criteria or focus for the "${selectedToolDetails.name}" tool... (Optional)`}
+                                    >
+                                    </textarea>
+                                </div>
+                            )}
+                            
+                            {/* Submit Button */}
+                            <div className="text-center">
+                                <button 
+                                    onClick={handleSubmit}
+                                    disabled={!selectedTool || isLoading || !isApiKeyValid || !userContent}
+                                    className="h-11 px-6 py-2 inline-flex items-center justify-center rounded-md text-base font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
+                                >
+                                    {isLoading && selectedTool ? (
+                                        <React.Fragment>
+                                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            <span>Processing...</span>
+                                        </React.Fragment>
+                                    ) : (
+                                        selectedTool ? `Process with ${selectedTool.emoji} ${selectedTool.name}` : "Select a Tool to Process"
+                                    )}
+                                </button>
+                            </div>
+
+                            {/* Error Message Display */}
+                            {error && <div className="text-destructive text-sm text-center p-3 border border-destructive/50 rounded-md bg-destructive/10 animate-fadeIn">{error}</div>}
+                            
+                            {/* Output Display Area (conditional) */}
+                            {output && !isLoading && (
+                                <div className="pt-4 animate-slideUp">
+                                    <div className="flex justify-between items-center mb-3">
+                                        <h3 className="font-semibold text-lg text-foreground">✅ Processing Result:</h3>
+                                        {/* Output View Mode Tabs and Copy Button */}
+                                        <div className="flex items-center space-x-2">
+                                            <div className="flex space-x-1 border border-border rounded-md p-0.5 bg-muted/20 dark:bg-muted/30">
+                                                <button 
+                                                    onClick={() => setOutputViewMode('raw')}
+                                                    title="View Raw Output"
+                                                    className={`px-2.5 py-1 rounded text-xs transition-colors ${outputViewMode === 'raw' ? 'bg-primary text-primary-foreground shadow-sm' : 'hover:bg-accent'}`}
+                                                >
+                                                    Raw
+                                                </button>
+                                                <button 
+                                                    onClick={() => setOutputViewMode('preview')}
+                                                    title="Preview Markdown"
+                                                    className={`px-2.5 py-1 rounded text-xs transition-colors ${outputViewMode === 'preview' ? 'bg-primary text-primary-foreground shadow-sm' : 'hover:bg-accent'}`}
+                                                >
+                                                    Preview
+                                                </button>
+                                            </div>
+                                            <button 
+                                                id="copyOutputButton"
+                                                onClick={handleCopyToClipboard}
+                                                title="Copy Result" 
+                                                className="h-9 px-3 py-1.5 inline-flex items-center justify-center rounded-md text-xs font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-input"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4 mr-2">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m9.75 11.375c.621 0 1.125-.504 1.125-1.125V7.875c0-.621-.504-1.125-1.125-1.125H15m-1.125-3.375a3.375 3.375 0 00-3.375-3.375h-1.5a3.375 3.375 0 00-3.375 3.375V7.5" />
+                                                </svg>
+                                                <span>Copy</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {/* Render output based on view mode */}
+                                    {renderOutput()}
+                                </div>
+                            )}
+                            {/* Loading Indicator for AI Processing */}
+                             {isLoading && selectedTool && (
+                                <div className="flex flex-col items-center justify-center py-10 text-muted-foreground animate-fadeIn">
+                                    <svg className="animate-spin h-8 w-8 text-primary mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span>Processing with {selectedTool.emoji} {selectedTool.name}... Please wait.</span>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    
+                    {/* Footer Section */}
+                    <div className="w-full bg-card text-card-foreground rounded-lg border border-border shadow-lg mt-6">
+                        <footer className="text-center text-xs text-muted-foreground py-6 px-6 sm:px-8">
+                            <p className="mb-2">This tool uses AI to process content. Please review all outputs for accuracy and alignment with your intent.</p>
+                            <hr className="my-4 border-border"/>
+                            <p>&copy; <span id="currentYear">{new Date().getFullYear()}</span> MAP Framework Processor. Inspired by various sources.</p>
+                        </footer>
+                    </div>
+                </div>
+            );
+        });
+
+        // Container Component for the main app and Floating Action Buttons
+        function AppContainer() {
+            // State for managing the current theme (light/dark)
+            const [theme, setTheme] = useState(localStorage.getItem('mapFrameworkTheme') || 'light');
+            
+            // Function to toggle theme
+            const toggleTheme = () => {
+                setTheme(prevTheme => {
+                    const newTheme = prevTheme === 'light' ? 'dark' : 'light';
+                    localStorage.setItem('mapFrameworkTheme', newTheme); // Save theme preference
+                    document.documentElement.className = newTheme; // Apply theme class to HTML element
+                    return newTheme;
+                });
+            };
+            
+            // Effect to apply the theme when the component mounts or theme state changes
+            useEffect(() => {
+                document.documentElement.className = theme;
+            }, [theme]);
+
+            // Ref to access MainApp's methods (like handleResetAll)
+            const appRef = React.useRef();
+
+            return (
+                <React.Fragment>
+                    {/* Render the MainApp component and pass the ref and current theme */}
+                    <MainApp ref={appRef} currentThemeExternal={theme} />
+                    {/* Render FloatingActionButtons and pass necessary props */}
+                    <FloatingActionButtons 
+                        toggleTheme={toggleTheme} 
+                        currentTheme={theme} 
+                        resetAll={() => appRef.current && appRef.current.handleResetAll()} // Call MainApp's reset function
+                    />
+                </React.Fragment>
+            );
+        }
+        
+        // Render the AppContainer to the DOM
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<AppContainer />);
+    </script>
+</body>
+</html>
