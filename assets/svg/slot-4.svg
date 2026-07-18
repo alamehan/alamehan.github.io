@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* namespaced a4-/k4 — inline SVG styles are document-global.
+       one machine, two readouts: the artifact row compresses (tangle → cube) and the SAME event
+       crushes the RAM gauge from 600 MB down to the 50 MB pill, leaving a ghost tick at the old
+       cost. hover: arrow pumps, cube wiggles, chip pops, and the old cost haunts the gauge
+       (opacity-gated always-running loop — never retime a live animation). */
+    .a4-mut{stroke:var(--ink-faint,#99a0ad)}
+    .a4-acc{stroke:var(--accent,#1747c8)}
+    .a4-accf{fill:var(--accent,#1747c8)}
+    .a4-gf{fill:var(--ink-faint,#99a0ad)}
+    .a4-mid{text-anchor:middle}
+    .a4-ttl{font:700 10px ui-monospace,Menlo,monospace;fill:var(--accent,#1747c8);letter-spacing:.14em}
+    .a4-lbl{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.1em}
+    .a4-sm{font:600 7.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.08em}
+    .a4-smacc{font:700 7.5px ui-monospace,Menlo,monospace;fill:var(--accent,#1747c8);letter-spacing:.08em}
+    .a4-pl{font:700 8px ui-monospace,Menlo,monospace;fill:var(--ink,#171a21);letter-spacing:.04em}
+    .a4-tangle{stroke-dasharray:200;stroke-dashoffset:200;animation:k4dr 1.4s .2s cubic-bezier(.4,0,.2,1) forwards}
+    .a4-st{stroke-dasharray:40;stroke-dashoffset:40;animation:k4dr .5s 1.5s ease-out forwards}
+    .a4-veins{opacity:0;stroke-dasharray:26 162.5;animation:k4fi .6s 3.8s ease-out forwards,k4flow 6s 3.8s linear infinite}
+    .a4-arrow{stroke-dasharray:70;stroke-dashoffset:70;animation:k4dr .5s 1.9s ease-out forwards}
+    .a4-cube{stroke-dasharray:200;stroke-dashoffset:200;animation:k4dr 1s 2.4s cubic-bezier(.4,0,.2,1) forwards}
+    .a4-face{opacity:0;animation:k4face .5s 3.3s ease-out forwards}
+    .a4-gfr{stroke-dasharray:500;stroke-dashoffset:500;animation:k4dr .9s .5s cubic-bezier(.4,0,.2,1) forwards}
+    .a4-t1{opacity:0;animation:k4fi .5s .1s ease-out forwards}
+    .a4-t2{opacity:0;animation:k4fi .5s 1.3s ease-out forwards}
+    .a4-t3{opacity:0;animation:k4fi .5s .8s ease-out forwards}
+    .a4-t4{opacity:0;animation:k4fi .5s 3.4s ease-out forwards}
+    .a4-t5{opacity:0;animation:k4fi .6s 3.7s ease-out forwards}
+    .a4-t6{opacity:0;animation:k4fi .5s 3.2s ease-out forwards}
+    .a4-tk{opacity:0;animation:k4fi .4s 2.5s ease-out forwards}
+    .a4-gg{transform:scale(0,1);transform-box:fill-box;transform-origin:left center;animation:k4grow .9s .9s cubic-bezier(.4,0,.2,1) forwards}
+    .a4-ghost{transform-box:fill-box;transform-origin:left center;animation:k4crush .85s 2.4s cubic-bezier(.7,0,.2,1) forwards,k4gout .35s 3.05s ease-out forwards}
+    .a4-pill{opacity:0;animation:k4fi .4s 3s ease-out forwards,k4pg 3.5s 4.2s ease-in-out infinite}
+    .a4-br{transform-box:fill-box;transform-origin:center;animation:k4br 6s 4s ease-in-out infinite}
+    .a4-hv{transform-box:fill-box;transform-origin:center;animation:k4hv 6s 4s ease-in-out infinite}
+    .a4-spark{opacity:0;animation:k4fi .4s 3.2s ease-out forwards,k4sp 3.5s 4.2s ease-in-out infinite}
+    .a4-pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:k4pop .45s 3.3s cubic-bezier(.34,1.56,.64,1) forwards}
+    /* hover layer */
+    .a4-arrowg{transform-box:fill-box;transform-origin:center}
+    svg:hover .a4-arrowg{animation:k4pump .7s ease-in-out infinite}
+    .a4-cubew{transform-box:fill-box;transform-origin:center}
+    svg:hover .a4-cubew{animation:k4wig 1.4s ease-in-out infinite}
+    .a4-chip{transform-box:fill-box;transform-origin:center;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+    svg:hover .a4-chip{transform:scale(1.1)}
+    .a4-gw{opacity:0;transition:opacity .35s ease-out}
+    svg:hover .a4-gw{opacity:.45}
+    .a4-mem{transform-box:fill-box;transform-origin:left center;animation:k4mem 2.8s ease-in-out infinite}
+    @keyframes k4dr{to{stroke-dashoffset:0}}
+    @keyframes k4fi{to{opacity:1}}
+    @keyframes k4face{to{opacity:.08}}
+    @keyframes k4flow{to{stroke-dashoffset:-188.5}}
+    @keyframes k4grow{to{transform:scale(1,1)}}
+    @keyframes k4crush{to{transform:scale(.0827,1)}}
+    @keyframes k4gout{to{opacity:0}}
+    @keyframes k4pg{0%,100%{opacity:1}50%{opacity:.7}}
+    @keyframes k4br{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(.965) rotate(-2deg)}}
+    @keyframes k4hv{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+    @keyframes k4sp{0%,100%{opacity:1}50%{opacity:.35}}
+    @keyframes k4pop{0%{opacity:0;transform:scale(.7)}100%{opacity:1;transform:scale(1)}}
+    @keyframes k4pump{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+    @keyframes k4wig{0%,100%{transform:rotate(0deg)}25%{transform:rotate(3deg)}75%{transform:rotate(-3deg)}}
+    @keyframes k4mem{0%,100%{transform:scale(.0827,1)}50%{transform:scale(1,1)}}
+    @media(prefers-reduced-motion:reduce){
+      .a4-tangle,.a4-st,.a4-arrow,.a4-cube,.a4-gfr{animation:none;stroke-dashoffset:0}
+      .a4-veins{animation:none;opacity:0}
+      .a4-t1,.a4-t2,.a4-t3,.a4-t4,.a4-t5,.a4-t6,.a4-tk{animation:none;opacity:1}
+      .a4-face{animation:none;opacity:.08}
+      .a4-gg,.a4-ghost{animation:none}
+      .a4-pill{animation:none;opacity:1}
+      .a4-spark{animation:none;opacity:1}
+      .a4-pop{animation:none;opacity:1;transform:none}
+      .a4-br,.a4-hv,.a4-spark,.a4-mem{animation:none}
+      svg:hover .a4-arrowg,svg:hover .a4-cubew{animation:none}
+      .a4-chip,.a4-gw{transition:none}
+      svg:hover .a4-chip{transform:none}
+      svg:hover .a4-gw{opacity:0}
+    }
+  </style>
+  <!-- the thesis, as the sheet's title -->
+  <text x="140" y="20" class="a4-ttl a4-mid a4-t1">DESIGN = COMPRESSION</text>
+  <!-- raw: 600 MB of tangle — breathing, circulating, loose ends everywhere -->
+  <g class="a4-br">
+    <g class="a4-tangle a4-mut" stroke-width="1.7" stroke-linecap="round">
+      <circle cx="63" cy="72" r="30"/>
+      <path d="M42 50 C66 56 80 72 74 94"/>
+      <path d="M36 84 C44 66 62 54 84 52"/>
+      <path d="M34 66 C52 78 76 76 90 60"/>
+      <path d="M54 44 C62 58 60 74 52 82"/>
+    </g>
+    <circle cx="63" cy="72" r="30" class="a4-acc a4-veins" stroke-linecap="round" stroke-width="1.8"/>
+    <path d="M90 56 c8 -8 16 -10 22 -8" class="a4-mut a4-st" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M40 92 c-7 6 -10 13 -8 20" class="a4-mut a4-st" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+  <text x="64" y="124" class="a4-lbl a4-mid a4-t2">RAW · 600 MB</text>
+  <!-- the press — pumps when you lean in -->
+  <g class="a4-arrowg">
+    <path d="M122 72 h40" class="a4-acc a4-arrow" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M158 63 l12 9 l-12 9" class="a4-acc a4-arrow" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g class="a4-chip"><g class="a4-pop">
+    <rect x="111" y="88" width="70" height="16" rx="8" class="a4-acc" stroke-width="1.2"/>
+    <text x="146" y="99" class="a4-smacc a4-mid">×12 SMALLER</text>
+  </g></g>
+  <!-- clear: the 50 MB cube — decision-ready, hovering -->
+  <g class="a4-hv"><g class="a4-cubew">
+    <polygon points="228,46 254,59 228,72 202,59" class="a4-accf a4-face"/>
+    <g class="a4-cube a4-acc" stroke-width="1.9" stroke-linejoin="round">
+      <path d="M228 46 L254 59 V93 L228 106 L202 93 V59 Z"/>
+      <path d="M202 59 L228 72 L254 59 M228 72 V106"/>
+    </g>
+    <circle cx="228" cy="46" r="2.6" class="a4-accf a4-spark"/>
+  </g></g>
+  <text x="228" y="124" class="a4-lbl a4-mid a4-t6">CLEAR · 50 MB</text>
+  <!-- the readout: the reader's RAM, crushed by the same event -->
+  <path d="M26 138 h228" class="a4-mut a4-t3" stroke-width="1" stroke-dasharray="2 4"/>
+  <text x="26" y="152" class="a4-lbl a4-t3">HUMAN RAM ≈ 1 GB</text>
+  <rect x="26" y="158" width="228" height="16" rx="8" class="a4-mut a4-gfr" stroke-width="1.4"/>
+  <rect x="29" y="161" width="11" height="10" rx="5" class="a4-accf a4-pill"/>
+  <g class="a4-gg"><rect x="29" y="161" width="133" height="10" rx="5" class="a4-gf a4-ghost" opacity=".45"/></g>
+  <g class="a4-gw"><rect x="29" y="161" width="133" height="10" rx="5" class="a4-gf a4-mem" opacity=".5"/></g>
+  <path d="M162 154 v24" class="a4-mut a4-tk" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="36" y="190" class="a4-smacc a4-mid a4-t4">CLEAR</text>
+  <text x="162" y="190" class="a4-sm a4-mid a4-t4">RAW</text>
+  <text x="140" y="204" class="a4-pl a4-mid a4-t5">SPEND IT ON THE DECISION, NOT THE DECODING.</text>
+</svg>

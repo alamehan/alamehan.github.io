@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <style>
+    /* namespaced a5-/k5 — inline SVG styles are document-global (ids too: a5cap).
+       Sits on the ink panel, strokes with var(--canvas): auto-inverts per theme.
+       three clean radii, no crossings: bearings ring r54 · inscription ring r68 · orbit r82.
+       ambient: dual counter-orbits, the inscription turns like a seal, sonar breath.
+       hover: the asterisk turns 45°, the sonar answers, bearings + inscription wake. */
+    .a5-ring{stroke:var(--canvas,#f4f6fa);opacity:.5}
+    .a5-mark{stroke:var(--canvas,#f4f6fa)}
+    .a5-markf{fill:var(--canvas,#f4f6fa)}
+    .a5-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--canvas,#f4f6fa);letter-spacing:.22em}
+    .a5-spin{transform-origin:100px 100px;animation:k5r 60s linear infinite}
+    .a5-spin2{transform-origin:100px 100px;animation:k5r2 90s linear infinite}
+    .a5-spin3{transform-origin:100px 100px;animation:k5r 120s linear infinite}
+    .a5-star{stroke-dasharray:260;stroke-dashoffset:260;animation:k5dr 1.6s .4s cubic-bezier(.4,0,.2,1) forwards}
+    .a5-core{opacity:0;animation:k5fi .6s 1.7s ease-out forwards}
+    .a5-capw{opacity:0;animation:k5fi .8s 2s ease-out forwards}
+    .a5-breathe{animation:k5pu 5s 2.4s ease-in-out infinite}
+    /* ambient sonar — a whisper every 5s, seamless (born invisible, dies invisible) */
+    .a5-sonar{transform-box:fill-box;transform-origin:center;animation:k5sonar 5s 2.6s ease-out infinite}
+    /* hover: the seal turns; the sonar answers; the quiet layers wake */
+    .a5-starw{transform-box:fill-box;transform-origin:center;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+    svg:hover .a5-starw{transform:rotate(45deg)}
+    .a5-sonar2w{opacity:0;transition:opacity .35s ease-out}
+    svg:hover .a5-sonar2w{opacity:1}
+    .a5-sonar2{transform-box:fill-box;transform-origin:center;animation:k5sonar 2.2s ease-out infinite}
+    .a5-bear{transition:opacity .35s ease-out}
+    svg:hover .a5-bear{opacity:1}
+    .a5-capt{transition:opacity .35s ease-out}
+    svg:hover .a5-capt{opacity:1}
+    @keyframes k5r{to{transform:rotate(360deg)}}
+    @keyframes k5r2{to{transform:rotate(-360deg)}}
+    @keyframes k5dr{to{stroke-dashoffset:0}}
+    @keyframes k5fi{to{opacity:1}}
+    @keyframes k5pu{0%,100%{opacity:.55}50%{opacity:1}}
+    @keyframes k5sonar{0%{transform:scale(.35);opacity:.6}100%{transform:scale(2.4);opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a5-spin,.a5-spin2,.a5-spin3,.a5-breathe,.a5-sonar,.a5-sonar2{animation:none}
+      .a5-sonar,.a5-sonar2w{opacity:0}
+      .a5-star{animation:none;stroke-dashoffset:0}
+      .a5-core,.a5-capw{animation:none;opacity:1}
+      .a5-starw,.a5-capt,.a5-bear{transition:none}
+      svg:hover .a5-starw{transform:none}
+    }
+  </style>
+  <defs><path id="a5cap" d="M100 32 a68 68 0 1 1 -.01 0"/></defs>
+  <!-- the outer orbit — always in motion, never in a hurry -->
+  <g class="a5-spin">
+    <circle cx="100" cy="100" r="82" class="a5-ring" stroke-width="1.2" stroke-dasharray="4 8"/>
+    <circle cx="100" cy="18" r="3" class="a5-markf"/>
+    <circle cx="100" cy="182" r="1.8" class="a5-markf" opacity=".6"/>
+  </g>
+  <!-- the inscription — the seal reads itself, slowly -->
+  <g class="a5-capw"><g class="a5-spin3">
+    <text class="a5-cap a5-capt" opacity=".72"><textPath href="#a5cap" startOffset="0%">ARETE · EST. SUKABUMI</textPath></text>
+    <text class="a5-cap a5-capt" opacity=".72"><textPath href="#a5cap" startOffset="50%">ARETE · EST. SUKABUMI</textPath></text>
+  </g></g>
+  <!-- the inner orbit — counter-rotation, eight bearings -->
+  <g class="a5-spin2">
+    <circle cx="100" cy="100" r="54" class="a5-ring" stroke-width="1"/>
+    <g class="a5-mark a5-bear" stroke-width="1.6" opacity=".65">
+      <path d="M100 42 v8 M100 150 v8 M42 100 h8 M150 100 h8"/>
+      <path d="M59 59 l5.6 5.6 M135.4 135.4 l5.6 5.6 M141 59 l-5.6 5.6 M64.6 135.4 l-5.6 5.6"/>
+    </g>
+  </g>
+  <!-- the sonar — ambient whisper + hover answer -->
+  <circle cx="100" cy="100" r="30" class="a5-ring a5-sonar" stroke-width="1.2"/>
+  <g class="a5-sonar2w"><circle cx="100" cy="100" r="30" class="a5-mark a5-sonar2" stroke-width="1.3" opacity=".8"/></g>
+  <!-- the asterisk seal — one mark, eight directions: arete.
+       breathe on the parent, turn on its own wrapper, draw on the child —
+       one animation property per element, always. -->
+  <g class="a5-breathe">
+    <g class="a5-starw">
+      <g class="a5-star a5-mark" stroke-width="2.6" stroke-linecap="round">
+        <path d="M100 66 v68 M66 100 h68 M77 77 l46 46 M123 77 l-46 46"/>
+      </g>
+    </g>
+  </g>
+  <circle cx="100" cy="100" r="7.5" class="a5-markf a5-core" opacity="0"/>
+</svg>

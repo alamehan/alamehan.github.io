@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <style>
+    /* namespaced a1-/k1: inline SVG styles are DOCUMENT-GLOBAL — never share names across slots.
+       hover layer: transitions + opacity-gated always-running loops (never retime a live animation).
+       ambient loops all share one 4.5s period (gear = 3×) so the scene stays phase-locked forever:
+       three couriers depart together, MERGE at the junction, land as one — then the file writes. */
+    .a1-ink{stroke:var(--ink,#171a21)}
+    .a1-mut{stroke:var(--ink-faint,#99a0ad)}
+    .a1-acc{stroke:var(--accent,#1747c8)}
+    .a1-accf{fill:var(--accent,#1747c8)}
+    .a1-lbl{font:700 10.5px ui-monospace,Menlo,monospace;fill:var(--ink,#171a21);letter-spacing:.12em;text-anchor:middle}
+    .a1-lbl2{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle}
+    .a1-d1{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .1s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-d2{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .5s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-d3{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .9s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-dp{stroke-dasharray:165;stroke-dashoffset:165;animation:k1dr .55s 1.7s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-dpc{stroke-dasharray:40;stroke-dashoffset:40;animation:k1dr .3s 1.75s ease-out forwards}
+    .a1-dt{stroke-dasharray:40;stroke-dashoffset:40;animation:k1dr .3s 2.25s ease-out forwards}
+    .a1-d5{stroke-dasharray:640;stroke-dashoffset:640;animation:k1dr 1s 2.6s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-f1{opacity:0;animation:k1fi .45s .4s ease-out forwards}
+    .a1-f2{opacity:0;animation:k1fi .45s .8s ease-out forwards}
+    .a1-f3{opacity:0;animation:k1fi .45s 1.2s ease-out forwards}
+    .a1-fj{opacity:0;animation:k1fi .3s 2.4s ease-out forwards}
+    .a1-f4{opacity:0;animation:k1fi .6s 3.4s ease-out forwards}
+    .a1-gear{transform-box:fill-box;transform-origin:center;animation:k1spin 13.5s linear infinite}
+    .a1-core{opacity:0;animation:k1fi .4s 1.3s ease-out forwards,k1core 4.5s 4s ease-in-out infinite}
+    .a1-pulse{opacity:0;animation:k1fi3 .4s 2.8s ease-out forwards,k1pu 4.5s 4s ease-in-out infinite}
+    .a1-row1{animation:k1row 4.5s 4s ease-in-out infinite}
+    .a1-row2{animation:k1row 4.5s 4.14s ease-in-out infinite}
+    .a1-row3{animation:k1row 4.5s 4.27s ease-in-out infinite}
+    .a1-cs{opacity:0;animation:k1go 4.5s 4s linear infinite}
+    .a1-cs1{offset-path:path('M76 104 v26 a10 10 0 0 0 10 10 h114 v36')}
+    .a1-cs2{offset-path:path('M324 104 v26 a10 10 0 0 1 -10 10 h-114 v36')}
+    .a1-csc{opacity:0;offset-path:path('M200 104 v72');animation:k1goc 4.5s 4s linear infinite}
+    .a1-fr{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+    svg:hover .a1-fr1{transform:translateY(-4px)}
+    svg:hover .a1-fr2{transform:translateY(-4px);transition-delay:.06s}
+    svg:hover .a1-fr3{transform:translateY(-5px);transition-delay:.12s}
+    .a1-pw{opacity:0;transition:opacity .35s ease-out}
+    svg:hover .a1-pw{opacity:1}
+    .a1-halow{opacity:0;transition:opacity .35s ease-out}
+    svg:hover .a1-halow{opacity:1}
+    .a1-halo{transform-box:fill-box;transform-origin:center;animation:k1halo 2s ease-out infinite}
+    @keyframes k1dr{to{stroke-dashoffset:0}}
+    @keyframes k1fi{to{opacity:1}}
+    @keyframes k1fi3{to{opacity:.3}}
+    @keyframes k1spin{to{transform:rotate(360deg)}}
+    @keyframes k1core{0%{opacity:1}20%,80%{opacity:.35}100%{opacity:1}}
+    @keyframes k1pu{0%,40%{opacity:.3}53%{opacity:1}68%,100%{opacity:.3}}
+    @keyframes k1row{0%,54%{opacity:1}58%{opacity:.3}66%,100%{opacity:1}}
+    @keyframes k1go{0%{offset-distance:0%;opacity:0}4%{opacity:1}49.5%{opacity:1}53.3%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1goc{0%,33%{offset-distance:0%;opacity:0}35.5%{opacity:1}49.5%{opacity:1}53.3%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1halo{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a1-d1,.a1-d2,.a1-d3,.a1-dp,.a1-dpc,.a1-dt,.a1-d5{animation:none;stroke-dashoffset:0}
+      .a1-f1,.a1-f2,.a1-f3,.a1-fj,.a1-f4{animation:none;opacity:1}
+      .a1-gear,.a1-row1,.a1-row2,.a1-row3,.a1-halo{animation:none}
+      .a1-core,.a1-pulse{animation:none;opacity:1}
+      .a1-cs,.a1-csc{animation:none;opacity:0}
+      .a1-fr,.a1-pw,.a1-halow{transition:none}
+      svg:hover .a1-fr1,svg:hover .a1-fr2,svg:hover .a1-fr3{transform:none}
+    }
+  </style>
+  <!-- era labels — the column headers of the craft's three ages -->
+  <text x="76" y="22" class="a1-lbl a1-f1">01 · RAW UI</text>
+  <text x="200" y="22" class="a1-lbl a1-f2">02 · SYSTEM</text>
+  <text x="324" y="22" class="a1-lbl a1-f3">03 · AI ENGINE</text>
+  <!-- era 01 · raw ui — hand-placed blocks -->
+  <g class="a1-fr a1-fr1"><g class="a1-d1">
+    <rect x="24" y="32" width="104" height="72" rx="10" class="a1-ink" stroke-width="1.7"/>
+    <rect x="35" y="44" width="44" height="8" rx="4" class="a1-mut" stroke-width="1.4"/>
+    <rect x="35" y="59" width="70" height="8" rx="4" class="a1-mut" stroke-width="1.4"/>
+    <rect x="35" y="74" width="30" height="16" rx="5" class="a1-mut" stroke-width="1.4"/>
+    <rect x="73" y="78" width="22" height="8" rx="4" class="a1-mut" stroke-width="1.2"/>
+  </g></g>
+  <!-- era 02 · design system — the token grid -->
+  <g class="a1-fr a1-fr2"><g class="a1-d2">
+    <rect x="148" y="32" width="104" height="72" rx="10" class="a1-ink" stroke-width="1.7"/>
+    <g class="a1-mut" stroke-width="1.3">
+      <rect x="160" y="44" width="22" height="16" rx="4"/><rect x="189" y="44" width="22" height="16" rx="4"/><rect x="218" y="44" width="22" height="16" rx="4"/>
+      <rect x="160" y="68" width="22" height="16" rx="4"/><rect x="189" y="68" width="22" height="16" rx="4"/>
+    </g>
+    <rect x="218" y="68" width="22" height="16" rx="4" class="a1-acc" stroke-width="1.5"/>
+  </g></g>
+  <!-- era 03 · the engine — turning core, halo on approach -->
+  <g class="a1-fr a1-fr3">
+    <g class="a1-d3">
+      <rect x="272" y="32" width="104" height="72" rx="10" class="a1-acc" stroke-width="1.9"/>
+      <g class="a1-halow"><circle cx="324" cy="68" r="22" class="a1-acc a1-halo" stroke-width="1.2"/></g>
+      <g class="a1-gear">
+        <circle cx="324" cy="68" r="16" class="a1-acc" stroke-width="1.8"/>
+        <g class="a1-acc" stroke-width="1.7" stroke-linecap="round">
+          <line x1="324" y1="46" x2="324" y2="52"/><line x1="324" y1="84" x2="324" y2="90"/>
+          <line x1="302" y1="68" x2="308" y2="68"/><line x1="340" y1="68" x2="346" y2="68"/>
+          <line x1="309" y1="53" x2="313" y2="57"/><line x1="335" y1="79" x2="339" y2="83"/>
+          <line x1="339" y1="53" x2="335" y2="57"/><line x1="313" y1="79" x2="309" y2="83"/>
+        </g>
+      </g>
+      <circle cx="324" cy="68" r="5" class="a1-accf a1-core"/>
+    </g>
+  </g>
+  <!-- era chevrons — one age becomes the next -->
+  <path d="M134 64 l8 8 l-8 8" class="a1-mut a1-f2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M258 64 l8 8 l-8 8" class="a1-mut a1-f3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- the manifold — three drops, one junction, one trunk -->
+  <path d="M76 104 v26 a10 10 0 0 0 10 10 h114" class="a1-mut a1-dp" stroke-width="1.5"/>
+  <path d="M324 104 v26 a10 10 0 0 1 -10 10 h-114" class="a1-mut a1-dp" stroke-width="1.5"/>
+  <path d="M200 104 v36" class="a1-mut a1-dpc" stroke-width="1.5"/>
+  <g class="a1-pw">
+    <path d="M76 104 v26 a10 10 0 0 0 10 10 h114" class="a1-acc" stroke-width="1.5"/>
+    <path d="M324 104 v26 a10 10 0 0 1 -10 10 h-114" class="a1-acc" stroke-width="1.5"/>
+    <path d="M200 104 v36" class="a1-acc" stroke-width="1.5"/>
+  </g>
+  <path d="M200 140 v36" class="a1-acc a1-dt" stroke-width="1.8"/>
+  <circle cx="200" cy="140" r="3.4" class="a1-accf a1-fj"/>
+  <!-- couriers — three pulses depart together, merge, land as one -->
+  <circle r="3.2" class="a1-accf a1-cs a1-cs1"/>
+  <circle r="3.2" class="a1-accf a1-cs a1-cs2"/>
+  <circle r="3.2" class="a1-accf a1-csc"/>
+  <!-- the output — one living file; it writes when the pulses land -->
+  <g class="a1-d5">
+    <rect x="130" y="176" width="140" height="92" rx="12" class="a1-ink" stroke-width="1.9"/>
+    <path d="M130 200 h140" class="a1-mut" stroke-width="1.4"/>
+    <circle cx="144" cy="188" r="3" class="a1-accf a1-pulse"/>
+    <circle cx="156" cy="188" r="3" class="a1-mut" stroke-width="1.2"/>
+    <rect x="144" y="212" width="64" height="8" rx="4" class="a1-mut a1-row1" stroke-width="1.4"/>
+    <rect x="144" y="227" width="98" height="8" rx="4" class="a1-mut a1-row2" stroke-width="1.4"/>
+    <rect x="144" y="242" width="44" height="10" rx="5" class="a1-acc a1-row3" stroke-width="1.7"/>
+  </g>
+  <text x="200" y="288" class="a1-lbl2 a1-f4">ONE FILE · ANY BROWSER · FOREVER</text>
+</svg>
