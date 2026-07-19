@@ -664,6 +664,123 @@ html.spec .case,html.spec .pr-row,html.spec .w-tile,html.spec .quote,html.spec .
   html.zen .z-prod{border-color:#ccc;padding:8px}
   html.zen .z-stat{border-top-color:#111}
 }
+/* ═══ THE OUTLINE FACE (v1.0's second wind, owner-approved 2026-07-19; PRD §19 —
+   forged as digest-preview v1→v6, promoted whole). The altitude law: every chapter
+   lands at scanning altitude; depth is one deliberate gesture away, spoken in the
+   page's own grammar: door · fold ↓ · disclosure bar · accordion row. ═══ */
+/* journey → a CV scan: one ruled line per entry; the bullets unfold per row */
+.j-rows details.j-row{display:block;padding:0}
+.j-rows>div.j-row{grid-template-columns:120px 1fr}
+@media(min-width:700px){.j-rows>div.j-row{grid-template-columns:150px 1fr}}
+details.j-row>summary{display:grid;grid-template-columns:120px 1fr auto;gap:10px;align-items:baseline;padding:13px 0;cursor:pointer;list-style:none}
+details.j-row>summary::-webkit-details-marker{display:none}
+details.j-row>summary:hover h3{color:var(--accent)}
+@media(min-width:700px){details.j-row>summary{grid-template-columns:150px 1fr auto}}
+.j-chev{align-self:center;font:600 10px/1 var(--mono);letter-spacing:.06em;color:var(--ink-faint);transition:transform .18s ease-out}
+details.j-row[open]>summary .j-chev{transform:rotate(180deg)}
+details.j-row>.j-body{grid-column:auto;padding:0 0 14px}
+@media(min-width:700px){details.j-row>.j-body{margin-left:160px}}
+/* voices/toolbox disclosure bars print OPEN (unlike the record-tail ledgers) */
+@media print{.ledger.dg{display:block!important}}
+/* v2 · THE OUTLINE FACE — the Notion feel: first paint = the cover + eight closed
+   chapter rows. A chapter is a place you CHOOSE to enter, not a wall you scroll.
+   dgOutline() stamps .dg-chap on every folio-led section in the same render tick. */
+#main .dg-chap{border-top:0;margin-top:0;padding-top:0}
+#main .dg-chap:not(.open)>*:not(.folio){display:none!important}
+#main .dg-chap .folio{margin:0;padding:20px 6px;border-bottom:1px solid var(--hairline);cursor:pointer;flex-wrap:wrap;transition:background .15s ease-out,padding-left .15s ease-out}
+#main .dg-chap:not(.open) .folio:hover{background:color-mix(in srgb,var(--accent) 4%,transparent);padding-left:12px}
+#main .dg-chap .folio .fmark::after{content:" ▸";font:600 12px/1 var(--mono);color:var(--ink-faint)}
+#main .dg-chap.open .folio .fmark::after{content:" ▴";color:var(--accent)}
+#main .dg-chap .folio:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+/* the door speaks its chapter's STATEMENT — the index reads like a contents page,
+   not a strip of leftover labels (the "jomplang" cure) */
+.dgd-head{flex:1 1 100%;margin:8px 0 2px;font:900 clamp(19px,2.1vw,27px)/1.15 var(--display);letter-spacing:-.5px;color:var(--ink);text-wrap:balance;transition:color .15s ease-out}
+.dgd-head em{font:italic 700 .98em var(--serif);color:var(--accent)}
+.dgd-sub{flex:1 1 100%;margin:8px 0 2px;font:400 13.5px/1.6 var(--font);color:var(--ink-muted);max-width:64ch}
+#main .dg-chap:not(.open) .folio:hover .dgd-head{color:var(--accent)}
+/* OPEN = the door slims into a sticky ANCHOR BAR: always in reach, one click folds it
+   back (the "pusing nutupnya" cure); the chapter's own fol-head carries the headline */
+#main .dg-chap.open .dgd-head,#main .dg-chap.open .dgd-sub{display:none}
+#main .dg-chap.open .folio{position:sticky;top:calc(var(--header-h) + 35px);z-index:25;background:color-mix(in srgb,var(--canvas) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:12px 6px}
+@media(min-width:1660px){#main .dg-chap.open .folio{top:var(--header-h)}}
+#main .dg-chap.open .folio:hover{background:color-mix(in srgb,var(--accent) 5%,var(--canvas))}
+#main .dg-chap.open{padding-bottom:var(--s7)}
+#main .dg-chap.open>*:not(.folio){animation:dgIn .3s ease-out}
+#main .dg-chap.open .fol-head{margin-top:var(--s5)}
+@keyframes dgIn{from{opacity:0;transform:translateY(6px)}}
+/* the bottom door — fold the chapter back without hunting for the top */
+.dg-close{display:block;margin:var(--s5) 0 0;border:1px solid var(--hairline);border-radius:999px;background:var(--surface);color:var(--ink-muted);font:600 11px/1 var(--mono);letter-spacing:.06em;cursor:pointer;padding:10px 16px}
+.dg-close:hover{color:var(--accent);border-color:var(--ink-faint)}
+@media print{.dg-close{display:none!important}}
+/* the Audit-Ruler divider belongs to the work chapter's rhythm — on the cover it floated
+   contextless between two doors; now it appears only as the OPENED chapter's sign-off */
+#main #work:not(.open)+.slot-divider{display:none}
+/* …and when it DOES show, it sits balanced between the chapter's tail and door 02
+   (owner catch: s8 above, zero below) */
+#main #work.open+.slot-divider{margin:10px 0 34px}
+/* ═══ v4 · AIR · VOICE · THE RAIL AT HOME (owner findings on v3) ═══ */
+/* AIR — the index breathes: a clear seam under the hero, tall door rows, the headline
+   floating free of its eyebrow (was "padet nempel banget") */
+#main .dg-chap.dg-first{margin-top:30px}/* stamped by dgOutline — :first-of-type can't see past the hero section */
+#main .dg-chap:not(.open) .folio{padding:32px 6px 34px}
+.dgd-head{margin:12px 0 0}
+.dgd-sub{margin:12px 0 0}
+/* VOICE — the statement type trades Arial Black for an editorial SERIF display (still
+   zero-dependency — Georgia ships everywhere); the italic accent word now speaks from
+   inside its own family instead of interrupting a grotesque */
+:root{--display2:Georgia,"Iowan Old Style","Times New Roman",serif}
+.hero h1,.fol-head .fh,.dgd-head,.contact-panel h3{font-family:var(--display2);font-weight:800;letter-spacing:-.35px}
+/* THE RAIL AT HOME — the side ToC belongs to every desktop, not only ultra-wides:
+   the reading column narrows to a calm 860px measure (zen-inspired margins, not
+   zen-wide), topbar + footer follow the SAME container var, the sticky chip bar
+   becomes a small-screen affair, and the rail slims to fit the new margin */
+@media(min-width:1240px){
+  :root{--colw:860px;--railw:142px}
+  .railbar{display:none}
+  .rail{display:block;position:fixed;top:96px;left:max(14px,calc(50vw - var(--colw)/2 - var(--railw) - 30px));width:var(--railw);font:500 11px/1.45 var(--mono);z-index:10}
+  .rail a{display:flex;gap:7px;align-items:baseline;padding:4px 8px;border-radius:8px;color:var(--ink-muted);transition:background .12s ease-out,color .12s ease-out}
+  .rail a:hover{background:var(--wash);color:var(--ink);text-decoration:none}
+  .rail a.active{color:var(--accent)}
+  .rail a.active .rn{color:var(--accent)}
+  /* the sticky door sits FLUSH under the topbar here — the +35px seat was the chip
+     bar's, and the chip bar doesn't live on desktop anymore (owner catch: the gap) */
+  #main .dg-chap.open .folio{top:var(--header-h)}
+}
+/* ═══ v5 · THE POLISH PASS (owner findings on v4) ═══ */
+/* the ToC is an index: one line per chapter, truncated, no read-ticks */
+.rail a span+span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rail .rn{flex:none}
+.rail a.read::after,.railbar a.read::after{content:none!important}
+/* the statement type, SET TIGHT: the hero was oversized for the serif voice; the
+   letterfit closes up (accent italic included — it inherits the tracking now) */
+.hero h1{font-size:clamp(30px,3.9vw,46px);line-height:1.08;letter-spacing:-.03em;margin:16px 0 14px}
+.fol-head .fh{line-height:1.08;letter-spacing:-.03em}
+.dgd-head{line-height:1.12;letter-spacing:-.03em}
+.contact-panel h3{letter-spacing:-.03em}
+.hero h1 em,.fol-head .fh em,.dgd-head em,.contact-panel h3 em{letter-spacing:inherit}
+/* the sweep: one even 30px rhythm through the index; calmer chapter tails */
+#main .dg-chap:not(.open) .folio{padding:30px 6px}
+.dgd-head{margin:10px 0 0}
+.dgd-sub{margin:10px 0 0}
+#main .dg-chap.open{padding-bottom:var(--s6)}
+.dg-close{margin:var(--s5) 0 6px}
+#dg-all{margin:20px 0 4px;padding:10px 6px}
+/* ═══ v6 · ZEN JOINS THE VOICE — the one-pager wears the same serif statement and the
+   same tight letterfit as the full face; nothing else about zen moves ═══ */
+.zen-view h1{font:800 clamp(28px,3.4vw,38px)/1.16 var(--display2);letter-spacing:-.03em}
+.zen-view .z-sub{max-width:62ch}
+.zen-view .z-sec{margin-top:34px}
+#dg-all{display:block;margin:16px 0 0;border:0;background:none;color:var(--ink-faint);font:600 11px/1 var(--mono);letter-spacing:.06em;cursor:pointer;padding:8px 6px}
+#dg-all:hover{color:var(--accent)}
+@media print{#dg-all{display:none!important}}
+/* work on a phone → the swipe rail (the deck's grammar): cards in one snapping row */
+@media(max-width:600px){
+  #work .cases{grid-auto-flow:column;grid-auto-columns:84vw;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+  #work .cases>*{scroll-snap-align:center}
+  #work .cases .award{grid-column:auto}
+  #work .cases::after{content:"swipe →";display:grid;place-items:center;min-width:72px;font:600 11px/1 var(--mono);color:var(--ink-faint)}
+  .standfirst{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+}
 </style>
 <script>
 "use strict";
@@ -1169,9 +1286,15 @@ function peekSceneHTML(slug,m){
 function renderJourney(){
   var d=ST.data.journey;
   if(!d)return '<section class="section" id="journey">'+folio("journey","")+noticeMissing(fileOf("journey"))+"</section>";
+  /* DIGEST law: every entry lands as ONE ruled line (period · role · kind) — the way a
+     recruiter actually scans a journey; the bullet block unfolds per row, reader's choice.
+     Entries with no body (certs) stay plain rows, exactly as before. */
   var inner='<div class="j-rows">'+d.entries.map(function(e){
     var m=e.meta,role=L(m,"role")||L(m,"title"),org=L(m,"org");
-    return '<div class="j-row"><span class="j-period">'+esc(one(m.period)||"")+'</span><div class="j-head"><h3>'+esc(role)+(org?" · "+esc(org):"")+'</h3><span class="j-kind">'+esc(L(m,"kind"))+'</span></div><div class="j-body"><div class="fold" style="--foldn:3">'+mdBlocks(LB(e))+"</div></div></div>";
+    var head='<span class="j-period">'+esc(one(m.period)||"")+'</span><div class="j-head"><h3>'+esc(role)+(org?" · "+esc(org):"")+'</h3><span class="j-kind">'+esc(L(m,"kind"))+'</span></div>';
+    var body=mdBlocks(LB(e));
+    if(!body.trim())return '<div class="j-row">'+head+"</div>";
+    return '<details class="j-row"><summary>'+head+'<span class="j-chev" aria-hidden="true">▾</span></summary><div class="j-body">'+body+"</div></details>";
   }).join("")+"</div>";
   return '<section class="section" id="journey">'+folio("journey",S("fig_journey",{n:d.entries.length}))+inner+"</section>";
 }
@@ -1179,10 +1302,17 @@ function renderVoices(){
   var d=ST.data.voices,inner;
   if(!d)inner=noticeMissing(fileOf("voices"));
   else if(!d.entries.length)inner='<div class="empty"><p>'+esc(S("empty_voices"))+"</p></div>";
-  else inner='<div class="quotes" role="list">'+d.entries.map(function(e){
-    var m=e.meta;
-    return '<figure class="quote" role="listitem" data-spec="--surface,--accent"><blockquote><div class="fold" style="--foldn:5">'+mdBlocks(LB(e))+'</div></blockquote><figcaption><strong>'+esc(L(m,"name")||e.slug)+"</strong>"+(L(m,"role")?'<span class="q-role">'+esc(L(m,"role"))+"</span>":"")+(L(m,"source")?'<span class="q-src">'+esc(L(m,"source"))+"</span>":"")+"</figcaption></figure>";
-  }).join("")+"</div>";
+  else{
+    /* DIGEST law: the two lead voices carry the proof; the rest wait behind the same
+       disclosure bar the ledger taught (social proof = one vivid line, not volume) */
+    var qf=function(e){
+      var m=e.meta;
+      return '<figure class="quote" role="listitem" data-spec="--surface,--accent"><blockquote><div class="fold" style="--foldn:5">'+mdBlocks(LB(e))+'</div></blockquote><figcaption><strong>'+esc(L(m,"name")||e.slug)+"</strong>"+(L(m,"role")?'<span class="q-role">'+esc(L(m,"role"))+"</span>":"")+(L(m,"source")?'<span class="q-src">'+esc(L(m,"source"))+"</span>":"")+"</figcaption></figure>";
+    };
+    var qlead=d.entries.slice(0,2),qrest=d.entries.slice(2);
+    inner='<div class="quotes" role="list">'+qlead.map(qf).join("")+"</div>";
+    if(qrest.length)inner+='<details class="ledger dg" id="voices-more" style="margin-top:12px"><summary><span class="lg-em" aria-hidden="true">💬</span>'+esc(ST.lang==="id"?"Suara lainnya":"More voices")+'<span class="lg-n">'+qrest.length+'</span><span class="lg-chev" aria-hidden="true">▾</span></summary><div class="ledger-in"><div class="quotes" role="list">'+qrest.map(qf).join("")+"</div></div></details>";
+  }
   var n=d?d.entries.length:0;
   return '<section class="section" id="voices">'+folio("voices",S("fig_voices",{n:n}))+inner+"</section>";
 }
@@ -1195,12 +1325,22 @@ function renderAbout(){
   var stats=prof.entries.filter(function(e){return e.meta.kind==="stat"});
   /* v6.8d — the "Now" card was retired (owner call: it demanded constant upkeep);
      the About side keeps its one decorative art panel (slot-2). */
-  var inner='<div class="about-grid"><div>'+(about?'<div class="fold" style="--foldn:12">'+mdBlocks(LB(about))+"</div>":"")+"</div>"
+  var inner='<div class="about-grid"><div>'+(about?'<div class="fold" style="--foldn:8">'+mdBlocks(LB(about))+"</div>":"")+"</div>"
     +'<div class="about-side">'
     +'<div class="panel"><div class="slot slot-2" data-slot="2" aria-hidden="true"></div></div>'
     +"</div></div>";
   if(stats.length)inner+='<h3 class="pr-h" style="margin-top:var(--s6)">'+esc(S("stats_title"))+'</h3><div class="stats" role="list">'+stats.map(function(g){return '<div class="stat" role="listitem"><span class="stat-value">'+esc(one(g.meta.value)||"")+'</span><span class="stat-label">'+esc(L(g.meta,"label"))+"</span></div>"}).join("")+"</div>";
-  if(skills.length)inner+='<div class="skills" id="skills">'+skills.map(function(g){return '<div class="skills-group"><h4>'+esc(L(g.meta,"name"))+'</h4><div class="chips">'+LA(g.meta,"tag").map(chipHtml).join("")+"</div></div>"}).join("")+"</div>";
+  if(skills.length){
+    /* DIGEST law: DESIGN + TOOLS stand at scan altitude (the recruiter's first read);
+       the code & AI stack — the depth — waits behind the toolbox bar */
+    var sg=function(g){return '<div class="skills-group"><h4>'+esc(L(g.meta,"name"))+'</h4><div class="chips">'+LA(g.meta,"tag").map(chipHtml).join("")+"</div></div>"};
+    var slead=skills.slice(0,2),srest=skills.slice(2);
+    inner+='<div class="skills" id="skills">'+slead.map(sg).join("")+"</div>";
+    if(srest.length){
+      var ntool=srest.reduce(function(a,g){return a+LA(g.meta,"tag").length},0);
+      inner+='<details class="ledger dg" id="toolbox" style="margin-top:12px"><summary><span class="lg-em" aria-hidden="true">🧰</span>'+esc(ST.lang==="id"?"Kotak alat lengkap — code & AI stack":"The full toolbox — code & AI stack")+'<span class="lg-n">'+ntool+'</span><span class="lg-chev" aria-hidden="true">▾</span></summary><div class="ledger-in"><div class="skills">'+srest.map(sg).join("")+"</div></div></details>";
+    }
+  }
   return '<section class="section" id="about">'+folio("about",S("fig_about",{n:stats.length}))+inner+"</section>";
 }
 /* v6.7 — THE THIRD FACE (PRD §13): the self-contained AI dossier. Copied, never
@@ -1324,16 +1464,44 @@ function zenTip(){
 var tourIx=-1;
 function tourSteps(){
   var isMac=/Mac|iPhone|iPad/.test(navigator.platform||"");
-  var vis=function(el){if(!el||!el.getBoundingClientRect)return null;var r=el.getBoundingClientRect();return (r.width>0||r.height>0)?el:null};
-  /* owner call 2026-07-18: the FACE SWITCH is station 2 (the one thing a visitor must
-     not miss — the whole tools estate lives one flip away); the Backstage station is
-     GONE (a labelled door explains itself — the tour should sell the work, not the
-     harness). Still six stations. */
+  /* OUTLINE face: an element inside a CLOSED chapter is still a legal station — the
+     tour opens its door on arrival (tourShow), so visibility is checked leniently */
+  var vis=function(el){if(!el||!el.getBoundingClientRect)return null;var r=el.getBoundingClientRect();if(r.width>0||r.height>0)return el;return (el.closest&&el.closest(".dg-chap:not(.open)"))?el:null};
+  /* THE GRAND TOUR (owner call: the retired stations are replaced with a FULLER walk —
+     13 stations, each one clear; the doors lead because the outline IS this face's big
+     idea; every station inside a chapter opens its own door on arrival). Lit strings
+     are bilingual inline (preview-only — no shared content edits). */
+  var ID=ST.lang==="id";
+  var LIT={
+    doors:ID?{t:"Delapan bab, delapan pintu",b:"Seluruh cerita ada di halaman ini — tapi terlipat rapi. Tiap baris adalah pintu: klik untuk membuka babnya, klik lagi untuk melipatnya. Tak ada yang memaksamu membaca semuanya."}
+            :{t:"Eight chapters, eight doors",b:"The whole story lives on this one page — folded neatly. Every row is a door: click to open its chapter, click again to fold it back. Nothing makes you read it all."},
+    all:ID?{t:"Sekali tekan, semuanya terbentang",b:"Lebih suka membaca klasik dari atas ke bawah? Tombol ini membuka kedelapan bab sekaligus — dan tiap pintu tetap bisa diklik untuk melipatnya kembali."}
+          :{t:"One press, the whole scroll",b:"Prefer the classic top-to-bottom read? This unfolds all eight chapters at once — and every door stays clickable to fold any of them back."},
+    rail:ID?{t:"Petamu, selalu terjangkau",b:"Indeks bab menemanimu di samping (atau sebagai deretan chip di layar kecil). Klik bab mana pun untuk melompat langsung menembus pintunya."}
+           :{t:"Your map, always in reach",b:"The chapter index rides beside you (or as a chip row on smaller screens). Click any chapter to jump straight through its door."},
+    theme:ID?{t:"Terang, gelap — terserahmu",b:"Satu sentuhan membalik seluruh palet halaman. Pilihanmu diingat di perangkat ini."}
+            :{t:"Light, dark — your call",b:"One tap flips the whole page's palette. Your choice is remembered on this device."},
+    lang:ID?{t:"Dua bahasa, satu cerita",b:"EN ⇄ ID — setiap bab, kasus, dan keterangan ditulis dua kali oleh tangan yang sama. Ganti kapan pun; tidak ada yang diterjemahkan mesin."}
+           :{t:"Two languages, one story",b:"EN ⇄ ID — every chapter, case, and caption is written twice by the same hand. Switch any time; nothing is machine-translated."},
+    ledger:ID?{t:"Arsip di bawah kasus-kasus",b:"Tujuh kasus pilihan berdiri di atas — tapi SEMUA proyek terdokumentasi menunggu di sini, 29 catatan dalamnya. Bentangkan saat kamu ingin buku besarnya."}
+             :{t:"The records under the cases",b:"Seven curated cases stand up top — but EVERY documented project waits here, 29 records deep. Unfold it when you want the whole ledger."},
+    anchor:ID?{t:"Pintunya ikut bersamamu",b:"Saat kamu membaca jauh ke dalam bab, bilah judulnya tetap tersemat di sini — satu klik melipat bab dan mengantarmu pulang ke indeks. Ada pil kembarannya di ekor tiap bab."}
+             :{t:"The door rides with you",b:"Deep inside a chapter, its title bar stays pinned up here — one click folds the chapter and lands you back on the index. A twin pill waits at every chapter's tail."},
+    journey:ID?{t:"Perjalanan yang bisa dipindai",b:"Tiap era satu baris — periode, peran, tempat. Buka hanya baris yang kamu pedulikan; detailnya menunggu di dalam, seperti CV yang tahu diri."}
+              :{t:"A journey you can scan",b:"Each era is one line — period, role, place. Open only the rows you care about; the details wait inside, like a CV with manners."}
+  };
   return [
-    {el:vis($("#modeswitch")),t:"tour_1_t",b:"tour_1_b"},
+    {el:vis($("#work .folio")),lit:LIT.doors},
+    {el:vis($("#dg-all")),lit:LIT.all},
+    {el:vis($("#rail"))||vis($("#railbar")),lit:LIT.rail},
     {el:vis($("#faceswitch")),t:"tour_sw_t",b:"tour_sw_b"},
-    {el:vis($("#railbar"))||vis($("#rail")),t:"tour_2_t",b:"tour_2_b"},
+    {el:vis($("#btn-theme")),lit:LIT.theme},
+    {el:vis($("#btn-lang")),lit:LIT.lang},
+    {el:vis($("#modeswitch")),t:"tour_1_t",b:"tour_1_b"},
     {el:vis($("#work .case")),t:"tour_3_t",b:"tour_3_b"},
+    {el:vis($("#ledger")),lit:LIT.ledger},
+    {el:vis($("#work .folio")),lit:LIT.anchor},
+    {el:vis($("#journey .j-rows")),lit:LIT.journey},
     {el:vis($("#family .wall")),t:"tour_4_t",b:"tour_4_b"},
     {el:vis($("#btn-palette")),t:"tour_5_t",b:"tour_5_b",repl:{kbd:isMac?"⌘K":"Ctrl K"}}
   ].filter(function(s){return !!s.el});
@@ -1357,7 +1525,12 @@ function tourShow(){
   if(tourIx<0)return;
   if(tourIx>=steps.length){endTour(true);return}
   var s=steps[tourIx],card=$("#tour .tour-card");
-  card.innerHTML='<p class="tour-step">'+(tourIx+1)+" / "+steps.length+"</p><h3>"+esc(S(s.t))+"</h3><p>"+esc(S(s.b,s.repl))+"</p>"
+  /* outline: arriving at a station INSIDE a closed chapter opens its door first (the
+     door station itself stays closed — it is showing you the doors); remember what the
+     tour opened so endTour can fold the page back to its calm cover */
+  var sec=s.el.closest?s.el.closest(".dg-chap"):null;
+  if(sec&&!s.el.classList.contains("folio")&&!sec.classList.contains("open")){openChapter(sec.id);tourOpened.push(sec.id)}
+  card.innerHTML='<p class="tour-step">'+(tourIx+1)+" / "+steps.length+"</p><h3>"+esc(s.lit?s.lit.t:S(s.t))+"</h3><p>"+esc(s.lit?s.lit.b:S(s.b,s.repl))+"</p>"
     +'<div class="tour-nav">'
     +(tourIx>0?'<button class="btn btn--ghost btn--sm" data-tour="back" type="button">'+esc(S("tour_back"))+"</button>":"")
     +'<button class="btn btn--ghost btn--sm" data-tour="skip" type="button">'+esc(S("tour_skip"))+"</button>"
@@ -1372,14 +1545,19 @@ function startTour(){
   if(!$("#palette").hidden)closePalette();
   if(!$("#peek").hidden)closePeek(true);
   killTourChip();
+  tourOpened=[]; /* outline: chapters open PER STATION (tourShow); this tracks them so the finish folds the cover back */
   tourIx=0;$("#tour").classList.add("placing");$("#tour").hidden=false; /* invisible until station 1 is placed */
   window.addEventListener("scroll",tourPos,{passive:true});
   window.addEventListener("resize",tourPos);
   tourShow();
 }
+var tourOpened=[];
 function endTour(finished){
   if(tourIx<0)return;
   tourIx=-1;$("#tour").hidden=true;
+  /* outline: fold back what the tour opened — the reader lands on the calm cover again */
+  tourOpened.forEach(function(id){var s=document.getElementById(id);if(s&&s.classList.contains("open")){s.classList.remove("open");delete dgOpen[id];var f=s.querySelector(".folio");if(f)f.setAttribute("aria-expanded","false")}});
+  tourOpened=[];
   window.removeEventListener("scroll",tourPos);
   window.removeEventListener("resize",tourPos);
   try{localStorage.setItem("ala_tour","1");localStorage.setItem("ala_zen_tip","1")}catch(e){}
@@ -1579,7 +1757,7 @@ function initObservers(){
       if(en.isIntersecting){
         ST.active=en.target.id;
         $$("#rail a,#railbar a").forEach(function(a){a.classList.toggle("active",a.getAttribute("data-toc")===en.target.id)});
-        armRead(en.target.id); /* v6.5 — the dwell clock starts when a chapter takes the stage */
+        if(en.target.classList.contains("open")||!en.target.classList.contains("dg-chap"))armRead(en.target.id); /* outline: a CLOSED door earns no read — dwell only counts inside an opened chapter */
       }
     });
   },{rootMargin:"-25% 0px -65% 0px"});
@@ -1596,6 +1774,88 @@ function initReveal(){
   revObs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");revObs.unobserve(en.target)}})},{rootMargin:"0px 0px -8% 0px",threshold:.06});
   $$("#main .section").forEach(function(s){if(!s.classList.contains("in")){s.classList.add("rev");revObs.observe(s)}});
 }
+/* ═══ OUTLINE FACE (digest v2) — the chapters land CLOSED behind their folio doors.
+   dgOutline runs in the same synchronous render tick (no flash); dgOpen survives a
+   language re-render; every navigation door (hash, rail, tour, print) opens first. ═══ */
+var dgOpen={};
+function openChapter(id){
+  var s=document.getElementById(id);
+  if(!s||!s.classList.contains("dg-chap"))return;
+  if(!s.classList.contains("open")){
+    s.classList.add("open");dgOpen[id]=1;
+    var f=s.querySelector(".folio");if(f)f.setAttribute("aria-expanded","true");
+  }
+}
+function dgToggle(s){
+  if(s.classList.contains("open")){
+    s.classList.remove("open");delete dgOpen[s.id];
+    var f=s.querySelector(".folio");
+    if(f){f.setAttribute("aria-expanded","false");f.scrollIntoView({block:"center"})} /* land back ON the door — never stranded in a collapsed page */
+  }else openChapter(s.id);
+}
+function dgOutline(){
+  $$("#main .section").forEach(function(s){
+    var f=s.querySelector(".folio");if(!f)return;
+    s.classList.add("dg-chap");
+    f.setAttribute("role","button");f.setAttribute("tabindex","0");
+    f.setAttribute("aria-expanded",dgOpen[s.id]?"true":"false");
+    /* the door's voice: the chapter's statement headline. Contact keeps its statement
+       in the ink close — the door borrows THAT line (same data, zero new copy), so all
+       eight doors speak the same pattern (owner catch: contact broke the rhythm) */
+    var head=NH(s.id);
+    if(!head&&s.id==="contact"&&ST.data.contact)ST.data.contact.entries.forEach(function(e){if(e.slug==="contact")head=L(e.meta,"headline")});
+    f.insertAdjacentHTML("beforeend",head?'<p class="dgd-head">'+emphasize(head)+"</p>":'<p class="dgd-sub">'+esc(NS(s.id)||"")+"</p>");
+    var cb=document.createElement("button");
+    cb.type="button";cb.className="dg-close";
+    cb.textContent=(ST.lang==="id"?"↑ lipat bab ini":"↑ fold this chapter");
+    cb.addEventListener("click",function(ev){ev.stopPropagation();dgToggle(s)});
+    s.appendChild(cb);
+    if(dgOpen[s.id])s.classList.add("open");
+  });
+  var first=$("#main .dg-chap");if(first)first.classList.add("dg-first"); /* the seam under the hero */
+  var isOutline=!!first; /* zen renders NO doors — the unfold-all button is a full-face affair (owner catch: it leaked into zen) */
+  /* owner call: the kicker drops the village — "Sukabumi, Indonesia" places it fine
+     (content/*.md is shared with the live face, so the trim lives here, render-time;
+     zen's kicker gets the same trim — setZen re-runs this whole chain) */
+  $$("#top .kicker,#zen .z-kicker").forEach(function(kk){kk.textContent=kk.textContent.replace(/Cibadak,\s*/i,"")});
+  /* owner call: "Say hi" rides LinkedIn (the URL comes from the socials DATA, never
+     typed here) — in BOTH faces; the Email buttons keep their mailto and gain the
+     copy-that-always-works click (delegated below) */
+  var li=null;
+  if(ST.data.contact)ST.data.contact.entries.forEach(function(e){if(e.slug==="socials")parseLinks(e.meta,"contact.md#socials").forEach(function(l){if(/linkedin/i.test((l.label||"")+" "+l.url))li=l.url})});
+  if(li)$$('#main a[href^="mailto:"]').forEach(function(a){
+    if(/say hi|sapa/i.test(a.textContent)){a.setAttribute("href",li);a.setAttribute("target","_blank");a.setAttribute("rel","noopener")}
+  });
+  if(isOutline){
+    var all=document.createElement("button");
+    all.id="dg-all";all.type="button";
+    all.textContent=ST.lang==="id"?"bentangkan semuanya ↓":"unfold everything ↓";
+    all.addEventListener("click",function(){$$("#main .dg-chap").forEach(function(s){openChapter(s.id)});all.remove()});
+    $("#main").appendChild(all);
+  }
+}
+document.addEventListener("click",function(ev){
+  var f=ev.target.closest?ev.target.closest("#main .dg-chap .folio"):null;
+  if(!f||ev.target.closest(".mdchip"))return;
+  dgToggle(f.closest(".section"));
+});
+/* owner catch: "Email me belum works" — a machine without a mail client swallows a
+   mailto click in silence. The click now COPIES the address and says so (the palette's
+   own toast_email string), deterministic on every machine; the href stays mailto for
+   anyone who deliberately opens it in a new tab. Both faces, one delegate. */
+document.addEventListener("click",function(ev){
+  var a=ev.target.closest?ev.target.closest('a[href^="mailto:"]'):null;
+  if(!a)return;
+  ev.preventDefault();
+  var em=a.getAttribute("href").replace(/^mailto:/,"").split("?")[0];
+  var done=function(){toast(S("toast_email"))};
+  try{navigator.clipboard.writeText(em).then(done,done)}catch(e){done()}
+});
+document.addEventListener("keydown",function(ev){
+  if((ev.key==="Enter"||ev.key===" ")&&ev.target&&ev.target.classList&&ev.target.classList.contains("folio")){
+    ev.preventDefault();dgToggle(ev.target.closest(".section"));
+  }
+});
 /* v6.3 — progressive disclosure: fold any .fold body that actually overflows its
    clamp; bodies that fit stay untouched (no toggle for nothing) */
 function initFolds(root){
@@ -1620,7 +1880,7 @@ function renderAll(){
   document.documentElement.lang=ST.lang;
   document.documentElement.classList.toggle("zen",!!ST.zen);
   $(".skip").textContent=S("skip");
-  renderTopbar();renderRail();renderMain();renderFooter();renderModeSwitch();buildPaletteIndex();initObservers();initReveal();initFolds();hydrateVisits();hydrateMotion();
+  renderTopbar();renderRail();renderMain();renderFooter();renderModeSwitch();buildPaletteIndex();initObservers();initReveal();initFolds();dgOutline();hydrateVisits();hydrateMotion();
   if(ST.spec)renderSpecPanel();
 }
 /* ═══ slots ═══ */
@@ -1677,7 +1937,7 @@ function route(initial){
   if(ST.peek)closePeek(true);
   if(h.length>1){
     var el=document.getElementById(h.slice(1));
-    if(el)el.scrollIntoView({block:"start"});
+    if(el){openChapter(h.slice(1));el.scrollIntoView({block:"start"})} /* outline: a navigation IS a request to enter */
     else{window.scrollTo(0,0);toast(S("toast_unknown"))}
   }
 }
@@ -2089,6 +2349,7 @@ function selfTestSuite(){
     setZen(was,true);
     return okk&&document.documentElement.classList.contains("zen")===was});
   t("the tour stations: the face switch is in, the Backstage stop is out",function(){
+    $$("#main .dg-chap").forEach(function(s){openChapter(s.id)}); /* outline: the tour opens the story first (same law as startTour) */
     var st=tourSteps();
     return [st.some(function(s){return s.t==="tour_sw_t"})&&!st.some(function(s){return s.t==="tour_6_t"})&&st.length>=5,"stations "+st.length]});
   t("the bottom-left controls are perfect circles (switch thumb + top button)",function(){
@@ -2114,8 +2375,40 @@ function selfTestSuite(){
     var s=embeddedText('script[type="text/svg-slot"][data-slot="1"]')||"";
     return s.indexOf("RAW COMPLEXITY")>=0&&s.indexOf("CALM PRODUCT")>=0});
   t("the Index chip fronts the palette",function(){var c=$("#pal-count");return !!c&&c.textContent===pad(NAV.length)});
-  t("long bodies fold behind quiet toggles (journey folds, print unfolds all)",function(){
-    return $$("#journey .fold").length>=6&&$$(".fold-btn").length>=1});
+  t("digest law: journey is a CV scan — rows closed, depth unfolds per row",function(){
+    return $$("#journey details.j-row").length>=5&&$$("#journey details.j-row[open]").length===0&&$$(".fold-btn").length>=1});
+  t("digest law: two lead voices + the More-voices bar; toolbox bar seats the stack",function(){
+    return $$("#voices>.quotes .quote").length===2&&!!$("#voices-more .lg-n")&&!!$("#toolbox .lg-n")});
+  t("outline law: every chapter wears a folio DOOR (button + aria-expanded)",function(){
+    var cs=$$("#main .dg-chap");
+    return cs.length>=8&&cs.every(function(s){var f=s.querySelector(".folio");return f&&f.getAttribute("role")==="button"&&f.hasAttribute("aria-expanded")})&&typeof openChapter==="function"});
+  t("outline law: ALL eight doors speak a statement HEADLINE (contact borrows its close) + carry the fold-back pill",function(){
+    var cs=$$("#main .dg-chap");
+    return cs.every(function(s){return !!s.querySelector(".folio .dgd-head")&&!!s.querySelector(".dg-close")})});
+  t("outline law: the statement voice is the serif display (Georgia rides every headline)",function(){
+    return ["#top h1",".fol-head .fh",".dgd-head"].every(function(sel){var el=$(sel);return !!el&&/georgia/i.test(getComputedStyle(el).fontFamily)})});
+  t("polish: the kicker places by city, not village (no Cibadak)",function(){
+    var k=$("#top .kicker");return !!k&&!/cibadak/i.test(k.textContent)&&/sukabumi/i.test(k.textContent)});
+  t("polish: the ToC wears no read-ticks (the arc still counts quietly)",function(){
+    var a=$("#rail a")||$("#railbar a");if(!a)return false;
+    var had=a.classList.contains("read");a.classList.add("read");
+    var c=getComputedStyle(a,"::after").content;if(!had)a.classList.remove("read");
+    return c==="none"});
+  t("CTAs: Say-hi rides LinkedIn (from the socials data) and the Email door keeps its mailto",function(){
+    var say=$$("#main a").filter(function(a){return /say hi|sapa/i.test(a.textContent)})[0];
+    var em=$$('#main a[href^="mailto:"]').filter(function(a){return /email/i.test(a.textContent)})[0];
+    return !!say&&/linkedin\.com/i.test(say.getAttribute("href"))&&say.getAttribute("target")==="_blank"&&!!em});
+  t("zen joins the voice: serif h1, trimmed kicker, LinkedIn Say-hi — then restores",function(){
+    var was=!!ST.zen;setZen(true,true);
+    var h=$("#zen h1"),k=$("#zen .z-kicker");
+    var say=$$("#zen a").filter(function(a){return /say hi|sapa/i.test(a.textContent)})[0];
+    var okk=!!h&&/georgia/i.test(getComputedStyle(h).fontFamily)&&!!k&&!/cibadak/i.test(k.textContent)&&!!say&&/linkedin\.com/i.test(say.getAttribute("href"));
+    setZen(was,true);return okk});
+  t("the grand tour walks THIRTEEN stations (doors first, anchor + ledger + journey taught)",function(){
+    var st=tourSteps();
+    return st.length===13&&!!(st[0].lit)&&st.some(function(s){return s.lit&&/rides with you|ikut bersamamu/i.test(s.lit.t)})&&st.some(function(s){return s.lit&&/records|arsip/i.test(s.lit.t)})});
+  t("outline law: the tour's first station is the doors themselves",function(){
+    var st=tourSteps();return !!(st[0]&&st[0].lit&&/doors|pintu/i.test(st[0].lit.t))&&st.length>=6});
   t("the mode switch wears icons + the thumb + accessible names",function(){
     var ms=$("#modeswitch");if(!ms)return false;
     return !!ms.querySelector(".ms-thumb")&&ms.querySelectorAll("button svg").length===2
@@ -2166,7 +2459,7 @@ function selfTestSuite(){
     try{if(keep!==null)localStorage.setItem("ala_read",keep)}catch(e){}
     if(readTimer){clearTimeout(readTimer);readTimer=null}
     return quiet});
-  t("the tour walks six stations and leaves no residue",function(){
+  t("the tour opens clean and leaves no residue (station count pinned by its own row above)",function(){
     var kt=null,ko=null,kz=null,wasZen=!!ST.zen;
     try{kt=localStorage.getItem("ala_tour");ko=localStorage.getItem("ala_tour_offer");kz=localStorage.getItem("ala_zen_tip")}catch(e){}
     var n=tourSteps().length;
@@ -2180,7 +2473,7 @@ function selfTestSuite(){
       ko===null?localStorage.removeItem("ala_tour_offer"):localStorage.setItem("ala_tour_offer",ko);
       kz===null?localStorage.removeItem("ala_zen_tip"):localStorage.setItem("ala_zen_tip",kz);
     }catch(e){}
-    return [n===6&&open&&closed,"stations "+n]});
+    return [n===13&&open&&closed,"stations "+n]});
   t("the one-bubble law — the offer resolves before the zen tip",function(){
     var kt=null,ko=null,kz=null;
     try{kt=localStorage.getItem("ala_tour");ko=localStorage.getItem("ala_tour_offer");kz=localStorage.getItem("ala_zen_tip")}catch(e){}
@@ -2356,6 +2649,15 @@ function init(){
   $("#pal-input").addEventListener("input",function(ev){palFilter(ev.target.value)});
   $("#topbtn").addEventListener("click",function(){window.scrollTo({top:0});setHash("",true)});
   $("#tourbtn").addEventListener("click",function(){startTour()}); /* the standing tour door (owner call 2026-07-19) */
+  /* DIGEST law: print unfolds every chapter, accordion + disclosure — the page prints whole */
+  window.addEventListener("beforeprint",function(){
+    $$("#main .dg-chap:not(.open)").forEach(function(s){s.setAttribute("data-dg-print","1");s.classList.add("open")});
+    $$("details:not([open])").forEach(function(dd){dd.setAttribute("data-dg-print","1");dd.setAttribute("open","")});
+  });
+  window.addEventListener("afterprint",function(){
+    $$("#main .dg-chap[data-dg-print]").forEach(function(s){s.classList.remove("open");s.removeAttribute("data-dg-print")});
+    $$("details[data-dg-print]").forEach(function(dd){dd.removeAttribute("open");dd.removeAttribute("data-dg-print")});
+  });
   window.addEventListener("scroll",function(){$("#topbtn").classList.toggle("show",window.scrollY>window.innerHeight*2);hideChip()},{passive:true});
   window.addEventListener("hashchange",function(){route(false)});
   if(window.matchMedia){try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(){if(ST.theme==="system"){applyThemeAttr();applyAccent()}})}catch(e){}}
