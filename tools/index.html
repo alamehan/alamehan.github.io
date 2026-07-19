@@ -244,12 +244,14 @@ tr.seen td:first-child{box-shadow:inset 3px 0 0 var(--ok)}
    wheel TURNS — slow and smooth, hero-orbit style: attention (hover/focus) eases it to a
    crawl, never a freeze; reduced-motion parks it entirely. The Expedition still reads
    best here: opened tools wear their accent (same ala_seen_* set — one memory). Emojis
-   counter-rotate via one CSS var so they stay upright at every wheel angle. */
+   counter-rotate (SVG transform attributes — see the turn loop) to stay upright. */
 .orbit-stage{display:flex;align-items:center;gap:12px;max-width:640px;margin:0 auto}
 .orbit-disc{position:relative;flex:1;min-width:0;animation:orise .45s ease-out}
 @keyframes orise{from{opacity:0;transform:scale(.97)}}
 .orbit-view-svg{display:block;width:100%;height:auto}
-#oring{transform-box:view-box;transform-origin:384px 384px;will-change:transform}
+/* the wheel + its upright emojis turn via SVG transform ATTRIBUTES (rotate(a cx cy)) —
+   never CSS transforms: iOS Safari mis-computes transform-box/transform-origin on SVG
+   internals, which sent every emoji flying off its segment on mobile (owner catch) */
 .oseg{cursor:pointer;outline:none;transition:transform .16s ease-out}
 .oseg path{fill:var(--wash);stroke:var(--surface);stroke-width:2;transition:fill .16s ease-out}
 .oseg:hover path{fill:color-mix(in srgb,var(--oa) 12%,var(--wash))}
@@ -257,7 +259,7 @@ tr.seen td:first-child{box-shadow:inset 3px 0 0 var(--ok)}
 .oseg.sel{transform:translate(var(--ox),var(--oy))}
 .oseg.sel path{fill:var(--oa)}
 .oseg:focus-visible path{stroke:var(--ink);stroke-width:2.5}
-.oseg .oem{font-size:24px;pointer-events:none;transform-box:fill-box;transform-origin:center;transform:rotate(var(--wrn,0deg))}
+.oseg .oem{font-size:24px;pointer-events:none}
 .oseg.ghost{opacity:.13;pointer-events:none}
 .ohub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:71%;aspect-ratio:1;border-radius:50%;background:var(--surface);border:1px solid color-mix(in srgb,var(--ha,transparent) 32%,var(--hairline));box-shadow:var(--elev-1);display:grid;place-items:center;text-align:center;overflow:hidden;transition:border-color .2s ease-out}
 .ohub-in{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:86%;animation:ofade .18s ease-out}
@@ -338,6 +340,7 @@ h2 .n{font-size:12px;color:var(--ink-faint);font-weight:500}
 .badge.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,#fff);background:color-mix(in srgb,var(--ok) 8%,#fff)}
 /* live signals — the per-card visitor chip (subtle, in the card foot / status cell) */
 .pv{display:inline-flex;align-items:center;gap:5px;margin-left:auto;font:600 11px/1 var(--mono);color:var(--ink-muted);white-space:nowrap}
+.pv[hidden]{display:none!important}/* live-or-nothing: display:inline-flex would beat the UA [hidden] rule and leak an empty shell while the count waits (owner catch on the deployed estate) */
 .apps-tbl .pv{margin-left:10px}
 .pv .pv-eye{opacity:.7;font-family:initial}
 .pv b{color:var(--accent);font-weight:700}
@@ -2358,7 +2361,9 @@ function dcardHTML(a,pos){
   const sc=document.querySelector(`template[data-motion="${a.slug}/scene"]`);
   const ic=document.querySelector(`template[data-motion="${a.slug}/icon"]`);
   /* Full story = the product's Leaf on the portfolio (one source of truth, planted in
-     Phase 5): deployed → walk up to the site root; workspace → the orbit source */
+     Phase 5): deployed → walk up to the site root; workspace → the orbit source. It
+     opens a NEW TAB (owner call 2026-07-19) — a story detour must not lose the browse;
+     only the face switch itself rides the same tab. */
   const story=(PUBLIC?"../index.html":"../05-orbit/site/index.html")+"#/crafts/"+a.slug;
   return `<article class="dcard ${pos===0?"dp0":"dpn dp"+pos}${EXP.has(a.slug)?" seen":""}"${pos===0?"":' aria-hidden="true"'} data-slug="${esc(a.slug)}" data-off="${pos}"${pos!==0?` title="${esc(a.name)} — bring to front"`:""}>
     <span class="dplaque" aria-hidden="true">${esc(a.emoji)}</span>
@@ -2366,7 +2371,7 @@ function dcardHTML(a,pos){
     ${sc?`<div class="dmat"><span class="mo-mount" data-mo="${esc(a.slug)}/scene"></span></div>`:""}
     <div class="did">${ic?`<span class="dic mo-mount" data-mo="${esc(a.slug)}/icon" aria-hidden="true"></span>`:""}<span class="dn"><b>${esc(a.name)}</b><span class="slug">${esc(a.slug)} · ${esc(a.v)}</span></span></div>
     <span class="dtag">${esc(a.tagline)}</span>
-    <span class="dfoot"><span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)}</span>${visChip(a)}<a class="storybtn" href="${esc(story)}">Full story</a><a class="openbtn" href="${esc(a.file)}">Open ↗</a></span>
+    <span class="dfoot"><span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)}</span>${visChip(a)}<a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a><a class="openbtn" href="${esc(a.file)}">Open ↗</a></span>
   </article>`;
 }
 function deckHTML(list){
@@ -2488,7 +2493,8 @@ function orbitHTML(full,list){
     const [ex,ey]=P(RM,mid);
     const ghost=!match.has(a.slug), seen=EXP.has(a.slug);
     /* emoji-only segments (owner rev 2) — the native <title> + the hub carry the words;
-       each emoji counter-rotates via --wrn so it stays upright at every wheel angle */
+       each emoji counter-rotates via its SVG transform attribute (set by the turn loop)
+       so it stays upright at every wheel angle, on every browser */
     return `<g class="oseg${seen?" seen":""}${a.slug===orbitSel?" sel":""}${ghost?" ghost":""}"${ghost?"":' tabindex="0" role="button"'} data-oseg="${esc(a.slug)}" aria-label="${esc(a.emoji)} ${esc(a.name)} ${esc(a.v)}${seen?" — opened":""}" style="--oa:${esc(a.accent)};--ox:${F(10*Math.cos(rad))}px;--oy:${F(10*Math.sin(rad))}px">
       <title>${esc(a.name)} · ${esc(a.v)}${seen?" · opened ✓":""}</title>
       <path d="${d}"/>
@@ -2520,7 +2526,7 @@ function orbitHub(){
     <span class="slug">${esc(a.slug)} · ${esc(a.v)}</span>
     <span class="otag">${esc(a.tagline)}</span>
     <span class="orow"><span class="sw" style="background:${esc(a.accent)}"></span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${seenPill(a)}${visChip(a)}</span>
-    <span class="oacts"><a class="openbtn" href="${esc(a.file)}">Open ↗</a><a class="storybtn" href="${esc(story)}">Full story</a></span>
+    <span class="oacts"><a class="openbtn" href="${esc(a.file)}">Open ↗</a><a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a></span>
   </div>`;
   mountMotion(hub);
   hydrateVisits();
@@ -2554,8 +2560,10 @@ function orbitAfter(){
   /* the turn (owner rev 2) — the hero orbit's exact temperament on the big dial: one
      slow, smooth revolution (~76s); attention (hover/focus) EASES it to a crawl so a
      segment is easy to catch, never a freeze; reduced-motion parks the wheel entirely.
-     Emojis stay upright: the ring rotates +a while every emoji counter-rotates via one
-     shared --wrn custom property. The loop dies with its DOM (isConnected). */
+     Emojis stay upright: the ring rotates +a while every emoji counter-rotates about its
+     own anchor. BOTH ride SVG transform ATTRIBUTES — rotate(a cx cy) — never CSS
+     transforms, which iOS Safari mis-origins on SVG internals (the flying-emoji bug,
+     owner catch 2026-07-19). The loop dies with its DOM (isConnected). */
   const ring=$("oring"), svg=stage.querySelector(".orbit-view-svg");
   if(ring&&svg&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
     let att=false;
@@ -2563,14 +2571,15 @@ function orbitAfter(){
     stage.addEventListener("pointerleave",()=>att=false);
     stage.addEventListener("focusin",()=>att=true);
     stage.addEventListener("focusout",()=>att=false);
+    const oems=[...ring.querySelectorAll(".oem")].map(t=>({t,x:t.getAttribute("x"),y:t.getAttribute("y")}));
     let a=0,f=1,pt=performance.now();
     requestAnimationFrame(function frame(t){
       if(!ring.isConnected)return; /* this render was replaced — the loop retires itself */
       const dt=Math.min(t-pt,100); pt=t;
       f+=((att?0.12:1)-f)*Math.min(1,dt/240);
       a=(a+(360/76000)*f*dt)%360;
-      ring.style.transform=`rotate(${a}deg)`;
-      svg.style.setProperty("--wrn",(-a)+"deg");
+      ring.setAttribute("transform","rotate("+a+" 384 384)");
+      for(const o of oems)o.t.setAttribute("transform","rotate("+(-a)+" "+o.x+" "+o.y+")");
       requestAnimationFrame(frame);
     });
   }
@@ -2670,6 +2679,16 @@ function toolsTip(){
     listEl.innerHTML=tools.map(a=>`<div class="gaunt-row" id="${rowId(a.slug)}"><span class="gr-em" aria-hidden="true">${esc(a.emoji)}</span><span class="gr-n">${esc(a.name)}</span><span class="gr-st">waiting</span></div>`).join("");
     countEl.textContent="0/"+tools.length; countEl.classList.remove("done"); fillEl.style.width="0%";
     veil.classList.add("on"); sheet.hidden=false; closeBtn.focus();
+    /* MOBILE (owner call 2026-07-19): the estate-wide run is a desktop act — phone
+       browsers throttle the 18 sequential live-loads and their boards report false
+       failures. The portfolio hides its Backstage door on coarse-pointer devices; this
+       guard catches the direct ?gauntlet=1 door with the same honest note, never a
+       screen of misleading red. Any single tool still proves itself on a phone. */
+    if(matchMedia("(pointer:coarse)").matches){
+      listEl.innerHTML='<p class="gaunt-note">This estate-wide proof runner is built for a <b>desktop browser</b> — it live-loads all '+tools.length+' tools in sequence, which mobile browsers throttle and cut short, reporting failures that aren’t real. On this device, any single tool still proves itself: open it and add <code>?selftest=1</code>.</p>';
+      countEl.textContent="—"; countEl.classList.remove("done"); fillEl.style.width="0%";
+      return;
+    }
     /* file:// is BROWSER-DEPENDENT, so we PROBE instead of assuming (this replaced a blanket
        refusal that wrongly killed the working case): Firefox lets a file read siblings in its
        own folder — the Gauntlet runs, the classic double-click path — while Chromium treats

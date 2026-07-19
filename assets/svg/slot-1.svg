@@ -1,131 +1,147 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
   <style>
-    /* namespaced a1-/k1: inline SVG styles are DOCUMENT-GLOBAL — never share names across slots.
-       hover layer: transitions + opacity-gated always-running loops (never retime a live animation).
-       ambient loops all share one 4.5s period (gear = 3×) so the scene stays phase-locked forever:
-       three couriers depart together, MERGE at the junction, land as one — then the file writes. */
+    /* slot-1 · THE UNTANGLING — hero art for "Designing calm at the edge of complexity".
+       namespaced a1-/k1: inline SVG styles are DOCUMENT-GLOBAL — never share names across slots.
+       story: three raw, tangled strands enter from the left, pass through the designer's
+       aperture gate, and leave as three calm parallel lines that build one clear product.
+       ambient loops share one 5s period, phase-locked: couriers ride the tangle together,
+       flash the gate, glide out clean, and write the product rows — forever, seamlessly.
+       hover is purely additive (transitions + opacity-gated always-running loops):
+       the tangle dims, its resolved accent paths appear, rows ignite in stagger,
+       and the payoff spark pops — never retime a live animation. */
     .a1-ink{stroke:var(--ink,#171a21)}
     .a1-mut{stroke:var(--ink-faint,#99a0ad)}
-    .a1-acc{stroke:var(--accent,#1747c8)}
-    .a1-accf{fill:var(--accent,#1747c8)}
-    .a1-lbl{font:700 10.5px ui-monospace,Menlo,monospace;fill:var(--ink,#171a21);letter-spacing:.12em;text-anchor:middle}
-    .a1-lbl2{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle}
-    .a1-d1{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .1s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-d2{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .5s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-d3{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .9s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-dp{stroke-dasharray:165;stroke-dashoffset:165;animation:k1dr .55s 1.7s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-dpc{stroke-dasharray:40;stroke-dashoffset:40;animation:k1dr .3s 1.75s ease-out forwards}
-    .a1-dt{stroke-dasharray:40;stroke-dashoffset:40;animation:k1dr .3s 2.25s ease-out forwards}
-    .a1-d5{stroke-dasharray:640;stroke-dashoffset:640;animation:k1dr 1s 2.6s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-f1{opacity:0;animation:k1fi .45s .4s ease-out forwards}
-    .a1-f2{opacity:0;animation:k1fi .45s .8s ease-out forwards}
-    .a1-f3{opacity:0;animation:k1fi .45s 1.2s ease-out forwards}
-    .a1-fj{opacity:0;animation:k1fi .3s 2.4s ease-out forwards}
-    .a1-f4{opacity:0;animation:k1fi .6s 3.4s ease-out forwards}
-    .a1-gear{transform-box:fill-box;transform-origin:center;animation:k1spin 13.5s linear infinite}
-    .a1-core{opacity:0;animation:k1fi .4s 1.3s ease-out forwards,k1core 4.5s 4s ease-in-out infinite}
-    .a1-pulse{opacity:0;animation:k1fi3 .4s 2.8s ease-out forwards,k1pu 4.5s 4s ease-in-out infinite}
-    .a1-row1{animation:k1row 4.5s 4s ease-in-out infinite}
-    .a1-row2{animation:k1row 4.5s 4.14s ease-in-out infinite}
-    .a1-row3{animation:k1row 4.5s 4.27s ease-in-out infinite}
-    .a1-cs{opacity:0;animation:k1go 4.5s 4s linear infinite}
-    .a1-cs1{offset-path:path('M76 104 v26 a10 10 0 0 0 10 10 h114 v36')}
-    .a1-cs2{offset-path:path('M324 104 v26 a10 10 0 0 1 -10 10 h-114 v36')}
-    .a1-csc{opacity:0;offset-path:path('M200 104 v72');animation:k1goc 4.5s 4s linear infinite}
-    .a1-fr{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-    svg:hover .a1-fr1{transform:translateY(-4px)}
-    svg:hover .a1-fr2{transform:translateY(-4px);transition-delay:.06s}
-    svg:hover .a1-fr3{transform:translateY(-5px);transition-delay:.12s}
-    .a1-pw{opacity:0;transition:opacity .35s ease-out}
-    svg:hover .a1-pw{opacity:1}
+    .a1-acc{stroke:var(--accent,#2b4be0)}
+    .a1-accf{fill:var(--accent,#2b4be0)}
+    .a1-lbl{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle;transition:fill .35s cubic-bezier(.22,1,.36,1)}
+    svg:hover .a1-lbl{fill:var(--accent,#2b4be0)}
+    /* intro draws — glide easing */
+    .a1-d1{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .15s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-d2{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .35s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-d3{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .55s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-dg{stroke-dasharray:170;stroke-dashoffset:170;animation:k1dr .7s .95s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-dl1{stroke-dasharray:60;stroke-dashoffset:60;animation:k1dr .45s 1.5s ease-out forwards}
+    .a1-dl2{stroke-dasharray:60;stroke-dashoffset:60;animation:k1dr .45s 1.62s ease-out forwards}
+    .a1-dl3{stroke-dasharray:60;stroke-dashoffset:60;animation:k1dr .45s 1.74s ease-out forwards}
+    .a1-dc{stroke-dasharray:500;stroke-dashoffset:500;animation:k1dr 1s 1.9s cubic-bezier(.4,0,.2,1) forwards}
+    /* intro fades — settle easing */
+    .a1-f1{opacity:0;animation:k1fi .45s .35s cubic-bezier(.22,1,.36,1) forwards}
+    .a1-f2{opacity:0;animation:k1fi .45s 1.25s cubic-bezier(.22,1,.36,1) forwards}
+    .a1-f3{opacity:0;animation:k1fi .45s 2.2s cubic-bezier(.22,1,.36,1) forwards}
+    .a1-r1{opacity:0;animation:k1fi .4s 2.35s ease-out forwards,k1row 5s 3.6s linear infinite}
+    .a1-r2{opacity:0;animation:k1fi .4s 2.5s ease-out forwards,k1row 5s 3.7s linear infinite}
+    .a1-r3{opacity:0;animation:k1fi .4s 2.65s ease-out forwards,k1row 5s 3.8s linear infinite}
+    .a1-f4{opacity:0;animation:k1fi .6s 3.05s ease-out forwards}
+    /* ambient layer 1 — the aperture turns, its core answers the couriers */
+    .a1-spin{transform-box:fill-box;transform-origin:center;animation:k1spin 26s linear infinite}
+    .a1-core{opacity:0;animation:k1fi2 .4s 1.35s ease-out forwards,k1core 5s 3.6s linear infinite}
+    /* ambient layer 2 — the tangle breathes, desynced */
+    .a1-w1{animation:k1bre 7s 3s ease-in-out infinite}
+    .a1-w2{animation:k1bre 9.5s 3.4s ease-in-out infinite}
+    .a1-w3{animation:k1bre 12s 3.8s ease-in-out infinite}
+    /* ambient layer 3 — the calm product breathes, barely */
+    .a1-cardw{transform-box:fill-box;transform-origin:center;animation:k1cardb 6.5s 3.2s ease-in-out infinite}
+    /* ambient layer 4 — couriers: through chaos together, out clean, one write */
+    .a1-cs{opacity:0;animation:k1go 5s 3.6s linear infinite}
+    .a1-cs1{offset-path:path('M14 70 C 48 46, 44 118, 78 108 C 104 100, 96 58, 120 64 C 146 70, 138 118, 173 138')}
+    .a1-cs2{offset-path:path('M14 110 C 40 140, 66 74, 92 96 C 116 116, 108 152, 134 148 C 150 145, 156 148, 170 150')}
+    .a1-cs3{offset-path:path('M14 150 C 44 182, 58 128, 86 150 C 112 170, 104 196, 130 186 C 150 178, 156 166, 173 162')}
+    .a1-cl{opacity:0;animation:k1go2 5s 3.6s linear infinite}
+    .a1-cl1{offset-path:path('M221 141 C 238 134, 246 128, 262 128')}
+    .a1-cl2{offset-path:path('M223 150 L 262 150')}
+    .a1-cl3{offset-path:path('M221 159 C 238 166, 246 172, 262 172')}
+    /* hover — additive only. the tangle dims and shows its resolved self */
+    .a1-dimw{transition:opacity .4s cubic-bezier(.22,1,.36,1)}
+    svg:hover .a1-dimw{opacity:.32}
+    .a1-g1{opacity:0;transition:opacity .4s ease-out .05s}
+    .a1-g2{opacity:0;transition:opacity .4s ease-out .17s}
+    .a1-g3{opacity:0;transition:opacity .4s ease-out .29s}
+    svg:hover .a1-g1,svg:hover .a1-g2,svg:hover .a1-g3{opacity:.9}
     .a1-halow{opacity:0;transition:opacity .35s ease-out}
     svg:hover .a1-halow{opacity:1}
-    .a1-halo{transform-box:fill-box;transform-origin:center;animation:k1halo 2s ease-out infinite}
+    .a1-halo{transform-box:fill-box;transform-origin:center;animation:k1halo 2s cubic-bezier(.22,1,.36,1) infinite}
+    .a1-s1{opacity:0;transition:opacity .35s ease-out .3s}
+    .a1-s2{opacity:0;transition:opacity .35s ease-out .45s}
+    .a1-s3{opacity:0;transition:opacity .35s ease-out .6s}
+    svg:hover .a1-s1,svg:hover .a1-s2,svg:hover .a1-s3{opacity:1}
+    .a1-payw{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.34,1.45,.5,1) .85s}
+    svg:hover .a1-payw{transform:scale(1)}
     @keyframes k1dr{to{stroke-dashoffset:0}}
     @keyframes k1fi{to{opacity:1}}
-    @keyframes k1fi3{to{opacity:.3}}
+    @keyframes k1fi2{to{opacity:.3}}
     @keyframes k1spin{to{transform:rotate(360deg)}}
-    @keyframes k1core{0%{opacity:1}20%,80%{opacity:.35}100%{opacity:1}}
-    @keyframes k1pu{0%,40%{opacity:.3}53%{opacity:1}68%,100%{opacity:.3}}
-    @keyframes k1row{0%,54%{opacity:1}58%{opacity:.3}66%,100%{opacity:1}}
-    @keyframes k1go{0%{offset-distance:0%;opacity:0}4%{opacity:1}49.5%{opacity:1}53.3%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
-    @keyframes k1goc{0%,33%{offset-distance:0%;opacity:0}35.5%{opacity:1}49.5%{opacity:1}53.3%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1core{0%,40%{opacity:.3}45%{opacity:1}56%,100%{opacity:.3}}
+    @keyframes k1bre{0%,100%{opacity:1}50%{opacity:.55}}
+    @keyframes k1cardb{0%,100%{transform:scale(1)}50%{transform:scale(1.012)}}
+    @keyframes k1go{0%{offset-distance:0%;opacity:0}3%{opacity:1}38%{opacity:1}42%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1go2{0%,44%{offset-distance:0%;opacity:0}46%{opacity:1}55%{opacity:1}58%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1row{0%,60%{opacity:1}64%{opacity:.3}74%,100%{opacity:1}}
     @keyframes k1halo{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.9);opacity:0}}
     @media(prefers-reduced-motion:reduce){
-      .a1-d1,.a1-d2,.a1-d3,.a1-dp,.a1-dpc,.a1-dt,.a1-d5{animation:none;stroke-dashoffset:0}
-      .a1-f1,.a1-f2,.a1-f3,.a1-fj,.a1-f4{animation:none;opacity:1}
-      .a1-gear,.a1-row1,.a1-row2,.a1-row3,.a1-halo{animation:none}
-      .a1-core,.a1-pulse{animation:none;opacity:1}
-      .a1-cs,.a1-csc{animation:none;opacity:0}
-      .a1-fr,.a1-pw,.a1-halow{transition:none}
-      svg:hover .a1-fr1,svg:hover .a1-fr2,svg:hover .a1-fr3{transform:none}
+      .a1-d1,.a1-d2,.a1-d3,.a1-dg,.a1-dl1,.a1-dl2,.a1-dl3,.a1-dc{animation:none;stroke-dashoffset:0}
+      .a1-f1,.a1-f2,.a1-f3,.a1-f4,.a1-r1,.a1-r2,.a1-r3{animation:none;opacity:1}
+      .a1-core{animation:none;opacity:.85}
+      .a1-spin,.a1-w1,.a1-w2,.a1-w3,.a1-cardw,.a1-halo{animation:none}
+      .a1-cs,.a1-cl{animation:none;opacity:0}
+      .a1-dimw,.a1-g1,.a1-g2,.a1-g3,.a1-halow,.a1-s1,.a1-s2,.a1-s3,.a1-lbl,.a1-payw{transition:none}
+      svg:hover .a1-dimw{opacity:1}
     }
   </style>
-  <!-- era labels — the column headers of the craft's three ages -->
-  <text x="76" y="22" class="a1-lbl a1-f1">01 · RAW UI</text>
-  <text x="200" y="22" class="a1-lbl a1-f2">02 · SYSTEM</text>
-  <text x="324" y="22" class="a1-lbl a1-f3">03 · AI ENGINE</text>
-  <!-- era 01 · raw ui — hand-placed blocks -->
-  <g class="a1-fr a1-fr1"><g class="a1-d1">
-    <rect x="24" y="32" width="104" height="72" rx="10" class="a1-ink" stroke-width="1.7"/>
-    <rect x="35" y="44" width="44" height="8" rx="4" class="a1-mut" stroke-width="1.4"/>
-    <rect x="35" y="59" width="70" height="8" rx="4" class="a1-mut" stroke-width="1.4"/>
-    <rect x="35" y="74" width="30" height="16" rx="5" class="a1-mut" stroke-width="1.4"/>
-    <rect x="73" y="78" width="22" height="8" rx="4" class="a1-mut" stroke-width="1.2"/>
-  </g></g>
-  <!-- era 02 · design system — the token grid -->
-  <g class="a1-fr a1-fr2"><g class="a1-d2">
-    <rect x="148" y="32" width="104" height="72" rx="10" class="a1-ink" stroke-width="1.7"/>
-    <g class="a1-mut" stroke-width="1.3">
-      <rect x="160" y="44" width="22" height="16" rx="4"/><rect x="189" y="44" width="22" height="16" rx="4"/><rect x="218" y="44" width="22" height="16" rx="4"/>
-      <rect x="160" y="68" width="22" height="16" rx="4"/><rect x="189" y="68" width="22" height="16" rx="4"/>
+  <!-- chapter labels -->
+  <text x="80" y="30" class="a1-lbl a1-f1">RAW COMPLEXITY</text>
+  <text x="323" y="30" class="a1-lbl a1-f2">CALM PRODUCT</text>
+  <!-- the tangle — three strands, knotted; they breathe, desynced -->
+  <g class="a1-dimw">
+    <g class="a1-w1"><path d="M14 70 C 48 46, 44 118, 78 108 C 104 100, 96 58, 120 64 C 146 70, 138 118, 173 138" class="a1-mut a1-d1" stroke-width="1.6"/></g>
+    <g class="a1-w2"><path d="M14 110 C 40 140, 66 74, 92 96 C 116 116, 108 152, 134 148 C 150 145, 156 148, 170 150" class="a1-mut a1-d2" stroke-width="1.6"/></g>
+    <g class="a1-w3"><path d="M14 150 C 44 182, 58 128, 86 150 C 112 170, 104 196, 130 186 C 150 178, 156 166, 173 162" class="a1-mut a1-d3" stroke-width="1.6"/></g>
+  </g>
+  <!-- hover reveal — the same strands, resolved: the designer sees through the knot -->
+  <g class="a1-g1"><path d="M14 70 C 70 96, 124 122, 173 138" class="a1-acc" stroke-width="1.5"/></g>
+  <g class="a1-g2"><path d="M14 110 C 70 126, 124 142, 170 150" class="a1-acc" stroke-width="1.5"/></g>
+  <g class="a1-g3"><path d="M14 150 C 70 156, 124 158, 173 162" class="a1-acc" stroke-width="1.5"/></g>
+  <!-- the aperture gate — where complexity becomes calm -->
+  <g class="a1-halow"><circle cx="196" cy="150" r="26" class="a1-acc a1-halo" stroke-width="1.2"/></g>
+  <circle cx="196" cy="150" r="26" class="a1-ink a1-dg" stroke-width="1.9"/>
+  <g class="a1-f2"><g class="a1-spin">
+    <g class="a1-ink" stroke-width="1.6" stroke-linecap="round">
+      <line x1="206" y1="150" x2="215" y2="150"/><line x1="186" y1="150" x2="177" y2="150"/>
+      <line x1="201" y1="158.7" x2="205.5" y2="166.5"/><line x1="191" y1="141.3" x2="186.5" y2="133.5"/>
+      <line x1="191" y1="158.7" x2="186.5" y2="166.5"/><line x1="201" y1="141.3" x2="205.5" y2="133.5"/>
     </g>
-    <rect x="218" y="68" width="22" height="16" rx="4" class="a1-acc" stroke-width="1.5"/>
   </g></g>
-  <!-- era 03 · the engine — turning core, halo on approach -->
-  <g class="a1-fr a1-fr3">
-    <g class="a1-d3">
-      <rect x="272" y="32" width="104" height="72" rx="10" class="a1-acc" stroke-width="1.9"/>
-      <g class="a1-halow"><circle cx="324" cy="68" r="22" class="a1-acc a1-halo" stroke-width="1.2"/></g>
-      <g class="a1-gear">
-        <circle cx="324" cy="68" r="16" class="a1-acc" stroke-width="1.8"/>
-        <g class="a1-acc" stroke-width="1.7" stroke-linecap="round">
-          <line x1="324" y1="46" x2="324" y2="52"/><line x1="324" y1="84" x2="324" y2="90"/>
-          <line x1="302" y1="68" x2="308" y2="68"/><line x1="340" y1="68" x2="346" y2="68"/>
-          <line x1="309" y1="53" x2="313" y2="57"/><line x1="335" y1="79" x2="339" y2="83"/>
-          <line x1="339" y1="53" x2="335" y2="57"/><line x1="313" y1="79" x2="309" y2="83"/>
-        </g>
-      </g>
-      <circle cx="324" cy="68" r="5" class="a1-accf a1-core"/>
+  <circle cx="196" cy="150" r="4" class="a1-accf a1-core"/>
+  <!-- the calm lines out -->
+  <path d="M221 141 C 238 134, 246 128, 262 128" class="a1-mut a1-dl1" stroke-width="1.5"/>
+  <path d="M223 150 L 262 150" class="a1-mut a1-dl2" stroke-width="1.5"/>
+  <path d="M221 159 C 238 166, 246 172, 262 172" class="a1-mut a1-dl3" stroke-width="1.5"/>
+  <!-- the product — one clear, breathing artifact -->
+  <g class="a1-cardw">
+    <g class="a1-dc">
+      <rect x="262" y="92" width="122" height="116" rx="10" class="a1-ink" stroke-width="1.9"/>
+      <path d="M262 114 h122" class="a1-mut" stroke-width="1.4"/>
     </g>
+    <g class="a1-f3"><circle cx="275" cy="103" r="2.6" class="a1-accf"/><circle cx="286" cy="103" r="2.6" class="a1-mut" stroke-width="1.2"/></g>
+    <rect x="276" y="124" width="70" height="8" rx="4" class="a1-mut a1-r1" stroke-width="1.4"/>
+    <rect x="276" y="142" width="92" height="8" rx="4" class="a1-mut a1-r2" stroke-width="1.4"/>
+    <rect x="276" y="168" width="48" height="10" rx="5" class="a1-acc a1-r3" stroke-width="1.7"/>
+    <!-- hover: the rows ignite in accent, then a spark -->
+    <rect x="276" y="124" width="70" height="8" rx="4" class="a1-acc a1-s1" stroke-width="1.5"/>
+    <rect x="276" y="142" width="92" height="8" rx="4" class="a1-acc a1-s2" stroke-width="1.5"/>
+    <path d="M344 173 l3.2 7.3 7.4 3.3 -7.4 3.3 -3.2 7.3 -3.2 -7.3 -7.4 -3.3 7.4 -3.3 Z" transform="translate(0 -10.6)" class="a1-accf a1-s3"/>
   </g>
-  <!-- era chevrons — one age becomes the next -->
-  <path d="M134 64 l8 8 l-8 8" class="a1-mut a1-f2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M258 64 l8 8 l-8 8" class="a1-mut a1-f3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- the manifold — three drops, one junction, one trunk -->
-  <path d="M76 104 v26 a10 10 0 0 0 10 10 h114" class="a1-mut a1-dp" stroke-width="1.5"/>
-  <path d="M324 104 v26 a10 10 0 0 1 -10 10 h-114" class="a1-mut a1-dp" stroke-width="1.5"/>
-  <path d="M200 104 v36" class="a1-mut a1-dpc" stroke-width="1.5"/>
-  <g class="a1-pw">
-    <path d="M76 104 v26 a10 10 0 0 0 10 10 h114" class="a1-acc" stroke-width="1.5"/>
-    <path d="M324 104 v26 a10 10 0 0 1 -10 10 h-114" class="a1-acc" stroke-width="1.5"/>
-    <path d="M200 104 v36" class="a1-acc" stroke-width="1.5"/>
+  <!-- hover payoff — the calm is verified -->
+  <g class="a1-payw">
+    <circle cx="380" cy="96" r="12" class="a1-accf"/>
+    <path d="M374.5 96 l4 4 l7 -8.5" stroke="var(--canvas,#f4f6fa)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <path d="M200 140 v36" class="a1-acc a1-dt" stroke-width="1.8"/>
-  <circle cx="200" cy="140" r="3.4" class="a1-accf a1-fj"/>
-  <!-- couriers — three pulses depart together, merge, land as one -->
-  <circle r="3.2" class="a1-accf a1-cs a1-cs1"/>
-  <circle r="3.2" class="a1-accf a1-cs a1-cs2"/>
-  <circle r="3.2" class="a1-accf a1-csc"/>
-  <!-- the output — one living file; it writes when the pulses land -->
-  <g class="a1-d5">
-    <rect x="130" y="176" width="140" height="92" rx="12" class="a1-ink" stroke-width="1.9"/>
-    <path d="M130 200 h140" class="a1-mut" stroke-width="1.4"/>
-    <circle cx="144" cy="188" r="3" class="a1-accf a1-pulse"/>
-    <circle cx="156" cy="188" r="3" class="a1-mut" stroke-width="1.2"/>
-    <rect x="144" y="212" width="64" height="8" rx="4" class="a1-mut a1-row1" stroke-width="1.4"/>
-    <rect x="144" y="227" width="98" height="8" rx="4" class="a1-mut a1-row2" stroke-width="1.4"/>
-    <rect x="144" y="242" width="44" height="10" rx="5" class="a1-acc a1-row3" stroke-width="1.7"/>
-  </g>
-  <text x="200" y="288" class="a1-lbl2 a1-f4">ONE FILE · ANY BROWSER · FOREVER</text>
+  <!-- couriers — three pulses brave the tangle together, leave calm, and write the file -->
+  <circle r="3.1" class="a1-accf a1-cs a1-cs1"/>
+  <circle r="3.1" class="a1-accf a1-cs a1-cs2"/>
+  <circle r="3.1" class="a1-accf a1-cs a1-cs3"/>
+  <circle r="2.7" class="a1-accf a1-cl a1-cl1"/>
+  <circle r="2.7" class="a1-accf a1-cl a1-cl2"/>
+  <circle r="2.7" class="a1-accf a1-cl a1-cl3"/>
+  <!-- the claim -->
+  <text x="200" y="286" class="a1-lbl a1-f4">TANGLED IN · OBVIOUS OUT</text>
 </svg>

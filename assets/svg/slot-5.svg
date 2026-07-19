@@ -1,10 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
   <style>
-    /* namespaced a5-/k5 — inline SVG styles are document-global (ids too: a5cap).
+    /* slot-5 · THE ANSWERING BEACON — Contact, the INK close.
+       namespaced a5-/k5 — inline SVG styles are document-global (ids too: a5cap).
        Sits on the ink panel, strokes with var(--canvas): auto-inverts per theme.
        three clean radii, no crossings: bearings ring r54 · inscription ring r68 · orbit r82.
-       ambient: dual counter-orbits, the inscription turns like a seal, sonar breath.
-       hover: the asterisk turns 45°, the sonar answers, bearings + inscription wake. */
+       story — a TWO-WAY sonar on an 8s clock: a ping arrives from outside (someone calls),
+       the core flashes (received), the beacon answers with its own pulse (the first reply).
+       contact promises "the first reply usually comes with a sketch" — so on hover the
+       payoff is literal: a pencil squiggle draws itself under the seal while the seal
+       turns 45°, the sonar answers rapid-fire, and the quiet layers wake.
+       idle desync: conversation 8s · seal breath 5s · orbits 60/90/120s counter-turning.
+       loops are opacity/transform only; rings are born and die invisible (seamless). */
     .a5-ring{stroke:var(--canvas,#f4f6fa);opacity:.5}
     .a5-mark{stroke:var(--canvas,#f4f6fa)}
     .a5-markf{fill:var(--canvas,#f4f6fa)}
@@ -16,9 +22,11 @@
     .a5-core{opacity:0;animation:k5fi .6s 1.7s ease-out forwards}
     .a5-capw{opacity:0;animation:k5fi .8s 2s ease-out forwards}
     .a5-breathe{animation:k5pu 5s 2.4s ease-in-out infinite}
-    /* ambient sonar — a whisper every 5s, seamless (born invisible, dies invisible) */
-    .a5-sonar{transform-box:fill-box;transform-origin:center;animation:k5sonar 5s 2.6s ease-out infinite}
-    /* hover: the seal turns; the sonar answers; the quiet layers wake */
+    /* the conversation — 8s, phase-locked, from t=0: in → received → answered */
+    .a5-ping{transform-box:fill-box;transform-origin:center;opacity:0;animation:k5ping 8s linear infinite}
+    .a5-rx{transform-box:fill-box;transform-origin:center;opacity:0;animation:k5rx 8s linear infinite}
+    .a5-ans{transform-box:fill-box;transform-origin:center;opacity:0;animation:k5ans 8s linear infinite}
+    /* hover: the seal turns; the sonar answers rapid-fire; the quiet layers wake */
     .a5-starw{transform-box:fill-box;transform-origin:center;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
     svg:hover .a5-starw{transform:rotate(45deg)}
     .a5-sonar2w{opacity:0;transition:opacity .35s ease-out}
@@ -28,19 +36,26 @@
     svg:hover .a5-bear{opacity:1}
     .a5-capt{transition:opacity .35s ease-out}
     svg:hover .a5-capt{opacity:1}
+    /* hover payoff — the first reply comes with a sketch: it draws itself */
+    .a5-sk{stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset .6s cubic-bezier(.22,1,.36,1) .55s}
+    svg:hover .a5-sk{stroke-dashoffset:0}
     @keyframes k5r{to{transform:rotate(360deg)}}
     @keyframes k5r2{to{transform:rotate(-360deg)}}
     @keyframes k5dr{to{stroke-dashoffset:0}}
     @keyframes k5fi{to{opacity:1}}
     @keyframes k5pu{0%,100%{opacity:.55}50%{opacity:1}}
+    @keyframes k5ping{0%{transform:scale(2.6);opacity:0}5%{opacity:.55}22%,100%{transform:scale(.4);opacity:0}}
+    @keyframes k5rx{0%,21%{transform:scale(.5);opacity:0}25%{transform:scale(1);opacity:.8}32%,100%{transform:scale(1.35);opacity:0}}
+    @keyframes k5ans{0%,30%{transform:scale(.35);opacity:0}35%{opacity:.6}62%,100%{transform:scale(2.4);opacity:0}}
     @keyframes k5sonar{0%{transform:scale(.35);opacity:.6}100%{transform:scale(2.4);opacity:0}}
     @media(prefers-reduced-motion:reduce){
-      .a5-spin,.a5-spin2,.a5-spin3,.a5-breathe,.a5-sonar,.a5-sonar2{animation:none}
-      .a5-sonar,.a5-sonar2w{opacity:0}
+      .a5-spin,.a5-spin2,.a5-spin3,.a5-breathe,.a5-ping,.a5-rx,.a5-ans,.a5-sonar2{animation:none}
+      .a5-ping,.a5-rx,.a5-ans,.a5-sonar2w{opacity:0}
       .a5-star{animation:none;stroke-dashoffset:0}
       .a5-core,.a5-capw{animation:none;opacity:1}
-      .a5-starw,.a5-capt,.a5-bear{transition:none}
+      .a5-starw,.a5-capt,.a5-bear,.a5-sk{transition:none}
       svg:hover .a5-starw{transform:none}
+      .a5-sk{stroke-dashoffset:0}
     }
   </style>
   <defs><path id="a5cap" d="M100 32 a68 68 0 1 1 -.01 0"/></defs>
@@ -63,8 +78,11 @@
       <path d="M59 59 l5.6 5.6 M135.4 135.4 l5.6 5.6 M141 59 l-5.6 5.6 M64.6 135.4 l-5.6 5.6"/>
     </g>
   </g>
-  <!-- the sonar — ambient whisper + hover answer -->
-  <circle cx="100" cy="100" r="30" class="a5-ring a5-sonar" stroke-width="1.2"/>
+  <!-- the conversation — in → received → answered, forever -->
+  <circle cx="100" cy="100" r="30" class="a5-ring a5-ping" stroke-width="1.2"/>
+  <circle cx="100" cy="100" r="13" class="a5-mark a5-rx" stroke-width="1.4"/>
+  <circle cx="100" cy="100" r="30" class="a5-ring a5-ans" stroke-width="1.2"/>
+  <!-- hover: the beacon answers rapid-fire -->
   <g class="a5-sonar2w"><circle cx="100" cy="100" r="30" class="a5-mark a5-sonar2" stroke-width="1.3" opacity=".8"/></g>
   <!-- the asterisk seal — one mark, eight directions: arete.
        breathe on the parent, turn on its own wrapper, draw on the child —
@@ -77,4 +95,6 @@
     </g>
   </g>
   <circle cx="100" cy="100" r="7.5" class="a5-markf a5-core" opacity="0"/>
+  <!-- the sketch — the first reply, hand-drawn on arrival -->
+  <path d="M85 143 q7.5 -9 15 0 t15 0" class="a5-mark a5-sk" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
 </svg>

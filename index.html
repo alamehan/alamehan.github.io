@@ -169,6 +169,7 @@ a.iconbtn:hover{text-decoration:none}
    box-shadow wash) and a tooltip card; offered by a dismissible chip, never
    forced. The overlay is the interaction lock; Esc always skips. */
 #tour{position:fixed;inset:0;z-index:70}
+#tour.placing{visibility:hidden}/* hold the spotlight+card invisible until the FIRST placement lands — without this they flash unpositioned in a corner before jumping to station 1 (owner catch 2026-07-19) */
 .tour-hole{position:fixed;box-shadow:0 0 0 9999px color-mix(in srgb,var(--ink) 52%,transparent);border-radius:16px;pointer-events:none;transition:top .25s ease-out,left .25s ease-out,width .25s ease-out,height .25s ease-out}
 .tour-card{position:fixed;width:min(320px,calc(100vw - 24px));background:var(--surface);border:1px solid var(--hairline);border-radius:14px;box-shadow:var(--shadow-2);padding:16px 18px}
 .tour-card .tour-step{margin:0 0 6px;font:700 10px/1 var(--mono);letter-spacing:.12em;color:var(--coral)}
@@ -177,7 +178,7 @@ a.iconbtn:hover{text-decoration:none}
 .tour-card .tour-nav{display:flex;gap:8px;margin-top:14px}
 .tour-card .tour-nav [data-tour="next"]{margin-left:auto}
 @media (prefers-reduced-motion: reduce){.tour-hole{transition:none}}
-#tourchip{position:fixed;left:20px;bottom:170px;z-index:32;max-width:252px;background:var(--surface);border:1px solid var(--hairline);border-radius:14px;box-shadow:var(--shadow-2);padding:14px}
+#tourchip{position:fixed;left:20px;bottom:218px;z-index:32;max-width:252px;background:var(--surface);border:1px solid var(--hairline);border-radius:14px;box-shadow:var(--shadow-2);padding:14px}
 #tourchip p{margin:0 0 10px;font-size:13px;line-height:1.55;color:var(--ink)}
 #tourchip div{display:flex;gap:8px;flex-wrap:wrap}
 /* v6.2 tidy: every chapter opens on its own hairline rule — one calm, repeating
@@ -292,10 +293,12 @@ html.spec .mdchip{opacity:1}
 .row{display:flex;gap:10px;align-items:baseline;padding:9px 12px;background:var(--surface);border:1px solid var(--hairline);border-radius:10px;cursor:pointer;min-width:0;transition:border-color .12s ease-out}
 .row:hover,.row:focus-visible{border-color:var(--ink-faint)}
 .row .r-emoji{flex:none;font-size:14px}
-.row h3{font:600 13.5px/1.4 var(--font);flex:none;white-space:nowrap}
+.row h3{font:600 13.5px/1.4 var(--font);flex:0 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .r-tag{color:var(--ink-muted);font-size:12.5px;flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .row .r-yr{margin-left:auto;flex:none;font:500 10.5px/1 var(--mono);color:var(--ink-faint)}
-@media(max-width:479px){.row{flex-wrap:wrap}.row h3{flex:1 1 auto;min-width:0;white-space:normal}.row .r-tag{display:none}}
+/* mobile (owner call 2026-07-19): a long record title TRUNCATES on its one line —
+   never wraps into a second — so every ledger/roots row stays a clean single rule */
+@media(max-width:479px){.row h3{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}.row .r-tag{display:none}}
 /* ═══ 7 · PRACTICE — ledger rows ═══ */
 .pr-rows{display:grid;gap:8px}
 .pr-row{display:flex;gap:14px;align-items:baseline;padding:14px 16px;border:1px solid var(--hairline);border-radius:12px;background:var(--surface)}
@@ -363,6 +366,7 @@ html.spec .mdchip{opacity:1}
 .peek-itch b{font:700 10px/1.5 var(--mono);font-style:normal;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;white-space:nowrap}
 /* live signals — the visitor-count chip (rendered ONLY when the release flag is present AND the third party answered) */
 .pv{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0 12px;font:600 11.5px/1 var(--mono);color:var(--ink-muted);border:1px solid var(--hairline);border-radius:999px;padding:6px 11px;background:var(--surface);white-space:nowrap;vertical-align:middle}
+.pv[hidden]{display:none!important}/* live-or-nothing: display:inline-flex would beat the UA [hidden] rule and leak an empty pill while the third party hasn't answered (owner catch on the deployed estate 2026-07-19) */
 .pv b{color:var(--accent);font-weight:700}
 .pv .pv-eye{opacity:.7}
 .pv a{color:var(--ink-faint);text-decoration:none;border-left:1px solid var(--hairline);padding-left:8px}
@@ -458,7 +462,10 @@ html.debug .slot-empty::after{content:attr(data-name);position:absolute;inset:0;
 .overlay-backdrop{position:absolute;inset:0;background:rgb(0 0 0/.25)}
 .peek-panel{position:relative;width:500px;max-width:100%;height:100%;background:var(--surface);border-left:1px solid var(--hairline);border-radius:16px 0 0 16px;box-shadow:var(--shadow-2);display:flex;flex-direction:column;animation:peekIn .24s cubic-bezier(.2,.8,.2,1)}
 @keyframes peekIn{from{transform:translateX(24px);opacity:0}}
-@media(max-width:1023px){#peek{align-items:flex-end}.peek-panel{width:100%;height:92vh;border-left:0;border-top:1px solid var(--hairline);border-radius:16px 16px 0 0;animation:sheetIn .24s cubic-bezier(.2,.8,.2,1)}}
+/* mobile sheet: 92dvh tracks the REAL visible viewport (iOS's 92vh includes the space
+   behind the collapsing URL bar, which shoved the sheet's header clean off-screen —
+   owner catch 2026-07-19); max-height:100% is the hard guarantee the header stays in */
+@media(max-width:1023px){#peek{align-items:flex-end}.peek-panel{width:100%;height:92vh;height:92dvh;max-height:100%;border-left:0;border-top:1px solid var(--hairline);border-radius:16px 16px 0 0;animation:sheetIn .24s cubic-bezier(.2,.8,.2,1)}}
 @keyframes sheetIn{from{transform:translateY(24px);opacity:0}}
 .peek-head{display:flex;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--hairline);flex:none}
 .peek-head .tile{width:32px;height:32px;font-size:16px;border-radius:10px;background:var(--wash);display:inline-flex;align-items:center;justify-content:center}
@@ -489,8 +496,11 @@ html.debug .slot-empty::after{content:attr(data-name);position:absolute;inset:0;
    (owner call 2026-07-18 — the video keeps bottom-right) */
 /* owner call 2026-07-18: the bottom-left controls are PERFECT CIRCLES — the active
    switch state is a round thumb, the top button a round chip (no wide pills) */
-.top-btn{position:fixed;left:23px;bottom:118px;z-index:30;width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;opacity:0;pointer-events:none;transform:translateY(4px);transition:opacity .12s ease-out,transform .12s ease-out;background:var(--surface);border:1px solid var(--hairline);box-shadow:var(--shadow-1)}
+.top-btn{position:fixed;left:23px;bottom:166px;z-index:30;width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;opacity:0;pointer-events:none;transform:translateY(4px);transition:opacity .12s ease-out,transform .12s ease-out;background:var(--surface);border:1px solid var(--hairline);box-shadow:var(--shadow-1)}
 .top-btn.show{opacity:1;pointer-events:auto;transform:none}
+/* the standing tour door (owner call 2026-07-19: OUT of Backstage) — the bottom-left
+   stack reads top-to-bottom: back-to-top · replay-the-tour · full/zen switch */
+.tour-btn{position:fixed;left:23px;bottom:118px;z-index:30;width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;background:var(--surface);border:1px solid var(--hairline);box-shadow:var(--shadow-1);font-size:16px;line-height:1}
 /* ── zen mode — the calm one-pager alternative: a VERTICAL two-state switch; zen
    replaces the chapters with the essentials a recruiter reads in one breath —
    the same living data, the same files, zero new claims. ── */
@@ -617,7 +627,7 @@ html.spec .case,html.spec .pr-row,html.spec .w-tile,html.spec .quote,html.spec .
 #backstage{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:20px}
 #backstage[hidden]{display:none}/* the attribute must win over display:flex, or the invisible backdrop eats every click */
 #backstage .overlay-backdrop{position:absolute;inset:0;background:color-mix(in srgb,var(--ink) 42%,transparent);backdrop-filter:blur(2px)}
-.bs-panel{position:relative;z-index:1;width:min(520px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-2);padding:22px}
+.bs-panel{position:relative;z-index:1;width:min(520px,100%);max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-2);padding:22px}
 .bs-head{display:flex;align-items:center;gap:10px}
 .bs-head h2{font:700 17px/1.2 var(--font);letter-spacing:-.2px}
 .bs-close{margin-left:auto;border:0;background:none;color:var(--ink-muted);font-size:15px;cursor:pointer;padding:6px 9px;border-radius:8px}
@@ -637,7 +647,7 @@ html.spec .case,html.spec .pr-row,html.spec .w-tile,html.spec .quote,html.spec .
   html{scroll-behavior:auto}
 }
 @media print{
-  .topbar,.rail,.railbar,.top-btn,.modeswitch,#peek,#palette,#toast,.mdchip,.slot,.st-panel,#vcard,#vfab,#vmodal,#specgrid,#specpanel,#specchip,.spec-note,.fam-cta,.ledger,.fold-btn,.ms-tip,#tour,#tourchip,#backstage,.bs-open,.arc-note{display:none!important}
+  .topbar,.rail,.railbar,.top-btn,.tour-btn,.modeswitch,#peek,#palette,#toast,.mdchip,.slot,.st-panel,#vcard,#vfab,#vmodal,#specgrid,#specpanel,#specchip,.spec-note,.fam-cta,.ledger,.fold-btn,.ms-tip,#tour,#tourchip,#backstage,.bs-open,.arc-note{display:none!important}
   .fold.is-folded{display:block!important;-webkit-line-clamp:unset!important;overflow:visible!important}
   body{background:#fff;color:#111;font-size:12px}
   .section{padding-top:24px}
@@ -662,7 +672,9 @@ html.spec .case,html.spec .pr-row,html.spec .w-tile,html.spec .quote,html.spec .
 var _q=new URLSearchParams(location.search);
 var _t=_q.get("theme");
 if(!_t){try{_t=localStorage.getItem("ala_theme")}catch(e){}}
-if(_t!=="light"&&_t!=="dark"&&_t!=="system")_t="system";
+/* default = LIGHT (owner call 2026-07-19): the first impression is the editorial paper,
+   never the phone's dark preference; "system" stays a deliberate choice via the toggle */
+if(_t!=="light"&&_t!=="dark"&&_t!=="system")_t="light";
 function sysDark(){return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches}
 document.documentElement.setAttribute("data-theme",(_t==="dark"||(_t!=="light"&&sysDark()))?"dark":"light");
 
@@ -1352,7 +1364,7 @@ function tourShow(){
     +'<button class="btn btn--primary btn--sm" data-tour="next" type="button">'+esc(S(tourIx===steps.length-1?"tour_done":"tour_next"))+"</button></div>";
   var reduce=false;try{reduce=matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
   try{s.el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})}catch(e){try{s.el.scrollIntoView()}catch(e2){}}
-  setTimeout(tourPos,reduce?60:420);
+  setTimeout(function(){tourPos();$("#tour").classList.remove("placing")},reduce?60:420);
   setTimeout(function(){var b=$('#tour [data-tour="next"]');if(b)b.focus()},reduce?90:460);
 }
 function startTour(){
@@ -1360,7 +1372,7 @@ function startTour(){
   if(!$("#palette").hidden)closePalette();
   if(!$("#peek").hidden)closePeek(true);
   killTourChip();
-  tourIx=0;$("#tour").hidden=false;
+  tourIx=0;$("#tour").classList.add("placing");$("#tour").hidden=false; /* invisible until station 1 is placed */
   window.addEventListener("scroll",tourPos,{passive:true});
   window.addEventListener("resize",tourPos);
   tourShow();
@@ -1522,14 +1534,19 @@ function renderFooter(){
    each explained in a line. ═══ */
 var bsLastFocus=null;
 function backstageItems(){
-  return [
+  /* owner calls 2026-07-19: the estate-wide proof run is a DESKTOP act — phone browsers
+     throttle the 18-tool sequence into false failures, so coarse-pointer devices don't
+     get the door (the dashboard meets a direct ?gauntlet=1 with the same honest note).
+     And the tour left Backstage for a standing bottom-left button (#tourbtn). */
+  var coarse=false;try{coarse=matchMedia("(pointer: coarse)").matches}catch(e){}
+  var items=[
     {act:"spec",emoji:"{ }",t:S("spec_btn"),d:S("bs_spec")},
     {act:"ai",emoji:"🤖",t:S("ai_btn"),d:S("ai_hint")},
-    {href:"tools/index.html?gauntlet=1",emoji:"🧪",t:S("bs_proof_t"),d:S("bs_proof"),sametab:true}, /* a face-move rides the same tab (the switch law) */
-    {act:"tour",emoji:"🧭",t:S("act_tour"),d:S("bs_tour")},
     {href:"llms.txt",emoji:"📄",t:S("bs_llms_t"),d:S("bs_llms")},
     {href:"https://github.com/alamehan/alamehan.github.io",emoji:"↗",t:S("bs_src_t"),d:S("bs_src")}
   ];
+  if(!coarse)items.splice(2,0,{href:"tools/index.html?gauntlet=1",emoji:"🧪",t:S("bs_proof_t"),d:S("bs_proof"),sametab:true}); /* a face-move rides the same tab (the switch law) */
+  return items;
 }
 function renderBackstage(){
   var p=$("#backstage .bs-panel");if(!p)return;
@@ -1902,7 +1919,7 @@ function setLang(l){
 function resetPrefs(){
   try{localStorage.removeItem("ala_theme");localStorage.removeItem("ala_lang");localStorage.removeItem("ala_read")}catch(e){}
   setSpec(false,true);
-  ST.theme="system";applyThemeAttr();applyAccent();
+  ST.theme="light";applyThemeAttr();applyAccent(); /* the reset lands on the default: light */
   ST.lang=(ST.cfg["lang.default"]==="id")?"id":"en";
   renderAll();loadSlots();
   toast(S("toast_reset"));
@@ -2039,10 +2056,11 @@ function selfTestSuite(){
   t("cross-document view transitions declared + reduced-motion off-switch",function(){
     var css=$$("style").map(function(s){return s.textContent}).join("");
     return css.indexOf("@view-transition{navigation:auto}")>=0&&css.indexOf("@view-transition{navigation:none}")>=0&&css.indexOf("view-transition-name:fs")>=0});
-  t("the Backstage proof door rides the same tab (gauntlet handoff)",function(){
+  t("the Backstage proof door: same-tab on desktop, absent on coarse-pointer devices",function(){
     renderBackstage();
     var pd=document.querySelector('#backstage .bs-item[href*="gauntlet=1"]');
-    return !!pd&&!pd.getAttribute("target")});
+    var coarse=false;try{coarse=matchMedia("(pointer: coarse)").matches}catch(e){}
+    return coarse?!pd:(!!pd&&!pd.getAttribute("target"))});
   t("practice = 5 principles + 5 frameworks",function(){return $$("#practice .pr-row").length===5&&$$("#practice .fw").length===5});
   t("goat endpoint builder canonical",function(){return goatUrlFor("alamehan","tools/x.html")==="https://alamehan.goatcounter.com/counter//tools/x.html.json"
     &&goatUrlFor("alamehan","tools/x.html?selftest=1")==="https://alamehan.goatcounter.com/counter//tools/x.html.json"});
@@ -2092,9 +2110,9 @@ function selfTestSuite(){
     return [clean&&$$("template[data-plate]").length===0,"plate templates "+$$("template[data-plate]").length]});
   t("hero speaks statement type (serif-italic accent word)",function(){return !!$("#top h1 em")});
   t("statement headlines dress the chapters",function(){var n=$$("#main .fol-head .fh").length;return [n>=7,"got "+n]});
-  t("the evolution artifact keeps its three eras (slot-1)",function(){
+  t("the untangling artifact keeps its story (slot-1)",function(){
     var s=embeddedText('script[type="text/svg-slot"][data-slot="1"]')||"";
-    return s.indexOf("RAW UI")>=0&&s.indexOf("AI ENGINE")>=0});
+    return s.indexOf("RAW COMPLEXITY")>=0&&s.indexOf("CALM PRODUCT")>=0});
   t("the Index chip fronts the palette",function(){var c=$("#pal-count");return !!c&&c.textContent===pad(NAV.length)});
   t("long bodies fold behind quiet toggles (journey folds, print unfolds all)",function(){
     return $$("#journey .fold").length>=6&&$$(".fold-btn").length>=1});
@@ -2191,11 +2209,21 @@ function selfTestSuite(){
   t("Backstage gathers the technical door, with the live-proof count inside",function(){
     openBackstage();
     var items=$$("#backstage .bs-item").length;
-    var hasSpec=!!$('#backstage [data-bs="spec"]'),hasAi=!!$('#backstage [data-bs="ai"]'),hasTour=!!$('#backstage [data-bs="tour"]');
+    var coarse=false;try{coarse=matchMedia("(pointer: coarse)").matches}catch(e){}
+    var hasSpec=!!$('#backstage [data-bs="spec"]'),hasAi=!!$('#backstage [data-bs="ai"]');
     var proof=$("#backstage .bs-proof");
-    var okk=items===6&&hasSpec&&hasAi&&hasTour&&!!proof&&proof.textContent.indexOf(String(T.length))>=0;
+    /* 5 items on desktop (the tour moved to its standing #tourbtn); the coarse-pointer
+       cut drops the gauntlet door too → 4 */
+    var okk=items===(coarse?4:5)&&hasSpec&&hasAi&&!$('#backstage [data-bs="tour"]')&&!!proof&&proof.textContent.indexOf(String(T.length))>=0;
     closeBackstage();
     return [okk,"items "+items]});
+  t("the tour door stands bottom-left (out of Backstage), above the mode switch",function(){
+    var b=$("#tourbtn");if(!b)return false;
+    var cs=getComputedStyle(b);
+    return cs.position==="fixed"&&parseInt(cs.bottom,10)>parseInt(getComputedStyle($("#modeswitch")).bottom,10)});
+  t("a hidden visitor chip truly hides (live-or-nothing, [hidden] wins the cascade)",function(){
+    var s=document.createElement("span");s.className="pv";s.hidden=true;document.body.appendChild(s);
+    var okk=getComputedStyle(s).display==="none";s.remove();return okk});
   t("no parser warnings on real content",function(){return [warnSnapshot.length===0,warnSnapshot.join(" | ")]});
   return T;
 }
@@ -2327,6 +2355,7 @@ function init(){
   $("#btn-palette").addEventListener("click",openPalette);
   $("#pal-input").addEventListener("input",function(ev){palFilter(ev.target.value)});
   $("#topbtn").addEventListener("click",function(){window.scrollTo({top:0});setHash("",true)});
+  $("#tourbtn").addEventListener("click",function(){startTour()}); /* the standing tour door (owner call 2026-07-19) */
   window.addEventListener("scroll",function(){$("#topbtn").classList.toggle("show",window.scrollY>window.innerHeight*2);hideChip()},{passive:true});
   window.addEventListener("hashchange",function(){route(false)});
   if(window.matchMedia){try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(){if(ST.theme==="system"){applyThemeAttr();applyAccent()}})}catch(e){}}
@@ -2354,6 +2383,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 <main class="shell" id="main"></main>
 <footer><div class="shell" id="footer"></div></footer>
 <button class="btn btn--sm top-btn" id="topbtn" type="button" aria-label="Back to top">↑</button>
+<button class="btn btn--sm tour-btn" id="tourbtn" type="button" aria-label="Take the tour" title="Take the tour">🧭</button>
 <div class="modeswitch" id="modeswitch" role="group"></div>
 <aside id="specpanel" aria-label="The living spec"></aside>
 <div id="specchip" aria-hidden="true"></div>
@@ -7076,182 +7106,221 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
 <script type="text/svg-slot" data-slot="1">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
   <style>
-    /* namespaced a1-/k1: inline SVG styles are DOCUMENT-GLOBAL — never share names across slots.
-       hover layer: transitions + opacity-gated always-running loops (never retime a live animation).
-       ambient loops all share one 4.5s period (gear = 3×) so the scene stays phase-locked forever:
-       three couriers depart together, MERGE at the junction, land as one — then the file writes. */
+    /* slot-1 · THE UNTANGLING — hero art for "Designing calm at the edge of complexity".
+       namespaced a1-/k1: inline SVG styles are DOCUMENT-GLOBAL — never share names across slots.
+       story: three raw, tangled strands enter from the left, pass through the designer's
+       aperture gate, and leave as three calm parallel lines that build one clear product.
+       ambient loops share one 5s period, phase-locked: couriers ride the tangle together,
+       flash the gate, glide out clean, and write the product rows — forever, seamlessly.
+       hover is purely additive (transitions + opacity-gated always-running loops):
+       the tangle dims, its resolved accent paths appear, rows ignite in stagger,
+       and the payoff spark pops — never retime a live animation. */
     .a1-ink{stroke:var(--ink,#171a21)}
     .a1-mut{stroke:var(--ink-faint,#99a0ad)}
-    .a1-acc{stroke:var(--accent,#1747c8)}
-    .a1-accf{fill:var(--accent,#1747c8)}
-    .a1-lbl{font:700 10.5px ui-monospace,Menlo,monospace;fill:var(--ink,#171a21);letter-spacing:.12em;text-anchor:middle}
-    .a1-lbl2{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle}
-    .a1-d1{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .1s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-d2{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .5s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-d3{stroke-dasharray:420;stroke-dashoffset:420;animation:k1dr .8s .9s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-dp{stroke-dasharray:165;stroke-dashoffset:165;animation:k1dr .55s 1.7s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-dpc{stroke-dasharray:40;stroke-dashoffset:40;animation:k1dr .3s 1.75s ease-out forwards}
-    .a1-dt{stroke-dasharray:40;stroke-dashoffset:40;animation:k1dr .3s 2.25s ease-out forwards}
-    .a1-d5{stroke-dasharray:640;stroke-dashoffset:640;animation:k1dr 1s 2.6s cubic-bezier(.4,0,.2,1) forwards}
-    .a1-f1{opacity:0;animation:k1fi .45s .4s ease-out forwards}
-    .a1-f2{opacity:0;animation:k1fi .45s .8s ease-out forwards}
-    .a1-f3{opacity:0;animation:k1fi .45s 1.2s ease-out forwards}
-    .a1-fj{opacity:0;animation:k1fi .3s 2.4s ease-out forwards}
-    .a1-f4{opacity:0;animation:k1fi .6s 3.4s ease-out forwards}
-    .a1-gear{transform-box:fill-box;transform-origin:center;animation:k1spin 13.5s linear infinite}
-    .a1-core{opacity:0;animation:k1fi .4s 1.3s ease-out forwards,k1core 4.5s 4s ease-in-out infinite}
-    .a1-pulse{opacity:0;animation:k1fi3 .4s 2.8s ease-out forwards,k1pu 4.5s 4s ease-in-out infinite}
-    .a1-row1{animation:k1row 4.5s 4s ease-in-out infinite}
-    .a1-row2{animation:k1row 4.5s 4.14s ease-in-out infinite}
-    .a1-row3{animation:k1row 4.5s 4.27s ease-in-out infinite}
-    .a1-cs{opacity:0;animation:k1go 4.5s 4s linear infinite}
-    .a1-cs1{offset-path:path('M76 104 v26 a10 10 0 0 0 10 10 h114 v36')}
-    .a1-cs2{offset-path:path('M324 104 v26 a10 10 0 0 1 -10 10 h-114 v36')}
-    .a1-csc{opacity:0;offset-path:path('M200 104 v72');animation:k1goc 4.5s 4s linear infinite}
-    .a1-fr{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-    svg:hover .a1-fr1{transform:translateY(-4px)}
-    svg:hover .a1-fr2{transform:translateY(-4px);transition-delay:.06s}
-    svg:hover .a1-fr3{transform:translateY(-5px);transition-delay:.12s}
-    .a1-pw{opacity:0;transition:opacity .35s ease-out}
-    svg:hover .a1-pw{opacity:1}
+    .a1-acc{stroke:var(--accent,#2b4be0)}
+    .a1-accf{fill:var(--accent,#2b4be0)}
+    .a1-lbl{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle;transition:fill .35s cubic-bezier(.22,1,.36,1)}
+    svg:hover .a1-lbl{fill:var(--accent,#2b4be0)}
+    /* intro draws — glide easing */
+    .a1-d1{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .15s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-d2{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .35s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-d3{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .55s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-dg{stroke-dasharray:170;stroke-dashoffset:170;animation:k1dr .7s .95s cubic-bezier(.4,0,.2,1) forwards}
+    .a1-dl1{stroke-dasharray:60;stroke-dashoffset:60;animation:k1dr .45s 1.5s ease-out forwards}
+    .a1-dl2{stroke-dasharray:60;stroke-dashoffset:60;animation:k1dr .45s 1.62s ease-out forwards}
+    .a1-dl3{stroke-dasharray:60;stroke-dashoffset:60;animation:k1dr .45s 1.74s ease-out forwards}
+    .a1-dc{stroke-dasharray:500;stroke-dashoffset:500;animation:k1dr 1s 1.9s cubic-bezier(.4,0,.2,1) forwards}
+    /* intro fades — settle easing */
+    .a1-f1{opacity:0;animation:k1fi .45s .35s cubic-bezier(.22,1,.36,1) forwards}
+    .a1-f2{opacity:0;animation:k1fi .45s 1.25s cubic-bezier(.22,1,.36,1) forwards}
+    .a1-f3{opacity:0;animation:k1fi .45s 2.2s cubic-bezier(.22,1,.36,1) forwards}
+    .a1-r1{opacity:0;animation:k1fi .4s 2.35s ease-out forwards,k1row 5s 3.6s linear infinite}
+    .a1-r2{opacity:0;animation:k1fi .4s 2.5s ease-out forwards,k1row 5s 3.7s linear infinite}
+    .a1-r3{opacity:0;animation:k1fi .4s 2.65s ease-out forwards,k1row 5s 3.8s linear infinite}
+    .a1-f4{opacity:0;animation:k1fi .6s 3.05s ease-out forwards}
+    /* ambient layer 1 — the aperture turns, its core answers the couriers */
+    .a1-spin{transform-box:fill-box;transform-origin:center;animation:k1spin 26s linear infinite}
+    .a1-core{opacity:0;animation:k1fi2 .4s 1.35s ease-out forwards,k1core 5s 3.6s linear infinite}
+    /* ambient layer 2 — the tangle breathes, desynced */
+    .a1-w1{animation:k1bre 7s 3s ease-in-out infinite}
+    .a1-w2{animation:k1bre 9.5s 3.4s ease-in-out infinite}
+    .a1-w3{animation:k1bre 12s 3.8s ease-in-out infinite}
+    /* ambient layer 3 — the calm product breathes, barely */
+    .a1-cardw{transform-box:fill-box;transform-origin:center;animation:k1cardb 6.5s 3.2s ease-in-out infinite}
+    /* ambient layer 4 — couriers: through chaos together, out clean, one write */
+    .a1-cs{opacity:0;animation:k1go 5s 3.6s linear infinite}
+    .a1-cs1{offset-path:path('M14 70 C 48 46, 44 118, 78 108 C 104 100, 96 58, 120 64 C 146 70, 138 118, 173 138')}
+    .a1-cs2{offset-path:path('M14 110 C 40 140, 66 74, 92 96 C 116 116, 108 152, 134 148 C 150 145, 156 148, 170 150')}
+    .a1-cs3{offset-path:path('M14 150 C 44 182, 58 128, 86 150 C 112 170, 104 196, 130 186 C 150 178, 156 166, 173 162')}
+    .a1-cl{opacity:0;animation:k1go2 5s 3.6s linear infinite}
+    .a1-cl1{offset-path:path('M221 141 C 238 134, 246 128, 262 128')}
+    .a1-cl2{offset-path:path('M223 150 L 262 150')}
+    .a1-cl3{offset-path:path('M221 159 C 238 166, 246 172, 262 172')}
+    /* hover — additive only. the tangle dims and shows its resolved self */
+    .a1-dimw{transition:opacity .4s cubic-bezier(.22,1,.36,1)}
+    svg:hover .a1-dimw{opacity:.32}
+    .a1-g1{opacity:0;transition:opacity .4s ease-out .05s}
+    .a1-g2{opacity:0;transition:opacity .4s ease-out .17s}
+    .a1-g3{opacity:0;transition:opacity .4s ease-out .29s}
+    svg:hover .a1-g1,svg:hover .a1-g2,svg:hover .a1-g3{opacity:.9}
     .a1-halow{opacity:0;transition:opacity .35s ease-out}
     svg:hover .a1-halow{opacity:1}
-    .a1-halo{transform-box:fill-box;transform-origin:center;animation:k1halo 2s ease-out infinite}
+    .a1-halo{transform-box:fill-box;transform-origin:center;animation:k1halo 2s cubic-bezier(.22,1,.36,1) infinite}
+    .a1-s1{opacity:0;transition:opacity .35s ease-out .3s}
+    .a1-s2{opacity:0;transition:opacity .35s ease-out .45s}
+    .a1-s3{opacity:0;transition:opacity .35s ease-out .6s}
+    svg:hover .a1-s1,svg:hover .a1-s2,svg:hover .a1-s3{opacity:1}
+    .a1-payw{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.34,1.45,.5,1) .85s}
+    svg:hover .a1-payw{transform:scale(1)}
     @keyframes k1dr{to{stroke-dashoffset:0}}
     @keyframes k1fi{to{opacity:1}}
-    @keyframes k1fi3{to{opacity:.3}}
+    @keyframes k1fi2{to{opacity:.3}}
     @keyframes k1spin{to{transform:rotate(360deg)}}
-    @keyframes k1core{0%{opacity:1}20%,80%{opacity:.35}100%{opacity:1}}
-    @keyframes k1pu{0%,40%{opacity:.3}53%{opacity:1}68%,100%{opacity:.3}}
-    @keyframes k1row{0%,54%{opacity:1}58%{opacity:.3}66%,100%{opacity:1}}
-    @keyframes k1go{0%{offset-distance:0%;opacity:0}4%{opacity:1}49.5%{opacity:1}53.3%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
-    @keyframes k1goc{0%,33%{offset-distance:0%;opacity:0}35.5%{opacity:1}49.5%{opacity:1}53.3%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1core{0%,40%{opacity:.3}45%{opacity:1}56%,100%{opacity:.3}}
+    @keyframes k1bre{0%,100%{opacity:1}50%{opacity:.55}}
+    @keyframes k1cardb{0%,100%{transform:scale(1)}50%{transform:scale(1.012)}}
+    @keyframes k1go{0%{offset-distance:0%;opacity:0}3%{opacity:1}38%{opacity:1}42%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1go2{0%,44%{offset-distance:0%;opacity:0}46%{opacity:1}55%{opacity:1}58%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k1row{0%,60%{opacity:1}64%{opacity:.3}74%,100%{opacity:1}}
     @keyframes k1halo{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.9);opacity:0}}
     @media(prefers-reduced-motion:reduce){
-      .a1-d1,.a1-d2,.a1-d3,.a1-dp,.a1-dpc,.a1-dt,.a1-d5{animation:none;stroke-dashoffset:0}
-      .a1-f1,.a1-f2,.a1-f3,.a1-fj,.a1-f4{animation:none;opacity:1}
-      .a1-gear,.a1-row1,.a1-row2,.a1-row3,.a1-halo{animation:none}
-      .a1-core,.a1-pulse{animation:none;opacity:1}
-      .a1-cs,.a1-csc{animation:none;opacity:0}
-      .a1-fr,.a1-pw,.a1-halow{transition:none}
-      svg:hover .a1-fr1,svg:hover .a1-fr2,svg:hover .a1-fr3{transform:none}
+      .a1-d1,.a1-d2,.a1-d3,.a1-dg,.a1-dl1,.a1-dl2,.a1-dl3,.a1-dc{animation:none;stroke-dashoffset:0}
+      .a1-f1,.a1-f2,.a1-f3,.a1-f4,.a1-r1,.a1-r2,.a1-r3{animation:none;opacity:1}
+      .a1-core{animation:none;opacity:.85}
+      .a1-spin,.a1-w1,.a1-w2,.a1-w3,.a1-cardw,.a1-halo{animation:none}
+      .a1-cs,.a1-cl{animation:none;opacity:0}
+      .a1-dimw,.a1-g1,.a1-g2,.a1-g3,.a1-halow,.a1-s1,.a1-s2,.a1-s3,.a1-lbl,.a1-payw{transition:none}
+      svg:hover .a1-dimw{opacity:1}
     }
   </style>
-  <!-- era labels — the column headers of the craft's three ages -->
-  <text x="76" y="22" class="a1-lbl a1-f1">01 · RAW UI</text>
-  <text x="200" y="22" class="a1-lbl a1-f2">02 · SYSTEM</text>
-  <text x="324" y="22" class="a1-lbl a1-f3">03 · AI ENGINE</text>
-  <!-- era 01 · raw ui — hand-placed blocks -->
-  <g class="a1-fr a1-fr1"><g class="a1-d1">
-    <rect x="24" y="32" width="104" height="72" rx="10" class="a1-ink" stroke-width="1.7"/>
-    <rect x="35" y="44" width="44" height="8" rx="4" class="a1-mut" stroke-width="1.4"/>
-    <rect x="35" y="59" width="70" height="8" rx="4" class="a1-mut" stroke-width="1.4"/>
-    <rect x="35" y="74" width="30" height="16" rx="5" class="a1-mut" stroke-width="1.4"/>
-    <rect x="73" y="78" width="22" height="8" rx="4" class="a1-mut" stroke-width="1.2"/>
-  </g></g>
-  <!-- era 02 · design system — the token grid -->
-  <g class="a1-fr a1-fr2"><g class="a1-d2">
-    <rect x="148" y="32" width="104" height="72" rx="10" class="a1-ink" stroke-width="1.7"/>
-    <g class="a1-mut" stroke-width="1.3">
-      <rect x="160" y="44" width="22" height="16" rx="4"/><rect x="189" y="44" width="22" height="16" rx="4"/><rect x="218" y="44" width="22" height="16" rx="4"/>
-      <rect x="160" y="68" width="22" height="16" rx="4"/><rect x="189" y="68" width="22" height="16" rx="4"/>
+  <!-- chapter labels -->
+  <text x="80" y="30" class="a1-lbl a1-f1">RAW COMPLEXITY</text>
+  <text x="323" y="30" class="a1-lbl a1-f2">CALM PRODUCT</text>
+  <!-- the tangle — three strands, knotted; they breathe, desynced -->
+  <g class="a1-dimw">
+    <g class="a1-w1"><path d="M14 70 C 48 46, 44 118, 78 108 C 104 100, 96 58, 120 64 C 146 70, 138 118, 173 138" class="a1-mut a1-d1" stroke-width="1.6"/></g>
+    <g class="a1-w2"><path d="M14 110 C 40 140, 66 74, 92 96 C 116 116, 108 152, 134 148 C 150 145, 156 148, 170 150" class="a1-mut a1-d2" stroke-width="1.6"/></g>
+    <g class="a1-w3"><path d="M14 150 C 44 182, 58 128, 86 150 C 112 170, 104 196, 130 186 C 150 178, 156 166, 173 162" class="a1-mut a1-d3" stroke-width="1.6"/></g>
+  </g>
+  <!-- hover reveal — the same strands, resolved: the designer sees through the knot -->
+  <g class="a1-g1"><path d="M14 70 C 70 96, 124 122, 173 138" class="a1-acc" stroke-width="1.5"/></g>
+  <g class="a1-g2"><path d="M14 110 C 70 126, 124 142, 170 150" class="a1-acc" stroke-width="1.5"/></g>
+  <g class="a1-g3"><path d="M14 150 C 70 156, 124 158, 173 162" class="a1-acc" stroke-width="1.5"/></g>
+  <!-- the aperture gate — where complexity becomes calm -->
+  <g class="a1-halow"><circle cx="196" cy="150" r="26" class="a1-acc a1-halo" stroke-width="1.2"/></g>
+  <circle cx="196" cy="150" r="26" class="a1-ink a1-dg" stroke-width="1.9"/>
+  <g class="a1-f2"><g class="a1-spin">
+    <g class="a1-ink" stroke-width="1.6" stroke-linecap="round">
+      <line x1="206" y1="150" x2="215" y2="150"/><line x1="186" y1="150" x2="177" y2="150"/>
+      <line x1="201" y1="158.7" x2="205.5" y2="166.5"/><line x1="191" y1="141.3" x2="186.5" y2="133.5"/>
+      <line x1="191" y1="158.7" x2="186.5" y2="166.5"/><line x1="201" y1="141.3" x2="205.5" y2="133.5"/>
     </g>
-    <rect x="218" y="68" width="22" height="16" rx="4" class="a1-acc" stroke-width="1.5"/>
   </g></g>
-  <!-- era 03 · the engine — turning core, halo on approach -->
-  <g class="a1-fr a1-fr3">
-    <g class="a1-d3">
-      <rect x="272" y="32" width="104" height="72" rx="10" class="a1-acc" stroke-width="1.9"/>
-      <g class="a1-halow"><circle cx="324" cy="68" r="22" class="a1-acc a1-halo" stroke-width="1.2"/></g>
-      <g class="a1-gear">
-        <circle cx="324" cy="68" r="16" class="a1-acc" stroke-width="1.8"/>
-        <g class="a1-acc" stroke-width="1.7" stroke-linecap="round">
-          <line x1="324" y1="46" x2="324" y2="52"/><line x1="324" y1="84" x2="324" y2="90"/>
-          <line x1="302" y1="68" x2="308" y2="68"/><line x1="340" y1="68" x2="346" y2="68"/>
-          <line x1="309" y1="53" x2="313" y2="57"/><line x1="335" y1="79" x2="339" y2="83"/>
-          <line x1="339" y1="53" x2="335" y2="57"/><line x1="313" y1="79" x2="309" y2="83"/>
-        </g>
-      </g>
-      <circle cx="324" cy="68" r="5" class="a1-accf a1-core"/>
+  <circle cx="196" cy="150" r="4" class="a1-accf a1-core"/>
+  <!-- the calm lines out -->
+  <path d="M221 141 C 238 134, 246 128, 262 128" class="a1-mut a1-dl1" stroke-width="1.5"/>
+  <path d="M223 150 L 262 150" class="a1-mut a1-dl2" stroke-width="1.5"/>
+  <path d="M221 159 C 238 166, 246 172, 262 172" class="a1-mut a1-dl3" stroke-width="1.5"/>
+  <!-- the product — one clear, breathing artifact -->
+  <g class="a1-cardw">
+    <g class="a1-dc">
+      <rect x="262" y="92" width="122" height="116" rx="10" class="a1-ink" stroke-width="1.9"/>
+      <path d="M262 114 h122" class="a1-mut" stroke-width="1.4"/>
     </g>
+    <g class="a1-f3"><circle cx="275" cy="103" r="2.6" class="a1-accf"/><circle cx="286" cy="103" r="2.6" class="a1-mut" stroke-width="1.2"/></g>
+    <rect x="276" y="124" width="70" height="8" rx="4" class="a1-mut a1-r1" stroke-width="1.4"/>
+    <rect x="276" y="142" width="92" height="8" rx="4" class="a1-mut a1-r2" stroke-width="1.4"/>
+    <rect x="276" y="168" width="48" height="10" rx="5" class="a1-acc a1-r3" stroke-width="1.7"/>
+    <!-- hover: the rows ignite in accent, then a spark -->
+    <rect x="276" y="124" width="70" height="8" rx="4" class="a1-acc a1-s1" stroke-width="1.5"/>
+    <rect x="276" y="142" width="92" height="8" rx="4" class="a1-acc a1-s2" stroke-width="1.5"/>
+    <path d="M344 173 l3.2 7.3 7.4 3.3 -7.4 3.3 -3.2 7.3 -3.2 -7.3 -7.4 -3.3 7.4 -3.3 Z" transform="translate(0 -10.6)" class="a1-accf a1-s3"/>
   </g>
-  <!-- era chevrons — one age becomes the next -->
-  <path d="M134 64 l8 8 l-8 8" class="a1-mut a1-f2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M258 64 l8 8 l-8 8" class="a1-mut a1-f3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- the manifold — three drops, one junction, one trunk -->
-  <path d="M76 104 v26 a10 10 0 0 0 10 10 h114" class="a1-mut a1-dp" stroke-width="1.5"/>
-  <path d="M324 104 v26 a10 10 0 0 1 -10 10 h-114" class="a1-mut a1-dp" stroke-width="1.5"/>
-  <path d="M200 104 v36" class="a1-mut a1-dpc" stroke-width="1.5"/>
-  <g class="a1-pw">
-    <path d="M76 104 v26 a10 10 0 0 0 10 10 h114" class="a1-acc" stroke-width="1.5"/>
-    <path d="M324 104 v26 a10 10 0 0 1 -10 10 h-114" class="a1-acc" stroke-width="1.5"/>
-    <path d="M200 104 v36" class="a1-acc" stroke-width="1.5"/>
+  <!-- hover payoff — the calm is verified -->
+  <g class="a1-payw">
+    <circle cx="380" cy="96" r="12" class="a1-accf"/>
+    <path d="M374.5 96 l4 4 l7 -8.5" stroke="var(--canvas,#f4f6fa)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <path d="M200 140 v36" class="a1-acc a1-dt" stroke-width="1.8"/>
-  <circle cx="200" cy="140" r="3.4" class="a1-accf a1-fj"/>
-  <!-- couriers — three pulses depart together, merge, land as one -->
-  <circle r="3.2" class="a1-accf a1-cs a1-cs1"/>
-  <circle r="3.2" class="a1-accf a1-cs a1-cs2"/>
-  <circle r="3.2" class="a1-accf a1-csc"/>
-  <!-- the output — one living file; it writes when the pulses land -->
-  <g class="a1-d5">
-    <rect x="130" y="176" width="140" height="92" rx="12" class="a1-ink" stroke-width="1.9"/>
-    <path d="M130 200 h140" class="a1-mut" stroke-width="1.4"/>
-    <circle cx="144" cy="188" r="3" class="a1-accf a1-pulse"/>
-    <circle cx="156" cy="188" r="3" class="a1-mut" stroke-width="1.2"/>
-    <rect x="144" y="212" width="64" height="8" rx="4" class="a1-mut a1-row1" stroke-width="1.4"/>
-    <rect x="144" y="227" width="98" height="8" rx="4" class="a1-mut a1-row2" stroke-width="1.4"/>
-    <rect x="144" y="242" width="44" height="10" rx="5" class="a1-acc a1-row3" stroke-width="1.7"/>
-  </g>
-  <text x="200" y="288" class="a1-lbl2 a1-f4">ONE FILE · ANY BROWSER · FOREVER</text>
+  <!-- couriers — three pulses brave the tangle together, leave calm, and write the file -->
+  <circle r="3.1" class="a1-accf a1-cs a1-cs1"/>
+  <circle r="3.1" class="a1-accf a1-cs a1-cs2"/>
+  <circle r="3.1" class="a1-accf a1-cs a1-cs3"/>
+  <circle r="2.7" class="a1-accf a1-cl a1-cl1"/>
+  <circle r="2.7" class="a1-accf a1-cl a1-cl2"/>
+  <circle r="2.7" class="a1-accf a1-cl a1-cl3"/>
+  <!-- the claim -->
+  <text x="200" y="286" class="a1-lbl a1-f4">TANGLED IN · OBVIOUS OUT</text>
 </svg>
 </script>
 <script type="text/svg-slot" data-slot="2">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" fill="none">
   <style>
-    /* namespaced a2-/k2 — inline SVG styles are document-global.
-       ambient: scanline + a comet riding the chart. hover: a runner circles the card,
-       labels wake, the avatar ring spins once — all opacity-gated or transition-based. */
+    /* slot-2 · THE DESIGNER'S REDLINE — About panel: the craft itself, caught mid-audit.
+       namespaced a2-/k2 — inline SVG styles are document-global; never share names across slots.
+       story: a UI specimen lives on the drafting grid; the audit never stops — the scanline
+       keeps reading, a comet rides the data, the focus ring keeps checking a11y, a caliper
+       caret re-measures the width forever (the W label answers each pass), and the whole
+       specimen breathes. hover is purely additive: the runner laps the border, every
+       measurement wakes in stagger, the chart ignites — payoff: the AA 4.5:1 verdict stamps.
+       loops are opacity/transform only; never retime a live animation. */
     .a2-ink{stroke:var(--ink,#171a21)}
     .a2-mut{stroke:var(--ink-faint,#99a0ad)}
-    .a2-acc{stroke:var(--accent,#1747c8)}
-    .a2-accf{fill:var(--accent,#1747c8)}
-    .a2-lbl{font:700 10px ui-monospace,Menlo,monospace;fill:var(--accent,#1747c8);letter-spacing:.08em}
+    .a2-acc{stroke:var(--accent,#2b4be0)}
+    .a2-accf{fill:var(--accent,#2b4be0)}
+    .a2-lbl{font:700 10px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.08em}
+    .a2-vlbl{font:700 8.5px ui-monospace,Menlo,monospace;fill:var(--canvas,#f4f6fa);letter-spacing:.08em;text-anchor:middle}
     .a2-grid line{stroke:var(--hairline,#e2e6ee);stroke-width:1}
+    /* intro — glide draws, settle fades */
     .a2-card{stroke-dasharray:760;stroke-dashoffset:760;animation:k2dr 1.3s .1s cubic-bezier(.4,0,.2,1) forwards}
-    .a2-inner{opacity:0;animation:k2fi .6s .9s ease-out forwards}
+    .a2-inner{opacity:0;animation:k2fi .6s .9s cubic-bezier(.22,1,.36,1) forwards}
     .a2-red{stroke-dasharray:260;stroke-dashoffset:260;animation:k2dr .8s 1.7s cubic-bezier(.4,0,.2,1) forwards}
-    /* the measurements read out one by one — W, H, radius, then the CTA verdict */
-    .a2-tg1{opacity:0;animation:k2fi8 .4s 2.2s ease-out forwards}
+    /* the measurements read out one by one — W, H, radius, then the CTA rule */
+    .a2-tg1{opacity:0;animation:k2fi8 .4s 2.2s ease-out forwards,k2wb 6s 3.2s linear infinite}
     .a2-tg2{opacity:0;animation:k2fi8 .4s 2.45s ease-out forwards}
     .a2-tg3{opacity:0;animation:k2fi8 .4s 2.7s ease-out forwards}
     .a2-tg4{opacity:0;animation:k2fi8 .4s 2.95s ease-out forwards}
-    .a2-ring{opacity:0;transform-box:fill-box;transform-origin:center;animation:k2ring 3.2s 2.6s ease-in-out infinite}
+    /* idle layer 1 — the specimen breathes, barely */
+    .a2-brw{transform-box:fill-box;transform-origin:center;animation:k2bre 7.5s 3s ease-in-out infinite}
+    /* idle layer 2 — the scanline never stops reading */
     .a2-scan{animation:k2scan 5.5s 2.8s cubic-bezier(.45,.05,.55,.95) infinite}
-    /* ambient: a comet rides the data line, forever */
+    /* idle layer 3 — a comet rides the data line, forever */
     .a2-comet{stroke-dasharray:16 220;animation:k2comet 3.4s 2.4s linear infinite}
-    /* hover: a runner laps the card border; labels + redlines wake fully */
+    /* idle layer 4 — the focus ring keeps checking */
+    .a2-ring{opacity:0;transform-box:fill-box;transform-origin:center;animation:k2ring 3.2s 2.6s ease-in-out infinite}
+    /* idle layer 5 — the caliper caret re-measures W; born and dies invisible (seamless) */
+    .a2-cal{opacity:0;offset-path:path('M36 29 h168');animation:k2cal 6s 3.2s linear infinite}
+    /* hover — additive only */
     .a2-runw{opacity:0;transition:opacity .35s ease-out}
     svg:hover .a2-runw{opacity:1}
     .a2-run{stroke-dasharray:46 698;animation:k2run 3s linear infinite}
     .a2-tag text{transition:opacity .3s ease-out}
-    svg:hover .a2-tag text{opacity:1!important}
+    svg:hover .a2-tg1{opacity:1!important;transition-delay:.05s}
+    svg:hover .a2-tg2{opacity:1!important;transition-delay:.15s}
+    svg:hover .a2-tg3{opacity:1!important;transition-delay:.25s}
+    svg:hover .a2-tg4{opacity:1!important;transition-delay:.35s}
     .a2-avatar{transform-box:fill-box;transform-origin:center;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
     svg:hover .a2-avatar{transform:rotate(180deg)}
+    .a2-area{opacity:0;transition:opacity .4s ease-out .1s}
+    svg:hover .a2-area{opacity:.14}
+    .a2-payw{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.34,1.45,.5,1) .8s}
+    svg:hover .a2-payw{transform:scale(1)}
     @keyframes k2dr{to{stroke-dashoffset:0}}
     @keyframes k2fi{to{opacity:1}}
     @keyframes k2fi8{to{opacity:.8}}
+    @keyframes k2bre{0%,100%{transform:scale(1)}50%{transform:scale(1.008)}}
     @keyframes k2ring{0%,100%{opacity:0;transform:scale(1)}45%{opacity:.9}60%{opacity:.9;transform:scale(1.12)}90%{opacity:0;transform:scale(1.16)}}
     @keyframes k2scan{0%,100%{transform:translateY(0)}50%{transform:translateY(170px)}}
     @keyframes k2comet{to{stroke-dashoffset:-236}}
     @keyframes k2run{to{stroke-dashoffset:-744}}
+    @keyframes k2cal{0%{offset-distance:0%;opacity:0}6%{opacity:.9}44%{opacity:.9}50%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k2wb{0%,46%{opacity:.8}52%{opacity:1}62%,100%{opacity:.8}}
     @media(prefers-reduced-motion:reduce){
       .a2-card,.a2-red{animation:none;stroke-dashoffset:0}
       .a2-inner{animation:none;opacity:1}
       .a2-tg1,.a2-tg2,.a2-tg3,.a2-tg4{animation:none;opacity:.8}
-      .a2-ring,.a2-scan,.a2-comet,.a2-run{animation:none}
-      .a2-ring,.a2-runw,.a2-comet{opacity:0}
-      .a2-avatar{transition:none}
+      .a2-brw,.a2-ring,.a2-scan,.a2-comet,.a2-run,.a2-cal{animation:none}
+      .a2-ring,.a2-runw,.a2-cal{opacity:0}
+      .a2-avatar,.a2-tag text,.a2-area,.a2-payw{transition:none}
       svg:hover .a2-avatar{transform:none}
     }
   </style>
@@ -7262,24 +7331,28 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
   </g>
   <!-- the scanline — the audit never stops reading -->
   <g class="a2-scan"><line x1="20" y1="52" x2="220" y2="52" class="a2-acc" stroke-width="1" opacity=".28"/></g>
-  <!-- the specimen card -->
-  <g class="a2-card">
-    <rect x="36" y="46" width="168" height="204" rx="14" class="a2-ink" stroke-width="1.9"/>
-    <g class="a2-avatar"><circle cx="62" cy="78" r="13" class="a2-mut" stroke-width="1.5"/><path d="M62 65 a13 13 0 0 1 13 13" class="a2-acc" stroke-width="1.6" stroke-linecap="round"/></g>
-    <rect x="86" y="67" width="76" height="9" rx="4.5" class="a2-mut" stroke-width="1.4"/>
-    <rect x="86" y="82" width="50" height="7" rx="3.5" class="a2-mut" stroke-width="1.2"/>
+  <!-- the specimen — it breathes while being measured -->
+  <g class="a2-brw">
+    <g class="a2-card">
+      <rect x="36" y="46" width="168" height="204" rx="14" class="a2-ink" stroke-width="1.9"/>
+      <g class="a2-avatar"><circle cx="62" cy="78" r="13" class="a2-mut" stroke-width="1.5"/><path d="M62 65 a13 13 0 0 1 13 13" class="a2-acc" stroke-width="1.6" stroke-linecap="round"/></g>
+      <rect x="86" y="67" width="76" height="9" rx="4.5" class="a2-mut" stroke-width="1.4"/>
+      <rect x="86" y="82" width="50" height="7" rx="3.5" class="a2-mut" stroke-width="1.2"/>
+    </g>
+    <g class="a2-inner" opacity="0">
+      <rect x="50" y="106" width="140" height="54" rx="9" class="a2-mut" stroke-width="1.4"/>
+      <!-- hover: the chart ignites -->
+      <path d="M50 146 l32 -20 l26 12 l38 -24 l24 14 V158 H50 Z" class="a2-accf a2-area"/>
+      <path d="M50 146 l32 -20 l26 12 l38 -24 l24 14" class="a2-mut" stroke-width="1.4" stroke-linejoin="round" opacity=".55"/>
+      <path d="M50 146 l32 -20 l26 12 l38 -24 l24 14" class="a2-acc a2-comet" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+      <rect x="50" y="174" width="92" height="8" rx="4" class="a2-mut" stroke-width="1.3"/>
+      <rect x="50" y="189" width="120" height="8" rx="4" class="a2-mut" stroke-width="1.3"/>
+      <rect x="50" y="214" width="66" height="22" rx="11" class="a2-acc" stroke-width="1.8"/>
+      <rect x="60" y="222" width="46" height="6" rx="3" class="a2-accf" opacity=".55"/>
+    </g>
   </g>
   <!-- hover: the runner laps the border -->
   <g class="a2-runw"><rect x="36" y="46" width="168" height="204" rx="14" class="a2-acc a2-run" stroke-width="2"/></g>
-  <g class="a2-inner" opacity="0">
-    <rect x="50" y="106" width="140" height="54" rx="9" class="a2-mut" stroke-width="1.4"/>
-    <path d="M50 146 l32 -20 l26 12 l38 -24 l24 14" class="a2-mut" stroke-width="1.4" stroke-linejoin="round" opacity=".55"/>
-    <path d="M50 146 l32 -20 l26 12 l38 -24 l24 14" class="a2-acc a2-comet" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-    <rect x="50" y="174" width="92" height="8" rx="4" class="a2-mut" stroke-width="1.3"/>
-    <rect x="50" y="189" width="120" height="8" rx="4" class="a2-mut" stroke-width="1.3"/>
-    <rect x="50" y="214" width="66" height="22" rx="11" class="a2-acc" stroke-width="1.8"/>
-    <rect x="60" y="222" width="46" height="6" rx="3" class="a2-accf" opacity=".55"/>
-  </g>
   <!-- the focus ring — a11y is part of the anatomy -->
   <rect x="45" y="209" width="76" height="32" rx="15" class="a2-acc a2-ring" stroke-width="1.4"/>
   <!-- redlines — measured after it exists, never before -->
@@ -7290,31 +7363,43 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     <circle cx="62" cy="78" r="18"/>
     <path d="M75 91 L84 98"/>
   </g>
+  <!-- the caliper caret — it re-measures the width, forever -->
+  <path d="M0 0 l3.4 -5.4 h-6.8 Z" class="a2-accf a2-cal"/>
   <g class="a2-tag">
     <text x="120" y="24" text-anchor="middle" class="a2-lbl a2-tg1">W 168</text>
     <text x="226" y="148" text-anchor="middle" transform="rotate(90 226 148)" class="a2-lbl a2-tg2">H 204</text>
     <text x="87" y="101" class="a2-lbl a2-tg3">r13</text>
     <text x="83" y="285" text-anchor="middle" class="a2-lbl a2-tg4">CTA · MIN 44</text>
   </g>
+  <!-- hover payoff — the verdict stamps: contrast passes -->
+  <g class="a2-payw">
+    <rect x="148" y="258" width="58" height="20" rx="10" class="a2-accf"/>
+    <text x="177" y="271.5" class="a2-vlbl">AA 4.5:1</text>
+  </g>
 </svg>
 </script>
 <script type="text/svg-slot" data-slot="3">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 90" fill="none">
   <style>
-    /* namespaced a3-/k3 — inline SVG styles are document-global.
+    /* slot-3 · THE AUDIT RULER v2 — full-width divider after Work: every layout answers
+       to one line. namespaced a3-/k3 — inline SVG styles are document-global.
        the band is FILL-ONLY: scaleX on a stroked rect smears its verticals and corners.
-       tick hierarchy follows the audit: tall ticks = the widths we test at.
-       each audit stop owns a device glyph; label + glyph wake together, in phase
-       with the band's holds (0-6% / 27-39% / 60-72% of the 16s cycle).
-       hover: a scan beam sweeps the whole ruler and every stop lights at once. */
+       one 16s phase-locked clock runs the audit: the viewport band grows through the
+       test widths and holds (0-6% / 27-39% / 60-72%); each stop's label+glyph wake in
+       phase and the glyph pops the moment the band arrives. two free-running layers keep
+       it alive between audits: a glint rides the ruler (11s) and the ticks shimmer (9.5s).
+       hover is additive: a scan beam sweeps, every stop lights at once, the verdict chip
+       springs in — ALL PASS. loops are opacity/transform only. */
     .a3-mut{stroke:var(--ink-faint,#99a0ad)}
-    .a3-acc{stroke:var(--accent,#1747c8)}
-    .a3-accf{fill:var(--accent,#1747c8)}
-    .a3-washf{fill:var(--accent,#1747c8);opacity:.1}
-    .a3-gly{stroke:var(--accent,#1747c8)}
+    .a3-acc{stroke:var(--accent,#2b4be0)}
+    .a3-accf{fill:var(--accent,#2b4be0)}
+    .a3-washf{fill:var(--accent,#2b4be0);opacity:.1}
+    .a3-gly{stroke:var(--accent,#2b4be0)}
     .a3-lbl{font:600 10px ui-monospace,Menlo,monospace;fill:var(--ink-faint,#99a0ad);letter-spacing:.1em;text-anchor:middle}
-    .a3-lblon{font:700 10px ui-monospace,Menlo,monospace;fill:var(--accent,#1747c8);letter-spacing:.1em;text-anchor:middle}
+    .a3-lblon{font:700 10px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.1em;text-anchor:middle}
+    .a3-vlbl{font:700 9px ui-monospace,Menlo,monospace;fill:var(--canvas,#f4f6fa);letter-spacing:.1em;text-anchor:middle}
     .a3-cap{font:600 10px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;transition:fill .3s ease-out}
+    /* the 16s audit clock */
     .a3-band{transform-origin:60px 50px;animation:k3grow 16s cubic-bezier(.45,.05,.55,.95) infinite}
     .a3-caret{animation:k3slide 16s cubic-bezier(.45,.05,.55,.95) infinite}
     /* no positive delays: a delayed loop leaves its stop wrongly lit until the first cycle
@@ -7322,30 +7407,47 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     .a3-s360{animation:k3lit 16s infinite}
     .a3-s768{animation:k3lit2 16s infinite}
     .a3-s1160{animation:k3lit3 16s infinite}
+    .a3-g360{transform-box:fill-box;transform-origin:center;animation:k3pop1 16s cubic-bezier(.34,1.45,.5,1) infinite}
+    .a3-g768{transform-box:fill-box;transform-origin:center;animation:k3pop2 16s cubic-bezier(.34,1.45,.5,1) infinite}
+    .a3-g1160{transform-box:fill-box;transform-origin:center;animation:k3pop3 16s cubic-bezier(.34,1.45,.5,1) infinite}
+    /* idle layer 2 — a glint rides the ruler between audits */
+    .a3-glint{stroke-dasharray:46 994;animation:k3glint 11s linear infinite}
+    /* idle layer 3 — the ticks shimmer */
+    .a3-ticks{animation:k3shm 9.5s ease-in-out infinite}
     /* hover: audit everything at once */
     svg:hover .a3-s360,svg:hover .a3-s768,svg:hover .a3-s1160{animation:none;opacity:1}
-    svg:hover .a3-cap{fill:var(--accent,#1747c8)}
+    svg:hover .a3-cap{fill:var(--accent,#2b4be0)}
     .a3-beamw{opacity:0;transition:opacity .35s ease-out}
     svg:hover .a3-beamw{opacity:1}
     .a3-beam{animation:k3beam 2.6s linear infinite}
+    /* hover payoff — the verdict springs in */
+    .a3-payw{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .45s cubic-bezier(.34,1.45,.5,1) .55s}
+    svg:hover .a3-payw{transform:scale(1)}
     @keyframes k3grow{0%,6%{transform:scaleX(1)}27%,39%{transform:scaleX(1.818)}60%,72%{transform:scaleX(3.636)}94%,100%{transform:scaleX(1)}}
     @keyframes k3slide{0%,6%{transform:translateX(0)}27%,39%{transform:translateX(180px)}60%,72%{transform:translateX(580px)}94%,100%{transform:translateX(0)}}
     @keyframes k3lit{0%,8%{opacity:1}18%,94%{opacity:.35}100%{opacity:1}}
     @keyframes k3lit2{0%,23%{opacity:.35}27%,37%{opacity:1}47%,100%{opacity:.35}}
     @keyframes k3lit3{0%,56%{opacity:.35}60%,70%{opacity:1}80%,100%{opacity:.35}}
+    @keyframes k3pop1{0%{transform:scale(1.12)}6%{transform:scale(1)}93%{transform:scale(1)}97%,100%{transform:scale(1.12)}}
+    @keyframes k3pop2{0%,25%{transform:scale(1)}29%{transform:scale(1.12)}35%,100%{transform:scale(1)}}
+    @keyframes k3pop3{0%,58%{transform:scale(1)}62%{transform:scale(1.12)}68%,100%{transform:scale(1)}}
+    @keyframes k3glint{to{stroke-dashoffset:-1040}}
+    @keyframes k3shm{0%,100%{opacity:.75}50%{opacity:1}}
     @keyframes k3beam{0%{transform:translateX(0);opacity:0}8%{opacity:.9}92%{opacity:.9}100%{transform:translateX(1040px);opacity:0}}
     @media(prefers-reduced-motion:reduce){
-      .a3-band,.a3-caret,.a3-s360,.a3-s768,.a3-s1160,.a3-beam{animation:none}
+      .a3-band,.a3-caret,.a3-s360,.a3-s768,.a3-s1160,.a3-g360,.a3-g768,.a3-g1160,.a3-glint,.a3-ticks,.a3-beam{animation:none}
       .a3-band{transform:scaleX(3.636)}
       .a3-caret{transform:translateX(580px)}
-      .a3-s360,.a3-s768,.a3-s1160{opacity:1}
-      .a3-beamw{opacity:0}
-      .a3-cap{transition:none}
+      .a3-s360,.a3-s768,.a3-s1160,.a3-ticks{opacity:1}
+      .a3-glint,.a3-beamw{opacity:0}
+      .a3-cap,.a3-payw{transition:none}
     }
   </style>
   <!-- the ruler — one line every layout must answer to -->
   <path d="M60 50 H1100" class="a3-mut" stroke-width="1.3"/>
-  <g class="a3-mut" stroke-width="1.2">
+  <!-- the glint — the ruler is alive even between audits -->
+  <path d="M60 50 H1100" class="a3-acc a3-glint" stroke-width="1.3" opacity=".3"/>
+  <g class="a3-mut a3-ticks" stroke-width="1.2">
     <path d="M60 50 v-8 M280 50 v-14 M460 50 v-14 M660 50 v-8 M860 50 v-14 M1100 50 v-8"/>
   </g>
   <!-- the viewport band — breathing through the audit widths -->
@@ -7358,161 +7460,199 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
   <g class="a3-beamw">
     <g class="a3-beam"><line x1="60" y1="34" x2="60" y2="66" class="a3-acc" stroke-width="1.4" opacity=".8"/></g>
   </g>
-  <!-- the stops — each device class wakes when the band arrives -->
+  <!-- the stops — each device class wakes when the band arrives; its glyph pops -->
   <text x="60" y="26" class="a3-lbl">0</text>
   <g class="a3-s360">
     <text x="280" y="26" class="a3-lblon">360 ✓</text>
-    <g class="a3-gly" stroke-width="1.2" fill="none"><rect x="274" y="58" width="12" height="14" rx="3"/><path d="M277.5 68.5 h5"/></g>
+    <g class="a3-g360"><g class="a3-gly" stroke-width="1.2" fill="none"><rect x="274" y="58" width="12" height="14" rx="3"/><path d="M277.5 68.5 h5"/></g></g>
   </g>
   <g class="a3-s768">
     <text x="460" y="26" class="a3-lblon">768 ✓</text>
-    <g class="a3-gly" stroke-width="1.2" fill="none"><rect x="450" y="60" width="20" height="12" rx="3"/><path d="M456 68.5 h8"/></g>
+    <g class="a3-g768"><g class="a3-gly" stroke-width="1.2" fill="none"><rect x="450" y="60" width="20" height="12" rx="3"/><path d="M456 68.5 h8"/></g></g>
   </g>
   <text x="660" y="26" class="a3-lbl">1024</text>
   <g class="a3-s1160">
     <text x="860" y="26" class="a3-lblon">1160 ✓</text>
-    <g class="a3-gly" stroke-width="1.2" fill="none"><rect x="846" y="61" width="28" height="11" rx="3"/><path d="M853 68.5 h14"/></g>
+    <g class="a3-g1160"><g class="a3-gly" stroke-width="1.2" fill="none"><rect x="846" y="61" width="28" height="11" rx="3"/><path d="M853 68.5 h14"/></g></g>
   </g>
   <text x="1100" y="26" class="a3-lbl">1440</text>
   <text x="60" y="82" class="a3-cap">EVERY WIDTH, MEASURED — THE PAGE THAT OVERFLOWS, FAILS THE BOARD</text>
+  <!-- hover payoff — the board's verdict -->
+  <g class="a3-payw">
+    <rect x="1008" y="64" width="92" height="19" rx="9.5" class="a3-accf"/>
+    <text x="1054" y="77" class="a3-vlbl">ALL PASS ✓</text>
+  </g>
 </svg>
 </script>
 <script type="text/svg-slot" data-slot="4">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
   <style>
-    /* namespaced a4-/k4 — inline SVG styles are document-global.
-       one machine, two readouts: the artifact row compresses (tangle → cube) and the SAME event
-       crushes the RAM gauge from 600 MB down to the 50 MB pill, leaving a ghost tick at the old
-       cost. hover: arrow pumps, cube wiggles, chip pops, and the old cost haunts the gauge
-       (opacity-gated always-running loop — never retime a live animation). */
+    /* slot-4 · THE BROADCAST STAGE — Stage section: talks, sharing, the playbill's acts.
+       namespaced a4-/k4 — inline SVG styles are document-global.
+       story: a speaker at the lectern, on air. knowledge leaves the mic as waves (5s
+       phase-locked cycle); the audience columns light up as each wave reaches them, and
+       the far edge RELAYS it onward — sparks past the last row: what is shared does not
+       stop at the room. the speaker is a bust (head + shoulders) — the same glyph
+       language as the audience, one crowd, one of them simply took the stage.
+       idle desync: spotlight sways 9s · speaker breathes 7s · ON AIR pulses 5.5s · wave
+       clock 5s. hover is additive: standing ovation (columns rise in stagger), full house
+       lights, spotlight blooms — payoff: the medal springs above the lectern (2nd place
+       is still a podium). loops are opacity/transform only; waves born and die invisible. */
+    .a4-ink{stroke:var(--ink,#171a21)}
     .a4-mut{stroke:var(--ink-faint,#99a0ad)}
-    .a4-acc{stroke:var(--accent,#1747c8)}
-    .a4-accf{fill:var(--accent,#1747c8)}
-    .a4-gf{fill:var(--ink-faint,#99a0ad)}
-    .a4-mid{text-anchor:middle}
-    .a4-ttl{font:700 10px ui-monospace,Menlo,monospace;fill:var(--accent,#1747c8);letter-spacing:.14em}
-    .a4-lbl{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.1em}
-    .a4-sm{font:600 7.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.08em}
-    .a4-smacc{font:700 7.5px ui-monospace,Menlo,monospace;fill:var(--accent,#1747c8);letter-spacing:.08em}
-    .a4-pl{font:700 8px ui-monospace,Menlo,monospace;fill:var(--ink,#171a21);letter-spacing:.04em}
-    .a4-tangle{stroke-dasharray:200;stroke-dashoffset:200;animation:k4dr 1.4s .2s cubic-bezier(.4,0,.2,1) forwards}
-    .a4-st{stroke-dasharray:40;stroke-dashoffset:40;animation:k4dr .5s 1.5s ease-out forwards}
-    .a4-veins{opacity:0;stroke-dasharray:26 162.5;animation:k4fi .6s 3.8s ease-out forwards,k4flow 6s 3.8s linear infinite}
-    .a4-arrow{stroke-dasharray:70;stroke-dashoffset:70;animation:k4dr .5s 1.9s ease-out forwards}
-    .a4-cube{stroke-dasharray:200;stroke-dashoffset:200;animation:k4dr 1s 2.4s cubic-bezier(.4,0,.2,1) forwards}
-    .a4-face{opacity:0;animation:k4face .5s 3.3s ease-out forwards}
-    .a4-gfr{stroke-dasharray:500;stroke-dashoffset:500;animation:k4dr .9s .5s cubic-bezier(.4,0,.2,1) forwards}
-    .a4-t1{opacity:0;animation:k4fi .5s .1s ease-out forwards}
-    .a4-t2{opacity:0;animation:k4fi .5s 1.3s ease-out forwards}
-    .a4-t3{opacity:0;animation:k4fi .5s .8s ease-out forwards}
-    .a4-t4{opacity:0;animation:k4fi .5s 3.4s ease-out forwards}
-    .a4-t5{opacity:0;animation:k4fi .6s 3.7s ease-out forwards}
-    .a4-t6{opacity:0;animation:k4fi .5s 3.2s ease-out forwards}
-    .a4-tk{opacity:0;animation:k4fi .4s 2.5s ease-out forwards}
-    .a4-gg{transform:scale(0,1);transform-box:fill-box;transform-origin:left center;animation:k4grow .9s .9s cubic-bezier(.4,0,.2,1) forwards}
-    .a4-ghost{transform-box:fill-box;transform-origin:left center;animation:k4crush .85s 2.4s cubic-bezier(.7,0,.2,1) forwards,k4gout .35s 3.05s ease-out forwards}
-    .a4-pill{opacity:0;animation:k4fi .4s 3s ease-out forwards,k4pg 3.5s 4.2s ease-in-out infinite}
-    .a4-br{transform-box:fill-box;transform-origin:center;animation:k4br 6s 4s ease-in-out infinite}
-    .a4-hv{transform-box:fill-box;transform-origin:center;animation:k4hv 6s 4s ease-in-out infinite}
-    .a4-spark{opacity:0;animation:k4fi .4s 3.2s ease-out forwards,k4sp 3.5s 4.2s ease-in-out infinite}
-    .a4-pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:k4pop .45s 3.3s cubic-bezier(.34,1.56,.64,1) forwards}
-    /* hover layer */
-    .a4-arrowg{transform-box:fill-box;transform-origin:center}
-    svg:hover .a4-arrowg{animation:k4pump .7s ease-in-out infinite}
-    .a4-cubew{transform-box:fill-box;transform-origin:center}
-    svg:hover .a4-cubew{animation:k4wig 1.4s ease-in-out infinite}
-    .a4-chip{transform-box:fill-box;transform-origin:center;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-    svg:hover .a4-chip{transform:scale(1.1)}
-    .a4-gw{opacity:0;transition:opacity .35s ease-out}
-    svg:hover .a4-gw{opacity:.45}
-    .a4-mem{transform-box:fill-box;transform-origin:left center;animation:k4mem 2.8s ease-in-out infinite}
+    .a4-acc{stroke:var(--accent,#2b4be0)}
+    .a4-accf{fill:var(--accent,#2b4be0)}
+    .a4-cvf{fill:var(--canvas,#f4f6fa)}
+    .a4-lbl{font:600 8px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.12em}
+    .a4-cap{font:600 10px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;transition:fill .3s ease-out}
+    svg:hover .a4-cap{fill:var(--accent,#2b4be0)}
+    /* intro — the stage assembles: platform, speaker, lectern, mic — then the house */
+    .a4-spot{opacity:0;animation:k4fi .9s .1s cubic-bezier(.22,1,.36,1) forwards}
+    .a4-stg{stroke-dasharray:200;stroke-dashoffset:200;animation:k4dr .8s .2s cubic-bezier(.4,0,.2,1) forwards}
+    .a4-head{stroke-dasharray:60;stroke-dashoffset:60;animation:k4dr .6s .4s ease-out forwards}
+    .a4-sho{stroke-dasharray:50;stroke-dashoffset:50;animation:k4dr .5s .55s ease-out forwards}
+    .a4-lec{stroke-dasharray:100;stroke-dashoffset:100;animation:k4dr .7s .7s cubic-bezier(.4,0,.2,1) forwards}
+    .a4-mic{stroke-dasharray:20;stroke-dashoffset:20;animation:k4dr .4s 1s ease-out forwards}
+    .a4-micc{opacity:0;animation:k4fi .35s 1.15s ease-out forwards}
+    .a4-au1{opacity:0;animation:k4fi85 .5s 1.2s ease-out forwards}
+    .a4-au2{opacity:0;animation:k4fi85 .5s 1.35s ease-out forwards}
+    .a4-au3{opacity:0;animation:k4fi85 .5s 1.5s ease-out forwards}
+    .a4-chip{opacity:0;animation:k4fi .5s 1.8s ease-out forwards}
+    .a4-capw{opacity:0;animation:k4fi .5s 2s ease-out forwards}
+    /* idle layer 1 — the spotlight sways */
+    .a4-sway{transform-origin:74px 0;animation:k4sw 9s ease-in-out infinite}
+    /* idle layer 2 — the speaker breathes behind the lectern */
+    .a4-spk{transform-box:fill-box;transform-origin:center bottom;animation:k4bre 7s ease-in-out infinite}
+    /* idle layer 3 — ON AIR pulses */
+    .a4-dot{animation:k4air 5.5s ease-in-out infinite}
+    /* the 5s broadcast clock — waves born and die invisible; columns light in phase */
+    .a4-w1{transform-origin:78px 100px;opacity:0;animation:k4w1 5s linear infinite}
+    .a4-w2{transform-origin:78px 100px;opacity:0;animation:k4w2 5s linear infinite}
+    .a4-w3{transform-origin:78px 100px;opacity:0;animation:k4w3 5s linear infinite}
+    .a4-c1{opacity:0;animation:k4c1 5s infinite}
+    .a4-c2{opacity:0;animation:k4c2 5s infinite}
+    .a4-c3{opacity:0;animation:k4c3 5s infinite}
+    .a4-sp{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:k4sp 5s infinite}
+    /* hover — additive: ovation, full house, bloom, medal */
+    .a4-ov1{transition:transform .45s cubic-bezier(.34,1.45,.5,1) .05s}
+    .a4-ov2{transition:transform .45s cubic-bezier(.34,1.45,.5,1) .15s}
+    .a4-ov3{transition:transform .45s cubic-bezier(.34,1.45,.5,1) .25s}
+    svg:hover .a4-ov1,svg:hover .a4-ov2,svg:hover .a4-ov3{transform:translateY(-4px)}
+    svg:hover .a4-c1,svg:hover .a4-c2,svg:hover .a4-c3{animation:none;opacity:1}
+    .a4-spot path{transition:opacity .4s ease-out}
+    svg:hover .a4-spot path{opacity:.12}
+    .a4-med{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.34,1.45,.5,1) .8s}
+    svg:hover .a4-med{transform:scale(1)}
     @keyframes k4dr{to{stroke-dashoffset:0}}
     @keyframes k4fi{to{opacity:1}}
-    @keyframes k4face{to{opacity:.08}}
-    @keyframes k4flow{to{stroke-dashoffset:-188.5}}
-    @keyframes k4grow{to{transform:scale(1,1)}}
-    @keyframes k4crush{to{transform:scale(.0827,1)}}
-    @keyframes k4gout{to{opacity:0}}
-    @keyframes k4pg{0%,100%{opacity:1}50%{opacity:.7}}
-    @keyframes k4br{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(.965) rotate(-2deg)}}
-    @keyframes k4hv{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-    @keyframes k4sp{0%,100%{opacity:1}50%{opacity:.35}}
-    @keyframes k4pop{0%{opacity:0;transform:scale(.7)}100%{opacity:1;transform:scale(1)}}
-    @keyframes k4pump{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
-    @keyframes k4wig{0%,100%{transform:rotate(0deg)}25%{transform:rotate(3deg)}75%{transform:rotate(-3deg)}}
-    @keyframes k4mem{0%,100%{transform:scale(.0827,1)}50%{transform:scale(1,1)}}
+    @keyframes k4fi85{to{opacity:.85}}
+    @keyframes k4sw{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+    @keyframes k4bre{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+    @keyframes k4air{0%,100%{opacity:.25}50%{opacity:1}}
+    @keyframes k4w1{0%{transform:scale(.5);opacity:0}6%{opacity:.85}30%,100%{transform:scale(4);opacity:0}}
+    @keyframes k4w2{0%,10%{transform:scale(.5);opacity:0}16%{opacity:.85}40%,100%{transform:scale(4);opacity:0}}
+    @keyframes k4w3{0%,20%{transform:scale(.5);opacity:0}26%{opacity:.85}50%,100%{transform:scale(4);opacity:0}}
+    @keyframes k4c1{0%,24%{opacity:0}30%,44%{opacity:1}56%,100%{opacity:0}}
+    @keyframes k4c2{0%,34%{opacity:0}40%,54%{opacity:1}66%,100%{opacity:0}}
+    @keyframes k4c3{0%,44%{opacity:0}50%,64%{opacity:1}76%,100%{opacity:0}}
+    @keyframes k4sp{0%,52%{transform:scale(0)}58%{transform:scale(1.2)}62%{transform:scale(1)}70%,100%{transform:scale(0)}}
     @media(prefers-reduced-motion:reduce){
-      .a4-tangle,.a4-st,.a4-arrow,.a4-cube,.a4-gfr{animation:none;stroke-dashoffset:0}
-      .a4-veins{animation:none;opacity:0}
-      .a4-t1,.a4-t2,.a4-t3,.a4-t4,.a4-t5,.a4-t6,.a4-tk{animation:none;opacity:1}
-      .a4-face{animation:none;opacity:.08}
-      .a4-gg,.a4-ghost{animation:none}
-      .a4-pill{animation:none;opacity:1}
-      .a4-spark{animation:none;opacity:1}
-      .a4-pop{animation:none;opacity:1;transform:none}
-      .a4-br,.a4-hv,.a4-spark,.a4-mem{animation:none}
-      svg:hover .a4-arrowg,svg:hover .a4-cubew{animation:none}
-      .a4-chip,.a4-gw{transition:none}
-      svg:hover .a4-chip{transform:none}
-      svg:hover .a4-gw{opacity:0}
+      .a4-spot,.a4-chip,.a4-capw,.a4-micc{animation:none;opacity:1}
+      .a4-stg,.a4-head,.a4-sho,.a4-lec,.a4-mic{animation:none;stroke-dashoffset:0}
+      .a4-au1,.a4-au2,.a4-au3{animation:none;opacity:.85}
+      .a4-sway,.a4-spk,.a4-dot,.a4-w1,.a4-w2,.a4-w3,.a4-sp{animation:none}
+      .a4-c1,.a4-c2,.a4-c3{animation:none;opacity:1}
+      .a4-w1,.a4-w2,.a4-w3,.a4-sp{opacity:0;transform:scale(0)}
+      .a4-ov1,.a4-ov2,.a4-ov3,.a4-med,.a4-spot path,.a4-cap{transition:none}
+      svg:hover .a4-ov1,svg:hover .a4-ov2,svg:hover .a4-ov3{transform:none}
     }
   </style>
-  <!-- the thesis, as the sheet's title -->
-  <text x="140" y="20" class="a4-ttl a4-mid a4-t1">DESIGN = COMPRESSION</text>
-  <!-- raw: 600 MB of tangle — breathing, circulating, loose ends everywhere -->
-  <g class="a4-br">
-    <g class="a4-tangle a4-mut" stroke-width="1.7" stroke-linecap="round">
-      <circle cx="63" cy="72" r="30"/>
-      <path d="M42 50 C66 56 80 72 74 94"/>
-      <path d="M36 84 C44 66 62 54 84 52"/>
-      <path d="M34 66 C52 78 76 76 90 60"/>
-      <path d="M54 44 C62 58 60 74 52 82"/>
-    </g>
-    <circle cx="63" cy="72" r="30" class="a4-acc a4-veins" stroke-linecap="round" stroke-width="1.8"/>
-    <path d="M90 56 c8 -8 16 -10 22 -8" class="a4-mut a4-st" stroke-width="1.4" stroke-linecap="round"/>
-    <path d="M40 92 c-7 6 -10 13 -8 20" class="a4-mut a4-st" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- the spotlight — it never leaves the lectern, it only sways -->
+  <g class="a4-spot"><g class="a4-sway"><path d="M60 0 L28 150 L120 150 L88 0 Z" class="a4-accf" opacity=".07"/></g></g>
+  <!-- the stage -->
+  <rect x="28" y="148" width="88" height="8" rx="2" class="a4-ink a4-stg" stroke-width="1.6"/>
+  <!-- the speaker — same glyph language as the house: one of them took the stage -->
+  <g class="a4-spk">
+    <circle cx="74" cy="100" r="8" class="a4-ink a4-head" stroke-width="1.8"/>
+    <path d="M62 122 a12 12 0 0 1 24 0" class="a4-ink a4-sho" stroke-width="1.8" stroke-linecap="round"/>
   </g>
-  <text x="64" y="124" class="a4-lbl a4-mid a4-t2">RAW · 600 MB</text>
-  <!-- the press — pumps when you lean in -->
-  <g class="a4-arrowg">
-    <path d="M122 72 h40" class="a4-acc a4-arrow" stroke-width="2.2" stroke-linecap="round"/>
-    <path d="M158 63 l12 9 l-12 9" class="a4-acc a4-arrow" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <g class="a4-chip"><g class="a4-pop">
-    <rect x="111" y="88" width="70" height="16" rx="8" class="a4-acc" stroke-width="1.2"/>
-    <text x="146" y="99" class="a4-smacc a4-mid">×12 SMALLER</text>
-  </g></g>
-  <!-- clear: the 50 MB cube — decision-ready, hovering -->
-  <g class="a4-hv"><g class="a4-cubew">
-    <polygon points="228,46 254,59 228,72 202,59" class="a4-accf a4-face"/>
-    <g class="a4-cube a4-acc" stroke-width="1.9" stroke-linejoin="round">
-      <path d="M228 46 L254 59 V93 L228 106 L202 93 V59 Z"/>
-      <path d="M202 59 L228 72 L254 59 M228 72 V106"/>
+  <!-- the lectern + mic -->
+  <path d="M56 148 L61 122 H87 L92 148" class="a4-ink a4-lec" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M87 122 l7 -12" class="a4-ink a4-mic" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="95.5" cy="107.5" r="2.6" class="a4-accf a4-micc"/>
+  <!-- the broadcast — waves leave the mic, phase-locked -->
+  <g class="a4-w1"><path d="M92 86 A20 20 0 0 1 92 114" class="a4-acc" stroke-width="1.6" stroke-linecap="round"/></g>
+  <g class="a4-w2"><path d="M92 86 A20 20 0 0 1 92 114" class="a4-acc" stroke-width="1.6" stroke-linecap="round"/></g>
+  <g class="a4-w3"><path d="M92 86 A20 20 0 0 1 92 114" class="a4-acc" stroke-width="1.6" stroke-linecap="round"/></g>
+  <!-- the house — each column wakes as the wave arrives; hover: standing ovation -->
+  <g class="a4-ov1">
+    <g class="a4-au1 a4-mut" stroke-width="1.4">
+      <circle cx="158" cy="100" r="5"/><path d="M150 115 a8 8 0 0 1 16 0"/>
+      <circle cx="158" cy="128" r="5"/><path d="M150 143 a8 8 0 0 1 16 0"/>
+      <circle cx="158" cy="156" r="5"/><path d="M150 171 a8 8 0 0 1 16 0"/>
     </g>
-    <circle cx="228" cy="46" r="2.6" class="a4-accf a4-spark"/>
-  </g></g>
-  <text x="228" y="124" class="a4-lbl a4-mid a4-t6">CLEAR · 50 MB</text>
-  <!-- the readout: the reader's RAM, crushed by the same event -->
-  <path d="M26 138 h228" class="a4-mut a4-t3" stroke-width="1" stroke-dasharray="2 4"/>
-  <text x="26" y="152" class="a4-lbl a4-t3">HUMAN RAM ≈ 1 GB</text>
-  <rect x="26" y="158" width="228" height="16" rx="8" class="a4-mut a4-gfr" stroke-width="1.4"/>
-  <rect x="29" y="161" width="11" height="10" rx="5" class="a4-accf a4-pill"/>
-  <g class="a4-gg"><rect x="29" y="161" width="133" height="10" rx="5" class="a4-gf a4-ghost" opacity=".45"/></g>
-  <g class="a4-gw"><rect x="29" y="161" width="133" height="10" rx="5" class="a4-gf a4-mem" opacity=".5"/></g>
-  <path d="M162 154 v24" class="a4-mut a4-tk" stroke-width="1.2" stroke-dasharray="3 3"/>
-  <text x="36" y="190" class="a4-smacc a4-mid a4-t4">CLEAR</text>
-  <text x="162" y="190" class="a4-sm a4-mid a4-t4">RAW</text>
-  <text x="140" y="204" class="a4-pl a4-mid a4-t5">SPEND IT ON THE DECISION, NOT THE DECODING.</text>
+    <g class="a4-c1 a4-acc" stroke-width="1.5">
+      <circle cx="158" cy="100" r="5"/><path d="M150 115 a8 8 0 0 1 16 0"/>
+      <circle cx="158" cy="128" r="5"/><path d="M150 143 a8 8 0 0 1 16 0"/>
+      <circle cx="158" cy="156" r="5"/><path d="M150 171 a8 8 0 0 1 16 0"/>
+    </g>
+  </g>
+  <g class="a4-ov2">
+    <g class="a4-au2 a4-mut" stroke-width="1.4">
+      <circle cx="196" cy="100" r="5"/><path d="M188 115 a8 8 0 0 1 16 0"/>
+      <circle cx="196" cy="128" r="5"/><path d="M188 143 a8 8 0 0 1 16 0"/>
+      <circle cx="196" cy="156" r="5"/><path d="M188 171 a8 8 0 0 1 16 0"/>
+    </g>
+    <g class="a4-c2 a4-acc" stroke-width="1.5">
+      <circle cx="196" cy="100" r="5"/><path d="M188 115 a8 8 0 0 1 16 0"/>
+      <circle cx="196" cy="128" r="5"/><path d="M188 143 a8 8 0 0 1 16 0"/>
+      <circle cx="196" cy="156" r="5"/><path d="M188 171 a8 8 0 0 1 16 0"/>
+    </g>
+  </g>
+  <g class="a4-ov3">
+    <g class="a4-au3 a4-mut" stroke-width="1.4">
+      <circle cx="234" cy="100" r="5"/><path d="M226 115 a8 8 0 0 1 16 0"/>
+      <circle cx="234" cy="128" r="5"/><path d="M226 143 a8 8 0 0 1 16 0"/>
+      <circle cx="234" cy="156" r="5"/><path d="M226 171 a8 8 0 0 1 16 0"/>
+    </g>
+    <g class="a4-c3 a4-acc" stroke-width="1.5">
+      <circle cx="234" cy="100" r="5"/><path d="M226 115 a8 8 0 0 1 16 0"/>
+      <circle cx="234" cy="128" r="5"/><path d="M226 143 a8 8 0 0 1 16 0"/>
+      <circle cx="234" cy="156" r="5"/><path d="M226 171 a8 8 0 0 1 16 0"/>
+    </g>
+  </g>
+  <!-- the relay — what is shared leaves the room -->
+  <path d="M258 92 l4 4 l-4 4 l-4 -4 Z" class="a4-accf a4-sp"/>
+  <path d="M258 148 l4 4 l-4 4 l-4 -4 Z" class="a4-accf a4-sp" style="animation-delay:.3s"/>
+  <!-- ON AIR -->
+  <g class="a4-chip">
+    <rect x="198" y="14" width="64" height="20" rx="10" class="a4-mut" stroke-width="1.3"/>
+    <circle cx="210" cy="24" r="2.6" class="a4-accf a4-dot"/>
+    <text x="218" y="27" class="a4-lbl">ON AIR</text>
+  </g>
+  <!-- hover payoff — 2nd place is still a podium -->
+  <g class="a4-med">
+    <path d="M104 66 l-4 13 l8 -5 Z M116 66 l4 13 l-8 -5 Z" class="a4-accf" opacity=".85"/>
+    <circle cx="110" cy="60" r="11" class="a4-accf"/>
+    <path d="M110 54.6 l1.6 3.3 3.6 .5 -2.6 2.5 .6 3.6 -3.2 -1.7 -3.2 1.7 .6 -3.6 -2.6 -2.5 3.6 -.5 Z" class="a4-cvf"/>
+  </g>
+  <g class="a4-capw"><text x="20" y="197" class="a4-cap">EVERY ACT, A TRANSFER</text></g>
 </svg>
 </script>
 <script type="text/svg-slot" data-slot="5">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
   <style>
-    /* namespaced a5-/k5 — inline SVG styles are document-global (ids too: a5cap).
+    /* slot-5 · THE ANSWERING BEACON — Contact, the INK close.
+       namespaced a5-/k5 — inline SVG styles are document-global (ids too: a5cap).
        Sits on the ink panel, strokes with var(--canvas): auto-inverts per theme.
        three clean radii, no crossings: bearings ring r54 · inscription ring r68 · orbit r82.
-       ambient: dual counter-orbits, the inscription turns like a seal, sonar breath.
-       hover: the asterisk turns 45°, the sonar answers, bearings + inscription wake. */
+       story — a TWO-WAY sonar on an 8s clock: a ping arrives from outside (someone calls),
+       the core flashes (received), the beacon answers with its own pulse (the first reply).
+       contact promises "the first reply usually comes with a sketch" — so on hover the
+       payoff is literal: a pencil squiggle draws itself under the seal while the seal
+       turns 45°, the sonar answers rapid-fire, and the quiet layers wake.
+       idle desync: conversation 8s · seal breath 5s · orbits 60/90/120s counter-turning.
+       loops are opacity/transform only; rings are born and die invisible (seamless). */
     .a5-ring{stroke:var(--canvas,#f4f6fa);opacity:.5}
     .a5-mark{stroke:var(--canvas,#f4f6fa)}
     .a5-markf{fill:var(--canvas,#f4f6fa)}
@@ -7524,9 +7664,11 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     .a5-core{opacity:0;animation:k5fi .6s 1.7s ease-out forwards}
     .a5-capw{opacity:0;animation:k5fi .8s 2s ease-out forwards}
     .a5-breathe{animation:k5pu 5s 2.4s ease-in-out infinite}
-    /* ambient sonar — a whisper every 5s, seamless (born invisible, dies invisible) */
-    .a5-sonar{transform-box:fill-box;transform-origin:center;animation:k5sonar 5s 2.6s ease-out infinite}
-    /* hover: the seal turns; the sonar answers; the quiet layers wake */
+    /* the conversation — 8s, phase-locked, from t=0: in → received → answered */
+    .a5-ping{transform-box:fill-box;transform-origin:center;opacity:0;animation:k5ping 8s linear infinite}
+    .a5-rx{transform-box:fill-box;transform-origin:center;opacity:0;animation:k5rx 8s linear infinite}
+    .a5-ans{transform-box:fill-box;transform-origin:center;opacity:0;animation:k5ans 8s linear infinite}
+    /* hover: the seal turns; the sonar answers rapid-fire; the quiet layers wake */
     .a5-starw{transform-box:fill-box;transform-origin:center;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
     svg:hover .a5-starw{transform:rotate(45deg)}
     .a5-sonar2w{opacity:0;transition:opacity .35s ease-out}
@@ -7536,19 +7678,26 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     svg:hover .a5-bear{opacity:1}
     .a5-capt{transition:opacity .35s ease-out}
     svg:hover .a5-capt{opacity:1}
+    /* hover payoff — the first reply comes with a sketch: it draws itself */
+    .a5-sk{stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset .6s cubic-bezier(.22,1,.36,1) .55s}
+    svg:hover .a5-sk{stroke-dashoffset:0}
     @keyframes k5r{to{transform:rotate(360deg)}}
     @keyframes k5r2{to{transform:rotate(-360deg)}}
     @keyframes k5dr{to{stroke-dashoffset:0}}
     @keyframes k5fi{to{opacity:1}}
     @keyframes k5pu{0%,100%{opacity:.55}50%{opacity:1}}
+    @keyframes k5ping{0%{transform:scale(2.6);opacity:0}5%{opacity:.55}22%,100%{transform:scale(.4);opacity:0}}
+    @keyframes k5rx{0%,21%{transform:scale(.5);opacity:0}25%{transform:scale(1);opacity:.8}32%,100%{transform:scale(1.35);opacity:0}}
+    @keyframes k5ans{0%,30%{transform:scale(.35);opacity:0}35%{opacity:.6}62%,100%{transform:scale(2.4);opacity:0}}
     @keyframes k5sonar{0%{transform:scale(.35);opacity:.6}100%{transform:scale(2.4);opacity:0}}
     @media(prefers-reduced-motion:reduce){
-      .a5-spin,.a5-spin2,.a5-spin3,.a5-breathe,.a5-sonar,.a5-sonar2{animation:none}
-      .a5-sonar,.a5-sonar2w{opacity:0}
+      .a5-spin,.a5-spin2,.a5-spin3,.a5-breathe,.a5-ping,.a5-rx,.a5-ans,.a5-sonar2{animation:none}
+      .a5-ping,.a5-rx,.a5-ans,.a5-sonar2w{opacity:0}
       .a5-star{animation:none;stroke-dashoffset:0}
       .a5-core,.a5-capw{animation:none;opacity:1}
-      .a5-starw,.a5-capt,.a5-bear{transition:none}
+      .a5-starw,.a5-capt,.a5-bear,.a5-sk{transition:none}
       svg:hover .a5-starw{transform:none}
+      .a5-sk{stroke-dashoffset:0}
     }
   </style>
   <defs><path id="a5cap" d="M100 32 a68 68 0 1 1 -.01 0"/></defs>
@@ -7571,8 +7720,11 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
       <path d="M59 59 l5.6 5.6 M135.4 135.4 l5.6 5.6 M141 59 l-5.6 5.6 M64.6 135.4 l-5.6 5.6"/>
     </g>
   </g>
-  <!-- the sonar — ambient whisper + hover answer -->
-  <circle cx="100" cy="100" r="30" class="a5-ring a5-sonar" stroke-width="1.2"/>
+  <!-- the conversation — in → received → answered, forever -->
+  <circle cx="100" cy="100" r="30" class="a5-ring a5-ping" stroke-width="1.2"/>
+  <circle cx="100" cy="100" r="13" class="a5-mark a5-rx" stroke-width="1.4"/>
+  <circle cx="100" cy="100" r="30" class="a5-ring a5-ans" stroke-width="1.2"/>
+  <!-- hover: the beacon answers rapid-fire -->
   <g class="a5-sonar2w"><circle cx="100" cy="100" r="30" class="a5-mark a5-sonar2" stroke-width="1.3" opacity=".8"/></g>
   <!-- the asterisk seal — one mark, eight directions: arete.
        breathe on the parent, turn on its own wrapper, draw on the child —
@@ -7585,6 +7737,8 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     </g>
   </g>
   <circle cx="100" cy="100" r="7.5" class="a5-markf a5-core" opacity="0"/>
+  <!-- the sketch — the first reply, hand-drawn on arrival -->
+  <path d="M85 143 q7.5 -9 15 0 t15 0" class="a5-mark a5-sk" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
 </svg>
 </script>
 <!-- SNAPSHOT:END -->
