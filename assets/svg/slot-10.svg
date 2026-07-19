@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-10 · THE BALANCE STACK — general slot, message: steady under load.
+       namespaced a10-/k10 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — an 8s clock: a tower of blocks stands on its baseline, swaying a breath's
+       worth and no more; a new accent block descends, lands softly (the stack absorbs it
+       with one quiet squash, dust flicks out), the load holds — then the cycle is reborn
+       and another block is always arriving. more load, same calm.
+       idle desync: clock 8s · sway 10s · axis shimmer 9.5s · dust drift 12s.
+       hover (additive): the spirit level draws across the top — bubble dead center —
+       plus caption ignites and the STEADY chip springs in.
+       reduced-motion: the block landed, the level shown, the tower still — complete frame. */
+    .a10-ink{stroke:var(--ink,#171a21)}
+    .a10-mut{stroke:var(--ink-muted,#5d6472)}
+    .a10-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a10-acc{stroke:var(--accent,#2b4be0)}
+    .a10-accf{fill:var(--accent,#2b4be0)}
+    .a10-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a10-hl{stroke:var(--hairline,#e2e6ee)}
+    .a10-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a10-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a10-in{opacity:0;animation:k10fi .6s ease-out forwards}
+    .a10-g1{animation-delay:.15s}.a10-g2{animation-delay:.35s}.a10-g3{animation-delay:.55s}.a10-g4{animation-delay:.75s}
+    /* idle life */
+    .a10-sw{transform-origin:140px 160px;animation:k10sw 10s ease-in-out infinite}
+    .a10-shm{animation:k10sh 9.5s ease-in-out infinite}
+    .a10-du1{animation:k10df 12s ease-in-out infinite}
+    .a10-du2{animation:k10df 12s -5.3s ease-in-out infinite}
+    /* the 8s clock — arrive, land, absorb, hold, rebirth (phase-locked) */
+    .a10-bl{animation:k10bl 8s cubic-bezier(.4,0,.2,1) infinite}
+    .a10-sq{transform-origin:140px 160px;animation:k10sq 8s linear infinite}
+    .a10-pf{opacity:0;animation:k10pf 8s linear infinite}
+    /* hover — purely additive: the spirit level and the verdict */
+    .a10-lv{opacity:0;transform:scaleX(.3);transform-origin:140px 60px;transition:opacity .35s ease-out .15s,transform .6s cubic-bezier(.22,1,.36,1) .15s}
+    svg:hover .a10-lv{opacity:.95;transform:scaleX(1)}
+    .a10-capt{transition:fill .35s ease-out}
+    svg:hover .a10-capt{fill:var(--accent,#2b4be0)}
+    .a10-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a10-chip{opacity:1;transform:scale(1)}
+    @keyframes k10fi{to{opacity:1}}
+    @keyframes k10sw{0%,100%{transform:rotate(0deg)}25%{transform:rotate(.55deg)}75%{transform:rotate(-.55deg)}}
+    @keyframes k10sh{0%,100%{opacity:.5}50%{opacity:.85}}
+    @keyframes k10df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k10bl{0%{transform:translateY(-36px);opacity:0}5%{transform:translateY(-31px);opacity:1}30%{transform:translateY(0)}34%{transform:translateY(-2.5px)}38%{transform:translateY(0)}88%{transform:translateY(0);opacity:1}94%{transform:translateY(0);opacity:0}100%{transform:translateY(-36px);opacity:0}}
+    @keyframes k10sq{0%,29%{transform:scaleY(1)}33%{transform:scaleY(.985)}40%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+    @keyframes k10pf{0%,30%{opacity:0}33%{opacity:.8}42%{opacity:0}100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a10-sw,.a10-shm,.a10-du1,.a10-du2,.a10-bl,.a10-sq,.a10-pf{animation:none}
+      .a10-in{animation:none;opacity:1}
+      .a10-bl{opacity:1;transform:none}
+      .a10-pf{opacity:0}
+      .a10-lv,.a10-capt,.a10-chip{transition:none}
+      .a10-lv{opacity:.95;transform:none}
+      .a10-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the center axis — the plumb truth the tower answers to -->
+  <g class="a10-shm" opacity=".5"><g class="a10-in a10-g1">
+    <path d="M140 38 V160" class="a10-hl" stroke-width="1" stroke-dasharray="3 6"/>
+    <path d="M74 168 v-6 M206 168 v-6" class="a10-fnt" stroke-width="1.2"/>
+  </g></g>
+  <!-- the ground -->
+  <path d="M70 162 H210" class="a10-mut a10-in a10-g1" stroke-width="2" stroke-linecap="round"/>
+  <!-- the tower — swaying a breath's worth, no more -->
+  <g class="a10-sw"><g class="a10-sq">
+    <g class="a10-in a10-g2">
+      <rect x="100" y="138" width="80" height="22" rx="5" class="a10-ink" stroke-width="2"/>
+      <rect x="110" y="118" width="60" height="18" rx="4.5" class="a10-mut" stroke-width="2"/>
+      <rect x="118" y="100" width="44" height="16" rx="4" class="a10-mut" stroke-width="2"/>
+      <rect x="124" y="84" width="32" height="14" rx="4" class="a10-fnt" stroke-width="2"/>
+    </g>
+    <!-- the new load — always arriving, always absorbed -->
+    <rect x="130" y="70" width="20" height="12" rx="3.5" class="a10-acc a10-bl" stroke-width="2" opacity="0"/>
+    <path d="M124 74 l-7 -2 M156 74 l7 -2" class="a10-fnt a10-pf" stroke-width="1.5" stroke-linecap="round"/>
+  </g></g>
+  <!-- dust — the quiet air -->
+  <g class="a10-in a10-g3">
+    <circle cx="66" cy="96" r="1.3" class="a10-fntf a10-du1"/>
+    <circle cx="216" cy="78" r="1.2" class="a10-fntf a10-du2"/>
+  </g>
+  <!-- hover truth — the spirit level, bubble dead center -->
+  <g class="a10-lv">
+    <path d="M84 60 H196" class="a10-acc" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M134 53 V67 M146 53 V67" class="a10-acc" stroke-width="1" opacity=".6"/>
+    <circle cx="140" cy="60" r="4.2" class="a10-acc" stroke-width="1.4"/>
+    <circle cx="140" cy="60" r="1.5" class="a10-accf"/>
+  </g>
+  <!-- hover payoff -->
+  <g class="a10-chip">
+    <rect x="188" y="22" width="64" height="20" rx="10" class="a10-hl" stroke-width="1.2"/>
+    <circle cx="199" cy="32" r="2.5" class="a10-accf"/>
+    <text x="207" y="35.5" class="a10-chtx">STEADY</text>
+  </g>
+  <text x="20" y="196" class="a10-cap a10-capt a10-in a10-g4">STEADY UNDER LOAD</text>
+</svg>

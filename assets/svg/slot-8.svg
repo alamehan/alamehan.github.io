@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-8 · THE DRAFT AND THE SHIP — general slot, message: iteration into craft.
+       namespaced a8-/k8 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 9s clock: a wobbly pencil draft sketches a little product card (v1);
+       the crisp final stroke traces itself over the ghost of the draft (v2); the piece
+       holds finished (v3) — then the desk clears, and the next iteration begins.
+       everything is born and dies invisible; the version dots keep the score.
+       idle desync: clock 9s · guide shimmer 10s · desk drift 12.5s · finished-work breath 7s.
+       hover (additive): guides wake, caption ignites, and the SHIPPED stamp springs in.
+       reduced-motion: final piece fully drawn over its faint draft, all versions lit,
+       stamp shown — a complete story in one still frame. */
+    .a8-ink{stroke:var(--ink,#171a21)}
+    .a8-mut{stroke:var(--ink-muted,#5d6472)}
+    .a8-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a8-acc{stroke:var(--accent,#2b4be0)}
+    .a8-accf{fill:var(--accent,#2b4be0)}
+    .a8-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a8-hl{stroke:var(--hairline,#e2e6ee)}
+    .a8-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a8-sttx{font:700 8px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.1em}
+    /* intro */
+    .a8-in{opacity:0;animation:k8fi .6s ease-out forwards}
+    .a8-g1{animation-delay:.15s}.a8-g2{animation-delay:.4s}.a8-g3{animation-delay:.65s}
+    /* idle life */
+    .a8-dk{animation:k8dr 12.5s ease-in-out infinite}
+    .a8-shm{animation:k8sh 10s ease-in-out infinite}
+    .a8-br{transform-origin:140px 104px;animation:k8br 7s ease-in-out infinite}
+    /* the 9s clock — draft, trace, hold, clear (phase-locked windows) */
+    .a8-d1{stroke-dasharray:400;animation:k8d1 9s cubic-bezier(.4,0,.2,1) infinite}
+    .a8-di{animation:k8di 9s linear infinite}
+    .a8-f1{stroke-dasharray:380;animation:k8f1 9s cubic-bezier(.4,0,.2,1) infinite}
+    .a8-fi{animation:k8fi9 9s linear infinite}
+    .a8-fb{animation-delay:.35s}.a8-fc{animation-delay:.7s}
+    .a8-v1o{animation:k8v1 9s linear infinite}
+    .a8-v2o{animation:k8v2 9s linear infinite}
+    .a8-v3o{animation:k8v3 9s linear infinite}
+    /* hover — purely additive */
+    .a8-gw{transition:opacity .4s ease-out}
+    svg:hover .a8-gw{opacity:1}
+    .a8-capt{transition:fill .35s ease-out}
+    svg:hover .a8-capt{fill:var(--accent,#2b4be0)}
+    .a8-st{transform-box:fill-box;transform-origin:center;opacity:0;transform:rotate(-16deg) scale(.5);transition:opacity .3s ease-out .5s,transform .6s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a8-st{opacity:1;transform:rotate(-8deg) scale(1)}
+    @keyframes k8fi{to{opacity:1}}
+    @keyframes k8dr{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+    @keyframes k8sh{0%,100%{opacity:.55}50%{opacity:.85}}
+    @keyframes k8br{0%,100%{transform:scale(1)}50%{transform:scale(1.005)}}
+    @keyframes k8d1{0%{stroke-dashoffset:400;opacity:0}2%{stroke-dashoffset:400;opacity:.75}26%{stroke-dashoffset:0;opacity:.75}38%{stroke-dashoffset:0;opacity:.75}56%{stroke-dashoffset:0;opacity:.28}88%{stroke-dashoffset:0;opacity:.28}93%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:400;opacity:0}}
+    @keyframes k8di{0%,14%{opacity:0}19%{opacity:.7}40%{opacity:.7}56%{opacity:.25}88%{opacity:.25}93%,100%{opacity:0}}
+    @keyframes k8f1{0%,36%{stroke-dashoffset:380;opacity:0}37%{stroke-dashoffset:370;opacity:1}62%{stroke-dashoffset:0;opacity:1}92%{stroke-dashoffset:0;opacity:1}97%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:380;opacity:0}}
+    @keyframes k8fi9{0%,52%{opacity:0}56%{opacity:1}92%{opacity:1}97%,100%{opacity:0}}
+    @keyframes k8v1{0%,27%{opacity:0}30%{opacity:1}90%{opacity:1}94%,100%{opacity:0}}
+    @keyframes k8v2{0%,42%{opacity:0}45%{opacity:1}90%{opacity:1}94%,100%{opacity:0}}
+    @keyframes k8v3{0%,63%{opacity:0}66%{opacity:1}90%{opacity:1}94%,100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a8-dk,.a8-shm,.a8-br,.a8-d1,.a8-di,.a8-f1,.a8-fi,.a8-v1o,.a8-v2o,.a8-v3o{animation:none}
+      .a8-in{animation:none;opacity:1}
+      .a8-d1{stroke-dashoffset:0;opacity:.3}
+      .a8-di{opacity:.25}
+      .a8-f1{stroke-dashoffset:0;opacity:1}
+      .a8-fi,.a8-v1o,.a8-v2o,.a8-v3o{opacity:1}
+      .a8-gw,.a8-capt,.a8-st{transition:none}
+      .a8-st{opacity:1;transform:rotate(-8deg)}
+    }
+  </style>
+  <g class="a8-dk">
+    <!-- the drafting table — guides and crosshairs -->
+    <g class="a8-gw" opacity=".7"><g class="a8-shm" opacity=".55"><g class="a8-in a8-g1">
+      <g class="a8-hl" stroke-width="1">
+        <path d="M78 48 v8 M74 52 h8 M202 48 v8 M198 52 h8 M78 154 v8 M74 158 h8"/>
+        <path d="M76 170 H204"/>
+      </g>
+      <path d="M202 154 v8 M198 158 h8" class="a8-acc" stroke-width="1.2"/>
+    </g></g></g>
+    <!-- v1 · the wobbly draft (pencil, slightly askew) -->
+    <g transform="rotate(-1.6 140 104)">
+      <path d="M96 68 Q140 60 186 66 Q194 67 193 76 Q197 104 192 140 Q191 149 182 150 Q138 156 96 151 Q88 150 89 141 Q85 106 90 76 Q90 69 96 68 Z" class="a8-fnt a8-d1" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="a8-fnt a8-di" stroke-width="1.3" stroke-linecap="round" opacity="0">
+        <path d="M104 86 q38 -3 72 1"/>
+        <circle cx="117" cy="111" r="10.5"/>
+        <path d="M134 106 q20 -2 38 1 M134 118 q16 -1 30 1"/>
+      </g>
+    </g>
+    <!-- v2→v3 · the crisp final, traced over the ghost -->
+    <g class="a8-br">
+      <path d="M100 62 H180 Q190 62 190 72 V136 Q190 146 180 146 H100 Q90 146 90 136 V72 Q90 62 100 62" class="a8-ink a8-f1" stroke-width="2" stroke-linecap="round"/>
+      <path d="M104 84 H176" class="a8-mut a8-fi" stroke-width="2" stroke-linecap="round" opacity="0"/>
+      <circle cx="118" cy="110" r="10" class="a8-acc a8-fi a8-fb" stroke-width="2" opacity="0"/>
+      <path d="M136 106 H172 M136 118 H164" class="a8-fnt a8-fi a8-fc" stroke-width="2" stroke-linecap="round" opacity="0"/>
+    </g>
+    <!-- the score — version dots -->
+    <g class="a8-in a8-g2">
+      <circle cx="128" cy="183" r="2" class="a8-fntf"/>
+      <circle cx="140" cy="183" r="2" class="a8-fntf"/>
+      <circle cx="152" cy="183" r="2" class="a8-fntf"/>
+      <circle cx="128" cy="183" r="2.4" class="a8-accf a8-v1o" opacity="0"/>
+      <circle cx="140" cy="183" r="2.4" class="a8-accf a8-v2o" opacity="0"/>
+      <circle cx="152" cy="183" r="2.4" class="a8-accf a8-v3o" opacity="0"/>
+    </g>
+  </g>
+  <!-- hover payoff — the stamp of the ship -->
+  <g class="a8-st">
+    <rect x="158" y="126" width="66" height="26" rx="4" class="a8-acc" stroke-width="1.8"/>
+    <rect x="161.5" y="129.5" width="59" height="19" rx="2.5" class="a8-acc" stroke-width="1" opacity=".55"/>
+    <text x="167" y="142.5" class="a8-sttx">SHIPPED ✓</text>
+  </g>
+  <text x="20" y="196" class="a8-cap a8-capt a8-in a8-g3">DRAFT · REDRAW · SHIP</text>
+</svg>

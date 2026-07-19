@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-13 · THE METRONOME — general slot, message: rhythm and consistency.
+       namespaced a13-/k13 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — two clocks, one tempo: the arm swings a 2.4s tick-tock, and the room
+       answers in phase — the left bars pulse on the tick, the right bars on the tock.
+       every fourth beat (a 9.6s measure) the bob rings once: the accent beat.
+       consistency is not stillness; it is a rhythm kept so long it becomes calm.
+       idle desync: swing 2.4s · measure ring 9.6s · body breath 7.5s · arc shimmer 10.5s · motes 13s.
+       hover (additive): the full chord — every bar holds its light at once, the arm keeps
+       its tempo untouched, caption ignites, and the IN TIME chip springs in.
+       reduced-motion: arm upright at rest, all bars steady, chip shown — complete frame. */
+    .a13-ink{stroke:var(--ink,#171a21)}
+    .a13-mut{stroke:var(--ink-muted,#5d6472)}
+    .a13-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a13-acc{stroke:var(--accent,#2b4be0)}
+    .a13-accf{fill:var(--accent,#2b4be0)}
+    .a13-inkf{fill:var(--ink,#171a21)}
+    .a13-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a13-hl{stroke:var(--hairline,#e2e6ee)}
+    .a13-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a13-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a13-in{opacity:0;animation:k13fi .6s ease-out forwards}
+    .a13-g1{animation-delay:.15s}.a13-g2{animation-delay:.35s}.a13-g3{animation-delay:.6s}
+    /* idle life */
+    .a13-ar{transform-origin:140px 150px;animation:k13ar 2.4s ease-in-out infinite}
+    .a13-rg{transform-box:fill-box;transform-origin:center;opacity:0;animation:k13rg 9.6s linear infinite}
+    .a13-bd{transform-origin:140px 158px;animation:k13bd 7.5s ease-in-out infinite}
+    .a13-shm{animation:k13sh 10.5s ease-in-out infinite}
+    .a13-m1{animation:k13df 13s ease-in-out infinite}
+    .a13-m2{animation:k13df 13s -5.9s ease-in-out infinite}
+    /* the beats — the room answers in phase */
+    .a13-bL{animation:k13bt 2.4s ease-out infinite}
+    .a13-bR{animation:k13bt 2.4s -1.2s ease-out infinite}
+    /* hover — purely additive: the full chord */
+    .a13-hv{opacity:0;transition:opacity .35s ease-out}
+    .a13-h1{transition-delay:.1s}.a13-h2{transition-delay:.25s}
+    svg:hover .a13-hv{opacity:.95}
+    .a13-capt{transition:fill .35s ease-out}
+    svg:hover .a13-capt{fill:var(--accent,#2b4be0)}
+    .a13-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a13-chip{opacity:1;transform:scale(1)}
+    @keyframes k13fi{to{opacity:1}}
+    @keyframes k13ar{0%{transform:rotate(-24deg)}50%{transform:rotate(24deg)}100%{transform:rotate(-24deg)}}
+    @keyframes k13rg{0%{opacity:0;transform:scale(.4)}1%{opacity:.85;transform:scale(.6)}9%{opacity:0;transform:scale(1.9)}100%{opacity:0;transform:scale(1.9)}}
+    @keyframes k13bd{0%,100%{transform:scale(1)}50%{transform:scale(1.006)}}
+    @keyframes k13sh{0%,100%{opacity:.5}50%{opacity:.8}}
+    @keyframes k13df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k13bt{0%{opacity:.95}14%{opacity:.4}86%{opacity:.4}100%{opacity:.95}}
+    @media(prefers-reduced-motion:reduce){
+      .a13-ar,.a13-rg,.a13-bd,.a13-shm,.a13-m1,.a13-m2,.a13-bL,.a13-bR{animation:none}
+      .a13-in{animation:none;opacity:1}
+      .a13-ar{transform:none}
+      .a13-rg{opacity:0}
+      .a13-bL,.a13-bR{opacity:.8}
+      .a13-hv,.a13-capt,.a13-chip{transition:none}
+      .a13-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the swing arc — the promise of the range -->
+  <g class="a13-shm" opacity=".5"><g class="a13-in a13-g1">
+    <path d="M116 97 A58 58 0 0 1 164 97" class="a13-hl" stroke-width="1.2" stroke-dasharray="2 5"/>
+    <path d="M140 90 v-5" class="a13-fnt" stroke-width="1.2"/>
+  </g></g>
+  <!-- the room — bars that answer the beat -->
+  <g class="a13-in a13-g2">
+    <g class="a13-fnt a13-bL" stroke-width="2" stroke-linecap="round">
+      <path d="M76 84 h18 M79 106 h15 M82 128 h12"/>
+    </g>
+    <g class="a13-fnt a13-bR" stroke-width="2" stroke-linecap="round">
+      <path d="M204 84 h-18 M201 106 h-15 M198 128 h-12"/>
+    </g>
+  </g>
+  <!-- hover chord — every bar at once -->
+  <g class="a13-acc a13-hv a13-h1" stroke-width="2.2" stroke-linecap="round">
+    <path d="M76 84 h18 M79 106 h15 M82 128 h12"/>
+  </g>
+  <g class="a13-acc a13-hv a13-h2" stroke-width="2.2" stroke-linecap="round">
+    <path d="M204 84 h-18 M201 106 h-15 M198 128 h-12"/>
+  </g>
+  <!-- the metronome -->
+  <g class="a13-bd"><g class="a13-in a13-g2">
+    <path d="M122 158 L134 84 H146 L158 158 Z" class="a13-mut" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M114 158 H166" class="a13-ink" stroke-width="2" stroke-linecap="round"/>
+  </g></g>
+  <!-- the arm — the tempo keeper -->
+  <g class="a13-ar">
+    <path d="M140 150 V98" class="a13-ink" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="140" cy="104" r="4.5" class="a13-accf"/>
+    <circle cx="140" cy="104" r="7" class="a13-acc a13-rg" stroke-width="1.4"/>
+  </g>
+  <circle cx="140" cy="150" r="2.5" class="a13-inkf"/>
+  <!-- dust -->
+  <g class="a13-in a13-g3">
+    <circle cx="60" cy="58" r="1.3" class="a13-fntf a13-m1"/>
+    <circle cx="222" cy="144" r="1.2" class="a13-fntf a13-m2"/>
+  </g>
+  <!-- hover payoff -->
+  <g class="a13-chip">
+    <rect x="186" y="22" width="66" height="20" rx="10" class="a13-hl" stroke-width="1.2"/>
+    <circle cx="197" cy="32" r="2.5" class="a13-accf"/>
+    <text x="205" y="35.5" class="a13-chtx">IN TIME</text>
+  </g>
+  <text x="20" y="196" class="a13-cap a13-capt a13-in a13-g3">KEEP THE TEMPO</text>
+</svg>

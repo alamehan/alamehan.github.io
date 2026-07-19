@@ -326,7 +326,23 @@ h2 .n{font-size:12px;color:var(--ink-faint);font-weight:500}
 
 /* ── card grid ── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--s-4)}
-.app{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-lg);padding:var(--s-4);text-decoration:none;box-shadow:var(--elev-1);transition:border-color var(--t-fast),transform var(--t-fast),box-shadow var(--t-fast)}
+.app{position:relative;display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-lg);padding:var(--s-4);text-decoration:none;box-shadow:var(--elev-1);transition:border-color var(--t-fast),transform var(--t-fast),box-shadow var(--t-fast)}
+/* FAVORITES — the star is the label AND the button (monochrome chrome law: ink, not gold) */
+.favbtn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;flex:none;border:1px solid var(--hairline);border-radius:999px;background:var(--surface);color:var(--ink-faint);font-size:15px;line-height:1;cursor:pointer;padding:0;transition:color var(--t-fast),border-color var(--t-fast),transform var(--t-fast)}
+.favbtn:hover{color:var(--ink);border-color:var(--ink-faint);transform:scale(1.08)}
+.favbtn.on{color:var(--ink);border-color:var(--ink)}
+.app .favbtn{position:absolute;top:10px;right:10px;z-index:1}
+.app.faved{border-color:var(--ink-faint)}
+.favchip{display:inline-flex;align-items:center;gap:5px;font:600 12.5px/1 var(--font);color:var(--ink-muted);background:var(--surface);border:1px solid var(--hairline);border-radius:999px;padding:8px 13px;cursor:pointer;transition:color var(--t-fast),border-color var(--t-fast),background var(--t-fast)}
+.favchip:hover{border-color:var(--ink-faint);color:var(--ink)}
+.favchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.favchip:disabled{opacity:.45;cursor:default}
+@media (pointer:coarse){.favbtn{width:36px;height:36px;font-size:17px}}
+/* the star in the small seats: deck foot + orbit hub ride a compact 26px */
+.dcard .dfoot .favbtn,.ohub .orow .favbtn{width:26px;height:26px;font-size:13px}
+.dcard.faved{border-color:var(--ink-faint)}
+.ofav{font-size:16px;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px}
+.oseg.ghost .ofav{opacity:.25}
 .app:hover{border-color:var(--ink-faint);transform:translateY(-2px);box-shadow:var(--elev-2)}
 .grid.anim .app{animation:rise var(--t-med) both}
 @keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
@@ -334,14 +350,14 @@ h2 .n{font-size:12px;color:var(--ink-faint);font-weight:500}
 .app .em{width:34px;height:34px;border-radius:var(--r-md);background:var(--wash);display:grid;place-items:center;font-size:18px}
 .app b{font-size:15px}.app .slug{font:450 11.5px/1 var(--mono);color:var(--ink-faint)}
 .app .tag{color:var(--ink-muted);font-size:12.5px;min-height:2.6em}
-.app .foot{display:flex;align-items:center;gap:8px;margin-top:auto;font-size:11.5px;color:var(--ink-faint)}
+.app .foot{display:flex;align-items:center;gap:6px 8px;margin-top:auto;font-size:11.5px;color:var(--ink-faint);flex-wrap:wrap}
 .sw{width:12px;height:12px;border-radius:4px;border:1px solid rgba(0,0,0,.08);flex:none}
 .badge{font-size:11px;font-weight:500;border:1px solid var(--hairline);background:var(--wash);border-radius:var(--r-pill);padding:2px 8px;color:var(--ink-muted);white-space:nowrap}
 .badge.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,#fff);background:color-mix(in srgb,var(--ok) 8%,#fff)}
 /* live signals — the per-card visitor chip (subtle, in the card foot / status cell) */
-.pv{display:inline-flex;align-items:center;gap:5px;margin-left:auto;font:600 11px/1 var(--mono);color:var(--ink-muted);white-space:nowrap}
+.pv{display:inline-flex;align-items:center;gap:5px;font:600 10.5px/1 var(--mono);color:var(--ink-muted);white-space:nowrap;border:1px solid var(--hairline);background:var(--wash);border-radius:999px;padding:3px 9px}
 .pv[hidden]{display:none!important}/* live-or-nothing: display:inline-flex would beat the UA [hidden] rule and leak an empty shell while the count waits (owner catch on the deployed estate) */
-.apps-tbl .pv{margin-left:10px}
+.apps-tbl .pv,.apps-tbl .oped{margin-left:8px}
 .pv .pv-eye{opacity:.7;font-family:initial}
 .pv b{color:var(--accent);font-weight:700}
 .tele-note{color:var(--ink-faint);font-size:11.5px}
@@ -456,6 +472,8 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
     <h2 class="apps-h">Apps <span class="n" id="count"></span></h2>
     <div class="tools">
       
+      <button type="button" id="favchip" class="favchip" aria-pressed="false"
+        title="Show only your favorites" aria-label="Show only your favorites">★ <span id="favn">0</span></button>
       <div class="search">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="q" type="search" placeholder="Search products…" aria-label="Search products" autocomplete="off">
@@ -1985,9 +2003,11 @@ const APPS=[
    tagline:"Raw in. Ready out. — the content processing OS.", file:"contentos.html"},
   {slug:"critiquespike", name:"CritiqueSpike", emoji:"🌶️", accent:"#3f6212", status:"live", v:"v1.0",
    tagline:"Every claim on trial. — a claim-interrogation console.", file:"critiquespike.html"},
-  {slug:"diagranimate", name:"Diagranimate", emoji:"🎬", accent:"#7c3aed", status:"live", v:"v1.0",
+  // fav:true = the owner's curated Favorite label — ships as a DEFAULT favorite for
+  // every visitor (a sample shortlist; any visitor can unstar it — their call sticks).
+  {slug:"diagranimate", name:"Diagranimate", emoji:"🎬", accent:"#7c3aed", status:"live", v:"v1.0", fav:true,
    tagline:"Your diagrams, alive. — a cinematic Mermaid presenter.", file:"diagranimate.html"},
-  {slug:"omnigraph", name:"OmniGraph", emoji:"🌐", accent:"#4f46e5", status:"live", v:"v1.0",
+  {slug:"omnigraph", name:"OmniGraph", emoji:"🌐", accent:"#4f46e5", status:"live", v:"v1.0", fav:true,
    tagline:"One line in. The whole map out. — a universal knowledge mapper.", file:"omnigraph.html"},
   {slug:"superstudio", name:"SuperStudio", emoji:"🎨", accent:"#047857", status:"live", v:"v1.0",
    tagline:"One style, every asset. — a style-consistent asset studio.", file:"superstudio.html"},
@@ -2036,6 +2056,30 @@ function expedition(){
 }
 let EXP=expedition();
 const seenPill=a=>EXP.has(a.slug)?`<span class="oped" title="You've opened this tool">✓ opened</span>`:"";
+/* ── FAVORITES (owner feature 2026-07-19) — two voices, one star. The manifest's
+   fav:true is the owner's curated label (ships as a default favorite for everyone —
+   a sample shortlist); the visitor's own stars live in ONE localStorage key,
+   ala_favs = {add:[slugs], rm:[slugs]}. Effective fav = (curated AND not un-starred)
+   OR starred — so defaults are real but never locked: un-star OmniGraph and the
+   choice survives every visit. Zero network, per-origin, cache-honest. */
+const FAVKEY="ala_favs";
+function favLoad(){
+  try{const j=JSON.parse(getLS(FAVKEY,"{}"))||{};return {add:new Set(j.add||[]),rm:new Set(j.rm||[])};}
+  catch(e){return {add:new Set(),rm:new Set()};}
+}
+let FAV=favLoad();
+const isFav=a=>(a.fav&&!FAV.rm.has(a.slug))||FAV.add.has(a.slug);
+const favCount=()=>APPS.reduce((n,a)=>n+(isFav(a)?1:0),0);
+function toggleFav(slug){
+  const a=APPS.find(x=>x.slug===slug); if(!a)return;
+  if(isFav(a)){ if(a.fav)FAV.rm.add(slug); FAV.add.delete(slug); }
+  else { FAV.add.add(slug); if(a.fav)FAV.rm.delete(slug); }
+  setLS(FAVKEY,JSON.stringify({add:[...FAV.add],rm:[...FAV.rm]}));
+  update(false);
+}
+const favBtn=a=>{const on=isFav(a);
+  return `<button type="button" class="favbtn${on?" on":""}" data-fav="${esc(a.slug)}" aria-pressed="${on?"true":"false"}"
+    title="${on?"Remove from favorites":"Add to favorites"}" aria-label="${on?"Remove "+esc(a.name)+" from favorites":"Add "+esc(a.name)+" to favorites"}">${on?"★":"☆"}</button>`;};
 /* hue of a #rrggbb, so the spectrum band reads as a real spectrum */
 function hexHue(hex){
   const n=parseInt(hex.slice(1),16),r=(n>>16&255)/255,g=(n>>8&255)/255,b=(n&255)/255;
@@ -2109,14 +2153,14 @@ function hydrateVisits(){
   });
 }
 const pathOf=a=>a.file.replace("dist/index.html","")+(a.internal?" · workspace-only":"");
-const card=(a,i)=>`<a class="app${EXP.has(a.slug)?" seen":""}" style="animation-delay:${i*45}ms" href="${esc(a.file)}">
+const card=(a,i)=>`<a class="app${EXP.has(a.slug)?" seen":""}${isFav(a)?" faved":""}" style="animation-delay:${i*45}ms" href="${esc(a.file)}">${favBtn(a)}
     <span class="top"><span class="em">${esc(a.emoji)}</span><span><b>${esc(a.name)}</b><br><span class="slug">${esc(pathOf(a))}</span></span></span>
     <span class="tag">${esc(a.tagline)}</span>
     <span class="foot"><span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span>
       <span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a)}${seenPill(a)}</span></a>`;
 const ghost="";
-const row=a=>`<tr class="${EXP.has(a.slug)?"seen":""}" data-href="${esc(a.file)}">
-    <td><div class="pname"><span class="em">${esc(a.emoji)}</span><span><a href="${esc(a.file)}">${esc(a.name)}</a><span class="slug">${esc(pathOf(a))}</span></span></div></td>
+const row=a=>`<tr class="${EXP.has(a.slug)?"seen":""}${isFav(a)?" faved":""}" data-href="${esc(a.file)}">
+    <td><div class="pname">${favBtn(a)}<span class="em">${esc(a.emoji)}</span><span><a href="${esc(a.file)}">${esc(a.name)}</a><span class="slug">${esc(pathOf(a))}</span></span></div></td>
     <td class="tag">${esc(a.tagline)}</td>
     <td><span class="acc"><span class="sw" style="background:${esc(a.accent)}"></span>${esc(a.accent)}</span></td>
     <td><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a)}${seenPill(a)}</td></tr>`;
@@ -2146,15 +2190,38 @@ const appsEl=$("apps"), countEl=$("count"), qEl=$("q"), sortEl=$("sort");
 function setCount(shown,total){
   countEl.textContent = shown<total ? `${shown} of ${total}` : `${total} shipped · ∞ to come`;
 }
+let favOnly=getLS("factory_favonly","0")==="1";
+function renderFavChip(){
+  const n=favCount(), chip=$("favchip");
+  if(!chip)return;
+  if(favOnly&&!n){ favOnly=false; setLS("factory_favonly","0"); } // an empty shortlist never traps the view
+  $("favn").textContent=String(n);
+  chip.setAttribute("aria-pressed",favOnly?"true":"false");
+  chip.disabled=!n;
+}
 function update(anim){
   EXP=expedition(); // refresh the opened-set before every paint (it grows on other pages)
-  const full=ordered(sort), list=filtered(full,query);
+  renderFavChip();
+  const full=ordered(sort); let list=filtered(full,query);
+  if(favOnly) list=list.filter(isFav);
+  /* favorites float to the top of grid + table — the launcher law: what you starred
+     is what you came for. Stable sort: each half keeps the chosen order. */
+  if(view==="grid"||view==="table") list=[...list].sort((x,y)=>(isFav(y)?1:0)-(isFav(x)?1:0));
   appsEl.innerHTML = view==="table" ? tableHTML(list) : view==="deck" ? deckHTML(list) : view==="orbit" ? orbitHTML(full,list) : gridHTML(list,anim);
   setCount(list.length,APPS.length);
   hydrateVisits(); // re-fill the visitor chips after every render (cached — no refetch)
   if(view==="deck") deckAfter();
   if(view==="orbit") orbitAfter();
 }
+/* the star toggles before anything else can navigate (cards are anchors, rows have
+   data-href) — capture phase, one delegated listener */
+appsEl.addEventListener("click",e=>{
+  const fb=e.target.closest?e.target.closest(".favbtn"):null;
+  if(fb){ e.preventDefault(); e.stopPropagation(); toggleFav(fb.getAttribute("data-fav")); }
+},true);
+$("favchip").addEventListener("click",()=>{
+  favOnly=!favOnly; setLS("factory_favonly",favOnly?"1":"0"); update(false);
+});
 
 /* build the hero: stat count + hue-sorted spectrum */
 $("stat-count").textContent=APPS.length;
@@ -2365,13 +2432,13 @@ function dcardHTML(a,pos){
      opens a NEW TAB (owner call 2026-07-19) — a story detour must not lose the browse;
      only the face switch itself rides the same tab. */
   const story=(PUBLIC?"../index.html":"../05-orbit/site/index.html")+"#/crafts/"+a.slug;
-  return `<article class="dcard ${pos===0?"dp0":"dpn dp"+pos}${EXP.has(a.slug)?" seen":""}"${pos===0?"":' aria-hidden="true"'} data-slug="${esc(a.slug)}" data-off="${pos}"${pos!==0?` title="${esc(a.name)} — bring to front"`:""}>
+  return `<article class="dcard ${pos===0?"dp0":"dpn dp"+pos}${EXP.has(a.slug)?" seen":""}${isFav(a)?" faved":""}"${pos===0?"":' aria-hidden="true"'} data-slug="${esc(a.slug)}" data-off="${pos}"${pos!==0?` title="${esc(a.name)} — bring to front"`:""}>
     <span class="dplaque" aria-hidden="true">${esc(a.emoji)}</span>
     ${EXP.has(a.slug)?'<span class="dseen" title="You\'ve opened this tool" aria-hidden="true">✓</span>':""}
     ${sc?`<div class="dmat"><span class="mo-mount" data-mo="${esc(a.slug)}/scene"></span></div>`:""}
     <div class="did">${ic?`<span class="dic mo-mount" data-mo="${esc(a.slug)}/icon" aria-hidden="true"></span>`:""}<span class="dn"><b>${esc(a.name)}</b><span class="slug">${esc(a.slug)} · ${esc(a.v)}</span></span></div>
     <span class="dtag">${esc(a.tagline)}</span>
-    <span class="dfoot"><span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)}</span>${visChip(a)}<a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a><a class="openbtn" href="${esc(a.file)}">Open ↗</a></span>
+    <span class="dfoot">${favBtn(a)}<span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)}</span>${visChip(a)}<a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a><a class="openbtn" href="${esc(a.file)}">Open ↗</a></span>
   </article>`;
 }
 function deckHTML(list){
@@ -2491,14 +2558,16 @@ function orbitHTML(full,list){
     const [x0,y0]=P(R1,a0),[x1,y1]=P(R1,a1),[x2,y2]=P(R0,a1),[x3,y3]=P(R0,a0);
     const d=`M${F(x0)} ${F(y0)}A${R1} ${R1} 0 ${large} 1 ${F(x1)} ${F(y1)}L${F(x2)} ${F(y2)}A${R0} ${R0} 0 ${large} 0 ${F(x3)} ${F(y3)}Z`;
     const [ex,ey]=P(RM,mid);
-    const ghost=!match.has(a.slug), seen=EXP.has(a.slug);
+    const ghost=!match.has(a.slug), seen=EXP.has(a.slug), fv=isFav(a);
+    const [fx2,fy2]=P(R0-15,mid); /* the favorite star rides just inside the ring */
     /* emoji-only segments (owner rev 2) — the native <title> + the hub carry the words;
        each emoji counter-rotates via its SVG transform attribute (set by the turn loop)
        so it stays upright at every wheel angle, on every browser */
-    return `<g class="oseg${seen?" seen":""}${a.slug===orbitSel?" sel":""}${ghost?" ghost":""}"${ghost?"":' tabindex="0" role="button"'} data-oseg="${esc(a.slug)}" aria-label="${esc(a.emoji)} ${esc(a.name)} ${esc(a.v)}${seen?" — opened":""}" style="--oa:${esc(a.accent)};--ox:${F(10*Math.cos(rad))}px;--oy:${F(10*Math.sin(rad))}px">
-      <title>${esc(a.name)} · ${esc(a.v)}${seen?" · opened ✓":""}</title>
+    return `<g class="oseg${seen?" seen":""}${a.slug===orbitSel?" sel":""}${ghost?" ghost":""}"${ghost?"":' tabindex="0" role="button"'} data-oseg="${esc(a.slug)}" aria-label="${esc(a.emoji)} ${esc(a.name)} ${esc(a.v)}${seen?" — opened":""}${fv?" — favorite":""}" style="--oa:${esc(a.accent)};--ox:${F(10*Math.cos(rad))}px;--oy:${F(10*Math.sin(rad))}px">
+      <title>${esc(a.name)} · ${esc(a.v)}${seen?" · opened ✓":""}${fv?" · favorite ★":""}</title>
       <path d="${d}"/>
       <text class="oem" x="${F(ex)}" y="${F(ey)}" text-anchor="middle" dominant-baseline="central" aria-hidden="true">${esc(a.emoji)}</text>
+      ${fv?`<text class="ofav" x="${F(fx2)}" y="${F(fy2)}" text-anchor="middle" dominant-baseline="central" aria-hidden="true">★</text>`:""}
     </g>`;
   }).join("");
   return `<div class="orbit-stage" role="group" aria-roledescription="carousel" aria-label="The family dial — every product a segment; opened tools wear their accent">
@@ -2525,7 +2594,7 @@ function orbitHub(){
     <b>${esc(a.name)}</b>
     <span class="slug">${esc(a.slug)} · ${esc(a.v)}</span>
     <span class="otag">${esc(a.tagline)}</span>
-    <span class="orow"><span class="sw" style="background:${esc(a.accent)}"></span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${seenPill(a)}${visChip(a)}</span>
+    <span class="orow">${favBtn(a)}<span class="sw" style="background:${esc(a.accent)}"></span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${seenPill(a)}${visChip(a)}</span>
     <span class="oacts"><a class="openbtn" href="${esc(a.file)}">Open ↗</a><a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a></span>
   </div>`;
   mountMotion(hub);
@@ -2735,10 +2804,16 @@ appsEl.addEventListener("click",e=>{
 
 update(true); // first paint animates the cards + hydrates any visitor chips
 toolsTip();   // H7 — offer the one-time orientation chip after the first paint
-/* footer disclosure — only when the release flag is present (deployed estate) */
+/* footer disclosure — only when the release flag is present (deployed estate).
+   The ESTATE counter (owner call 2026-07-19): per-tool chips wait for each tool's own
+   first visitor, but THIS page's count exists from visitor #1 — the note carries it,
+   live-or-nothing like every chip. */
 if(TELEM){
   const tn=document.getElementById("tele-note");
-  if(tn) tn.innerHTML=`<span aria-hidden="true">📡</span> Live visitor counts — <a href="${goatDash}" target="_blank" rel="noopener">verify ↗</a>`;
+  if(tn){
+    tn.innerHTML=`<span aria-hidden="true">📡</span> Live visitor counts — <span class="pv" data-visits="tools/index.html" hidden></span> <a href="${goatDash}" target="_blank" rel="noopener">verify ↗</a>`;
+    goatCount("tools/index.html",n=>{ const el=tn.querySelector(".pv"); if(el){ el.innerHTML=`<span class="pv-eye" aria-hidden="true">👁</span><b>${esc(n)}</b> visits ·`; el.hidden=false; } });
+  }
 }
 </script>
 <script data-goatcounter="https://alamehan.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></body>

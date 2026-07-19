@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-14 · THE ASTERISK BLOOM — general slot, message: arete — excellence as a practice.
+       namespaced a14-/k14 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — the brand asterisk as a seed: eight arms grow and recede in turn, a bloom
+       wave circling the flower forever — practice, not performance. every 10s the whole
+       bloom takes one full breath: a ghost of its best self opens wide and fades, the
+       shape it keeps practicing toward.
+       idle desync: arm wave 8s (8 phases) · full-bloom ghost 10s · seed breath 7s ·
+       petal shimmer 9.5s · orbit ring 36s.
+       hover (additive): the full bloom holds — every arm's reach shown in accent — petals
+       light up, and the word itself springs in beneath: ARETE. caption ignites.
+       reduced-motion: the asterisk at full reach, petals lit, ARETE shown — complete frame. */
+    .a14-mut{stroke:var(--ink-muted,#5d6472)}
+    .a14-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a14-acc{stroke:var(--accent,#2b4be0)}
+    .a14-accf{fill:var(--accent,#2b4be0)}
+    .a14-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a14-hl{stroke:var(--hairline,#e2e6ee)}
+    .a14-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a14-word{font:700 12px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.5em}
+    /* intro */
+    .a14-in{opacity:0;animation:k14fi .6s ease-out forwards}
+    .a14-g1{animation-delay:.15s}.a14-g2{animation-delay:.35s}.a14-g3{animation-delay:.6s}
+    /* idle life */
+    .a14-a{transform-origin:140px 104px;animation:k14ar 8s ease-in-out infinite}
+    .a14-p1{animation-delay:0s}.a14-p2{animation-delay:-1s}.a14-p3{animation-delay:-2s}.a14-p4{animation-delay:-3s}
+    .a14-p5{animation-delay:-4s}.a14-p6{animation-delay:-5s}.a14-p7{animation-delay:-6s}.a14-p8{animation-delay:-7s}
+    .a14-bl{transform-origin:140px 104px;opacity:0;animation:k14bl 10s cubic-bezier(.22,1,.36,1) infinite}
+    .a14-sd{transform-box:fill-box;transform-origin:center;animation:k14sd 7s ease-in-out infinite}
+    .a14-pt1{animation:k14pt 9.5s ease-in-out infinite}
+    .a14-pt2{animation:k14pt 9.5s -4.75s ease-in-out infinite}
+    .a14-rt{transform-origin:140px 104px;animation:k14rt 36s linear infinite}
+    /* hover — purely additive: the bloom holds, the word arrives */
+    .a14-hb{transform-origin:140px 104px;opacity:0;transform:scale(.75);transition:opacity .4s ease-out .1s,transform .65s cubic-bezier(.34,1.45,.5,1) .1s}
+    svg:hover .a14-hb{opacity:.9;transform:scale(1)}
+    .a14-hp{opacity:0;transition:opacity .35s ease-out .3s}
+    svg:hover .a14-hp{opacity:.9}
+    .a14-wd{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a14-wd{opacity:1;transform:scale(1)}
+    .a14-capt{transition:fill .35s ease-out}
+    svg:hover .a14-capt{fill:var(--accent,#2b4be0)}
+    @keyframes k14fi{to{opacity:1}}
+    @keyframes k14ar{0%,100%{transform:scale(.8)}50%{transform:scale(1)}}
+    @keyframes k14bl{0%,4%{opacity:0;transform:scale(.7)}11%{opacity:.45;transform:scale(1.02)}22%{opacity:0;transform:scale(1.18)}100%{opacity:0;transform:scale(1.18)}}
+    @keyframes k14sd{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+    @keyframes k14pt{0%,100%{opacity:.3}50%{opacity:.75}}
+    @keyframes k14rt{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){
+      .a14-a,.a14-bl,.a14-sd,.a14-pt1,.a14-pt2,.a14-rt{animation:none}
+      .a14-in{animation:none;opacity:1}
+      .a14-a{transform:none}
+      .a14-bl{opacity:0}
+      .a14-pt1,.a14-pt2{opacity:.6}
+      .a14-hb,.a14-hp,.a14-wd,.a14-capt{transition:none}
+      .a14-hp{opacity:.9}
+      .a14-wd{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the slow orbit — the long practice -->
+  <g class="a14-rt"><g class="a14-in a14-g1">
+    <circle cx="140" cy="104" r="46" class="a14-hl" stroke-width="1.2" stroke-dasharray="3 7"/>
+  </g></g>
+  <!-- petals between the arms -->
+  <g class="a14-in a14-g2">
+    <g class="a14-pt1">
+      <circle cx="162" cy="95" r="1.5" class="a14-fntf"/>
+      <circle cx="149" cy="126" r="1.5" class="a14-fntf"/>
+      <circle cx="118" cy="113" r="1.5" class="a14-fntf"/>
+      <circle cx="131" cy="82" r="1.5" class="a14-fntf"/>
+    </g>
+    <g class="a14-pt2">
+      <circle cx="162" cy="113" r="1.5" class="a14-fntf"/>
+      <circle cx="131" cy="126" r="1.5" class="a14-fntf"/>
+      <circle cx="118" cy="95" r="1.5" class="a14-fntf"/>
+      <circle cx="149" cy="82" r="1.5" class="a14-fntf"/>
+    </g>
+  </g>
+  <!-- the full-bloom ghost — the shape it practices toward (10s breath) -->
+  <g class="a14-bl">
+    <path d="M150 104 H182 M147.1 111.1 L169.7 133.7 M140 114 V146 M132.9 111.1 L110.3 133.7 M130 104 H98 M132.9 96.9 L110.3 74.3 M140 94 V62 M147.1 96.9 L169.7 74.3" class="a14-acc" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <!-- the asterisk — eight arms, breathing in turn -->
+  <g class="a14-in a14-g2">
+    <g class="a14-a a14-p1"><path d="M150 104 L174 104" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="174" cy="104" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p2"><path d="M147 111 L164 128" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="164" cy="128" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p3"><path d="M140 114 L140 138" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="140" cy="138" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p4"><path d="M133 111 L116 128" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="116" cy="128" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p5"><path d="M130 104 L106 104" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="106" cy="104" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p6"><path d="M133 97 L116 80" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="116" cy="80" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p7"><path d="M140 94 L140 70" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="140" cy="70" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p8"><path d="M147 97 L164 80" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="164" cy="80" r="2" class="a14-accf"/></g>
+  </g>
+  <!-- the seed -->
+  <g class="a14-in a14-g1">
+    <circle cx="140" cy="104" r="7" class="a14-mut a14-sd" stroke-width="1.6"/>
+    <circle cx="140" cy="104" r="3.5" class="a14-accf"/>
+  </g>
+  <!-- hover — the bloom holds -->
+  <g class="a14-hb">
+    <path d="M150 104 H182 M147.1 111.1 L169.7 133.7 M140 114 V146 M132.9 111.1 L110.3 133.7 M130 104 H98 M132.9 96.9 L110.3 74.3 M140 94 V62 M147.1 96.9 L169.7 74.3" class="a14-acc" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+  <g class="a14-acc a14-hp" stroke-width="1">
+    <circle cx="162" cy="95" r="2.5"/><circle cx="149" cy="126" r="2.5"/><circle cx="118" cy="113" r="2.5"/><circle cx="131" cy="82" r="2.5"/>
+    <circle cx="162" cy="113" r="2.5"/><circle cx="131" cy="126" r="2.5"/><circle cx="118" cy="95" r="2.5"/><circle cx="149" cy="82" r="2.5"/>
+  </g>
+  <!-- hover payoff — the word itself -->
+  <text x="146" y="174" text-anchor="middle" class="a14-word a14-wd">ARETE</text>
+  <text x="20" y="196" class="a14-cap a14-capt a14-in a14-g3">THE PRACTICE OF BETTER</text>
+</svg>

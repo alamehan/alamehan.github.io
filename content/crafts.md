@@ -5,6 +5,12 @@ format: leaf/1
 <!-- Personal experiments & the @alamehan product family, on one standard. Every factory app
      (04-scaffold/apps/) MUST have its Leaf here — presence, identity sync (emoji/name/swatch vs
      the APPS manifest) and the Launch link are gated by `node 05-orbit/derive.mjs --check`.
+     VISITOR-FIRST LAW (owner call 2026-07-19): a factory Leaf body speaks to the visitor, not
+     the builder — three sections mirroring every app's own About modal: `### What it is` ·
+     `### How it flows` · `### What you get` (ID: `### Apa ini` · `### Alurnya` · `### Yang kamu
+     dapat`). No ancestor names, no version archaeology, no builder telemetry (test counts,
+     internal receipts) in the prose — the origin story lives in each product's PRD, and the
+     one-line `itch.en/.id` header field is the only nod to where a product came from.
      Family Standard v2 sweep (2026-07-11): ancestor seeds (omega-framework, subject-mastery, omega-construct,
      atlas-engine, omni-atlas, pvp-protocol, alchemy-engine, helix-engine) were absorbed into the family products
      below — their stories now live inside those products' PRDs. -->
@@ -72,8 +78,8 @@ emoji: 🌱
 name: ZapSeed
 tagline.en: Raw idea in. Family PRD out. — the project factory.
 tagline.id: Raw idea in. Family PRD out. — pabrik proyek keluarga.
-itch.en: The way sixteen products were born lived only in my habits.
-itch.id: Cara enam belas produk lahir cuma hidup di kebiasaanku.
+itch.en: Every new product began with the same ritual — and the ritual lived nowhere.
+itch.id: Tiap produk baru dimulai dengan ritual yang sama — dan ritualnya tak tinggal di mana pun.
 year: 2026
 status: live
 pin: true
@@ -86,37 +92,43 @@ codename: Pabrik
 swatch: #115E59
 
 @en
-### The itch
-Sixteen products were born the same way — an itch, a template, an AI — but the way itself lived only in my habits.
+### What it is
+The family's project factory: a console that turns a raw idea into a complete,
+buildable product spec on the family standard. It's the internal tool every other
+product in this collection was born through.
 
-### What I built
-The factory as a product: an identity forge with live collision math, a config contract (`zapseed-job: 1`), one compiled PROMPT.md, and a meta-acceptance auditor.
+### How it flows
+Describe the idea, forge its identity — name, emoji, accent color, with live
+collision checks against every sibling — and export one job file. Any AI fills it
+into a full PRD, and a built-in auditor checks the result against the family's
+acceptance boxes before it counts.
 
-### Did it work?
-It bootstrapped itself — its own PRD was the factory's first output, and v1.0 now runs as one HTML file: two BYOAI round-trips, a live collision board, and a 14-check Gavel.
-
-### What it taught me
-When a workflow repeats sixteen times, the seventeenth project is the workflow.
+### What you get
+A complete, ready-to-build PRD — and the guarantee that every product in this
+family is born the same disciplined way.
 @id
-### Gatelnya
-Enam belas produk lahir dengan cara yang sama — keresahan, template, AI — tapi caranya sendiri cuma hidup di kebiasaanku.
+### Apa ini
+Pabrik proyek keluarga: konsol yang mengubah ide mentah jadi spec produk lengkap
+yang siap dibangun di atas standar keluarga. Ini tool internal tempat semua produk
+lain di koleksi ini dilahirkan.
 
-### Yang aku bikin
-Pabrik sebagai produk: penempa identitas dengan hitung tabrakan langsung, kontrak konfigurasi (`zapseed-job: 1`), satu PROMPT.md terkompilasi, dan auditor meta-acceptance.
+### Alurnya
+Tuliskan idenya, tempa identitasnya — nama, emoji, warna aksen, dengan cek tabrakan
+langsung terhadap semua saudaranya — lalu ekspor satu file job. AI mana pun
+mengisinya jadi PRD utuh, dan auditor bawaan memeriksa hasilnya terhadap kotak
+acceptance keluarga sebelum dihitung sah.
 
-### Beneran jalan?
-Ia melahirkan dirinya sendiri — PRD-nya sendiri adalah keluaran pertama sang pabrik, dan v1.0 kini berjalan sebagai satu file HTML: dua bolak-balik BYOAI, papan tabrakan langsung, dan Gavel 14 pemeriksaan.
-
-### Pelajarannya
-Kalau sebuah alur kerja terulang enam belas kali, proyek ketujuh belas adalah alur kerja itu sendiri.
+### Yang kamu dapat
+PRD lengkap yang siap dibangun — dan jaminan bahwa setiap produk keluarga ini lahir
+lewat disiplin yang sama.
 
 ## diagranimate
 emoji: 🎬
 name: Diagranimate
 tagline.en: Your architecture diagrams, alive. — cinematic Mermaid presenter.
 tagline.id: Your architecture diagrams, alive. — presenter Mermaid sinematik.
-itch.en: Every diagram I shipped was correct — and unreadable.
-itch.id: Setiap diagram yang kukirim itu benar — dan tak terbaca.
+itch.en: A finished architecture diagram is correct — and unreadable.
+itch.id: Diagram arsitektur yang sudah jadi itu benar — dan tak terbaca.
 year: 2026
 status: live
 stack: single HTML, Standard v2
@@ -129,41 +141,43 @@ link: Launch = tools/diagranimate.html
 swatch: #7C3AED
 
 @en
-*Codename: **Wayang** — the shadow-puppet stage.*
+### What it is
+A cinematic presenter for Mermaid diagrams: instead of one overwhelming wall of
+boxes, your diagram plays as a sequence of progressive scenes an audience can
+actually follow.
 
-### The itch
-Every architecture diagram I shipped was correct and unreadable — everything at once, change blindness guaranteed.
+### How it flows
+Paste any Mermaid diagram and press play. An automatic camera tours every new
+element in order, a guiding beacon keeps the eye anchored, smart ghosting dims the
+areas you haven't reached yet, and each scene closes with a recap zoom-out — all on
+one seekable timeline.
 
-### What I built
-A one-file cinema for Mermaid: progressive states, a delta engine keyed on stable node ids, transport controls, an automatic camera that follows the flow, smart ghosting that dims not-yet-discussed areas, and 60 FPS video export.
-
-### Did it work?
-Yes — v1 shipped; audiences follow a system growing instead of decoding a finished maze. Reported: animation build time ~4 hours → ~2 minutes (~120×), roadmap approval ~3 weeks → ~4 days.
-
-### What it taught me
-Presentation is an act of sequencing, not decorating.
+### What you get
+A presentation of your architecture that people follow instead of decode —
+exportable as HD PNG frames or .webm video, straight from the browser.
 @id
-*Codename: **Wayang** — panggung wayang.*
+### Apa ini
+Presenter sinematik untuk diagram Mermaid: alih-alih satu dinding kotak yang
+menenggelamkan, diagrammu diputar sebagai rangkaian babak progresif yang benar-benar
+bisa diikuti audiens.
 
-### Gatelnya
-Setiap diagram arsitektur yang kubuat itu benar tapi tak terbaca — semuanya sekaligus, change blindness terjamin.
+### Alurnya
+Tempel diagram Mermaid apa pun lalu tekan play. Kamera otomatis menyusuri tiap
+elemen baru secara berurutan, beacon pemandu menjaga arah mata, smart ghosting
+meredupkan area yang belum dibahas, dan tiap babak ditutup recap zoom-out — semuanya
+dalam satu timeline yang bisa di-seek.
 
-### Yang aku bikin
-Bioskop satu-file untuk Mermaid: state progresif, delta engine berbasis id node stabil, kontrol transport, kamera otomatis yang mengikuti alur, smart ghosting yang meredupkan area yang belum dibahas, dan ekspor video 60 FPS.
-
-### Beneran jalan?
-Ya — v1 sudah rilis; audiens mengikuti sistem yang tumbuh, bukan memecahkan labirin jadi. Tercatat: waktu bikin animasi ~4 jam → ~2 menit (~120×), persetujuan roadmap ~3 minggu → ~4 hari.
-
-### Pelajarannya
-Presentasi itu soal urutan, bukan dekorasi.
+### Yang kamu dapat
+Presentasi arsitektur yang diikuti orang, bukan dipecahkan seperti teka-teki — bisa
+diekspor sebagai PNG HD atau video .webm, langsung dari browser.
 
 ## omnigraph
 emoji: 🌐
 name: OmniGraph
 tagline.en: One line in. The whole map out. — universal knowledge mapper (BYOAI).
 tagline.id: One line in. The whole map out. — pemeta pengetahuan universal (BYOAI).
-itch.en: Five knowledge frameworks, each sharper than the last — each died as a prompt.
-itch.id: Lima framework pemetaan, makin lama makin tajam — semuanya mati sebagai prompt.
+itch.en: Learning something new produced piles of notes — never a map of the territory.
+itch.id: Belajar hal baru menghasilkan tumpukan catatan — tak pernah peta wilayahnya.
 year: 2026
 stack: single HTML, Standard v2
 tag: knowledge
@@ -175,41 +189,41 @@ link: Launch = tools/omnigraph.html
 swatch: #4F46E5
 
 @en
-*Codename: **Semesta** — the universe.*
+### What it is
+A universal knowledge mapper: type one line — any subject — and get a complete,
+navigable map of the territory, built by the AI you already use.
 
-### The itch
-Five generations of frameworks (UKS → Omega → Construct → Atlas → Omni Atlas) each mapped knowledge better — and each died as a prompt.
+### How it flows
+The console forges a mapping brief from your one line. Hand it to any AI (the
+console itself carries none), paste the reply back, and it renders as a living
+tree — collapsible branches you can search, focus, and grow one branch at a time,
+groundable in your own documents.
 
-### What I built
-One console around one contract (`ogm: 1`): forge a brief, round-trip any AI, render the whole territory as a living tree. Shipped in two major generations (V1 and V2).
-
-### Did it work?
-Yes — the lineage finally converged; maps persist, validate, and travel as plain text.
-
-### What it taught me
-When five ancestors keep solving the same problem, the product is the contract they all implied.
+### What you get
+A living map with ★ essentials, honesty flags, and sources — saved and shared as
+plain text, so it opens anywhere and never locks you in.
 @id
-*Codename: **Semesta**.*
+### Apa ini
+Pemeta pengetahuan universal: ketik satu baris — subjek apa pun — dan dapatkan peta
+wilayah yang lengkap dan bisa dijelajahi, dibangun oleh AI yang sudah kamu pakai.
 
-### Gatelnya
-Lima generasi framework (UKS → Omega → Construct → Atlas → Omni Atlas) makin jago memetakan pengetahuan — dan semuanya mati sebagai prompt.
+### Alurnya
+Konsol menempa brief pemetaan dari satu barismu. Serahkan ke AI mana pun (konsolnya
+sendiri tak membawa AI), tempel balasannya, dan ia ter-render sebagai pohon hidup —
+cabang yang bisa dilipat, dicari, difokus, dan ditumbuhkan satu cabang demi satu,
+bisa di-ground ke dokumenmu sendiri.
 
-### Yang aku bikin
-Satu konsol untuk satu kontrak (`ogm: 1`): tempa brief, bolak-balik ke AI mana pun, render seluruh wilayah sebagai pohon hidup. Dirilis dalam dua generasi besar (V1 dan V2).
-
-### Beneran jalan?
-Ya — silsilahnya akhirnya menyatu; peta tersimpan, tervalidasi, dan berpindah sebagai teks biasa.
-
-### Pelajarannya
-Kalau lima leluhur terus memecahkan masalah yang sama, produknya adalah kontrak yang mereka isyaratkan.
+### Yang kamu dapat
+Peta hidup dengan esensial ★, bendera kejujuran, dan sumber — tersimpan dan terbagi
+sebagai teks biasa, jadi terbuka di mana pun dan tak pernah menguncimu.
 
 ## svganimator
 emoji: 🌀
 name: SVGAnimator
 tagline.en: Your brand, in motion. — brand SVG motion console.
 tagline.id: Your brand, in motion. — konsol motion SVG untuk brand.
-itch.en: Brand motion was already systematic — in six docs only I could operate.
-itch.id: Motion brand sudah sistematis — di enam dokumen yang cuma bisa kuoperasikan sendiri.
+itch.en: Every brand animation was a one-off — nothing carried the brand's motion DNA forward.
+itch.id: Tiap animasi brand jadi karya sekali pakai — tak ada yang meneruskan DNA gerak brand-nya.
 year: 2026
 stack: single HTML, Standard v2
 tag: motion
@@ -221,41 +235,47 @@ link: Launch = tools/svganimator.html
 swatch: #1E40AF
 
 @en
-*Codename: **Nadi** — the pulse.*
+### What it is
+The brand-to-motion console: it turns a brand's identity plus one concept line into
+a finished, self-contained web animation. No AI inside — the AI you already use does
+the drawing, the console does the discipline.
 
-### The itch
-The Motion Engine System proved brand motion could be systematic — but it lived in six markdown docs only I could operate.
+### How it flows
+Pick a Brand DNA Pack (or mint one from your design references), choose one of
+three formats — **Scene**, an illustrated diorama that tells one story; **Icon**, a
+bold animated icon batchable up to 8 per job; or **Slot**, a theme-aware SVG
+ornament that inherits its host page's colors — drop your concept, and export one
+job file. Any AI executes it; paste the returned artifact into the built-in
+Inspector and ten offline gates lint it against the contract.
 
-### What I built
-One HTML console: drop a brand SVG, compose motions from the engine packs, export one self-contained snippet.
-
-### Did it work?
-Yes — the doc stack became a tool anyone can run by double-click; the packs finally outlived their author.
-
-### What it taught me
-A methodology isn't real until a stranger can use it without you in the room.
+### What you get
+One copy-paste-ready animation per job with zero external assets, plus a Vault that
+keeps your brand packs and logs every build's receipt automatically.
 @id
-*Codename: **Nadi**.*
+### Apa ini
+Konsol brand-ke-gerak: mengubah identitas brand plus satu baris konsep jadi animasi
+web mandiri yang selesai. Tanpa AI di dalamnya — AI yang sudah kamu pakai yang
+menggambar, konsol yang menjaga disiplinnya.
 
-### Gatelnya
-Motion Engine System membuktikan animasi brand bisa sistematis — tapi hidup di enam dokumen markdown yang cuma aku yang bisa pakai.
+### Alurnya
+Pilih Brand DNA Pack (atau mint dari referensi desainmu), pilih satu dari tiga
+format — **Scene**, diorama ilustratif yang menceritakan satu kisah; **Icon**, ikon
+animasi tebal yang bisa batch sampai 8 per job; atau **Slot**, ornamen SVG
+sadar-tema yang mewarisi warna halaman host-nya — taruh konsepmu, ekspor satu file
+job. AI mana pun mengeksekusinya; tempel artefak balasannya ke Inspector bawaan dan
+sepuluh gerbang offline memeriksanya terhadap kontrak.
 
-### Yang aku bikin
-Satu konsol HTML: jatuhkan SVG brand, racik gerak dari paket engine, ekspor satu snippet mandiri.
-
-### Beneran jalan?
-Ya — tumpukan dokumen jadi tool yang bisa dijalankan siapa pun dengan dobel klik; paketnya akhirnya hidup melampaui penulisnya.
-
-### Pelajarannya
-Metodologi belum nyata sampai orang asing bisa memakainya tanpa kamu di ruangan.
+### Yang kamu dapat
+Satu animasi siap copy-paste per job tanpa aset eksternal, plus Vault yang menyimpan
+pack brand-mu dan mencatat resi tiap build secara otomatis.
 
 ## motionplain
 emoji: 🎞️
 name: MotionPlain
 tagline.en: One brief in. A polished explainer out. — explainer-video studio (BYOAI).
 tagline.id: One brief in. A polished explainer out. — studio video explainer (BYOAI).
-itch.en: Briefs did become videos — through a pipeline nobody else could install.
-itch.id: Brief memang jadi video — lewat pipeline yang tak bisa dipasang siapa pun selain aku.
+itch.en: Turning a script into an explainer video demanded a studio, a timeline, and a week.
+itch.id: Mengubah naskah jadi video explainer menuntut studio, timeline, dan satu minggu.
 year: 2026
 stack: single HTML, Standard v2
 tag: explainer
@@ -267,41 +287,41 @@ link: Launch = tools/motionplain.html
 swatch: #C026D3
 
 @en
-*Codename: **Layar** — the screen.*
+### What it is
+An explainer-video studio in one offline file: it prepares a precise execution
+brief for your video and previews the result live — any AI does the writing, the
+studio does the discipline.
 
-### The itch
-Motion Explainer Studio proved briefs can become videos — through a Pillow+ffmpeg pipeline nobody else could install.
+### How it flows
+Describe what the video must explain. The studio compiles a versioned brief; hand
+it to any AI, and the built-in Analyst validates the reply before the browser Stage
+plays the scenes back to you.
 
-### What I built
-The same idea as one HTML file: a versioned brief contract, a validating Analyst, a browser Stage, client-side export.
-
-### Did it work?
-Yes — the pipeline died, the product lived; briefs now render anywhere a browser exists.
-
-### What it taught me
-If the toolchain is the barrier, the toolchain is the bug.
+### What you get
+A polished, previewable explainer that exports client-side — no render farm, no
+installs, and nothing ever leaves your machine.
 @id
-*Codename: **Layar**.*
+### Apa ini
+Studio video explainer dalam satu file offline: menyiapkan brief eksekusi yang
+presisi untuk videomu dan mempratinjau hasilnya secara live — AI mana pun yang
+menulis, studio yang menjaga disiplinnya.
 
-### Gatelnya
-Motion Explainer Studio membuktikan brief bisa jadi video — lewat pipeline Pillow+ffmpeg yang tak bisa dipasang orang lain.
+### Alurnya
+Tuliskan apa yang harus dijelaskan videonya. Studio mengompilasi brief ber-versi;
+serahkan ke AI mana pun, dan Analyst bawaan memvalidasi balasannya sebelum Stage di
+browser memutar babak-babaknya untukmu.
 
-### Yang aku bikin
-Ide yang sama sebagai satu file HTML: kontrak brief ber-versi, Analyst yang memvalidasi, Stage di browser, ekspor sisi klien.
-
-### Beneran jalan?
-Ya — pipeline-nya mati, produknya hidup; brief kini ter-render di mana pun ada browser.
-
-### Pelajarannya
-Kalau toolchain jadi penghalang, toolchain itulah bug-nya.
+### Yang kamu dapat
+Explainer rapi yang bisa dipratinjau dan diekspor sisi klien — tanpa render farm,
+tanpa instalasi, dan tak ada apa pun yang meninggalkan mesinmu.
 
 ## contentos
 emoji: ⚗️
 name: ContentOS
 tagline.en: Raw in. Ready out. — content processing OS (BYOAI).
 tagline.id: Raw in. Ready out. — OS pemroses konten (BYOAI).
-itch.en: Three overlapping content systems, gold everywhere — and zero machine.
-itch.id: Tiga sistem konten tumpang tindih, emas di mana-mana — mesinnya nol.
+itch.en: Every piece of content needed the same treatments — improvised differently every time.
+itch.id: Tiap konten butuh perlakuan yang sama — diimprovisasi beda-beda setiap kali.
 year: 2026
 stack: single HTML, Standard v2
 tag: content
@@ -313,41 +333,42 @@ link: Launch = tools/contentos.html
 swatch: #DB2777
 
 @en
-*Codename: **Kilang** — the refinery.*
+### What it is
+A content refinery: any raw text in, any of dozens of processed outputs out —
+summarize, refine, transform, evaluate — through one compiled job instead of ad-hoc
+prompting.
 
-### The itch
-MAP had ~120 activities, OPE had 48 protocols, the prompt vault had gold — three overlapping documents, zero machine.
+### How it flows
+Drop your raw material, pick processes from the versioned registry, and export one
+job file. Any AI executes it; the console parses the reply back, lints it against
+the contract, and shelves the receipt.
 
-### What I built
-One OS around a versioned process registry: compile a job, round-trip any AI, lint the reply, shelve the receipt.
-
-### Did it work?
-Yes — the three documents retired the day the registry could run all of them.
-
-### What it taught me
-A library of prompts is inventory; a registry with contracts is a factory.
+### What you get
+Consistent, repeatable content processing — per stage or full run — with a paper
+trail, so the same input treated the same way gives the same quality every time.
 @id
-*Codename: **Kilang**.*
+### Apa ini
+Kilang konten: teks mentah apa pun masuk, lusinan keluaran terproses keluar —
+ringkas, rapikan, ubah bentuk, nilai — lewat satu job terkompilasi, bukan prompting
+dadakan.
 
-### Gatelnya
-MAP punya ~120 aktivitas, OPE punya 48 protokol, vault prompt punya emas — tiga dokumen tumpang tindih, nol mesin.
+### Alurnya
+Jatuhkan bahan mentahmu, pilih proses dari registry ber-versi, lalu ekspor satu file
+job. AI mana pun mengeksekusinya; konsol mem-parse balasannya, me-lint terhadap
+kontrak, dan menyimpan resinya.
 
-### Yang aku bikin
-Satu OS di atas registry proses ber-versi: kompilasi job, bolak-balik AI mana pun, lint balasannya, simpan resinya.
-
-### Beneran jalan?
-Ya — ketiga dokumen itu pensiun tepat saat registry bisa menjalankan semuanya.
-
-### Pelajarannya
-Perpustakaan prompt itu inventaris; registry dengan kontrak itu pabrik.
+### Yang kamu dapat
+Pemrosesan konten yang konsisten dan bisa diulang — per tahap atau sekali jalan
+penuh — dengan jejak resi, jadi input yang sama dengan perlakuan yang sama memberi
+kualitas yang sama setiap kali.
 
 ## specpilot
 emoji: 📐
 name: SpecPilot
 tagline.en: Spec first, fly later. — idea→spec→wireframe cockpit (BYOAI).
 tagline.id: Spec first, fly later. — kokpit ide→spec→wireframe (BYOAI).
-itch.en: Great specs were born in chat — then the chat scrolled away.
-itch.id: Spec hebat lahir di chat — lalu chat-nya tergulung hilang.
+itch.en: Great specs kept being born in chats — and chats are where documents disappear.
+itch.id: Spec bagus terus lahir di chat — dan chat adalah tempat dokumen menghilang.
 year: 2026
 stack: single HTML, Standard v2
 tag: spec
@@ -359,41 +380,39 @@ link: Launch = tools/specpilot.html
 swatch: #C2410C
 
 @en
-*Codename: **Denah** — the floor plan.*
+### What it is
+An idea→spec→wireframe cockpit: every step is a contract, every claim is linted,
+and nothing important lives only in a chat log.
 
-### The itch
-IDEA™ and CUE-Flow™ produced great specs in chat — then the chat scrolled away and the method left with it.
+### How it flows
+Two round trips with any AI: first your idea becomes a versioned spec brief; then
+the spec becomes an annotated wireframe blueprint. The cockpit lints both on the
+way back, and everything lands as exportable files.
 
-### What I built
-One cockpit with two round trips: spec brief and blueprint, both versioned, both linted, both exportable.
-
-### Did it work?
-Yes — the protocols survived their chats; specs now land as files, not memories.
-
-### What it taught me
-A protocol without a cockpit is a story; with one, it's a vehicle.
+### What you get
+A spec, a blueprint, and a handoff pack ready for prototyping — decisions that
+survive the conversation that made them.
 @id
-*Codename: **Denah**.*
+### Apa ini
+Kokpit ide→spec→wireframe: tiap langkah adalah kontrak, tiap klaim di-lint, dan tak
+ada hal penting yang cuma hidup di log chat.
 
-### Gatelnya
-IDEA™ dan CUE-Flow™ menghasilkan spec bagus di chat — lalu chat-nya tergulung dan metodenya ikut pergi.
+### Alurnya
+Dua kali bolak-balik dengan AI mana pun: pertama idemu jadi spec brief ber-versi;
+lalu spec-nya jadi blueprint wireframe beranotasi. Kokpit me-lint keduanya saat
+kembali, dan semuanya mendarat sebagai file yang bisa diekspor.
 
-### Yang aku bikin
-Satu kokpit dengan dua round trip: spec brief dan blueprint, keduanya ber-versi, ter-lint, dan bisa diekspor.
-
-### Beneran jalan?
-Ya — protokolnya selamat dari chat; spec kini mendarat sebagai file, bukan ingatan.
-
-### Pelajarannya
-Protokol tanpa kokpit itu cerita; dengan kokpit, ia kendaraan.
+### Yang kamu dapat
+Spec, blueprint, dan handoff pack yang siap diprototipekan — keputusan yang selamat
+dari percakapan yang melahirkannya.
 
 ## protopilot
 emoji: 🕹️
 name: ProtoPilot
 tagline.en: Your flow, on autopilot. — clickable-prototype prompt forge (BYOAI).
 tagline.id: Your flow, on autopilot. — penempa prompt prototipe klik (BYOAI).
-itch.en: A 700-line ghost prompt summoned great prototypes — and vanished every session.
-itch.id: Prompt hantu 700 baris memanggil prototype hebat — dan lenyap tiap sesi.
+itch.en: Every prototype demo depended on someone driving the mouse.
+itch.id: Tiap demo prototype bergantung pada seseorang yang memegang mouse.
 year: 2026
 stack: single HTML, Standard v2
 tag: prototype
@@ -405,41 +424,39 @@ link: Launch = tools/protopilot.html
 swatch: #E11D48
 
 @en
-*Codename: **Kemudi** — the helm.*
+### What it is
+A forge for self-driving prototypes: describe a flow in plain language and get an
+HTML prototype that demos itself — a pilot cursor moves, clicks, and narrates.
 
-### The itch
-Phantom Flow was a 700-line ghost prompt that summoned great prototypes — and vanished with every session.
+### How it flows
+Write the flow you want to show. The console compiles it into a versioned brief any
+AI can build from, previews the returned prototype in place, and keeps every run.
 
-### What I built
-A console that forges the same power as a versioned job, previews the returned prototype, and keeps every run.
-
-### Did it work?
-Yes — the ghost got a body; prototypes now persist, replay, and improve.
-
-### What it taught me
-Branding a tool as magic hides its machinery; products need both visible.
+### What you get
+A single-file prototype that flies its own demo — pilot cursor, narrated Flight
+Bar, realistic data, zero dependencies — ready to send to anyone.
 @id
-*Codename: **Kemudi**.*
+### Apa ini
+Penempa prototipe yang menyetir dirinya sendiri: tuliskan sebuah alur dengan bahasa
+biasa dan dapatkan prototipe HTML yang mendemokan dirinya — kursor pilot bergerak,
+mengklik, dan bernarasi.
 
-### Gatelnya
-Phantom Flow adalah prompt hantu 700 baris yang memanggil prototipe hebat — dan lenyap di tiap sesi.
+### Alurnya
+Tulis alur yang mau kamu tunjukkan. Konsol mengompilasinya jadi brief ber-versi yang
+bisa dibangun AI mana pun, mem-preview prototipe balasannya di tempat, dan menyimpan
+tiap run.
 
-### Yang aku bikin
-Konsol yang menempa kekuatan yang sama sebagai job ber-versi, mem-preview prototipe balasan, dan menyimpan tiap run.
-
-### Beneran jalan?
-Ya — hantunya dapat tubuh; prototipe kini bertahan, bisa diputar ulang, dan membaik.
-
-### Pelajarannya
-Mem-branding tool sebagai sihir menyembunyikan mesinnya; produk butuh keduanya terlihat.
+### Yang kamu dapat
+Prototipe satu file yang menerbangkan demonya sendiri — kursor pilot, narasi Flight
+Bar, data realistis, nol dependensi — siap dikirim ke siapa pun.
 
 ## uxmakeover
 emoji: 🪞
 name: UXMakeover
 tagline.en: Every fix, explained. — UX audit & makeover studio (BYOAI).
 tagline.id: Every fix, explained. — studio audit & makeover UX (BYOAI).
-itch.en: My UX audits were flawless in my head — and inconsistent everywhere else.
-itch.id: Audit UX-ku rapi di kepala — dan tak konsisten di mana pun selain itu.
+itch.en: UX feedback usually arrives as taste — strong opinions, missing reasons.
+itch.id: Umpan balik UX biasanya datang sebagai selera — opininya kuat, alasannya hilang.
 year: 2026
 stack: single HTML, Standard v2
 tag: ux-audit
@@ -451,41 +468,38 @@ link: Launch = tools/uxmakeover.html
 swatch: #0E7490
 
 @en
-*Codename: **Cermin** — the mirror.*
+### What it is
+A UX audit & makeover studio — a mirror for interfaces: feed it a screen and get a
+principled audit where every finding cites the rule it serves.
 
-### The itch
-Two frameworks (Alamehan UX 3.0 + Makeover 3.1) audited beautifully in my head and inconsistently everywhere else.
+### How it flows
+Describe or paste the screen and its context; the studio compiles an audit job for
+any AI to run, then renders the reply as an explained, prioritized makeover plan.
 
-### What I built
-One studio that compiles the frameworks into audit jobs and renders explained, prioritized makeovers.
-
-### Did it work?
-Yes — the audits became repeatable; juniors get the same rigor I'd give.
-
-### What it taught me
-Expertise scales the moment its reasons are written down.
+### What you get
+Fixes with reasons — a plan you can defend in a design review, not just a list of
+opinions.
 @id
-*Codename: **Cermin**.*
+### Apa ini
+Studio audit & makeover UX — cermin untuk antarmuka: beri satu layar dan dapatkan
+audit berprinsip yang tiap temuannya menyebut aturan yang dilayaninya.
 
-### Gatelnya
-Dua framework (Alamehan UX 3.0 + Makeover 3.1) mengaudit indah di kepalaku dan tidak konsisten di mana pun selain itu.
+### Alurnya
+Tuliskan atau tempel layar beserta konteksnya; studio mengompilasi job audit untuk
+dijalankan AI mana pun, lalu me-render balasannya sebagai rencana makeover yang
+terjelaskan dan terprioritas.
 
-### Yang aku bikin
-Satu studio yang mengompilasi framework jadi job audit dan me-render makeover yang terjelaskan dan terprioritas.
-
-### Beneran jalan?
-Ya — auditnya jadi bisa diulang; junior pun dapat ketelitian yang sama seperti dariku.
-
-### Pelajarannya
-Keahlian baru bisa diskalakan saat alasannya dituliskan.
+### Yang kamu dapat
+Perbaikan beserta alasannya — rencana yang bisa kamu pertahankan di review desain,
+bukan sekadar daftar opini.
 
 ## superstudio
 emoji: 🎨
 name: SuperStudio
 tagline.en: One style, every asset. — style-consistent asset studio (BYOAI).
 tagline.id: One style, every asset. — studio aset konsisten-gaya (BYOAI).
-itch.en: Eight documents each held a piece of style mastery — none could ship an asset.
-itch.id: Delapan dokumen masing-masing pegang serpihan ilmu style — tak satu pun bisa merilis aset.
+itch.en: Ten assets, one brand — and every one came out in a different style.
+itch.id: Sepuluh aset, satu brand — dan semuanya jadi dengan gaya berbeda-beda.
 year: 2026
 stack: single HTML, Standard v2
 tag: style
@@ -497,41 +511,39 @@ link: Launch = tools/superstudio.html
 swatch: #047857
 
 @en
-*Codename: **Sanggar** — the atelier.*
+### What it is
+A style-consistent asset studio: lock a visual style once as portable Style DNA,
+then compile every asset in it.
 
-### The itch
-Eight documents — Idea Weaver→ACE, SIMA→DAE, the Encyclopedia, CORE, PVP — each held a piece of style mastery; none could ship an asset.
+### How it flows
+Curate the style in the Vault — 16 genes across 4 chromosomes — then let the
+deterministic Assembler compile style-locked jobs, one asset or a whole batch. Any
+AI renders them; fidelity gates keep the results honest to the DNA.
 
-### What I built
-One studio: a curated style Vault, a deterministic Assembler, style-locked jobs, fidelity gates.
-
-### Did it work?
-Yes — the bloodlines merged; assets now match each other before they match the brief.
-
-### What it taught me
-Curation beats collection: twelve gated seeds outperform two hundred raw samples.
+### What you get
+One voice across every asset: prompt packs and outputs that match each other before
+they match the brief.
 @id
-*Codename: **Sanggar**.*
+### Apa ini
+Studio aset konsisten-gaya: kunci satu gaya visual sekali sebagai Style DNA
+portabel, lalu kompilasi setiap aset dalam gaya itu.
 
-### Gatelnya
-Delapan dokumen — Idea Weaver→ACE, SIMA→DAE, Encyclopedia, CORE, PVP — masing-masing memegang sekeping penguasaan gaya; tak satu pun bisa merilis aset.
+### Alurnya
+Kurasi gayanya di Vault — 16 gen dalam 4 kromosom — lalu biarkan Assembler
+deterministik mengompilasi job terkunci-gaya, satu aset atau satu batch. AI mana pun
+yang me-render; gerbang fidelitas menjaga hasilnya jujur pada DNA-nya.
 
-### Yang aku bikin
-Satu sanggar: Vault gaya terkurasi, Assembler deterministik, job terkunci-gaya, gerbang fidelitas.
-
-### Beneran jalan?
-Ya — dua garis darah menyatu; aset kini serasi satu sama lain sebelum serasi dengan brief.
-
-### Pelajarannya
-Kurasi mengalahkan koleksi: dua belas benih tergerbang mengalahkan dua ratus sampel mentah.
+### Yang kamu dapat
+Satu suara di semua aset: pack prompt dan keluaran yang serasi satu sama lain
+sebelum serasi dengan brief-nya.
 
 ## bizventure
 emoji: 🚀
 name: BizVenture
 tagline.en: Values in. Ventures out. — value-driven venture ideation console (BYOAI).
 tagline.id: Values in. Ventures out. — konsol ideasi venture berbasis nilai (BYOAI).
-itch.en: Every generation of my ideation frameworks got sharper — and stayed trapped in documents.
-itch.id: Tiap generasi framework ideasiku makin tajam — dan tetap terkurung di dokumen.
+itch.en: Venture ideas kept starting from trends — and quietly abandoning the values that made them worth doing.
+itch.id: Ide usaha terus berangkat dari tren — dan diam-diam meninggalkan nilai yang membuatnya layak diperjuangkan.
 year: 2026
 stack: single HTML, Standard v2
 tag: venture
@@ -543,41 +555,38 @@ link: Launch = tools/bizventure.html
 swatch: #6B21A8
 
 @en
-*Codename: **Niaga** — commerce.*
+### What it is
+A value-driven venture ideation console: it turns human values into venture
+blueprints, with ten gates standing between an idea and a claim.
 
-### The itch
-Four generations of ideation frameworks (GEM→HVE→VDI→VIBE) kept getting sharper — and staying trapped in documents.
+### How it flows
+Pick the values that matter, spark briefs out through any AI, and land blueprints
+back — every claim has to pass the console's gates before it earns its place.
 
-### What I built
-One console around the Value Codex: spark briefs out, blueprints back, ten gates between an idea and a claim.
-
-### Did it work?
-Yes — the chain became a loop; ideation now leaves receipts instead of vibes.
-
-### What it taught me
-Every framework generation was a patch note; the product is the changelog compiled.
+### What you get
+Venture blueprints with receipts — ideas that can explain why they deserve to
+exist, exported client-side.
 @id
-*Codename: **Niaga**.*
+### Apa ini
+Konsol ideasi usaha berbasis nilai: mengubah nilai kemanusiaan jadi cetak biru
+usaha, dengan sepuluh gerbang berdiri di antara ide dan klaim.
 
-### Gatelnya
-Empat generasi framework ideasi (GEM→HVE→VDI→VIBE) makin tajam — dan tetap terperangkap di dokumen.
+### Alurnya
+Pilih nilai yang penting bagimu, luncurkan spark brief lewat AI mana pun, dan
+daratkan cetak birunya kembali — tiap klaim harus melewati gerbang konsol sebelum
+berhak menempati tempatnya.
 
-### Yang aku bikin
-Satu konsol di atas Value Codex: spark brief keluar, blueprint kembali, sepuluh gerbang antara ide dan klaim.
-
-### Beneran jalan?
-Ya — rantainya jadi loop; ideasi kini meninggalkan resi, bukan sekadar vibe.
-
-### Pelajarannya
-Tiap generasi framework itu patch note; produknya adalah changelog yang terkompilasi.
+### Yang kamu dapat
+Cetak biru usaha dengan resi — ide yang bisa menjelaskan kenapa ia layak ada,
+diekspor sisi klien.
 
 ## bizvault
 emoji: 🏦
 name: BizVault
 tagline.en: Raw IP in, launch-ready ecosystem out. — IP→product ecosystem vault (BYOAI).
 tagline.id: Raw IP in, launch-ready ecosystem out. — brankas IP→ekosistem produk (BYOAI).
-itch.en: The monetization framework kept improving — while my own IP sat unmonetized.
-itch.id: Framework monetisasinya terus membaik — sementara IP-ku sendiri tak menghasilkan apa-apa.
+itch.en: Ideas and IP kept piling up as documents — none of them earning their keep.
+itch.id: Ide dan IP terus menumpuk sebagai dokumen — tak satu pun menghidupi dirinya.
 year: 2026
 stack: single HTML, Standard v2
 tag: monetize
@@ -589,41 +598,37 @@ link: Launch = tools/bizvault.html
 swatch: #166534
 
 @en
-*Codename: **Brankas** — the vault.*
+### What it is
+An IP→product vault: it turns raw intellectual property — frameworks, methods,
+bodies of work — into a launch-ready product ecosystem.
 
-### The itch
-Four generations of a document-to-money framework each explained monetization better — while my own IP sat unmonetized.
+### How it flows
+Deposit the IP, compile the ecosystem job, round-trip any AI, then audit the
+returned blueprint against the vault's diagnostics until it's launch-ready.
 
-### What I built
-One vault: deposit IP, compile the ecosystem job, round-trip any AI, audit until launch-ready.
-
-### Did it work?
-Yes — the framework finally ate its own cooking; the worked example ships inside.
-
-### What it taught me
-Advice that never runs is opinion; a vault with gates is a business.
+### What you get
+A monetization blueprint with pipeline, products, and flywheel in one place —
+exported client-side, ready to act on.
 @id
-*Codename: **Brankas**.*
+### Apa ini
+Brankas IP→produk: mengubah kekayaan intelektual mentah — framework, metode, karya —
+jadi ekosistem produk yang siap diluncurkan.
 
-### Gatelnya
-Empat generasi framework dokumen-ke-uang makin jago menjelaskan monetisasi — sementara IP-ku sendiri menganggur.
+### Alurnya
+Setor IP-nya, kompilasi job ekosistem, bolak-balik ke AI mana pun, lalu audit cetak
+biru balasannya terhadap diagnostik brankas sampai siap luncur.
 
-### Yang aku bikin
-Satu brankas: setor IP, kompilasi job ekosistem, bolak-balik AI mana pun, audit sampai siap rilis.
-
-### Beneran jalan?
-Ya — framework-nya akhirnya makan masakannya sendiri; contoh nyatanya ikut terkirim di dalam.
-
-### Pelajarannya
-Saran yang tak pernah dijalankan itu opini; brankas dengan gerbang itu bisnis.
+### Yang kamu dapat
+Cetak biru monetisasi dengan pipeline, produk, dan flywheel dalam satu tempat —
+diekspor sisi klien, siap dieksekusi.
 
 ## llmforge
 emoji: ⚒️
 name: LLMForge
 tagline.en: Same prompt. Honest verdict. — one-shot AI benchmark arena.
 tagline.id: Same prompt. Honest verdict. — arena benchmark AI sekali-tembak.
-itch.en: A strong benchmark method, five case kits — and manual everything, every time.
-itch.id: Metode benchmark kuat, lima kit kasus — dan semuanya manual, setiap kali.
+itch.en: Model comparisons ran on vibes — different prompt, different mood, every time.
+itch.id: Perbandingan model AI jalan pakai vibes — prompt beda, mood beda, tiap kali.
 year: 2026
 stack: single HTML, Standard v2
 tag: benchmark
@@ -635,41 +640,39 @@ link: Launch = tools/llmforge.html
 swatch: #92400E
 
 @en
-*Codename: **Gelanggang** — the arena.*
+### What it is
+A one-shot AI benchmark arena for real front-end work: the same prompt to every
+contender, blind weighted scoring, one podium.
 
-### The itch
-My model benchmarks lived in a Notion hub: strong method, five case kits — and manual everything, every time.
+### How it flows
+Pin a trial from the case kits, give the identical one-shot prompt to each model
+you're judging, render the replies in a sandbox, and score them blind on weighted
+criteria — integrity gates keep the trial fair.
 
-### What I built
-One arena file: pinned trials, sandboxed renders, integrity gates, blind weighted scorecards, an exportable podium.
-
-### Did it work?
-Yes — verdicts became repeatable and portable; the hub retired.
-
-### What it taught me
-Fairness is a mechanism, not an intention.
+### What you get
+An honest, repeatable verdict: an exportable podium you can show, instead of a
+feeling you have to defend.
 @id
-*Codename: **Gelanggang**.*
+### Apa ini
+Gelanggang benchmark AI sekali-tembak untuk kerja front-end sungguhan: prompt yang
+sama untuk tiap kontender, penilaian buta berbobot, satu podium.
 
-### Gatelnya
-Benchmark model-ku hidup di hub Notion: metode kuat, lima kit kasus — dan semuanya manual, setiap saat.
+### Alurnya
+Patri satu trial dari kit kasus, beri prompt sekali-tembak yang identik ke tiap
+model yang kamu adili, render balasannya di sandbox, dan nilai secara buta dengan
+kriteria berbobot — gerbang integritas menjaga sidangnya adil.
 
-### Yang aku bikin
-Satu file gelanggang: trial terpatri, render tersandbox, gerbang integritas, scorecard buta berbobot, podium yang bisa diekspor.
-
-### Beneran jalan?
-Ya — vonis jadi bisa diulang dan dibawa; hub-nya pensiun.
-
-### Pelajarannya
-Keadilan itu mekanisme, bukan niat.
+### Yang kamu dapat
+Vonis jujur yang bisa diulang: podium yang bisa diekspor dan ditunjukkan, bukan
+perasaan yang harus kamu bela.
 
 ## svgmatrix
 emoji: 🧬
 name: SVGMatrix
 tagline.en: Pick a motion. Take the code. — 200-module micro-animation treasury.
 tagline.id: Pick a motion. Take the code. — khazanah 200 modul micro-animation.
-itch.en: 200 masterpiece modules, sealed inside a viewer that ignored their own constitution.
-itch.id: 200 modul masterpiece tersegel di viewer yang mengabaikan konstitusinya sendiri.
+itch.en: Two hundred fine micro-animations mean nothing if you can't find, test, and take one.
+itch.id: Dua ratus micro-animation bagus tak berarti kalau tak bisa dicari, diuji, dan diambil.
 year: 2026
 stack: single HTML, Standard v2
 tag: animation
@@ -681,41 +684,39 @@ link: Launch = tools/svgmatrix.html
 swatch: #334155
 
 @en
-*Codename: **Khazanah** — the treasury.*
+### What it is
+A one-file treasury of 200 curated micro-animations — SVG, Canvas, DOM/CSS, CSS
+3D — with the console to explore, test, and extract them.
 
-### The itch
-Strand Motion shipped 200 masterpiece modules inside a viewer that ignored the collection's own constitution.
+### How it flows
+Browse the catalog with live pulse metrics, open any module to test it in place,
+then take the code — one module or a deterministic pack export — all inside a
+single file that stays under a 1.2 MB budget.
 
-### What I built
-The console the rules demanded: a catalog with live pulse metrics, gated modules, deterministic pack export — all within a ≤1.2 MB budget.
-
-### Did it work?
-Yes — the 200 finally behave as one product; packs travel as one file.
-
-### What it taught me
-A collection becomes a product the day its rules become executable.
+### What you get
+Production-ready motion snippets you can lift straight into a project, as one
+module or one pack — one file either way.
 @id
-*Codename: **Khazanah**.*
+### Apa ini
+Khazanah satu file berisi 200 micro-animation terkurasi — SVG, Canvas, DOM/CSS, CSS
+3D — plus konsol untuk menjelajah, menguji, dan mengekstraknya.
 
-### Gatelnya
-Strand Motion merilis 200 modul mahakarya di dalam viewer yang mengabaikan konstitusi koleksinya sendiri.
+### Alurnya
+Jelajahi katalog dengan metrik pulse langsung, buka modul mana pun untuk mengujinya
+di tempat, lalu ambil kodenya — satu modul atau ekspor pack deterministik — semuanya
+dalam satu file yang tetap di bawah anggaran 1,2 MB.
 
-### Yang aku bikin
-Konsol yang dituntut aturannya: katalog dengan metrik pulse langsung, modul tergerbang, ekspor pack deterministik — semuanya dalam anggaran ≤1,2 MB.
-
-### Beneran jalan?
-Ya — ke-200 modul akhirnya berperilaku sebagai satu produk; pack berpindah sebagai satu file.
-
-### Pelajarannya
-Koleksi jadi produk tepat saat aturannya bisa dieksekusi.
+### Yang kamu dapat
+Snippet gerak siap produksi yang bisa langsung diangkat ke proyek, sebagai satu
+modul atau satu pack — dua-duanya tetap satu file.
 
 ## promptcraft
 emoji: ✒️
 name: PromptCraft
 tagline.en: Say it rough. Send it sharp. — prompt articulation studio.
 tagline.id: Say it rough. Send it sharp. — studio artikulasi prompt.
-itch.en: Prompt craft was teachable — but the app that tried hardcoded one vendor, seven times.
-itch.id: Ilmu prompt bisa diajarkan — tapi app yang mencoba malah mengunci satu vendor, tujuh kali.
+itch.en: Most prompts say less than their author meant — and the answers show it.
+itch.id: Kebanyakan prompt menyampaikan lebih sedikit dari maksud penulisnya — dan jawabannya memperlihatkan itu.
 year: 2026
 stack: single HTML, Standard v2
 tag: prompting
@@ -727,41 +728,38 @@ link: Launch = tools/promptcraft.html
 swatch: #075985
 
 @en
-*Codename: **Pahat** — the chisel.*
+### What it is
+A prompt articulation studio — a chisel for prompts: say it rough, send it sharp.
 
-### The itch
-PAT & PPP taught prompt craft; PromptCraft Pro tried to app-ify it and hardcoded one vendor's model seven times.
+### How it flows
+Draft roughly, and the studio carves your words deterministically through proven
+articulation levels and structure. No AI inside, endpoints editable as plain data,
+and zero model names hardcoded — so it never expires with a vendor.
 
-### What I built
-A clean studio: deterministic carving, editable endpoints as data, zero model names in the machine.
-
-### Did it work?
-Yes — the craft survived its buggy first app; prompts sharpen in seconds now.
-
-### What it taught me
-Hardcoding today's model into a tool is planting an expiry date in the foundation.
+### What you get
+A precision prompt at three altitudes with honest markers, a lint receipt, and a
+ledger of everything you've sharpened.
 @id
-*Codename: **Pahat**.*
+### Apa ini
+Studio artikulasi prompt — pahat untuk prompt: tulis kasar, kirim tajam.
 
-### Gatelnya
-PAT & PPP mengajarkan kriya prompt; PromptCraft Pro mencoba meng-app-kannya dan meng-hardcode model satu vendor tujuh kali.
+### Alurnya
+Tulis draf seadanya, dan studio memahat kata-katamu secara deterministik lewat level
+dan struktur artikulasi yang teruji. Tanpa AI di dalamnya, endpoint bisa diedit
+sebagai data biasa, dan nol nama model yang di-hardcode — jadi ia tak pernah
+kedaluwarsa bersama satu vendor.
 
-### Yang aku bikin
-Studio yang bersih: pahatan deterministik, endpoint sebagai data yang bisa diedit, nol nama model di mesinnya.
-
-### Beneran jalan?
-Ya — kriyanya selamat dari app pertama yang buggy; prompt kini tajam dalam hitungan detik.
-
-### Pelajarannya
-Meng-hardcode model hari ini ke dalam tool sama dengan menanam tanggal kedaluwarsa di fondasi.
+### Yang kamu dapat
+Prompt presisi di tiga ketinggian dengan marker jujur, resi lint, dan ledger dari
+semua yang pernah kamu tajamkan.
 
 ## codearmor
 emoji: 🛡️
 name: CodeArmor
 tagline.en: One project in. One armored file out. — client-side code protection console.
 tagline.id: One project in. One armored file out. — konsol proteksi kode sisi klien.
-itch.en: “Ultimate protection” — the one promise client-side tools can never keep.
-itch.id: “Perlindungan mutlak” — satu janji yang mustahil ditepati tool client-side.
+itch.en: Client-side code ships naked — and most protection tools oversell what hiding can do.
+itch.id: Kode sisi klien terkirim telanjang — dan kebanyakan tool proteksi melebih-lebihkan kemampuan menyembunyikan.
 year: 2026
 stack: single HTML, Standard v2
 tag: protection
@@ -773,41 +771,42 @@ link: Launch = tools/codearmor.html
 swatch: #991B1B
 
 @en
-*Codename: **Zirah** — the armor.*
+### What it is
+A client-side protection console: drop a hand-written page or any bundler export,
+and get back one hardened, self-contained HTML file. No AI, no backend, zero
+network by default.
 
-### The itch
-Obscura (né JS Ninja Obfuscator) promised "ultimate protection" — the one claim client-side tools can never keep.
+### How it flows
+Pick your rung on the Threat Ladder — every layer states plainly what it defends
+against and what it can't — then armor the file. The limits are part of the
+product, not the fine print.
 
-### What I built
-A rebuilt console around a Threat Ladder: explicit rungs, explicit limits, receipts for what was actually applied.
-
-### Did it work?
-Yes — protection with a spine of honesty; users pick trade-offs instead of buying myths.
-
-### What it taught me
-The most valuable feature of a security tool is the list of things it cannot do.
+### What you get
+One armored file with a signed build receipt listing exactly which defenses were
+applied — protection with its limits printed on the tin.
 @id
-*Codename: **Zirah**.*
+### Apa ini
+Konsol proteksi sisi klien: jatuhkan halaman tulisan tangan atau hasil build bundler
+apa pun, dan terima kembali satu file HTML mandiri yang sudah dikeraskan. Tanpa AI,
+tanpa backend, nol jaringan secara default.
 
-### Gatelnya
-Obscura (dulu JS Ninja Obfuscator) menjanjikan "proteksi ultimat" — satu klaim yang mustahil ditepati tool sisi klien.
+### Alurnya
+Pilih anak tanggamu di Threat Ladder — tiap lapisan menyatakan terang-terangan apa
+yang ia tahan dan apa yang tidak bisa — lalu armor file-nya. Batasan adalah bagian
+dari produk, bukan catatan kaki.
 
-### Yang aku bikin
-Konsol yang dibangun ulang di atas Threat Ladder: anak tangga eksplisit, batas eksplisit, resi atas apa yang benar-benar diterapkan.
-
-### Beneran jalan?
-Ya — proteksi dengan tulang kejujuran; pengguna memilih trade-off, bukan membeli mitos.
-
-### Pelajarannya
-Fitur paling berharga dari tool keamanan adalah daftar hal yang tidak bisa ia lakukan.
+### Yang kamu dapat
+Satu file ter-armor dengan resi build bertanda tangan yang mencantumkan persis
+pertahanan mana saja yang diterapkan — proteksi dengan batasnya tercetak di
+kemasan.
 
 ## critiquespike
 emoji: 🌶️
 name: CritiqueSpike
 tagline.en: Every claim on trial. — claim stress-testing console (BYOAI).
 tagline.id: Every claim on trial. — konsol uji-tekan klaim (BYOAI).
-itch.en: My sharpest critique frameworks were rituals I had to conduct by hand.
-itch.id: Framework kritik tertajamku adalah ritual yang harus kupimpin dengan tangan.
+itch.en: Feedback either flatters or flattens — it rarely interrogates.
+itch.id: Umpan balik biasanya memuji atau menjatuhkan — jarang menginterogasi.
 year: 2026
 stack: single HTML, Standard v2
 tag: critique
@@ -820,41 +819,39 @@ link: Launch = tools/critiquespike.html
 swatch: #3F6212
 
 @en
-*Codename: **Rawit** — the bird's-eye chili.*
+### What it is
+A claim stress-testing console: paste any text — a pitch, an essay, a plan — and
+put its claims on trial.
 
-### The itch
-DRS, Brutal & Bitter Truth, and PICC each sharpened critique — as rituals I had to conduct by hand.
+### How it flows
+The console stages the trial with declared stances and a public evidence
+quarantine; any AI argues it, and whatever goes unproven wears an honest
+"untested" badge instead of quietly passing.
 
-### What I built
-One console: trials with declared stances, public evidence quarantine, honest "untested" badges, copy-ready rebuttals.
-
-### Did it work?
-Yes — the rituals became a machine; critique now ends in ammunition, not vibes.
-
-### What it taught me
-A verdict without a visible trial is just a louder opinion.
+### What you get
+A verdict band, copy-ready follow-up questions, one or two blunt insights, and a
+constructive closing comment — critique that ends in ammunition, not vibes.
 @id
-*Codename: **Rawit**.*
+### Apa ini
+Konsol uji-tekan klaim: tempel teks apa pun — pitch, esai, rencana — dan sidangkan
+klaim-klaimnya.
 
-### Gatelnya
-DRS, Brutal & Bitter Truth, dan PICC masing-masing menajamkan kritik — sebagai ritual yang harus kupimpin manual.
+### Alurnya
+Konsol menggelar sidang dengan sikap terdeklarasi dan karantina bukti publik; AI
+mana pun yang berargumen, dan apa pun yang tak terbukti mengenakan lencana
+"untested" yang jujur alih-alih lolos diam-diam.
 
-### Yang aku bikin
-Satu konsol: sidang dengan sikap terdeklarasi, karantina bukti publik, lencana "untested" yang jujur, bantahan siap salin.
-
-### Beneran jalan?
-Ya — ritualnya jadi mesin; kritik kini berakhir sebagai amunisi, bukan sekadar rasa.
-
-### Pelajarannya
-Vonis tanpa sidang yang terlihat cuma opini yang lebih keras.
+### Yang kamu dapat
+Pita vonis, pertanyaan lanjutan siap salin, satu-dua insight lugas, dan komentar
+penutup yang membangun — kritik yang berakhir sebagai amunisi, bukan vibes.
 
 ## superdocs
 emoji: 📖
 name: SuperDocs
 tagline.en: Documentation that makes strangers believe. — one story, every surface (BYOAI).
 tagline.id: Documentation that makes strangers believe. — satu cerita, semua permukaan (BYOAI).
-itch.en: One ancestor told the whole story, the other owned the machine — neither reached the user inside the product.
-itch.id: Yang satu bercerita utuh, yang lain punya mesin — tak satu pun sampai ke user di dalam produk.
+itch.en: Docs are written for readers who already believe — strangers bounce, and users find no help inside the product.
+itch.id: Dokumentasi ditulis untuk yang sudah percaya — orang asing memantul, dan user tak menemukan bantuan di dalam produk.
 year: 2026
 stack: single HTML, Standard v2
 tag: documentation
@@ -866,41 +863,43 @@ link: Launch = tools/superdocs.html
 swatch: #0F766E
 
 @en
-*Codename: **Hikayat** — the chronicle.*
+### What it is
+A documentation persuasion studio: one gated story contract, pressed onto every
+surface documentation lives on.
 
-### The itch
-The Codex told the whole story but rented its engines; ZapDocs owned its machine but told half the story — and neither ever reached the user standing inside the live product, asking "how do I…?"
+### How it flows
+Paste the project — even its own HTML — and the studio compiles a staged job any AI
+fills section by section. Compose parses the fragments back with refusals that name
+exactly what's wrong, then one press mints four faces: a Story page for strangers,
+a drop-in Companion your live app embeds as its in-app manual, a README, and an
+llms.txt.
 
-### What I built
-One studio: a 17-section story contract any AI fills in stages, then one press with four dies — a standalone Story page, a drop-in Companion any live app embeds as its in-app manual, a README, an llms.txt — every face gated by its own coverage arithmetic.
-
-### Did it work?
-Shipped v1.0 the same day it was forged, then re-pressed twice on the owner's audits before the day ended — v1.2 ships 48/48 self-test, 40/40 e2e, a 17-section arsenal (fewer, fuller), per-section Story layouts in the document's own accent, and a flagship exemplar of a real sibling (Diagranimate) with every number measured and zero placeholders in public prose.
-
-### What it taught me
-Documentation nobody can install is a destination; documentation you can embed is a feature.
+### What you get
+Four self-contained faces from one source of truth — each carrying a receipt whose
+coverage is computed, never claimed.
 @id
-*Codename: **Hikayat**.*
+### Apa ini
+Studio persuasi dokumentasi: satu kontrak cerita ter-gate, dicetak ke tiap permukaan
+tempat dokumentasi hidup.
 
-### Gatelnya
-The Codex menceritakan kisah utuh tapi menyewa mesinnya; ZapDocs memiliki mesinnya tapi bercerita setengah — dan keduanya tak pernah menjangkau user yang berdiri di dalam produk live sambil bertanya "gimana caranya…?"
+### Alurnya
+Tempel proyeknya — bahkan HTML-nya sendiri — dan studio mengompilasi job bertahap
+yang diisi AI mana pun seksi demi seksi. Compose mem-parse fragmennya kembali dengan
+penolakan yang menyebut persis apa yang salah, lalu satu kali cetak melahirkan empat
+wajah: halaman Story untuk orang asing, Companion tempel-sekali yang jadi manual di
+dalam app live-mu, README, dan llms.txt.
 
-### Yang aku bikin
-Satu studio: kontrak cerita 17-seksi yang diisi AI mana pun secara bertahap, lalu satu mesin cetak dengan empat cetakan — halaman Story mandiri, Companion tempel-sekali yang jadi manual di dalam app live mana pun, README, llms.txt — tiap wajah dijaga aritmetika coverage-nya sendiri.
-
-### Beneran jalan?
-Dikirim v1.0 di hari yang sama ia ditempa, lalu dicetak ulang dua kali atas audit pemiliknya sebelum harinya berakhir — v1.2 membawa self-test 48/48, e2e 40/40, arsenal 17-seksi (lebih sedikit, lebih penuh), layout Story per-seksi dalam aksen milik dokumennya sendiri, dan exemplar saudara nyata (Diagranimate) dengan tiap angka terukur dan nol placeholder di prosa publik.
-
-### Pelajarannya
-Dokumentasi yang tak bisa dipasang cuma destinasi; dokumentasi yang bisa disisipkan adalah fitur.
+### Yang kamu dapat
+Empat wajah mandiri dari satu sumber kebenaran — masing-masing membawa resi yang
+coverage-nya dihitung, bukan diklaim.
 
 ## cvforge
 emoji: 🪪
 name: CVForge
 tagline.en: One record in. Any résumé out. — the living-résumé studio.
 tagline.id: One record in. Any résumé out. — studio résumé hidup.
-itch.en: My CV was a beautiful record — and every new PDF was a hand-layout afternoon.
-itch.id: CV-ku record yang rapi — tapi tiap PDF baru berarti sore penuh tata-letak manual.
+itch.en: One career, two documents — a record you maintain and a résumé you re-layout, forever drifting apart.
+itch.id: Satu karier, dua dokumen — record yang dirawat dan résumé yang ditata ulang, selamanya saling menjauh.
 year: 2026
 status: live
 stack: single HTML, Standard v2
@@ -913,31 +912,33 @@ link: Launch = tools/cvforge.html
 swatch: #3730A3
 
 @en
-*Codename: **Riwayat** — the life-record itself.*
+### What it is
+The living-résumé studio: one structured record is the single source of truth, and
+Markdown or PDF are just faces it wears.
 
-### The itch
-The master CV lived as pristine Markdown, yet every new PDF meant a manual layout session in a design tool — and the two drifted the moment one changed.
+### How it flows
+Edit the record once in the structured Desk, then press it — a polished Markdown
+face, or a print-perfect PDF face with a measured page meter. The Vault round-trips
+every save byte-identically, and a BYOAI Tailor lands AI-tailored variants as new
+drafts — never over your record.
 
-### What I built
-A living-résumé studio around one contract (`cvforge-cv: 1`): a structured Desk, a Press with a polished MD face and a print-perfect, page-metered PDF face, a Vault whose saves round-trip byte-identically, and a BYOAI Tailor that lands replies as new drafts — never over the record.
-
-### Did it work?
-The god-example is the proof: the owner's real CV ships inside as the exemplar, exported through the engine itself.
-
-### What it taught me
-A document you maintain in two places is one document too many — edit the record, press the faces.
+### What you get
+A CV you edit in minutes and press forever: every new application is a press, not a
+layout afternoon.
 @id
-### Gatelnya
-CV master tersimpan sebagai Markdown yang rapi, tapi tiap PDF baru berarti sesi tata-letak manual di tool desain — dan keduanya drift begitu salah satunya berubah.
+### Apa ini
+Studio résumé hidup: satu record terstruktur adalah satu-satunya sumber kebenaran,
+dan Markdown atau PDF hanyalah wajah yang dikenakannya.
 
-### Yang aku bikin
-Studio résumé hidup di sekitar satu kontrak (`cvforge-cv: 1`): Desk terstruktur, Press dengan wajah MD polished dan wajah PDF siap-cetak ber-meteran halaman, Vault yang simpanannya round-trip identik byte demi byte, dan Tailor BYOAI yang mendaratkan balasan sebagai draft baru — tak pernah menimpa record.
+### Alurnya
+Edit record-nya sekali di Desk terstruktur, lalu cetak — wajah Markdown yang
+polished, atau wajah PDF siap-cetak dengan meteran halaman terukur. Vault
+me-round-trip tiap simpanan identik byte demi byte, dan Tailor BYOAI mendaratkan
+varian racikan AI sebagai draft baru — tak pernah menimpa record-mu.
 
-### Beneran jalan?
-God-example-nya adalah buktinya: CV asli sang owner terpasang di dalamnya sebagai exemplar, diekspor lewat mesinnya sendiri.
-
-### Pelajarannya
-Dokumen yang dirawat di dua tempat adalah satu dokumen kelebihan — edit record-nya, cetak wajah-wajahnya.
+### Yang kamu dapat
+CV yang diedit dalam hitungan menit dan dicetak selamanya: tiap lamaran baru adalah
+sekali cetak, bukan sore penuh tata letak.
 
 ## anggrek-classifier
 emoji: 🌺

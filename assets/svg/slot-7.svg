@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-7 · THE SIGNAL THREAD — general slot, message: finding the clear line through noise.
+       namespaced a7-/k7 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — an 8s clock: a field of scattered points sits in quiet static; one accent
+       thread weaves itself through the field (its bright head traveling the line), and
+       every point it passes wakes for a beat; the line completes, flashes at the exit,
+       rests — then dies invisible and is reborn to weave again.
+       idle desync: clock 8s · dot shimmer 9s and 11.5s · field drift 13s.
+       hover (additive): a ghost grid fades in and accent points settle onto it while the
+       scatter dims — the noise was a structure all along — plus "CLEAR" chip payoff.
+       reduced-motion: thread fully drawn, scatter at rest, chip shown — a complete frame. */
+    .a7-acc{stroke:var(--accent,#2b4be0)}
+    .a7-accf{fill:var(--accent,#2b4be0)}
+    .a7-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a7-mutf{fill:var(--ink-muted,#5d6472)}
+    .a7-hl{stroke:var(--hairline,#e2e6ee)}
+    .a7-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a7-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a7-in{opacity:0;animation:k7fi .6s ease-out forwards}
+    .a7-d1{animation-delay:.15s}.a7-d2{animation-delay:.35s}.a7-d3{animation-delay:.55s}.a7-d4{animation-delay:.75s}
+    /* idle life */
+    .a7-dr{animation:k7df 13s ease-in-out infinite}
+    .a7-s1{animation:k7sh1 9s ease-in-out infinite}
+    .a7-s2{animation:k7sh2 11.5s ease-in-out infinite}
+    /* the 8s clock — weave, wake, flash, rest, rebirth (phase-locked) */
+    .a7-th{stroke-dasharray:340;animation:k7th 8s linear infinite}
+    .a7-hd{offset-path:path('M18 118 C45 70,70 160,100 112 C122 78,148 150,175 105 C196 72,228 122,262 96');animation:k7hd 8s linear infinite}
+    .a7-wk{transform-box:fill-box;transform-origin:center;opacity:0;animation:k7wk 8s linear infinite}
+    .a7-w1{animation-delay:-7s}.a7-w2{animation-delay:-6.2s}.a7-w3{animation-delay:-5.4s}.a7-w4{animation-delay:-4.4s}.a7-w5{animation-delay:-3.4s}
+    .a7-fx{transform-box:fill-box;transform-origin:center;opacity:0;animation:k7fx 8s linear infinite}
+    /* hover — purely additive: the scatter was a grid all along */
+    .a7-sw{transition:opacity .45s ease-out}
+    svg:hover .a7-sw{opacity:.3}
+    .a7-gr{opacity:0;transition:opacity .5s ease-out .1s}
+    svg:hover .a7-gr{opacity:.65}
+    .a7-al{opacity:0;transition:opacity .35s ease-out}
+    .a7-a1{transition-delay:.15s}.a7-a2{transition-delay:.22s}.a7-a3{transition-delay:.29s}.a7-a4{transition-delay:.36s}
+    .a7-a5{transition-delay:.43s}.a7-a6{transition-delay:.5s}.a7-a7{transition-delay:.57s}.a7-a8{transition-delay:.64s}
+    svg:hover .a7-al{opacity:1}
+    .a7-capt{transition:fill .35s ease-out}
+    svg:hover .a7-capt{fill:var(--accent,#2b4be0)}
+    .a7-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .55s,transform .55s cubic-bezier(.34,1.45,.5,1) .55s}
+    svg:hover .a7-chip{opacity:1;transform:scale(1)}
+    @keyframes k7fi{to{opacity:1}}
+    @keyframes k7df{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+    @keyframes k7sh1{0%,100%{opacity:.55}50%{opacity:.9}}
+    @keyframes k7sh2{0%,100%{opacity:.8}50%{opacity:.45}}
+    @keyframes k7th{0%{stroke-dashoffset:340;opacity:1}70%{stroke-dashoffset:0;opacity:1}90%{stroke-dashoffset:0;opacity:1}96%{stroke-dashoffset:0;opacity:0}98%{stroke-dashoffset:340;opacity:0}100%{stroke-dashoffset:340;opacity:1}}
+    @keyframes k7hd{0%{offset-distance:0%;opacity:0}3%{opacity:1}67%{opacity:1}70%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k7wk{0%{opacity:0;transform:scale(.4)}3%{opacity:.9;transform:scale(1.5)}9%{opacity:0;transform:scale(.6)}100%{opacity:0;transform:scale(.6)}}
+    @keyframes k7fx{0%,69%{opacity:0;transform:scale(.4)}73%{opacity:.85;transform:scale(1.6)}82%{opacity:0;transform:scale(2)}100%{opacity:0;transform:scale(2)}}
+    @media(prefers-reduced-motion:reduce){
+      .a7-dr,.a7-s1,.a7-s2,.a7-th,.a7-hd,.a7-wk,.a7-fx{animation:none}
+      .a7-in{animation:none;opacity:1}
+      .a7-th{stroke-dashoffset:0}
+      .a7-hd,.a7-wk,.a7-fx,.a7-gr,.a7-al{opacity:0}
+      .a7-sw,.a7-capt,.a7-chip{transition:none}
+      .a7-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the field — scattered points, breathing static -->
+  <g class="a7-dr"><g class="a7-sw">
+    <g class="a7-s1" opacity=".55"><g class="a7-in a7-d1">
+      <circle cx="34" cy="58" r="1.8" class="a7-fntf"/><circle cx="66" cy="84" r="1.6" class="a7-fntf"/>
+      <circle cx="95" cy="52" r="2" class="a7-mutf"/><circle cx="120" cy="86" r="1.7" class="a7-fntf"/>
+      <circle cx="146" cy="64" r="1.6" class="a7-fntf"/><circle cx="172" cy="88" r="2" class="a7-mutf"/>
+      <circle cx="198" cy="66" r="1.7" class="a7-fntf"/><circle cx="224" cy="88" r="1.6" class="a7-fntf"/>
+      <circle cx="250" cy="62" r="1.8" class="a7-fntf"/><circle cx="44" cy="102" r="1.6" class="a7-fntf"/>
+      <circle cx="240" cy="110" r="1.9" class="a7-mutf"/><circle cx="30" cy="148" r="1.6" class="a7-fntf"/>
+    </g></g>
+    <g class="a7-s2" opacity=".8"><g class="a7-in a7-d2">
+      <circle cx="52" cy="132" r="2" class="a7-mutf"/><circle cx="80" cy="158" r="1.7" class="a7-fntf"/>
+      <circle cx="108" cy="124" r="1.8" class="a7-fntf"/><circle cx="134" cy="152" r="1.6" class="a7-fntf"/>
+      <circle cx="158" cy="118" r="2" class="a7-mutf"/><circle cx="185" cy="142" r="1.7" class="a7-fntf"/>
+      <circle cx="210" cy="118" r="1.8" class="a7-fntf"/><circle cx="236" cy="140" r="1.6" class="a7-fntf"/>
+      <circle cx="72" cy="120" r="1.6" class="a7-fntf"/><circle cx="162" cy="160" r="1.8" class="a7-fntf"/>
+      <circle cx="100" cy="170" r="1.6" class="a7-fntf"/><circle cx="206" cy="158" r="1.7" class="a7-fntf"/>
+    </g></g>
+  </g></g>
+  <!-- hover truth — the ghost grid and the settled points -->
+  <g class="a7-gr a7-hl" stroke-width="1">
+    <path d="M62 48 V168 M112 48 V168 M162 48 V168 M212 48 V168 M40 76 H244 M40 112 H244 M40 148 H244"/>
+  </g>
+  <g>
+    <circle cx="62" cy="76" r="2" class="a7-accf a7-al a7-a1"/><circle cx="112" cy="112" r="2" class="a7-accf a7-al a7-a2"/>
+    <circle cx="162" cy="76" r="2" class="a7-accf a7-al a7-a3"/><circle cx="212" cy="112" r="2" class="a7-accf a7-al a7-a4"/>
+    <circle cx="62" cy="148" r="2" class="a7-accf a7-al a7-a5"/><circle cx="112" cy="148" r="2" class="a7-accf a7-al a7-a6"/>
+    <circle cx="162" cy="148" r="2" class="a7-accf a7-al a7-a7"/><circle cx="212" cy="148" r="2" class="a7-accf a7-al a7-a8"/>
+  </g>
+  <!-- the thread — one clear line weaving through -->
+  <path d="M18 118 C45 70,70 160,100 112 C122 78,148 150,175 105 C196 72,228 122,262 96" class="a7-acc a7-th" stroke-width="2" stroke-linecap="round"/>
+  <circle r="3" class="a7-accf a7-hd"/>
+  <!-- the wakes — points the thread passes light up for a beat -->
+  <circle cx="52" cy="132" r="3.4" class="a7-accf a7-wk a7-w1"/>
+  <circle cx="108" cy="124" r="3.2" class="a7-accf a7-wk a7-w2"/>
+  <circle cx="120" cy="86" r="3.2" class="a7-accf a7-wk a7-w3"/>
+  <circle cx="158" cy="118" r="3.4" class="a7-accf a7-wk a7-w4"/>
+  <circle cx="210" cy="118" r="3.2" class="a7-accf a7-wk a7-w5"/>
+  <!-- the exit flash — the line lands -->
+  <circle cx="262" cy="96" r="5" class="a7-acc a7-fx" stroke-width="1.4"/>
+  <!-- hover payoff -->
+  <g class="a7-chip">
+    <rect x="192" y="22" width="60" height="20" rx="10" class="a7-hl" stroke-width="1.2"/>
+    <circle cx="203" cy="32" r="2.5" class="a7-accf"/>
+    <text x="211" y="35.5" class="a7-chtx">CLEAR</text>
+  </g>
+  <text x="20" y="196" class="a7-cap a7-capt a7-in a7-d4">ONE CLEAR LINE</text>
+</svg>

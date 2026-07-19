@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-6 · THE CALM NEEDLE — general slot, message: calm at the edge of complexity.
+       namespaced a6-/k6 — inline SVG styles are document-global.
+       center-safe 4:3 composition (survives crops to 1:1 / 4:5); theme via host CSS vars.
+       story — a 10s clock: static noise crackles at the dial's edges and the needle
+       trembles with it; the noise fades, the needle settles to true center (one calm
+       pulse rings out), holds — then the noise creeps back and the work begins again.
+       idle desync: clock 10s · dial breath 7s · tick shimmer 9.5s · dust drift 11s.
+       hover (additive): noise veiled, calm zone ignites, tip halo + "CALM" chip spring.
+       reduced-motion: needle at true center, noise hidden, chip shown — a complete calm frame. */
+    .a6-ink{stroke:var(--ink,#171a21)}
+    .a6-mut{stroke:var(--ink-muted,#5d6472)}
+    .a6-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a6-acc{stroke:var(--accent,#2b4be0)}
+    .a6-accf{fill:var(--accent,#2b4be0)}
+    .a6-inkf{fill:var(--ink,#171a21)}
+    .a6-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a6-hl{stroke:var(--hairline,#e2e6ee)}
+    .a6-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a6-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro — the instrument assembles once */
+    .a6-arc{stroke-dasharray:250;stroke-dashoffset:250;animation:k6dr 1.1s .15s cubic-bezier(.4,0,.2,1) forwards}
+    .a6-in{opacity:0;animation:k6fi .6s ease-out forwards}
+    .a6-d1{animation-delay:.7s}.a6-d2{animation-delay:.9s}.a6-d3{animation-delay:1.1s}.a6-d4{animation-delay:1.3s}
+    /* idle life */
+    .a6-br{transform-origin:140px 138px;animation:k6br 7s ease-in-out infinite}
+    .a6-shm{animation:k6sh 9.5s ease-in-out infinite}
+    .a6-du1{animation:k6df 11s ease-in-out infinite}
+    .a6-du2{animation:k6df 11s -3.7s ease-in-out infinite}
+    .a6-du3{animation:k6df 11s -7.4s ease-in-out infinite}
+    /* the 10s clock — tremble, settle, hold, relapse (phase-locked windows) */
+    .a6-ndw{transform-origin:140px 138px;animation:k6nd 10s cubic-bezier(.4,0,.2,1) infinite}
+    .a6-nz1{animation:k6nz1 10s linear infinite}
+    .a6-nz2{animation:k6nz2 10s linear infinite}
+    .a6-nz3{animation:k6nz3 10s linear infinite}
+    .a6-cp{transform-box:fill-box;transform-origin:center;opacity:0;animation:k6cp 10s linear infinite}
+    /* hover — purely additive: the veil, the wake, the payoff */
+    .a6-nzh{transition:opacity .4s ease-out}
+    svg:hover .a6-nzh{opacity:.18}
+    .a6-czh{opacity:.45;transition:opacity .35s ease-out}
+    svg:hover .a6-czh{opacity:1}
+    .a6-halo{opacity:0;transition:opacity .35s ease-out .15s}
+    svg:hover .a6-halo{opacity:.55}
+    .a6-capt{transition:fill .35s ease-out}
+    svg:hover .a6-capt{fill:var(--accent,#2b4be0)}
+    .a6-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a6-chip{opacity:1;transform:scale(1)}
+    @keyframes k6dr{to{stroke-dashoffset:0}}
+    @keyframes k6fi{to{opacity:1}}
+    @keyframes k6br{0%,100%{transform:scale(1)}50%{transform:scale(1.006)}}
+    @keyframes k6sh{0%,100%{opacity:.65}50%{opacity:.95}}
+    @keyframes k6df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k6nd{0%{transform:rotate(-24deg)}5%{transform:rotate(-13deg)}11%{transform:rotate(-28deg)}17%{transform:rotate(-11deg)}23%{transform:rotate(-21deg)}29%{transform:rotate(-15deg)}36%{transform:rotate(3deg)}41%,86%{transform:rotate(0deg)}93%{transform:rotate(-9deg)}100%{transform:rotate(-24deg)}}
+    @keyframes k6nz1{0%{opacity:.7}5%{opacity:.25}10%{opacity:.6}16%{opacity:.3}22%{opacity:.65}28%{opacity:.35}34%,88%{opacity:0}94%{opacity:.4}100%{opacity:.7}}
+    @keyframes k6nz2{0%{opacity:.45}7%{opacity:.7}13%{opacity:.2}19%{opacity:.6}26%{opacity:.3}32%{opacity:.55}36%,90%{opacity:0}96%{opacity:.35}100%{opacity:.45}}
+    @keyframes k6nz3{0%{opacity:.6}4%{opacity:.3}9%{opacity:.65}15%{opacity:.25}21%{opacity:.55}27%{opacity:.7}33%{opacity:.3}35%,89%{opacity:0}95%{opacity:.45}100%{opacity:.6}}
+    @keyframes k6cp{0%,55%{transform:scale(.4);opacity:0}58%{opacity:.5}66%{opacity:.35}78%,100%{transform:scale(1.9);opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a6-br,.a6-shm,.a6-du1,.a6-du2,.a6-du3,.a6-ndw,.a6-nz1,.a6-nz2,.a6-nz3,.a6-cp{animation:none}
+      .a6-arc{animation:none;stroke-dashoffset:0}
+      .a6-in{animation:none;opacity:1}
+      .a6-nzw,.a6-nz1,.a6-nz2,.a6-nz3,.a6-cp,.a6-halo{opacity:0}
+      .a6-nzh,.a6-czh,.a6-capt,.a6-chip{transition:none}
+      .a6-czh{opacity:.7}
+      .a6-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the instrument — dial, ticks, calm zone (breathing gently) -->
+  <g class="a6-br">
+    <path d="M62 138 A78 78 0 0 1 218 138" class="a6-arc a6-fnt" stroke-width="1.4"/>
+    <g class="a6-shm" opacity=".65">
+      <g class="a6-in a6-d1">
+        <g class="a6-fnt" stroke-width="1">
+          <path d="M160.2 62.7 L158.1 70.4 M119.8 62.7 L121.9 70.4"/>
+          <path d="M179 70.5 L175 77.4 M101 70.5 L105 77.4"/>
+          <path d="M207.5 99 L200.6 103 M72.5 99 L79.4 103"/>
+          <path d="M215.3 117.8 L207.6 119.9 M64.7 117.8 L72.4 119.9"/>
+        </g>
+        <g class="a6-mut" stroke-width="1.6">
+          <path d="M195.1 82.9 L189.5 88.5 M84.9 82.9 L90.5 88.5"/>
+          <path d="M218 138 L210 138 M62 138 L70 138"/>
+        </g>
+      </g>
+    </g>
+    <!-- true center — the accent tick, always alive -->
+    <path d="M140 60 L140 68" class="a6-acc a6-in a6-d1" stroke-width="2" stroke-linecap="round"/>
+    <g class="a6-czh"><path d="M131.2 54.5 A84 84 0 0 1 148.8 54.5" class="a6-acc a6-in a6-d2" stroke-width="2" stroke-linecap="round"/></g>
+  </g>
+  <!-- the noise — static crackling at the edge of the dial -->
+  <g class="a6-nzw a6-in a6-d2"><g class="a6-nzh">
+    <g class="a6-nz1 a6-mut" stroke-width="1.5" stroke-linecap="round">
+      <path d="M64 62 l7 -3 M208 52 l6 3 M96 66 l7 1 M182 46 l6 -4"/>
+    </g>
+    <g class="a6-nz2 a6-mut" stroke-width="1.5" stroke-linecap="round">
+      <path d="M84 48 l6 2 M190 70 l7 -2 M72 82 l5 -5 M218 96 l6 2"/>
+    </g>
+    <g class="a6-nz3 a6-fnt" stroke-width="1.5" stroke-linecap="round">
+      <path d="M214 82 l5 4 M56 96 l6 -2 M124 40 l6 3 M158 38 l6 -3"/>
+    </g>
+  </g></g>
+  <!-- the calm pulse — rings out once when the needle finds center -->
+  <circle cx="140" cy="138" r="14" class="a6-acc a6-cp" stroke-width="1.4"/>
+  <!-- the needle — drawn at true center; the clock does the trembling -->
+  <g class="a6-ndw">
+    <g class="a6-in a6-d3">
+      <path d="M140 150 L140 74" class="a6-ink" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="140" cy="74" r="2.6" class="a6-accf"/>
+      <circle cx="140" cy="74" r="6.5" class="a6-acc a6-halo" stroke-width="1.3"/>
+    </g>
+  </g>
+  <circle cx="140" cy="138" r="4.5" class="a6-inkf a6-in a6-d3"/>
+  <!-- dust — the quiet air of the room -->
+  <g class="a6-in a6-d4">
+    <circle cx="48" cy="120" r="1.3" class="a6-fntf a6-du1"/>
+    <circle cx="232" cy="108" r="1.2" class="a6-fntf a6-du2"/>
+    <circle cx="120" cy="36" r="1.1" class="a6-fntf a6-du3"/>
+  </g>
+  <!-- hover payoff — the verdict chip -->
+  <g class="a6-chip">
+    <rect x="196" y="22" width="56" height="20" rx="10" class="a6-hl" stroke-width="1.2"/>
+    <circle cx="207" cy="32" r="2.5" class="a6-accf"/>
+    <text x="215" y="35.5" class="a6-chtx">CALM</text>
+  </g>
+  <text x="20" y="196" class="a6-cap a6-capt a6-in a6-d4">CALM AT THE EDGE</text>
+</svg>

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-12 · THE LIGHTHOUSE — general slot, message: care that watches over everything.
+       namespaced a12-/k12 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 12s sweep: a quiet beacon turns its beam through a field of small
+       scattered marks — a dot, a plus, a tick, every little detail — and each one lights
+       for a moment as the light passes over it. nothing is skipped, nothing is rushed;
+       the beam simply comes around again. attention as a form of shelter.
+       idle desync: beam sweep 12s · beacon breath 7s · field shimmer 9.5s · mote drift 13s.
+       hover (additive): every mark holds its light at once, the caption ignites, and the
+       north star springs in — the payoff of a field fully seen.
+       reduced-motion: all marks lit under a still beam, star shown — a complete frame. */
+    .a12-mut{stroke:var(--ink-muted,#5d6472)}
+    .a12-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a12-acc{stroke:var(--accent,#2b4be0)}
+    .a12-accf{fill:var(--accent,#2b4be0)}
+    .a12-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a12-hl{stroke:var(--hairline,#e2e6ee)}
+    .a12-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    /* intro */
+    .a12-in{opacity:0;animation:k12fi .6s ease-out forwards}
+    .a12-g1{animation-delay:.15s}.a12-g2{animation-delay:.35s}.a12-g3{animation-delay:.6s}
+    /* idle life */
+    .a12-bm{transform-origin:140px 110px;animation:k12bm 12s linear infinite}
+    .a12-br{transform-box:fill-box;transform-origin:center;animation:k12br 7s ease-in-out infinite}
+    .a12-shm{animation:k12sh 9.5s ease-in-out infinite}
+    .a12-m1{animation:k12df 13s ease-in-out infinite}
+    .a12-m2{animation:k12df 13s -6.1s ease-in-out infinite}
+    /* the sweep — each mark lights as the beam passes (phase-locked to the 12s turn) */
+    .a12-w1{opacity:0;animation:k12w1 12s linear infinite}
+    .a12-w2{opacity:0;animation:k12w2 12s linear infinite}
+    .a12-w3{opacity:0;animation:k12w3 12s linear infinite}
+    .a12-w4{opacity:0;animation:k12w4 12s linear infinite}
+    .a12-w5{opacity:0;animation:k12w5 12s linear infinite}
+    .a12-w6{opacity:0;animation:k12w6 12s linear infinite}
+    /* hover — purely additive: the field holds its light */
+    .a12-hv{opacity:0;transition:opacity .35s ease-out}
+    .a12-h1{transition-delay:.1s}.a12-h2{transition-delay:.17s}.a12-h3{transition-delay:.24s}.a12-h4{transition-delay:.31s}.a12-h5{transition-delay:.38s}.a12-h6{transition-delay:.45s}
+    svg:hover .a12-hv{opacity:.95}
+    .a12-st{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.4) rotate(-30deg);transition:opacity .3s ease-out .55s,transform .6s cubic-bezier(.34,1.45,.5,1) .55s}
+    svg:hover .a12-st{opacity:1;transform:scale(1) rotate(0deg)}
+    .a12-capt{transition:fill .35s ease-out}
+    svg:hover .a12-capt{fill:var(--accent,#2b4be0)}
+    @keyframes k12fi{to{opacity:1}}
+    @keyframes k12bm{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    @keyframes k12br{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.05);opacity:.8}}
+    @keyframes k12sh{0%,100%{opacity:.55}50%{opacity:.85}}
+    @keyframes k12df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k12w1{0%,3%{opacity:0}6%{opacity:.95}15%{opacity:0}100%{opacity:0}}
+    @keyframes k12w2{0%,19%{opacity:0}22%{opacity:.95}31%{opacity:0}100%{opacity:0}}
+    @keyframes k12w3{0%,36%{opacity:0}39%{opacity:.95}48%{opacity:0}100%{opacity:0}}
+    @keyframes k12w4{0%,52%{opacity:0}56%{opacity:.95}65%{opacity:0}100%{opacity:0}}
+    @keyframes k12w5{0%,69%{opacity:0}72%{opacity:.95}81%{opacity:0}100%{opacity:0}}
+    @keyframes k12w6{0%,86%{opacity:0}89%{opacity:.95}98%{opacity:0}100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a12-bm,.a12-br,.a12-shm,.a12-m1,.a12-m2,.a12-w1,.a12-w2,.a12-w3,.a12-w4,.a12-w5,.a12-w6{animation:none}
+      .a12-in{animation:none;opacity:1}
+      .a12-w1,.a12-w2,.a12-w3,.a12-w4,.a12-w5,.a12-w6{opacity:.95}
+      .a12-hv,.a12-st,.a12-capt{transition:none}
+      .a12-st{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the field — small scattered marks, every one worth seeing -->
+  <g class="a12-shm" opacity=".55"><g class="a12-in a12-g1">
+    <circle cx="211" cy="136" r="2.5" class="a12-fnt" stroke-width="1.6"/>
+    <path d="M147 167 h9 M151.5 162.5 v9" class="a12-fnt" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M80 151 l4 5 l7 -8" class="a12-fnt" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="62" y="78" width="9" height="9" rx="2" class="a12-fnt" stroke-width="1.6"/>
+    <path d="M129 42 l5 -6 l5 6 l-5 6 Z" class="a12-fnt" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M192 57 l10 10 M202 57 l-10 10" class="a12-fnt" stroke-width="1.6" stroke-linecap="round"/>
+  </g></g>
+  <!-- the wakes — lit as the beam passes -->
+  <circle cx="211" cy="136" r="2.5" class="a12-acc a12-w1" stroke-width="2"/>
+  <path d="M147 167 h9 M151.5 162.5 v9" class="a12-acc a12-w2" stroke-width="2" stroke-linecap="round"/>
+  <path d="M80 151 l4 5 l7 -8" class="a12-acc a12-w3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="62" y="78" width="9" height="9" rx="2" class="a12-acc a12-w4" stroke-width="2"/>
+  <path d="M129 42 l5 -6 l5 6 l-5 6 Z" class="a12-acc a12-w5" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M192 57 l10 10 M202 57 l-10 10" class="a12-acc a12-w6" stroke-width="2" stroke-linecap="round"/>
+  <!-- hover hold — the whole field seen at once -->
+  <circle cx="211" cy="136" r="2.5" class="a12-acc a12-hv a12-h1" stroke-width="2"/>
+  <path d="M147 167 h9 M151.5 162.5 v9" class="a12-acc a12-hv a12-h2" stroke-width="2" stroke-linecap="round"/>
+  <path d="M80 151 l4 5 l7 -8" class="a12-acc a12-hv a12-h3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="62" y="78" width="9" height="9" rx="2" class="a12-acc a12-hv a12-h4" stroke-width="2"/>
+  <path d="M129 42 l5 -6 l5 6 l-5 6 Z" class="a12-acc a12-hv a12-h5" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M192 57 l10 10 M202 57 l-10 10" class="a12-acc a12-hv a12-h6" stroke-width="2" stroke-linecap="round"/>
+  <!-- the beam — slow, even, it always comes around -->
+  <g class="a12-bm">
+    <path d="M140 110 L234 96 L234 124 Z" class="a12-accf" opacity=".12"/>
+    <path d="M140 110 H230" class="a12-acc" stroke-width="1.2" opacity=".45"/>
+  </g>
+  <!-- the beacon -->
+  <g class="a12-in a12-g2">
+    <circle cx="140" cy="110" r="12" class="a12-hl a12-br" stroke-width="1.2" opacity=".5"/>
+    <circle cx="140" cy="110" r="7" class="a12-mut" stroke-width="2"/>
+    <circle cx="140" cy="110" r="3" class="a12-accf"/>
+  </g>
+  <!-- dust -->
+  <g class="a12-in a12-g3">
+    <circle cx="56" cy="120" r="1.3" class="a12-fntf a12-m1"/>
+    <circle cx="226" cy="86" r="1.2" class="a12-fntf a12-m2"/>
+  </g>
+  <!-- hover payoff — the north star -->
+  <g class="a12-st">
+    <path d="M208 26 l3 9 l9 3 l-9 3 l-3 9 l-3 -9 l-9 -3 l9 -3 Z" class="a12-acc" stroke-width="1.8" stroke-linejoin="round"/>
+    <circle cx="208" cy="38" r="1.4" class="a12-accf"/>
+  </g>
+  <text x="20" y="196" class="a12-cap a12-capt a12-in a12-g3">NOTHING LEFT UNSEEN</text>
+</svg>

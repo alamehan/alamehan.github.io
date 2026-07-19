@@ -1087,7 +1087,7 @@ function hydrateVisits(root){
   $$("[data-visits]",root||document).forEach(function(el){
     goatFetch(el.getAttribute("data-visits"),function(n){
       el.innerHTML='<span class="pv-eye" aria-hidden="true">👁</span><b>'+esc(n)+"</b> "+esc(S("family_visits"))
-        +' <a href="'+esc(goatDash())+'" target="_blank" rel="noopener">'+esc(S("family_verify"))+"</a>";
+        +(el.getAttribute("data-bare")?"":' <a href="'+esc(goatDash())+'" target="_blank" rel="noopener">'+esc(S("family_verify"))+"</a>"); /* bare = the host line carries its own verify */
       el.title=S("family_visits_hint");
       el.hidden=false;
     });
@@ -1702,7 +1702,11 @@ function renderFooter(){
   var lastP=html.lastIndexOf("</p>");
   if(lastP>=0)html=html.slice(0,lastP)+bsBtn+html.slice(lastP);
   else html+='<p class="pv-note">'+bsBtn.slice(3)+"</p>";
-  if(TELEMETRY)html+='<p class="pv-note">'+esc(S("footer_telemetry"))+' · <a href="'+esc(goatDash())+'" target="_blank" rel="noopener">'+esc(S("family_verify"))+"</a></p>";
+  /* the ESTATE counter (owner call 2026-07-19): per-tool chips wait for each tool's own
+     visitors, but the SITE's count exists from visitor #1 — so the footer telemetry line
+     carries a live chip for "/" (GoatCounter records the home as "/", never "/index.html").
+     data-bare: the line already ends in its own verify link. */
+  if(TELEMETRY)html+='<p class="pv-note">'+esc(S("footer_telemetry"))+' <span class="pv" data-visits="/" data-bare="1" hidden></span> · <a href="'+esc(goatDash())+'" target="_blank" rel="noopener">'+esc(S("family_verify"))+"</a></p>";
   if(arcDone())html+='<p class="pv-note arc-note">'+emphasize(S("arc_done"))+"</p>"; /* v6.5 — the colophon speaks at 8/8, never before */
   $("#footer").innerHTML=html;
 }
@@ -2329,6 +2333,9 @@ function selfTestSuite(){
        Full-story peeks now (the diorama row above asserts one under TELEMETRY) */
     :($$("[data-visits]").length===0&&$$(".pv").length===0&&!document.querySelector("script[data-goatcounter]"))});
   t("the visitor-count legend appears only when deployed",function(){var l=$("#family .fam-legend");return TELEMETRY?(!!l&&/visit|kunjung/i.test(l.textContent)):!l});
+  t("the ESTATE counter rides the footer when deployed (data-visits=\"/\", live-or-nothing)",function(){
+    var c=document.querySelector('#footer .pv[data-visits="/"]');
+    return TELEMETRY?!!c:!c});
   t("spec mode toggles + panel renders (now reached via Backstage)",function(){var was=ST.spec;setSpec(true,true);var okk=document.documentElement.classList.contains("spec")&&$("#specpanel table");setSpec(was,true);return !!okk});
   t("canonical quote verbatim in profile",function(){return (ST.raw.profile||"").indexOf("I bleed through endless iterations to forge absolute masterpieces")>=0});
   t("no focus-mode residue",function(){return !document.getElementById("btn-focus")});
@@ -5781,6 +5788,12 @@ format: leaf/1
 <!-- Personal experiments & the @alamehan product family, on one standard. Every factory app
      (04-scaffold/apps/) MUST have its Leaf here — presence, identity sync (emoji/name/swatch vs
      the APPS manifest) and the Launch link are gated by `node 05-orbit/derive.mjs --check`.
+     VISITOR-FIRST LAW (owner call 2026-07-19): a factory Leaf body speaks to the visitor, not
+     the builder — three sections mirroring every app's own About modal: `### What it is` ·
+     `### How it flows` · `### What you get` (ID: `### Apa ini` · `### Alurnya` · `### Yang kamu
+     dapat`). No ancestor names, no version archaeology, no builder telemetry (test counts,
+     internal receipts) in the prose — the origin story lives in each product's PRD, and the
+     one-line `itch.en/.id` header field is the only nod to where a product came from.
      Family Standard v2 sweep (2026-07-11): ancestor seeds (omega-framework, subject-mastery, omega-construct,
      atlas-engine, omni-atlas, pvp-protocol, alchemy-engine, helix-engine) were absorbed into the family products
      below — their stories now live inside those products' PRDs. -->
@@ -5848,8 +5861,8 @@ emoji: 🌱
 name: ZapSeed
 tagline.en: Raw idea in. Family PRD out. — the project factory.
 tagline.id: Raw idea in. Family PRD out. — pabrik proyek keluarga.
-itch.en: The way sixteen products were born lived only in my habits.
-itch.id: Cara enam belas produk lahir cuma hidup di kebiasaanku.
+itch.en: Every new product began with the same ritual — and the ritual lived nowhere.
+itch.id: Tiap produk baru dimulai dengan ritual yang sama — dan ritualnya tak tinggal di mana pun.
 year: 2026
 status: live
 pin: true
@@ -5862,37 +5875,43 @@ codename: Pabrik
 swatch: #115E59
 
 @en
-### The itch
-Sixteen products were born the same way — an itch, a template, an AI — but the way itself lived only in my habits.
+### What it is
+The family's project factory: a console that turns a raw idea into a complete,
+buildable product spec on the family standard. It's the internal tool every other
+product in this collection was born through.
 
-### What I built
-The factory as a product: an identity forge with live collision math, a config contract (`zapseed-job: 1`), one compiled PROMPT.md, and a meta-acceptance auditor.
+### How it flows
+Describe the idea, forge its identity — name, emoji, accent color, with live
+collision checks against every sibling — and export one job file. Any AI fills it
+into a full PRD, and a built-in auditor checks the result against the family's
+acceptance boxes before it counts.
 
-### Did it work?
-It bootstrapped itself — its own PRD was the factory's first output, and v1.0 now runs as one HTML file: two BYOAI round-trips, a live collision board, and a 14-check Gavel.
-
-### What it taught me
-When a workflow repeats sixteen times, the seventeenth project is the workflow.
+### What you get
+A complete, ready-to-build PRD — and the guarantee that every product in this
+family is born the same disciplined way.
 @id
-### Gatelnya
-Enam belas produk lahir dengan cara yang sama — keresahan, template, AI — tapi caranya sendiri cuma hidup di kebiasaanku.
+### Apa ini
+Pabrik proyek keluarga: konsol yang mengubah ide mentah jadi spec produk lengkap
+yang siap dibangun di atas standar keluarga. Ini tool internal tempat semua produk
+lain di koleksi ini dilahirkan.
 
-### Yang aku bikin
-Pabrik sebagai produk: penempa identitas dengan hitung tabrakan langsung, kontrak konfigurasi (`zapseed-job: 1`), satu PROMPT.md terkompilasi, dan auditor meta-acceptance.
+### Alurnya
+Tuliskan idenya, tempa identitasnya — nama, emoji, warna aksen, dengan cek tabrakan
+langsung terhadap semua saudaranya — lalu ekspor satu file job. AI mana pun
+mengisinya jadi PRD utuh, dan auditor bawaan memeriksa hasilnya terhadap kotak
+acceptance keluarga sebelum dihitung sah.
 
-### Beneran jalan?
-Ia melahirkan dirinya sendiri — PRD-nya sendiri adalah keluaran pertama sang pabrik, dan v1.0 kini berjalan sebagai satu file HTML: dua bolak-balik BYOAI, papan tabrakan langsung, dan Gavel 14 pemeriksaan.
-
-### Pelajarannya
-Kalau sebuah alur kerja terulang enam belas kali, proyek ketujuh belas adalah alur kerja itu sendiri.
+### Yang kamu dapat
+PRD lengkap yang siap dibangun — dan jaminan bahwa setiap produk keluarga ini lahir
+lewat disiplin yang sama.
 
 ## diagranimate
 emoji: 🎬
 name: Diagranimate
 tagline.en: Your architecture diagrams, alive. — cinematic Mermaid presenter.
 tagline.id: Your architecture diagrams, alive. — presenter Mermaid sinematik.
-itch.en: Every diagram I shipped was correct — and unreadable.
-itch.id: Setiap diagram yang kukirim itu benar — dan tak terbaca.
+itch.en: A finished architecture diagram is correct — and unreadable.
+itch.id: Diagram arsitektur yang sudah jadi itu benar — dan tak terbaca.
 year: 2026
 status: live
 stack: single HTML, Standard v2
@@ -5905,41 +5924,43 @@ link: Launch = tools/diagranimate.html
 swatch: #7C3AED
 
 @en
-*Codename: **Wayang** — the shadow-puppet stage.*
+### What it is
+A cinematic presenter for Mermaid diagrams: instead of one overwhelming wall of
+boxes, your diagram plays as a sequence of progressive scenes an audience can
+actually follow.
 
-### The itch
-Every architecture diagram I shipped was correct and unreadable — everything at once, change blindness guaranteed.
+### How it flows
+Paste any Mermaid diagram and press play. An automatic camera tours every new
+element in order, a guiding beacon keeps the eye anchored, smart ghosting dims the
+areas you haven't reached yet, and each scene closes with a recap zoom-out — all on
+one seekable timeline.
 
-### What I built
-A one-file cinema for Mermaid: progressive states, a delta engine keyed on stable node ids, transport controls, an automatic camera that follows the flow, smart ghosting that dims not-yet-discussed areas, and 60 FPS video export.
-
-### Did it work?
-Yes — v1 shipped; audiences follow a system growing instead of decoding a finished maze. Reported: animation build time ~4 hours → ~2 minutes (~120×), roadmap approval ~3 weeks → ~4 days.
-
-### What it taught me
-Presentation is an act of sequencing, not decorating.
+### What you get
+A presentation of your architecture that people follow instead of decode —
+exportable as HD PNG frames or .webm video, straight from the browser.
 @id
-*Codename: **Wayang** — panggung wayang.*
+### Apa ini
+Presenter sinematik untuk diagram Mermaid: alih-alih satu dinding kotak yang
+menenggelamkan, diagrammu diputar sebagai rangkaian babak progresif yang benar-benar
+bisa diikuti audiens.
 
-### Gatelnya
-Setiap diagram arsitektur yang kubuat itu benar tapi tak terbaca — semuanya sekaligus, change blindness terjamin.
+### Alurnya
+Tempel diagram Mermaid apa pun lalu tekan play. Kamera otomatis menyusuri tiap
+elemen baru secara berurutan, beacon pemandu menjaga arah mata, smart ghosting
+meredupkan area yang belum dibahas, dan tiap babak ditutup recap zoom-out — semuanya
+dalam satu timeline yang bisa di-seek.
 
-### Yang aku bikin
-Bioskop satu-file untuk Mermaid: state progresif, delta engine berbasis id node stabil, kontrol transport, kamera otomatis yang mengikuti alur, smart ghosting yang meredupkan area yang belum dibahas, dan ekspor video 60 FPS.
-
-### Beneran jalan?
-Ya — v1 sudah rilis; audiens mengikuti sistem yang tumbuh, bukan memecahkan labirin jadi. Tercatat: waktu bikin animasi ~4 jam → ~2 menit (~120×), persetujuan roadmap ~3 minggu → ~4 hari.
-
-### Pelajarannya
-Presentasi itu soal urutan, bukan dekorasi.
+### Yang kamu dapat
+Presentasi arsitektur yang diikuti orang, bukan dipecahkan seperti teka-teki — bisa
+diekspor sebagai PNG HD atau video .webm, langsung dari browser.
 
 ## omnigraph
 emoji: 🌐
 name: OmniGraph
 tagline.en: One line in. The whole map out. — universal knowledge mapper (BYOAI).
 tagline.id: One line in. The whole map out. — pemeta pengetahuan universal (BYOAI).
-itch.en: Five knowledge frameworks, each sharper than the last — each died as a prompt.
-itch.id: Lima framework pemetaan, makin lama makin tajam — semuanya mati sebagai prompt.
+itch.en: Learning something new produced piles of notes — never a map of the territory.
+itch.id: Belajar hal baru menghasilkan tumpukan catatan — tak pernah peta wilayahnya.
 year: 2026
 stack: single HTML, Standard v2
 tag: knowledge
@@ -5951,41 +5972,41 @@ link: Launch = tools/omnigraph.html
 swatch: #4F46E5
 
 @en
-*Codename: **Semesta** — the universe.*
+### What it is
+A universal knowledge mapper: type one line — any subject — and get a complete,
+navigable map of the territory, built by the AI you already use.
 
-### The itch
-Five generations of frameworks (UKS → Omega → Construct → Atlas → Omni Atlas) each mapped knowledge better — and each died as a prompt.
+### How it flows
+The console forges a mapping brief from your one line. Hand it to any AI (the
+console itself carries none), paste the reply back, and it renders as a living
+tree — collapsible branches you can search, focus, and grow one branch at a time,
+groundable in your own documents.
 
-### What I built
-One console around one contract (`ogm: 1`): forge a brief, round-trip any AI, render the whole territory as a living tree. Shipped in two major generations (V1 and V2).
-
-### Did it work?
-Yes — the lineage finally converged; maps persist, validate, and travel as plain text.
-
-### What it taught me
-When five ancestors keep solving the same problem, the product is the contract they all implied.
+### What you get
+A living map with ★ essentials, honesty flags, and sources — saved and shared as
+plain text, so it opens anywhere and never locks you in.
 @id
-*Codename: **Semesta**.*
+### Apa ini
+Pemeta pengetahuan universal: ketik satu baris — subjek apa pun — dan dapatkan peta
+wilayah yang lengkap dan bisa dijelajahi, dibangun oleh AI yang sudah kamu pakai.
 
-### Gatelnya
-Lima generasi framework (UKS → Omega → Construct → Atlas → Omni Atlas) makin jago memetakan pengetahuan — dan semuanya mati sebagai prompt.
+### Alurnya
+Konsol menempa brief pemetaan dari satu barismu. Serahkan ke AI mana pun (konsolnya
+sendiri tak membawa AI), tempel balasannya, dan ia ter-render sebagai pohon hidup —
+cabang yang bisa dilipat, dicari, difokus, dan ditumbuhkan satu cabang demi satu,
+bisa di-ground ke dokumenmu sendiri.
 
-### Yang aku bikin
-Satu konsol untuk satu kontrak (`ogm: 1`): tempa brief, bolak-balik ke AI mana pun, render seluruh wilayah sebagai pohon hidup. Dirilis dalam dua generasi besar (V1 dan V2).
-
-### Beneran jalan?
-Ya — silsilahnya akhirnya menyatu; peta tersimpan, tervalidasi, dan berpindah sebagai teks biasa.
-
-### Pelajarannya
-Kalau lima leluhur terus memecahkan masalah yang sama, produknya adalah kontrak yang mereka isyaratkan.
+### Yang kamu dapat
+Peta hidup dengan esensial ★, bendera kejujuran, dan sumber — tersimpan dan terbagi
+sebagai teks biasa, jadi terbuka di mana pun dan tak pernah menguncimu.
 
 ## svganimator
 emoji: 🌀
 name: SVGAnimator
 tagline.en: Your brand, in motion. — brand SVG motion console.
 tagline.id: Your brand, in motion. — konsol motion SVG untuk brand.
-itch.en: Brand motion was already systematic — in six docs only I could operate.
-itch.id: Motion brand sudah sistematis — di enam dokumen yang cuma bisa kuoperasikan sendiri.
+itch.en: Every brand animation was a one-off — nothing carried the brand's motion DNA forward.
+itch.id: Tiap animasi brand jadi karya sekali pakai — tak ada yang meneruskan DNA gerak brand-nya.
 year: 2026
 stack: single HTML, Standard v2
 tag: motion
@@ -5997,41 +6018,47 @@ link: Launch = tools/svganimator.html
 swatch: #1E40AF
 
 @en
-*Codename: **Nadi** — the pulse.*
+### What it is
+The brand-to-motion console: it turns a brand's identity plus one concept line into
+a finished, self-contained web animation. No AI inside — the AI you already use does
+the drawing, the console does the discipline.
 
-### The itch
-The Motion Engine System proved brand motion could be systematic — but it lived in six markdown docs only I could operate.
+### How it flows
+Pick a Brand DNA Pack (or mint one from your design references), choose one of
+three formats — **Scene**, an illustrated diorama that tells one story; **Icon**, a
+bold animated icon batchable up to 8 per job; or **Slot**, a theme-aware SVG
+ornament that inherits its host page's colors — drop your concept, and export one
+job file. Any AI executes it; paste the returned artifact into the built-in
+Inspector and ten offline gates lint it against the contract.
 
-### What I built
-One HTML console: drop a brand SVG, compose motions from the engine packs, export one self-contained snippet.
-
-### Did it work?
-Yes — the doc stack became a tool anyone can run by double-click; the packs finally outlived their author.
-
-### What it taught me
-A methodology isn't real until a stranger can use it without you in the room.
+### What you get
+One copy-paste-ready animation per job with zero external assets, plus a Vault that
+keeps your brand packs and logs every build's receipt automatically.
 @id
-*Codename: **Nadi**.*
+### Apa ini
+Konsol brand-ke-gerak: mengubah identitas brand plus satu baris konsep jadi animasi
+web mandiri yang selesai. Tanpa AI di dalamnya — AI yang sudah kamu pakai yang
+menggambar, konsol yang menjaga disiplinnya.
 
-### Gatelnya
-Motion Engine System membuktikan animasi brand bisa sistematis — tapi hidup di enam dokumen markdown yang cuma aku yang bisa pakai.
+### Alurnya
+Pilih Brand DNA Pack (atau mint dari referensi desainmu), pilih satu dari tiga
+format — **Scene**, diorama ilustratif yang menceritakan satu kisah; **Icon**, ikon
+animasi tebal yang bisa batch sampai 8 per job; atau **Slot**, ornamen SVG
+sadar-tema yang mewarisi warna halaman host-nya — taruh konsepmu, ekspor satu file
+job. AI mana pun mengeksekusinya; tempel artefak balasannya ke Inspector bawaan dan
+sepuluh gerbang offline memeriksanya terhadap kontrak.
 
-### Yang aku bikin
-Satu konsol HTML: jatuhkan SVG brand, racik gerak dari paket engine, ekspor satu snippet mandiri.
-
-### Beneran jalan?
-Ya — tumpukan dokumen jadi tool yang bisa dijalankan siapa pun dengan dobel klik; paketnya akhirnya hidup melampaui penulisnya.
-
-### Pelajarannya
-Metodologi belum nyata sampai orang asing bisa memakainya tanpa kamu di ruangan.
+### Yang kamu dapat
+Satu animasi siap copy-paste per job tanpa aset eksternal, plus Vault yang menyimpan
+pack brand-mu dan mencatat resi tiap build secara otomatis.
 
 ## motionplain
 emoji: 🎞️
 name: MotionPlain
 tagline.en: One brief in. A polished explainer out. — explainer-video studio (BYOAI).
 tagline.id: One brief in. A polished explainer out. — studio video explainer (BYOAI).
-itch.en: Briefs did become videos — through a pipeline nobody else could install.
-itch.id: Brief memang jadi video — lewat pipeline yang tak bisa dipasang siapa pun selain aku.
+itch.en: Turning a script into an explainer video demanded a studio, a timeline, and a week.
+itch.id: Mengubah naskah jadi video explainer menuntut studio, timeline, dan satu minggu.
 year: 2026
 stack: single HTML, Standard v2
 tag: explainer
@@ -6043,41 +6070,41 @@ link: Launch = tools/motionplain.html
 swatch: #C026D3
 
 @en
-*Codename: **Layar** — the screen.*
+### What it is
+An explainer-video studio in one offline file: it prepares a precise execution
+brief for your video and previews the result live — any AI does the writing, the
+studio does the discipline.
 
-### The itch
-Motion Explainer Studio proved briefs can become videos — through a Pillow+ffmpeg pipeline nobody else could install.
+### How it flows
+Describe what the video must explain. The studio compiles a versioned brief; hand
+it to any AI, and the built-in Analyst validates the reply before the browser Stage
+plays the scenes back to you.
 
-### What I built
-The same idea as one HTML file: a versioned brief contract, a validating Analyst, a browser Stage, client-side export.
-
-### Did it work?
-Yes — the pipeline died, the product lived; briefs now render anywhere a browser exists.
-
-### What it taught me
-If the toolchain is the barrier, the toolchain is the bug.
+### What you get
+A polished, previewable explainer that exports client-side — no render farm, no
+installs, and nothing ever leaves your machine.
 @id
-*Codename: **Layar**.*
+### Apa ini
+Studio video explainer dalam satu file offline: menyiapkan brief eksekusi yang
+presisi untuk videomu dan mempratinjau hasilnya secara live — AI mana pun yang
+menulis, studio yang menjaga disiplinnya.
 
-### Gatelnya
-Motion Explainer Studio membuktikan brief bisa jadi video — lewat pipeline Pillow+ffmpeg yang tak bisa dipasang orang lain.
+### Alurnya
+Tuliskan apa yang harus dijelaskan videonya. Studio mengompilasi brief ber-versi;
+serahkan ke AI mana pun, dan Analyst bawaan memvalidasi balasannya sebelum Stage di
+browser memutar babak-babaknya untukmu.
 
-### Yang aku bikin
-Ide yang sama sebagai satu file HTML: kontrak brief ber-versi, Analyst yang memvalidasi, Stage di browser, ekspor sisi klien.
-
-### Beneran jalan?
-Ya — pipeline-nya mati, produknya hidup; brief kini ter-render di mana pun ada browser.
-
-### Pelajarannya
-Kalau toolchain jadi penghalang, toolchain itulah bug-nya.
+### Yang kamu dapat
+Explainer rapi yang bisa dipratinjau dan diekspor sisi klien — tanpa render farm,
+tanpa instalasi, dan tak ada apa pun yang meninggalkan mesinmu.
 
 ## contentos
 emoji: ⚗️
 name: ContentOS
 tagline.en: Raw in. Ready out. — content processing OS (BYOAI).
 tagline.id: Raw in. Ready out. — OS pemroses konten (BYOAI).
-itch.en: Three overlapping content systems, gold everywhere — and zero machine.
-itch.id: Tiga sistem konten tumpang tindih, emas di mana-mana — mesinnya nol.
+itch.en: Every piece of content needed the same treatments — improvised differently every time.
+itch.id: Tiap konten butuh perlakuan yang sama — diimprovisasi beda-beda setiap kali.
 year: 2026
 stack: single HTML, Standard v2
 tag: content
@@ -6089,41 +6116,42 @@ link: Launch = tools/contentos.html
 swatch: #DB2777
 
 @en
-*Codename: **Kilang** — the refinery.*
+### What it is
+A content refinery: any raw text in, any of dozens of processed outputs out —
+summarize, refine, transform, evaluate — through one compiled job instead of ad-hoc
+prompting.
 
-### The itch
-MAP had ~120 activities, OPE had 48 protocols, the prompt vault had gold — three overlapping documents, zero machine.
+### How it flows
+Drop your raw material, pick processes from the versioned registry, and export one
+job file. Any AI executes it; the console parses the reply back, lints it against
+the contract, and shelves the receipt.
 
-### What I built
-One OS around a versioned process registry: compile a job, round-trip any AI, lint the reply, shelve the receipt.
-
-### Did it work?
-Yes — the three documents retired the day the registry could run all of them.
-
-### What it taught me
-A library of prompts is inventory; a registry with contracts is a factory.
+### What you get
+Consistent, repeatable content processing — per stage or full run — with a paper
+trail, so the same input treated the same way gives the same quality every time.
 @id
-*Codename: **Kilang**.*
+### Apa ini
+Kilang konten: teks mentah apa pun masuk, lusinan keluaran terproses keluar —
+ringkas, rapikan, ubah bentuk, nilai — lewat satu job terkompilasi, bukan prompting
+dadakan.
 
-### Gatelnya
-MAP punya ~120 aktivitas, OPE punya 48 protokol, vault prompt punya emas — tiga dokumen tumpang tindih, nol mesin.
+### Alurnya
+Jatuhkan bahan mentahmu, pilih proses dari registry ber-versi, lalu ekspor satu file
+job. AI mana pun mengeksekusinya; konsol mem-parse balasannya, me-lint terhadap
+kontrak, dan menyimpan resinya.
 
-### Yang aku bikin
-Satu OS di atas registry proses ber-versi: kompilasi job, bolak-balik AI mana pun, lint balasannya, simpan resinya.
-
-### Beneran jalan?
-Ya — ketiga dokumen itu pensiun tepat saat registry bisa menjalankan semuanya.
-
-### Pelajarannya
-Perpustakaan prompt itu inventaris; registry dengan kontrak itu pabrik.
+### Yang kamu dapat
+Pemrosesan konten yang konsisten dan bisa diulang — per tahap atau sekali jalan
+penuh — dengan jejak resi, jadi input yang sama dengan perlakuan yang sama memberi
+kualitas yang sama setiap kali.
 
 ## specpilot
 emoji: 📐
 name: SpecPilot
 tagline.en: Spec first, fly later. — idea→spec→wireframe cockpit (BYOAI).
 tagline.id: Spec first, fly later. — kokpit ide→spec→wireframe (BYOAI).
-itch.en: Great specs were born in chat — then the chat scrolled away.
-itch.id: Spec hebat lahir di chat — lalu chat-nya tergulung hilang.
+itch.en: Great specs kept being born in chats — and chats are where documents disappear.
+itch.id: Spec bagus terus lahir di chat — dan chat adalah tempat dokumen menghilang.
 year: 2026
 stack: single HTML, Standard v2
 tag: spec
@@ -6135,41 +6163,39 @@ link: Launch = tools/specpilot.html
 swatch: #C2410C
 
 @en
-*Codename: **Denah** — the floor plan.*
+### What it is
+An idea→spec→wireframe cockpit: every step is a contract, every claim is linted,
+and nothing important lives only in a chat log.
 
-### The itch
-IDEA™ and CUE-Flow™ produced great specs in chat — then the chat scrolled away and the method left with it.
+### How it flows
+Two round trips with any AI: first your idea becomes a versioned spec brief; then
+the spec becomes an annotated wireframe blueprint. The cockpit lints both on the
+way back, and everything lands as exportable files.
 
-### What I built
-One cockpit with two round trips: spec brief and blueprint, both versioned, both linted, both exportable.
-
-### Did it work?
-Yes — the protocols survived their chats; specs now land as files, not memories.
-
-### What it taught me
-A protocol without a cockpit is a story; with one, it's a vehicle.
+### What you get
+A spec, a blueprint, and a handoff pack ready for prototyping — decisions that
+survive the conversation that made them.
 @id
-*Codename: **Denah**.*
+### Apa ini
+Kokpit ide→spec→wireframe: tiap langkah adalah kontrak, tiap klaim di-lint, dan tak
+ada hal penting yang cuma hidup di log chat.
 
-### Gatelnya
-IDEA™ dan CUE-Flow™ menghasilkan spec bagus di chat — lalu chat-nya tergulung dan metodenya ikut pergi.
+### Alurnya
+Dua kali bolak-balik dengan AI mana pun: pertama idemu jadi spec brief ber-versi;
+lalu spec-nya jadi blueprint wireframe beranotasi. Kokpit me-lint keduanya saat
+kembali, dan semuanya mendarat sebagai file yang bisa diekspor.
 
-### Yang aku bikin
-Satu kokpit dengan dua round trip: spec brief dan blueprint, keduanya ber-versi, ter-lint, dan bisa diekspor.
-
-### Beneran jalan?
-Ya — protokolnya selamat dari chat; spec kini mendarat sebagai file, bukan ingatan.
-
-### Pelajarannya
-Protokol tanpa kokpit itu cerita; dengan kokpit, ia kendaraan.
+### Yang kamu dapat
+Spec, blueprint, dan handoff pack yang siap diprototipekan — keputusan yang selamat
+dari percakapan yang melahirkannya.
 
 ## protopilot
 emoji: 🕹️
 name: ProtoPilot
 tagline.en: Your flow, on autopilot. — clickable-prototype prompt forge (BYOAI).
 tagline.id: Your flow, on autopilot. — penempa prompt prototipe klik (BYOAI).
-itch.en: A 700-line ghost prompt summoned great prototypes — and vanished every session.
-itch.id: Prompt hantu 700 baris memanggil prototype hebat — dan lenyap tiap sesi.
+itch.en: Every prototype demo depended on someone driving the mouse.
+itch.id: Tiap demo prototype bergantung pada seseorang yang memegang mouse.
 year: 2026
 stack: single HTML, Standard v2
 tag: prototype
@@ -6181,41 +6207,39 @@ link: Launch = tools/protopilot.html
 swatch: #E11D48
 
 @en
-*Codename: **Kemudi** — the helm.*
+### What it is
+A forge for self-driving prototypes: describe a flow in plain language and get an
+HTML prototype that demos itself — a pilot cursor moves, clicks, and narrates.
 
-### The itch
-Phantom Flow was a 700-line ghost prompt that summoned great prototypes — and vanished with every session.
+### How it flows
+Write the flow you want to show. The console compiles it into a versioned brief any
+AI can build from, previews the returned prototype in place, and keeps every run.
 
-### What I built
-A console that forges the same power as a versioned job, previews the returned prototype, and keeps every run.
-
-### Did it work?
-Yes — the ghost got a body; prototypes now persist, replay, and improve.
-
-### What it taught me
-Branding a tool as magic hides its machinery; products need both visible.
+### What you get
+A single-file prototype that flies its own demo — pilot cursor, narrated Flight
+Bar, realistic data, zero dependencies — ready to send to anyone.
 @id
-*Codename: **Kemudi**.*
+### Apa ini
+Penempa prototipe yang menyetir dirinya sendiri: tuliskan sebuah alur dengan bahasa
+biasa dan dapatkan prototipe HTML yang mendemokan dirinya — kursor pilot bergerak,
+mengklik, dan bernarasi.
 
-### Gatelnya
-Phantom Flow adalah prompt hantu 700 baris yang memanggil prototipe hebat — dan lenyap di tiap sesi.
+### Alurnya
+Tulis alur yang mau kamu tunjukkan. Konsol mengompilasinya jadi brief ber-versi yang
+bisa dibangun AI mana pun, mem-preview prototipe balasannya di tempat, dan menyimpan
+tiap run.
 
-### Yang aku bikin
-Konsol yang menempa kekuatan yang sama sebagai job ber-versi, mem-preview prototipe balasan, dan menyimpan tiap run.
-
-### Beneran jalan?
-Ya — hantunya dapat tubuh; prototipe kini bertahan, bisa diputar ulang, dan membaik.
-
-### Pelajarannya
-Mem-branding tool sebagai sihir menyembunyikan mesinnya; produk butuh keduanya terlihat.
+### Yang kamu dapat
+Prototipe satu file yang menerbangkan demonya sendiri — kursor pilot, narasi Flight
+Bar, data realistis, nol dependensi — siap dikirim ke siapa pun.
 
 ## uxmakeover
 emoji: 🪞
 name: UXMakeover
 tagline.en: Every fix, explained. — UX audit & makeover studio (BYOAI).
 tagline.id: Every fix, explained. — studio audit & makeover UX (BYOAI).
-itch.en: My UX audits were flawless in my head — and inconsistent everywhere else.
-itch.id: Audit UX-ku rapi di kepala — dan tak konsisten di mana pun selain itu.
+itch.en: UX feedback usually arrives as taste — strong opinions, missing reasons.
+itch.id: Umpan balik UX biasanya datang sebagai selera — opininya kuat, alasannya hilang.
 year: 2026
 stack: single HTML, Standard v2
 tag: ux-audit
@@ -6227,41 +6251,38 @@ link: Launch = tools/uxmakeover.html
 swatch: #0E7490
 
 @en
-*Codename: **Cermin** — the mirror.*
+### What it is
+A UX audit & makeover studio — a mirror for interfaces: feed it a screen and get a
+principled audit where every finding cites the rule it serves.
 
-### The itch
-Two frameworks (Alamehan UX 3.0 + Makeover 3.1) audited beautifully in my head and inconsistently everywhere else.
+### How it flows
+Describe or paste the screen and its context; the studio compiles an audit job for
+any AI to run, then renders the reply as an explained, prioritized makeover plan.
 
-### What I built
-One studio that compiles the frameworks into audit jobs and renders explained, prioritized makeovers.
-
-### Did it work?
-Yes — the audits became repeatable; juniors get the same rigor I'd give.
-
-### What it taught me
-Expertise scales the moment its reasons are written down.
+### What you get
+Fixes with reasons — a plan you can defend in a design review, not just a list of
+opinions.
 @id
-*Codename: **Cermin**.*
+### Apa ini
+Studio audit & makeover UX — cermin untuk antarmuka: beri satu layar dan dapatkan
+audit berprinsip yang tiap temuannya menyebut aturan yang dilayaninya.
 
-### Gatelnya
-Dua framework (Alamehan UX 3.0 + Makeover 3.1) mengaudit indah di kepalaku dan tidak konsisten di mana pun selain itu.
+### Alurnya
+Tuliskan atau tempel layar beserta konteksnya; studio mengompilasi job audit untuk
+dijalankan AI mana pun, lalu me-render balasannya sebagai rencana makeover yang
+terjelaskan dan terprioritas.
 
-### Yang aku bikin
-Satu studio yang mengompilasi framework jadi job audit dan me-render makeover yang terjelaskan dan terprioritas.
-
-### Beneran jalan?
-Ya — auditnya jadi bisa diulang; junior pun dapat ketelitian yang sama seperti dariku.
-
-### Pelajarannya
-Keahlian baru bisa diskalakan saat alasannya dituliskan.
+### Yang kamu dapat
+Perbaikan beserta alasannya — rencana yang bisa kamu pertahankan di review desain,
+bukan sekadar daftar opini.
 
 ## superstudio
 emoji: 🎨
 name: SuperStudio
 tagline.en: One style, every asset. — style-consistent asset studio (BYOAI).
 tagline.id: One style, every asset. — studio aset konsisten-gaya (BYOAI).
-itch.en: Eight documents each held a piece of style mastery — none could ship an asset.
-itch.id: Delapan dokumen masing-masing pegang serpihan ilmu style — tak satu pun bisa merilis aset.
+itch.en: Ten assets, one brand — and every one came out in a different style.
+itch.id: Sepuluh aset, satu brand — dan semuanya jadi dengan gaya berbeda-beda.
 year: 2026
 stack: single HTML, Standard v2
 tag: style
@@ -6273,41 +6294,39 @@ link: Launch = tools/superstudio.html
 swatch: #047857
 
 @en
-*Codename: **Sanggar** — the atelier.*
+### What it is
+A style-consistent asset studio: lock a visual style once as portable Style DNA,
+then compile every asset in it.
 
-### The itch
-Eight documents — Idea Weaver→ACE, SIMA→DAE, the Encyclopedia, CORE, PVP — each held a piece of style mastery; none could ship an asset.
+### How it flows
+Curate the style in the Vault — 16 genes across 4 chromosomes — then let the
+deterministic Assembler compile style-locked jobs, one asset or a whole batch. Any
+AI renders them; fidelity gates keep the results honest to the DNA.
 
-### What I built
-One studio: a curated style Vault, a deterministic Assembler, style-locked jobs, fidelity gates.
-
-### Did it work?
-Yes — the bloodlines merged; assets now match each other before they match the brief.
-
-### What it taught me
-Curation beats collection: twelve gated seeds outperform two hundred raw samples.
+### What you get
+One voice across every asset: prompt packs and outputs that match each other before
+they match the brief.
 @id
-*Codename: **Sanggar**.*
+### Apa ini
+Studio aset konsisten-gaya: kunci satu gaya visual sekali sebagai Style DNA
+portabel, lalu kompilasi setiap aset dalam gaya itu.
 
-### Gatelnya
-Delapan dokumen — Idea Weaver→ACE, SIMA→DAE, Encyclopedia, CORE, PVP — masing-masing memegang sekeping penguasaan gaya; tak satu pun bisa merilis aset.
+### Alurnya
+Kurasi gayanya di Vault — 16 gen dalam 4 kromosom — lalu biarkan Assembler
+deterministik mengompilasi job terkunci-gaya, satu aset atau satu batch. AI mana pun
+yang me-render; gerbang fidelitas menjaga hasilnya jujur pada DNA-nya.
 
-### Yang aku bikin
-Satu sanggar: Vault gaya terkurasi, Assembler deterministik, job terkunci-gaya, gerbang fidelitas.
-
-### Beneran jalan?
-Ya — dua garis darah menyatu; aset kini serasi satu sama lain sebelum serasi dengan brief.
-
-### Pelajarannya
-Kurasi mengalahkan koleksi: dua belas benih tergerbang mengalahkan dua ratus sampel mentah.
+### Yang kamu dapat
+Satu suara di semua aset: pack prompt dan keluaran yang serasi satu sama lain
+sebelum serasi dengan brief-nya.
 
 ## bizventure
 emoji: 🚀
 name: BizVenture
 tagline.en: Values in. Ventures out. — value-driven venture ideation console (BYOAI).
 tagline.id: Values in. Ventures out. — konsol ideasi venture berbasis nilai (BYOAI).
-itch.en: Every generation of my ideation frameworks got sharper — and stayed trapped in documents.
-itch.id: Tiap generasi framework ideasiku makin tajam — dan tetap terkurung di dokumen.
+itch.en: Venture ideas kept starting from trends — and quietly abandoning the values that made them worth doing.
+itch.id: Ide usaha terus berangkat dari tren — dan diam-diam meninggalkan nilai yang membuatnya layak diperjuangkan.
 year: 2026
 stack: single HTML, Standard v2
 tag: venture
@@ -6319,41 +6338,38 @@ link: Launch = tools/bizventure.html
 swatch: #6B21A8
 
 @en
-*Codename: **Niaga** — commerce.*
+### What it is
+A value-driven venture ideation console: it turns human values into venture
+blueprints, with ten gates standing between an idea and a claim.
 
-### The itch
-Four generations of ideation frameworks (GEM→HVE→VDI→VIBE) kept getting sharper — and staying trapped in documents.
+### How it flows
+Pick the values that matter, spark briefs out through any AI, and land blueprints
+back — every claim has to pass the console's gates before it earns its place.
 
-### What I built
-One console around the Value Codex: spark briefs out, blueprints back, ten gates between an idea and a claim.
-
-### Did it work?
-Yes — the chain became a loop; ideation now leaves receipts instead of vibes.
-
-### What it taught me
-Every framework generation was a patch note; the product is the changelog compiled.
+### What you get
+Venture blueprints with receipts — ideas that can explain why they deserve to
+exist, exported client-side.
 @id
-*Codename: **Niaga**.*
+### Apa ini
+Konsol ideasi usaha berbasis nilai: mengubah nilai kemanusiaan jadi cetak biru
+usaha, dengan sepuluh gerbang berdiri di antara ide dan klaim.
 
-### Gatelnya
-Empat generasi framework ideasi (GEM→HVE→VDI→VIBE) makin tajam — dan tetap terperangkap di dokumen.
+### Alurnya
+Pilih nilai yang penting bagimu, luncurkan spark brief lewat AI mana pun, dan
+daratkan cetak birunya kembali — tiap klaim harus melewati gerbang konsol sebelum
+berhak menempati tempatnya.
 
-### Yang aku bikin
-Satu konsol di atas Value Codex: spark brief keluar, blueprint kembali, sepuluh gerbang antara ide dan klaim.
-
-### Beneran jalan?
-Ya — rantainya jadi loop; ideasi kini meninggalkan resi, bukan sekadar vibe.
-
-### Pelajarannya
-Tiap generasi framework itu patch note; produknya adalah changelog yang terkompilasi.
+### Yang kamu dapat
+Cetak biru usaha dengan resi — ide yang bisa menjelaskan kenapa ia layak ada,
+diekspor sisi klien.
 
 ## bizvault
 emoji: 🏦
 name: BizVault
 tagline.en: Raw IP in, launch-ready ecosystem out. — IP→product ecosystem vault (BYOAI).
 tagline.id: Raw IP in, launch-ready ecosystem out. — brankas IP→ekosistem produk (BYOAI).
-itch.en: The monetization framework kept improving — while my own IP sat unmonetized.
-itch.id: Framework monetisasinya terus membaik — sementara IP-ku sendiri tak menghasilkan apa-apa.
+itch.en: Ideas and IP kept piling up as documents — none of them earning their keep.
+itch.id: Ide dan IP terus menumpuk sebagai dokumen — tak satu pun menghidupi dirinya.
 year: 2026
 stack: single HTML, Standard v2
 tag: monetize
@@ -6365,41 +6381,37 @@ link: Launch = tools/bizvault.html
 swatch: #166534
 
 @en
-*Codename: **Brankas** — the vault.*
+### What it is
+An IP→product vault: it turns raw intellectual property — frameworks, methods,
+bodies of work — into a launch-ready product ecosystem.
 
-### The itch
-Four generations of a document-to-money framework each explained monetization better — while my own IP sat unmonetized.
+### How it flows
+Deposit the IP, compile the ecosystem job, round-trip any AI, then audit the
+returned blueprint against the vault's diagnostics until it's launch-ready.
 
-### What I built
-One vault: deposit IP, compile the ecosystem job, round-trip any AI, audit until launch-ready.
-
-### Did it work?
-Yes — the framework finally ate its own cooking; the worked example ships inside.
-
-### What it taught me
-Advice that never runs is opinion; a vault with gates is a business.
+### What you get
+A monetization blueprint with pipeline, products, and flywheel in one place —
+exported client-side, ready to act on.
 @id
-*Codename: **Brankas**.*
+### Apa ini
+Brankas IP→produk: mengubah kekayaan intelektual mentah — framework, metode, karya —
+jadi ekosistem produk yang siap diluncurkan.
 
-### Gatelnya
-Empat generasi framework dokumen-ke-uang makin jago menjelaskan monetisasi — sementara IP-ku sendiri menganggur.
+### Alurnya
+Setor IP-nya, kompilasi job ekosistem, bolak-balik ke AI mana pun, lalu audit cetak
+biru balasannya terhadap diagnostik brankas sampai siap luncur.
 
-### Yang aku bikin
-Satu brankas: setor IP, kompilasi job ekosistem, bolak-balik AI mana pun, audit sampai siap rilis.
-
-### Beneran jalan?
-Ya — framework-nya akhirnya makan masakannya sendiri; contoh nyatanya ikut terkirim di dalam.
-
-### Pelajarannya
-Saran yang tak pernah dijalankan itu opini; brankas dengan gerbang itu bisnis.
+### Yang kamu dapat
+Cetak biru monetisasi dengan pipeline, produk, dan flywheel dalam satu tempat —
+diekspor sisi klien, siap dieksekusi.
 
 ## llmforge
 emoji: ⚒️
 name: LLMForge
 tagline.en: Same prompt. Honest verdict. — one-shot AI benchmark arena.
 tagline.id: Same prompt. Honest verdict. — arena benchmark AI sekali-tembak.
-itch.en: A strong benchmark method, five case kits — and manual everything, every time.
-itch.id: Metode benchmark kuat, lima kit kasus — dan semuanya manual, setiap kali.
+itch.en: Model comparisons ran on vibes — different prompt, different mood, every time.
+itch.id: Perbandingan model AI jalan pakai vibes — prompt beda, mood beda, tiap kali.
 year: 2026
 stack: single HTML, Standard v2
 tag: benchmark
@@ -6411,41 +6423,39 @@ link: Launch = tools/llmforge.html
 swatch: #92400E
 
 @en
-*Codename: **Gelanggang** — the arena.*
+### What it is
+A one-shot AI benchmark arena for real front-end work: the same prompt to every
+contender, blind weighted scoring, one podium.
 
-### The itch
-My model benchmarks lived in a Notion hub: strong method, five case kits — and manual everything, every time.
+### How it flows
+Pin a trial from the case kits, give the identical one-shot prompt to each model
+you're judging, render the replies in a sandbox, and score them blind on weighted
+criteria — integrity gates keep the trial fair.
 
-### What I built
-One arena file: pinned trials, sandboxed renders, integrity gates, blind weighted scorecards, an exportable podium.
-
-### Did it work?
-Yes — verdicts became repeatable and portable; the hub retired.
-
-### What it taught me
-Fairness is a mechanism, not an intention.
+### What you get
+An honest, repeatable verdict: an exportable podium you can show, instead of a
+feeling you have to defend.
 @id
-*Codename: **Gelanggang**.*
+### Apa ini
+Gelanggang benchmark AI sekali-tembak untuk kerja front-end sungguhan: prompt yang
+sama untuk tiap kontender, penilaian buta berbobot, satu podium.
 
-### Gatelnya
-Benchmark model-ku hidup di hub Notion: metode kuat, lima kit kasus — dan semuanya manual, setiap saat.
+### Alurnya
+Patri satu trial dari kit kasus, beri prompt sekali-tembak yang identik ke tiap
+model yang kamu adili, render balasannya di sandbox, dan nilai secara buta dengan
+kriteria berbobot — gerbang integritas menjaga sidangnya adil.
 
-### Yang aku bikin
-Satu file gelanggang: trial terpatri, render tersandbox, gerbang integritas, scorecard buta berbobot, podium yang bisa diekspor.
-
-### Beneran jalan?
-Ya — vonis jadi bisa diulang dan dibawa; hub-nya pensiun.
-
-### Pelajarannya
-Keadilan itu mekanisme, bukan niat.
+### Yang kamu dapat
+Vonis jujur yang bisa diulang: podium yang bisa diekspor dan ditunjukkan, bukan
+perasaan yang harus kamu bela.
 
 ## svgmatrix
 emoji: 🧬
 name: SVGMatrix
 tagline.en: Pick a motion. Take the code. — 200-module micro-animation treasury.
 tagline.id: Pick a motion. Take the code. — khazanah 200 modul micro-animation.
-itch.en: 200 masterpiece modules, sealed inside a viewer that ignored their own constitution.
-itch.id: 200 modul masterpiece tersegel di viewer yang mengabaikan konstitusinya sendiri.
+itch.en: Two hundred fine micro-animations mean nothing if you can't find, test, and take one.
+itch.id: Dua ratus micro-animation bagus tak berarti kalau tak bisa dicari, diuji, dan diambil.
 year: 2026
 stack: single HTML, Standard v2
 tag: animation
@@ -6457,41 +6467,39 @@ link: Launch = tools/svgmatrix.html
 swatch: #334155
 
 @en
-*Codename: **Khazanah** — the treasury.*
+### What it is
+A one-file treasury of 200 curated micro-animations — SVG, Canvas, DOM/CSS, CSS
+3D — with the console to explore, test, and extract them.
 
-### The itch
-Strand Motion shipped 200 masterpiece modules inside a viewer that ignored the collection's own constitution.
+### How it flows
+Browse the catalog with live pulse metrics, open any module to test it in place,
+then take the code — one module or a deterministic pack export — all inside a
+single file that stays under a 1.2 MB budget.
 
-### What I built
-The console the rules demanded: a catalog with live pulse metrics, gated modules, deterministic pack export — all within a ≤1.2 MB budget.
-
-### Did it work?
-Yes — the 200 finally behave as one product; packs travel as one file.
-
-### What it taught me
-A collection becomes a product the day its rules become executable.
+### What you get
+Production-ready motion snippets you can lift straight into a project, as one
+module or one pack — one file either way.
 @id
-*Codename: **Khazanah**.*
+### Apa ini
+Khazanah satu file berisi 200 micro-animation terkurasi — SVG, Canvas, DOM/CSS, CSS
+3D — plus konsol untuk menjelajah, menguji, dan mengekstraknya.
 
-### Gatelnya
-Strand Motion merilis 200 modul mahakarya di dalam viewer yang mengabaikan konstitusi koleksinya sendiri.
+### Alurnya
+Jelajahi katalog dengan metrik pulse langsung, buka modul mana pun untuk mengujinya
+di tempat, lalu ambil kodenya — satu modul atau ekspor pack deterministik — semuanya
+dalam satu file yang tetap di bawah anggaran 1,2 MB.
 
-### Yang aku bikin
-Konsol yang dituntut aturannya: katalog dengan metrik pulse langsung, modul tergerbang, ekspor pack deterministik — semuanya dalam anggaran ≤1,2 MB.
-
-### Beneran jalan?
-Ya — ke-200 modul akhirnya berperilaku sebagai satu produk; pack berpindah sebagai satu file.
-
-### Pelajarannya
-Koleksi jadi produk tepat saat aturannya bisa dieksekusi.
+### Yang kamu dapat
+Snippet gerak siap produksi yang bisa langsung diangkat ke proyek, sebagai satu
+modul atau satu pack — dua-duanya tetap satu file.
 
 ## promptcraft
 emoji: ✒️
 name: PromptCraft
 tagline.en: Say it rough. Send it sharp. — prompt articulation studio.
 tagline.id: Say it rough. Send it sharp. — studio artikulasi prompt.
-itch.en: Prompt craft was teachable — but the app that tried hardcoded one vendor, seven times.
-itch.id: Ilmu prompt bisa diajarkan — tapi app yang mencoba malah mengunci satu vendor, tujuh kali.
+itch.en: Most prompts say less than their author meant — and the answers show it.
+itch.id: Kebanyakan prompt menyampaikan lebih sedikit dari maksud penulisnya — dan jawabannya memperlihatkan itu.
 year: 2026
 stack: single HTML, Standard v2
 tag: prompting
@@ -6503,41 +6511,38 @@ link: Launch = tools/promptcraft.html
 swatch: #075985
 
 @en
-*Codename: **Pahat** — the chisel.*
+### What it is
+A prompt articulation studio — a chisel for prompts: say it rough, send it sharp.
 
-### The itch
-PAT & PPP taught prompt craft; PromptCraft Pro tried to app-ify it and hardcoded one vendor's model seven times.
+### How it flows
+Draft roughly, and the studio carves your words deterministically through proven
+articulation levels and structure. No AI inside, endpoints editable as plain data,
+and zero model names hardcoded — so it never expires with a vendor.
 
-### What I built
-A clean studio: deterministic carving, editable endpoints as data, zero model names in the machine.
-
-### Did it work?
-Yes — the craft survived its buggy first app; prompts sharpen in seconds now.
-
-### What it taught me
-Hardcoding today's model into a tool is planting an expiry date in the foundation.
+### What you get
+A precision prompt at three altitudes with honest markers, a lint receipt, and a
+ledger of everything you've sharpened.
 @id
-*Codename: **Pahat**.*
+### Apa ini
+Studio artikulasi prompt — pahat untuk prompt: tulis kasar, kirim tajam.
 
-### Gatelnya
-PAT & PPP mengajarkan kriya prompt; PromptCraft Pro mencoba meng-app-kannya dan meng-hardcode model satu vendor tujuh kali.
+### Alurnya
+Tulis draf seadanya, dan studio memahat kata-katamu secara deterministik lewat level
+dan struktur artikulasi yang teruji. Tanpa AI di dalamnya, endpoint bisa diedit
+sebagai data biasa, dan nol nama model yang di-hardcode — jadi ia tak pernah
+kedaluwarsa bersama satu vendor.
 
-### Yang aku bikin
-Studio yang bersih: pahatan deterministik, endpoint sebagai data yang bisa diedit, nol nama model di mesinnya.
-
-### Beneran jalan?
-Ya — kriyanya selamat dari app pertama yang buggy; prompt kini tajam dalam hitungan detik.
-
-### Pelajarannya
-Meng-hardcode model hari ini ke dalam tool sama dengan menanam tanggal kedaluwarsa di fondasi.
+### Yang kamu dapat
+Prompt presisi di tiga ketinggian dengan marker jujur, resi lint, dan ledger dari
+semua yang pernah kamu tajamkan.
 
 ## codearmor
 emoji: 🛡️
 name: CodeArmor
 tagline.en: One project in. One armored file out. — client-side code protection console.
 tagline.id: One project in. One armored file out. — konsol proteksi kode sisi klien.
-itch.en: “Ultimate protection” — the one promise client-side tools can never keep.
-itch.id: “Perlindungan mutlak” — satu janji yang mustahil ditepati tool client-side.
+itch.en: Client-side code ships naked — and most protection tools oversell what hiding can do.
+itch.id: Kode sisi klien terkirim telanjang — dan kebanyakan tool proteksi melebih-lebihkan kemampuan menyembunyikan.
 year: 2026
 stack: single HTML, Standard v2
 tag: protection
@@ -6549,41 +6554,42 @@ link: Launch = tools/codearmor.html
 swatch: #991B1B
 
 @en
-*Codename: **Zirah** — the armor.*
+### What it is
+A client-side protection console: drop a hand-written page or any bundler export,
+and get back one hardened, self-contained HTML file. No AI, no backend, zero
+network by default.
 
-### The itch
-Obscura (né JS Ninja Obfuscator) promised "ultimate protection" — the one claim client-side tools can never keep.
+### How it flows
+Pick your rung on the Threat Ladder — every layer states plainly what it defends
+against and what it can't — then armor the file. The limits are part of the
+product, not the fine print.
 
-### What I built
-A rebuilt console around a Threat Ladder: explicit rungs, explicit limits, receipts for what was actually applied.
-
-### Did it work?
-Yes — protection with a spine of honesty; users pick trade-offs instead of buying myths.
-
-### What it taught me
-The most valuable feature of a security tool is the list of things it cannot do.
+### What you get
+One armored file with a signed build receipt listing exactly which defenses were
+applied — protection with its limits printed on the tin.
 @id
-*Codename: **Zirah**.*
+### Apa ini
+Konsol proteksi sisi klien: jatuhkan halaman tulisan tangan atau hasil build bundler
+apa pun, dan terima kembali satu file HTML mandiri yang sudah dikeraskan. Tanpa AI,
+tanpa backend, nol jaringan secara default.
 
-### Gatelnya
-Obscura (dulu JS Ninja Obfuscator) menjanjikan "proteksi ultimat" — satu klaim yang mustahil ditepati tool sisi klien.
+### Alurnya
+Pilih anak tanggamu di Threat Ladder — tiap lapisan menyatakan terang-terangan apa
+yang ia tahan dan apa yang tidak bisa — lalu armor file-nya. Batasan adalah bagian
+dari produk, bukan catatan kaki.
 
-### Yang aku bikin
-Konsol yang dibangun ulang di atas Threat Ladder: anak tangga eksplisit, batas eksplisit, resi atas apa yang benar-benar diterapkan.
-
-### Beneran jalan?
-Ya — proteksi dengan tulang kejujuran; pengguna memilih trade-off, bukan membeli mitos.
-
-### Pelajarannya
-Fitur paling berharga dari tool keamanan adalah daftar hal yang tidak bisa ia lakukan.
+### Yang kamu dapat
+Satu file ter-armor dengan resi build bertanda tangan yang mencantumkan persis
+pertahanan mana saja yang diterapkan — proteksi dengan batasnya tercetak di
+kemasan.
 
 ## critiquespike
 emoji: 🌶️
 name: CritiqueSpike
 tagline.en: Every claim on trial. — claim stress-testing console (BYOAI).
 tagline.id: Every claim on trial. — konsol uji-tekan klaim (BYOAI).
-itch.en: My sharpest critique frameworks were rituals I had to conduct by hand.
-itch.id: Framework kritik tertajamku adalah ritual yang harus kupimpin dengan tangan.
+itch.en: Feedback either flatters or flattens — it rarely interrogates.
+itch.id: Umpan balik biasanya memuji atau menjatuhkan — jarang menginterogasi.
 year: 2026
 stack: single HTML, Standard v2
 tag: critique
@@ -6596,41 +6602,39 @@ link: Launch = tools/critiquespike.html
 swatch: #3F6212
 
 @en
-*Codename: **Rawit** — the bird's-eye chili.*
+### What it is
+A claim stress-testing console: paste any text — a pitch, an essay, a plan — and
+put its claims on trial.
 
-### The itch
-DRS, Brutal & Bitter Truth, and PICC each sharpened critique — as rituals I had to conduct by hand.
+### How it flows
+The console stages the trial with declared stances and a public evidence
+quarantine; any AI argues it, and whatever goes unproven wears an honest
+"untested" badge instead of quietly passing.
 
-### What I built
-One console: trials with declared stances, public evidence quarantine, honest "untested" badges, copy-ready rebuttals.
-
-### Did it work?
-Yes — the rituals became a machine; critique now ends in ammunition, not vibes.
-
-### What it taught me
-A verdict without a visible trial is just a louder opinion.
+### What you get
+A verdict band, copy-ready follow-up questions, one or two blunt insights, and a
+constructive closing comment — critique that ends in ammunition, not vibes.
 @id
-*Codename: **Rawit**.*
+### Apa ini
+Konsol uji-tekan klaim: tempel teks apa pun — pitch, esai, rencana — dan sidangkan
+klaim-klaimnya.
 
-### Gatelnya
-DRS, Brutal & Bitter Truth, dan PICC masing-masing menajamkan kritik — sebagai ritual yang harus kupimpin manual.
+### Alurnya
+Konsol menggelar sidang dengan sikap terdeklarasi dan karantina bukti publik; AI
+mana pun yang berargumen, dan apa pun yang tak terbukti mengenakan lencana
+"untested" yang jujur alih-alih lolos diam-diam.
 
-### Yang aku bikin
-Satu konsol: sidang dengan sikap terdeklarasi, karantina bukti publik, lencana "untested" yang jujur, bantahan siap salin.
-
-### Beneran jalan?
-Ya — ritualnya jadi mesin; kritik kini berakhir sebagai amunisi, bukan sekadar rasa.
-
-### Pelajarannya
-Vonis tanpa sidang yang terlihat cuma opini yang lebih keras.
+### Yang kamu dapat
+Pita vonis, pertanyaan lanjutan siap salin, satu-dua insight lugas, dan komentar
+penutup yang membangun — kritik yang berakhir sebagai amunisi, bukan vibes.
 
 ## superdocs
 emoji: 📖
 name: SuperDocs
 tagline.en: Documentation that makes strangers believe. — one story, every surface (BYOAI).
 tagline.id: Documentation that makes strangers believe. — satu cerita, semua permukaan (BYOAI).
-itch.en: One ancestor told the whole story, the other owned the machine — neither reached the user inside the product.
-itch.id: Yang satu bercerita utuh, yang lain punya mesin — tak satu pun sampai ke user di dalam produk.
+itch.en: Docs are written for readers who already believe — strangers bounce, and users find no help inside the product.
+itch.id: Dokumentasi ditulis untuk yang sudah percaya — orang asing memantul, dan user tak menemukan bantuan di dalam produk.
 year: 2026
 stack: single HTML, Standard v2
 tag: documentation
@@ -6642,41 +6646,43 @@ link: Launch = tools/superdocs.html
 swatch: #0F766E
 
 @en
-*Codename: **Hikayat** — the chronicle.*
+### What it is
+A documentation persuasion studio: one gated story contract, pressed onto every
+surface documentation lives on.
 
-### The itch
-The Codex told the whole story but rented its engines; ZapDocs owned its machine but told half the story — and neither ever reached the user standing inside the live product, asking "how do I…?"
+### How it flows
+Paste the project — even its own HTML — and the studio compiles a staged job any AI
+fills section by section. Compose parses the fragments back with refusals that name
+exactly what's wrong, then one press mints four faces: a Story page for strangers,
+a drop-in Companion your live app embeds as its in-app manual, a README, and an
+llms.txt.
 
-### What I built
-One studio: a 17-section story contract any AI fills in stages, then one press with four dies — a standalone Story page, a drop-in Companion any live app embeds as its in-app manual, a README, an llms.txt — every face gated by its own coverage arithmetic.
-
-### Did it work?
-Shipped v1.0 the same day it was forged, then re-pressed twice on the owner's audits before the day ended — v1.2 ships 48/48 self-test, 40/40 e2e, a 17-section arsenal (fewer, fuller), per-section Story layouts in the document's own accent, and a flagship exemplar of a real sibling (Diagranimate) with every number measured and zero placeholders in public prose.
-
-### What it taught me
-Documentation nobody can install is a destination; documentation you can embed is a feature.
+### What you get
+Four self-contained faces from one source of truth — each carrying a receipt whose
+coverage is computed, never claimed.
 @id
-*Codename: **Hikayat**.*
+### Apa ini
+Studio persuasi dokumentasi: satu kontrak cerita ter-gate, dicetak ke tiap permukaan
+tempat dokumentasi hidup.
 
-### Gatelnya
-The Codex menceritakan kisah utuh tapi menyewa mesinnya; ZapDocs memiliki mesinnya tapi bercerita setengah — dan keduanya tak pernah menjangkau user yang berdiri di dalam produk live sambil bertanya "gimana caranya…?"
+### Alurnya
+Tempel proyeknya — bahkan HTML-nya sendiri — dan studio mengompilasi job bertahap
+yang diisi AI mana pun seksi demi seksi. Compose mem-parse fragmennya kembali dengan
+penolakan yang menyebut persis apa yang salah, lalu satu kali cetak melahirkan empat
+wajah: halaman Story untuk orang asing, Companion tempel-sekali yang jadi manual di
+dalam app live-mu, README, dan llms.txt.
 
-### Yang aku bikin
-Satu studio: kontrak cerita 17-seksi yang diisi AI mana pun secara bertahap, lalu satu mesin cetak dengan empat cetakan — halaman Story mandiri, Companion tempel-sekali yang jadi manual di dalam app live mana pun, README, llms.txt — tiap wajah dijaga aritmetika coverage-nya sendiri.
-
-### Beneran jalan?
-Dikirim v1.0 di hari yang sama ia ditempa, lalu dicetak ulang dua kali atas audit pemiliknya sebelum harinya berakhir — v1.2 membawa self-test 48/48, e2e 40/40, arsenal 17-seksi (lebih sedikit, lebih penuh), layout Story per-seksi dalam aksen milik dokumennya sendiri, dan exemplar saudara nyata (Diagranimate) dengan tiap angka terukur dan nol placeholder di prosa publik.
-
-### Pelajarannya
-Dokumentasi yang tak bisa dipasang cuma destinasi; dokumentasi yang bisa disisipkan adalah fitur.
+### Yang kamu dapat
+Empat wajah mandiri dari satu sumber kebenaran — masing-masing membawa resi yang
+coverage-nya dihitung, bukan diklaim.
 
 ## cvforge
 emoji: 🪪
 name: CVForge
 tagline.en: One record in. Any résumé out. — the living-résumé studio.
 tagline.id: One record in. Any résumé out. — studio résumé hidup.
-itch.en: My CV was a beautiful record — and every new PDF was a hand-layout afternoon.
-itch.id: CV-ku record yang rapi — tapi tiap PDF baru berarti sore penuh tata-letak manual.
+itch.en: One career, two documents — a record you maintain and a résumé you re-layout, forever drifting apart.
+itch.id: Satu karier, dua dokumen — record yang dirawat dan résumé yang ditata ulang, selamanya saling menjauh.
 year: 2026
 status: live
 stack: single HTML, Standard v2
@@ -6689,31 +6695,33 @@ link: Launch = tools/cvforge.html
 swatch: #3730A3
 
 @en
-*Codename: **Riwayat** — the life-record itself.*
+### What it is
+The living-résumé studio: one structured record is the single source of truth, and
+Markdown or PDF are just faces it wears.
 
-### The itch
-The master CV lived as pristine Markdown, yet every new PDF meant a manual layout session in a design tool — and the two drifted the moment one changed.
+### How it flows
+Edit the record once in the structured Desk, then press it — a polished Markdown
+face, or a print-perfect PDF face with a measured page meter. The Vault round-trips
+every save byte-identically, and a BYOAI Tailor lands AI-tailored variants as new
+drafts — never over your record.
 
-### What I built
-A living-résumé studio around one contract (`cvforge-cv: 1`): a structured Desk, a Press with a polished MD face and a print-perfect, page-metered PDF face, a Vault whose saves round-trip byte-identically, and a BYOAI Tailor that lands replies as new drafts — never over the record.
-
-### Did it work?
-The god-example is the proof: the owner's real CV ships inside as the exemplar, exported through the engine itself.
-
-### What it taught me
-A document you maintain in two places is one document too many — edit the record, press the faces.
+### What you get
+A CV you edit in minutes and press forever: every new application is a press, not a
+layout afternoon.
 @id
-### Gatelnya
-CV master tersimpan sebagai Markdown yang rapi, tapi tiap PDF baru berarti sesi tata-letak manual di tool desain — dan keduanya drift begitu salah satunya berubah.
+### Apa ini
+Studio résumé hidup: satu record terstruktur adalah satu-satunya sumber kebenaran,
+dan Markdown atau PDF hanyalah wajah yang dikenakannya.
 
-### Yang aku bikin
-Studio résumé hidup di sekitar satu kontrak (`cvforge-cv: 1`): Desk terstruktur, Press dengan wajah MD polished dan wajah PDF siap-cetak ber-meteran halaman, Vault yang simpanannya round-trip identik byte demi byte, dan Tailor BYOAI yang mendaratkan balasan sebagai draft baru — tak pernah menimpa record.
+### Alurnya
+Edit record-nya sekali di Desk terstruktur, lalu cetak — wajah Markdown yang
+polished, atau wajah PDF siap-cetak dengan meteran halaman terukur. Vault
+me-round-trip tiap simpanan identik byte demi byte, dan Tailor BYOAI mendaratkan
+varian racikan AI sebagai draft baru — tak pernah menimpa record-mu.
 
-### Beneran jalan?
-God-example-nya adalah buktinya: CV asli sang owner terpasang di dalamnya sebagai exemplar, diekspor lewat mesinnya sendiri.
-
-### Pelajarannya
-Dokumen yang dirawat di dua tempat adalah satu dokumen kelebihan — edit record-nya, cetak wajah-wajahnya.
+### Yang kamu dapat
+CV yang diedit dalam hitungan menit dan dicetak selamanya: tiap lamaran baru adalah
+sekali cetak, bukan sore penuh tata letak.
 
 ## anggrek-classifier
 emoji: 🌺
@@ -8041,6 +8049,1121 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
   <circle cx="100" cy="100" r="7.5" class="a5-markf a5-core" opacity="0"/>
   <!-- the sketch — the first reply, hand-drawn on arrival -->
   <path d="M85 143 q7.5 -9 15 0 t15 0" class="a5-mark a5-sk" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="6">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-6 · THE CALM NEEDLE — general slot, message: calm at the edge of complexity.
+       namespaced a6-/k6 — inline SVG styles are document-global.
+       center-safe 4:3 composition (survives crops to 1:1 / 4:5); theme via host CSS vars.
+       story — a 10s clock: static noise crackles at the dial's edges and the needle
+       trembles with it; the noise fades, the needle settles to true center (one calm
+       pulse rings out), holds — then the noise creeps back and the work begins again.
+       idle desync: clock 10s · dial breath 7s · tick shimmer 9.5s · dust drift 11s.
+       hover (additive): noise veiled, calm zone ignites, tip halo + "CALM" chip spring.
+       reduced-motion: needle at true center, noise hidden, chip shown — a complete calm frame. */
+    .a6-ink{stroke:var(--ink,#171a21)}
+    .a6-mut{stroke:var(--ink-muted,#5d6472)}
+    .a6-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a6-acc{stroke:var(--accent,#2b4be0)}
+    .a6-accf{fill:var(--accent,#2b4be0)}
+    .a6-inkf{fill:var(--ink,#171a21)}
+    .a6-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a6-hl{stroke:var(--hairline,#e2e6ee)}
+    .a6-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a6-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro — the instrument assembles once */
+    .a6-arc{stroke-dasharray:250;stroke-dashoffset:250;animation:k6dr 1.1s .15s cubic-bezier(.4,0,.2,1) forwards}
+    .a6-in{opacity:0;animation:k6fi .6s ease-out forwards}
+    .a6-d1{animation-delay:.7s}.a6-d2{animation-delay:.9s}.a6-d3{animation-delay:1.1s}.a6-d4{animation-delay:1.3s}
+    /* idle life */
+    .a6-br{transform-origin:140px 138px;animation:k6br 7s ease-in-out infinite}
+    .a6-shm{animation:k6sh 9.5s ease-in-out infinite}
+    .a6-du1{animation:k6df 11s ease-in-out infinite}
+    .a6-du2{animation:k6df 11s -3.7s ease-in-out infinite}
+    .a6-du3{animation:k6df 11s -7.4s ease-in-out infinite}
+    /* the 10s clock — tremble, settle, hold, relapse (phase-locked windows) */
+    .a6-ndw{transform-origin:140px 138px;animation:k6nd 10s cubic-bezier(.4,0,.2,1) infinite}
+    .a6-nz1{animation:k6nz1 10s linear infinite}
+    .a6-nz2{animation:k6nz2 10s linear infinite}
+    .a6-nz3{animation:k6nz3 10s linear infinite}
+    .a6-cp{transform-box:fill-box;transform-origin:center;opacity:0;animation:k6cp 10s linear infinite}
+    /* hover — purely additive: the veil, the wake, the payoff */
+    .a6-nzh{transition:opacity .4s ease-out}
+    svg:hover .a6-nzh{opacity:.18}
+    .a6-czh{opacity:.45;transition:opacity .35s ease-out}
+    svg:hover .a6-czh{opacity:1}
+    .a6-halo{opacity:0;transition:opacity .35s ease-out .15s}
+    svg:hover .a6-halo{opacity:.55}
+    .a6-capt{transition:fill .35s ease-out}
+    svg:hover .a6-capt{fill:var(--accent,#2b4be0)}
+    .a6-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a6-chip{opacity:1;transform:scale(1)}
+    @keyframes k6dr{to{stroke-dashoffset:0}}
+    @keyframes k6fi{to{opacity:1}}
+    @keyframes k6br{0%,100%{transform:scale(1)}50%{transform:scale(1.006)}}
+    @keyframes k6sh{0%,100%{opacity:.65}50%{opacity:.95}}
+    @keyframes k6df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k6nd{0%{transform:rotate(-24deg)}5%{transform:rotate(-13deg)}11%{transform:rotate(-28deg)}17%{transform:rotate(-11deg)}23%{transform:rotate(-21deg)}29%{transform:rotate(-15deg)}36%{transform:rotate(3deg)}41%,86%{transform:rotate(0deg)}93%{transform:rotate(-9deg)}100%{transform:rotate(-24deg)}}
+    @keyframes k6nz1{0%{opacity:.7}5%{opacity:.25}10%{opacity:.6}16%{opacity:.3}22%{opacity:.65}28%{opacity:.35}34%,88%{opacity:0}94%{opacity:.4}100%{opacity:.7}}
+    @keyframes k6nz2{0%{opacity:.45}7%{opacity:.7}13%{opacity:.2}19%{opacity:.6}26%{opacity:.3}32%{opacity:.55}36%,90%{opacity:0}96%{opacity:.35}100%{opacity:.45}}
+    @keyframes k6nz3{0%{opacity:.6}4%{opacity:.3}9%{opacity:.65}15%{opacity:.25}21%{opacity:.55}27%{opacity:.7}33%{opacity:.3}35%,89%{opacity:0}95%{opacity:.45}100%{opacity:.6}}
+    @keyframes k6cp{0%,55%{transform:scale(.4);opacity:0}58%{opacity:.5}66%{opacity:.35}78%,100%{transform:scale(1.9);opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a6-br,.a6-shm,.a6-du1,.a6-du2,.a6-du3,.a6-ndw,.a6-nz1,.a6-nz2,.a6-nz3,.a6-cp{animation:none}
+      .a6-arc{animation:none;stroke-dashoffset:0}
+      .a6-in{animation:none;opacity:1}
+      .a6-nzw,.a6-nz1,.a6-nz2,.a6-nz3,.a6-cp,.a6-halo{opacity:0}
+      .a6-nzh,.a6-czh,.a6-capt,.a6-chip{transition:none}
+      .a6-czh{opacity:.7}
+      .a6-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the instrument — dial, ticks, calm zone (breathing gently) -->
+  <g class="a6-br">
+    <path d="M62 138 A78 78 0 0 1 218 138" class="a6-arc a6-fnt" stroke-width="1.4"/>
+    <g class="a6-shm" opacity=".65">
+      <g class="a6-in a6-d1">
+        <g class="a6-fnt" stroke-width="1">
+          <path d="M160.2 62.7 L158.1 70.4 M119.8 62.7 L121.9 70.4"/>
+          <path d="M179 70.5 L175 77.4 M101 70.5 L105 77.4"/>
+          <path d="M207.5 99 L200.6 103 M72.5 99 L79.4 103"/>
+          <path d="M215.3 117.8 L207.6 119.9 M64.7 117.8 L72.4 119.9"/>
+        </g>
+        <g class="a6-mut" stroke-width="1.6">
+          <path d="M195.1 82.9 L189.5 88.5 M84.9 82.9 L90.5 88.5"/>
+          <path d="M218 138 L210 138 M62 138 L70 138"/>
+        </g>
+      </g>
+    </g>
+    <!-- true center — the accent tick, always alive -->
+    <path d="M140 60 L140 68" class="a6-acc a6-in a6-d1" stroke-width="2" stroke-linecap="round"/>
+    <g class="a6-czh"><path d="M131.2 54.5 A84 84 0 0 1 148.8 54.5" class="a6-acc a6-in a6-d2" stroke-width="2" stroke-linecap="round"/></g>
+  </g>
+  <!-- the noise — static crackling at the edge of the dial -->
+  <g class="a6-nzw a6-in a6-d2"><g class="a6-nzh">
+    <g class="a6-nz1 a6-mut" stroke-width="1.5" stroke-linecap="round">
+      <path d="M64 62 l7 -3 M208 52 l6 3 M96 66 l7 1 M182 46 l6 -4"/>
+    </g>
+    <g class="a6-nz2 a6-mut" stroke-width="1.5" stroke-linecap="round">
+      <path d="M84 48 l6 2 M190 70 l7 -2 M72 82 l5 -5 M218 96 l6 2"/>
+    </g>
+    <g class="a6-nz3 a6-fnt" stroke-width="1.5" stroke-linecap="round">
+      <path d="M214 82 l5 4 M56 96 l6 -2 M124 40 l6 3 M158 38 l6 -3"/>
+    </g>
+  </g></g>
+  <!-- the calm pulse — rings out once when the needle finds center -->
+  <circle cx="140" cy="138" r="14" class="a6-acc a6-cp" stroke-width="1.4"/>
+  <!-- the needle — drawn at true center; the clock does the trembling -->
+  <g class="a6-ndw">
+    <g class="a6-in a6-d3">
+      <path d="M140 150 L140 74" class="a6-ink" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="140" cy="74" r="2.6" class="a6-accf"/>
+      <circle cx="140" cy="74" r="6.5" class="a6-acc a6-halo" stroke-width="1.3"/>
+    </g>
+  </g>
+  <circle cx="140" cy="138" r="4.5" class="a6-inkf a6-in a6-d3"/>
+  <!-- dust — the quiet air of the room -->
+  <g class="a6-in a6-d4">
+    <circle cx="48" cy="120" r="1.3" class="a6-fntf a6-du1"/>
+    <circle cx="232" cy="108" r="1.2" class="a6-fntf a6-du2"/>
+    <circle cx="120" cy="36" r="1.1" class="a6-fntf a6-du3"/>
+  </g>
+  <!-- hover payoff — the verdict chip -->
+  <g class="a6-chip">
+    <rect x="196" y="22" width="56" height="20" rx="10" class="a6-hl" stroke-width="1.2"/>
+    <circle cx="207" cy="32" r="2.5" class="a6-accf"/>
+    <text x="215" y="35.5" class="a6-chtx">CALM</text>
+  </g>
+  <text x="20" y="196" class="a6-cap a6-capt a6-in a6-d4">CALM AT THE EDGE</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="7">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-7 · THE SIGNAL THREAD — general slot, message: finding the clear line through noise.
+       namespaced a7-/k7 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — an 8s clock: a field of scattered points sits in quiet static; one accent
+       thread weaves itself through the field (its bright head traveling the line), and
+       every point it passes wakes for a beat; the line completes, flashes at the exit,
+       rests — then dies invisible and is reborn to weave again.
+       idle desync: clock 8s · dot shimmer 9s and 11.5s · field drift 13s.
+       hover (additive): a ghost grid fades in and accent points settle onto it while the
+       scatter dims — the noise was a structure all along — plus "CLEAR" chip payoff.
+       reduced-motion: thread fully drawn, scatter at rest, chip shown — a complete frame. */
+    .a7-acc{stroke:var(--accent,#2b4be0)}
+    .a7-accf{fill:var(--accent,#2b4be0)}
+    .a7-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a7-mutf{fill:var(--ink-muted,#5d6472)}
+    .a7-hl{stroke:var(--hairline,#e2e6ee)}
+    .a7-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a7-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a7-in{opacity:0;animation:k7fi .6s ease-out forwards}
+    .a7-d1{animation-delay:.15s}.a7-d2{animation-delay:.35s}.a7-d3{animation-delay:.55s}.a7-d4{animation-delay:.75s}
+    /* idle life */
+    .a7-dr{animation:k7df 13s ease-in-out infinite}
+    .a7-s1{animation:k7sh1 9s ease-in-out infinite}
+    .a7-s2{animation:k7sh2 11.5s ease-in-out infinite}
+    /* the 8s clock — weave, wake, flash, rest, rebirth (phase-locked) */
+    .a7-th{stroke-dasharray:340;animation:k7th 8s linear infinite}
+    .a7-hd{offset-path:path('M18 118 C45 70,70 160,100 112 C122 78,148 150,175 105 C196 72,228 122,262 96');animation:k7hd 8s linear infinite}
+    .a7-wk{transform-box:fill-box;transform-origin:center;opacity:0;animation:k7wk 8s linear infinite}
+    .a7-w1{animation-delay:-7s}.a7-w2{animation-delay:-6.2s}.a7-w3{animation-delay:-5.4s}.a7-w4{animation-delay:-4.4s}.a7-w5{animation-delay:-3.4s}
+    .a7-fx{transform-box:fill-box;transform-origin:center;opacity:0;animation:k7fx 8s linear infinite}
+    /* hover — purely additive: the scatter was a grid all along */
+    .a7-sw{transition:opacity .45s ease-out}
+    svg:hover .a7-sw{opacity:.3}
+    .a7-gr{opacity:0;transition:opacity .5s ease-out .1s}
+    svg:hover .a7-gr{opacity:.65}
+    .a7-al{opacity:0;transition:opacity .35s ease-out}
+    .a7-a1{transition-delay:.15s}.a7-a2{transition-delay:.22s}.a7-a3{transition-delay:.29s}.a7-a4{transition-delay:.36s}
+    .a7-a5{transition-delay:.43s}.a7-a6{transition-delay:.5s}.a7-a7{transition-delay:.57s}.a7-a8{transition-delay:.64s}
+    svg:hover .a7-al{opacity:1}
+    .a7-capt{transition:fill .35s ease-out}
+    svg:hover .a7-capt{fill:var(--accent,#2b4be0)}
+    .a7-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .55s,transform .55s cubic-bezier(.34,1.45,.5,1) .55s}
+    svg:hover .a7-chip{opacity:1;transform:scale(1)}
+    @keyframes k7fi{to{opacity:1}}
+    @keyframes k7df{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+    @keyframes k7sh1{0%,100%{opacity:.55}50%{opacity:.9}}
+    @keyframes k7sh2{0%,100%{opacity:.8}50%{opacity:.45}}
+    @keyframes k7th{0%{stroke-dashoffset:340;opacity:1}70%{stroke-dashoffset:0;opacity:1}90%{stroke-dashoffset:0;opacity:1}96%{stroke-dashoffset:0;opacity:0}98%{stroke-dashoffset:340;opacity:0}100%{stroke-dashoffset:340;opacity:1}}
+    @keyframes k7hd{0%{offset-distance:0%;opacity:0}3%{opacity:1}67%{opacity:1}70%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+    @keyframes k7wk{0%{opacity:0;transform:scale(.4)}3%{opacity:.9;transform:scale(1.5)}9%{opacity:0;transform:scale(.6)}100%{opacity:0;transform:scale(.6)}}
+    @keyframes k7fx{0%,69%{opacity:0;transform:scale(.4)}73%{opacity:.85;transform:scale(1.6)}82%{opacity:0;transform:scale(2)}100%{opacity:0;transform:scale(2)}}
+    @media(prefers-reduced-motion:reduce){
+      .a7-dr,.a7-s1,.a7-s2,.a7-th,.a7-hd,.a7-wk,.a7-fx{animation:none}
+      .a7-in{animation:none;opacity:1}
+      .a7-th{stroke-dashoffset:0}
+      .a7-hd,.a7-wk,.a7-fx,.a7-gr,.a7-al{opacity:0}
+      .a7-sw,.a7-capt,.a7-chip{transition:none}
+      .a7-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the field — scattered points, breathing static -->
+  <g class="a7-dr"><g class="a7-sw">
+    <g class="a7-s1" opacity=".55"><g class="a7-in a7-d1">
+      <circle cx="34" cy="58" r="1.8" class="a7-fntf"/><circle cx="66" cy="84" r="1.6" class="a7-fntf"/>
+      <circle cx="95" cy="52" r="2" class="a7-mutf"/><circle cx="120" cy="86" r="1.7" class="a7-fntf"/>
+      <circle cx="146" cy="64" r="1.6" class="a7-fntf"/><circle cx="172" cy="88" r="2" class="a7-mutf"/>
+      <circle cx="198" cy="66" r="1.7" class="a7-fntf"/><circle cx="224" cy="88" r="1.6" class="a7-fntf"/>
+      <circle cx="250" cy="62" r="1.8" class="a7-fntf"/><circle cx="44" cy="102" r="1.6" class="a7-fntf"/>
+      <circle cx="240" cy="110" r="1.9" class="a7-mutf"/><circle cx="30" cy="148" r="1.6" class="a7-fntf"/>
+    </g></g>
+    <g class="a7-s2" opacity=".8"><g class="a7-in a7-d2">
+      <circle cx="52" cy="132" r="2" class="a7-mutf"/><circle cx="80" cy="158" r="1.7" class="a7-fntf"/>
+      <circle cx="108" cy="124" r="1.8" class="a7-fntf"/><circle cx="134" cy="152" r="1.6" class="a7-fntf"/>
+      <circle cx="158" cy="118" r="2" class="a7-mutf"/><circle cx="185" cy="142" r="1.7" class="a7-fntf"/>
+      <circle cx="210" cy="118" r="1.8" class="a7-fntf"/><circle cx="236" cy="140" r="1.6" class="a7-fntf"/>
+      <circle cx="72" cy="120" r="1.6" class="a7-fntf"/><circle cx="162" cy="160" r="1.8" class="a7-fntf"/>
+      <circle cx="100" cy="170" r="1.6" class="a7-fntf"/><circle cx="206" cy="158" r="1.7" class="a7-fntf"/>
+    </g></g>
+  </g></g>
+  <!-- hover truth — the ghost grid and the settled points -->
+  <g class="a7-gr a7-hl" stroke-width="1">
+    <path d="M62 48 V168 M112 48 V168 M162 48 V168 M212 48 V168 M40 76 H244 M40 112 H244 M40 148 H244"/>
+  </g>
+  <g>
+    <circle cx="62" cy="76" r="2" class="a7-accf a7-al a7-a1"/><circle cx="112" cy="112" r="2" class="a7-accf a7-al a7-a2"/>
+    <circle cx="162" cy="76" r="2" class="a7-accf a7-al a7-a3"/><circle cx="212" cy="112" r="2" class="a7-accf a7-al a7-a4"/>
+    <circle cx="62" cy="148" r="2" class="a7-accf a7-al a7-a5"/><circle cx="112" cy="148" r="2" class="a7-accf a7-al a7-a6"/>
+    <circle cx="162" cy="148" r="2" class="a7-accf a7-al a7-a7"/><circle cx="212" cy="148" r="2" class="a7-accf a7-al a7-a8"/>
+  </g>
+  <!-- the thread — one clear line weaving through -->
+  <path d="M18 118 C45 70,70 160,100 112 C122 78,148 150,175 105 C196 72,228 122,262 96" class="a7-acc a7-th" stroke-width="2" stroke-linecap="round"/>
+  <circle r="3" class="a7-accf a7-hd"/>
+  <!-- the wakes — points the thread passes light up for a beat -->
+  <circle cx="52" cy="132" r="3.4" class="a7-accf a7-wk a7-w1"/>
+  <circle cx="108" cy="124" r="3.2" class="a7-accf a7-wk a7-w2"/>
+  <circle cx="120" cy="86" r="3.2" class="a7-accf a7-wk a7-w3"/>
+  <circle cx="158" cy="118" r="3.4" class="a7-accf a7-wk a7-w4"/>
+  <circle cx="210" cy="118" r="3.2" class="a7-accf a7-wk a7-w5"/>
+  <!-- the exit flash — the line lands -->
+  <circle cx="262" cy="96" r="5" class="a7-acc a7-fx" stroke-width="1.4"/>
+  <!-- hover payoff -->
+  <g class="a7-chip">
+    <rect x="192" y="22" width="60" height="20" rx="10" class="a7-hl" stroke-width="1.2"/>
+    <circle cx="203" cy="32" r="2.5" class="a7-accf"/>
+    <text x="211" y="35.5" class="a7-chtx">CLEAR</text>
+  </g>
+  <text x="20" y="196" class="a7-cap a7-capt a7-in a7-d4">ONE CLEAR LINE</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="8">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-8 · THE DRAFT AND THE SHIP — general slot, message: iteration into craft.
+       namespaced a8-/k8 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 9s clock: a wobbly pencil draft sketches a little product card (v1);
+       the crisp final stroke traces itself over the ghost of the draft (v2); the piece
+       holds finished (v3) — then the desk clears, and the next iteration begins.
+       everything is born and dies invisible; the version dots keep the score.
+       idle desync: clock 9s · guide shimmer 10s · desk drift 12.5s · finished-work breath 7s.
+       hover (additive): guides wake, caption ignites, and the SHIPPED stamp springs in.
+       reduced-motion: final piece fully drawn over its faint draft, all versions lit,
+       stamp shown — a complete story in one still frame. */
+    .a8-ink{stroke:var(--ink,#171a21)}
+    .a8-mut{stroke:var(--ink-muted,#5d6472)}
+    .a8-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a8-acc{stroke:var(--accent,#2b4be0)}
+    .a8-accf{fill:var(--accent,#2b4be0)}
+    .a8-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a8-hl{stroke:var(--hairline,#e2e6ee)}
+    .a8-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a8-sttx{font:700 8px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.1em}
+    /* intro */
+    .a8-in{opacity:0;animation:k8fi .6s ease-out forwards}
+    .a8-g1{animation-delay:.15s}.a8-g2{animation-delay:.4s}.a8-g3{animation-delay:.65s}
+    /* idle life */
+    .a8-dk{animation:k8dr 12.5s ease-in-out infinite}
+    .a8-shm{animation:k8sh 10s ease-in-out infinite}
+    .a8-br{transform-origin:140px 104px;animation:k8br 7s ease-in-out infinite}
+    /* the 9s clock — draft, trace, hold, clear (phase-locked windows) */
+    .a8-d1{stroke-dasharray:400;animation:k8d1 9s cubic-bezier(.4,0,.2,1) infinite}
+    .a8-di{animation:k8di 9s linear infinite}
+    .a8-f1{stroke-dasharray:380;animation:k8f1 9s cubic-bezier(.4,0,.2,1) infinite}
+    .a8-fi{animation:k8fi9 9s linear infinite}
+    .a8-fb{animation-delay:.35s}.a8-fc{animation-delay:.7s}
+    .a8-v1o{animation:k8v1 9s linear infinite}
+    .a8-v2o{animation:k8v2 9s linear infinite}
+    .a8-v3o{animation:k8v3 9s linear infinite}
+    /* hover — purely additive */
+    .a8-gw{transition:opacity .4s ease-out}
+    svg:hover .a8-gw{opacity:1}
+    .a8-capt{transition:fill .35s ease-out}
+    svg:hover .a8-capt{fill:var(--accent,#2b4be0)}
+    .a8-st{transform-box:fill-box;transform-origin:center;opacity:0;transform:rotate(-16deg) scale(.5);transition:opacity .3s ease-out .5s,transform .6s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a8-st{opacity:1;transform:rotate(-8deg) scale(1)}
+    @keyframes k8fi{to{opacity:1}}
+    @keyframes k8dr{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+    @keyframes k8sh{0%,100%{opacity:.55}50%{opacity:.85}}
+    @keyframes k8br{0%,100%{transform:scale(1)}50%{transform:scale(1.005)}}
+    @keyframes k8d1{0%{stroke-dashoffset:400;opacity:0}2%{stroke-dashoffset:400;opacity:.75}26%{stroke-dashoffset:0;opacity:.75}38%{stroke-dashoffset:0;opacity:.75}56%{stroke-dashoffset:0;opacity:.28}88%{stroke-dashoffset:0;opacity:.28}93%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:400;opacity:0}}
+    @keyframes k8di{0%,14%{opacity:0}19%{opacity:.7}40%{opacity:.7}56%{opacity:.25}88%{opacity:.25}93%,100%{opacity:0}}
+    @keyframes k8f1{0%,36%{stroke-dashoffset:380;opacity:0}37%{stroke-dashoffset:370;opacity:1}62%{stroke-dashoffset:0;opacity:1}92%{stroke-dashoffset:0;opacity:1}97%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:380;opacity:0}}
+    @keyframes k8fi9{0%,52%{opacity:0}56%{opacity:1}92%{opacity:1}97%,100%{opacity:0}}
+    @keyframes k8v1{0%,27%{opacity:0}30%{opacity:1}90%{opacity:1}94%,100%{opacity:0}}
+    @keyframes k8v2{0%,42%{opacity:0}45%{opacity:1}90%{opacity:1}94%,100%{opacity:0}}
+    @keyframes k8v3{0%,63%{opacity:0}66%{opacity:1}90%{opacity:1}94%,100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a8-dk,.a8-shm,.a8-br,.a8-d1,.a8-di,.a8-f1,.a8-fi,.a8-v1o,.a8-v2o,.a8-v3o{animation:none}
+      .a8-in{animation:none;opacity:1}
+      .a8-d1{stroke-dashoffset:0;opacity:.3}
+      .a8-di{opacity:.25}
+      .a8-f1{stroke-dashoffset:0;opacity:1}
+      .a8-fi,.a8-v1o,.a8-v2o,.a8-v3o{opacity:1}
+      .a8-gw,.a8-capt,.a8-st{transition:none}
+      .a8-st{opacity:1;transform:rotate(-8deg)}
+    }
+  </style>
+  <g class="a8-dk">
+    <!-- the drafting table — guides and crosshairs -->
+    <g class="a8-gw" opacity=".7"><g class="a8-shm" opacity=".55"><g class="a8-in a8-g1">
+      <g class="a8-hl" stroke-width="1">
+        <path d="M78 48 v8 M74 52 h8 M202 48 v8 M198 52 h8 M78 154 v8 M74 158 h8"/>
+        <path d="M76 170 H204"/>
+      </g>
+      <path d="M202 154 v8 M198 158 h8" class="a8-acc" stroke-width="1.2"/>
+    </g></g></g>
+    <!-- v1 · the wobbly draft (pencil, slightly askew) -->
+    <g transform="rotate(-1.6 140 104)">
+      <path d="M96 68 Q140 60 186 66 Q194 67 193 76 Q197 104 192 140 Q191 149 182 150 Q138 156 96 151 Q88 150 89 141 Q85 106 90 76 Q90 69 96 68 Z" class="a8-fnt a8-d1" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="a8-fnt a8-di" stroke-width="1.3" stroke-linecap="round" opacity="0">
+        <path d="M104 86 q38 -3 72 1"/>
+        <circle cx="117" cy="111" r="10.5"/>
+        <path d="M134 106 q20 -2 38 1 M134 118 q16 -1 30 1"/>
+      </g>
+    </g>
+    <!-- v2→v3 · the crisp final, traced over the ghost -->
+    <g class="a8-br">
+      <path d="M100 62 H180 Q190 62 190 72 V136 Q190 146 180 146 H100 Q90 146 90 136 V72 Q90 62 100 62" class="a8-ink a8-f1" stroke-width="2" stroke-linecap="round"/>
+      <path d="M104 84 H176" class="a8-mut a8-fi" stroke-width="2" stroke-linecap="round" opacity="0"/>
+      <circle cx="118" cy="110" r="10" class="a8-acc a8-fi a8-fb" stroke-width="2" opacity="0"/>
+      <path d="M136 106 H172 M136 118 H164" class="a8-fnt a8-fi a8-fc" stroke-width="2" stroke-linecap="round" opacity="0"/>
+    </g>
+    <!-- the score — version dots -->
+    <g class="a8-in a8-g2">
+      <circle cx="128" cy="183" r="2" class="a8-fntf"/>
+      <circle cx="140" cy="183" r="2" class="a8-fntf"/>
+      <circle cx="152" cy="183" r="2" class="a8-fntf"/>
+      <circle cx="128" cy="183" r="2.4" class="a8-accf a8-v1o" opacity="0"/>
+      <circle cx="140" cy="183" r="2.4" class="a8-accf a8-v2o" opacity="0"/>
+      <circle cx="152" cy="183" r="2.4" class="a8-accf a8-v3o" opacity="0"/>
+    </g>
+  </g>
+  <!-- hover payoff — the stamp of the ship -->
+  <g class="a8-st">
+    <rect x="158" y="126" width="66" height="26" rx="4" class="a8-acc" stroke-width="1.8"/>
+    <rect x="161.5" y="129.5" width="59" height="19" rx="2.5" class="a8-acc" stroke-width="1" opacity=".55"/>
+    <text x="167" y="142.5" class="a8-sttx">SHIPPED ✓</text>
+  </g>
+  <text x="20" y="196" class="a8-cap a8-capt a8-in a8-g3">DRAFT · REDRAW · SHIP</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="9">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-9 · THE ONE ACCENT — general slot, message: restraint — monochrome plus one accent.
+       namespaced a9-/k9 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 12s loop: a specimen board of five mono shapes sits breathing; one single
+       accent drop makes its rounds (a trail ghosting behind it), and each shape it visits
+       wakes with color for a beat, then returns to mono. one drop of color is the whole
+       economy of the piece — restraint is the design.
+       idle desync: drop loop 12s · shimmer 9.5s and 12.5s · board breath 7.5s · drift 14s.
+       hover (additive): the accent ripples out from the center, every shape holds its
+       color, and the asterisk seal — the brand's own one-accent — springs in as payoff.
+       reduced-motion: mono board at rest with the seal shown — a complete still frame. */
+    .a9-mut{stroke:var(--ink-muted,#5d6472)}
+    .a9-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a9-acc{stroke:var(--accent,#2b4be0)}
+    .a9-accf{fill:var(--accent,#2b4be0)}
+    .a9-hl{stroke:var(--hairline,#e2e6ee)}
+    .a9-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    /* intro */
+    .a9-in{opacity:0;animation:k9fi .6s ease-out forwards}
+    .a9-g1{animation-delay:.15s}.a9-g2{animation-delay:.35s}.a9-g3{animation-delay:.6s}
+    /* idle life */
+    .a9-dk{animation:k9df 14s ease-in-out infinite}
+    .a9-br{transform-origin:140px 106px;animation:k9br 7.5s ease-in-out infinite}
+    .a9-s1{animation:k9sh1 9.5s ease-in-out infinite}
+    .a9-s2{animation:k9sh2 12.5s ease-in-out infinite}
+    /* the 12s round — the drop and the wakes (phase-locked) */
+    .a9-dp{offset-path:path('M140 52 C105 55,85 70,89 89 C93 112,95 138,108 150 C128 164,152 164,172 150 C185 138,187 112,191 89 C195 70,175 55,140 52');animation:k9dp 12s linear infinite}
+    .a9-tr{offset-path:path('M140 52 C105 55,85 70,89 89 C93 112,95 138,108 150 C128 164,152 164,172 150 C185 138,187 112,191 89 C195 70,175 55,140 52');animation:k9dp 12s -11.82s linear infinite}
+    .a9-w1{opacity:0;animation:k9w1 12s linear infinite}
+    .a9-w2{opacity:0;animation:k9w2 12s linear infinite}
+    .a9-w3{opacity:0;animation:k9w3 12s linear infinite}
+    .a9-w4{opacity:0;animation:k9w4 12s linear infinite}
+    .a9-w5{opacity:0;animation:k9w5 12s linear infinite}
+    /* hover — purely additive: the ripple, the hold, the seal */
+    .a9-hv{opacity:0;transition:opacity .35s ease-out}
+    .a9-h1{transition-delay:.12s}.a9-h2{transition-delay:.2s}.a9-h3{transition-delay:.28s}.a9-h4{transition-delay:.36s}.a9-h5{transition-delay:.44s}
+    svg:hover .a9-hv{opacity:.85}
+    .a9-r1{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.5);transition:opacity .4s ease-out .5s,transform .7s cubic-bezier(.22,1,.36,1) .5s}
+    .a9-r2{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.4);transition:opacity .4s ease-out .62s,transform .8s cubic-bezier(.22,1,.36,1) .62s}
+    svg:hover .a9-r1{opacity:.35;transform:scale(1)}
+    svg:hover .a9-r2{opacity:.18;transform:scale(1)}
+    .a9-seal{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.4) rotate(-45deg);transition:opacity .3s ease-out .45s,transform .6s cubic-bezier(.34,1.45,.5,1) .45s}
+    svg:hover .a9-seal{opacity:1;transform:scale(1) rotate(0deg)}
+    .a9-capt{transition:fill .35s ease-out}
+    svg:hover .a9-capt{fill:var(--accent,#2b4be0)}
+    @keyframes k9fi{to{opacity:1}}
+    @keyframes k9df{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+    @keyframes k9br{0%,100%{transform:scale(1)}50%{transform:scale(1.006)}}
+    @keyframes k9sh1{0%,100%{opacity:.6}50%{opacity:.9}}
+    @keyframes k9sh2{0%,100%{opacity:.85}50%{opacity:.55}}
+    @keyframes k9dp{0%{offset-distance:0%}100%{offset-distance:100%}}
+    @keyframes k9w1{0%,2%{opacity:0}5%{opacity:.9}12%{opacity:0}100%{opacity:0}}
+    @keyframes k9w2{0%,19%{opacity:0}23%{opacity:.9}30%{opacity:0}100%{opacity:0}}
+    @keyframes k9w3{0%,38%{opacity:0}42%{opacity:.9}49%{opacity:0}100%{opacity:0}}
+    @keyframes k9w4{0%,58%{opacity:0}62%{opacity:.9}69%{opacity:0}100%{opacity:0}}
+    @keyframes k9w5{0%,78%{opacity:0}82%{opacity:.9}89%{opacity:0}100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a9-dk,.a9-br,.a9-s1,.a9-s2,.a9-dp,.a9-tr,.a9-w1,.a9-w2,.a9-w3,.a9-w4,.a9-w5{animation:none}
+      .a9-in{animation:none;opacity:1}
+      .a9-dp,.a9-tr,.a9-w1,.a9-w2,.a9-w3,.a9-w4,.a9-w5,.a9-hv,.a9-r1,.a9-r2{opacity:0}
+      .a9-seal,.a9-capt{transition:none}
+      .a9-seal{opacity:1;transform:none}
+    }
+  </style>
+  <g class="a9-dk"><g class="a9-br">
+    <!-- the specimen board — five shapes, all mono -->
+    <g class="a9-s1" opacity=".6"><g class="a9-in a9-g1">
+      <circle cx="140" cy="52" r="12" class="a9-mut" stroke-width="2"/>
+      <path d="M108 138 l12 22 h-24 Z" class="a9-mut" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M181 99 A10 10 0 0 1 201 99" class="a9-mut" stroke-width="2" stroke-linecap="round"/>
+    </g></g>
+    <g class="a9-s2" opacity=".85"><g class="a9-in a9-g2">
+      <rect x="77" y="77" width="24" height="24" rx="4" class="a9-fnt" stroke-width="2"/>
+      <path d="M160 146 h26 M160 156 h20" class="a9-fnt" stroke-width="2" stroke-linecap="round"/>
+    </g></g>
+    <!-- the wakes — each shape holds the drop's color for a beat -->
+    <circle cx="140" cy="52" r="12" class="a9-acc a9-w1" stroke-width="2.2"/>
+    <rect x="77" y="77" width="24" height="24" rx="4" class="a9-acc a9-w2" stroke-width="2.2"/>
+    <path d="M108 138 l12 22 h-24 Z" class="a9-acc a9-w3" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M160 146 h26 M160 156 h20" class="a9-acc a9-w4" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M181 99 A10 10 0 0 1 201 99" class="a9-acc a9-w5" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- hover hold — the whole board keeps its color -->
+    <circle cx="140" cy="52" r="12" class="a9-acc a9-hv a9-h1" stroke-width="2.2"/>
+    <rect x="77" y="77" width="24" height="24" rx="4" class="a9-acc a9-hv a9-h2" stroke-width="2.2"/>
+    <path d="M108 138 l12 22 h-24 Z" class="a9-acc a9-hv a9-h3" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M160 146 h26 M160 156 h20" class="a9-acc a9-hv a9-h4" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M181 99 A10 10 0 0 1 201 99" class="a9-acc a9-hv a9-h5" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- the ripple and the seal — hover payoff at the quiet center -->
+    <circle cx="140" cy="106" r="22" class="a9-acc a9-r1" stroke-width="1.3"/>
+    <circle cx="140" cy="106" r="36" class="a9-acc a9-r2" stroke-width="1.1"/>
+    <g class="a9-seal a9-acc" stroke-width="2.4" stroke-linecap="round">
+      <path d="M140 94 V118 M128 106 H152 M131.5 97.5 L148.5 114.5 M148.5 97.5 L131.5 114.5"/>
+    </g>
+  </g></g>
+  <!-- the drop — the one accent, always on its rounds -->
+  <circle r="2" class="a9-accf a9-tr" opacity=".45"/>
+  <circle r="3.5" class="a9-accf a9-dp"/>
+  <text x="20" y="196" class="a9-cap a9-capt a9-in a9-g3">ONE ACCENT IS ENOUGH</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="10">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-10 · THE BALANCE STACK — general slot, message: steady under load.
+       namespaced a10-/k10 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — an 8s clock: a tower of blocks stands on its baseline, swaying a breath's
+       worth and no more; a new accent block descends, lands softly (the stack absorbs it
+       with one quiet squash, dust flicks out), the load holds — then the cycle is reborn
+       and another block is always arriving. more load, same calm.
+       idle desync: clock 8s · sway 10s · axis shimmer 9.5s · dust drift 12s.
+       hover (additive): the spirit level draws across the top — bubble dead center —
+       plus caption ignites and the STEADY chip springs in.
+       reduced-motion: the block landed, the level shown, the tower still — complete frame. */
+    .a10-ink{stroke:var(--ink,#171a21)}
+    .a10-mut{stroke:var(--ink-muted,#5d6472)}
+    .a10-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a10-acc{stroke:var(--accent,#2b4be0)}
+    .a10-accf{fill:var(--accent,#2b4be0)}
+    .a10-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a10-hl{stroke:var(--hairline,#e2e6ee)}
+    .a10-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a10-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a10-in{opacity:0;animation:k10fi .6s ease-out forwards}
+    .a10-g1{animation-delay:.15s}.a10-g2{animation-delay:.35s}.a10-g3{animation-delay:.55s}.a10-g4{animation-delay:.75s}
+    /* idle life */
+    .a10-sw{transform-origin:140px 160px;animation:k10sw 10s ease-in-out infinite}
+    .a10-shm{animation:k10sh 9.5s ease-in-out infinite}
+    .a10-du1{animation:k10df 12s ease-in-out infinite}
+    .a10-du2{animation:k10df 12s -5.3s ease-in-out infinite}
+    /* the 8s clock — arrive, land, absorb, hold, rebirth (phase-locked) */
+    .a10-bl{animation:k10bl 8s cubic-bezier(.4,0,.2,1) infinite}
+    .a10-sq{transform-origin:140px 160px;animation:k10sq 8s linear infinite}
+    .a10-pf{opacity:0;animation:k10pf 8s linear infinite}
+    /* hover — purely additive: the spirit level and the verdict */
+    .a10-lv{opacity:0;transform:scaleX(.3);transform-origin:140px 60px;transition:opacity .35s ease-out .15s,transform .6s cubic-bezier(.22,1,.36,1) .15s}
+    svg:hover .a10-lv{opacity:.95;transform:scaleX(1)}
+    .a10-capt{transition:fill .35s ease-out}
+    svg:hover .a10-capt{fill:var(--accent,#2b4be0)}
+    .a10-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a10-chip{opacity:1;transform:scale(1)}
+    @keyframes k10fi{to{opacity:1}}
+    @keyframes k10sw{0%,100%{transform:rotate(0deg)}25%{transform:rotate(.55deg)}75%{transform:rotate(-.55deg)}}
+    @keyframes k10sh{0%,100%{opacity:.5}50%{opacity:.85}}
+    @keyframes k10df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k10bl{0%{transform:translateY(-36px);opacity:0}5%{transform:translateY(-31px);opacity:1}30%{transform:translateY(0)}34%{transform:translateY(-2.5px)}38%{transform:translateY(0)}88%{transform:translateY(0);opacity:1}94%{transform:translateY(0);opacity:0}100%{transform:translateY(-36px);opacity:0}}
+    @keyframes k10sq{0%,29%{transform:scaleY(1)}33%{transform:scaleY(.985)}40%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+    @keyframes k10pf{0%,30%{opacity:0}33%{opacity:.8}42%{opacity:0}100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a10-sw,.a10-shm,.a10-du1,.a10-du2,.a10-bl,.a10-sq,.a10-pf{animation:none}
+      .a10-in{animation:none;opacity:1}
+      .a10-bl{opacity:1;transform:none}
+      .a10-pf{opacity:0}
+      .a10-lv,.a10-capt,.a10-chip{transition:none}
+      .a10-lv{opacity:.95;transform:none}
+      .a10-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the center axis — the plumb truth the tower answers to -->
+  <g class="a10-shm" opacity=".5"><g class="a10-in a10-g1">
+    <path d="M140 38 V160" class="a10-hl" stroke-width="1" stroke-dasharray="3 6"/>
+    <path d="M74 168 v-6 M206 168 v-6" class="a10-fnt" stroke-width="1.2"/>
+  </g></g>
+  <!-- the ground -->
+  <path d="M70 162 H210" class="a10-mut a10-in a10-g1" stroke-width="2" stroke-linecap="round"/>
+  <!-- the tower — swaying a breath's worth, no more -->
+  <g class="a10-sw"><g class="a10-sq">
+    <g class="a10-in a10-g2">
+      <rect x="100" y="138" width="80" height="22" rx="5" class="a10-ink" stroke-width="2"/>
+      <rect x="110" y="118" width="60" height="18" rx="4.5" class="a10-mut" stroke-width="2"/>
+      <rect x="118" y="100" width="44" height="16" rx="4" class="a10-mut" stroke-width="2"/>
+      <rect x="124" y="84" width="32" height="14" rx="4" class="a10-fnt" stroke-width="2"/>
+    </g>
+    <!-- the new load — always arriving, always absorbed -->
+    <rect x="130" y="70" width="20" height="12" rx="3.5" class="a10-acc a10-bl" stroke-width="2" opacity="0"/>
+    <path d="M124 74 l-7 -2 M156 74 l7 -2" class="a10-fnt a10-pf" stroke-width="1.5" stroke-linecap="round"/>
+  </g></g>
+  <!-- dust — the quiet air -->
+  <g class="a10-in a10-g3">
+    <circle cx="66" cy="96" r="1.3" class="a10-fntf a10-du1"/>
+    <circle cx="216" cy="78" r="1.2" class="a10-fntf a10-du2"/>
+  </g>
+  <!-- hover truth — the spirit level, bubble dead center -->
+  <g class="a10-lv">
+    <path d="M84 60 H196" class="a10-acc" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M134 53 V67 M146 53 V67" class="a10-acc" stroke-width="1" opacity=".6"/>
+    <circle cx="140" cy="60" r="4.2" class="a10-acc" stroke-width="1.4"/>
+    <circle cx="140" cy="60" r="1.5" class="a10-accf"/>
+  </g>
+  <!-- hover payoff -->
+  <g class="a10-chip">
+    <rect x="188" y="22" width="64" height="20" rx="10" class="a10-hl" stroke-width="1.2"/>
+    <circle cx="199" cy="32" r="2.5" class="a10-accf"/>
+    <text x="207" y="35.5" class="a10-chtx">STEADY</text>
+  </g>
+  <text x="20" y="196" class="a10-cap a10-capt a10-in a10-g4">STEADY UNDER LOAD</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="11">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-11 · THE LISTENING LINE — general slot, message: dialogue — answered with a sketch.
+       namespaced a11-/k11 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 9s clock: a flat line lies listening; an agitated ripple arrives from the
+       left (the tangled question), the center flashes once — received — and the line
+       answers the only way it knows: a calm, even sine drawing itself to the right.
+       then the exchange fades and the line listens again.
+       idle desync: clock 9s · baseline breath 7.5s · field shimmer 10.5s · mote drift 12.5s.
+       hover (additive): the whole conversation shows at once — question ghost on the left,
+       answer ghost full-width — and a little sketch draws itself in the corner, because
+       the first reply always comes with one. caption ignites.
+       reduced-motion: the answer fully drawn, the sketch complete — one still exchange. */
+    .a11-ink{stroke:var(--ink,#171a21)}
+    .a11-mut{stroke:var(--ink-muted,#5d6472)}
+    .a11-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a11-acc{stroke:var(--accent,#2b4be0)}
+    .a11-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a11-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    /* intro */
+    .a11-in{opacity:0;animation:k11fi .6s ease-out forwards}
+    .a11-g1{animation-delay:.15s}.a11-g2{animation-delay:.4s}.a11-g3{animation-delay:.65s}
+    /* idle life */
+    .a11-bs{animation:k11bs 7.5s ease-in-out infinite}
+    .a11-gd{animation:k11gd 10.5s ease-in-out infinite}
+    .a11-m1{animation:k11df 12.5s ease-in-out infinite}
+    .a11-m2{animation:k11df 12.5s -5.7s ease-in-out infinite}
+    /* the 9s clock — question arrives, received, answered (phase-locked) */
+    .a11-q{animation:k11q 9s cubic-bezier(.4,0,.2,1) infinite}
+    .a11-rc{transform-box:fill-box;transform-origin:center;opacity:0;animation:k11rc 9s ease-out infinite}
+    .a11-an{stroke-dasharray:90;animation:k11an 9s cubic-bezier(.22,1,.36,1) infinite}
+    /* hover — purely additive: the full conversation and the sketch */
+    .a11-fq{opacity:0;transition:opacity .4s ease-out .12s}
+    svg:hover .a11-fq{opacity:.45}
+    .a11-fa{opacity:0;transition:opacity .45s ease-out .28s}
+    svg:hover .a11-fa{opacity:.4}
+    .a11-sk1{stroke-dasharray:90;stroke-dashoffset:90;opacity:0;transition:opacity .25s ease-out .4s,stroke-dashoffset .75s cubic-bezier(.4,0,.2,1) .45s}
+    svg:hover .a11-sk1{opacity:1;stroke-dashoffset:0}
+    .a11-sk2{stroke-dasharray:26;stroke-dashoffset:26;opacity:0;transition:opacity .2s ease-out 1.15s,stroke-dashoffset .4s cubic-bezier(.34,1.45,.5,1) 1.2s}
+    svg:hover .a11-sk2{opacity:1;stroke-dashoffset:0}
+    .a11-capt{transition:fill .35s ease-out}
+    svg:hover .a11-capt{fill:var(--accent,#2b4be0)}
+    @keyframes k11fi{to{opacity:1}}
+    @keyframes k11bs{0%,100%{opacity:.8}50%{opacity:1}}
+    @keyframes k11gd{0%,100%{opacity:.4}50%{opacity:.75}}
+    @keyframes k11df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k11q{0%{transform:translateX(0);opacity:0}5%{transform:translateX(11px);opacity:1}26%{transform:translateX(58px);opacity:1}31%{transform:translateX(68px);opacity:0}100%{transform:translateX(68px);opacity:0}}
+    @keyframes k11rc{0%,27%{opacity:0;transform:scale(.4)}32%{opacity:.85;transform:scale(1)}41%{opacity:0;transform:scale(1.7)}100%{opacity:0;transform:scale(1.7)}}
+    @keyframes k11an{0%,33%{stroke-dashoffset:90;opacity:0}35%{stroke-dashoffset:86;opacity:1}62%{stroke-dashoffset:0;opacity:1}88%{stroke-dashoffset:0;opacity:1}94%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:90;opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a11-bs,.a11-gd,.a11-m1,.a11-m2,.a11-q,.a11-rc,.a11-an{animation:none}
+      .a11-in{animation:none;opacity:1}
+      .a11-q,.a11-rc{opacity:0}
+      .a11-an{stroke-dashoffset:0;opacity:1}
+      .a11-fq,.a11-fa,.a11-sk1,.a11-sk2,.a11-capt{transition:none}
+      .a11-sk1,.a11-sk2{opacity:1;stroke-dashoffset:0}
+    }
+  </style>
+  <!-- the quiet field -->
+  <g class="a11-gd" opacity=".4"><g class="a11-in a11-g1">
+    <circle cx="72" cy="64" r="1.2" class="a11-fntf"/>
+    <circle cx="126" cy="52" r="1.2" class="a11-fntf"/>
+    <circle cx="196" cy="70" r="1.2" class="a11-fntf"/>
+    <circle cx="88" cy="152" r="1.2" class="a11-fntf"/>
+    <circle cx="168" cy="146" r="1.2" class="a11-fntf"/>
+    <circle cx="216" cy="134" r="1.2" class="a11-fntf"/>
+  </g></g>
+  <g class="a11-in a11-g3">
+    <circle cx="62" cy="90" r="1.4" class="a11-fntf a11-m1"/>
+    <circle cx="222" cy="122" r="1.3" class="a11-fntf a11-m2"/>
+  </g>
+  <!-- the listening line -->
+  <g class="a11-bs"><g class="a11-in a11-g2">
+    <path d="M56 106 H224" class="a11-mut" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="56" cy="106" r="2" class="a11-fntf"/>
+    <circle cx="224" cy="106" r="2" class="a11-fntf"/>
+  </g></g>
+  <!-- the question — agitated, arriving from the left -->
+  <g class="a11-q" opacity="0">
+    <path d="M58 106 l4 -8 l5 13 l4 -10 l5 9 l4 -5 l4 1" class="a11-ink" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- received -->
+  <circle cx="140" cy="106" r="6" class="a11-acc a11-rc" stroke-width="1.6"/>
+  <!-- the answer — calm, even, drawing itself -->
+  <path d="M140 106 q10 -15 20 0 q10 15 20 0 q10 -15 21 0" class="a11-acc a11-an" stroke-width="2" stroke-linecap="round" opacity="0"/>
+  <!-- hover — the whole conversation at once -->
+  <path d="M60 106 l5 -9 l6 14 l5 -11 l6 10 l5 -6 l6 2" class="a11-fnt a11-fq" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M56 106 q10.5 -13 21 0 q10.5 13 21 0 q10.5 -13 21 0 q10.5 13 21 0 q10.5 -13 21 0 q10.5 13 21 0 q10.5 -13 21 0 q10.5 13 21 0" class="a11-acc a11-fa" stroke-width="1.3"/>
+  <!-- hover payoff — the sketch that always comes with the first reply -->
+  <path d="M196 32 q13 -2 14 11 q1 12 -12 13 q-13 1 -14 -11 q-1 -11 12 -13" class="a11-mut a11-sk1" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M190 45 l6 6 l11 -12" class="a11-acc a11-sk2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="20" y="196" class="a11-cap a11-capt a11-in a11-g3">LISTEN · ANSWER</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="12">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-12 · THE LIGHTHOUSE — general slot, message: care that watches over everything.
+       namespaced a12-/k12 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 12s sweep: a quiet beacon turns its beam through a field of small
+       scattered marks — a dot, a plus, a tick, every little detail — and each one lights
+       for a moment as the light passes over it. nothing is skipped, nothing is rushed;
+       the beam simply comes around again. attention as a form of shelter.
+       idle desync: beam sweep 12s · beacon breath 7s · field shimmer 9.5s · mote drift 13s.
+       hover (additive): every mark holds its light at once, the caption ignites, and the
+       north star springs in — the payoff of a field fully seen.
+       reduced-motion: all marks lit under a still beam, star shown — a complete frame. */
+    .a12-mut{stroke:var(--ink-muted,#5d6472)}
+    .a12-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a12-acc{stroke:var(--accent,#2b4be0)}
+    .a12-accf{fill:var(--accent,#2b4be0)}
+    .a12-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a12-hl{stroke:var(--hairline,#e2e6ee)}
+    .a12-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    /* intro */
+    .a12-in{opacity:0;animation:k12fi .6s ease-out forwards}
+    .a12-g1{animation-delay:.15s}.a12-g2{animation-delay:.35s}.a12-g3{animation-delay:.6s}
+    /* idle life */
+    .a12-bm{transform-origin:140px 110px;animation:k12bm 12s linear infinite}
+    .a12-br{transform-box:fill-box;transform-origin:center;animation:k12br 7s ease-in-out infinite}
+    .a12-shm{animation:k12sh 9.5s ease-in-out infinite}
+    .a12-m1{animation:k12df 13s ease-in-out infinite}
+    .a12-m2{animation:k12df 13s -6.1s ease-in-out infinite}
+    /* the sweep — each mark lights as the beam passes (phase-locked to the 12s turn) */
+    .a12-w1{opacity:0;animation:k12w1 12s linear infinite}
+    .a12-w2{opacity:0;animation:k12w2 12s linear infinite}
+    .a12-w3{opacity:0;animation:k12w3 12s linear infinite}
+    .a12-w4{opacity:0;animation:k12w4 12s linear infinite}
+    .a12-w5{opacity:0;animation:k12w5 12s linear infinite}
+    .a12-w6{opacity:0;animation:k12w6 12s linear infinite}
+    /* hover — purely additive: the field holds its light */
+    .a12-hv{opacity:0;transition:opacity .35s ease-out}
+    .a12-h1{transition-delay:.1s}.a12-h2{transition-delay:.17s}.a12-h3{transition-delay:.24s}.a12-h4{transition-delay:.31s}.a12-h5{transition-delay:.38s}.a12-h6{transition-delay:.45s}
+    svg:hover .a12-hv{opacity:.95}
+    .a12-st{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.4) rotate(-30deg);transition:opacity .3s ease-out .55s,transform .6s cubic-bezier(.34,1.45,.5,1) .55s}
+    svg:hover .a12-st{opacity:1;transform:scale(1) rotate(0deg)}
+    .a12-capt{transition:fill .35s ease-out}
+    svg:hover .a12-capt{fill:var(--accent,#2b4be0)}
+    @keyframes k12fi{to{opacity:1}}
+    @keyframes k12bm{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    @keyframes k12br{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.05);opacity:.8}}
+    @keyframes k12sh{0%,100%{opacity:.55}50%{opacity:.85}}
+    @keyframes k12df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k12w1{0%,3%{opacity:0}6%{opacity:.95}15%{opacity:0}100%{opacity:0}}
+    @keyframes k12w2{0%,19%{opacity:0}22%{opacity:.95}31%{opacity:0}100%{opacity:0}}
+    @keyframes k12w3{0%,36%{opacity:0}39%{opacity:.95}48%{opacity:0}100%{opacity:0}}
+    @keyframes k12w4{0%,52%{opacity:0}56%{opacity:.95}65%{opacity:0}100%{opacity:0}}
+    @keyframes k12w5{0%,69%{opacity:0}72%{opacity:.95}81%{opacity:0}100%{opacity:0}}
+    @keyframes k12w6{0%,86%{opacity:0}89%{opacity:.95}98%{opacity:0}100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a12-bm,.a12-br,.a12-shm,.a12-m1,.a12-m2,.a12-w1,.a12-w2,.a12-w3,.a12-w4,.a12-w5,.a12-w6{animation:none}
+      .a12-in{animation:none;opacity:1}
+      .a12-w1,.a12-w2,.a12-w3,.a12-w4,.a12-w5,.a12-w6{opacity:.95}
+      .a12-hv,.a12-st,.a12-capt{transition:none}
+      .a12-st{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the field — small scattered marks, every one worth seeing -->
+  <g class="a12-shm" opacity=".55"><g class="a12-in a12-g1">
+    <circle cx="211" cy="136" r="2.5" class="a12-fnt" stroke-width="1.6"/>
+    <path d="M147 167 h9 M151.5 162.5 v9" class="a12-fnt" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M80 151 l4 5 l7 -8" class="a12-fnt" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="62" y="78" width="9" height="9" rx="2" class="a12-fnt" stroke-width="1.6"/>
+    <path d="M129 42 l5 -6 l5 6 l-5 6 Z" class="a12-fnt" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M192 57 l10 10 M202 57 l-10 10" class="a12-fnt" stroke-width="1.6" stroke-linecap="round"/>
+  </g></g>
+  <!-- the wakes — lit as the beam passes -->
+  <circle cx="211" cy="136" r="2.5" class="a12-acc a12-w1" stroke-width="2"/>
+  <path d="M147 167 h9 M151.5 162.5 v9" class="a12-acc a12-w2" stroke-width="2" stroke-linecap="round"/>
+  <path d="M80 151 l4 5 l7 -8" class="a12-acc a12-w3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="62" y="78" width="9" height="9" rx="2" class="a12-acc a12-w4" stroke-width="2"/>
+  <path d="M129 42 l5 -6 l5 6 l-5 6 Z" class="a12-acc a12-w5" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M192 57 l10 10 M202 57 l-10 10" class="a12-acc a12-w6" stroke-width="2" stroke-linecap="round"/>
+  <!-- hover hold — the whole field seen at once -->
+  <circle cx="211" cy="136" r="2.5" class="a12-acc a12-hv a12-h1" stroke-width="2"/>
+  <path d="M147 167 h9 M151.5 162.5 v9" class="a12-acc a12-hv a12-h2" stroke-width="2" stroke-linecap="round"/>
+  <path d="M80 151 l4 5 l7 -8" class="a12-acc a12-hv a12-h3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="62" y="78" width="9" height="9" rx="2" class="a12-acc a12-hv a12-h4" stroke-width="2"/>
+  <path d="M129 42 l5 -6 l5 6 l-5 6 Z" class="a12-acc a12-hv a12-h5" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M192 57 l10 10 M202 57 l-10 10" class="a12-acc a12-hv a12-h6" stroke-width="2" stroke-linecap="round"/>
+  <!-- the beam — slow, even, it always comes around -->
+  <g class="a12-bm">
+    <path d="M140 110 L234 96 L234 124 Z" class="a12-accf" opacity=".12"/>
+    <path d="M140 110 H230" class="a12-acc" stroke-width="1.2" opacity=".45"/>
+  </g>
+  <!-- the beacon -->
+  <g class="a12-in a12-g2">
+    <circle cx="140" cy="110" r="12" class="a12-hl a12-br" stroke-width="1.2" opacity=".5"/>
+    <circle cx="140" cy="110" r="7" class="a12-mut" stroke-width="2"/>
+    <circle cx="140" cy="110" r="3" class="a12-accf"/>
+  </g>
+  <!-- dust -->
+  <g class="a12-in a12-g3">
+    <circle cx="56" cy="120" r="1.3" class="a12-fntf a12-m1"/>
+    <circle cx="226" cy="86" r="1.2" class="a12-fntf a12-m2"/>
+  </g>
+  <!-- hover payoff — the north star -->
+  <g class="a12-st">
+    <path d="M208 26 l3 9 l9 3 l-9 3 l-3 9 l-3 -9 l-9 -3 l9 -3 Z" class="a12-acc" stroke-width="1.8" stroke-linejoin="round"/>
+    <circle cx="208" cy="38" r="1.4" class="a12-accf"/>
+  </g>
+  <text x="20" y="196" class="a12-cap a12-capt a12-in a12-g3">NOTHING LEFT UNSEEN</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="13">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-13 · THE METRONOME — general slot, message: rhythm and consistency.
+       namespaced a13-/k13 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — two clocks, one tempo: the arm swings a 2.4s tick-tock, and the room
+       answers in phase — the left bars pulse on the tick, the right bars on the tock.
+       every fourth beat (a 9.6s measure) the bob rings once: the accent beat.
+       consistency is not stillness; it is a rhythm kept so long it becomes calm.
+       idle desync: swing 2.4s · measure ring 9.6s · body breath 7.5s · arc shimmer 10.5s · motes 13s.
+       hover (additive): the full chord — every bar holds its light at once, the arm keeps
+       its tempo untouched, caption ignites, and the IN TIME chip springs in.
+       reduced-motion: arm upright at rest, all bars steady, chip shown — complete frame. */
+    .a13-ink{stroke:var(--ink,#171a21)}
+    .a13-mut{stroke:var(--ink-muted,#5d6472)}
+    .a13-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a13-acc{stroke:var(--accent,#2b4be0)}
+    .a13-accf{fill:var(--accent,#2b4be0)}
+    .a13-inkf{fill:var(--ink,#171a21)}
+    .a13-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a13-hl{stroke:var(--hairline,#e2e6ee)}
+    .a13-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a13-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a13-in{opacity:0;animation:k13fi .6s ease-out forwards}
+    .a13-g1{animation-delay:.15s}.a13-g2{animation-delay:.35s}.a13-g3{animation-delay:.6s}
+    /* idle life */
+    .a13-ar{transform-origin:140px 150px;animation:k13ar 2.4s ease-in-out infinite}
+    .a13-rg{transform-box:fill-box;transform-origin:center;opacity:0;animation:k13rg 9.6s linear infinite}
+    .a13-bd{transform-origin:140px 158px;animation:k13bd 7.5s ease-in-out infinite}
+    .a13-shm{animation:k13sh 10.5s ease-in-out infinite}
+    .a13-m1{animation:k13df 13s ease-in-out infinite}
+    .a13-m2{animation:k13df 13s -5.9s ease-in-out infinite}
+    /* the beats — the room answers in phase */
+    .a13-bL{animation:k13bt 2.4s ease-out infinite}
+    .a13-bR{animation:k13bt 2.4s -1.2s ease-out infinite}
+    /* hover — purely additive: the full chord */
+    .a13-hv{opacity:0;transition:opacity .35s ease-out}
+    .a13-h1{transition-delay:.1s}.a13-h2{transition-delay:.25s}
+    svg:hover .a13-hv{opacity:.95}
+    .a13-capt{transition:fill .35s ease-out}
+    svg:hover .a13-capt{fill:var(--accent,#2b4be0)}
+    .a13-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a13-chip{opacity:1;transform:scale(1)}
+    @keyframes k13fi{to{opacity:1}}
+    @keyframes k13ar{0%{transform:rotate(-24deg)}50%{transform:rotate(24deg)}100%{transform:rotate(-24deg)}}
+    @keyframes k13rg{0%{opacity:0;transform:scale(.4)}1%{opacity:.85;transform:scale(.6)}9%{opacity:0;transform:scale(1.9)}100%{opacity:0;transform:scale(1.9)}}
+    @keyframes k13bd{0%,100%{transform:scale(1)}50%{transform:scale(1.006)}}
+    @keyframes k13sh{0%,100%{opacity:.5}50%{opacity:.8}}
+    @keyframes k13df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k13bt{0%{opacity:.95}14%{opacity:.4}86%{opacity:.4}100%{opacity:.95}}
+    @media(prefers-reduced-motion:reduce){
+      .a13-ar,.a13-rg,.a13-bd,.a13-shm,.a13-m1,.a13-m2,.a13-bL,.a13-bR{animation:none}
+      .a13-in{animation:none;opacity:1}
+      .a13-ar{transform:none}
+      .a13-rg{opacity:0}
+      .a13-bL,.a13-bR{opacity:.8}
+      .a13-hv,.a13-capt,.a13-chip{transition:none}
+      .a13-chip{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the swing arc — the promise of the range -->
+  <g class="a13-shm" opacity=".5"><g class="a13-in a13-g1">
+    <path d="M116 97 A58 58 0 0 1 164 97" class="a13-hl" stroke-width="1.2" stroke-dasharray="2 5"/>
+    <path d="M140 90 v-5" class="a13-fnt" stroke-width="1.2"/>
+  </g></g>
+  <!-- the room — bars that answer the beat -->
+  <g class="a13-in a13-g2">
+    <g class="a13-fnt a13-bL" stroke-width="2" stroke-linecap="round">
+      <path d="M76 84 h18 M79 106 h15 M82 128 h12"/>
+    </g>
+    <g class="a13-fnt a13-bR" stroke-width="2" stroke-linecap="round">
+      <path d="M204 84 h-18 M201 106 h-15 M198 128 h-12"/>
+    </g>
+  </g>
+  <!-- hover chord — every bar at once -->
+  <g class="a13-acc a13-hv a13-h1" stroke-width="2.2" stroke-linecap="round">
+    <path d="M76 84 h18 M79 106 h15 M82 128 h12"/>
+  </g>
+  <g class="a13-acc a13-hv a13-h2" stroke-width="2.2" stroke-linecap="round">
+    <path d="M204 84 h-18 M201 106 h-15 M198 128 h-12"/>
+  </g>
+  <!-- the metronome -->
+  <g class="a13-bd"><g class="a13-in a13-g2">
+    <path d="M122 158 L134 84 H146 L158 158 Z" class="a13-mut" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M114 158 H166" class="a13-ink" stroke-width="2" stroke-linecap="round"/>
+  </g></g>
+  <!-- the arm — the tempo keeper -->
+  <g class="a13-ar">
+    <path d="M140 150 V98" class="a13-ink" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="140" cy="104" r="4.5" class="a13-accf"/>
+    <circle cx="140" cy="104" r="7" class="a13-acc a13-rg" stroke-width="1.4"/>
+  </g>
+  <circle cx="140" cy="150" r="2.5" class="a13-inkf"/>
+  <!-- dust -->
+  <g class="a13-in a13-g3">
+    <circle cx="60" cy="58" r="1.3" class="a13-fntf a13-m1"/>
+    <circle cx="222" cy="144" r="1.2" class="a13-fntf a13-m2"/>
+  </g>
+  <!-- hover payoff -->
+  <g class="a13-chip">
+    <rect x="186" y="22" width="66" height="20" rx="10" class="a13-hl" stroke-width="1.2"/>
+    <circle cx="197" cy="32" r="2.5" class="a13-accf"/>
+    <text x="205" y="35.5" class="a13-chtx">IN TIME</text>
+  </g>
+  <text x="20" y="196" class="a13-cap a13-capt a13-in a13-g3">KEEP THE TEMPO</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="14">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-14 · THE ASTERISK BLOOM — general slot, message: arete — excellence as a practice.
+       namespaced a14-/k14 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — the brand asterisk as a seed: eight arms grow and recede in turn, a bloom
+       wave circling the flower forever — practice, not performance. every 10s the whole
+       bloom takes one full breath: a ghost of its best self opens wide and fades, the
+       shape it keeps practicing toward.
+       idle desync: arm wave 8s (8 phases) · full-bloom ghost 10s · seed breath 7s ·
+       petal shimmer 9.5s · orbit ring 36s.
+       hover (additive): the full bloom holds — every arm's reach shown in accent — petals
+       light up, and the word itself springs in beneath: ARETE. caption ignites.
+       reduced-motion: the asterisk at full reach, petals lit, ARETE shown — complete frame. */
+    .a14-mut{stroke:var(--ink-muted,#5d6472)}
+    .a14-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a14-acc{stroke:var(--accent,#2b4be0)}
+    .a14-accf{fill:var(--accent,#2b4be0)}
+    .a14-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a14-hl{stroke:var(--hairline,#e2e6ee)}
+    .a14-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a14-word{font:700 12px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.5em}
+    /* intro */
+    .a14-in{opacity:0;animation:k14fi .6s ease-out forwards}
+    .a14-g1{animation-delay:.15s}.a14-g2{animation-delay:.35s}.a14-g3{animation-delay:.6s}
+    /* idle life */
+    .a14-a{transform-origin:140px 104px;animation:k14ar 8s ease-in-out infinite}
+    .a14-p1{animation-delay:0s}.a14-p2{animation-delay:-1s}.a14-p3{animation-delay:-2s}.a14-p4{animation-delay:-3s}
+    .a14-p5{animation-delay:-4s}.a14-p6{animation-delay:-5s}.a14-p7{animation-delay:-6s}.a14-p8{animation-delay:-7s}
+    .a14-bl{transform-origin:140px 104px;opacity:0;animation:k14bl 10s cubic-bezier(.22,1,.36,1) infinite}
+    .a14-sd{transform-box:fill-box;transform-origin:center;animation:k14sd 7s ease-in-out infinite}
+    .a14-pt1{animation:k14pt 9.5s ease-in-out infinite}
+    .a14-pt2{animation:k14pt 9.5s -4.75s ease-in-out infinite}
+    .a14-rt{transform-origin:140px 104px;animation:k14rt 36s linear infinite}
+    /* hover — purely additive: the bloom holds, the word arrives */
+    .a14-hb{transform-origin:140px 104px;opacity:0;transform:scale(.75);transition:opacity .4s ease-out .1s,transform .65s cubic-bezier(.34,1.45,.5,1) .1s}
+    svg:hover .a14-hb{opacity:.9;transform:scale(1)}
+    .a14-hp{opacity:0;transition:opacity .35s ease-out .3s}
+    svg:hover .a14-hp{opacity:.9}
+    .a14-wd{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a14-wd{opacity:1;transform:scale(1)}
+    .a14-capt{transition:fill .35s ease-out}
+    svg:hover .a14-capt{fill:var(--accent,#2b4be0)}
+    @keyframes k14fi{to{opacity:1}}
+    @keyframes k14ar{0%,100%{transform:scale(.8)}50%{transform:scale(1)}}
+    @keyframes k14bl{0%,4%{opacity:0;transform:scale(.7)}11%{opacity:.45;transform:scale(1.02)}22%{opacity:0;transform:scale(1.18)}100%{opacity:0;transform:scale(1.18)}}
+    @keyframes k14sd{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+    @keyframes k14pt{0%,100%{opacity:.3}50%{opacity:.75}}
+    @keyframes k14rt{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){
+      .a14-a,.a14-bl,.a14-sd,.a14-pt1,.a14-pt2,.a14-rt{animation:none}
+      .a14-in{animation:none;opacity:1}
+      .a14-a{transform:none}
+      .a14-bl{opacity:0}
+      .a14-pt1,.a14-pt2{opacity:.6}
+      .a14-hb,.a14-hp,.a14-wd,.a14-capt{transition:none}
+      .a14-hp{opacity:.9}
+      .a14-wd{opacity:1;transform:none}
+    }
+  </style>
+  <!-- the slow orbit — the long practice -->
+  <g class="a14-rt"><g class="a14-in a14-g1">
+    <circle cx="140" cy="104" r="46" class="a14-hl" stroke-width="1.2" stroke-dasharray="3 7"/>
+  </g></g>
+  <!-- petals between the arms -->
+  <g class="a14-in a14-g2">
+    <g class="a14-pt1">
+      <circle cx="162" cy="95" r="1.5" class="a14-fntf"/>
+      <circle cx="149" cy="126" r="1.5" class="a14-fntf"/>
+      <circle cx="118" cy="113" r="1.5" class="a14-fntf"/>
+      <circle cx="131" cy="82" r="1.5" class="a14-fntf"/>
+    </g>
+    <g class="a14-pt2">
+      <circle cx="162" cy="113" r="1.5" class="a14-fntf"/>
+      <circle cx="131" cy="126" r="1.5" class="a14-fntf"/>
+      <circle cx="118" cy="95" r="1.5" class="a14-fntf"/>
+      <circle cx="149" cy="82" r="1.5" class="a14-fntf"/>
+    </g>
+  </g>
+  <!-- the full-bloom ghost — the shape it practices toward (10s breath) -->
+  <g class="a14-bl">
+    <path d="M150 104 H182 M147.1 111.1 L169.7 133.7 M140 114 V146 M132.9 111.1 L110.3 133.7 M130 104 H98 M132.9 96.9 L110.3 74.3 M140 94 V62 M147.1 96.9 L169.7 74.3" class="a14-acc" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <!-- the asterisk — eight arms, breathing in turn -->
+  <g class="a14-in a14-g2">
+    <g class="a14-a a14-p1"><path d="M150 104 L174 104" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="174" cy="104" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p2"><path d="M147 111 L164 128" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="164" cy="128" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p3"><path d="M140 114 L140 138" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="140" cy="138" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p4"><path d="M133 111 L116 128" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="116" cy="128" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p5"><path d="M130 104 L106 104" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="106" cy="104" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p6"><path d="M133 97 L116 80" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="116" cy="80" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p7"><path d="M140 94 L140 70" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="140" cy="70" r="2" class="a14-accf"/></g>
+    <g class="a14-a a14-p8"><path d="M147 97 L164 80" class="a14-mut" stroke-width="2.2" stroke-linecap="round"/><circle cx="164" cy="80" r="2" class="a14-accf"/></g>
+  </g>
+  <!-- the seed -->
+  <g class="a14-in a14-g1">
+    <circle cx="140" cy="104" r="7" class="a14-mut a14-sd" stroke-width="1.6"/>
+    <circle cx="140" cy="104" r="3.5" class="a14-accf"/>
+  </g>
+  <!-- hover — the bloom holds -->
+  <g class="a14-hb">
+    <path d="M150 104 H182 M147.1 111.1 L169.7 133.7 M140 114 V146 M132.9 111.1 L110.3 133.7 M130 104 H98 M132.9 96.9 L110.3 74.3 M140 94 V62 M147.1 96.9 L169.7 74.3" class="a14-acc" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+  <g class="a14-acc a14-hp" stroke-width="1">
+    <circle cx="162" cy="95" r="2.5"/><circle cx="149" cy="126" r="2.5"/><circle cx="118" cy="113" r="2.5"/><circle cx="131" cy="82" r="2.5"/>
+    <circle cx="162" cy="113" r="2.5"/><circle cx="131" cy="126" r="2.5"/><circle cx="118" cy="95" r="2.5"/><circle cx="149" cy="82" r="2.5"/>
+  </g>
+  <!-- hover payoff — the word itself -->
+  <text x="146" y="174" text-anchor="middle" class="a14-word a14-wd">ARETE</text>
+  <text x="20" y="196" class="a14-cap a14-capt a14-in a14-g3">THE PRACTICE OF BETTER</text>
+</svg>
+</script>
+<script type="text/svg-slot" data-slot="15">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-15 · THE QUIET GRID — general slot, message: a system that calms.
+       namespaced a15-/k15 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 10s clock: a wave of order sweeps the dot-grid column by column, each
+       column brightening as it passes. three dots sit out of place; when the wave
+       reaches them they resist — a small shake of protest — then glide home with a tiny
+       overshoot. near the cycle's end they drift out again, and the wave returns,
+       patient as ever. a good system doesn't force; it keeps inviting.
+       idle desync: order wave 10s · rebels 10s (phase-locked to their columns) ·
+       grid breath 8.5s · grid shimmer 11s · motes 13s.
+       hover (additive): the whole grid holds its harmony, the rebels' home seats ring in
+       accent, caption ignites, and the ORDER chip springs in.
+       reduced-motion: every dot in place — rebels home, grid lit, chip shown. */
+    .a15-mut{stroke:var(--ink-muted,#5d6472)}
+    .a15-acc{stroke:var(--accent,#2b4be0)}
+    .a15-accf{fill:var(--accent,#2b4be0)}
+    .a15-mutf{fill:var(--ink-muted,#5d6472)}
+    .a15-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a15-hl{stroke:var(--hairline,#e2e6ee)}
+    .a15-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a15-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a15-in{opacity:0;animation:k15fi .6s ease-out forwards}
+    .a15-g1{animation-delay:.15s}.a15-g2{animation-delay:.35s}.a15-g3{animation-delay:.6s}
+    /* idle life */
+    .a15-br{transform-origin:140px 100px;animation:k15br 8.5s ease-in-out infinite}
+    .a15-shm{animation:k15sh 11s ease-in-out infinite}
+    .a15-m1{animation:k15df 13s ease-in-out infinite}
+    .a15-m2{animation:k15df 13s -6.2s ease-in-out infinite}
+    /* the order wave — column by column (10s, phase-locked) */
+    .a15-c1{opacity:0;animation:k15c1 10s ease-in-out infinite}
+    .a15-c2{opacity:0;animation:k15c2 10s ease-in-out infinite}
+    .a15-c3{opacity:0;animation:k15c3 10s ease-in-out infinite}
+    .a15-c4{opacity:0;animation:k15c4 10s ease-in-out infinite}
+    .a15-c5{opacity:0;animation:k15c5 10s ease-in-out infinite}
+    .a15-c6{opacity:0;animation:k15c6 10s ease-in-out infinite}
+    .a15-c7{opacity:0;animation:k15c7 10s ease-in-out infinite}
+    /* the rebels — resist, then come home (markup sits at home; keyframes displace) */
+    .a15-r1{animation:k15r1 10s cubic-bezier(.4,0,.2,1) infinite}
+    .a15-r2{animation:k15r2 10s cubic-bezier(.4,0,.2,1) infinite}
+    .a15-r3{animation:k15r3 10s cubic-bezier(.4,0,.2,1) infinite}
+    /* hover — purely additive: harmony held */
+    .a15-hv{opacity:0;transition:opacity .45s ease-out .1s}
+    svg:hover .a15-hv{opacity:.85}
+    .a15-hm{opacity:0;transition:opacity .35s ease-out}
+    .a15-h1{transition-delay:.35s}.a15-h2{transition-delay:.45s}.a15-h3{transition-delay:.55s}
+    svg:hover .a15-hm{opacity:.9}
+    .a15-capt{transition:fill .35s ease-out}
+    svg:hover .a15-capt{fill:var(--accent,#2b4be0)}
+    .a15-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a15-chip{opacity:1;transform:scale(1)}
+    @keyframes k15fi{to{opacity:1}}
+    @keyframes k15br{0%,100%{transform:scale(1)}50%{transform:scale(1.005)}}
+    @keyframes k15sh{0%,100%{opacity:.6}50%{opacity:.85}}
+    @keyframes k15df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k15c1{0%,10%{opacity:0}14%{opacity:.9}20%{opacity:0}100%{opacity:0}}
+    @keyframes k15c2{0%,14%{opacity:0}18%{opacity:.9}24%{opacity:0}100%{opacity:0}}
+    @keyframes k15c3{0%,18%{opacity:0}22%{opacity:.9}28%{opacity:0}100%{opacity:0}}
+    @keyframes k15c4{0%,22%{opacity:0}26%{opacity:.9}32%{opacity:0}100%{opacity:0}}
+    @keyframes k15c5{0%,26%{opacity:0}30%{opacity:.9}36%{opacity:0}100%{opacity:0}}
+    @keyframes k15c6{0%,30%{opacity:0}34%{opacity:.9}40%{opacity:0}100%{opacity:0}}
+    @keyframes k15c7{0%,34%{opacity:0}38%{opacity:.9}44%{opacity:0}100%{opacity:0}}
+    @keyframes k15r1{0%,16%{transform:translate(5px,-4px)}18%{transform:translate(6.5px,-2.5px)}20%{transform:translate(3.5px,-5.5px)}24%{transform:translate(-1px,.8px)}27%{transform:translate(0,0)}84%{transform:translate(0,0)}96%,100%{transform:translate(5px,-4px)}}
+    @keyframes k15r2{0%,24%{transform:translate(-6px,3px)}26%{transform:translate(-7.5px,4.5px)}28%{transform:translate(-4.5px,1.5px)}32%{transform:translate(1px,-.6px)}35%{transform:translate(0,0)}84%{transform:translate(0,0)}96%,100%{transform:translate(-6px,3px)}}
+    @keyframes k15r3{0%,28%{transform:translate(4px,4px)}30%{transform:translate(5.5px,2.5px)}32%{transform:translate(2.5px,5.5px)}36%{transform:translate(-.8px,-.8px)}39%{transform:translate(0,0)}84%{transform:translate(0,0)}96%,100%{transform:translate(4px,4px)}}
+    @media(prefers-reduced-motion:reduce){
+      .a15-br,.a15-shm,.a15-m1,.a15-m2,.a15-c1,.a15-c2,.a15-c3,.a15-c4,.a15-c5,.a15-c6,.a15-c7,.a15-r1,.a15-r2,.a15-r3{animation:none}
+      .a15-in{animation:none;opacity:1}
+      .a15-c1,.a15-c2,.a15-c3,.a15-c4,.a15-c5,.a15-c6,.a15-c7{opacity:0}
+      .a15-r1,.a15-r2,.a15-r3{transform:none}
+      .a15-hv,.a15-hm,.a15-capt,.a15-chip{transition:none}
+      .a15-hv{opacity:.85}
+      .a15-chip{opacity:1;transform:none}
+    }
+  </style>
+  <g class="a15-br">
+    <!-- the grid — every seat marked -->
+    <g class="a15-shm" opacity=".6"><g class="a15-in a15-g1">
+      <path d="M70 58 v-6 h6 M210 58 v-6 h-6 M70 142 v6 h6 M210 142 v6 h-6" class="a15-hl" stroke-width="1.2"/>
+      <g class="a15-fntf">
+        <circle cx="80" cy="60" r="1.8"/><circle cx="100" cy="60" r="1.8"/><circle cx="120" cy="60" r="1.8"/><circle cx="140" cy="60" r="1.8"/><circle cx="160" cy="60" r="1.8"/><circle cx="180" cy="60" r="1.8"/><circle cx="200" cy="60" r="1.8"/>
+        <circle cx="80" cy="80" r="1.8"/><circle cx="100" cy="80" r="1.8"/><circle cx="120" cy="80" r="1.8"/><circle cx="140" cy="80" r="1.8"/><circle cx="160" cy="80" r="1.8"/><circle cx="180" cy="80" r="1.8"/><circle cx="200" cy="80" r="1.8"/>
+        <circle cx="80" cy="100" r="1.8"/><circle cx="100" cy="100" r="1.8"/><circle cx="120" cy="100" r="1.8"/><circle cx="140" cy="100" r="1.8"/><circle cx="160" cy="100" r="1.8"/><circle cx="180" cy="100" r="1.8"/><circle cx="200" cy="100" r="1.8"/>
+        <circle cx="80" cy="120" r="1.8"/><circle cx="100" cy="120" r="1.8"/><circle cx="120" cy="120" r="1.8"/><circle cx="140" cy="120" r="1.8"/><circle cx="160" cy="120" r="1.8"/><circle cx="180" cy="120" r="1.8"/><circle cx="200" cy="120" r="1.8"/>
+        <circle cx="80" cy="140" r="1.8"/><circle cx="100" cy="140" r="1.8"/><circle cx="120" cy="140" r="1.8"/><circle cx="140" cy="140" r="1.8"/><circle cx="160" cy="140" r="1.8"/><circle cx="180" cy="140" r="1.8"/><circle cx="200" cy="140" r="1.8"/>
+      </g>
+    </g></g>
+    <!-- the order wave — column by column -->
+    <g class="a15-accf">
+      <g class="a15-c1"><circle cx="80" cy="60" r="2.2"/><circle cx="80" cy="80" r="2.2"/><circle cx="80" cy="100" r="2.2"/><circle cx="80" cy="120" r="2.2"/><circle cx="80" cy="140" r="2.2"/></g>
+      <g class="a15-c2"><circle cx="100" cy="60" r="2.2"/><circle cx="100" cy="80" r="2.2"/><circle cx="100" cy="100" r="2.2"/><circle cx="100" cy="120" r="2.2"/><circle cx="100" cy="140" r="2.2"/></g>
+      <g class="a15-c3"><circle cx="120" cy="60" r="2.2"/><circle cx="120" cy="80" r="2.2"/><circle cx="120" cy="100" r="2.2"/><circle cx="120" cy="120" r="2.2"/><circle cx="120" cy="140" r="2.2"/></g>
+      <g class="a15-c4"><circle cx="140" cy="60" r="2.2"/><circle cx="140" cy="80" r="2.2"/><circle cx="140" cy="100" r="2.2"/><circle cx="140" cy="120" r="2.2"/><circle cx="140" cy="140" r="2.2"/></g>
+      <g class="a15-c5"><circle cx="160" cy="60" r="2.2"/><circle cx="160" cy="80" r="2.2"/><circle cx="160" cy="100" r="2.2"/><circle cx="160" cy="120" r="2.2"/><circle cx="160" cy="140" r="2.2"/></g>
+      <g class="a15-c6"><circle cx="180" cy="60" r="2.2"/><circle cx="180" cy="80" r="2.2"/><circle cx="180" cy="100" r="2.2"/><circle cx="180" cy="120" r="2.2"/><circle cx="180" cy="140" r="2.2"/></g>
+      <g class="a15-c7"><circle cx="200" cy="60" r="2.2"/><circle cx="200" cy="80" r="2.2"/><circle cx="200" cy="100" r="2.2"/><circle cx="200" cy="120" r="2.2"/><circle cx="200" cy="140" r="2.2"/></g>
+    </g>
+    <!-- the rebels — out of place, invited home -->
+    <circle cx="120" cy="80" r="2.6" class="a15-mutf a15-r1"/>
+    <circle cx="160" cy="120" r="2.6" class="a15-mutf a15-r2"/>
+    <circle cx="180" cy="60" r="2.6" class="a15-mutf a15-r3"/>
+    <!-- hover — harmony held -->
+    <g class="a15-accf a15-hv">
+      <circle cx="80" cy="60" r="2.2"/><circle cx="100" cy="60" r="2.2"/><circle cx="120" cy="60" r="2.2"/><circle cx="140" cy="60" r="2.2"/><circle cx="160" cy="60" r="2.2"/><circle cx="180" cy="60" r="2.2"/><circle cx="200" cy="60" r="2.2"/>
+      <circle cx="80" cy="80" r="2.2"/><circle cx="100" cy="80" r="2.2"/><circle cx="120" cy="80" r="2.2"/><circle cx="140" cy="80" r="2.2"/><circle cx="160" cy="80" r="2.2"/><circle cx="180" cy="80" r="2.2"/><circle cx="200" cy="80" r="2.2"/>
+      <circle cx="80" cy="100" r="2.2"/><circle cx="100" cy="100" r="2.2"/><circle cx="120" cy="100" r="2.2"/><circle cx="140" cy="100" r="2.2"/><circle cx="160" cy="100" r="2.2"/><circle cx="180" cy="100" r="2.2"/><circle cx="200" cy="100" r="2.2"/>
+      <circle cx="80" cy="120" r="2.2"/><circle cx="100" cy="120" r="2.2"/><circle cx="120" cy="120" r="2.2"/><circle cx="140" cy="120" r="2.2"/><circle cx="160" cy="120" r="2.2"/><circle cx="180" cy="120" r="2.2"/><circle cx="200" cy="120" r="2.2"/>
+      <circle cx="80" cy="140" r="2.2"/><circle cx="100" cy="140" r="2.2"/><circle cx="120" cy="140" r="2.2"/><circle cx="140" cy="140" r="2.2"/><circle cx="160" cy="140" r="2.2"/><circle cx="180" cy="140" r="2.2"/><circle cx="200" cy="140" r="2.2"/>
+    </g>
+    <!-- the rebels' home seats -->
+    <circle cx="120" cy="80" r="5" class="a15-acc a15-hm a15-h1" stroke-width="1.2" stroke-dasharray="2 3"/>
+    <circle cx="160" cy="120" r="5" class="a15-acc a15-hm a15-h2" stroke-width="1.2" stroke-dasharray="2 3"/>
+    <circle cx="180" cy="60" r="5" class="a15-acc a15-hm a15-h3" stroke-width="1.2" stroke-dasharray="2 3"/>
+  </g>
+  <!-- the quiet air -->
+  <g class="a15-in a15-g3">
+    <circle cx="60" cy="166" r="1.3" class="a15-fntf a15-m1"/>
+    <circle cx="222" cy="44" r="1.2" class="a15-fntf a15-m2"/>
+  </g>
+  <!-- hover payoff -->
+  <g class="a15-chip">
+    <rect x="192" y="20" width="58" height="20" rx="10" class="a15-hl" stroke-width="1.2"/>
+    <circle cx="203" cy="30" r="2.5" class="a15-accf"/>
+    <text x="211" y="33.5" class="a15-chtx">ORDER</text>
+  </g>
+  <text x="20" y="196" class="a15-cap a15-capt a15-in a15-g3">A SYSTEM THAT CALMS</text>
 </svg>
 </script>
 <!-- SNAPSHOT:END -->

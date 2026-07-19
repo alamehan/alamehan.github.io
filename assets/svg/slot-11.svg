@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-11 · THE LISTENING LINE — general slot, message: dialogue — answered with a sketch.
+       namespaced a11-/k11 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 9s clock: a flat line lies listening; an agitated ripple arrives from the
+       left (the tangled question), the center flashes once — received — and the line
+       answers the only way it knows: a calm, even sine drawing itself to the right.
+       then the exchange fades and the line listens again.
+       idle desync: clock 9s · baseline breath 7.5s · field shimmer 10.5s · mote drift 12.5s.
+       hover (additive): the whole conversation shows at once — question ghost on the left,
+       answer ghost full-width — and a little sketch draws itself in the corner, because
+       the first reply always comes with one. caption ignites.
+       reduced-motion: the answer fully drawn, the sketch complete — one still exchange. */
+    .a11-ink{stroke:var(--ink,#171a21)}
+    .a11-mut{stroke:var(--ink-muted,#5d6472)}
+    .a11-fnt{stroke:var(--ink-faint,#99a0ad)}
+    .a11-acc{stroke:var(--accent,#2b4be0)}
+    .a11-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a11-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    /* intro */
+    .a11-in{opacity:0;animation:k11fi .6s ease-out forwards}
+    .a11-g1{animation-delay:.15s}.a11-g2{animation-delay:.4s}.a11-g3{animation-delay:.65s}
+    /* idle life */
+    .a11-bs{animation:k11bs 7.5s ease-in-out infinite}
+    .a11-gd{animation:k11gd 10.5s ease-in-out infinite}
+    .a11-m1{animation:k11df 12.5s ease-in-out infinite}
+    .a11-m2{animation:k11df 12.5s -5.7s ease-in-out infinite}
+    /* the 9s clock — question arrives, received, answered (phase-locked) */
+    .a11-q{animation:k11q 9s cubic-bezier(.4,0,.2,1) infinite}
+    .a11-rc{transform-box:fill-box;transform-origin:center;opacity:0;animation:k11rc 9s ease-out infinite}
+    .a11-an{stroke-dasharray:90;animation:k11an 9s cubic-bezier(.22,1,.36,1) infinite}
+    /* hover — purely additive: the full conversation and the sketch */
+    .a11-fq{opacity:0;transition:opacity .4s ease-out .12s}
+    svg:hover .a11-fq{opacity:.45}
+    .a11-fa{opacity:0;transition:opacity .45s ease-out .28s}
+    svg:hover .a11-fa{opacity:.4}
+    .a11-sk1{stroke-dasharray:90;stroke-dashoffset:90;opacity:0;transition:opacity .25s ease-out .4s,stroke-dashoffset .75s cubic-bezier(.4,0,.2,1) .45s}
+    svg:hover .a11-sk1{opacity:1;stroke-dashoffset:0}
+    .a11-sk2{stroke-dasharray:26;stroke-dashoffset:26;opacity:0;transition:opacity .2s ease-out 1.15s,stroke-dashoffset .4s cubic-bezier(.34,1.45,.5,1) 1.2s}
+    svg:hover .a11-sk2{opacity:1;stroke-dashoffset:0}
+    .a11-capt{transition:fill .35s ease-out}
+    svg:hover .a11-capt{fill:var(--accent,#2b4be0)}
+    @keyframes k11fi{to{opacity:1}}
+    @keyframes k11bs{0%,100%{opacity:.8}50%{opacity:1}}
+    @keyframes k11gd{0%,100%{opacity:.4}50%{opacity:.75}}
+    @keyframes k11df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k11q{0%{transform:translateX(0);opacity:0}5%{transform:translateX(11px);opacity:1}26%{transform:translateX(58px);opacity:1}31%{transform:translateX(68px);opacity:0}100%{transform:translateX(68px);opacity:0}}
+    @keyframes k11rc{0%,27%{opacity:0;transform:scale(.4)}32%{opacity:.85;transform:scale(1)}41%{opacity:0;transform:scale(1.7)}100%{opacity:0;transform:scale(1.7)}}
+    @keyframes k11an{0%,33%{stroke-dashoffset:90;opacity:0}35%{stroke-dashoffset:86;opacity:1}62%{stroke-dashoffset:0;opacity:1}88%{stroke-dashoffset:0;opacity:1}94%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:90;opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .a11-bs,.a11-gd,.a11-m1,.a11-m2,.a11-q,.a11-rc,.a11-an{animation:none}
+      .a11-in{animation:none;opacity:1}
+      .a11-q,.a11-rc{opacity:0}
+      .a11-an{stroke-dashoffset:0;opacity:1}
+      .a11-fq,.a11-fa,.a11-sk1,.a11-sk2,.a11-capt{transition:none}
+      .a11-sk1,.a11-sk2{opacity:1;stroke-dashoffset:0}
+    }
+  </style>
+  <!-- the quiet field -->
+  <g class="a11-gd" opacity=".4"><g class="a11-in a11-g1">
+    <circle cx="72" cy="64" r="1.2" class="a11-fntf"/>
+    <circle cx="126" cy="52" r="1.2" class="a11-fntf"/>
+    <circle cx="196" cy="70" r="1.2" class="a11-fntf"/>
+    <circle cx="88" cy="152" r="1.2" class="a11-fntf"/>
+    <circle cx="168" cy="146" r="1.2" class="a11-fntf"/>
+    <circle cx="216" cy="134" r="1.2" class="a11-fntf"/>
+  </g></g>
+  <g class="a11-in a11-g3">
+    <circle cx="62" cy="90" r="1.4" class="a11-fntf a11-m1"/>
+    <circle cx="222" cy="122" r="1.3" class="a11-fntf a11-m2"/>
+  </g>
+  <!-- the listening line -->
+  <g class="a11-bs"><g class="a11-in a11-g2">
+    <path d="M56 106 H224" class="a11-mut" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="56" cy="106" r="2" class="a11-fntf"/>
+    <circle cx="224" cy="106" r="2" class="a11-fntf"/>
+  </g></g>
+  <!-- the question — agitated, arriving from the left -->
+  <g class="a11-q" opacity="0">
+    <path d="M58 106 l4 -8 l5 13 l4 -10 l5 9 l4 -5 l4 1" class="a11-ink" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- received -->
+  <circle cx="140" cy="106" r="6" class="a11-acc a11-rc" stroke-width="1.6"/>
+  <!-- the answer — calm, even, drawing itself -->
+  <path d="M140 106 q10 -15 20 0 q10 15 20 0 q10 -15 21 0" class="a11-acc a11-an" stroke-width="2" stroke-linecap="round" opacity="0"/>
+  <!-- hover — the whole conversation at once -->
+  <path d="M60 106 l5 -9 l6 14 l5 -11 l6 10 l5 -6 l6 2" class="a11-fnt a11-fq" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M56 106 q10.5 -13 21 0 q10.5 13 21 0 q10.5 -13 21 0 q10.5 13 21 0 q10.5 -13 21 0 q10.5 13 21 0 q10.5 -13 21 0 q10.5 13 21 0" class="a11-acc a11-fa" stroke-width="1.3"/>
+  <!-- hover payoff — the sketch that always comes with the first reply -->
+  <path d="M196 32 q13 -2 14 11 q1 12 -12 13 q-13 1 -14 -11 q-1 -11 12 -13" class="a11-mut a11-sk1" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M190 45 l6 6 l11 -12" class="a11-acc a11-sk2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="20" y="196" class="a11-cap a11-capt a11-in a11-g3">LISTEN · ANSWER</text>
+</svg>

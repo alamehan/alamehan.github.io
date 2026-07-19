@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" fill="none">
+  <style>
+    /* slot-15 · THE QUIET GRID — general slot, message: a system that calms.
+       namespaced a15-/k15 — inline SVG styles are document-global.
+       center-safe 4:3 composition; theme via host CSS vars, fallbacks match Atlas.
+       story — a 10s clock: a wave of order sweeps the dot-grid column by column, each
+       column brightening as it passes. three dots sit out of place; when the wave
+       reaches them they resist — a small shake of protest — then glide home with a tiny
+       overshoot. near the cycle's end they drift out again, and the wave returns,
+       patient as ever. a good system doesn't force; it keeps inviting.
+       idle desync: order wave 10s · rebels 10s (phase-locked to their columns) ·
+       grid breath 8.5s · grid shimmer 11s · motes 13s.
+       hover (additive): the whole grid holds its harmony, the rebels' home seats ring in
+       accent, caption ignites, and the ORDER chip springs in.
+       reduced-motion: every dot in place — rebels home, grid lit, chip shown. */
+    .a15-mut{stroke:var(--ink-muted,#5d6472)}
+    .a15-acc{stroke:var(--accent,#2b4be0)}
+    .a15-accf{fill:var(--accent,#2b4be0)}
+    .a15-mutf{fill:var(--ink-muted,#5d6472)}
+    .a15-fntf{fill:var(--ink-faint,#99a0ad)}
+    .a15-hl{stroke:var(--hairline,#e2e6ee)}
+    .a15-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
+    .a15-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* intro */
+    .a15-in{opacity:0;animation:k15fi .6s ease-out forwards}
+    .a15-g1{animation-delay:.15s}.a15-g2{animation-delay:.35s}.a15-g3{animation-delay:.6s}
+    /* idle life */
+    .a15-br{transform-origin:140px 100px;animation:k15br 8.5s ease-in-out infinite}
+    .a15-shm{animation:k15sh 11s ease-in-out infinite}
+    .a15-m1{animation:k15df 13s ease-in-out infinite}
+    .a15-m2{animation:k15df 13s -6.2s ease-in-out infinite}
+    /* the order wave — column by column (10s, phase-locked) */
+    .a15-c1{opacity:0;animation:k15c1 10s ease-in-out infinite}
+    .a15-c2{opacity:0;animation:k15c2 10s ease-in-out infinite}
+    .a15-c3{opacity:0;animation:k15c3 10s ease-in-out infinite}
+    .a15-c4{opacity:0;animation:k15c4 10s ease-in-out infinite}
+    .a15-c5{opacity:0;animation:k15c5 10s ease-in-out infinite}
+    .a15-c6{opacity:0;animation:k15c6 10s ease-in-out infinite}
+    .a15-c7{opacity:0;animation:k15c7 10s ease-in-out infinite}
+    /* the rebels — resist, then come home (markup sits at home; keyframes displace) */
+    .a15-r1{animation:k15r1 10s cubic-bezier(.4,0,.2,1) infinite}
+    .a15-r2{animation:k15r2 10s cubic-bezier(.4,0,.2,1) infinite}
+    .a15-r3{animation:k15r3 10s cubic-bezier(.4,0,.2,1) infinite}
+    /* hover — purely additive: harmony held */
+    .a15-hv{opacity:0;transition:opacity .45s ease-out .1s}
+    svg:hover .a15-hv{opacity:.85}
+    .a15-hm{opacity:0;transition:opacity .35s ease-out}
+    .a15-h1{transition-delay:.35s}.a15-h2{transition-delay:.45s}.a15-h3{transition-delay:.55s}
+    svg:hover .a15-hm{opacity:.9}
+    .a15-capt{transition:fill .35s ease-out}
+    svg:hover .a15-capt{fill:var(--accent,#2b4be0)}
+    .a15-chip{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.6);transition:opacity .3s ease-out .5s,transform .55s cubic-bezier(.34,1.45,.5,1) .5s}
+    svg:hover .a15-chip{opacity:1;transform:scale(1)}
+    @keyframes k15fi{to{opacity:1}}
+    @keyframes k15br{0%,100%{transform:scale(1)}50%{transform:scale(1.005)}}
+    @keyframes k15sh{0%,100%{opacity:.6}50%{opacity:.85}}
+    @keyframes k15df{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes k15c1{0%,10%{opacity:0}14%{opacity:.9}20%{opacity:0}100%{opacity:0}}
+    @keyframes k15c2{0%,14%{opacity:0}18%{opacity:.9}24%{opacity:0}100%{opacity:0}}
+    @keyframes k15c3{0%,18%{opacity:0}22%{opacity:.9}28%{opacity:0}100%{opacity:0}}
+    @keyframes k15c4{0%,22%{opacity:0}26%{opacity:.9}32%{opacity:0}100%{opacity:0}}
+    @keyframes k15c5{0%,26%{opacity:0}30%{opacity:.9}36%{opacity:0}100%{opacity:0}}
+    @keyframes k15c6{0%,30%{opacity:0}34%{opacity:.9}40%{opacity:0}100%{opacity:0}}
+    @keyframes k15c7{0%,34%{opacity:0}38%{opacity:.9}44%{opacity:0}100%{opacity:0}}
+    @keyframes k15r1{0%,16%{transform:translate(5px,-4px)}18%{transform:translate(6.5px,-2.5px)}20%{transform:translate(3.5px,-5.5px)}24%{transform:translate(-1px,.8px)}27%{transform:translate(0,0)}84%{transform:translate(0,0)}96%,100%{transform:translate(5px,-4px)}}
+    @keyframes k15r2{0%,24%{transform:translate(-6px,3px)}26%{transform:translate(-7.5px,4.5px)}28%{transform:translate(-4.5px,1.5px)}32%{transform:translate(1px,-.6px)}35%{transform:translate(0,0)}84%{transform:translate(0,0)}96%,100%{transform:translate(-6px,3px)}}
+    @keyframes k15r3{0%,28%{transform:translate(4px,4px)}30%{transform:translate(5.5px,2.5px)}32%{transform:translate(2.5px,5.5px)}36%{transform:translate(-.8px,-.8px)}39%{transform:translate(0,0)}84%{transform:translate(0,0)}96%,100%{transform:translate(4px,4px)}}
+    @media(prefers-reduced-motion:reduce){
+      .a15-br,.a15-shm,.a15-m1,.a15-m2,.a15-c1,.a15-c2,.a15-c3,.a15-c4,.a15-c5,.a15-c6,.a15-c7,.a15-r1,.a15-r2,.a15-r3{animation:none}
+      .a15-in{animation:none;opacity:1}
+      .a15-c1,.a15-c2,.a15-c3,.a15-c4,.a15-c5,.a15-c6,.a15-c7{opacity:0}
+      .a15-r1,.a15-r2,.a15-r3{transform:none}
+      .a15-hv,.a15-hm,.a15-capt,.a15-chip{transition:none}
+      .a15-hv{opacity:.85}
+      .a15-chip{opacity:1;transform:none}
+    }
+  </style>
+  <g class="a15-br">
+    <!-- the grid — every seat marked -->
+    <g class="a15-shm" opacity=".6"><g class="a15-in a15-g1">
+      <path d="M70 58 v-6 h6 M210 58 v-6 h-6 M70 142 v6 h6 M210 142 v6 h-6" class="a15-hl" stroke-width="1.2"/>
+      <g class="a15-fntf">
+        <circle cx="80" cy="60" r="1.8"/><circle cx="100" cy="60" r="1.8"/><circle cx="120" cy="60" r="1.8"/><circle cx="140" cy="60" r="1.8"/><circle cx="160" cy="60" r="1.8"/><circle cx="180" cy="60" r="1.8"/><circle cx="200" cy="60" r="1.8"/>
+        <circle cx="80" cy="80" r="1.8"/><circle cx="100" cy="80" r="1.8"/><circle cx="120" cy="80" r="1.8"/><circle cx="140" cy="80" r="1.8"/><circle cx="160" cy="80" r="1.8"/><circle cx="180" cy="80" r="1.8"/><circle cx="200" cy="80" r="1.8"/>
+        <circle cx="80" cy="100" r="1.8"/><circle cx="100" cy="100" r="1.8"/><circle cx="120" cy="100" r="1.8"/><circle cx="140" cy="100" r="1.8"/><circle cx="160" cy="100" r="1.8"/><circle cx="180" cy="100" r="1.8"/><circle cx="200" cy="100" r="1.8"/>
+        <circle cx="80" cy="120" r="1.8"/><circle cx="100" cy="120" r="1.8"/><circle cx="120" cy="120" r="1.8"/><circle cx="140" cy="120" r="1.8"/><circle cx="160" cy="120" r="1.8"/><circle cx="180" cy="120" r="1.8"/><circle cx="200" cy="120" r="1.8"/>
+        <circle cx="80" cy="140" r="1.8"/><circle cx="100" cy="140" r="1.8"/><circle cx="120" cy="140" r="1.8"/><circle cx="140" cy="140" r="1.8"/><circle cx="160" cy="140" r="1.8"/><circle cx="180" cy="140" r="1.8"/><circle cx="200" cy="140" r="1.8"/>
+      </g>
+    </g></g>
+    <!-- the order wave — column by column -->
+    <g class="a15-accf">
+      <g class="a15-c1"><circle cx="80" cy="60" r="2.2"/><circle cx="80" cy="80" r="2.2"/><circle cx="80" cy="100" r="2.2"/><circle cx="80" cy="120" r="2.2"/><circle cx="80" cy="140" r="2.2"/></g>
+      <g class="a15-c2"><circle cx="100" cy="60" r="2.2"/><circle cx="100" cy="80" r="2.2"/><circle cx="100" cy="100" r="2.2"/><circle cx="100" cy="120" r="2.2"/><circle cx="100" cy="140" r="2.2"/></g>
+      <g class="a15-c3"><circle cx="120" cy="60" r="2.2"/><circle cx="120" cy="80" r="2.2"/><circle cx="120" cy="100" r="2.2"/><circle cx="120" cy="120" r="2.2"/><circle cx="120" cy="140" r="2.2"/></g>
+      <g class="a15-c4"><circle cx="140" cy="60" r="2.2"/><circle cx="140" cy="80" r="2.2"/><circle cx="140" cy="100" r="2.2"/><circle cx="140" cy="120" r="2.2"/><circle cx="140" cy="140" r="2.2"/></g>
+      <g class="a15-c5"><circle cx="160" cy="60" r="2.2"/><circle cx="160" cy="80" r="2.2"/><circle cx="160" cy="100" r="2.2"/><circle cx="160" cy="120" r="2.2"/><circle cx="160" cy="140" r="2.2"/></g>
+      <g class="a15-c6"><circle cx="180" cy="60" r="2.2"/><circle cx="180" cy="80" r="2.2"/><circle cx="180" cy="100" r="2.2"/><circle cx="180" cy="120" r="2.2"/><circle cx="180" cy="140" r="2.2"/></g>
+      <g class="a15-c7"><circle cx="200" cy="60" r="2.2"/><circle cx="200" cy="80" r="2.2"/><circle cx="200" cy="100" r="2.2"/><circle cx="200" cy="120" r="2.2"/><circle cx="200" cy="140" r="2.2"/></g>
+    </g>
+    <!-- the rebels — out of place, invited home -->
+    <circle cx="120" cy="80" r="2.6" class="a15-mutf a15-r1"/>
+    <circle cx="160" cy="120" r="2.6" class="a15-mutf a15-r2"/>
+    <circle cx="180" cy="60" r="2.6" class="a15-mutf a15-r3"/>
+    <!-- hover — harmony held -->
+    <g class="a15-accf a15-hv">
+      <circle cx="80" cy="60" r="2.2"/><circle cx="100" cy="60" r="2.2"/><circle cx="120" cy="60" r="2.2"/><circle cx="140" cy="60" r="2.2"/><circle cx="160" cy="60" r="2.2"/><circle cx="180" cy="60" r="2.2"/><circle cx="200" cy="60" r="2.2"/>
+      <circle cx="80" cy="80" r="2.2"/><circle cx="100" cy="80" r="2.2"/><circle cx="120" cy="80" r="2.2"/><circle cx="140" cy="80" r="2.2"/><circle cx="160" cy="80" r="2.2"/><circle cx="180" cy="80" r="2.2"/><circle cx="200" cy="80" r="2.2"/>
+      <circle cx="80" cy="100" r="2.2"/><circle cx="100" cy="100" r="2.2"/><circle cx="120" cy="100" r="2.2"/><circle cx="140" cy="100" r="2.2"/><circle cx="160" cy="100" r="2.2"/><circle cx="180" cy="100" r="2.2"/><circle cx="200" cy="100" r="2.2"/>
+      <circle cx="80" cy="120" r="2.2"/><circle cx="100" cy="120" r="2.2"/><circle cx="120" cy="120" r="2.2"/><circle cx="140" cy="120" r="2.2"/><circle cx="160" cy="120" r="2.2"/><circle cx="180" cy="120" r="2.2"/><circle cx="200" cy="120" r="2.2"/>
+      <circle cx="80" cy="140" r="2.2"/><circle cx="100" cy="140" r="2.2"/><circle cx="120" cy="140" r="2.2"/><circle cx="140" cy="140" r="2.2"/><circle cx="160" cy="140" r="2.2"/><circle cx="180" cy="140" r="2.2"/><circle cx="200" cy="140" r="2.2"/>
+    </g>
+    <!-- the rebels' home seats -->
+    <circle cx="120" cy="80" r="5" class="a15-acc a15-hm a15-h1" stroke-width="1.2" stroke-dasharray="2 3"/>
+    <circle cx="160" cy="120" r="5" class="a15-acc a15-hm a15-h2" stroke-width="1.2" stroke-dasharray="2 3"/>
+    <circle cx="180" cy="60" r="5" class="a15-acc a15-hm a15-h3" stroke-width="1.2" stroke-dasharray="2 3"/>
+  </g>
+  <!-- the quiet air -->
+  <g class="a15-in a15-g3">
+    <circle cx="60" cy="166" r="1.3" class="a15-fntf a15-m1"/>
+    <circle cx="222" cy="44" r="1.2" class="a15-fntf a15-m2"/>
+  </g>
+  <!-- hover payoff -->
+  <g class="a15-chip">
+    <rect x="192" y="20" width="58" height="20" rx="10" class="a15-hl" stroke-width="1.2"/>
+    <circle cx="203" cy="30" r="2.5" class="a15-accf"/>
+    <text x="211" y="33.5" class="a15-chtx">ORDER</text>
+  </g>
+  <text x="20" y="196" class="a15-cap a15-capt a15-in a15-g3">A SYSTEM THAT CALMS</text>
+</svg>
