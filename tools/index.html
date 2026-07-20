@@ -100,12 +100,19 @@ body>main{flex:1 0 auto;width:100%}
 /* the EXPEDITION (H6) — the counter under the orbit + the "opened" stamps on the cards.
    Live-or-nothing: the counter is hidden until the first real open (deployed). */
 .expcap{margin:10px 0 0;text-align:center;font:500 12px/1.5 var(--mono);color:var(--ink-muted)}
-.expcap b{color:var(--ink);font-weight:700}.expcap .ec-check{color:var(--ok);font-weight:700}
-.oped{display:inline-flex;align-items:center;font:600 10.5px/1 var(--mono);color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 40%,var(--hairline));background:color-mix(in srgb,var(--ok) 9%,var(--surface));border-radius:999px;padding:4px 8px;white-space:nowrap}
-.app.seen{border-color:color-mix(in srgb,var(--ok) 34%,var(--hairline))}
-tr.seen td:first-child{box-shadow:inset 3px 0 0 var(--ok)}
+.expcap b{color:var(--ink);font-weight:700}.expcap .ec-check{color:var(--ink);font-weight:700}
+/* ONE chip metric for the whole estate. The height is EXPLICIT, so a mono chip (visits,
+   opened) and a sans chip (live) can never disagree by a pixel — in any view, at any
+   width. Owner catch: the visits pill read "gepeng" (flat) beside the live badge. */
+.badge,.pv,.oped{display:inline-flex;align-items:center;height:22px;box-sizing:border-box;padding:0 9px;border:1px solid var(--hairline);border-radius:var(--r-pill);white-space:nowrap;flex:none}
+/* the OPENED stamp is the VISITOR'S OWN trail, not a fact about the product — so it
+   wears ink (the star's monochrome chrome) and leaves green to mean exactly one thing:
+   live. Owner catch: opened and live were the same green pill in every view. */
+.oped{gap:5px;font:600 10.5px/1 var(--mono);color:var(--ink);border-color:color-mix(in srgb,var(--ink) 22%,var(--hairline));background:color-mix(in srgb,var(--ink) 5%,var(--surface))}
+.oped .ck{font:700 11px/1 var(--font);font-style:normal}
+.app.seen{border-color:color-mix(in srgb,var(--ink) 26%,var(--hairline))}
+tr.seen td:first-child{box-shadow:inset 3px 0 0 color-mix(in srgb,var(--ink) 55%,var(--surface))}
 .dcard{position:relative}
-.dcard .dseen{position:absolute;top:10px;left:10px;width:26px;height:26px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font:700 14px/1 var(--font);box-shadow:var(--elev-1);z-index:3}
 /* the expedition celebration (H6): veil + bottom sheet (slides up) + confetti canvas */
 .eggveil{position:fixed;inset:0;background:rgba(23,23,23,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:95}
 .eggveil.on{opacity:1;pointer-events:auto}
@@ -222,8 +229,12 @@ tr.seen td:first-child{box-shadow:inset 3px 0 0 var(--ok)}
 .dcard .did .dn b{font-size:15px;display:block}
 .dcard .did .dn .slug{font:450 11px/1.6 var(--mono);color:var(--ink-faint)}
 .dcard .dtag{display:block;color:var(--ink-muted);font-size:12.5px;margin-top:8px;min-height:2.6em}
-.dcard .dfoot{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11.5px;color:var(--ink-faint);flex-wrap:wrap}
-.dcard .storybtn{margin-left:auto;font:600 12px/1 var(--font);color:var(--ink);background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-md);padding:8px 12px;text-decoration:none}
+/* the foot is TWO bands (owner call): the facts wrap freely on top, the two doors always
+   share one line below — no button ever lands mid-chip-row again, at any width */
+.dcard .dfoot{display:flex;flex-direction:column;align-items:stretch;gap:11px;margin-top:11px;font-size:11.5px;color:var(--ink-faint)}
+.dcard .dmeta{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.dcard .dacts{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.dcard .storybtn{font:600 12px/1 var(--font);color:var(--ink);background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-md);padding:8px 12px;text-decoration:none}
 .dcard .storybtn:hover{border-color:var(--ink-faint);box-shadow:var(--elev-1)}
 .dcard .openbtn{font:600 12.5px/1 var(--font);background:var(--ink);color:#fff;border-radius:var(--r-md);padding:9px 14px;text-decoration:none}
 .dcard .openbtn:hover{opacity:.88}
@@ -274,19 +285,28 @@ tr.seen td:first-child{box-shadow:inset 3px 0 0 var(--ok)}
 .ohub .slug{font:450 11px/1.4 var(--mono);color:var(--ink-faint)}
 .ohub .otag{color:var(--ink-muted);font-size:12.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ohub .orow{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap}
-.ohub .orow .pv{margin-left:0}
 .ohub .oacts{display:flex;gap:8px;align-items:center;margin-top:2px}
-.ohub .openbtn{font:600 12.5px/1 var(--font);background:var(--ink);color:#fff;border-radius:var(--r-md);padding:9px 14px;text-decoration:none}
-.ohub .openbtn:hover{opacity:.88}
-.ohub .storybtn{font:600 12px/1 var(--font);color:var(--ink);background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-md);padding:8px 12px;text-decoration:none}
-.ohub .storybtn:hover{border-color:var(--ink-faint);box-shadow:var(--elev-1)}
+.ohub .openbtn,.odet .openbtn{font:600 12.5px/1 var(--font);background:var(--ink);color:#fff;border-radius:var(--r-md);padding:9px 14px;text-decoration:none}
+.ohub .openbtn:hover,.odet .openbtn:hover{opacity:.88}
+.ohub .storybtn,.odet .storybtn{font:600 12px/1 var(--font);color:var(--ink);background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-md);padding:8px 12px;text-decoration:none}
+.ohub .storybtn:hover,.odet .storybtn:hover{border-color:var(--ink-faint);box-shadow:var(--elev-1)}
+/* PHONE (owner catch: "view lain punya info lengkap, orbit cuma tombol Open"): a 170px
+   circle cannot hold the facts AND the doors, so on small screens the selection's detail
+   rides a full-width panel right under the wheel — the hub stays the calm "what's
+   selected" anchor the owner liked. Rendered INSTEAD of the in-hub block, never beside
+   it (orbitHub reads OMOB), so there is exactly one star and one Open at any width. */
+.odet{max-width:420px;margin:14px auto 0;background:var(--surface);border:1px solid color-mix(in srgb,var(--ha,transparent) 32%,var(--hairline));border-radius:var(--r-lg);box-shadow:var(--elev-1);padding:13px 15px;text-align:center}
+.odet[hidden]{display:none}
+.odet .otag{display:block;color:var(--ink-muted);font-size:12.5px;line-height:1.55}
+.odet .orow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;margin-top:11px}
+.odet .orow .favbtn{width:32px;height:32px;font-size:15px}
+.odet .oacts{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px}
 .onav{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:var(--ink);box-shadow:var(--elev-1);cursor:pointer;font-size:19px;line-height:1;color:#fff;display:grid;place-items:center;transition:transform var(--t-fast),background var(--t-fast)}
 .onav:hover{background:#000;transform:scale(1.08)}
 @media(max-width:600px){
   .orbit-stage{gap:8px}
   .onav{width:34px;height:34px;font-size:16px}
   .oseg .oem{font-size:28px}
-  .ohub .otag,.ohub .orow,.ohub .storybtn{display:none}
   .ohub .oic{width:64px}
   .ohub .dplaque{width:34px;height:34px;font-size:17px;border-radius:10px;top:-6px;right:-10px}
   .ohub b{font-size:13px}
@@ -323,6 +343,19 @@ h2 .n{font-size:12px;color:var(--ink-faint);font-weight:500}
 .viewtog button:hover{color:var(--ink);background:var(--wash)}
 .viewtog button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .viewtog svg{width:16px;height:16px;display:block}
+/* PHONE toolbar (owner catch): the view toggle used to wrap onto a lonely third line —
+   which also drove its tip off the left edge. The search takes the whole first line (it
+   is the widest control), then ★ · sort · toggle share ONE line, the toggle pinned right
+   so the tip (anchored right:0) always opens INSIDE the screen. */
+@media(max-width:640px){
+  .toolbar{gap:10px}
+  .tools{margin-left:0;width:100%;gap:8px}
+  .tools .search{flex:1 0 100%;order:-1}
+  .tools .search input{width:100%}
+  .favchip{flex:none}
+  .sortsel{flex:1;min-width:0}
+  .viewtog{flex:none;margin-left:auto}
+}
 
 /* ── card grid ── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--s-4)}
@@ -352,12 +385,11 @@ h2 .n{font-size:12px;color:var(--ink-faint);font-weight:500}
 .app .tag{color:var(--ink-muted);font-size:12.5px;min-height:2.6em}
 .app .foot{display:flex;align-items:center;gap:6px 8px;margin-top:auto;font-size:11.5px;color:var(--ink-faint);flex-wrap:wrap}
 .sw{width:12px;height:12px;border-radius:4px;border:1px solid rgba(0,0,0,.08);flex:none}
-.badge{font-size:11px;font-weight:500;border:1px solid var(--hairline);background:var(--wash);border-radius:var(--r-pill);padding:2px 8px;color:var(--ink-muted);white-space:nowrap}
+.badge{font:500 11px/1 var(--font);background:var(--wash);color:var(--ink-muted)}
 .badge.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,#fff);background:color-mix(in srgb,var(--ok) 8%,#fff)}
 /* live signals — the per-card visitor chip (subtle, in the card foot / status cell) */
-.pv{display:inline-flex;align-items:center;gap:5px;font:600 10.5px/1 var(--mono);color:var(--ink-muted);white-space:nowrap;border:1px solid var(--hairline);background:var(--wash);border-radius:999px;padding:3px 9px}
+.pv{gap:5px;font:600 10.5px/1 var(--mono);color:var(--ink-muted);background:var(--wash)}
 .pv[hidden]{display:none!important}/* live-or-nothing: display:inline-flex would beat the UA [hidden] rule and leak an empty shell while the count waits (owner catch on the deployed estate) */
-.apps-tbl .pv,.apps-tbl .oped{margin-left:8px}
 .pv .pv-eye{opacity:.7;font-family:initial}
 .pv b{color:var(--accent);font-weight:700}
 .tele-note{color:var(--ink-faint);font-size:11.5px}
@@ -380,6 +412,9 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
 .apps-tbl .pname .slug{display:block;font:450 11px/1 var(--mono);color:var(--ink-faint);margin-top:3px}
 .apps-tbl .tag{color:var(--ink-muted);max-width:44ch}
 .apps-tbl .acc{display:inline-flex;align-items:center;gap:7px;font:450 11px/1 var(--mono);color:var(--ink-muted);white-space:nowrap}
+/* the status cell is a chip ROW, not a run of margins: when it wraps to a second line
+   the chips keep a real 6px gutter above them (owner catch — line 2 sat flush on line 1) */
+.apps-tbl .stchips{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
 .apps-tbl .ghost-row td{color:var(--ink-faint);text-align:center;font-size:12.5px;padding:14px}
 
 /* ── empty state ── */
@@ -2055,7 +2090,7 @@ function expedition(){
   return s;
 }
 let EXP=expedition();
-const seenPill=a=>EXP.has(a.slug)?`<span class="oped" title="You've opened this tool">✓ opened</span>`:"";
+const seenPill=a=>EXP.has(a.slug)?`<span class="oped" title="You've opened this tool"><span class="ck" aria-hidden="true">✓</span>opened</span>`:"";
 /* ── FAVORITES (owner feature 2026-07-19) — two voices, one star. The manifest's
    fav:true is the owner's curated label (ships as a default favorite for everyone —
    a sample shortlist); the visitor's own stars live in ONE localStorage key,
@@ -2163,7 +2198,7 @@ const row=a=>`<tr class="${EXP.has(a.slug)?"seen":""}${isFav(a)?" faved":""}" da
     <td><div class="pname">${favBtn(a)}<span class="em">${esc(a.emoji)}</span><span><a href="${esc(a.file)}">${esc(a.name)}</a><span class="slug">${esc(pathOf(a))}</span></span></div></td>
     <td class="tag">${esc(a.tagline)}</td>
     <td><span class="acc"><span class="sw" style="background:${esc(a.accent)}"></span>${esc(a.accent)}</span></td>
-    <td><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a)}${seenPill(a)}</td></tr>`;
+    <td><span class="stchips"><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a)}${seenPill(a)}</span></td></tr>`;
 
 function emptyHTML(){
   return `<div class="empty"><span class="big" aria-hidden="true">🔍</span>No products match “${esc(query)}”.<br>
@@ -2434,11 +2469,13 @@ function dcardHTML(a,pos){
   const story=(PUBLIC?"../index.html":"../05-orbit/site/index.html")+"#/crafts/"+a.slug;
   return `<article class="dcard ${pos===0?"dp0":"dpn dp"+pos}${EXP.has(a.slug)?" seen":""}${isFav(a)?" faved":""}"${pos===0?"":' aria-hidden="true"'} data-slug="${esc(a.slug)}" data-off="${pos}"${pos!==0?` title="${esc(a.name)} — bring to front"`:""}>
     <span class="dplaque" aria-hidden="true">${esc(a.emoji)}</span>
-    ${EXP.has(a.slug)?'<span class="dseen" title="You\'ve opened this tool" aria-hidden="true">✓</span>':""}
     ${sc?`<div class="dmat"><span class="mo-mount" data-mo="${esc(a.slug)}/scene"></span></div>`:""}
     <div class="did">${ic?`<span class="dic mo-mount" data-mo="${esc(a.slug)}/icon" aria-hidden="true"></span>`:""}<span class="dn"><b>${esc(a.name)}</b><span class="slug">${esc(a.slug)} · ${esc(a.v)}</span></span></div>
     <span class="dtag">${esc(a.tagline)}</span>
-    <span class="dfoot">${favBtn(a)}<span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)}</span>${visChip(a)}<a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a><a class="openbtn" href="${esc(a.file)}">Open ↗</a></span>
+    <span class="dfoot">
+      <span class="dmeta">${favBtn(a)}<span class="sw" style="background:${esc(a.accent)}"></span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)}</span>${seenPill(a)}${visChip(a)}</span>
+      <span class="dacts"><a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a><a class="openbtn" href="${esc(a.file)}">Open ↗</a></span>
+    </span>
   </article>`;
 }
 function deckHTML(list){
@@ -2580,23 +2617,35 @@ function orbitHTML(full,list){
       <div class="ohub" id="ohub" aria-live="polite"></div>
     </div>
     <button type="button" class="onav" id="orbit-next" aria-label="Next product">›</button>
-  </div>`;
+  </div>
+  <div class="odet" id="odet" hidden></div>`;
 }
+/* the detail has TWO possible seats — inside the hub (desktop: the circle is ~390px and
+   holds it beautifully) or the panel under the wheel (phone). Whichever the screen can
+   carry gets the ONE copy; crossing the breakpoint re-renders rather than duplicating. */
+const OMOB=window.matchMedia("(max-width:600px)");
+OMOB.addEventListener("change",()=>{ if(view==="orbit")orbitHub(); });
 function orbitHub(){
   const hub=$("ohub"); if(!hub)return;
+  const det=$("odet");
   const a=filtered(ordered(sort),query).find(x=>x.slug===orbitSel);
-  if(!a){hub.innerHTML="";hub.style.removeProperty("--ha");return;}
+  if(!a){hub.innerHTML="";hub.style.removeProperty("--ha");if(det){det.innerHTML="";det.hidden=true;}return;}
   const ic=document.querySelector(`template[data-motion="${a.slug}/icon"]`);
   const story=(PUBLIC?"../index.html":"../05-orbit/site/index.html")+"#/crafts/"+a.slug;
   hub.style.setProperty("--ha",a.accent); /* the hub ring quietly wears the selection's accent */
+  /* the version already rides the slug line, so the badge stays the bare status here —
+     the swatch goes too: the ring itself is already wearing the accent (owner: keramaian) */
+  const detail=`<span class="otag">${esc(a.tagline)}</span>
+    <span class="orow">${favBtn(a)}<span class="badge ${a.status==="live"?"live":""}">${esc(a.status)}</span>${seenPill(a)}${visChip(a)}</span>
+    <span class="oacts"><a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a><a class="openbtn" href="${esc(a.file)}">Open ↗</a></span>`;
+  const mob=OMOB.matches;
   hub.innerHTML=`<div class="ohub-in">
     <span class="ostack">${ic?`<span class="oic mo-mount" data-mo="${esc(a.slug)}/icon" aria-hidden="true"></span>`:`<span class="oemoji" aria-hidden="true">${esc(a.emoji)}</span>`}<span class="dplaque" aria-hidden="true">${esc(a.emoji)}</span></span>
     <b>${esc(a.name)}</b>
     <span class="slug">${esc(a.slug)} · ${esc(a.v)}</span>
-    <span class="otag">${esc(a.tagline)}</span>
-    <span class="orow">${favBtn(a)}<span class="sw" style="background:${esc(a.accent)}"></span><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${seenPill(a)}${visChip(a)}</span>
-    <span class="oacts"><a class="openbtn" href="${esc(a.file)}">Open ↗</a><a class="storybtn" href="${esc(story)}" target="_blank" rel="noopener">Full story</a></span>
+    ${mob?"":detail}
   </div>`;
+  if(det){ det.style.setProperty("--ha",a.accent); det.innerHTML=mob?detail:""; det.hidden=!mob; }
   mountMotion(hub);
   hydrateVisits();
 }
