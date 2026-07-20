@@ -336,7 +336,8 @@ html.spec .mdchip{opacity:1}
 /* the two-signal legend — one calm line explaining the chips/buttons on the cards below */
 .fam-legend{font-size:12.5px;line-height:1.75;color:var(--ink-faint);margin:0 0 var(--s5);padding:0;border:0;background:none}
 .fam-legend b{color:var(--ink);font-weight:600}
-.fam-legend .fl-i{font-style:normal;margin-right:1px}
+/* the legend must show the SAME mark the chip wears — the live dot, not the retired eye */
+.fam-legend .fl-i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--ink-faint);vertical-align:middle;margin:0 4px 1px 1px;font-style:normal;animation:pvpulse 2.6s ease-in-out infinite}
 .fam-legend .fl-sep{color:var(--ink-faint);margin:0 6px}
 /* the WALL — the family as a MENTION (owner call: the v5.1 explorer retired): one
    living tile per product — its motion icon on the fixed light mat, the deck's emoji
@@ -365,12 +366,21 @@ html.spec .mdchip{opacity:1}
 .peek-itch{display:flex;gap:8px;align-items:baseline;margin:0 0 12px;font-size:12.5px;font-style:italic;color:var(--ink-muted)}
 .peek-itch b{font:700 10px/1.5 var(--mono);font-style:normal;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;white-space:nowrap}
 /* live signals — the visitor-count chip (rendered ONLY when the release flag is present AND the third party answered) */
-.pv{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0 12px;font:600 11.5px/1 var(--mono);color:var(--ink-muted);border:1px solid var(--hairline);border-radius:999px;padding:6px 11px;background:var(--surface);white-space:nowrap;vertical-align:middle}
+/* the visitor chip is EVIDENCE, and the WHOLE pill is the door to the third party that
+   holds it (owner call 2026-07-20 — the title had promised "click to inspect" while only
+   the inner link obeyed). Same anatomy as the tools dashboard: live dot · count · unit ·
+   the ↗. The emoji eye retired (platform-dependent, and the wrong metaphor for a
+   cookie-free counter). One estate, one chip. */
+.pv{display:inline-flex;align-items:center;gap:7px;margin:10px 0 0 12px;font:600 11.5px/1 var(--mono);color:var(--ink-muted);border:1px solid var(--hairline);border-radius:999px;padding:6px 11px;background:var(--surface);white-space:nowrap;vertical-align:middle;text-decoration:none;cursor:pointer;transition:border-color .18s,color .18s}
 .pv[hidden]{display:none!important}/* live-or-nothing: display:inline-flex would beat the UA [hidden] rule and leak an empty pill while the third party hasn't answered (owner catch on the deployed estate 2026-07-19) */
-.pv b{color:var(--accent);font-weight:700}
-.pv .pv-eye{opacity:.7}
-.pv a{color:var(--ink-faint);text-decoration:none;border-left:1px solid var(--hairline);padding-left:8px}
-.pv a:hover{color:var(--accent)}
+.pv b{color:var(--ink);font-weight:700;font-size:12.5px;letter-spacing:-.01em}
+.pv .pv-live{width:5px;height:5px;border-radius:50%;background:var(--ink-faint);flex:none;animation:pvpulse 2.6s ease-in-out infinite}
+@keyframes pvpulse{0%,100%{opacity:.3;transform:scale(.82)}50%{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.pv .pv-live,.fam-legend .fl-i{animation:none;opacity:.85}}
+.pv .pv-go{border-left:1px solid var(--hairline);padding-left:7px;color:var(--ink-faint);font-family:var(--font);font-weight:700}
+.pv:hover,.pv:focus-visible{border-color:var(--accent);color:var(--ink);text-decoration:none}/* the site's global a:hover underline must not reach INSIDE the pill */
+.pv:hover .pv-live,.pv:focus-visible .pv-live{background:var(--accent)}
+.pv:hover .pv-go,.pv:focus-visible .pv-go{color:var(--accent)}
 .peek-meta .pv{margin:8px 0 0}
 .pv-note{font-size:12px;color:var(--ink-faint)}
 .pv-note a{color:var(--ink-muted)}
@@ -1068,6 +1078,9 @@ function btnLink(l,cls,title,sametab){
 var TELEMETRY=window.__ALAMEHAN_TELEMETRY__||null;
 function goatUrlFor(code,path){return "https://"+code+".goatcounter.com/counter//"+String(path).replace(/^\/+/,"").split("?")[0]+".json"}
 function goatDash(){return "https://"+(TELEMETRY&&TELEMETRY.code)+".goatcounter.com"}
+/* every seat renders the SAME chip, and it is a real link: the whole pill opens the
+   public dashboard in a new tab (middle-click and copy-link-address included) */
+function pvChip(path){return '<a class="pv" data-visits="'+esc(path)+'" href="'+esc(goatDash())+'" target="_blank" rel="noopener" hidden></a>'}
 var GOAT={};
 function goatFetch(path,cb){
   if(!TELEMETRY||!TELEMETRY.code)return;
@@ -1086,9 +1099,10 @@ function hydrateVisits(root){
   if(!TELEMETRY)return;
   $$("[data-visits]",root||document).forEach(function(el){
     goatFetch(el.getAttribute("data-visits"),function(n){
-      el.innerHTML='<span class="pv-eye" aria-hidden="true">👁</span><b>'+esc(n)+"</b> "+esc(S("family_visits"))
-        +(el.getAttribute("data-bare")?"":' <a href="'+esc(goatDash())+'" target="_blank" rel="noopener">'+esc(S("family_verify"))+"</a>"); /* bare = the host line carries its own verify */
+      el.innerHTML='<span class="pv-live" aria-hidden="true"></span><b>'+esc(n)+"</b> "+esc(S("family_visits"))
+        +'<span class="pv-go" aria-hidden="true">↗</span>';
       el.title=S("family_visits_hint");
+      el.setAttribute("aria-label",n+" "+S("family_visits")+" — "+S("family_verify"));
       el.hidden=false;
     });
   });
@@ -1253,7 +1267,7 @@ function renderFamily(){
   inner+='<p class="fam-core">'+esc(S("family_core"))+"</p>"; /* owner call 2026-07-18: the core-chain name-drop retired for a general line */
   /* v6.8: Run-the-proof moved to Backstage (recruiter-clean default). The visitor-count
      legend only appears on the deployed estate, where the chips it explains exist. */
-  if(TELEMETRY)inner+='<p class="fam-legend"><b>'+esc(S("family_signals"))+':</b> <span class="fl-i">👁</span> '+esc(S("family_legend_visits"))+"</p>";
+  if(TELEMETRY)inner+='<p class="fam-legend"><b>'+esc(S("family_signals"))+':</b> <span class="fl-i" aria-hidden="true"></span> '+esc(S("family_legend_visits"))+"</p>";
   inner+='<div class="wall" role="list" data-spec="--surface,--accent">'+factory.map(function(e,ix){
       var m=e.meta,nm=L(m,"name")||e.slug;
       var mo=motionTplEl(e.slug,"icon")?'<span class="w-ic"><span class="mo-mount" data-motion-mount="'+esc(e.slug)+'/icon" aria-hidden="true"></span></span>':'<span class="w-ic w-ic-em" aria-hidden="true">'+esc(one(m.emoji)||"▢")+"</span>";
@@ -1705,8 +1719,8 @@ function renderFooter(){
   /* the ESTATE counter (owner call 2026-07-19): per-tool chips wait for each tool's own
      visitors, but the SITE's count exists from visitor #1 — so the footer telemetry line
      carries a live chip for "/" (GoatCounter records the home as "/", never "/index.html").
-     data-bare: the line already ends in its own verify link. */
-  if(TELEMETRY)html+='<p class="pv-note">'+esc(S("footer_telemetry"))+' <span class="pv" data-visits="/" data-bare="1" hidden></span> · <a href="'+esc(goatDash())+'" target="_blank" rel="noopener">'+esc(S("family_verify"))+"</a></p>";
+     The chip is its own verify door now, so the line no longer trails a second link. */
+  if(TELEMETRY)html+='<p class="pv-note">'+esc(S("footer_telemetry"))+" "+pvChip("/")+"</p>";
   if(arcDone())html+='<p class="pv-note arc-note">'+emphasize(S("arc_done"))+"</p>"; /* v6.5 — the colophon speaks at 8/8, never before */
   $("#footer").innerHTML=html;
 }
@@ -2023,7 +2037,7 @@ function renderPeek(){
     +'<button class="iconbtn peek-close" data-act="closepeek" aria-label="Close">✕</button></div></div>'
     +'<div class="peek-meta">'+(chips.length?'<div class="chips">'+chips.join("")+"</div>":"")
     +(links.length?'<div class="card-links">'+links.map(function(l){return btnLink(l,"btn--secondary btn--sm",l.hint)}).join("")+"</div>":"")
-    +(TELEMETRY&&fid==="crafts"&&la?'<span class="pv" data-visits="'+esc(String(la.url).split("?")[0])+'" hidden></span>':"")+"</div>"
+    +(TELEMETRY&&fid==="crafts"&&la?pvChip(String(la.url).split("?")[0]):"")+"</div>"
     +'<div class="peek-body">'+mo+itch+(cover?'<img class="cover" src="'+esc(cover)+'" alt="">':"")+body+"</div>";
   hydrateVisits(panel);
   hydrateMotion(panel);

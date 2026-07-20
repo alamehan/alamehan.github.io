@@ -387,11 +387,26 @@ h2 .n{font-size:12px;color:var(--ink-faint);font-weight:500}
 .sw{width:12px;height:12px;border-radius:4px;border:1px solid rgba(0,0,0,.08);flex:none}
 .badge{font:500 11px/1 var(--font);background:var(--wash);color:var(--ink-muted)}
 .badge.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,#fff);background:color-mix(in srgb,var(--ok) 8%,#fff)}
-/* live signals — the per-card visitor chip (subtle, in the card foot / status cell) */
-.pv{gap:5px;font:600 10.5px/1 var(--mono);color:var(--ink-muted);background:var(--wash)}
+/* live signals — the per-card visitor chip. It is EVIDENCE, not decoration, so it reads
+   like a meter and behaves like a door: a live dot (this number came from a third party
+   just now), the count as the hero, its unit, then a hairline and the ↗ that opens the
+   public GoatCounter dashboard — the SAME door the portfolio's chip opens. The whole pill
+   is that door (owner call 2026-07-20); the emoji eye retired (it rendered differently on
+   every platform and "watching" is the wrong metaphor for a cookie-free counter). */
+.pv{gap:6px;font:600 10.5px/1 var(--mono);color:var(--ink-muted);background:var(--wash);text-decoration:none;cursor:pointer;-webkit-appearance:none;appearance:none;transition:border-color var(--t-fast),background var(--t-fast),color var(--t-fast)}
 .pv[hidden]{display:none!important}/* live-or-nothing: display:inline-flex would beat the UA [hidden] rule and leak an empty shell while the count waits (owner catch on the deployed estate) */
-.pv .pv-eye{opacity:.7;font-family:initial}
-.pv b{color:var(--accent);font-weight:700}
+.pv .pv-live{width:5px;height:5px;border-radius:50%;background:var(--ink-faint);flex:none;animation:pvpulse 2.6s ease-in-out infinite}
+@keyframes pvpulse{0%,100%{opacity:.3;transform:scale(.82)}50%{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.pv .pv-live{animation:none;opacity:.85}}
+.pv b{color:var(--ink);font-weight:700;font-size:11.5px;letter-spacing:-.01em}
+.pv .pv-go{border-left:1px solid var(--hairline);padding-left:6px;color:var(--ink-faint);font-family:var(--font);font-weight:700}
+.pv:hover,.pv:focus-visible{border-color:var(--ink);background:var(--surface);color:var(--ink);text-decoration:none}
+.pv:hover .pv-live,.pv:focus-visible .pv-live{background:var(--ink)}
+.pv:hover .pv-go,.pv:focus-visible .pv-go{color:var(--ink);border-left-color:var(--ink-faint)}
+.pv:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* a card in the back row is ONE target: bring it to the front. Its chip and its star must
+   not swallow that click (they used to — the star's stopPropagation reached back cards) */
+.dcard.dpn .pv,.dcard.dpn .favbtn{pointer-events:none}
 .tele-note{color:var(--ink-faint);font-size:11.5px}
 .tele-note a{color:var(--ink-muted)}
 .app.ghost{border-style:dashed;align-items:center;justify-content:center;text-align:center;color:var(--ink-muted);gap:6px;min-height:150px}
@@ -2164,7 +2179,14 @@ const PUBLIC=!!window.__PUBLIC__;
 const TELEM=(window.__ALAMEHAN_TELEMETRY__&&window.__ALAMEHAN_TELEMETRY__.code)||"";
 const goatUrl=p=>`https://${TELEM}.goatcounter.com/counter//${String(p).replace(/^\/+/,"")}.json`;
 const goatDash=`https://${TELEM}.goatcounter.com`;
-const visChip=a=>(TELEM&&!a.internal)?`<span class="pv" data-visits="tools/${esc(a.slug)}.html" hidden></span>`:"";
+/* the chip IS the verify door. Everywhere it can be a real link it is one (middle-click,
+   copy-link-address, the browser's own new-tab handling) — except inside the grid card,
+   which is itself an <a>: an anchor nested in an anchor is closed by the HTML parser, so
+   that seat gets a button and the delegate below opens the same URL. */
+const pvChip=(path,inAnchor)=>inAnchor
+  ? `<button type="button" class="pv" data-visits="${path}" data-pvgo="1" hidden></button>`
+  : `<a class="pv" data-visits="${path}" href="${goatDash}" target="_blank" rel="noopener" hidden></a>`;
+const visChip=(a,inAnchor)=>(TELEM&&!a.internal)?pvChip(`tools/${esc(a.slug)}.html`,inAnchor):"";
 const GVIS={};
 function goatCount(path,cb){
   if(!TELEM)return;
@@ -2179,10 +2201,11 @@ function goatCount(path,cb){
 }
 function hydrateVisits(){
   if(!TELEM)return;
-  document.querySelectorAll("#apps [data-visits]").forEach(el=>{
+  document.querySelectorAll("[data-visits]").forEach(el=>{ // the footer's estate chip rides the same component
     goatCount(el.getAttribute("data-visits"),n=>{
-      el.innerHTML=`<span class="pv-eye" aria-hidden="true">👁</span><b>${esc(n)}</b> visits`;
-      el.title=`Live visitor count from GoatCounter — cookie-free, third-party. Audit at ${goatDash}`;
+      el.innerHTML=`<span class="pv-live" aria-hidden="true"></span><b>${esc(n)}</b> visits<span class="pv-go" aria-hidden="true">↗</span>`;
+      el.title=`${n} visits — live from GoatCounter: cookie-free, third-party, never self-reported. Click to inspect the public dashboard (${goatDash}).`;
+      el.setAttribute("aria-label",`${n} visits — verify on the public GoatCounter dashboard (opens in a new tab)`);
       el.hidden=false;
     });
   });
@@ -2192,7 +2215,7 @@ const card=(a,i)=>`<a class="app${EXP.has(a.slug)?" seen":""}${isFav(a)?" faved"
     <span class="top"><span class="em">${esc(a.emoji)}</span><span><b>${esc(a.name)}</b><br><span class="slug">${esc(pathOf(a))}</span></span></span>
     <span class="tag">${esc(a.tagline)}</span>
     <span class="foot"><span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span>
-      <span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a)}${seenPill(a)}</span></a>`;
+      <span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a,true)}${seenPill(a)}</span></a>`;
 const ghost="";
 const row=a=>`<tr class="${EXP.has(a.slug)?"seen":""}${isFav(a)?" faved":""}" data-href="${esc(a.file)}">
     <td><div class="pname">${favBtn(a)}<span class="em">${esc(a.emoji)}</span><span><a href="${esc(a.file)}">${esc(a.name)}</a><span class="slug">${esc(pathOf(a))}</span></span></div></td>
@@ -2217,7 +2240,7 @@ function tableHTML(list){
 const ghostRow=()=>"";
 const emptyRow=()=>`<tr class="ghost-row"><td colspan="4"><span aria-hidden="true">🔍</span> No products match “${esc(query)}”. <button type="button" class="clearbtn" id="clearq" style="margin:8px 0 0">Clear search</button></td></tr>`;
 
-let view=getLS("factory_apps_view","deck"); if(!VIEWS.includes(view)) view="deck"; // deck is the front face — the family, in motion; grid/table are one click away
+let view=getLS("factory_apps_view","table"); if(!VIEWS.includes(view)) view="table"; // owner call 2026-07-20: the TABLE is the front face — the whole family readable at a glance, one row per product; deck/orbit/grid are one click away (a returning visitor keeps whatever they last chose)
 let sort=getLS("factory_apps_sort","az"); if(!MODES.includes(sort)) sort="az";
 let query="";
 const appsEl=$("apps"), countEl=$("count"), qEl=$("q"), sortEl=$("sort");
@@ -2252,7 +2275,12 @@ function update(anim){
    data-href) — capture phase, one delegated listener */
 appsEl.addEventListener("click",e=>{
   const fb=e.target.closest?e.target.closest(".favbtn"):null;
-  if(fb){ e.preventDefault(); e.stopPropagation(); toggleFav(fb.getAttribute("data-fav")); }
+  if(fb){ e.preventDefault(); e.stopPropagation(); toggleFav(fb.getAttribute("data-fav")); return; }
+  /* the visitor chip is a door of its own: never let the card anchor or the table row's
+     data-href steal it. The <a> seats navigate themselves; the grid's button seat (an
+     anchor can't nest in an anchor) opens the same dashboard URL. */
+  const pv=e.target.closest?e.target.closest(".pv"):null;
+  if(pv){ e.stopPropagation(); if(pv.hasAttribute("data-pvgo")){ e.preventDefault(); window.open(goatDash,"_blank","noopener"); } }
 },true);
 $("favchip").addEventListener("click",()=>{
   favOnly=!favOnly; setLS("factory_favonly",favOnly?"1":"0"); update(false);
@@ -2860,8 +2888,10 @@ toolsTip();   // H7 — offer the one-time orientation chip after the first pain
 if(TELEM){
   const tn=document.getElementById("tele-note");
   if(tn){
-    tn.innerHTML=`<span aria-hidden="true">📡</span> Live visitor counts — <span class="pv" data-visits="tools/index.html" hidden></span> <a href="${goatDash}" target="_blank" rel="noopener">verify ↗</a>`;
-    goatCount("tools/index.html",n=>{ const el=tn.querySelector(".pv"); if(el){ el.innerHTML=`<span class="pv-eye" aria-hidden="true">👁</span><b>${esc(n)}</b> visits ·`; el.hidden=false; } });
+    /* the estate's own chip — the same component, so the verify door lives INSIDE it and
+       the line no longer trails a second link saying the same thing */
+    tn.innerHTML=`<span aria-hidden="true">📡</span> Live visitor counts — ${pvChip("tools/index.html")}`;
+    hydrateVisits();
   }
 }
 </script>
