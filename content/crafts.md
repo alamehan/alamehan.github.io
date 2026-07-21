@@ -972,17 +972,19 @@ your bookmarks bar and click it on your own site: recording, wording and the dre
 rehearsal all happen right there, in the real page. If you're working from a file,
 four stations run in a line, each unlocking the next — record by simply using the
 app, write the words, take one clean test run, publish. Not everything worth
-showing is a button, so anything at all can be pointed at instead: a chart, a
-status, a whole section becomes a step the guide highlights and never clicks.
-Both lanes end the same
-way: pick your site's folder and the guide installs itself into every page, or copy
-the snippet and paste it once. Re-publishing replaces that block instead of
-stacking another, so updating a tour is the same two clicks as shipping it.
+showing is a button, so anything can be pointed at instead: a chart, a status, a
+whole section becomes a step the guide highlights and never clicks. A flow that
+spans several pages is fine too — each step remembers the page it belongs to, so
+the guide follows your visitor across, and a visitor who starts it from the wrong
+page is asked whether to go there rather than left staring at nothing. Both lanes
+end the same way: pick your site's folder and the guide installs itself into every
+page, or copy the snippet and paste it once. Re-publishing replaces that block
+instead of stacking another, so updating a tour is the same two clicks as shipping it.
 
 ### What you get
 A guide that lives where your users get lost: inside the app, pointing at the real
-button — or the real chart — wearing your own colour and name — and it never needs a developer, a
-server, or a subscription.
+button (or the real chart), wearing your own colour and name — and never needing a
+developer, a server, or a subscription.
 @id
 ### Apa ini
 Pabrik panduan dalam-app yang offline: rekam alur nyata di web app mana pun klik
@@ -1000,15 +1002,18 @@ stasiun berbaris lurus dan tiap stasiun membuka yang berikutnya — rekam dengan
 memakai app-nya biasa saja, tulis kalimatnya, ambil satu putaran uji yang bersih,
 terbitkan. Tak semua yang perlu ditunjukkan itu tombol, jadi apa pun boleh ditunjuk
 saja: grafik, status, satu bagian utuh menjadi langkah yang disorot panduan dan tak
-pernah diklik. Kedua jalur berakhir sama: pilih folder situsmu dan panduannya memasang
-dirinya ke tiap halaman, atau salin snippet lalu tempel sekali. Menerbitkan ulang
-mengganti blok itu, bukan menumpuknya — jadi memperbarui tur sama mudahnya dengan
-merilisnya.
+pernah diklik. Alur yang melintasi beberapa halaman juga bisa — tiap langkah
+mengingat halamannya sendiri, jadi panduannya ikut menyeberang bersama pengunjung,
+dan pengunjung yang memulainya dari halaman yang salah ditanya dulu mau pindah atau
+tidak, bukan dibiarkan menatap layar diam. Kedua jalur berakhir sama: pilih folder
+situsmu dan panduannya memasang dirinya ke tiap halaman, atau salin snippet lalu
+tempel sekali. Menerbitkan ulang mengganti blok itu, bukan menumpuknya — jadi
+memperbarui tur sama mudahnya dengan merilisnya.
 
 ### Yang kamu dapat
 Panduan yang hidup di tempat user-mu tersesat: di dalam app, menunjuk tombol yang
-asli — atau grafik yang asli — memakai warna dan namamu sendiri — dan tak pernah butuh developer, server,
-atau langganan.
+asli (atau grafik yang asli), memakai warna dan namamu sendiri — dan tak pernah
+butuh developer, server, atau langganan.
 
 ## anggrek-classifier
 emoji: 🌺
