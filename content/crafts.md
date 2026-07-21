@@ -940,6 +940,71 @@ varian racikan AI sebagai draft baru — tak pernah menimpa record-mu.
 CV yang diedit dalam hitungan menit dan dicetak selamanya: tiap lamaran baru adalah
 sekali cetak, bukan sore penuh tata letak.
 
+## supertour
+emoji: 🧭
+name: SuperTour
+tagline.en: Record once, guide forever — in any app, offline.
+tagline.id: Rekam sekali, pandu selamanya — di app mana pun, offline.
+itch.en: Every product update leaves users lost — and the guide that could help them is stuck in a developer's backlog.
+itch.id: Setiap update produk membuat user tersesat — dan panduan yang bisa menolong mereka malah antre di backlog developer.
+year: 2026
+status: live
+stack: single HTML, Standard v2
+tag: onboarding
+tag: guide
+tag: byoai
+origin: factory
+codename: Pemandu
+link: Launch = tools/supertour.html
+swatch: #A16207
+
+@en
+### What it is
+The offline in-app-guide factory: record a real flow in any web app click by click,
+script it into a guided tour, and press one zero-dependency snippet that walks your
+users through the live app — spotlight, tooltip, guided clicks, no backend.
+
+### How it flows
+One question comes first: does your app already live on the web, or do you have an
+HTML file? Your answer picks a lane, and you stay on it to the end — the other one
+isn't hidden, it simply isn't there. If your app is live, drag a single button to
+your bookmarks bar and click it on your own site: recording, wording and the dress
+rehearsal all happen right there, in the real page. If you're working from a file,
+four stations run in a line, each unlocking the next — record by simply using the
+app, write the words, take one clean test run, publish. Both lanes end the same
+way: pick your site's folder and the guide installs itself into every page, or copy
+the snippet and paste it once. Re-publishing replaces that block instead of
+stacking another, so updating a tour is the same two clicks as shipping it.
+
+### What you get
+A guide that lives where your users get lost: inside the app, pointing at the real
+button, wearing your own colour and name — and it never needs a developer, a
+server, or a subscription.
+@id
+### Apa ini
+Pabrik panduan dalam-app yang offline: rekam alur nyata di web app mana pun klik
+demi klik, susun jadi tur terpandu, lalu cetak satu snippet tanpa dependensi yang
+menuntun user-mu di app yang hidup — spotlight, tooltip, klik terpandu, tanpa
+backend.
+
+### Alurnya
+Satu pertanyaan dulu: app-mu sudah hidup di web, atau kamu punya file HTML?
+Jawabanmu memilih satu jalur, dan kamu tetap di situ sampai ujung — jalur lain
+bukan disembunyikan, ia memang tidak ada. Kalau app-mu hidup, seret satu tombol ke
+bilah bookmark lalu klik di situsmu sendiri: merekam, menulis kalimat, dan gladi
+bersihnya terjadi persis di halaman aslinya. Kalau kamu berangkat dari file, empat
+stasiun berbaris lurus dan tiap stasiun membuka yang berikutnya — rekam dengan cara
+memakai app-nya biasa saja, tulis kalimatnya, ambil satu putaran uji yang bersih,
+terbitkan. Kedua jalur berakhir sama: pilih folder situsmu dan panduannya memasang
+dirinya ke tiap halaman, atau salin snippet lalu tempel sekali. Menerbitkan ulang
+mengganti blok itu, bukan menumpuknya — jadi memperbarui tur sama mudahnya dengan
+merilisnya.
+
+### Yang kamu dapat
+Panduan yang hidup di tempat user-mu tersesat: di dalam app, menunjuk tombol yang
+asli, memakai warna dan namamu sendiri — dan tak pernah butuh developer, server,
+atau langganan.
+
 ## anggrek-classifier
 emoji: 🌺
 name: Anggrek Classifier

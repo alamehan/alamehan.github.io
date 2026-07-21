@@ -300,6 +300,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:2px s
 .btn.primary{background:var(--accent);color:var(--on-accent)}
 .btn.primary:hover{background:var(--accent-active)}
 .btn.primary:disabled{background:var(--hairline);color:var(--ink-faint);cursor:not-allowed}
+/* a DISABLED button must LOOK disabled (D20 family sweep) — only `.primary` ever
+   had a disabled state, so a locked `.secondary` kept full contrast, kept its hover,
+   and swallowed the click in silence. */
+.btn:disabled{cursor:not-allowed;opacity:.55;box-shadow:none}
+.btn.secondary:disabled:hover{border-color:var(--hairline);box-shadow:none}
+.btn.ghost:disabled:hover,.btn.danger:disabled:hover{background:none}
 .btn.secondary{background:var(--surface);border-color:var(--hairline);color:var(--ink)}
 .btn.secondary:hover{border-color:var(--ink-faint);box-shadow:var(--elev-1)}
 .btn.ghost{background:none;color:var(--ink-muted);border:0;padding:8px 10px}

@@ -30,6 +30,7 @@ no installs, no accounts, no backends. Start at **[tools/](tools/index.html)**
 | 🪞 **UXMakeover** v1.0 | Every fix, explained. — the UX audit & makeover studio. | [`tools/uxmakeover.html`](tools/uxmakeover.html) |
 | 📖 **SuperDocs** v1.0 | Documentation that makes strangers believe. — one story, every surface. | [`tools/superdocs.html`](tools/superdocs.html) |
 | 🪪 **CVForge** v1.0 | One record in. Any résumé out. — the living-résumé studio. | [`tools/cvforge.html`](tools/cvforge.html) |
+| 🧭 **SuperTour** v1.0 | Record once, guide forever — in any app, offline. — the in-app-guide factory. | [`tools/supertour.html`](tools/supertour.html) |
 
 Every tool shares one design language and one philosophy — *one file, one accent,
 one standard* — the ⌂ button inside each brings you back to the dashboard, and the
