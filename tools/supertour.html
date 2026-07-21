@@ -910,7 +910,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
       var at = 0;
       if (resume) {
         try {
-          var p = JSON.parse(sessionStorage.getItem("supertour_progress") || "null");
+          var p = JSON.parse(sessionStorage.getItem("supertour_preview") || "null");   /* D36 — the preview keeps its OWN place; the visitor's crumb is never touched */
           if (p && p.g === gid && typeof p.i === "number") at = p.i;
         } catch (e) {}
       }
@@ -931,7 +931,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
       try { delete window.__ST_PREVIEW__; } catch (err) {}
       try { delete window.__ST_ZAPPY__; } catch (err) {}
       try { delete window.SuperTourRuntime; } catch (err) {}
-      try { sessionStorage.removeItem("supertour_progress"); } catch (err) {}
+      try { sessionStorage.removeItem("supertour_preview"); } catch (err) {}   /* D36 */
       MODE = "review"; render();
       saveSession();   // D29 — the preview is over; the session must not resume one
     }
@@ -1948,6 +1948,14 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
   var FX = RM ? "off" : (/^(vivid|full|calm|off)$/.test(Z.fx || "") ? Z.fx : "vivid");
   var LIVE = FX === "vivid" || FX === "full";   // the two that move at all
 
+  /* ═══ D36 · THE AUTHOR'S PREVIEW AND THE VISITOR'S TOUR MUST NOT SHARE A MEMORY ═══
+     \`supertour_progress\` was ONE key written by every runtime on the page. On a site where
+     the tour is installed there are two: the published one, and the author's preview. They
+     trampled each other — and because \`previewStart\` only accepts a crumb whose guide id
+     matches, one write by the installed copy made the preview fall back to step 0 and
+     announce "starts on another page" all over again, on the page it had just been sent to.
+     That is the loop. Two readers, two writers, one slot: separate them. */
+  var CRUMB = PREVIEW ? "supertour_preview" : "supertour_progress";
   /* storage: supertour_* in the HOST's origin, try/catch-wrapped (§10) */
   function lg(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function ls(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -2271,13 +2279,13 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
         : "can't find where it starts on this page."), { go: CHROME.close || "Close", onGo: hideBubble });
       return;
     }
-    sset("supertour_progress", JSON.stringify({ g: TOUR.gid, i: TOUR.idx }));
+    sset(CRUMB, JSON.stringify({ g: TOUR.gid, i: TOUR.idx }));
     bubble("**" + g.name + "** " + (TOUR.idx ? "continues" : "starts") + " on another page. Go there now?" +
       (PREVIEW ? " *(a preview stops at page changes — click the bookmark again there; installed, it never does)*" : ""), {
       go: "Go there", alt: "New tab", no: "Not now",
       onGo: function () { try { location.href = href; } catch (e) {} },
       onAlt: function () { try { window.open(href, "_blank"); } catch (e) {} hideBubble(); },
-      onNo: function () { sdel("supertour_progress"); hideBubble(); }
+      onNo: function () { sdel(CRUMB); hideBubble(); }
     });
   }
   var watcher = null, watching = false;
@@ -2327,6 +2335,12 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
       if ((tries || 0) < (away ? 2 : 8)) {
         if (!watching) {
           watching = true;
+          /* D36 — the delay the owner feels after a page change is the SITE'S OWN render time
+             (measured ~1.2s to first paint on the real site), not the runtime's: the element
+             is simply not in the DOM yet. We can't speed the page up, but we can stop the wait
+             reading as "dead" — show Zappy at home, looking, so it's "he's finding my place"
+             not a blank corner. He flies to the element the instant it appears. */
+          if (!$av.hidden) { $tip.hidden = true; $hole.hidden = true; homePos(); mood("walk"); }
           try {
             watcher = new MutationObserver(function () {
               if (!TOUR.on || !watching) return;
@@ -2360,7 +2374,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
     /* the walk, then the arrival (calm/off: faces change, nothing bounces) */
     mood("walk", true);
     setTimeout(function () { fly(false); mood(canAuto(s) ? "point" : "wait"); alive(s); }, 350);
-    sset("supertour_progress", JSON.stringify({ g: TOUR.gid, i: TOUR.idx })); // multi-page resume (D5)
+    sset(CRUMB, JSON.stringify({ g: TOUR.gid, i: TOUR.idx })); // multi-page resume (D5)
     post({ type: "run-step", idx: TOUR.idx, total: g.steps.length, skipped: false });
     if (THEATER) thQueue();
   }
@@ -2402,7 +2416,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
     if (dismissed) ls("supertour_seen_" + TOUR.gid, "1"); // dismissal is permanent (D12)
     clearTimeout(stepTimer);
     TOUR.on = false; TOUR.el = null; TOUR.escArmed = false;
-    sdel("supertour_progress");
+    sdel(CRUMB);
     $hole.hidden = true; $tip.hidden = true;
     fly(true); homePos();
     setTimeout(function () { fly(false); if (MOOD !== "cheer") mood("idle", true); }, 350);
@@ -2427,8 +2441,8 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
       if (e.type === "click") {
         /* D29 — checkpoint BEFORE the app acts: a lit LINK navigates before any timer fires */
         var g0 = guideOf(TOUR.gid);
-        if (g0 && TOUR.idx + 1 < g0.steps.length) sset("supertour_progress", JSON.stringify({ g: TOUR.gid, i: TOUR.idx + 1 }));
-        else sdel("supertour_progress");
+        if (g0 && TOUR.idx + 1 < g0.steps.length) sset(CRUMB, JSON.stringify({ g: TOUR.gid, i: TOUR.idx + 1 }));
+        else sdel(CRUMB);
         setTimeout(advance, 120); // the app's REAL action just ran
       }
       return;
@@ -2592,7 +2606,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
       bootTimer = setTimeout(function () { startTour(PREVIEW.guide || PACK.guides[0].id, PREVIEW.at || 0); }, 0);
     } else {
       var prog = null;
-      try { prog = JSON.parse(sget("supertour_progress") || "null"); } catch (e) {}
+      try { prog = JSON.parse(sget(CRUMB) || "null"); } catch (e) {}
       if (prog && guideOf(prog.g)) {
         bootTimer = setTimeout(function () { startTour(prog.g, prog.i); }, 0); // boot-resume after a page load
       } else {
