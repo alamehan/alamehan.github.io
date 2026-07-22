@@ -2447,10 +2447,14 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
           var fo = g.steps[fi];
           if (fo && fo.url && samePage(fo.url)) { TOUR.idx = fi; showStep(); return; }
         }
-      }
-      for (var li = TOUR.idx + 1; li < g.steps.length; li++) {
-        var lo = g.steps[li];
-        if (lo && lo.url && !samePage(lo.url) && pageHref(lo.url)) { askPage(g, lo); return; }
+        /* D41b - resumed fast-forward exhausted with no step for THIS page.
+           Skip the offer scan entirely: it could surface the page just left and produce
+           a backward ask or preview auto-fly. Skip normally instead. */
+      } else {
+        for (var li = TOUR.idx + 1; li < g.steps.length; li++) {
+          var lo = g.steps[li];
+          if (lo && lo.url && !samePage(lo.url) && pageHref(lo.url)) { askPage(g, lo); return; }
+        }
       }
     }
     TOUR.skips++;
@@ -2504,6 +2508,10 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
             var fwd = g.steps[ff];
             if (fwd && fwd.url && samePage(fwd.url)) { TOUR.idx = ff; stopWatch(); showStep(); return; }
           }
+          /* D41b - no same-page step found forward: the guide has nothing here yet.
+             Skip (announce) rather than offer the page just left - a resumed run has already
+             crossed and must never walk backward via an ask or a preview auto-fly. */
+          stopWatch(); missStep(g, s); return;
         }
         stopWatch(); askPage(g, s); return;
       }
