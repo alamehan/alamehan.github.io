@@ -140,6 +140,10 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
   }
 
   /* ── chain resolution + healing: first resolver wins (PRD §9, law L5) ── */
+  /* D40 — mirrors the runtime: a match that cannot be seen must not anchor a rehearsal. */
+  function seeable(el) {
+    try { var r = el.getBoundingClientRect(); return !!(r.width || r.height || el.getClientRects().length); } catch (e) { return false; }
+  }
   function resolveChain(doc, chain) {
     for (var i = 0; i < (chain || []).length; i++) {
       var s = chain[i], el = null;
@@ -153,6 +157,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
         } else if (s.indexOf("path:") === 0) el = doc.querySelector(s.slice(5));
         else el = doc.querySelector(s);
       } catch (e) { el = null; }
+      if (el && !seeable(el)) el = null;   // D40 — an invisible hit is a lookalike, not an anchor
       if (el) return { el: el, used: i };
     }
     return null;
@@ -2037,6 +2042,14 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
 
   /* chain resolution + pointer chain — same semantics as the agent */
   var USED = -1;   // which link matched — D31's path-only law is decided on it
+  /* D40 — a hit that cannot be SEEN is a lookalike by definition: aria/text links travel
+     across pages (that is what keeps SPAs working), and shared chrome — a closed modal's
+     Close, a collapsed menu — matches them with a 0×0 rect at (0,0), which is exactly
+     where the owner's tip landed. An invisible hit never anchors a step; the next link
+     in the chain (or the wait, or the page question) decides instead. */
+  function seeable(el) {
+    try { var r = el.getBoundingClientRect(); return !!(r.width || r.height || el.getClientRects().length); } catch (e) { return false; }
+  }
   function resolveChain(chain) {
     for (var i = 0; i < (chain || []).length; i++) {
       var s = chain[i], el = null;
@@ -2050,6 +2063,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
         } else if (s.indexOf("path:") === 0) el = document.querySelector(s.slice(5));
         else el = document.querySelector(s);
       } catch (e2) { el = null; }
+      if (el && !seeable(el)) el = null;   // D40 — an invisible hit is a lookalike, not an anchor
       if (el) { USED = i; return el; }
     }
     return null;
@@ -2362,8 +2376,19 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
       return;
     }
     sset(CRUMB, JSON.stringify({ g: TOUR.gid, i: TOUR.idx }));
-    bubble("**" + g.name + "** " + (TOUR.idx ? "continues" : "starts") + " on another page. Go there now?" +
-      (PREVIEW ? " *(a preview stops at page changes — click the bookmark again there; installed, it never does)*" : ""), {
+    /* D40 — the AUTHOR's live preview never asks. The authoring stamp is fresh (D39), the
+       crumb is written, and the runtime installed on the next page WILL adopt and carry
+       on — so "Go there now?" has exactly one honest answer, and asking it anyway is the
+       owner's screenshot: a question where a page change should be. The VISITOR keeps the
+       ask — a tour must never move a person without consent (D33). */
+    if (PREVIEW && !SANDBOX && !THEATER) {
+      if (restamp) restamp();
+      try { sessionStorage.setItem("supertour_preview_pack", JSON.stringify(PACK)); } catch (e) {}   // the hand-off must not depend on who wrote it first
+      bubble("**" + g.name + "** " + (TOUR.idx ? "continues" : "starts") + " on the next page — taking you there…", null);
+      stepTimer = setTimeout(function () { try { location.href = href; } catch (e) {} }, 400);
+      return;
+    }
+    bubble("**" + g.name + "** " + (TOUR.idx ? "continues" : "starts") + " on another page. Go there now?", {
       go: "Go there", alt: "New tab", no: "Not now",
       onGo: function () { try { location.href = href; } catch (e) {} },
       onAlt: function () { try { window.open(href, "_blank"); } catch (e) {} hideBubble(); },
@@ -2407,13 +2432,32 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
   function missStep(g, s) {
     /* broken step — heal-or-bow-out (L5): visible notice, count it, move on */
     stopWatch();
+    /* D40 — a tour that has not landed a SINGLE step yet is probably not broken, it is
+       standing on the wrong page. Before skipping blind, look down the guide for any step
+       that names another page and offer THAT move — packs recorded before steps carried a
+       \`url\` finally get the door the owner expected: confirmation first, then the jump. */
+    if (!SANDBOX && !TOUR.shown) {
+      for (var li = 0; li < g.steps.length; li++) {
+        var lo = g.steps[li];
+        if (lo && lo.url && !samePage(lo.url) && pageHref(lo.url)) { askPage(g, lo); return; }
+      }
+    }
     TOUR.skips++;
+    TOUR.missed++;
     post({ type: "run-step", idx: TOUR.idx, total: g.steps.length, skipped: true });
-    renderTip(g, s, false);
+    if (SANDBOX || THEATER) {
+      renderTip(g, s, false);   // the studio's board reads the tip; its replica has a layout
+    } else {
+      /* D40 — the old skip rendered the FULL tip with nothing to anchor it to: a tooltip
+         in the top-left corner pointing at nothing (the owner's "ngawur"). A skip is
+         Zappy's news, so Zappy says it from his own corner — tip and spotlight down. */
+      $tip.hidden = true; homePos();
+      bubble("step " + (TOUR.idx + 1) + " of **" + g.name + "** skipped — its element isn’t on this page.", null);
+    }
     mood("oops");
     TOUR.el = null;
     $hole.hidden = true;
-    stepTimer = setTimeout(advance, THEATER ? thDelay() : 1600);
+    stepTimer = setTimeout(advance, THEATER ? thDelay() : (SANDBOX ? 1600 : 1100));
   }
   function showStep(retry) {
     var g = guideOf(TOUR.gid), s = step();
@@ -2463,12 +2507,16 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
         /* a low-frequency safety re-check (an observer can miss a same-node attribute swap),
            and the ONE give-up: 6 s covers even a slow real site; a truly broken step then skips */
         giveUp = setInterval(function () { if (watching && TOUR.on && resolveChain(step().selectorChain)) showStep(); }, 250);
-        stepTimer = setTimeout(function () { if (watching) missStep(g, s); }, 6000);
+        /* D40 — only the FIRST unfound step earns the generous clock; once one has been
+           skipped its neighbours wait a beat, not six seconds APIECE — which across a run
+           started on the wrong page was the owner's "One moment… lama banget". */
+        stepTimer = setTimeout(function () { if (watching) missStep(g, s); }, TOUR.missed ? 1500 : 6000);
       }
       return;
     }
     stopWatch();
     TOUR.el = el;
+    TOUR.shown = true; TOUR.missed = 0;   // D40 — a landed step resets the skip clock
     hideBubble();   // D37 — clear the "One moment…" wait bubble the instant the step lands
     $hole.classList.toggle("look", s.action === "look"); // dashed = nothing to click here
     try { el.scrollIntoView({ block: "center", behavior: RM ? "auto" : "smooth" }); } catch (e) { }
@@ -2532,6 +2580,7 @@ sig: `+u.sig+"\n\n```json\n"+JSON.stringify(p,null,2)+"\n```\n"}function tt(r){c
     if (!g || !g.steps.length) return;
     hideBubble(); $panel.hidden = true;
     TOUR.on = true; TOUR.gid = gid; TOUR.idx = atIdx || 0; TOUR.skips = 0; TOUR.escArmed = false;
+    TOUR.shown = false; TOUR.missed = 0;   // D40 — "has anything landed yet?" drives skip honesty
     showStep();
   }
 
