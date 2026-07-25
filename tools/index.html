@@ -2204,7 +2204,12 @@ const APPS=[
   // file = the SHIPPED artifact. Since path-B, that is the built single-HTML at
   // apps/<slug>/dist/index.html (the pre-path-B originals live on as <slug>-pathA.html).
   {slug:"contentos", name:"ContentOS", emoji:"⚗️", accent:"#db2777", status:"live", v:"v1.0",
-   tagline:"Raw in. Ready out. — the content processing OS.", file:"contentos.html", impact:{e:4,f:2,k:3,c:3,s:4,r:4}},
+   tagline:"Raw in. Ready out. — the content processing OS.",    // Floor 2→3 (2026-07-25, PRD §22): it now runs five offline gates over the returned
+   // result — contract coverage derived from the registry, truncation, provenance — and
+   // compiles a deterministic repair job. That is "major deterministic work plus hard
+   // gates on the AI's part", and it passes the anti-bias test: a stranger holding the
+   // tool can watch the gates run without knowing anything about this repo.
+   file:"contentos.html", impact:{e:4,f:3,k:3,c:3,s:4,r:4}},
   {slug:"critiquespike", name:"CritiqueSpike", emoji:"🌶️", accent:"#3f6212", status:"live", v:"v1.0",
    tagline:"Every claim on trial. — a claim-interrogation console.", file:"critiquespike.html", impact:{e:4,f:2,k:2,c:1,s:2,r:3}},
   // fav:true = the owner's curated Favorite label — ships as a DEFAULT favorite for
