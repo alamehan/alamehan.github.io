@@ -104,7 +104,7 @@ body>main{flex:1 0 auto;width:100%}
 /* ONE chip metric for the whole estate. The height is EXPLICIT, so a mono chip (visits,
    opened) and a sans chip (live) can never disagree by a pixel — in any view, at any
    width. Owner catch: the visits pill read "gepeng" (flat) beside the live badge. */
-.badge,.pv,.oped{display:inline-flex;align-items:center;height:22px;box-sizing:border-box;padding:0 9px;border:1px solid var(--hairline);border-radius:var(--r-pill);white-space:nowrap;flex:none}
+.badge,.pv,.oped,.imp{display:inline-flex;align-items:center;height:22px;box-sizing:border-box;padding:0 9px;border:1px solid var(--hairline);border-radius:var(--r-pill);white-space:nowrap;flex:none}
 /* the OPENED stamp is the VISITOR'S OWN trail, not a fact about the product — so it
    wears ink (the star's monochrome chrome) and leaves green to mean exactly one thing:
    live. Owner catch: opened and live were the same green pill in every view. */
@@ -404,6 +404,60 @@ h2 .n{font-size:12px;color:var(--ink-faint);font-weight:500}
 .pv:hover .pv-live,.pv:focus-visible .pv-live{background:var(--ink)}
 .pv:hover .pv-go,.pv:focus-visible .pv-go{color:var(--ink);border-left-color:var(--ink-faint)}
 .pv:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* ⚖️ IMPACT — the judgement sort (06-ledger/registry/impact-ranking.md).
+   TWO rules this obeys. (1) A total is never shown alone: the chip carries six micro-bars
+   (P R D U A B) so you read the COMPOSITION at a glance, and the chip is a DOOR to the
+   method — same law the visitor chip follows, a chip that prints a number must be able to
+   explain it. (2) INK, never green: in this estate green means `live` and nothing else,
+   so a judgement — which is not a fact — never borrows the colour of one. */
+.rk{display:inline-flex;align-items:center;justify-content:center;min-width:25px;height:18px;box-sizing:border-box;padding:0 5px;border-radius:var(--r-pill);background:var(--ink);color:var(--surface);font:700 10.5px/1 var(--mono);letter-spacing:-.02em;flex:none}
+.rk[hidden]{display:none!important}
+.imp{gap:7px;font:600 10.5px/1 var(--mono);color:var(--ink-muted);background:var(--wash);cursor:pointer;text-decoration:none;-webkit-appearance:none;appearance:none;transition:border-color var(--t-fast),background var(--t-fast),color var(--t-fast)}
+.imp[hidden]{display:none!important}/* same trap the .pv chip taught: display:inline-flex beats the UA [hidden] rule */
+.imp b{color:var(--ink);font-weight:700;font-size:11.5px;letter-spacing:-.01em}
+.imp .bars{display:inline-flex;align-items:flex-end;gap:1.5px;height:11px;border-left:1px solid var(--hairline);padding-left:6px}
+.imp .bars i{width:2.5px;border-radius:1px;background:var(--ink-faint);display:block}
+.imp .bars i.est{background:none;box-shadow:inset 0 0 0 1px var(--ink-faint)}/* estimated = hollow */
+.imp:hover,.imp:focus-visible{border-color:var(--ink);background:var(--surface);color:var(--ink);text-decoration:none}
+.imp:hover .bars i,.imp:focus-visible .bars i{background:var(--ink)}
+.imp:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* the honesty rail — appears ONLY while the impact sort is on. A ranking that arrives
+   without saying it is a judgement is the failure mode this whole feature had to avoid. */
+.imprail{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;margin:0 0 16px;padding:11px 14px;border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--wash);font:400 12.5px/1.55 var(--font);color:var(--ink-muted)}
+.imprail[hidden]{display:none!important}
+.imprail .k{font-weight:700;color:var(--ink)}
+.imprail .how{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--font);color:var(--ink);background:var(--surface);border:1px solid var(--hairline);border-radius:999px;padding:7px 13px;cursor:pointer;transition:border-color var(--t-fast),background var(--t-fast)}
+.imprail .how:hover{border-color:var(--ink)}
+.imprail .how:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media(max-width:560px){.imprail .how{margin-left:0;width:100%;justify-content:center}}
+/* the method sheet — rides the Gauntlet overlay pattern (one veil, one sheet, Esc closes) */
+.impsheet{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,calc(100% - 24px));max-height:calc(100vh - 40px);overflow:auto;background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-lg);box-shadow:var(--elev-2);padding:22px 22px 20px;z-index:99}
+.impsheet[hidden]{display:none!important}
+.impsheet h3{font-size:17px;font-weight:800;letter-spacing:-.01em;margin:0}
+.impsheet .ihead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.impsheet .ix{background:none;border:0;font-size:17px;line-height:1;color:var(--ink-faint);cursor:pointer;padding:4px 6px;border-radius:8px}
+.impsheet .ix:hover{color:var(--ink);background:var(--wash)}
+.impsheet .isub{margin:0 0 16px;color:var(--ink-muted);font-size:13px;line-height:1.62}
+.impsheet .isub b{color:var(--ink)}
+.impsheet .foc{border:1px solid var(--hairline);border-radius:var(--r-md);padding:14px;margin:0 0 16px;background:var(--wash)}
+.impsheet .foc .fh{display:flex;align-items:center;gap:9px;margin-bottom:3px;font:800 15px/1.2 var(--font);letter-spacing:-.01em}
+.impsheet .foc .fh .em{font-size:19px}
+.impsheet .foc .fv{color:var(--ink-muted);font-size:12.5px;line-height:1.55;margin:0 0 12px}
+.impsheet .crit{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:7px 11px}
+.impsheet .crit .cn{font:600 12.5px/1 var(--font);color:var(--ink);white-space:nowrap}
+.impsheet .crit .cq{font-size:11.5px;color:var(--ink-faint);line-height:1.4}
+.impsheet .crit .cv{display:inline-flex;gap:2.5px;align-items:center}
+.impsheet .crit .cv i{width:12px;height:6px;border-radius:2px;background:color-mix(in srgb,var(--ink) 12%,transparent);display:block}
+.impsheet .crit .cv i.on{background:var(--ink)}
+/* the estimated row reads as an estimate: hollow pips, never solid ink */
+.impsheet .crit .cv.est i{background:none;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 20%,transparent)}
+.impsheet .crit .cv.est i.on{background:none;box-shadow:inset 0 0 0 1.5px var(--ink-faint)}
+.top .rk{margin-left:7px;vertical-align:2px}
+.pname .rk{margin-right:2px}
+.impsheet .note{font-size:12px;line-height:1.6;color:var(--ink-muted);border-top:1px solid var(--hairline);padding-top:13px;margin:0}
+.impsheet .note b{color:var(--ink)}
+.impsheet .note code{font:450 11.5px/1 var(--mono);background:var(--wash);border:1px solid var(--hairline);border-radius:5px;padding:2px 5px}
+@media(max-width:560px){.impsheet .crit{grid-template-columns:1fr auto}.impsheet .crit .cq{display:none}}
 /* a card in the back row is ONE target: bring it to the front. Its chip and its star must
    not swallow that click (they used to — the star's stopPropagation reached back cards) */
 .dcard.dpn .pv,.dcard.dpn .favbtn{pointer-events:none}
@@ -528,11 +582,19 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="q" type="search" placeholder="Search products…" aria-label="Search products" autocomplete="off">
       </div>
+      
       <select id="sort" class="sortsel" aria-label="Sort products by">
-        <option value="az">A–Z</option>
-        <option value="za">Z–A</option>
-        <option value="latest">Latest added</option>
-        <option value="oldest">Oldest added</option>
+        <optgroup label="By name">
+          <option value="az">A–Z</option>
+          <option value="za">Z–A</option>
+        </optgroup>
+        <optgroup label="By age">
+          <option value="latest">Latest added</option>
+          <option value="oldest">Oldest added</option>
+        </optgroup>
+        <optgroup label="By judgement">
+          <option value="impact">⚖️ Impact ↓</option>
+        </optgroup>
       </select>
       <div class="viewtog" role="group" aria-label="View">
         <button type="button" id="v-deck" data-view="deck" aria-pressed="false" aria-label="Deck view — the family, in motion" title="Deck view — the family, in motion">
@@ -549,6 +611,11 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
         </button>
       </div>
     </div>
+  </div>
+  
+  <div class="imprail" id="imprail" hidden>
+    <span><span class="k">Ranked by impact.</span> Six criteria, each scored 1–5 — a judgement backed by evidence, not a measurement. Five are checkable from the tool itself; <b>Reach is an estimate</b> and never breaks a tie.</span>
+    <button type="button" class="how" id="imphow">⚖️ How this is scored</button>
   </div>
   <div id="apps"></div>
 
@@ -598,6 +665,15 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
   <p class="gaunt-sub">Every public tool runs its own deterministic self-test — live, in <b>your</b> browser, right now. Nothing here is precomputed; a printed number can drift, a running board can't.</p>
   <div class="gaunt-tally"><span id="gaunt-count">0/0</span><span class="gt-bar"><span class="gt-fill" id="gaunt-fill"></span></span></div>
   <div class="gaunt-list" id="gaunt-list"></div>
+</div>
+
+<div class="gauntveil" id="impveil"></div>
+<div class="impsheet" id="impsheet" role="dialog" aria-modal="true" aria-labelledby="imp-title" hidden>
+  <div class="ihead"><h3 id="imp-title">⚖️ How impact is scored</h3><button class="ix" id="imp-close" type="button" aria-label="Close">✕</button></div>
+  <p class="isub">Six criteria, each <b>1–5</b>, totalling <b>30</b>. This is an <b>evidence-backed judgement, not a measurement</b> — nobody ran all twenty tools against one task and graded the output. The rubric is published so a disagreement can be about one number instead of the whole verdict.</p>
+  <div id="imp-focus"></div>
+  <div class="crit" id="imp-crit"></div>
+  <p class="note" id="imp-note"></p>
 </div>
 
 <template data-motion="contentos/scene">
@@ -2128,45 +2204,45 @@ const APPS=[
   // file = the SHIPPED artifact. Since path-B, that is the built single-HTML at
   // apps/<slug>/dist/index.html (the pre-path-B originals live on as <slug>-pathA.html).
   {slug:"contentos", name:"ContentOS", emoji:"⚗️", accent:"#db2777", status:"live", v:"v1.0",
-   tagline:"Raw in. Ready out. — the content processing OS.", file:"contentos.html"},
+   tagline:"Raw in. Ready out. — the content processing OS.", file:"contentos.html", impact:{e:4,f:2,k:3,c:3,s:4,r:4}},
   {slug:"critiquespike", name:"CritiqueSpike", emoji:"🌶️", accent:"#3f6212", status:"live", v:"v1.0",
-   tagline:"Every claim on trial. — a claim-interrogation console.", file:"critiquespike.html"},
+   tagline:"Every claim on trial. — a claim-interrogation console.", file:"critiquespike.html", impact:{e:4,f:2,k:2,c:1,s:2,r:3}},
   // fav:true = the owner's curated Favorite label — ships as a DEFAULT favorite for
   // every visitor (a sample shortlist; any visitor can unstar it — their call sticks).
   {slug:"diagranimate", name:"Diagranimate", emoji:"🎬", accent:"#7c3aed", status:"live", v:"v1.0", fav:true,
-   tagline:"Your diagrams, alive. — a cinematic Mermaid presenter.", file:"diagranimate.html"},
+   tagline:"Your diagrams, alive. — a cinematic Mermaid presenter.", file:"diagranimate.html", impact:{e:3,f:5,k:5,c:1,s:5,r:3}},
   {slug:"omnigraph", name:"OmniGraph", emoji:"🌐", accent:"#4f46e5", status:"live", v:"v1.0", fav:true,
-   tagline:"One line in. The whole map out. — a universal knowledge mapper.", file:"omnigraph.html"},
+   tagline:"One line in. The whole map out. — a universal knowledge mapper.", file:"omnigraph.html", impact:{e:5,f:2,k:4,c:3,s:3,r:4}},
   {slug:"superstudio", name:"SuperStudio", emoji:"🎨", accent:"#047857", status:"live", v:"v1.0",
-   tagline:"One style, every asset. — a style-consistent asset studio.", file:"superstudio.html"},
+   tagline:"One style, every asset. — a style-consistent asset studio.", file:"superstudio.html", impact:{e:2,f:2,k:3,c:5,s:4,r:3}},
   {slug:"promptcraft", name:"PromptCraft", emoji:"✒️", accent:"#075985", status:"live", v:"v1.0",
-   tagline:"Say it rough. Send it sharp. — a prompt-engineering console.", file:"promptcraft.html"},
+   tagline:"Say it rough. Send it sharp. — a prompt-engineering console.", file:"promptcraft.html", impact:{e:5,f:5,k:2,c:2,s:3,r:5}},
   {slug:"specpilot", name:"SpecPilot", emoji:"📐", accent:"#c2410c", status:"live", v:"v1.0",
-   tagline:"Spec first, fly later. — an idea→spec→wireframe cockpit.", file:"specpilot.html"},
+   tagline:"Spec first, fly later. — an idea→spec→wireframe cockpit.", file:"specpilot.html", impact:{e:5,f:2,k:4,c:2,s:3,r:3}},
   {slug:"protopilot", name:"ProtoPilot", emoji:"🕹️", accent:"#e11d48", status:"live", v:"v1.0",
-   tagline:"Your flow, on autopilot. — a self-driving-prototype forge.", file:"protopilot.html"},
+   tagline:"Your flow, on autopilot. — a self-driving-prototype forge.", file:"protopilot.html", impact:{e:3,f:2,k:5,c:2,s:5,r:2}},
   {slug:"svgmatrix", name:"SVGMatrix", emoji:"🧬", accent:"#334155", status:"live", v:"v1.0",
-   tagline:"Pick a motion. Take the code. — a 200-module micro-animation treasury.", file:"svgmatrix.html"},
+   tagline:"Pick a motion. Take the code. — a 200-module micro-animation treasury.", file:"svgmatrix.html", impact:{e:5,f:5,k:5,c:4,s:4,r:3}},
   {slug:"svganimator", name:"SVGAnimator", emoji:"🌀", accent:"#1e40af", status:"live", v:"v1.0",
-   tagline:"Your brand, in motion. — the brand-to-motion console.", file:"svganimator.html"},
+   tagline:"Your brand, in motion. — the brand-to-motion console.", file:"svganimator.html", impact:{e:2,f:2,k:5,c:5,s:5,r:3}},
   {slug:"motionplain", name:"MotionPlain", emoji:"🎞️", accent:"#c026d3", status:"live", v:"v1.0",
-   tagline:"One brief in. A polished explainer out. — the plain-input explainer studio.", file:"motionplain.html"},
+   tagline:"One brief in. A polished explainer out. — the plain-input explainer studio.", file:"motionplain.html", impact:{e:4,f:2,k:4,c:1,s:4,r:2}},
   {slug:"codearmor", name:"CodeArmor", emoji:"🛡️", accent:"#991b1b", status:"live", v:"v1.0",
-   tagline:"One project in. One armored file out. — the honest code-defense console.", file:"codearmor.html"},
+   tagline:"One project in. One armored file out. — the honest code-defense console.", file:"codearmor.html", impact:{e:3,f:5,k:5,c:2,s:5,r:2}},
   {slug:"bizvault", name:"BizVault", emoji:"🏦", accent:"#166534", status:"live", v:"v1.0",
-   tagline:"Raw IP in, launch-ready ecosystem out. — the business-strategy vault.", file:"bizvault.html"},
+   tagline:"Raw IP in, launch-ready ecosystem out. — the business-strategy vault.", file:"bizvault.html", impact:{e:2,f:2,k:4,c:1,s:2,r:1}},
   {slug:"bizventure", name:"BizVenture", emoji:"🚀", accent:"#6b21a8", status:"live", v:"v1.0",
-   tagline:"Values in. Ventures out. — the value-driven venture console.", file:"bizventure.html"},
+   tagline:"Values in. Ventures out. — the value-driven venture console.", file:"bizventure.html", impact:{e:4,f:3,k:4,c:1,s:2,r:1}},
   {slug:"llmforge", name:"LLMForge", emoji:"⚒️", accent:"#92400e", status:"live", v:"v1.0",
-   tagline:"Same prompt. Honest verdict. — the one-shot benchmark arena.", file:"llmforge.html"},
+   tagline:"Same prompt. Honest verdict. — the one-shot benchmark arena.", file:"llmforge.html", impact:{e:2,f:3,k:4,c:3,s:5,r:2}},
   {slug:"uxmakeover", name:"UXMakeover", emoji:"🪞", accent:"#0e7490", status:"live", v:"v1.0",
-   tagline:"Every fix, explained. — the UX audit & makeover studio.", file:"uxmakeover.html"},
+   tagline:"Every fix, explained. — the UX audit & makeover studio.", file:"uxmakeover.html", impact:{e:4,f:1,k:2,c:1,s:2,r:3}},
   {slug:"superdocs", name:"SuperDocs", emoji:"📖", accent:"#0f766e", status:"live", v:"v1.0",
-   tagline:"Documentation that makes strangers believe. — one story, every surface.", file:"superdocs.html"},
+   tagline:"Documentation that makes strangers believe. — one story, every surface.", file:"superdocs.html", impact:{e:3,f:3,k:5,c:2,s:5,r:2}},
   {slug:"cvforge", name:"CVForge", emoji:"🪪", accent:"#3730a3", status:"live", v:"v1.0",
-   tagline:"One record in. Any résumé out. — the living-résumé studio.", file:"cvforge.html"},
+   tagline:"One record in. Any résumé out. — the living-résumé studio.", file:"cvforge.html", impact:{e:4,f:4,k:5,c:5,s:5,r:4}},
   {slug:"supertour", name:"SuperTour", emoji:"🧭", accent:"#a16207", status:"live", v:"v1.0", fav:true,
-   tagline:"Record once, guide forever — in any app, offline. — the in-app-guide factory.", file:"supertour.html"},
+   tagline:"Record once, guide forever — in any app, offline. — the in-app-guide factory.", file:"supertour.html", impact:{e:1,f:4,k:5,c:4,s:5,r:2}},
 ];
 
 const $=id=>document.getElementById(id);
@@ -2231,14 +2307,45 @@ function hexHue(hex){
   [v.ready,v.finished,v.updateCallbackDone].forEach(p=>{if(p&&p.catch)p.catch(()=>{})})}}));
 addEventListener("unhandledrejection",e=>{if(/transition was skipped/i.test(String(e?.reason?.message||e?.reason||"")))e.preventDefault()});
 const coll=new Intl.Collator(undefined,{sensitivity:"base"});
-const MODES=["az","za","latest","oldest"];
+const MODES=["az","za","latest","oldest","impact"];
 const VIEWS=["deck","orbit","grid","table"];
+
+/* ═══ ⚖️ IMPACT — the judgement sort. Law + justification: 06-ledger/registry/impact-ranking.md
+   Six criteria, in the order they are always shown. Scores live on each APPS row.
+   The rule every one of them obeys: it must be answerable by a stranger holding the tool,
+   who knows nothing about this repo's history. FIVE are verifiable that way; REACH is a
+   demand estimate and is marked as one everywhere it appears. ═══ */
+const IMP_CRIT=[
+  ["e","Entry","what must already be true before it can do anything?",1],
+  ["f","Floor","how much value survives if the AI is removed?",1],
+  ["k","Keep","does the output keep working away from the tool?",1],
+  ["c","Compound","does the second run cost less than the first?",1],
+  ["s","Scope","how much of a whole job does it finish?",1],
+  ["r","Reach","how often the job occurs, across people",0],
+];
+const impTotal=a=>a.impact?IMP_CRIT.reduce((n,c)=>n+(a.impact[c[0]]||0),0):0;
+/* the VERIFIED subtotal — the five a stranger could check for themselves (max 25) */
+const impVerified=a=>a.impact?IMP_CRIT.reduce((n,c)=>n+(c[3]?(a.impact[c[0]]||0):0),0):0;
+/* THE COMPARATOR IS A SHARED CONTRACT — 02-factory/impact-index.mjs implements the identical
+   order to generate the document's table. Ties break on the VERIFIED subtotal FIRST, on
+   purpose: Reach is an estimate, so it may move a score but must never decide a rank. Then
+   Floor (guaranteed value), then Keep (durable output), then name. Change one, change both. */
+const impactOrder=(x,y)=>
+  impTotal(y)-impTotal(x) ||
+  impVerified(y)-impVerified(x) ||
+  (y.impact?.f||0)-(x.impact?.f||0) ||
+  (y.impact?.k||0)-(x.impact?.k||0) ||
+  coll.compare(x.name,y.name);
+/* rank is a property of the WHOLE family, never of the filtered view — #3 stays #3 when you
+   search, exactly as a rank should */
+const IMP_RANK={}; [...APPS].sort(impactOrder).forEach((a,i)=>{IMP_RANK[a.slug]=i+1;});
 
 function ordered(mode){
   const rows=APPS.map((a,i)=>({a,i}));
   if(mode==="za") rows.sort((x,y)=>coll.compare(y.a.name,x.a.name));
   else if(mode==="latest") rows.sort((x,y)=>y.i-x.i);
   else if(mode==="oldest") rows.sort((x,y)=>x.i-y.i);
+  else if(mode==="impact") rows.sort((x,y)=>impactOrder(x.a,y.a));
   else rows.sort((x,y)=>coll.compare(x.a.name,y.a.name)); // az (default)
   return rows.map(r=>r.a);
 }
@@ -2291,17 +2398,32 @@ function hydrateVisits(){
   });
 }
 const pathOf=a=>a.file.replace("dist/index.html","")+(a.internal?" · workspace-only":"");
+/* the impact seats — both render ONLY under the impact sort, so the default face of the
+   dashboard is unchanged. Always a <button>: it opens a dialog, not a URL, and the grid
+   card is an <a> (an anchor nested in an anchor is closed by the parser). */
+const rkPill=a=>sort==="impact"?`<span class="rk" title="Rank ${IMP_RANK[a.slug]} of ${APPS.length} by impact">#${IMP_RANK[a.slug]}</span>`:"";
+const impChip=a=>{
+  if(sort!=="impact"||!a.impact)return"";
+  /* the estimated criterion's bar is drawn hollow — the asymmetry between what was checked
+     and what was guessed is visible on the chip itself, not only in the method sheet */
+  const bars=IMP_CRIT.map(c=>`<i class="${c[3]?"":"est"}" style="height:${1+(a.impact[c[0]]||0)*2}px"></i>`).join("");
+  const brk=IMP_CRIT.map(c=>`${c[0].toUpperCase()}${a.impact[c[0]]}${c[3]?"":"*"}`).join(" ");
+  return `<button type="button" class="imp" data-imp="${esc(a.slug)}"
+    title="Impact ${impTotal(a)} of 30 — ${brk} (verified ${impVerified(a)} of 25; * = estimated). Click for the method."
+    aria-label="Impact score ${impTotal(a)} of 30 for ${esc(a.name)} — open the scoring method"
+    ><b>${impTotal(a)}</b><span class="bars" aria-hidden="true">${bars}</span></button>`;
+};
 const card=(a,i)=>`<a class="app${EXP.has(a.slug)?" seen":""}${isFav(a)?" faved":""}" style="animation-delay:${i*45}ms" href="${esc(a.file)}">${favBtn(a)}
-    <span class="top"><span class="em">${esc(a.emoji)}</span><span><b>${esc(a.name)}</b><br><span class="slug">${esc(pathOf(a))}</span></span></span>
+    <span class="top"><span class="em">${esc(a.emoji)}</span><span><b>${esc(a.name)}</b>${rkPill(a)}<br><span class="slug">${esc(pathOf(a))}</span></span></span>
     <span class="tag">${esc(a.tagline)}</span>
     <span class="foot"><span class="sw" style="background:${esc(a.accent)}"></span><span style="font:450 11px/1 var(--mono)">${esc(a.accent)}</span>
-      <span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a,true)}${seenPill(a)}</span></a>`;
+      <span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${impChip(a)}${visChip(a,true)}${seenPill(a)}</span></a>`;
 const ghost="";
 const row=a=>`<tr class="${EXP.has(a.slug)?"seen":""}${isFav(a)?" faved":""}" data-href="${esc(a.file)}">
-    <td><div class="pname">${favBtn(a)}<span class="em">${esc(a.emoji)}</span><span><a href="${esc(a.file)}">${esc(a.name)}</a><span class="slug">${esc(pathOf(a))}</span></span></div></td>
+    <td><div class="pname">${favBtn(a)}${rkPill(a)}<span class="em">${esc(a.emoji)}</span><span><a href="${esc(a.file)}">${esc(a.name)}</a><span class="slug">${esc(pathOf(a))}</span></span></div></td>
     <td class="tag">${esc(a.tagline)}</td>
     <td><span class="acc"><span class="sw" style="background:${esc(a.accent)}"></span>${esc(a.accent)}</span></td>
-    <td><span class="stchips"><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${visChip(a)}${seenPill(a)}</span></td></tr>`;
+    <td><span class="stchips"><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${impChip(a)}${visChip(a)}${seenPill(a)}</span></td></tr>`;
 
 function emptyHTML(){
   return `<div class="empty"><span class="big" aria-hidden="true">🔍</span>No products match “${esc(query)}”.<br>
@@ -2340,11 +2462,15 @@ function renderFavChip(){
 function update(anim){
   EXP=expedition(); // refresh the opened-set before every paint (it grows on other pages)
   renderFavChip();
+  $("imprail").hidden = sort!=="impact"; // the ranking never arrives without its disclaimer
   const full=ordered(sort); let list=filtered(full,query);
   if(favOnly) list=list.filter(isFav);
   /* favorites float to the top of grid + table — the launcher law: what you starred
-     is what you came for. Stable sort: each half keeps the chosen order. */
-  if(view==="grid"||view==="table") list=[...list].sort((x,y)=>(isFav(y)?1:0)-(isFav(x)?1:0));
+     is what you came for. Stable sort: each half keeps the chosen order.
+     EXCEPT under the impact sort: a rank you asked to see, shuffled by your stars, would
+     print #3 above #1 and make every rank pill on the page look broken. An explicit
+     ordering outranks the float — favorites still show their star, just not their queue. */
+  if((view==="grid"||view==="table")&&sort!=="impact") list=[...list].sort((x,y)=>(isFav(y)?1:0)-(isFav(x)?1:0));
   appsEl.innerHTML = view==="table" ? tableHTML(list) : view==="deck" ? deckHTML(list) : view==="orbit" ? orbitHTML(full,list) : gridHTML(list,anim);
   setCount(list.length,APPS.length);
   hydrateVisits(); // re-fill the visitor chips after every render (cached — no refetch)
@@ -2361,6 +2487,10 @@ appsEl.addEventListener("click",e=>{
      anchor can't nest in an anchor) opens the same dashboard URL. */
   const pv=e.target.closest?e.target.closest(".pv"):null;
   if(pv){ e.stopPropagation(); if(pv.hasAttribute("data-pvgo")){ e.preventDefault(); window.open(goatDash,"_blank","noopener"); } }
+  /* the impact chip is a door too — it explains the number it prints, and it must never
+     let the card anchor or the row's data-href navigate away instead */
+  const ic=e.target.closest?e.target.closest(".imp"):null;
+  if(ic){ e.preventDefault(); e.stopPropagation(); openImpact(ic.getAttribute("data-imp")); }
 },true);
 $("favchip").addEventListener("click",()=>{
   favOnly=!favOnly; setLS("factory_favonly",favOnly?"1":"0"); update(false);
@@ -2810,6 +2940,50 @@ function orbitAfter(){
     });
   }
 }
+
+/* ═══ ⚖️ the method sheet — the chip's other half. A judgement is only worth as much as the
+   reasoning you can reach from it, so every impact number on this page opens this. ═══ */
+const impSheet=$("impsheet"), impVeil=$("impveil");
+function impBars(v,est){ return `<span class="cv${est?" est":""}" aria-hidden="true">${[1,2,3,4,5].map(n=>`<i class="${n<=v?"on":""}"></i>`).join("")}</span>`; }
+function openImpact(slug){
+  const a=slug?APPS.find(x=>x.slug===slug):null;
+  $("imp-focus").innerHTML = a&&a.impact ? `<div class="foc">
+      <div class="fh"><span class="em" aria-hidden="true">${esc(a.emoji)}</span>${esc(a.name)}
+        <span class="rk">#${IMP_RANK[a.slug]}</span></div>
+      <p class="fv">Ranked <b>#${IMP_RANK[a.slug]} of ${APPS.length}</b> · scored <b>${impTotal(a)} / 30</b>,
+        of which <b>${impVerified(a)} / 25</b> is verifiable</p>
+      <div class="crit">${IMP_CRIT.map(c=>
+        `<span class="cn">${c[1]}${c[3]?"":" *"}</span><span class="cq">${c[2]}</span>${impBars(a.impact[c[0]],!c[3])}`).join("")}</div>
+    </div>` : "";
+  /* the rubric always shows; the focused tool is additive, so the rail's button and a chip
+     open the SAME sheet rather than two near-identical ones */
+  $("imp-crit").innerHTML = a&&a.impact ? "" : IMP_CRIT.map(c=>
+    `<span class="cn">${c[1]}${c[3]?"":" *"}</span><span class="cq">${c[2]}</span><span class="cv" aria-hidden="true"></span>`).join("");
+  $("imp-note").innerHTML = `<b>The rule behind all six:</b> a criterion only counts if a stranger
+    holding the tool — who knows nothing about this repo or who built it — could answer it. <b>Five
+    meet that bar. Reach (*) does not</b>: it estimates how often a job occurs, so it is drawn hollow,
+    and <b>the tie-break ignores it</b> — an estimate can move a score but never decide a rank.<br><br>
+    <b>Why v2 exists:</b> the first rubric scored “has its output actually shipped somewhere real?”.
+    That measured whether this repo's owner happened to need a tool's errand — five products scored 5
+    and fifteen scored 1, and none of the fifteen were unproven. Selection bias, sitting in the primary
+    tie-break. Shipped output is now context, never points.<br><br>
+    <b>Where these come from:</b> scored on each row of the APPS manifest in
+    <code>04-scaffold/index.html</code>, mirrored into the ranking table by
+    <code>node 02-factory/impact-index.mjs</code>, kept from drifting by the repo sweep (S9). The full
+    justification, the published scales, and how the order changes with who you are:
+    <code>06-ledger/registry/impact-ranking.md</code>.<br><br>
+    <b>What this is still not:</b> nobody ran all ${APPS.length} tools against one identical task and
+    graded the output. Real visitor data should eventually beat this ranking — and should be allowed to.`;
+  /* the veil reveals by CLASS, never by [hidden]: .gauntveil is opacity:0 + pointer-events:none
+     at rest, so un-hiding it would paint a transparent, unclickable sheet of nothing */
+  impVeil.classList.add("on"); impSheet.hidden=false;
+  $("imp-close").focus();
+}
+function closeImpact(){ impSheet.hidden=true; impVeil.classList.remove("on"); }
+$("imphow").addEventListener("click",()=>openImpact(""));
+$("imp-close").addEventListener("click",closeImpact);
+impVeil.addEventListener("click",closeImpact);
+addEventListener("keydown",e=>{ if(e.key==="Escape"&&!impSheet.hidden) closeImpact(); });
 
 /* wire controls */
 sortEl.value=sort;
