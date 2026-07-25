@@ -479,7 +479,17 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
 .apps-tbl .pname a{font-weight:600;text-decoration:none}
 .apps-tbl .pname a:hover{text-decoration:underline}
 .apps-tbl .pname .slug{display:block;font:450 11px/1 var(--mono);color:var(--ink-faint);margin-top:3px}
-.apps-tbl .tag{color:var(--ink-muted);max-width:44ch}
+/* the ITCH column (2026-07-26) — the frustration a product answers, seated immediately left
+   of the answer so one row reads problem → solution. Italic + muted, the same treatment the
+   portfolio gives an itch line (site .peek-itch); never --ink-faint, which fails AA on body
+   text. Both columns stay inside .tablewrap's own scroll — the PAGE never scrolls sideways. */
+.apps-tbl .itch{color:var(--ink-muted);font-style:italic;max-width:32ch}
+.apps-tbl .tag{color:var(--ink-muted);max-width:40ch}
+/* on a phone this table is ALREADY a sideways-scrolling surface (the wrap owns the overflow),
+   so letting the two prose columns crush to a ~100px ribbon buys nothing but five-line rows.
+   Each keeps a readable measure and the wrap scrolls a little further instead — measured at
+   390px: 104px/5 lines → 150px/3 lines, for 46px more scroll nobody feels. */
+@media(max-width:560px){.apps-tbl .itch,.apps-tbl .tag{min-width:150px}}
 .apps-tbl .acc{display:inline-flex;align-items:center;gap:7px;font:450 11px/1 var(--mono);color:var(--ink-muted);white-space:nowrap}
 /* the status cell is a chip ROW, not a run of margins: when it wraps to a second line
    the chips keep a real 6px gutter above them (owner catch — line 2 sat flush on line 1) */
@@ -670,7 +680,7 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
 <div class="gauntveil" id="impveil"></div>
 <div class="impsheet" id="impsheet" role="dialog" aria-modal="true" aria-labelledby="imp-title" hidden>
   <div class="ihead"><h3 id="imp-title">⚖️ How impact is scored</h3><button class="ix" id="imp-close" type="button" aria-label="Close">✕</button></div>
-  <p class="isub">Six criteria, each <b>1–5</b>, totalling <b>30</b>. This is an <b>evidence-backed judgement, not a measurement</b> — nobody ran all twenty tools against one task and graded the output. The rubric is published so a disagreement can be about one number instead of the whole verdict.</p>
+  <p class="isub">Six criteria, each <b>1–5</b>, totalling <b>30</b>. This is an <b>evidence-backed judgement, not a measurement</b> — nobody ran every tool against one task and graded the output. The rubric is published so a disagreement can be about one number instead of the whole verdict.</p>
   <div id="imp-focus"></div>
   <div class="crit" id="imp-crit"></div>
   <p class="note" id="imp-note"></p>
@@ -2202,8 +2212,20 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
 /* APPS — the public product manifest */
 const APPS=[
   // file = the SHIPPED artifact. Since path-B, that is the built single-HTML at
-  // apps/<slug>/dist/index.html (the pre-path-B originals live on as <slug>-pathA.html).
-  {slug:"contentos", name:"ContentOS", emoji:"⚗️", accent:"#db2777", status:"live", v:"v1.0",
+  // apps/<slug>/dist/index.html (the pre-path-B originals live on as <slug>-pathA.html).
+  // fav:true = the owner's curated Favorite label — that product ships as a DEFAULT
+  // favorite for every visitor: the shortlist an owner hands a newcomer first, NOT a
+  // ranking (⚖️ Impact is the ranking, and the two deliberately disagree). It is a
+  // starting point and never a lock — a visitor can un-star any default and their call
+  // sticks. The current curated set is never re-typed in prose: it is the ★ column of
+  // 06-ledger/registry/impact-ranking.md, mirrored from these rows by impact-index.mjs.
+  // itch = the frustration the product answers, in the TABLE voice. One field feeds two
+  // surfaces — the Itch column of the table view below, and the front door's generated
+  // table (02-factory/readme-index.mjs) — so the two can never drift apart. The full
+  // bilingual version is the Leaf's own itch.en/.id in 05-orbit/site/content/crafts.md;
+  // compress from there when a product changes its story, never invent a second one.
+  {slug:"contentos", name:"ContentOS", emoji:"⚗️", accent:"#db2777", status:"live", v:"v1.0", fav:true,
+   itch:"The same content treatments, improvised anew every time.",
    tagline:"Raw in. Ready out. — the content processing OS.",    // Floor 2→3 (2026-07-25, PRD §22): it now runs five offline gates over the returned
    // result — contract coverage derived from the registry, truncation, provenance — and
    // compiles a deterministic repair job. That is "major deterministic work plus hard
@@ -2211,42 +2233,58 @@ const APPS=[
    // tool can watch the gates run without knowing anything about this repo.
    file:"contentos.html", impact:{e:4,f:3,k:3,c:3,s:4,r:4}},
   {slug:"critiquespike", name:"CritiqueSpike", emoji:"🌶️", accent:"#3f6212", status:"live", v:"v1.0",
+   itch:"Feedback flatters or flattens — it rarely interrogates.",
    tagline:"Every claim on trial. — a claim-interrogation console.", file:"critiquespike.html", impact:{e:4,f:2,k:2,c:1,s:2,r:3}},
-  // fav:true = the owner's curated Favorite label — ships as a DEFAULT favorite for
-  // every visitor (a sample shortlist; any visitor can unstar it — their call sticks).
   {slug:"diagranimate", name:"Diagranimate", emoji:"🎬", accent:"#7c3aed", status:"live", v:"v1.0", fav:true,
+   itch:"A finished diagram is correct — and unreadable.",
    tagline:"Your diagrams, alive. — a cinematic Mermaid presenter.", file:"diagranimate.html", impact:{e:3,f:5,k:5,c:1,s:5,r:3}},
   {slug:"omnigraph", name:"OmniGraph", emoji:"🌐", accent:"#4f46e5", status:"live", v:"v1.0", fav:true,
+   itch:"Learning leaves piles of notes, never a map.",
    tagline:"One line in. The whole map out. — a universal knowledge mapper.", file:"omnigraph.html", impact:{e:5,f:2,k:4,c:3,s:3,r:4}},
-  {slug:"superstudio", name:"SuperStudio", emoji:"🎨", accent:"#047857", status:"live", v:"v1.0",
+  {slug:"superstudio", name:"SuperStudio", emoji:"🎨", accent:"#047857", status:"live", v:"v1.0", fav:true,
+   itch:"Ten assets, one brand — and ten different styles.",
    tagline:"One style, every asset. — a style-consistent asset studio.", file:"superstudio.html", impact:{e:2,f:2,k:3,c:5,s:4,r:3}},
-  {slug:"promptcraft", name:"PromptCraft", emoji:"✒️", accent:"#075985", status:"live", v:"v1.0",
+  {slug:"promptcraft", name:"PromptCraft", emoji:"✒️", accent:"#075985", status:"live", v:"v1.0", fav:true,
+   itch:"Prompts say less than you meant — the answers show it.",
    tagline:"Say it rough. Send it sharp. — a prompt-engineering console.", file:"promptcraft.html", impact:{e:5,f:5,k:2,c:2,s:3,r:5}},
   {slug:"specpilot", name:"SpecPilot", emoji:"📐", accent:"#c2410c", status:"live", v:"v1.0",
+   itch:"Specs are born in chats — where documents disappear.",
    tagline:"Spec first, fly later. — an idea→spec→wireframe cockpit.", file:"specpilot.html", impact:{e:5,f:2,k:4,c:2,s:3,r:3}},
   {slug:"protopilot", name:"ProtoPilot", emoji:"🕹️", accent:"#e11d48", status:"live", v:"v1.0",
+   itch:"Every prototype demo needs someone driving the mouse.",
    tagline:"Your flow, on autopilot. — a self-driving-prototype forge.", file:"protopilot.html", impact:{e:3,f:2,k:5,c:2,s:5,r:2}},
   {slug:"svgmatrix", name:"SVGMatrix", emoji:"🧬", accent:"#334155", status:"live", v:"v1.0",
+   itch:"A treasury of motions you can't find, test, or take.",
    tagline:"Pick a motion. Take the code. — a 200-module micro-animation treasury.", file:"svgmatrix.html", impact:{e:5,f:5,k:5,c:4,s:4,r:3}},
-  {slug:"svganimator", name:"SVGAnimator", emoji:"🌀", accent:"#1e40af", status:"live", v:"v1.0",
+  {slug:"svganimator", name:"SVGAnimator", emoji:"🌀", accent:"#1e40af", status:"live", v:"v1.0", fav:true,
+   itch:"Every brand animation a one-off, carrying no motion DNA.",
    tagline:"Your brand, in motion. — the brand-to-motion console.", file:"svganimator.html", impact:{e:2,f:2,k:5,c:5,s:5,r:3}},
   {slug:"motionplain", name:"MotionPlain", emoji:"🎞️", accent:"#c026d3", status:"live", v:"v1.0",
+   itch:"An explainer video demanded a studio, a timeline, a week.",
    tagline:"One brief in. A polished explainer out. — the plain-input explainer studio.", file:"motionplain.html", impact:{e:4,f:2,k:4,c:1,s:4,r:2}},
   {slug:"codearmor", name:"CodeArmor", emoji:"🛡️", accent:"#991b1b", status:"live", v:"v1.0",
+   itch:"Client-side code ships naked; protection tools oversell.",
    tagline:"One project in. One armored file out. — the honest code-defense console.", file:"codearmor.html", impact:{e:3,f:5,k:5,c:2,s:5,r:2}},
   {slug:"bizvault", name:"BizVault", emoji:"🏦", accent:"#166534", status:"live", v:"v1.0",
+   itch:"Ideas pile up as documents that never earn their keep.",
    tagline:"Raw IP in, launch-ready ecosystem out. — the business-strategy vault.", file:"bizvault.html", impact:{e:2,f:2,k:4,c:1,s:2,r:1}},
   {slug:"bizventure", name:"BizVenture", emoji:"🚀", accent:"#6b21a8", status:"live", v:"v1.0",
+   itch:"Ventures start from trends and abandon their values.",
    tagline:"Values in. Ventures out. — the value-driven venture console.", file:"bizventure.html", impact:{e:4,f:3,k:4,c:1,s:2,r:1}},
   {slug:"llmforge", name:"LLMForge", emoji:"⚒️", accent:"#92400e", status:"live", v:"v1.0",
+   itch:"Model comparisons run on vibes, never one fair prompt.",
    tagline:"Same prompt. Honest verdict. — the one-shot benchmark arena.", file:"llmforge.html", impact:{e:2,f:3,k:4,c:3,s:5,r:2}},
-  {slug:"uxmakeover", name:"UXMakeover", emoji:"🪞", accent:"#0e7490", status:"live", v:"v1.0",
+  {slug:"uxmakeover", name:"UXMakeover", emoji:"🪞", accent:"#0e7490", status:"live", v:"v1.0", fav:true,
+   itch:"UX feedback arrives as taste: opinions without reasons.",
    tagline:"Every fix, explained. — the UX audit & makeover studio.", file:"uxmakeover.html", impact:{e:4,f:1,k:2,c:1,s:2,r:3}},
-  {slug:"superdocs", name:"SuperDocs", emoji:"📖", accent:"#0f766e", status:"live", v:"v1.0",
+  {slug:"superdocs", name:"SuperDocs", emoji:"📖", accent:"#0f766e", status:"live", v:"v1.0", fav:true,
+   itch:"Docs are written for believers — strangers bounce.",
    tagline:"Documentation that makes strangers believe. — one story, every surface.", file:"superdocs.html", impact:{e:3,f:3,k:5,c:2,s:5,r:2}},
   {slug:"cvforge", name:"CVForge", emoji:"🪪", accent:"#3730a3", status:"live", v:"v1.0",
+   itch:"One career, two documents, forever drifting apart.",
    tagline:"One record in. Any résumé out. — the living-résumé studio.", file:"cvforge.html", impact:{e:4,f:4,k:5,c:5,s:5,r:4}},
   {slug:"supertour", name:"SuperTour", emoji:"🧭", accent:"#a16207", status:"live", v:"v1.0", fav:true,
+   itch:"Every update leaves users lost; guides wait on developers.",
    tagline:"Record once, guide forever — in any app, offline. — the in-app-guide factory.", file:"supertour.html", impact:{e:1,f:4,k:5,c:4,s:5,r:2}},
 ];
 
@@ -2269,10 +2307,10 @@ let EXP=expedition();
 const seenPill=a=>EXP.has(a.slug)?`<span class="oped" title="You've opened this tool"><span class="ck" aria-hidden="true">✓</span>opened</span>`:"";
 /* ── FAVORITES (owner feature 2026-07-19) — two voices, one star. The manifest's
    fav:true is the owner's curated label (ships as a default favorite for everyone —
-   a sample shortlist); the visitor's own stars live in ONE localStorage key,
-   ala_favs = {add:[slugs], rm:[slugs]}. Effective fav = (curated AND not un-starred)
-   OR starred — so defaults are real but never locked: un-star OmniGraph and the
-   choice survives every visit. Zero network, per-origin, cache-honest. */
+   the shortlist an owner hands a newcomer); the visitor's own stars live in ONE
+   localStorage key, ala_favs = {add:[slugs], rm:[slugs]}. Effective fav = (curated AND
+   not un-starred) OR starred — so defaults are real but never locked: un-star OmniGraph
+   and the choice survives every visit. Zero network, per-origin, cache-honest. */
 const FAVKEY="ala_favs";
 function favLoad(){
   try{const j=JSON.parse(getLS(FAVKEY,"{}"))||{};return {add:new Set(j.add||[]),rm:new Set(j.rm||[])};}
@@ -2356,7 +2394,9 @@ function ordered(mode){
 }
 function filtered(list,q){
   q=q.trim().toLowerCase(); if(!q) return list;
-  return list.filter(a=>(a.name+" "+a.slug+" "+a.tagline).toLowerCase().includes(q));
+  /* the itch is searchable too: a visitor arrives with a PROBLEM far more often than with a
+     product name, and both columns are on screen — a hit must be findable in either */
+  return list.filter(a=>(a.name+" "+a.slug+" "+a.tagline+" "+(a.itch||"")).toLowerCase().includes(q));
 }
 
 /* deploy-aware bits: the exporter stamps window.__PUBLIC__ into the bundled copy —
@@ -2426,6 +2466,7 @@ const card=(a,i)=>`<a class="app${EXP.has(a.slug)?" seen":""}${isFav(a)?" faved"
 const ghost="";
 const row=a=>`<tr class="${EXP.has(a.slug)?"seen":""}${isFav(a)?" faved":""}" data-href="${esc(a.file)}">
     <td><div class="pname">${favBtn(a)}${rkPill(a)}<span class="em">${esc(a.emoji)}</span><span><a href="${esc(a.file)}">${esc(a.name)}</a><span class="slug">${esc(pathOf(a))}</span></span></div></td>
+    <td class="itch">${esc(a.itch)}</td>
     <td class="tag">${esc(a.tagline)}</td>
     <td><span class="acc"><span class="sw" style="background:${esc(a.accent)}"></span>${esc(a.accent)}</span></td>
     <td><span class="stchips"><span class="badge ${a.status==="live"?"live":""}">${esc(a.status)} · ${esc(a.v)}</span>${impChip(a)}${visChip(a)}${seenPill(a)}</span></td></tr>`;
@@ -2441,11 +2482,11 @@ function gridHTML(list,anim){
 function tableHTML(list){
   if(!list.length) return `<div class="tablewrap"><table class="apps-tbl"><tbody>${emptyRow()}</tbody></table></div>`;
   return `<div class="tablewrap"><table class="apps-tbl">
-    <thead><tr><th>Product</th><th>What it does</th><th>Accent</th><th>Status</th></tr></thead>
+    <thead><tr><th>Product</th><th>Itch</th><th>What it does</th><th>Accent</th><th>Status</th></tr></thead>
     <tbody>${list.map(row).join("")}${query||PUBLIC?"":ghostRow()}</tbody></table></div>`;
 }
 const ghostRow=()=>"";
-const emptyRow=()=>`<tr class="ghost-row"><td colspan="4"><span aria-hidden="true">🔍</span> No products match “${esc(query)}”. <button type="button" class="clearbtn" id="clearq" style="margin:8px 0 0">Clear search</button></td></tr>`;
+const emptyRow=()=>`<tr class="ghost-row"><td colspan="5"><span aria-hidden="true">🔍</span> No products match “${esc(query)}”. <button type="button" class="clearbtn" id="clearq" style="margin:8px 0 0">Clear search</button></td></tr>`;
 
 let view=getLS("factory_apps_view","table"); if(!VIEWS.includes(view)) view="table"; // owner call 2026-07-20: the TABLE is the front face — the whole family readable at a glance, one row per product; deck/orbit/grid are one click away (a returning visitor keeps whatever they last chose)
 let sort=getLS("factory_apps_sort","az"); if(!MODES.includes(sort)) sort="az";
