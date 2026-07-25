@@ -18,8 +18,13 @@
     .a8-accf{fill:var(--accent,#2b4be0)}
     .a8-fntf{fill:var(--ink-faint,#99a0ad)}
     .a8-hl{stroke:var(--hairline,#e2e6ee)}
-    .a8-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
-    .a8-sttx{font:700 8px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.1em}
+    /* 9 → 10 (2026-07-25): promoted to the hero carousel, where it renders at 1.300× —
+       9 units landed at 11.7px, under the ~12px floor for tracked uppercase mono. Now 13.0. */
+    /* text-anchor:middle + x=140 (2026-07-25) — the three carousel works must caption
+       themselves in the SAME place, or the line jumps sideways on every advance. slot-1
+       was already centred; this one and slot-15 were anchored at start. */
+    .a8-cap{font:600 10px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em;text-anchor:middle}
+    .a8-sttx{font:700 9.5px ui-monospace,Menlo,monospace;/* 8 → 9.5: 10.4px → 12.4px */fill:var(--accent,#2b4be0);letter-spacing:.1em}
     /* intro */
     .a8-in{opacity:0;animation:k8fi .6s ease-out forwards}
     .a8-g1{animation-delay:.15s}.a8-g2{animation-delay:.4s}.a8-g3{animation-delay:.65s}
@@ -65,6 +70,13 @@
       .a8-st{opacity:1;transform:rotate(-8deg)}
     }
   </style>
+  <!-- BREATHING ROOM (2026-07-25). Measured in the hero carousel, this caption sat 1.4
+       units off the illustration — touching it — while its sibling works had 19.5 and 64.8.
+       The illustration lifts 28 so the caption gets ~14% of the canvas as clearance and the
+       art reads optically centred in the space above it. A WRAPPER, not a transform on the
+       existing groups: several of them carry transform animations, and a CSS animated
+       transform beats a presentation attribute outright, which would silently eat the lift. -->
+  <g transform="translate(0,-28)">
   <g class="a8-dk">
     <!-- the drafting table — guides and crosshairs -->
     <g class="a8-gw" opacity=".7"><g class="a8-shm" opacity=".55"><g class="a8-in a8-g1">
@@ -106,5 +118,6 @@
     <rect x="161.5" y="129.5" width="59" height="19" rx="2.5" class="a8-acc" stroke-width="1" opacity=".55"/>
     <text x="167" y="142.5" class="a8-sttx">SHIPPED ✓</text>
   </g>
-  <text x="20" y="196" class="a8-cap a8-capt a8-in a8-g3">DRAFT · REDRAW · SHIP</text>
+  </g><!-- /breathing-room lift -->
+  <text x="140" y="196" class="a8-cap a8-capt a8-in a8-g3">DRAFT · REDRAW · SHIP</text>
 </svg>

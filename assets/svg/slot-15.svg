@@ -19,8 +19,12 @@
     .a15-mutf{fill:var(--ink-muted,#5d6472)}
     .a15-fntf{fill:var(--ink-faint,#99a0ad)}
     .a15-hl{stroke:var(--hairline,#e2e6ee)}
-    .a15-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
-    .a15-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* 9 → 10 · and .a15-chtx 8.5 → 9.5 (2026-07-25): same correction as slot-8, same
+       reason — promoted to the hero carousel, so the labels must clear the floor at 1.300×. */
+    /* centred to match slot-1 and slot-8 — see the note in slot-8: three works sharing one
+       frame must put their caption on the same axis, or it slides on every advance */
+    .a15-cap{font:600 10px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em;text-anchor:middle}
+    .a15-chtx{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
     /* intro */
     .a15-in{opacity:0;animation:k15fi .6s ease-out forwards}
     .a15-g1{animation-delay:.15s}.a15-g2{animation-delay:.35s}.a15-g3{animation-delay:.6s}
@@ -75,6 +79,10 @@
       .a15-chip{opacity:1;transform:none}
     }
   </style>
+  <!-- BREATHING ROOM (2026-07-25) — see the note in slot-8. This one was less severe (19.5
+       units of clearance) but still read tight beside slot-1's 64.8; the lift takes it to
+       ~13%. Wrapper, not a transform on the groups, for the same animation reason. -->
+  <g transform="translate(0,-6)">
   <g class="a15-br">
     <!-- the grid — every seat marked -->
     <g class="a15-shm" opacity=".6"><g class="a15-in a15-g1">
@@ -125,5 +133,6 @@
     <circle cx="203" cy="30" r="2.5" class="a15-accf"/>
     <text x="211" y="33.5" class="a15-chtx">ORDER</text>
   </g>
-  <text x="20" y="196" class="a15-cap a15-capt a15-in a15-g3">A SYSTEM THAT CALMS</text>
+  </g><!-- /breathing-room lift -->
+  <text x="140" y="196" class="a15-cap a15-capt a15-in a15-g3">A SYSTEM THAT CALMS</text>
 </svg>

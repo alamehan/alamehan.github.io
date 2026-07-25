@@ -212,7 +212,12 @@ a.iconbtn:hover{text-decoration:none}
 html.spec .mdchip{opacity:1}
 /* ═══ 5 · HERO (display moment #1 — statement type, serif-italic accent word) ═══ */
 .hero{display:grid;gap:var(--s6);align-items:center;padding-top:var(--s7)}
-@media(min-width:860px){.hero{grid-template-columns:7fr 5fr}}
+/* 6fr/6fr, not 7fr/5fr (2026-07-25): the art column was 345px, so slot-1's 400-unit
+   canvas rendered at 0.738× and its 9.5px labels landed at SEVEN effective pixels —
+   unreadable without zooming, and (worse) LARGER on a phone than on a 1440 desktop.
+   An even split gives ~414px, and the hero art is now a three-piece carousel, which
+   earns the room. The 860px reading column is untouched — that law is PRD §19. */
+@media(min-width:860px){.hero{grid-template-columns:6fr 6fr}}
 .hero .kicker{display:inline-flex;gap:8px;align-items:center;font:700 10.5px/1 var(--mono);color:var(--ink);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--hairline);border-radius:999px;background:var(--surface);padding:8px 13px}
 .hero .kicker::before{content:"";width:7px;height:7px;border-radius:999px;background:var(--ok);flex:none}
 .hero h1{font:900 clamp(36px,5.6vw,64px)/1.02 var(--display);letter-spacing:-1.8px;margin:18px 0 16px;text-wrap:balance}
@@ -223,6 +228,63 @@ html.spec .mdchip{opacity:1}
 .status-dot{width:8px;height:8px;border-radius:999px;background:var(--ok);flex:none;transform:translateY(1px)}
 .hero .actions{display:flex;gap:10px;flex-wrap:wrap}
 .hero-art{background:var(--surface);border:1px solid var(--hairline);border-radius:16px;padding:var(--s5)}
+/* ═══ HERO CAROUSEL — three works, one story in three beats ═══
+   The pieces are ART, not content, which is why an auto-advancing carousel is defensible
+   here and is not in the usual case: nobody is harmed by not seeing panel three. What DOES
+   apply is carried below — the dwell is a whole multiple of the artwork's own 5s ambient
+   loop (advancing at 7s would cut every piece off mid-sentence), attention pauses it, and
+   reduced-motion removes the automation entirely rather than merely slowing it. */
+.hero-cx{position:relative}
+.hero-cx-stage{position:relative;aspect-ratio:4/3}
+.hero-cx-stage .slot{position:absolute;inset:0;opacity:0;transition:opacity .5s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.hero-cx-stage .slot.on{opacity:1;pointer-events:auto}
+/* ONE CENTRE AXIS (2026-07-25, owner: "the dots and the label look messy"). The foot used
+   to be a left-aligned row, which put three different left edges under a CENTRED artwork:
+   dots at 0, the artwork's own caption at ~26px, the work's name at ~86px. Nothing lined up
+   with anything. Now the artwork, its caption, the name and the dots all share the panel's
+   centre line. Stacked rather than side-by-side on purpose: centring a [dots][name] ROW
+   would slide the dots ~26px sideways every time the name changed length. */
+.hero-cx-foot{display:flex;flex-direction:column;align-items:center;gap:9px;margin-top:11px;position:relative}
+.hero-dots{display:inline-flex;gap:7px;flex:none}
+.hero-dot{position:relative;width:22px;height:22px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center;border-radius:999px}
+.hero-dot:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+/* THE ACTIVE ONE IS A PILL, NOT A BIGGER DOT (2026-07-25, owner: "berantakan").
+   Two reasons, and the first only appeared once the foot was centred. (1) slot-8's artwork
+   carries its OWN three-dot motif, which then sat directly above three equal carousel dots
+   on the same axis — it read as two carousels. A mixed row (● ▬ ●) cannot be mistaken for
+   any artwork's decoration. (2) A LINE is a far better progress read than a 17px ring arc:
+   you can see at a glance how much of the dwell is left, which is exactly what disarms the
+   usual complaint about auto-advancing carousels. The row's total width never changes,
+   because exactly one indicator is always the wide one. */
+.hero-dot .pip{display:block;width:7px;height:7px;border-radius:999px;background:var(--ink-faint);opacity:.45;position:relative;overflow:hidden;
+  transition:width .4s cubic-bezier(.22,1,.36,1),opacity .3s,background .3s}
+.hero-dot:hover .pip{opacity:.85}
+.hero-dot[aria-selected="true"] .pip{width:22px;opacity:1;background:color-mix(in srgb,var(--accent) 20%,transparent)}
+/* the fill IS the clock: heroGo fires on its animationend, so a paused fill is a paused
+   carousel — one clock cannot desync from itself the way a parallel timer would */
+.hero-dot[aria-selected="true"] .pip::after{content:"";position:absolute;inset:0;border-radius:999px;background:var(--accent);
+  transform-origin:left center;transform:scaleX(0);animation:hcring var(--hc-dwell,10s) linear forwards}
+@keyframes hcring{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero-cx.paused .hero-dot[aria-selected="true"] .pip::after{animation-play-state:paused}
+/* THE TITLE IS ANNOUNCED, NOT PRINTED (2026-07-25, owner: "isn't the caption redundant
+   with the SVG's own text?"). It was — and it was mine. Every one of these works already
+   captions itself INSIDE the artwork ("DRAFT · REDRAW · SHIP"), so printing "The Draft and
+   the Ship" underneath said the same thing twice and crowded an already tight bottom edge.
+   The name still exists where it costs nothing: the dot's tooltip, the dot's aria-label,
+   and this live region — so a screen reader is told which work it landed on, and a mouse
+   can ask, but the panel shows ONE caption. Earlier I argued three bare dots throw the
+   titles away; that was right for art with no caption of its own, and wrong for these. */
+.hero-cx-name{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.hero-cx-name b{color:var(--ink);font-weight:700}
+@media(prefers-reduced-motion:reduce){
+  .hero-cx-stage .slot{transition:none}
+  .hero-dot .pip{transition:none}
+  /* the automation is REMOVED, not slowed: with no fill animation there is no animationend,
+     and the advance rides that event alone — so the dots become pure manual control. The
+     pill still shows FILLED, because it marks which work you are on; what it must not do is
+     imply a countdown that is not running. */
+  .hero-dot[aria-selected="true"] .pip::after{animation:none;transform:scaleX(1)}
+}
 .proof{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:16px;overflow:hidden;margin-top:var(--s7)}
 @media(min-width:860px){.proof{grid-template-columns:repeat(4,1fr)}}
 .proof .stat{background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:5px}
@@ -1039,6 +1101,7 @@ function boot(){
     });
     renderAll();
     loadSlots();
+    heroCarouselInit();
     route(true);
     applyFavicon(); /* v6.4 — honor a stored/deep-linked zen on first paint */
     var _bt=document.getElementById("btn-tools");if(_bt)_bt.setAttribute("href",toolUrl("tools/index.html"));
@@ -1177,7 +1240,7 @@ function renderHero(){
       +'<p class="sub">'+emphasize(L(hero.meta,"sub"))+"</p>"
       +'<p class="status"><span class="status-dot" aria-hidden="true"></span><span>'+esc(S("status_prefix"))+" "+esc(L(hero.meta,"status"))+"</span></p>"
       +'<div class="actions">'+hlinks.map(function(l,ix){return btnLink(l,ix===0?"btn--ink":"btn--secondary")}).join("")+"</div>"
-      +'</div><div class="hero-art" data-spec="--surface,--hairline"><div class="slot slot-1" data-slot="1" aria-hidden="true"></div></div></section>';
+      +'</div><div class="hero-art" data-spec="--surface,--hairline">'+heroCarousel()+'</div></section>';
   }
   if(stats.length)out+='<div class="proof" role="list" id="proof">'+stats.map(function(g){
     return '<div class="stat" role="listitem" data-spec="--accent,--surface"><span class="stat-value">'+esc(one(g.meta.value)||"")+'</span><span class="stat-label">'+esc(L(g.meta,"label"))+"</span></div>";
@@ -1443,7 +1506,7 @@ function setZen(on,quiet){
   ST.zen=!!on;
   try{localStorage.setItem("ala_zen",on?"1":"")}catch(e){}
   applyFavicon();
-  renderAll();loadSlots(); /* every render path re-hydrates the slot art (the lang/theme paths' law) */
+  renderAll();loadSlots();heroCarouselInit(); /* every render path re-hydrates the slot art (the lang/theme paths' law) */
   window.scrollTo(0,0);
   if(!quiet)toast(S(on?"zen_on":"zen_off"));
 }
@@ -1901,6 +1964,118 @@ function renderAll(){
   renderTopbar();renderRail();renderMain();renderFooter();renderModeSwitch();buildPaletteIndex();initObservers();initReveal();initFolds();dgOutline();hydrateVisits();hydrateMotion();
   if(ST.spec)renderSpecPanel();
 }
+/* ═══ HERO CAROUSEL — three works, one story in three beats ═══
+   The pieces (whose titles are their own, so they are NOT translated — a work's name is a
+   proper noun) tell the practice in order: what it does, how it is done, what it leaves.
+   Chosen from the ten finished-but-unplaced general slots rather than commissioned, so the
+   style is consistent by construction: same canvas, same language, same gates. */
+var HERO_ART=[
+  {n:1,  name:"The Untangling"},        /* tangled in · obvious out  — the WHAT   */
+  {n:8,  name:"The Draft and the Ship"},/* iteration into craft      — the HOW    */
+  {n:15, name:"The Quiet Grid"}         /* a system that calms       — the RESULT */
+];
+/* TWO ambient loops, not an arbitrary interval. Every slot's ambient animation shares a 5s
+   period (slot-1 states it in its own header), so a 7s or 8s dwell would cut every piece
+   off mid-sentence, forever. At 10s each work completes its telling twice before it goes. */
+var HERO_DWELL_MS=10000;
+function heroCarousel(){
+  return '<div class="hero-cx" id="herocx" data-dwell="'+HERO_DWELL_MS+'">'
+    +'<div class="hero-cx-stage">'
+    +HERO_ART.map(function(a,i){
+      /* data-defer keeps loadSlots() away until the panel is first shown. The intro
+         animations are plain CSS that fire the moment the SVG enters the DOM, so mounting
+         all three up front would burn panels 2 and 3 unseen and you would meet them
+         already finished — the thing a carousel of ANIMATIONS must never do. */
+      return '<div class="slot'+(i?'':' on')+'" data-slot="'+a.n+'"'+(i?' data-defer="1"':'')+' aria-hidden="true"></div>';
+    }).join("")
+    +'</div><div class="hero-cx-foot">'
+      /* the TITLE sits directly under the artwork it names, and the dots come last as the
+         control — image, caption, then chrome. The name is also the whole reason this is
+         not three bare dots: every piece has a title, and three anonymous circles throw
+         that away along with any information scent. */
+      +'<p class="hero-cx-name" id="hc-name" aria-live="polite"><b>'+esc(HERO_ART[0].name)+'</b></p>'
+      +'<div class="hero-dots" role="tablist" aria-label="'+esc(S("hero_art"))+'">'
+      +HERO_ART.map(function(a,i){
+        return '<button type="button" class="hero-dot" role="tab" data-hc="'+i+'"'
+          +' aria-selected="'+(i?"false":"true")+'" title="'+esc(a.name)+'"'
+          +' aria-label="'+esc(a.name)+" — "+(i+1)+" "+esc(S("hero_art_of"))+" "+HERO_ART.length+'">'
+          +'<span class="pip" aria-hidden="true"></span>'
+          +'</button>';
+      }).join("")
+      +'</div>'
+    +'</div></div>';
+}
+var HC={i:0,el:null,seen:{0:1}};
+function heroGo(ix,userDriven){
+  var cx=HC.el; if(!cx)return;
+  var panels=$$(".hero-cx-stage .slot",cx), dots=$$(".hero-dot",cx);
+  ix=(ix+panels.length)%panels.length;
+  HC.i=ix;
+  panels.forEach(function(p,k){p.classList.toggle("on",k===ix)});
+  dots.forEach(function(d,k){d.setAttribute("aria-selected",k===ix?"true":"false")});
+  var nm=$("#hc-name"); if(nm)nm.innerHTML="<b>"+esc(HERO_ART[ix].name)+"</b>"; /* $ here is querySelector, NOT getElementById — the id needs its # */
+  /* mount on first reveal, so this piece's intro plays exactly when you first look at it */
+  var p=panels[ix];
+  if(p&&p.getAttribute("data-defer")){p.removeAttribute("data-defer");loadSlots()}
+  if(userDriven)heroRing(true);
+}
+/* THE FILL DRIVES THE ADVANCE — not a parallel setTimeout. One clock cannot desync from
+   itself: pausing the CSS animation pauses the countdown AND the advance, and a
+   reduced-motion visitor (where the animation is switched off) simply never advances.
+   Restarting matters only when the user re-picks the work already showing — every other
+   path changes which dot is selected, and the CSS animation starts fresh on its own. */
+function heroRing(restart){
+  var cx=HC.el; if(!cx)return;
+  var c=cx.querySelector('.hero-dot[aria-selected="true"] .pip');
+  if(!c)return;
+  if(restart){c.style.animation="none";void c.offsetWidth;c.style.animation=""}
+}
+function heroCarouselInit(){
+  var cx=$("#herocx"); if(!cx||cx.dataset.wired)return;
+  cx.dataset.wired="1"; HC.el=cx; HC.i=0;
+  cx.style.setProperty("--hc-dwell",(HERO_DWELL_MS/1000)+"s");
+  cx.addEventListener("click",function(e){
+    var d=e.target.closest?e.target.closest(".hero-dot"):null;
+    if(d)heroGo(parseInt(d.getAttribute("data-hc"),10),true);
+  });
+  cx.addEventListener("keydown",function(e){
+    if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
+      e.preventDefault();
+      heroGo(HC.i+(e.key==="ArrowRight"?1:-1),true);
+      var d=cx.querySelector('.hero-dot[aria-selected="true"]'); if(d)d.focus();
+    }
+  });
+  /* attention pauses it — the art rewards looking, and moving while someone looks is rude.
+     Resuming asks BOTH questions, because either kind of attention is enough to hold it:
+     a keyboard reader focused on a dot must not be un-paused merely because the mouse
+     wandered off. Deferred a tick so document.activeElement has settled — during focusout
+     it is still transitional (usually <body>), which would answer the wrong thing. */
+  ["pointerenter","focusin"].forEach(function(ev){cx.addEventListener(ev,function(){cx.classList.add("paused")})});
+  function heroIdle(){
+    if(!HC.el)return;
+    if(HC.el.matches(":hover"))return;
+    /* :focus-visible, NOT contains(activeElement) — the distinction matters and cost a
+       round trip to find. A MOUSE user who clicks a dot leaves that dot focused; holding
+       on plain focus would pause the carousel forever the moment they moved the pointer
+       away. :focus-visible is exactly the browser's own judgement of "this focus is being
+       navigated by keyboard", which is the only focus that means someone is still reading. */
+    try{ if(HC.el.querySelector(":focus-visible"))return; }catch(e){}
+    HC.el.classList.remove("paused");
+  }
+  ["pointerleave","focusout"].forEach(function(ev){cx.addEventListener(ev,function(){setTimeout(heroIdle,0)})});
+  /* touch: a horizontal drag past 40px turns the page, and a vertical one is left to scroll */
+  var sx=0,sy=0,tracking=false;
+  cx.addEventListener("touchstart",function(e){var t=e.touches[0];sx=t.clientX;sy=t.clientY;tracking=true},{passive:true});
+  cx.addEventListener("touchend",function(e){
+    if(!tracking)return; tracking=false;
+    var t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+    if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))heroGo(HC.i+(dx<0?1:-1),true);
+  },{passive:true});
+  cx.addEventListener("animationend",function(e){
+    if(e.animationName==="hcring")heroGo(HC.i+1,false);
+  });
+}
+
 /* ═══ slots ═══ */
 function cleanSvg(root){
   $$("script,foreignObject",root).forEach(function(n){n.remove()});
@@ -1916,6 +2091,7 @@ function loadSlots(){
   if(!slotIO)slotIO=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in-view");slotIO.unobserve(en.target)}})},{threshold:.25});
   $$(".slot").forEach(function(el){
     if(el.dataset.loaded)return;
+    if(el.getAttribute("data-defer"))return; /* carousel panel, not shown yet — see heroGo() */
     var n=el.getAttribute("data-slot");
     fetch("assets/svg/slot-"+n+".svg").then(function(r){if(!r.ok)throw 0;return r.text()}).catch(function(){var t=embeddedText('script[type="text/svg-slot"][data-slot="'+n+'"]');if(t!==null)return t;throw 0}).then(function(txt){
       var doc=new DOMParser().parseFromString(txt,"image/svg+xml");
@@ -2190,7 +2366,7 @@ function setLang(l){
   ST.lang=(l==="id")?"id":"en";
   try{localStorage.setItem("ala_lang",ST.lang)}catch(e){}
   var y=window.scrollY;
-  renderAll();loadSlots();
+  renderAll();loadSlots();heroCarouselInit();
   window.scrollTo(0,y);
   if(ST.peek)renderPeek();
 }
@@ -2199,7 +2375,7 @@ function resetPrefs(){
   setSpec(false,true);
   ST.theme="light";applyThemeAttr();applyAccent(); /* the reset lands on the default: light */
   ST.lang=(ST.cfg["lang.default"]==="id")?"id":"en";
-  renderAll();loadSlots();
+  renderAll();loadSlots();heroCarouselInit();
   toast(S("toast_reset"));
 }
 /* ═══ toast & clipboard ═══ */
@@ -2302,6 +2478,91 @@ function selfTestSuite(){
     var n=famEntries().factory.length;
     var okk=$$("#family .w-tile").filter(function(w){return /^crafts\//.test(w.getAttribute("data-open")||"")}).length===n;
     return [okk&&!document.getElementById("exp-panel")&&$$("#family .exp-btn").length===0,"wired "+$$("#family .w-tile[data-open]").length+"/"+n]});
+  /* ═══ the hero carousel — three works, one story in three beats ═══ */
+  t("hero carousel: three panels, three dots, one selected",function(){
+    var cx=$("#herocx");if(!cx)return false;
+    var p=$$(".hero-cx-stage .slot",cx),d=$$(".hero-dot",cx);
+    return [p.length===3&&d.length===3&&$$('.hero-dot[aria-selected="true"]',cx).length===1
+      &&$$(".hero-cx-stage .slot.on",cx).length===1,"panels "+p.length+" dots "+d.length]});
+  t("hero carousel: panels 2+3 stay DEFERRED until first shown",function(){
+    /* the intro animations are plain CSS that fire on DOM insert, so mounting all three up
+       front would burn two of them unseen — you would meet them already finished. This is
+       the check that keeps a carousel of ANIMATIONS from becoming a carousel of stills. */
+    var cx=$("#herocx");if(!cx)return false;
+    var p=$$(".hero-cx-stage .slot",cx);
+    return [!p[0].getAttribute("data-defer")&&!!p[1].getAttribute("data-defer")&&!!p[2].getAttribute("data-defer"),
+      "mounted "+p.filter(function(x){return !x.getAttribute("data-defer")}).length+"/3"]});
+  t("hero carousel: the advance rides the fill, so pause cannot desync",function(){
+    /* one clock, not two: the CSS fill animation IS the timer, and heroGo fires on its
+       animationend. A parallel setTimeout would drift out of step with a paused fill. */
+    var c=$('.hero-dot[aria-selected="true"] .pip');if(!c)return false;
+    var s=getComputedStyle(c,"::after");
+    return [s.animationName==="hcring"&&parseFloat(s.animationDuration)===HERO_DWELL_MS/1000,
+      s.animationName+" "+s.animationDuration]});
+  t("hero carousel: the active indicator is a PILL, never a fourth dot",function(){
+    /* slot-8's artwork carries its own three-dot motif directly above this row. Three equal
+       circles there would read as a second carousel; one wide pill cannot be mistaken for
+       decoration. Also asserts the row width is state-independent (exactly one is wide). */
+    var on=$('.hero-dot[aria-selected="true"] .pip'),off=$('.hero-dot[aria-selected="false"] .pip');
+    if(!on||!off)return false;
+    var w1=on.getBoundingClientRect().width,w2=off.getBoundingClientRect().width;
+    return [w1>=w2*2.5,"active "+Math.round(w1)+"px vs idle "+Math.round(w2)+"px"]});
+  t("hero carousel: the dwell is a WHOLE number of the artwork's 5s ambient loop",function(){
+    /* 7s or 8s would cut every piece off mid-sentence, forever */
+    return [HERO_DWELL_MS%5000===0&&HERO_DWELL_MS>=10000,HERO_DWELL_MS/1000+"s = "+(HERO_DWELL_MS/5000)+" loops"]});
+  t("hero carousel: the work is ANNOUNCED, never printed twice",function(){
+    /* every one of these artworks captions itself inside the SVG, so printing the title
+       underneath said the same thing twice. The name now lives where it costs no pixels:
+       the live region (screen readers), the dot's aria-label, and the dot's tooltip. This
+       check fails if the title ever becomes visible again beside the art's own caption. */
+    var nm=$("#hc-name");if(!nm)return false;
+    var titled=$$(".hero-dot").filter(function(d){
+      return (d.getAttribute("aria-label")||"").length>4&&(d.getAttribute("title")||"").length>4}).length;
+    var r=nm.getBoundingClientRect();
+    return [nm.getAttribute("aria-live")==="polite"&&nm.textContent.trim()===HERO_ART[0].name
+      &&titled===HERO_ART.length&&r.width<=2&&r.height<=2,
+      "sr-only "+Math.round(r.width)+"x"+Math.round(r.height)+" · dots titled "+titled]});
+  t("hero art: the caption clears the illustration (≥10% of the canvas)",function(){
+    /* slot-8's caption sat 1.4 units off its illustration — touching — while slot-1 had
+       64.8. Three works in one frame cannot breathe differently.
+       MEASURED THROUGH getBoundingClientRect, never getBBox: getBBox reports an element's
+       OWN user space and ignores ancestor transforms, so it reads straight through the
+       wrapper that does the lifting and reports the pre-fix number. It cost a round trip
+       here. This board can only reach whichever panel is showing; all three are measured
+       by 02-factory/tests/site-hero-carousel.mjs. */
+    var on=$("#herocx .slot.on");if(!on)return false;
+    var svg=on.querySelector("svg");if(!svg)return [true,"art not mounted — the lap covers all three"];
+    var vb=(svg.getAttribute("viewBox")||"0 0 1 1").split(/\s+/).map(Number);
+    var box=svg.getBoundingClientRect();if(!box.height)return [true,"not laid out"];
+    var unit=box.height/vb[3],artBot=null,capTop=null;
+    $$("path,rect,circle,line,polyline,ellipse,polygon",svg).forEach(function(e){
+      var r=e.getBoundingClientRect();if(!r.width&&!r.height)return;
+      if(artBot===null||r.bottom>artBot)artBot=r.bottom;
+    });
+    $$("text",svg).forEach(function(t){var r=t.getBoundingClientRect();if(capTop===null||r.top>capTop)capTop=r.top});
+    if(artBot===null||capTop===null)return [true,"nothing to compare"];
+    var gap=(capTop-artBot)/unit;
+    return [gap>=vb[3]*0.10,"gap "+gap.toFixed(0)+" = "+((gap/vb[3])*100).toFixed(1)+"% of canvas"]});
+  t("ALL THREE hero works clear the readable floor (≥12 effective px)",function(){
+    /* The whole reason this wave exists. slot-1's 400-unit canvas renders at 0.910×, so its
+       old 9.5px labels landed at SEVEN effective pixels — the owner had to zoom to read the
+       hero. A DECLARED font size says nothing without the scale beside it, so this measures
+       declared × (rendered width ÷ canvas width) and demands ≥12 for every panel.
+       It reads the EMBEDDED source rather than the mounted SVG, on the same principle as
+       the slot-1 story check above: the art loads asynchronously, and a check that races a
+       fetch is a check that reports timing instead of truth. */
+    var stage=$(".hero-cx-stage");if(!stage)return false;
+    var w=stage.getBoundingClientRect().width;if(!w)return [false,"stage has no width"];
+    var worst=null;
+    for(var i=0;i<HERO_ART.length;i++){
+      var src=embeddedText('script[type="text/svg-slot"][data-slot="'+HERO_ART[i].n+'"]')||"";
+      var vb=/viewBox="0 0 ([\d.]+)/.exec(src);
+      var fs=/font:\s*\d+\s+([\d.]+)px/.exec(src);
+      if(!vb||!fs)return [false,"slot-"+HERO_ART[i].n+": no viewBox/font in source"];
+      var eff=parseFloat(fs[1])*(w/parseFloat(vb[1]));
+      if(!worst||eff<worst.eff)worst={n:HERO_ART[i].n,eff:eff};
+    }
+    return [worst.eff>=12,"smallest: slot-"+worst.n+" at "+worst.eff.toFixed(1)+"px"]});
   t("motion gallery planted (a scene + an icon per product)",function(){
     var n=famEntries().factory.length;
     var s=$$('template[data-motion$="/scene"]').length,i=$$('template[data-motion$="/icon"]').length;
@@ -4397,6 +4658,10 @@ skip.en: Skip to content
 skip.id: Langsung ke konten
 status_prefix.en: Now:
 status_prefix.id: Sekarang:
+hero_art.en: Hero artwork
+hero_art.id: Karya hero
+hero_art_of.en: of
+hero_art_of.id: dari
 wip.en: WIP
 wip.id: WIP
 locked_title.en: Private
@@ -7596,7 +7861,11 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     .a1-mut{stroke:var(--ink-faint,#99a0ad)}
     .a1-acc{stroke:var(--accent,#2b4be0)}
     .a1-accf{fill:var(--accent,#2b4be0)}
-    .a1-lbl{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle;transition:fill .35s cubic-bezier(.22,1,.36,1)}
+    /* 9.5 → 14 (2026-07-25). This canvas is 400 wide but renders at 364px — 0.910× — so
+       9.5 units landed at 8.6 EFFECTIVE PIXELS, unreadable without zooming. 14 units lands
+       at 12.7px, and it is the proportion the siblings already use: 14/300 here reads the
+       same as 10/210 on the 280-canvas slots, so the family is one size again. */
+    .a1-lbl{font:600 14px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle;transition:fill .35s cubic-bezier(.22,1,.36,1)}
     svg:hover .a1-lbl{fill:var(--accent,#2b4be0)}
     /* intro draws — glide easing */
     .a1-d1{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .15s cubic-bezier(.4,0,.2,1) forwards}
@@ -8480,8 +8749,13 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     .a8-accf{fill:var(--accent,#2b4be0)}
     .a8-fntf{fill:var(--ink-faint,#99a0ad)}
     .a8-hl{stroke:var(--hairline,#e2e6ee)}
-    .a8-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
-    .a8-sttx{font:700 8px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.1em}
+    /* 9 → 10 (2026-07-25): promoted to the hero carousel, where it renders at 1.300× —
+       9 units landed at 11.7px, under the ~12px floor for tracked uppercase mono. Now 13.0. */
+    /* text-anchor:middle + x=140 (2026-07-25) — the three carousel works must caption
+       themselves in the SAME place, or the line jumps sideways on every advance. slot-1
+       was already centred; this one and slot-15 were anchored at start. */
+    .a8-cap{font:600 10px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em;text-anchor:middle}
+    .a8-sttx{font:700 9.5px ui-monospace,Menlo,monospace;/* 8 → 9.5: 10.4px → 12.4px */fill:var(--accent,#2b4be0);letter-spacing:.1em}
     /* intro */
     .a8-in{opacity:0;animation:k8fi .6s ease-out forwards}
     .a8-g1{animation-delay:.15s}.a8-g2{animation-delay:.4s}.a8-g3{animation-delay:.65s}
@@ -8527,6 +8801,13 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
       .a8-st{opacity:1;transform:rotate(-8deg)}
     }
   </style>
+  <!-- BREATHING ROOM (2026-07-25). Measured in the hero carousel, this caption sat 1.4
+       units off the illustration — touching it — while its sibling works had 19.5 and 64.8.
+       The illustration lifts 28 so the caption gets ~14% of the canvas as clearance and the
+       art reads optically centred in the space above it. A WRAPPER, not a transform on the
+       existing groups: several of them carry transform animations, and a CSS animated
+       transform beats a presentation attribute outright, which would silently eat the lift. -->
+  <g transform="translate(0,-28)">
   <g class="a8-dk">
     <!-- the drafting table — guides and crosshairs -->
     <g class="a8-gw" opacity=".7"><g class="a8-shm" opacity=".55"><g class="a8-in a8-g1">
@@ -8568,7 +8849,8 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     <rect x="161.5" y="129.5" width="59" height="19" rx="2.5" class="a8-acc" stroke-width="1" opacity=".55"/>
     <text x="167" y="142.5" class="a8-sttx">SHIPPED ✓</text>
   </g>
-  <text x="20" y="196" class="a8-cap a8-capt a8-in a8-g3">DRAFT · REDRAW · SHIP</text>
+  </g><!-- /breathing-room lift -->
+  <text x="140" y="196" class="a8-cap a8-capt a8-in a8-g3">DRAFT · REDRAW · SHIP</text>
 </svg>
 </script>
 <script type="text/svg-slot" data-slot="9">
@@ -9224,8 +9506,12 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     .a15-mutf{fill:var(--ink-muted,#5d6472)}
     .a15-fntf{fill:var(--ink-faint,#99a0ad)}
     .a15-hl{stroke:var(--hairline,#e2e6ee)}
-    .a15-cap{font:600 9px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em}
-    .a15-chtx{font:600 8.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
+    /* 9 → 10 · and .a15-chtx 8.5 → 9.5 (2026-07-25): same correction as slot-8, same
+       reason — promoted to the hero carousel, so the labels must clear the floor at 1.300×. */
+    /* centred to match slot-1 and slot-8 — see the note in slot-8: three works sharing one
+       frame must put their caption on the same axis, or it slides on every advance */
+    .a15-cap{font:600 10px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.2em;text-anchor:middle}
+    .a15-chtx{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--accent,#2b4be0);letter-spacing:.14em}
     /* intro */
     .a15-in{opacity:0;animation:k15fi .6s ease-out forwards}
     .a15-g1{animation-delay:.15s}.a15-g2{animation-delay:.35s}.a15-g3{animation-delay:.6s}
@@ -9280,6 +9566,10 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
       .a15-chip{opacity:1;transform:none}
     }
   </style>
+  <!-- BREATHING ROOM (2026-07-25) — see the note in slot-8. This one was less severe (19.5
+       units of clearance) but still read tight beside slot-1's 64.8; the lift takes it to
+       ~13%. Wrapper, not a transform on the groups, for the same animation reason. -->
+  <g transform="translate(0,-6)">
   <g class="a15-br">
     <!-- the grid — every seat marked -->
     <g class="a15-shm" opacity=".6"><g class="a15-in a15-g1">
@@ -9330,7 +9620,8 @@ link: Kaggle = https://www.kaggle.com/raihanallaam
     <circle cx="203" cy="30" r="2.5" class="a15-accf"/>
     <text x="211" y="33.5" class="a15-chtx">ORDER</text>
   </g>
-  <text x="20" y="196" class="a15-cap a15-capt a15-in a15-g3">A SYSTEM THAT CALMS</text>
+  </g><!-- /breathing-room lift -->
+  <text x="140" y="196" class="a15-cap a15-capt a15-in a15-g3">A SYSTEM THAT CALMS</text>
 </svg>
 </script>
 <!-- SNAPSHOT:END -->

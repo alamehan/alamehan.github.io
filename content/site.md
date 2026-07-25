@@ -71,6 +71,10 @@ skip.en: Skip to content
 skip.id: Langsung ke konten
 status_prefix.en: Now:
 status_prefix.id: Sekarang:
+hero_art.en: Hero artwork
+hero_art.id: Karya hero
+hero_art_of.en: of
+hero_art_of.id: dari
 wip.en: WIP
 wip.id: WIP
 locked_title.en: Private

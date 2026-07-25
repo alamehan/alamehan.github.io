@@ -13,7 +13,11 @@
     .a1-mut{stroke:var(--ink-faint,#99a0ad)}
     .a1-acc{stroke:var(--accent,#2b4be0)}
     .a1-accf{fill:var(--accent,#2b4be0)}
-    .a1-lbl{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle;transition:fill .35s cubic-bezier(.22,1,.36,1)}
+    /* 9.5 → 14 (2026-07-25). This canvas is 400 wide but renders at 364px — 0.910× — so
+       9.5 units landed at 8.6 EFFECTIVE PIXELS, unreadable without zooming. 14 units lands
+       at 12.7px, and it is the proportion the siblings already use: 14/300 here reads the
+       same as 10/210 on the 280-canvas slots, so the family is one size again. */
+    .a1-lbl{font:600 14px ui-monospace,Menlo,monospace;fill:var(--ink-muted,#5d6472);letter-spacing:.14em;text-anchor:middle;transition:fill .35s cubic-bezier(.22,1,.36,1)}
     svg:hover .a1-lbl{fill:var(--accent,#2b4be0)}
     /* intro draws — glide easing */
     .a1-d1{stroke-dasharray:340;stroke-dashoffset:340;animation:k1dr .9s .15s cubic-bezier(.4,0,.2,1) forwards}
