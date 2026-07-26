@@ -72,9 +72,9 @@ label.id: Halaman di 11 lini produk Codify
 ## stat-family
 kind: stat
 hero: true
-value: 20
-label.en: @alamehan products · 20 executable PRDs · one standard
-label.id: Produk @alamehan · 20 PRD siap eksekusi · satu standar
+value: 21
+label.en: @alamehan products · 21 executable PRDs · one standard
+label.id: Produk @alamehan · 21 PRD siap eksekusi · satu standar
 
 ## stat-methods
 kind: stat

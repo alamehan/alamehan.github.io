@@ -1015,6 +1015,57 @@ Panduan yang hidup di tempat user-mu tersesat: di dalam app, menunjuk tombol yan
 asli (atau grafik yang asli), memakai warna dan namamu sendiri — dan tak pernah
 butuh developer, server, atau langganan.
 
+## choiceforge
+emoji: 🧮
+name: ChoiceForge
+tagline.en: Options in. A defensible choice out. — the honest decision console.
+tagline.id: Opsi masuk. Pilihan yang bisa dipertanggungjawabkan keluar. — konsol keputusan yang jujur.
+itch.en: Hard choices get defended with a scorecard — one built, after the fact, to agree with the choice already made.
+itch.id: Keputusan besar dibela pakai scorecard — yang disusun belakangan, supaya setuju dengan pilihan yang sudah terlanjur diambil.
+year: 2026
+status: live
+stack: single HTML, Standard v2
+tag: decisions
+tag: rubrics
+tag: evidence
+origin: factory
+codename: Neraca
+link: Launch = tools/choiceforge.html
+swatch: #9D174D
+
+@en
+### What it is
+A console for choosing between options honestly. You write the criteria first, seal
+them, and only then score — so the rubric cannot quietly rearrange itself to agree
+with the answer you already had.
+
+### How it flows
+Name the question and the options. For each criterion, say what artifact answers it —
+anything nothing can answer is marked an estimate, and estimates are never allowed to
+break a tie. Seal the rubric, score the matrix, and read the verdict: totals, what
+each one is made of, and the smallest single change that would reverse it.
+
+### What you get
+A decision record in plain markdown that anyone can open, argue with one number at a
+time, and bring back months later to ask whether the winner survived.
+@id
+### Apa ini
+Konsol untuk memilih di antara beberapa opsi secara jujur. Kriterianya kamu tulis
+lebih dulu, disegel, baru skornya masuk — supaya rubriknya tak diam-diam menyesuaikan
+diri dengan jawaban yang sudah kamu pegang.
+
+### Alurnya
+Sebutkan pertanyaan dan opsinya. Untuk tiap kriteria, sebutkan artefak apa yang
+menjawabnya — yang tak terjawab oleh apa pun ditandai sebagai perkiraan, dan perkiraan
+tak pernah boleh memutus hasil seri. Segel rubriknya, isi matriks skornya, lalu baca
+verdict-nya: total, komposisi penyusunnya, dan perubahan tunggal terkecil yang bisa
+membalikkannya.
+
+### Yang kamu dapat
+Satu record keputusan dalam markdown biasa yang bisa dibuka siapa pun, didebat satu
+angka pada satu waktu, dan dibuka lagi berbulan-bulan kemudian untuk bertanya: apakah
+pemenangnya bertahan?
+
 ## anggrek-classifier
 emoji: 🌺
 name: Anggrek Classifier

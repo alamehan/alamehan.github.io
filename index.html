@@ -447,7 +447,7 @@ html.spec .mdchip{opacity:1}
 .pv-note{font-size:12px;color:var(--ink-faint)}
 .pv-note a{color:var(--ink-muted)}
 /* the living family — motion embeds from the SVGAnimator collection, planted between
-   the MOTION markers by derive.mjs (source: 04-scaffold samples/alamehan). The mat is
+   the MOTION markers by derive.mjs (source: 04-scaffold collection). The mat is
    a FIXED light paper panel: the artifacts are forged on light paper, so in dark theme
    they read as framed prints, never as a theme bug. Emoji identity stays beside them. */
 .mo-mat{display:block;background:#f4f6fa;border:1px solid var(--hairline);border-radius:12px;padding:10px;margin:0 0 14px}
@@ -2977,7 +2977,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 <div id="backstage" hidden role="dialog" aria-modal="true" aria-label="Backstage"><div class="overlay-backdrop" data-act="closebs"></div><div class="bs-panel"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <noscript><div class="fail-card"><h2>🔬 Raihan Allaam — alamehan</h2><p>This site renders its Markdown garden with a little JavaScript. Enable JS, or read the raw content directly — every section is a plain <code>.md</code> file inside the <code>content/</code> folder of this repo.</p><p lang="id">Situs ini merender kebun Markdown-nya dengan sedikit JavaScript. Aktifkan JS, atau baca langsung file <code>.md</code> di folder <code>content/</code> repo ini.</p></div></noscript>
-<!-- MOTION:BEGIN — the family in motion: an icon per wall tile + a scene per Full-story diorama, planted VERBATIM by 05-orbit/derive.mjs from 04-scaffold/apps/svganimator/samples/alamehan/artifacts (the receipt-signed collection). Emoji identity on the cards stays untouched — motion is additive. Never edit between these markers by hand. -->
+<!-- MOTION:BEGIN — the family in motion: an icon per wall tile + a scene per Full-story diorama, planted VERBATIM by 05-orbit/derive.mjs from 04-scaffold/apps/svganimator/collection/artifacts (the receipt-signed collection). Emoji identity on the cards stays untouched — motion is additive. Never edit between these markers by hand. -->
 <template data-motion="zapseed/scene">
 <!-- svganimator-receipt: 1 | sig: svga-20260717-a-the-seed-line-pabrik | brand: zapseed | prefix: zsd1- | format: scene | title: The Seed Line | metaphor: a glasshouse seed line: pots ride one conveyor under the grow-lamp and every seed sprouts into a governed PRD | technique: CSS keyframes + SVG scene -->
 <section class="zsd1-root" tabindex="0" role="img" aria-label="Inside a glasshouse factory, pots ride a running conveyor under a breathing grow-lamp while spores drift up the light beam. On hover the beam brightens, seedlings grow out of the side pots one by one, spores glitter above, and a PRD tag stamps in with a spring as the payoff.">
@@ -4582,6 +4582,118 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 <script>(function(){var L=document.querySelectorAll('.spt2-root');for(var i=0;i<L.length;i++){(function(el){if(el.getAttribute('data-spt2-init'))return;el.setAttribute('data-spt2-init','1');el.addEventListener('pointerup',function(e){if(e.pointerType&&e.pointerType!=='mouse')el.classList.toggle('spt2-open')});el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.classList.toggle('spt2-open')}})})(L[i])}})();</script>
 </section>
 </template>
+<template data-motion="choiceforge/scene">
+<!-- svganimator-receipt: 1 | sig: svga-20260727-a-the-sealed-verdict-neraca | brand: choiceforge | prefix: cfg1- | format: scene | title: The Sealed Verdict | metaphor: a rubric sealed shut with a wax stamp feeds a score board where one row stays hollow because no artifact answers it, and the balance below moves only for the exact threshold the Pivot names | technique: CSS keyframes + SVG scene -->
+<section class="cfg1-root" tabindex="0" role="img" aria-label="A rubric card, its criteria and weights sealed shut by a wax stamp, feeds a score board where two rows are filled and a third stays hollow because no artifact answers it. Below, a balance rests with the verified pan down and the estimate pan raised. On hover the seal presses, its ripple lights the dot field, and a dashed threshold, an arrow and a chip reading delta 3.33 appear — the smallest single change that would reverse the verdict — while the beam swings down to meet the line.">
+<style>
+.cfg1-root{--cfg1-ease:cubic-bezier(.22,1,.36,1);--cfg1-spring:cubic-bezier(.34,1.45,.5,1);--cfg1-sweep:cubic-bezier(.25,.6,.4,1);--cfg1-glide:cubic-bezier(.4,0,.2,1);width:min(540px,100%);aspect-ratio:1/1;display:block;position:relative;overflow:hidden;cursor:pointer}
+.cfg1-root:focus-visible{outline:2px solid #9d174d;outline-offset:4px}
+.cfg1-stage{width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:reduce){.cfg1-root *{animation:none!important;transition:none!important}}
+
+/* idle layers — desynchronized seamless loops (transform/opacity only), running from load.
+   Distinct periods + negative delays so no two layers ever beat together; every static
+   value is also declared, so prefers-reduced-motion still yields the complete frame. */
+.cfg1-dots{opacity:.3;animation:cfg1-shim 13s var(--cfg1-ease) infinite}
+.cfg1-gl{animation:cfg1-breath 6.5s var(--cfg1-ease) infinite}
+.cfg1-beamw{transform-origin:180px 240px;transform:rotate(-9deg);animation:cfg1-settle 9.5s var(--cfg1-ease) infinite;animation-delay:-3s}
+.cfg1-glow{opacity:.14;animation:cfg1-spu 11s var(--cfg1-ease) infinite;animation-delay:-4s}
+.cfg1-feedm{animation:cfg1-carry 7.5s var(--cfg1-glide) infinite;animation-delay:-2s}
+.cfg1-mo1{animation:cfg1-mote 8s var(--cfg1-glide) infinite}
+.cfg1-mo2{animation:cfg1-mote 11.5s var(--cfg1-glide) infinite;animation-delay:-5s}
+@keyframes cfg1-shim{0%,100%{opacity:.26}50%{opacity:.42}}
+@keyframes cfg1-breath{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes cfg1-settle{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(-7.4deg)}}
+@keyframes cfg1-spu{0%,100%{opacity:.1}50%{opacity:.2}}
+@keyframes cfg1-carry{0%{transform:translateX(0);opacity:0}14%{opacity:.9}82%{opacity:.9}100%{transform:translateX(18px);opacity:0}}
+@keyframes cfg1-mote{0%{transform:translateY(0);opacity:0}18%{opacity:.5}70%{opacity:.22}100%{transform:translateY(-30px);opacity:0}}
+
+/* hover open — purely ADDITIVE. The beam's Pivot rides an outer wrapper (transition) over
+   the idle settle (animation) on the inner one, so the verdict swings without a single
+   idle loop being paused, rewound, or restarted. */
+.cfg1-hero{transition:transform .35s var(--cfg1-ease)}
+.cfg1-sealp{transform-origin:154px 180px;transition:transform .35s var(--cfg1-ease)}
+.cfg1-ignite{opacity:0;transform:scale(.5);transform-origin:154px 180px;transition:opacity .5s var(--cfg1-sweep) .12s,transform .65s var(--cfg1-sweep) .12s}
+.cfg1-tip{transform-origin:180px 240px;transition:transform .5s var(--cfg1-ease)}
+.cfg1-s1,.cfg1-s2,.cfg1-s3,.cfg1-pay{opacity:0}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-hero{transform:translate(-4px,-3px);transition:transform .15s var(--cfg1-spring)}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-sealp{transform:scale(1.07);transition:transform .15s var(--cfg1-spring)}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-dots{opacity:.55;transition:opacity .4s var(--cfg1-sweep) .12s}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-ignite{opacity:.42;transform:scale(1.85)}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-tip{transform:rotate(17deg);transition:transform .75s var(--cfg1-spring) .2s}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-s1{opacity:1;transition:opacity .35s var(--cfg1-sweep) .38s}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-s2{opacity:1;transition:opacity .35s var(--cfg1-sweep) .62s}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-s3{opacity:1;transition:opacity .35s var(--cfg1-sweep) .86s}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-pay{opacity:1;transition:opacity .3s var(--cfg1-spring) 1.1s}
+.cfg1-payw{transform:scale(.4) rotate(-16deg);transform-origin:336px 38px;transition:transform .55s var(--cfg1-spring) 1.1s}
+.cfg1-root:is(:hover,:focus-visible,.cfg1-open) .cfg1-payw{transform:none}
+</style>
+<svg class="cfg1-stage" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs><pattern id="cfg1-dotp" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#b4bdc9"/></pattern><linearGradient id="cfg1-gi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6f7d92"/><stop offset="1" stop-color="#4a5568"/></linearGradient><linearGradient id="cfg1-ga" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c67898"/><stop offset="1" stop-color="#9d174d"/></linearGradient></defs><rect width="360" height="360" fill="#fafafa"/><rect class="cfg1-dots" width="360" height="360" fill="url(#cfg1-dotp)"/><ellipse cx="180" cy="324" rx="134" ry="11.5" fill="#4a5568" opacity=".08"/><g class="cfg1-hero"><g class="cfg1-gl">
+<!-- the sealed rubric hands off to the score board: the feed only ever carries a mote -->
+<path d="M166 102 H186" stroke="#b4bdc9" stroke-width="2.5" stroke-dasharray="6 6" fill="none" stroke-linecap="round"/><path d="M184 97.5 l6 4.5 -6 4.5" fill="none" stroke="#b4bdc9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle class="cfg1-feedm" cx="168" cy="102" r="2.6" fill="#9d174d" opacity="0"/>
+<!-- A · the rubric: each criterion's kind (solid = an artifact answers it, hollow = nothing does) and its weight on the console's own 0–5 scale -->
+<rect x="24" y="58" width="138" height="120" rx="10" fill="#ffffff" stroke="#6f7d92" stroke-width="2.5"/><path d="M24 86 v-18 a10 10 0 0 1 10 -10 h118 a10 10 0 0 1 10 10 v18 Z" fill="#b4bdc9" opacity=".35"/><path d="M24 86 h138" stroke="#b4bdc9" stroke-width="2"/><rect x="28" y="61" width="46" height="3" rx="1.5" fill="#ffffff" opacity=".6"/><text x="36" y="79" font-size="10.5" font-weight="700" font-family="system-ui" letter-spacing="1.6" fill="#4a5568">RUBRIC</text><path d="M143.2 69 v-3.8 a3.6 3.6 0 0 1 7.2 0 v3.8" fill="none" stroke="#6f7d92" stroke-width="2"/><rect x="141" y="69" width="11.6" height="9.8" rx="2" fill="#6f7d92"/><rect x="142.7" y="70.5" width="2.5" height="4.2" rx="1.25" fill="#ffffff" opacity=".3"/>
+<circle cx="38" cy="101" r="3.4" fill="#9d174d"/><rect x="51" y="98" width="66" height="6.5" rx="3.25" fill="#b4bdc9"/><text x="151" y="105" text-anchor="end" font-size="11.5" font-weight="700" font-family="system-ui" fill="#4a5568">5</text>
+<circle cx="38" cy="123" r="3.4" fill="#9d174d"/><rect x="51" y="120" width="54" height="6.5" rx="3.25" fill="#b4bdc9"/><text x="151" y="127" text-anchor="end" font-size="11.5" font-weight="700" font-family="system-ui" fill="#4a5568">3</text>
+<circle cx="38" cy="145" r="3.4" fill="none" stroke="#9d174d" stroke-width="1.8" stroke-dasharray="3 2.6"/><rect x="51" y="142" width="60" height="6.5" rx="3.25" fill="#b4bdc9" opacity=".55"/><text x="151" y="149" text-anchor="end" font-size="11.5" font-weight="700" font-family="system-ui" fill="#6f7d92">2</text>
+<path d="M36 158 h76" stroke="#b4bdc9" stroke-width="1.5"/><text x="36" y="171" font-size="9.5" font-weight="700" font-family="system-ui" letter-spacing="1.2" fill="#6f7d92">SEALED</text>
+<!-- B · the score board: two rows answered, the third drawn HOLLOW — and the drop counted aloud, never imputed -->
+<rect x="198" y="58" width="138" height="120" rx="10" fill="#ffffff" stroke="#6f7d92" stroke-width="2.5"/><path d="M198 86 v-18 a10 10 0 0 1 10 -10 h118 a10 10 0 0 1 10 10 v18 Z" fill="#b4bdc9" opacity=".35"/><path d="M198 86 h138" stroke="#b4bdc9" stroke-width="2"/><rect x="202" y="61" width="46" height="3" rx="1.5" fill="#ffffff" opacity=".6"/><text x="210" y="79" font-size="10.5" font-weight="700" font-family="system-ui" letter-spacing="1.6" fill="#4a5568">SCORE</text>
+<rect x="210" y="97" width="114" height="11" rx="5.5" fill="#b4bdc9" opacity=".3"/><rect x="210" y="97" width="95" height="11" rx="5.5" fill="url(#cfg1-ga)"/><rect x="214.5" y="99.2" width="42" height="2.8" rx="1.4" fill="#ffffff" opacity=".32"/>
+<rect x="210" y="119" width="114" height="11" rx="5.5" fill="#b4bdc9" opacity=".3"/><rect x="210" y="119" width="65" height="11" rx="5.5" fill="url(#cfg1-ga)"/><rect x="214.5" y="121.2" width="28" height="2.8" rx="1.4" fill="#ffffff" opacity=".32"/>
+<rect x="210.9" y="141.9" width="112.2" height="9.2" rx="4.6" fill="none" stroke="#9d174d" stroke-width="1.8" stroke-dasharray="5 4"/>
+<path d="M210 158 h114" stroke="#b4bdc9" stroke-width="1.5"/><text x="324" y="171" text-anchor="end" font-size="9.5" font-weight="700" font-family="system-ui" letter-spacing="1.2" fill="#6f7d92">1 DROPPED</text>
+<!-- the wax seal — the scene's one accent anchor and the ignition origin -->
+<circle class="cfg1-ignite" cx="154" cy="180" r="20" fill="none" stroke="#9d174d" stroke-width="2.5"/><circle class="cfg1-glow" cx="154" cy="180" r="26" fill="#9d174d"/><g class="cfg1-sealp"><circle cx="155.5" cy="183" r="20" fill="#4a5568" opacity=".12"/><circle cx="154" cy="180" r="20" fill="url(#cfg1-ga)" stroke="#711137" stroke-width="2"/><circle cx="154" cy="180" r="14.5" fill="none" stroke="#711137" stroke-width="1.5" opacity=".5"/><path d="M142 173.5 a14.5 14.5 0 0 1 10 -6.6" fill="none" stroke="#ffffff" stroke-width="2.2" opacity=".45" stroke-linecap="round"/><text x="154" y="184" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui" letter-spacing=".4" fill="#fafafa">8F3A</text></g>
+<circle class="cfg1-mo1" cx="196" cy="224" r="2.6" fill="#9d174d" opacity="0"/><circle class="cfg1-mo2" cx="222" cy="232" r="2.1" fill="#c67898" opacity="0"/>
+<!-- C · the balance: a filled pan for what an artifact verified, a dashed one for what is only estimated -->
+<ellipse cx="180" cy="312" rx="42" ry="5.5" fill="#4a5568" opacity=".12"/><path d="M154 300 h52 l9 11 h-70 Z" fill="url(#cfg1-gi)" stroke="#4a5568" stroke-width="1.5" stroke-linejoin="round"/><rect x="157" y="301.5" width="28" height="2.6" rx="1.3" fill="#ffffff" opacity=".32"/><rect x="175.5" y="240" width="9" height="62" rx="4.5" fill="url(#cfg1-gi)"/><rect x="177.3" y="247" width="2.6" height="48" rx="1.3" fill="#ffffff" opacity=".26"/><g class="cfg1-tip"><g class="cfg1-beamw"><rect x="86" y="237" width="188" height="6.5" rx="3.25" fill="url(#cfg1-gi)"/><rect x="93" y="238.6" width="76" height="2.2" rx="1.1" fill="#ffffff" opacity=".3"/><path d="M92 243.5 v11 M268 243.5 v11" stroke="#4a5568" stroke-width="2" stroke-linecap="round"/><path d="M70 254 H114 L92 280 Z" fill="url(#cfg1-ga)" stroke="#711137" stroke-width="2" stroke-linejoin="round"/><path d="M76 257.5 H104" stroke="#ffffff" stroke-width="2.2" opacity=".3" stroke-linecap="round"/><path d="M246 254 H290 L268 280 Z" fill="none" stroke="#9d174d" stroke-width="2.2" stroke-dasharray="5 4" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="180" cy="240" r="9" fill="url(#cfg1-gi)" stroke="#4a5568" stroke-width="2"/><circle cx="177.3" cy="237.3" r="2.5" fill="#fafafa" opacity=".7"/><text x="92" y="314" text-anchor="middle" font-size="8.5" font-weight="700" font-family="system-ui" letter-spacing="1.1" fill="#6f7d92">VERIFIED</text><text x="268" y="314" text-anchor="middle" font-size="8.5" font-weight="700" font-family="system-ui" letter-spacing="1.1" fill="#6f7d92">ESTIMATE</text>
+<!-- the Pivot, staged in three: the line the estimate pan must reach, the way down, and the exact size of the change.
+     The threshold is drawn SOLID on purpose — everywhere else in this scene a dashed accent
+     outline means "estimated / unanswered", and this one number is computed in closed form. -->
+<g class="cfg1-s1"><path d="M240 292 H332" stroke="#9d174d" stroke-width="2.4" stroke-linecap="round"/><circle cx="332" cy="292" r="3.4" fill="#9d174d"/></g><g class="cfg1-s2"><path d="M310 258 v20 M302.5 270 l7.5 8 7.5 -8" fill="none" stroke="#9d174d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g><g class="cfg1-s3"><rect x="278" y="224" width="64" height="22" rx="8" fill="#9d174d"/><text x="310" y="239" text-anchor="middle" font-size="11" font-weight="700" font-family="system-ui" letter-spacing=".4" fill="#fafafa">Δ 3.33</text></g></g></g><g class="cfg1-pay"><g class="cfg1-payw"><path d="M336 28 l3 7.6 7.6 3 -7.6 3 -3 7.6 -3 -7.6 -7.6 -3 7.6 -3 Z" fill="#9d174d"/></g></g></svg>
+<script>(function(){var L=document.querySelectorAll('.cfg1-root');for(var i=0;i<L.length;i++){(function(el){if(el.getAttribute('data-cfg1-init'))return;el.setAttribute('data-cfg1-init','1');el.addEventListener('pointerup',function(e){if(e.pointerType&&e.pointerType!=='mouse')el.classList.toggle('cfg1-open')});el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.classList.toggle('cfg1-open')}})})(L[i])}})();</script>
+</section>
+</template>
+<template data-motion="choiceforge/icon">
+<!-- svganimator-receipt: 1 | sig: svga-20260726-a-the-sealed-balance-neraca | brand: choiceforge | prefix: cfg2- | format: icon | title: The Sealed Balance | metaphor: a balance whose beam settles under a sealed rubric; the two sparks it throws are the product's own law — one filled (verified), one hollow (an estimate) | technique: CSS keyframes + SVG icon -->
+<section class="cfg2-root" tabindex="0" role="img" aria-label="A balance beam rocks and settles beneath a slowly turning dashed ring, with a seal pulsing at its pivot; hover presses the seal and throws two sparks — one solid, one drawn hollow.">
+<style>
+.cfg2-root{--cfg2-ease:cubic-bezier(.22,1,.36,1);--cfg2-spring:cubic-bezier(.34,1.45,.5,1);--cfg2-sweep:cubic-bezier(.25,.6,.4,1);--cfg2-glide:cubic-bezier(.4,0,.2,1);width:min(200px,100%);aspect-ratio:1/1;display:block;position:relative;overflow:hidden;cursor:pointer}
+.cfg2-root:focus-visible{outline:2px solid #9d174d;outline-offset:4px}
+.cfg2-stage{width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:reduce){.cfg2-root *{animation:none!important;transition:none!important}}
+
+/* idle layers — desynchronized seamless loops (transform/opacity only). Distinct periods
+   plus negative delays, so ring, beam, seal, float and field never beat in lockstep. */
+.cfg2-ring{transform-origin:60px 60px;animation:cfg2-rsp 14s linear infinite}
+.cfg2-ring circle{animation:cfg2-rpu 6.5s var(--cfg2-ease) infinite;animation-delay:-2s}
+@keyframes cfg2-rsp{to{transform:rotate(360deg)}}
+@keyframes cfg2-rpu{0%,100%{opacity:.5}50%{opacity:.95}}
+
+/* the beam SETTLES rather than swings: it is a decision being made, not a pendulum.
+   The rock lives on its own wrapper — never two transform animations on one element —
+   and it comes to rest where it started, so the wrap point is invisible. */
+.cfg2-beam{transform-origin:60px 56px;transform:rotate(2deg);animation:cfg2-tip 7.5s var(--cfg2-ease) infinite;animation-delay:-2.5s}
+@keyframes cfg2-tip{0%,100%{transform:rotate(2deg)}22%{transform:rotate(-9deg)}48%{transform:rotate(7deg)}70%{transform:rotate(-2deg)}86%{transform:rotate(3deg)}}
+.cfg2-seal{transform-origin:60px 56px;animation:cfg2-seal 9s var(--cfg2-ease) infinite;animation-delay:-4s}
+@keyframes cfg2-seal{0%,72%{transform:scale(1)}80%{transform:scale(1.18)}92%,100%{transform:scale(1)}}
+.cfg2-gl{animation:cfg2-gbo 5.5s var(--cfg2-ease) infinite;animation-delay:-1.5s}
+@keyframes cfg2-gbo{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+
+.cfg2-dots{opacity:.3;animation:cfg2-shim 11.5s var(--cfg2-ease) infinite;animation-delay:-3s}
+@keyframes cfg2-shim{0%,100%{opacity:.22}50%{opacity:.42}}
+.cfg2-hero{transform-origin:60px 60px;transition:transform .35s var(--cfg2-ease)}
+.cfg2-s1,.cfg2-s2,.cfg2-pay{opacity:0}
+.cfg2-root:is(:hover,:focus-visible,.cfg2-open) .cfg2-hero{transform:scale(1.06);transition:transform .15s var(--cfg2-spring)}
+.cfg2-root:is(:hover,:focus-visible,.cfg2-open) .cfg2-dots{opacity:.55;transition:opacity .4s var(--cfg2-sweep) .15s}
+.cfg2-root:is(:hover,:focus-visible,.cfg2-open) .cfg2-s1{opacity:1;transition:opacity .35s var(--cfg2-sweep) .4s}
+.cfg2-root:is(:hover,:focus-visible,.cfg2-open) .cfg2-s2{opacity:1;transition:opacity .35s var(--cfg2-sweep) .66s}
+.cfg2-root:is(:hover,:focus-visible,.cfg2-open) .cfg2-pay{opacity:1;transition:opacity .3s var(--cfg2-spring) .95s}</style>
+<svg class="cfg2-stage" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="120" height="120" fill="#fafafa"/><circle cx="60" cy="60" r="47" fill="#f6e9ee"/><g class="cfg2-loop cfg2-ring"><circle cx="60" cy="60" r="41" fill="none" stroke="#9d174d" stroke-width="3.5" stroke-dasharray="9 9" stroke-linecap="round"/></g><g class="cfg2-dots"><circle cx="34" cy="90" r="1.8" fill="#9d174d"/><circle cx="86" cy="90" r="1.8" fill="#9d174d"/><circle cx="60" cy="96" r="1.8" fill="#9d174d"/></g><g class="cfg2-hero"><g class="cfg2-gl"><line x1="60" y1="56" x2="60" y2="88" stroke="#9d174d" stroke-width="3.5" stroke-linecap="round"/><path d="M46 88 h28" stroke="#9d174d" stroke-width="3.5" stroke-linecap="round"/><g class="cfg2-loop cfg2-beam"><line x1="30" y1="56" x2="90" y2="56" stroke="#9d174d" stroke-width="3.5" stroke-linecap="round"/><path d="M22 60 h16 l-8 12 Z" fill="#9d174d"/><path d="M82 60 h16 l-8 12 Z" fill="none" stroke="#9d174d" stroke-width="2.6" stroke-linejoin="round"/></g><g class="cfg2-loop cfg2-seal"><circle cx="60" cy="56" r="8" fill="#9d174d"/><circle cx="57.6" cy="53.6" r="2" fill="#ffffff" opacity=".35"/></g></g><g class="cfg2-s1"><circle cx="30" cy="34" r="2.6" fill="#9d174d"/></g><g class="cfg2-s2"><circle cx="90" cy="34" r="2.6" fill="none" stroke="#9d174d" stroke-width="1.8"/></g></g><g class="cfg2-pay"><path d="M96 20 l2.6 6.4 6.4 2.6 -6.4 2.6 -2.6 6.4 -2.6 -6.4 -6.4 -2.6 6.4 -2.6 Z" fill="#9d174d"/></g></svg>
+<script>(function(){var L=document.querySelectorAll('.cfg2-root');for(var i=0;i<L.length;i++){(function(el){if(el.getAttribute('data-cfg2-init'))return;el.setAttribute('data-cfg2-init','1');el.addEventListener('pointerup',function(e){if(e.pointerType&&e.pointerType!=='mouse')el.classList.toggle('cfg2-open')});el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.classList.toggle('cfg2-open')}})})(L[i])}})();</script>
+</section>
+</template>
 <!-- MOTION:END -->
 <!-- SNAPSHOT:BEGIN — auto-embedded copy of content/ + assets/svg/ used as file:// fallback. Refresh with: node 05-orbit/derive.mjs -->
 <script type="text/leaf" data-file="site.md">
@@ -5031,9 +5143,9 @@ label.id: Halaman di 11 lini produk Codify
 ## stat-family
 kind: stat
 hero: true
-value: 20
-label.en: @alamehan products · 20 executable PRDs · one standard
-label.id: Produk @alamehan · 20 PRD siap eksekusi · satu standar
+value: 21
+label.en: @alamehan products · 21 executable PRDs · one standard
+label.id: Produk @alamehan · 21 PRD siap eksekusi · satu standar
 
 ## stat-methods
 kind: stat
@@ -7154,6 +7266,57 @@ memperbarui tur sama mudahnya dengan merilisnya.
 Panduan yang hidup di tempat user-mu tersesat: di dalam app, menunjuk tombol yang
 asli (atau grafik yang asli), memakai warna dan namamu sendiri — dan tak pernah
 butuh developer, server, atau langganan.
+
+## choiceforge
+emoji: 🧮
+name: ChoiceForge
+tagline.en: Options in. A defensible choice out. — the honest decision console.
+tagline.id: Opsi masuk. Pilihan yang bisa dipertanggungjawabkan keluar. — konsol keputusan yang jujur.
+itch.en: Hard choices get defended with a scorecard — one built, after the fact, to agree with the choice already made.
+itch.id: Keputusan besar dibela pakai scorecard — yang disusun belakangan, supaya setuju dengan pilihan yang sudah terlanjur diambil.
+year: 2026
+status: live
+stack: single HTML, Standard v2
+tag: decisions
+tag: rubrics
+tag: evidence
+origin: factory
+codename: Neraca
+link: Launch = tools/choiceforge.html
+swatch: #9D174D
+
+@en
+### What it is
+A console for choosing between options honestly. You write the criteria first, seal
+them, and only then score — so the rubric cannot quietly rearrange itself to agree
+with the answer you already had.
+
+### How it flows
+Name the question and the options. For each criterion, say what artifact answers it —
+anything nothing can answer is marked an estimate, and estimates are never allowed to
+break a tie. Seal the rubric, score the matrix, and read the verdict: totals, what
+each one is made of, and the smallest single change that would reverse it.
+
+### What you get
+A decision record in plain markdown that anyone can open, argue with one number at a
+time, and bring back months later to ask whether the winner survived.
+@id
+### Apa ini
+Konsol untuk memilih di antara beberapa opsi secara jujur. Kriterianya kamu tulis
+lebih dulu, disegel, baru skornya masuk — supaya rubriknya tak diam-diam menyesuaikan
+diri dengan jawaban yang sudah kamu pegang.
+
+### Alurnya
+Sebutkan pertanyaan dan opsinya. Untuk tiap kriteria, sebutkan artefak apa yang
+menjawabnya — yang tak terjawab oleh apa pun ditandai sebagai perkiraan, dan perkiraan
+tak pernah boleh memutus hasil seri. Segel rubriknya, isi matriks skornya, lalu baca
+verdict-nya: total, komposisi penyusunnya, dan perubahan tunggal terkecil yang bisa
+membalikkannya.
+
+### Yang kamu dapat
+Satu record keputusan dalam markdown biasa yang bisa dibuka siapa pun, didebat satu
+angka pada satu waktu, dan dibuka lagi berbulan-bulan kemudian untuk bertanya: apakah
+pemenangnya bertahan?
 
 ## anggrek-classifier
 emoji: 🌺
