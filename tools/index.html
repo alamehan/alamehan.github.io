@@ -485,6 +485,57 @@ table.apps-tbl{width:100%;border-collapse:collapse;font-size:13px}
    text. Both columns stay inside .tablewrap's own scroll — the PAGE never scrolls sideways. */
 .apps-tbl .itch{color:var(--ink-muted);font-style:italic;max-width:32ch}
 .apps-tbl .tag{color:var(--ink-muted);max-width:40ch}
+/* THE PHONE TABLE (2026-07-31) — measured, not guessed. At 375px the five-column table was
+   714px inside a 349px wrap: FOUR of five columns sat off-screen and a visitor met a list of
+   names, having to drag sideways for the very itch that was moved to the front so a stranger
+   would meet a reason to care first. The table stays the phone's front face — that is an owner
+   call (2026-07-20) and this does not touch it — but two columns step out where they cannot
+   fit: Accent is decoration, and "What it does" is the answer to an itch you can already read.
+   Product · Itch · Status survive, and the cells wrap instead of forcing a minimum width.
+   Rule of thumb this encodes: a column you can only reach by dragging is not a column, it is a
+   rumour. */
+@media(max-width:640px){
+  .apps-tbl th:nth-child(3),.apps-tbl td:nth-child(3),
+  .apps-tbl th:nth-child(4),.apps-tbl td:nth-child(4){display:none}
+  .apps-tbl{font-size:12px}
+  .apps-tbl th,.apps-tbl td{padding:9px 10px}
+  .apps-tbl .itch{max-width:none;white-space:normal}
+  /* the Product cell measured 211px of the 349 available, and most of it was the source-path
+     slug under the name — which on a phone is a path nobody will type, in a row that is
+     already the link. Out it goes, the tile shrinks, and the name is allowed to wrap. */
+  .apps-tbl .pname{gap:8px;min-width:0}
+  .apps-tbl .pname .slug{display:none}
+  .apps-tbl .pname .em{width:24px;height:24px;font-size:14px}
+  /* NOT `overflow-wrap:anywhere` — that measured perfectly (overflow 0) and rendered every
+     product name as one letter per line, 140px tall. The assertion was green and the picture
+     was unreadable, which is the whole reason this repo verifies by LOOKING. The name is one
+     token; let it stay one. */
+  .apps-tbl .pname a{white-space:nowrap}
+  .apps-tbl td:first-child{width:1%}
+  /* the last 54px came from the status chip refusing to break. Vertical room is what a phone
+     HAS; horizontal room is what it does not — so the chip wraps rather than the table
+     scrolling, and no fact is dropped to buy the fit. */
+  .apps-tbl .stchips .badge{white-space:normal;text-align:center}
+  .apps-tbl th,.apps-tbl td{padding:9px 8px}
+  /* the last of the overflow was not a product row at all: the ghost footer spans all five
+     columns and carries the token `apps/<slug>/`, which nothing may break — so IT set the
+     table's minimum width. Measured, not guessed; the product rows were already fitting.
+     Breaking anywhere is right HERE, where the long token is a path, and wrong on a product
+     name, which is why the two rules are separate. */
+  .apps-tbl .ghost-row td{overflow-wrap:anywhere;text-align:left}
+  /* AND THE DECIDING ONE. With auto layout the three surviving columns claimed their
+     min-content — Product 167 + Itch 150 + Status 57 = 374 in a 349px wrap — so no amount of
+     wrapping inside a cell could ever close it: min-content was driving the table, not the
+     text. `table-layout:fixed` takes the wheel back and hands each column a share. Paired
+     with `break-word` (NOT `anywhere`, which is what shattered the names one letter per line
+     and is still refused above), a name only ever breaks when it genuinely cannot fit. */
+  .apps-tbl{table-layout:fixed}
+  .apps-tbl th:nth-child(1),.apps-tbl td:nth-child(1){width:44%}
+  .apps-tbl th:nth-child(2),.apps-tbl td:nth-child(2){width:36%}
+  .apps-tbl th:nth-child(5),.apps-tbl td:nth-child(5){width:20%}
+  .apps-tbl .pname a{white-space:normal;overflow-wrap:break-word}
+  .apps-tbl td:first-child{width:44%}
+}
 /* on a phone this table is ALREADY a sideways-scrolling surface (the wrap owns the overflow),
    so letting the two prose columns crush to a ~100px ribbon buys nothing but five-line rows.
    Each keeps a readable measure and the wrap scrolls a little further instead — measured at
