@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rAHwAdBYOoiWJQ0XYUM2wPLAAna3oiF1o17HCxBKts8='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; worker-src blob:; connect-src data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="tf-tool" content="omnigraph@1.2.0">
+<meta name="tf-tool" content="omnigraph@1.2.1">
 <meta name="tf-sdk" content="0.8.6">
 <title>OmniGraph · Flows</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22oklch(68.5%25%200.169%20237.323)%22%2F%3E%3Cg%20transform%3D%22translate(6%206)%20scale(.8333)%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.25%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2216%22%20y%3D%2216%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%2216%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%222%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Cpath%20d%3D%22M5%2016v-3a1%201%200%200%201%201-1h12a1%201%200%200%201%201%201v3%22%2F%3E%3Cpath%20d%3D%22M12%2012V8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
@@ -732,7 +732,7 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-code .mds-code { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; overflow: hidden; }
 .tf-code-scroll { display: block; max-height: 340px; overflow: auto; overscroll-behavior: contain; }
 .tf-code-scroll:focus-visible { outline: none; box-shadow: var(--mds-focus-ring); }
-.tf-code-copy { position: absolute; top: 4px; right: 4px; }
+.tf-code-copy { position: absolute; top: 6px; right: 18px; }
 .tf-code-copy .mds-icon-btn { color: var(--mds-on-dark); }
 .tf-code-copy .mds-icon-btn:hover { background: color-mix(in srgb, var(--mds-on-dark) 14%, transparent); color: var(--mds-on-dark); }
 
@@ -749,6 +749,7 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .mds-help, .mds-error, .mds-alert, .mds-empty p { text-wrap: pretty; }
 
 .mds-desc-list .tf-desc-row { display: contents; }
+.tf-about-meta dd { text-align: right; }
 
 /* Markdown: document rhythm from design-system type sizes. */
 .tf-markdown { display: flex; flex-direction: column; gap: 10px; color: var(--mds-ink-2); }
