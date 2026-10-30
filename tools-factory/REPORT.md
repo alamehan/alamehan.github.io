@@ -10,4 +10,4 @@
 | Tool | Version | File | Size | Docs | Tagline |
 |---|---|---|---|---|---|
 | **Diagranimate** (`diagranimate`) | `1.1.0` | `tools/diagranimate.html` | 914.2 KB | `docs/diagranimate/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Turn Mermaid flowcharts into a guided, cinematic walkthrough. |
-| **OmniGraph** (`omnigraph`) | `1.2.1` | `tools/omnigraph.html` | 1668.0 KB | `docs/omnigraph/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Map any subject into a navigable knowledge atlas with the AI you choose. |
+| **OmniGraph** (`omnigraph`) | `1.2.3` | `tools/omnigraph.html` | 1674.1 KB | `docs/omnigraph/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Map any subject into a navigable knowledge atlas with the AI you choose. |
