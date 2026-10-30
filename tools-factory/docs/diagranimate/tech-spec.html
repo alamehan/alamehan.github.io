@@ -919,7 +919,7 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 /* Table: the surface keeps its corners; a wide or tall table scrolls inside it. */
 /* The scroll track sits inside the surface's padding, so its scrollbar never reaches the rounded corners. */
 .mds-table-wrap.tf-table { overflow: hidden; padding: 6px 4px; }
-.tf-table-scroll { overflow: auto; overscroll-behavior: contain; }
+.tf-table-scroll { overflow: auto; overscroll-behavior-inline: contain; overscroll-behavior-y: auto; }
 .tf-table-scroll:focus-visible { outline: 2px solid var(--mds-primary-line); outline-offset: -2px; }
 .tf-sticky-head thead th { position: sticky; top: 0; z-index: 1; background: var(--mds-surface); }
 .mds-table .tf-cell { max-width: 280px; }
