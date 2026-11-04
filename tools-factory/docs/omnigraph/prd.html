@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-tqsMNAoBYljaNPoWizAjLZ4CVy+5pSowi45EuMAAI78='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; worker-src blob:; connect-src data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="tf-tool" content="omnigraph@1.3.0">
-<meta name="tf-sdk" content="0.8.8">
+<meta name="tf-tool" content="omnigraph@1.3.1">
+<meta name="tf-sdk" content="0.8.9">
 <title>OmniGraph · PRD</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22oklch(68.5%25%200.169%20237.323)%22%2F%3E%3Cg%20transform%3D%22translate(6%206)%20scale(.8333)%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.25%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2216%22%20y%3D%2216%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%2216%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%222%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Cpath%20d%3D%22M5%2016v-3a1%201%200%200%201%201-1h12a1%201%200%200%201%201%201v3%22%2F%3E%3Cpath%20d%3D%22M12%2012V8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <style>/* Mehan Design System — blue-native canonical CSS */
@@ -800,6 +800,8 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-markdown h3 { font-size: 15px; line-height: 20px; font-weight: 700; }
 .tf-markdown h4, .tf-markdown h5 { font-size: 13px; line-height: 18px; font-weight: 700; }
 .tf-markdown ul, .tf-markdown ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+.tf-markdown li > p { margin: 0; }
+.tf-markdown li > p + p { margin-top: 4px; }
 .tf-markdown li > ul, .tf-markdown li > ol { margin-top: 4px; }
 .tf-markdown code { font-family: var(--mds-font-mono); font-size: 11.5px; padding: 1px 4px; border-radius: var(--mds-r-xs); background: var(--mds-well); color: var(--mds-ink); }
 .tf-markdown pre code { padding: 0; background: none; color: inherit; }
@@ -826,6 +828,7 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-tree-item { position: relative; padding-left: calc(var(--tf-depth, 0) * 18px); }
 /* Keyboard moves and jumps land below the sticky top bar and a context line (PRODUCT.md §4.10). */
 .tf-tree-row { scroll-margin: calc(var(--tf-topbar-h) + 48px) 0 24px; }
+.tf-sticky .tf-tree-row { scroll-margin: 56px 0 24px; }
 .tf-tree-row { align-items: flex-start; height: auto; padding-top: 6px; padding-bottom: 6px; gap: 6px; cursor: pointer; outline: none; }
 .tf-tree-row:focus-visible { box-shadow: var(--mds-focus-ring); }
 .tf-tree-chevron { width: 18px; height: 20px; flex: none; display: grid; place-items: center; color: var(--mds-ink-3); border-radius: var(--mds-r-xs); }
@@ -1162,11 +1165,17 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .mds-panel-head { flex-wrap: wrap; row-gap: var(--tf-space-6); }
 .tf-region-actions { justify-content: flex-end; }
 .tf-region-body { min-width: 0; display: flex; flex-direction: column; gap: var(--tf-space-12); }
+.tf-app {
+  --tf-room-max-h: calc(100dvh - var(--tf-topbar-h) - var(--tf-space-40));
+}
+.tf-app:has(> .tf-banner) {
+  --tf-room-max-h: calc(100dvh - var(--tf-topbar-h) - 104px);
+}
 /* A sticky region keeps its corners and head; only its body scrolls (PRODUCT.md §4.10). */
 .tf-sticky {
   position: sticky;
   top: calc(var(--tf-topbar-h) + var(--tf-space-16));
-  max-height: calc(100dvh - var(--tf-topbar-h) - var(--tf-space-40));
+  max-height: var(--tf-room-max-h);
   overflow: hidden;
 }
 .tf-sticky > .tf-region-body { flex: 1 1 auto; min-height: 0; }
@@ -1179,20 +1188,20 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-explorer.tf-no-rail { grid-template-columns: minmax(0, 1fr) 340px; }
 .tf-explorer.tf-no-rail.tf-no-inspector { grid-template-columns: minmax(0, 1fr); }
 .tf-collection { display: flex; flex-direction: column; gap: var(--tf-space-12); align-items: stretch; }
-:not(.tf-tab-panel) > .tf-collection:has(> .tf-collection-body:not(.tf-no-detail)) {
-  height: calc(100dvh - var(--tf-topbar-h) - var(--tf-space-40));
-  max-height: calc(100dvh - var(--tf-topbar-h) - var(--tf-space-40));
+:not(.tf-tab-panel) > .tf-collection {
+  height: var(--tf-room-max-h);
+  max-height: var(--tf-room-max-h);
 }
 .tf-collection-bar,
 .tf-studio-bar { flex: none; display: flex; align-items: center; gap: var(--tf-space-8); flex-wrap: wrap; padding: var(--tf-space-8) var(--mds-panel-pad); }
 .tf-collection-body { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: var(--tf-space-16); align-items: start; }
-:not(.tf-tab-panel) > .tf-collection:has(> .tf-collection-body:not(.tf-no-detail)) > .tf-collection-body {
+:not(.tf-tab-panel) > .tf-collection > .tf-collection-body {
   flex: 1 1 0;
   min-height: 0;
   grid-template-rows: minmax(0, 1fr);
   align-items: stretch;
 }
-:not(.tf-tab-panel) > .tf-collection:has(> .tf-collection-body:not(.tf-no-detail)) > .tf-collection-body > .tf-sticky {
+:not(.tf-tab-panel) > .tf-collection > .tf-collection-body > .tf-sticky {
   position: static;
   height: 100%;
   max-height: 100%;
@@ -1202,11 +1211,31 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-collection-bar .tf-search { flex: 1; min-width: 180px; max-width: 480px; }
 
 .tf-studio { display: flex; flex-direction: column; gap: var(--tf-space-12); align-items: stretch; }
+:not(.tf-tab-panel) > .tf-studio,
+.tf-room > * > .tf-studio {
+  height: var(--tf-room-max-h);
+  max-height: var(--tf-room-max-h);
+}
 .tf-studio-body { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: var(--tf-space-16); align-items: start; }
 .tf-studio-body.tf-no-panel { grid-template-columns: minmax(0, 1fr); }
-.tf-studio-body > .tf-sticky { max-height: calc(100dvh - var(--tf-topbar-h) - 116px); }
-.tf-stage-region { height: calc(100dvh - var(--tf-topbar-h) - 116px); min-height: 460px; max-height: calc(100dvh - var(--tf-topbar-h) - 116px); }
-.tf-studio:not(:has(> .tf-studio-bar)) .tf-stage-region { height: calc(100dvh - var(--tf-topbar-h) - 36px); max-height: calc(100dvh - var(--tf-topbar-h) - 36px); }
+:not(.tf-tab-panel) > .tf-studio > .tf-studio-body,
+.tf-room > * > .tf-studio > .tf-studio-body {
+  flex: 1 1 0;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
+}
+:not(.tf-tab-panel) > .tf-studio > .tf-studio-body > .tf-sticky,
+:not(.tf-tab-panel) > .tf-studio > .tf-studio-body > .tf-stage-region,
+.tf-room > * > .tf-studio > .tf-studio-body > .tf-sticky,
+.tf-room > * > .tf-studio > .tf-studio-body > .tf-stage-region {
+  position: static;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+}
+.tf-tab-panel .tf-studio-body > .tf-sticky { max-height: calc(100dvh - var(--tf-topbar-h) - 116px); }
+.tf-tab-panel .tf-stage-region { height: calc(100dvh - var(--tf-topbar-h) - 116px); min-height: 460px; max-height: calc(100dvh - var(--tf-topbar-h) - 116px); }
 .tf-stage-region > .tf-region-body { flex: 1 1 auto; min-height: 0; }
 .tf-stage-region > .tf-region-body > * { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
 .tf-stage-frame { position: relative; min-height: 440px; border-radius: var(--mds-r-lg); background: var(--mds-well); box-shadow: var(--mds-shadow-well); overflow: hidden; display: flex; flex-direction: column; }
@@ -1225,7 +1254,9 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 }
 @media (max-width: 767px) {
   .tf-pattern { gap: var(--tf-space-12); }
-  :not(.tf-tab-panel) > .tf-collection:has(> .tf-collection-body:not(.tf-no-detail)) { height: auto; max-height: none; }
+  :not(.tf-tab-panel) > .tf-collection,
+  :not(.tf-tab-panel) > .tf-studio,
+  .tf-room > * > .tf-studio { height: auto; max-height: none; }
   .tf-form-result,
   .tf-workbench,
   .tf-explorer,
@@ -1235,6 +1266,8 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
   .tf-sticky { position: static; max-height: none; overflow: visible; }
   .tf-sticky > .tf-region-body { overflow: visible; margin: 0; padding: 0; }
   .tf-collection-bar .tf-search { max-width: none; }
+  :not(.tf-tab-panel) > .tf-studio > .tf-studio-body > .tf-stage-region,
+  .tf-room > * > .tf-studio > .tf-studio-body > .tf-stage-region,
   .tf-stage-region { height: calc(100dvh - var(--tf-topbar-h) - 148px); min-height: 380px; max-height: none; }
   .tf-stage-frame { min-height: 320px; }
   .tf-stage-canvas { min-height: 260px; }
