@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0UX9fUywn6/C4qQHhDmxwO0gevlsCzuyGN4UzMHpTho='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; worker-src blob:; connect-src data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="tf-tool" content="contentos@1.1.0">
-<meta name="tf-sdk" content="0.8.10">
+<meta name="tf-sdk" content="0.8.11">
 <title>ContentOS · Flows</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22oklch(72.3%25%200.219%20149.579)%22%2F%3E%3Cg%20transform%3D%22translate(6%206)%20scale(.8333)%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.25%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2218%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%226%22%20cy%3D%226%22%20r%3D%223%22%2F%3E%3Cpath%20d%3D%22M6%2021V9a9%209%200%200%200%209%209%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <style>/* Mehan Design System — blue-native canonical CSS */
@@ -809,6 +809,13 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-markdown hr { border: 0; height: 1px; background: var(--mds-line); width: 100%; }
 .tf-markdown strong { color: var(--mds-ink); }
 .tf-md-link { color: var(--mds-primary-text); font-weight: 600; }
+.tf-md-link-btn { display: inline; padding: 0; background: transparent; color: var(--mds-primary-text); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; border-radius: var(--mds-r-xs); cursor: pointer; }
+.tf-md-link-btn:hover { color: var(--mds-primary-hover); }
+.tf-md-link-btn:focus-visible { outline: none; box-shadow: var(--mds-focus-ring); }
+.tf-md-code-btn { display: inline-flex; align-items: center; padding: 0; background: transparent; border-radius: var(--mds-r-xs); cursor: pointer; text-align: left; white-space: nowrap; }
+.tf-md-code-btn > code { background: var(--mds-primary-soft); color: var(--mds-primary-text); transition: background var(--mds-dur-fast) var(--mds-ease-out); }
+.tf-md-code-btn:hover > code { background: var(--mds-primary-soft-2); text-decoration: underline; text-underline-offset: 2px; }
+.tf-md-code-btn:focus-visible { outline: none; box-shadow: var(--mds-focus-ring); }
 .tf-markdown .mds-table { min-width: 0; }
 .tf-markdown .mds-table th, .tf-markdown .mds-table td { vertical-align: top; font-variant-numeric: tabular-nums; }
 .tf-markdown .mds-table th { white-space: nowrap; text-wrap: balance; }
