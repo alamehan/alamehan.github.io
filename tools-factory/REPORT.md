@@ -11,5 +11,5 @@
 |---|---|---|---|---|---|
 | **ContentOS** (`contentos`) | `1.0.2` | `tools/contentos.html` | 931.0 KB | `docs/contentos/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Turn raw notes and documents into contract-verified outputs with the AI you choose. |
 | **Diagranimate** (`diagranimate`) | `1.1.1` | `tools/diagranimate.html` | 921.4 KB | `docs/diagranimate/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Turn Mermaid flowcharts into a guided, cinematic walkthrough. |
-| **OmniGraph** (`omnigraph`) | `1.3.1` | `tools/omnigraph.html` | 1690.8 KB | `docs/omnigraph/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Map any subject into a navigable knowledge atlas with the AI you choose. |
+| **OmniGraph** (`omnigraph`) | `1.3.2` | `tools/omnigraph.html` | 1957.5 KB | `docs/omnigraph/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Map any subject into a navigable knowledge atlas with the AI you choose. |
 | **SuperDocs** (`superdocs`) | `1.3.0` | `tools/superdocs.html` | 1094.3 KB | `docs/superdocs/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Turn raw project notes into interactive showcases, slide decks, and brand kits. |
