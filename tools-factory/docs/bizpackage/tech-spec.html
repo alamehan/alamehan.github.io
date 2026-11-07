@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Qdfay9Gp0yQLgEOWkOE7h5g6EcZLm9ATTLx6vQTEtKA='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; worker-src blob:; connect-src data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="tf-tool" content="bizpackage@1.0.0">
-<meta name="tf-sdk" content="0.8.12">
+<meta name="tf-tool" content="bizpackage@1.0.2">
+<meta name="tf-sdk" content="0.8.14">
 <title>BizPackage · Tech spec</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22oklch(72.3%25%200.219%20149.579)%22%2F%3E%3Cg%20transform%3D%22translate(6%206)%20scale(.8333)%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.25%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M16%2020V4a2%202%200%200%200-2-2h-4a2%202%200%200%200-2%202v16%22%2F%3E%3Crect%20width%3D%2220%22%20height%3D%2214%22%20x%3D%222%22%20y%3D%226%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <style>/* Mehan Design System — blue-native canonical CSS */
@@ -374,8 +374,32 @@
   --tf-space-64: 64px;
   --tf-space-80: 80px;
   --tf-space-96: 96px;
-  /* Height of .mds-topbar. */
+  /* Height of .mds-topbar and mobile .tf-roombar (D-35). */
   --tf-topbar-h: 52px;
+  --tf-roombar-h: 48px;
+  --tf-sticky-top: var(--tf-topbar-h);
+}
+
+/* Card & Panel Boundary Containment Standard (D-35): no flex child or action row inside a panel/card may refuse to
+   shrink below max-content and overflow the right edge of its rounded surface. */
+.mds-panel,
+.mds-card {
+  min-width: 0;
+  max-width: 100%;
+}
+.mds-panel-head,
+.mds-panel .mds-inline,
+.mds-panel .mds-between,
+.mds-card .mds-inline,
+.mds-card .mds-between {
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+  row-gap: var(--tf-space-6);
+}
+.mds-panel .mds-btn,
+.mds-card .mds-btn {
+  max-width: 100%;
 }
 
 /* Scrollbars: thin, in the line color, on a clear track (PRODUCT.md §4.10). The design system has no recipe. */
@@ -473,7 +497,7 @@ table { font-variant-numeric: tabular-nums; }
 }
 
 @media print {
-  .tf-topbar, .tf-toasts, .tf-skip, .tf-banner { display: none !important; }
+  .tf-topbar, .tf-roombar, .tf-toasts, .tf-skip, .tf-banner { display: none !important; }
   :root:has(> body > #root > .tf-app),
   .tf-app,
   .tf-main,
@@ -493,9 +517,13 @@ table { font-variant-numeric: tabular-nums; }
 
 /* The frame: top bar, rooms, notices, Info, Library, and the AI handoff. */
 .tf-app {
+  --tf-sticky-top: var(--tf-topbar-h);
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+}
+.tf-app:has(> .tf-roombar) {
+  --tf-sticky-top: calc(var(--tf-topbar-h) + var(--tf-roombar-h));
 }
 
 .tf-topbar {
@@ -517,7 +545,21 @@ table { font-variant-numeric: tabular-nums; }
 .tf-rooms .mds-tab { height: var(--tf-topbar-h); }
 .tf-topbar-end { margin-left: auto; display: flex; align-items: center; gap: var(--tf-space-8); flex: none; }
 
-.tf-roombar { padding: var(--tf-space-6) var(--tf-space-12); background: var(--mds-surface); border-bottom: 1px solid var(--mds-line); }
+.tf-roombar {
+  position: sticky;
+  top: var(--tf-topbar-h);
+  z-index: 19;
+  min-height: var(--tf-roombar-h);
+  padding: var(--tf-space-6) var(--tf-space-12);
+  background: color-mix(in srgb, var(--mds-surface) 94%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--mds-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tf-space-8);
+}
+.tf-roombar-labels { display: flex; align-items: center; gap: var(--tf-space-6); min-width: 0; flex-wrap: wrap; }
 
 .tf-banner { padding: var(--tf-space-12) var(--tf-space-16) 0; }
 
@@ -605,8 +647,6 @@ table { font-variant-numeric: tabular-nums; }
 .tf-handoff-steps .mds-step-copy b { white-space: normal; }
 .tf-handoff-step { display: flex; flex-direction: column; gap: var(--tf-space-12); }
 .tf-includes { margin: 0; padding-left: 18px; color: var(--mds-ink-2); display: flex; flex-direction: column; gap: 2px; }
-.tf-roombar { display: flex; align-items: center; justify-content: space-between; gap: var(--tf-space-8); }
-.tf-roombar-labels { display: flex; align-items: center; gap: var(--tf-space-6); }
 
 /* Component additions the design system leaves to the product: positioning, scrims, and wiring. */
 
@@ -703,7 +743,23 @@ table { font-variant-numeric: tabular-nums; }
 .mds-icon-btn.tf-selected { background: var(--mds-primary-soft); color: var(--mds-primary-text); }
 a.mds-icon-btn { color: var(--mds-ink-2); }
 
-.mds-tabs .mds-tab { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
+/* Single-line tab bar standard (D-35): tabs never wrap onto two lines or clip vertically; horizontal overflow scrolls smoothly. */
+.mds-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+}
+.mds-tabs::-webkit-scrollbar { display: none; }
+.mds-tabs .mds-tab {
+  flex: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.mds-tabs .mds-tab.on::after { bottom: 0; }
 .tf-tab-icon { flex: none; }
 .tf-tab-panel { padding-top: var(--tf-space-16); }
 .tf-tab-panel:focus-visible { outline: none; border-radius: var(--mds-r-sm); box-shadow: var(--mds-focus-ring); }
@@ -867,18 +923,30 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-md-code-btn > code { background: var(--mds-primary-soft); color: var(--mds-primary-text); transition: background var(--mds-dur-fast) var(--mds-ease-out); }
 .tf-md-code-btn:hover > code { background: var(--mds-primary-soft-2); text-decoration: underline; text-underline-offset: 2px; }
 .tf-md-code-btn:focus-visible { outline: none; box-shadow: var(--mds-focus-ring); }
-.tf-markdown .mds-table { min-width: 0; }
-.tf-markdown .mds-table th, .tf-markdown .mds-table td { vertical-align: top; font-variant-numeric: tabular-nums; }
-.tf-markdown .mds-table th { white-space: nowrap; text-wrap: balance; }
-.tf-markdown .mds-table td { white-space: normal; text-wrap: pretty; }
+/* Unified Table Content Standard (D-35): every table scrolls horizontally inside .tf-table-scroll when columns exceed
+   the card width, headers stay on one line, and cells never inherit single-character vertical wrapping. */
+.mds-table { min-width: 340px; }
+.mds-table:has(th:nth-child(3), td:nth-child(3)) { min-width: 480px; }
+.mds-table:has(th:nth-child(4), td:nth-child(4)) { min-width: 600px; }
+.mds-table th,
+.mds-table td {
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.mds-table th { white-space: nowrap; text-wrap: nowrap; }
+.mds-table td { white-space: normal; text-wrap: pretty; min-width: 96px; }
 .mds-table td.tf-td-nowrap, .mds-table th.tf-td-nowrap { white-space: nowrap; text-wrap: nowrap; }
 
-/* Groups and segmented controls are as wide as their content, also inside column layouts. */
+/* Groups and segmented controls are as wide as their content, also inside column layouts, and never overflow cards (D-35). */
 .tf-fit { width: max-content; max-width: 100%; }
 .tf-library-section > .mds-btn { align-self: flex-start; }
 .tf-button-link { text-decoration: none; }
+.mds-seg { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.mds-seg::-webkit-scrollbar { display: none; }
 .mds-seg.tf-fit { flex-wrap: wrap; }
-.mds-seg.tf-fit button { flex: none; }
+.mds-seg button { flex: none; white-space: nowrap; }
 .mds-seg:not(.mds-seg-icon-only) button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
 
 /* Tree: one flat list of rows in the page flow, so depth is an indent instead of nested containers. */
@@ -1020,10 +1088,10 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-card { display: flex; flex-direction: column; gap: var(--tf-space-6); min-width: 0; }
 .tf-card-title { font-size: 12.5px; min-width: 0; }
 .tf-card-footer { margin-top: var(--tf-space-6); }
-/* Table: the surface keeps its corners; a wide or tall table scrolls inside it. */
+/* Table: the surface keeps its corners; a wide or tall table scrolls inside it (D-35). */
 /* The scroll track sits inside the surface's padding, so its scrollbar never reaches the rounded corners. */
-.mds-table-wrap.tf-table { overflow: hidden; padding: 6px 4px; }
-.tf-table-scroll { overflow: auto; overscroll-behavior-inline: contain; overscroll-behavior-y: auto; }
+.mds-table-wrap.tf-table { width: 100%; max-width: 100%; min-width: 0; overflow: hidden; padding: 6px 4px; }
+.tf-table-scroll { width: 100%; overflow-x: auto; overflow-y: auto; overscroll-behavior-inline: contain; overscroll-behavior-y: auto; }
 .tf-table-scroll:focus-visible { outline: 2px solid var(--mds-primary-line); outline-offset: -2px; }
 .tf-sticky-head thead th { position: sticky; top: 0; z-index: 1; background: var(--mds-surface); }
 .mds-table .tf-cell { max-width: 280px; }
@@ -1031,7 +1099,7 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-sort { display: inline-flex; align-items: center; gap: 4px; padding: 0; background: transparent; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; border-radius: var(--mds-r-xs); }
 .tf-sort:hover, .tf-sort-active { color: var(--mds-ink); }
 .tf-sort:focus-visible { outline: none; box-shadow: var(--mds-focus-ring); }
-.mds-table .tf-select-cell { width: 36px; padding-right: 0; }
+.mds-table .tf-select-cell { width: 36px; min-width: 36px; padding-right: 0; }
 .mds-table .tf-row-chosen td { background: var(--mds-primary-soft); }
 .mds-table td.tf-table-empty { padding: 24px 12px; text-align: center; color: var(--mds-ink-3); white-space: normal; }
 .tf-timeline { margin: 0; list-style: none; }
@@ -1229,7 +1297,8 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 /* When a head is too narrow for its title and actions, the actions move to a second line, so the title is never
    squeezed (PRODUCT.md §4.10: secondary parts give way first). */
 .mds-panel-head { flex-wrap: wrap; row-gap: var(--tf-space-6); }
-.tf-region-actions { justify-content: flex-end; }
+.tf-region-title-group { display: flex; align-items: center; gap: var(--tf-space-8); min-width: 0; }
+.tf-region-actions { justify-content: flex-end; min-width: 0; max-width: 100%; flex-wrap: wrap; }
 .tf-region-body { min-width: 0; display: flex; flex-direction: column; gap: var(--tf-space-12); }
 .tf-app {
   --tf-room-max-h: calc(100dvh - var(--tf-topbar-h) - 36px);
@@ -1249,6 +1318,8 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 
 .tf-form-result { grid-template-columns: minmax(260px, 380px) minmax(0, 1fr); }
 .tf-workbench { grid-template-columns: minmax(280px, 380px) minmax(0, 1fr); }
+.tf-form-result.tf-no-left,
+.tf-workbench.tf-no-left { grid-template-columns: minmax(0, 1fr); }
 .tf-explorer { grid-template-columns: 272px minmax(0, 1fr) 340px; }
 .tf-explorer.tf-no-inspector { grid-template-columns: 272px minmax(0, 1fr); }
 .tf-explorer.tf-no-rail { grid-template-columns: minmax(0, 1fr) 340px; }
@@ -1397,10 +1468,60 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
   .tf-studio-body { grid-template-columns: minmax(0, 1fr); }
   .tf-sticky { position: static; max-height: none; overflow: visible; }
   .tf-sticky > .tf-region-body { overflow: visible; margin: 0; padding: 0; }
+  .tf-collection-bar,
+  .tf-studio-bar {
+    position: sticky;
+    top: calc(var(--tf-sticky-top) + var(--tf-space-6));
+    z-index: 14;
+    background: color-mix(in srgb, var(--mds-surface) 95%, transparent);
+    backdrop-filter: blur(8px);
+  }
   .tf-collection-bar .tf-search { max-width: none; }
-  .tf-stage-region { height: calc(100dvh - var(--tf-topbar-h) - 148px); min-height: 380px; max-height: none; }
+  .tf-stage-region { height: calc(100dvh - var(--tf-sticky-top) - 116px); min-height: 380px; max-height: none; }
   .tf-stage-frame { min-height: 320px; }
   .tf-stage-canvas { min-height: 260px; }
+}
+
+/* Shared numbered section headers inside flat panel bodies (D-33) */
+.tf-panel-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tf-space-8);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.tf-panel-section-title {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tf-space-8);
+  min-width: 0;
+  font-weight: 600;
+  color: var(--mds-ink);
+}
+
+.tf-panel-section-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tf-space-6);
+  min-width: 0;
+}
+
+.tf-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--mds-r-pill);
+  background: var(--mds-primary-soft-2);
+  color: var(--mds-primary-text);
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 
