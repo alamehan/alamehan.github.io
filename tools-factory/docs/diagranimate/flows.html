@@ -924,7 +924,7 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .tf-markdown li > p { margin: 0; }
 .tf-markdown li > p + p { margin-top: 4px; }
 .tf-markdown li > ul, .tf-markdown li > ol { margin-top: 4px; }
-.tf-markdown code { font-family: var(--mds-font-mono); font-size: 11.5px; padding: 1px 4px; border-radius: var(--mds-r-xs); background: var(--mds-well); color: var(--mds-ink); overflow-wrap: anywhere; }
+.tf-markdown code { font-family: var(--mds-font-mono); font-size: 11.5px; padding: 1px 4px; border-radius: var(--mds-r-xs); background: var(--mds-well); color: var(--mds-ink); overflow-wrap: break-word; }
 .tf-markdown pre code { padding: 0; border-radius: 0; background: none; color: inherit; overflow-wrap: inherit; }
 .tf-markdown blockquote { margin: 0; padding-left: 12px; border-left: 2px solid var(--mds-line-strong); }
 .tf-markdown hr { border: 0; height: 1px; background: var(--mds-line); width: 100%; }
@@ -946,6 +946,11 @@ a.mds-icon-btn { color: var(--mds-ink-2); }
 .mds-table td {
   vertical-align: top;
   font-variant-numeric: tabular-nums;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.mds-table th code,
+.mds-table td code {
   overflow-wrap: normal;
   word-break: normal;
 }
