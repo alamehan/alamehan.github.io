@@ -2,7 +2,7 @@
 
 - **Factory:** Tools Factory (Raihan Allaam · `@alamehan`)
 - **SDK:** `@tf/sdk@0.8.15`
-- **Console (`index.html`):** `console@1.4.6` (1258.0 KB)
+- **Console (`index.html`):** `console@1.4.6` (1288.0 KB)
 - **Verification:** every HTML file opened offline from `file://` in Chromium with zero page errors and zero network requests; Console → Tool → Home and Console → Docs (PRD, Flows with SVG diagrams, Tech spec) → Home verified.
 
 ## Included Tools
@@ -14,3 +14,4 @@
 | **Diagranimate** (`diagranimate`) | `1.1.4` | `tools/diagranimate.html` | 935.1 KB | `docs/diagranimate/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Turn Mermaid flowcharts into a guided, cinematic walkthrough. |
 | **OmniGraph** (`omnigraph`) | `1.3.6` | `tools/omnigraph.html` | 1989.0 KB | `docs/omnigraph/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Map any subject into a navigable knowledge atlas with the AI you choose. |
 | **SuperDocs** (`superdocs`) | `1.4.3` | `tools/superdocs.html` | 1137.8 KB | `docs/superdocs/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Turn raw project notes into interactive showcases, slide decks, and brand kits. |
+| **SuperStudio** (`superstudio`) | `1.0.1` | `tools/superstudio.html` | 1004.4 KB | `docs/superstudio/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Visual style DNA, storyboard blueprint, and deterministic image-prompt studio. |
