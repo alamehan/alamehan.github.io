@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ddvfOhSKjdWIP5e2gfeAznwgBdC3goqsU10xImZAhO0='; style-src 'unsafe-inline'; img-src 'self' data: blob:; font-src data:; media-src 'self' data: blob:; worker-src blob:; connect-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sRJ8w0946DyCKLK2/2IIBEwUO4UoQ9ETp6GPYzJ6fjM='; style-src 'unsafe-inline'; img-src 'self' data: blob:; font-src data:; media-src 'self' data: blob:; worker-src blob:; connect-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="tf-tool" content="omnigraph@1.7.0">
 <meta name="tf-sdk" content="0.15.0">
@@ -644,14 +644,26 @@ Error generating stack: `+e.message+`
       --tw-yellow-100: oklch(97.5% 0.06 106.423); --tw-yellow-200: oklch(94.5% 0.129 101.54); --tw-yellow-800: oklch(47.6% 0.114 85.568);
       --tw-orange-50: oklch(98% 0.016 73.684); --tw-orange-200: oklch(90.1% 0.076 70.697); --tw-orange-800: oklch(47% 0.157 37.304);
       --mds-action-50: var(--tw-blue-50); --mds-action-100: var(--tw-blue-100); --mds-action-200: var(--tw-blue-200); --mds-action-300: var(--tw-blue-300); --mds-action-400: var(--tw-blue-400); --mds-action-500: var(--tw-blue-500); --mds-action-600: var(--tw-blue-600); --mds-action-700: var(--tw-blue-700); --mds-action-800: var(--tw-blue-800); --mds-action-900: var(--tw-blue-900); --mds-action-950: var(--tw-blue-950);
+      --mds-paper: #ffffff; --mds-surface: #ffffff; --mds-surface-float: #ffffff; --mds-well: var(--tw-slate-100); --mds-socket: var(--tw-slate-200); --mds-line: var(--tw-slate-200);
+      --mds-ink: var(--tw-slate-900); --mds-ink-2: var(--tw-slate-600); --mds-ink-3: var(--tw-slate-500);
       --mds-primary: var(--mds-action-600); --mds-primary-hover: var(--mds-action-700); --mds-primary-pressed: var(--mds-action-800); --mds-primary-solid: var(--mds-action-600);
       --mds-primary-soft: var(--mds-action-50); --mds-primary-soft-2: var(--mds-action-100); --mds-primary-line: var(--mds-action-600); --mds-primary-text: var(--mds-action-700);
       --mds-on-primary: #ffffff;
       --mds-primary-fill: linear-gradient(180deg, var(--mds-action-500) 0%, var(--mds-action-600) 40%, var(--mds-action-700) 100%);
       --mds-primary-fill-hover: linear-gradient(180deg, var(--mds-action-500) 0%, var(--mds-action-600) 55%, var(--mds-action-700) 100%);
+      --mds-raised: linear-gradient(180deg, #ffffff, var(--tw-slate-50));
+      --mds-knob: radial-gradient(circle at 36% 28%, #ffffff 0%, #ffffff 38%, var(--tw-slate-100) 70%, color-mix(in srgb, var(--tw-slate-300) 55%, var(--tw-slate-200)) 100%);
       --mds-shadow-primary: inset 0 1px 0 rgba(255, 255, 255, 0.36), inset 0 -3px 0 var(--mds-action-800), 0 1px 2px rgba(15, 23, 42, 0.15), 0 3px 6px -1px rgba(15, 23, 42, 0.2);
       --mds-shadow-raised: inset 0 1px 0 #ffffff, inset 0 -2px 0 var(--tw-slate-200), 0 0 0 1px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.05);
       --mds-shadow-raised-hover: inset 0 1px 0 #ffffff, inset 0 -2px 0 var(--tw-slate-300), 0 0 0 1px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.07);
+      --mds-shadow-well: inset 0 1px 2px color-mix(in srgb, var(--tw-slate-900) 11%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--tw-slate-900) 4%, transparent), inset 0 -1px 0 color-mix(in srgb, #ffffff 90%, transparent);
+      --mds-shadow-socket: inset 0 1px 2px color-mix(in srgb, var(--tw-slate-900) 24%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--tw-slate-900) 6%, transparent), inset 0 -1px 0 color-mix(in srgb, #ffffff 90%, transparent);
+      --mds-shadow-knob: 0 0 0 .5px color-mix(in srgb, var(--tw-slate-900) 8%, transparent), 0 1px 1px color-mix(in srgb, var(--tw-slate-900) 10%, transparent), 0 2px 4px color-mix(in srgb, var(--tw-slate-900) 14%, transparent), 0 5px 8px -3px color-mix(in srgb, var(--tw-slate-900) 16%, transparent);
+      --mds-shadow-float: inset 0 1px 0 #ffffff, 0 0 0 1px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.06), 0 8px 16px -4px rgba(15, 23, 42, 0.12), 0 24px 44px -16px rgba(15, 23, 42, 0.26);
+      --mds-r-xs: 5px; --mds-r-sm: 9px; --mds-r-md: 12px; --mds-r-lg: 14px; --mds-r-xl: 20px; --mds-r-pill: 999px;
+      --mds-h-sm: 28px; --mds-h: 36px; --mds-row-h: 36px;
+      --mds-dur-fast: 140ms; --mds-dur-base: 220ms; --mds-ease-pop: cubic-bezier(.34,1.56,.64,1);
+      --mds-type-scale: 1;
       --mds-font-ui: "Figtree", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --mds-font-display: "Bricolage Grotesque", "Figtree", ui-sans-serif, system-ui, sans-serif;
       --mds-font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
@@ -677,32 +689,34 @@ Error generating stack: `+e.message+`
     .og-reader-wrap { position: relative; }
     .og-btn-reader { display: inline-flex; align-items: center; gap: 6px; }
     .og-aa-glyph { font-family: var(--mds-font-display); font-weight: 800; font-size: 14px; letter-spacing: -0.04em; color: var(--mds-primary); }
-    .og-reading-popover { position: absolute; top: calc(100% + 8px); right: 0; width: 310px; max-width: calc(100vw - 24px); background: #ffffff; border-radius: 16px; box-shadow: inset 0 1px 0 #ffffff, inset 0 -2px 0 var(--tw-slate-200), 0 0 0 1px rgba(15, 23, 42, 0.08), 0 16px 36px -6px rgba(15, 23, 42, 0.18); padding: 16px; z-index: 200; font-family: var(--mds-font-ui); text-align: left; }
+    .og-reading-popover { position: absolute; top: calc(100% + 8px); right: 0; width: 320px; max-width: calc(100vw - 24px); z-index: 200; text-align: left; }
     .og-reading-popover[hidden] { display: none !important; }
-    .og-pop-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--tw-slate-100); }
-    .og-pop-title { font-family: var(--mds-font-ui); font-size: 13px; font-weight: 700; color: var(--tw-slate-900); }
-    .og-pop-close { background: none; border: none; font-size: 13px; color: var(--tw-slate-400); cursor: pointer; padding: 2px 6px; border-radius: 6px; transition: color 0.12s ease; }
-    .og-pop-close:hover { color: var(--tw-slate-800); }
-    .og-pop-section { margin-bottom: 14px; }
-    .og-pop-section:last-child { margin-bottom: 0; }
-    .og-pop-section-label { font-family: var(--mds-font-mono); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tw-slate-500); margin-bottom: 8px; }
-    .og-scale-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; background: var(--tw-slate-100); padding: 3px; border-radius: 8px; }
-    .og-scale-btn { height: 26px; border: none; background: transparent; font-family: var(--mds-font-mono); font-size: 11px; font-weight: 600; color: var(--tw-slate-600); border-radius: 6px; cursor: pointer; transition: all 0.12s ease; }
-    .og-scale-btn.is-active { background: #ffffff; color: var(--mds-primary); font-weight: 800; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08); }
-    .og-scale-tip { font-size: 11px; color: var(--tw-slate-500); margin-top: 6px; line-height: 1.4; }
-    .og-toggles-list { display: flex; flex-direction: column; gap: 6px; }
-    .og-toggle-row { display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; padding: 4px 0; }
-    .og-toggle-text { font-size: 12.5px; font-weight: 500; color: var(--tw-slate-700); }
-    .og-toggle-input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
-    .og-toggle-slider { position: relative; width: 34px; height: 20px; background: var(--tw-slate-300); border-radius: 999px; transition: background 0.18s ease; flex-shrink: 0; }
-    .og-toggle-slider::after { content: ""; position: absolute; left: 2px; top: 2px; width: 16px; height: 16px; background: #ffffff; border-radius: 50%; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.2); transition: transform 0.18s ease; }
-    .og-toggle-input:checked + .og-toggle-slider { background: var(--mds-primary); }
-    .og-toggle-input:checked + .og-toggle-slider::after { transform: translateX(14px); }
-    .mds-btn { height: 36px; padding: 0 14px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-weight: 650; font-size: 13px; white-space: nowrap; border: none; cursor: pointer; text-decoration: none; font-family: var(--mds-font-ui); transition: transform 0.12s ease, box-shadow 0.12s ease; }
-    .mds-btn-primary { color: #ffffff; background: var(--mds-primary-fill); box-shadow: var(--mds-shadow-primary); padding-bottom: 3px; }
+    .og-pop-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .og-pop-section { display: flex; flex-direction: column; gap: 6px; }
+    .og-toggles-list { display: flex; flex-direction: column; gap: 2px; }
+    .mds-seg { display: flex; align-items: center; padding: 3px; gap: 2px; border-radius: var(--mds-r-md); background: var(--mds-well); box-shadow: var(--mds-shadow-well); }
+    .mds-seg button { height: 28px; min-width: 0; flex: 1; padding: 0 9px; border-radius: var(--mds-r-sm); background: transparent; color: var(--mds-ink-2); font-size: calc(12px * var(--mds-type-scale)); font-weight: 600; white-space: nowrap; border: 0; cursor: pointer; font-family: var(--mds-font-ui); transition: all var(--mds-dur-fast) ease; }
+    .mds-seg button.on, .mds-seg button[aria-selected="true"] { background: var(--mds-raised); color: var(--mds-ink); box-shadow: var(--mds-shadow-raised); }
+    .mds-switch { width: 36px; height: 22px; border-radius: var(--mds-r-pill); background: var(--mds-socket); box-shadow: var(--mds-shadow-socket); position: relative; flex: none; transition: background var(--mds-dur-base); border: 0; cursor: pointer; padding: 0; }
+    .mds-switch::after { content: ""; position: absolute; left: 2px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--mds-knob); box-shadow: var(--mds-shadow-knob); transition: transform var(--mds-dur-base) var(--mds-ease-pop); }
+    .mds-switch[aria-checked="true"], .mds-switch.on { background: linear-gradient(180deg, var(--mds-action-600), var(--mds-action-500)); box-shadow: inset 0 1px 2px color-mix(in srgb, var(--mds-action-950) 40%, transparent), inset 0 -1px 0 color-mix(in srgb, #ffffff 25%, transparent); }
+    .mds-switch[aria-checked="true"]::after, .mds-switch.on::after { transform: translateX(14px); }
+    .mds-toggle-row { min-height: var(--mds-row-h); display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 4px 0; }
+    .mds-toggle-row > span { display: flex; flex-direction: column; gap: 2px; min-width: 0; text-align: left; }
+    .mds-toggle-row b { font-size: calc(12.5px * var(--mds-type-scale)); line-height: calc(17px * var(--mds-type-scale)); font-weight: 600; color: var(--mds-ink); }
+    .mds-toggle-row small { font-size: calc(11.5px * var(--mds-type-scale)); line-height: calc(16px * var(--mds-type-scale)); color: var(--mds-ink-3); }
+    .mds-popover { background: var(--mds-surface-float); box-shadow: var(--mds-shadow-float); padding: 14px; border-radius: var(--mds-r-xl); min-width: 220px; font-family: var(--mds-font-ui); }
+    .mds-divider { height: 1px; background: var(--mds-line); margin: 10px 0; }
+    .mds-label { display: flex; justify-content: space-between; gap: 8px; font-size: calc(12px * var(--mds-type-scale)); font-weight: 600; color: var(--mds-ink-2); }
+    .mds-help { font-size: calc(11.5px * var(--mds-type-scale)); line-height: calc(16px * var(--mds-type-scale)); color: var(--mds-ink-3); }
+    .mds-icon-btn { width: var(--mds-h-sm); height: var(--mds-h-sm); flex: none; border-radius: var(--mds-r-sm); display: inline-grid; place-items: center; background: transparent; color: var(--mds-ink-2); border: 0; cursor: pointer; transition: var(--mds-dur-fast); }
+    .mds-icon-btn:hover { background: var(--tw-slate-100); color: var(--mds-ink); }
+    .mds-panel-title { font-size: calc(12.5px * var(--mds-type-scale)); line-height: calc(18px * var(--mds-type-scale)); font-weight: 700; color: var(--mds-ink); }
+    .mds-btn { height: var(--mds-h); padding: 0 12px; border-radius: var(--mds-r-md); display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-weight: 650; font-size: calc(13px * var(--mds-type-scale)); white-space: nowrap; border: 0; cursor: pointer; text-decoration: none; font-family: var(--mds-font-ui); transition: transform var(--mds-dur-fast) var(--mds-ease-pop), box-shadow var(--mds-dur-fast) var(--mds-ease-out); }
+    .mds-btn-primary { color: var(--mds-on-primary); background: var(--mds-primary-fill); box-shadow: var(--mds-shadow-primary); padding-bottom: 3px; }
     .mds-btn-primary:hover { background: var(--mds-primary-fill-hover); transform: translateY(-1px); }
     .mds-btn-primary:active { transform: translateY(1px); padding-bottom: 1px; }
-    .mds-btn-secondary { background: linear-gradient(180deg, #ffffff, var(--tw-slate-50)); color: var(--tw-slate-700); box-shadow: var(--mds-shadow-raised); padding-bottom: 2px; }
+    .mds-btn-secondary { background: var(--mds-raised); color: var(--mds-ink); box-shadow: var(--mds-shadow-raised); padding-bottom: 2px; }
     .mds-btn-secondary:hover { box-shadow: var(--mds-shadow-raised-hover); transform: translateY(-1px); color: var(--tw-slate-900); }
     .mds-btn-secondary:active { transform: translateY(1px); padding-bottom: 0; }
     .og-wrap { max-width: calc(860px * var(--og-doc-scale, 1)); margin: 28px auto 80px; padding: 44px 40px 80px; background: #ffffff; min-height: calc(100vh - 120px); border-radius: 20px; box-shadow: inset 0 1px 0 #ffffff, inset 0 -2px 0 var(--tw-slate-100), 0 0 0 1px rgba(15, 23, 42, 0.04), 0 8px 30px rgba(15, 23, 42, 0.06); font-size: calc(14px * var(--og-doc-scale, 1)); }
@@ -792,48 +806,69 @@ ${t.designSystemCss?`${t.designSystemCss}\n`:``}${t.fontCss?`${t.fontCss}\n`:``}
     <div class="og-doc-actions">
       <div class="og-reader-wrap">
         <button type="button" class="mds-btn mds-btn-secondary og-btn-reader" id="og-btn-reading" aria-expanded="false" aria-controls="og-reading-popover" title="${i?`Pengaturan Tampilan & Skala Membaca`:`Reading Display & Scale Options`}">
-          <span class="og-aa-glyph" aria-hidden="true">Aa</span>
+          <span class="mds-display og-aa-glyph" aria-hidden="true">Aa</span>
           <span class="og-btn-label">${i?`Tampilan`:`Display`}</span>
         </button>
-        <div class="og-reading-popover" id="og-reading-popover" hidden>
-          <div class="og-pop-header">
-            <div class="og-pop-title">${i?`Pengaturan Baca & Cetak`:`Reading & Print Display`}</div>
-            <button type="button" class="og-pop-close" id="og-pop-close" aria-label="${i?`Tutup`:`Close`}">✕</button>
+        <div class="mds-popover og-reading-popover" id="og-reading-popover" hidden>
+          <div class="og-pop-head">
+            <span class="mds-panel-title">${i?`Tampilan Baca & Cetak`:`Reading & Print Display`}</span>
+            <button type="button" class="mds-icon-btn" id="og-pop-close" aria-label="${i?`Tutup`:`Close`}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
           </div>
+
           <div class="og-pop-section">
-            <div class="og-pop-section-label">${i?`Ukuran Teks / Mode Kindle`:`Text Scale / Kindle Mode`}</div>
-            <div class="og-scale-grid" role="group" aria-label="${i?`Ukuran teks`:`Text scale`}">
-              <button type="button" class="og-scale-btn ${a===`compact`?`is-active`:``}" data-scale-val="compact">85%</button>
-              <button type="button" class="og-scale-btn ${a==="default"?`is-active`:``}" data-scale-val="default">100%</button>
-              <button type="button" class="og-scale-btn ${a===`comfort`?`is-active`:``}" data-scale-val="comfort">115%</button>
-              <button type="button" class="og-scale-btn ${a===`kindle`?`is-active`:``}" data-scale-val="kindle">130%</button>
-              <button type="button" class="og-scale-btn ${a===`large`?`is-active`:``}" data-scale-val="large">150%</button>
+            <div class="mds-label">
+              <span>${i?`Ukuran Teks / Mode Kindle`:`Text Scale / Kindle Mode`}</span>
             </div>
-            <div class="og-scale-tip">${i?`Mode Kindle (130%) membuat teks nyaman dibaca di tablet atau e-reader.`:`Kindle mode (130%) optimizes readability for tablets and e-readers.`}</div>
+            <div class="mds-seg" data-scale-seg role="group" aria-label="${i?`Ukuran teks`:`Text scale`}">
+              <button type="button" class="${a===`compact`?`on`:``}" data-scale-val="compact">85%</button>
+              <button type="button" class="${a==="default"?`on`:``}" data-scale-val="default">100%</button>
+              <button type="button" class="${a===`comfort`?`on`:``}" data-scale-val="comfort">115%</button>
+              <button type="button" class="${a===`kindle`?`on`:``}" data-scale-val="kindle">130%</button>
+              <button type="button" class="${a===`large`?`on`:``}" data-scale-val="large">150%</button>
+            </div>
+            <div class="mds-help">${i?`Mode Kindle (130%) membuat teks nyaman dibaca di tablet & e-reader.`:`Kindle mode (130%) optimizes reading on tablets & e-readers.`}</div>
           </div>
+
+          <div class="mds-divider"></div>
+
           <div class="og-pop-section">
-            <div class="og-pop-section-label">${i?`Visibilitas Elemen`:`Element Visibility`}</div>
+            <div class="mds-label">
+              <span>${i?`Elemen Terlihat`:`Visible Elements`}</span>
+            </div>
             <div class="og-toggles-list">
-              <label class="og-toggle-row">
-                <span class="og-toggle-text">${i?`Catatan (¶ Notes)`:`Notes (¶ Notes)`}</span>
-                <input type="checkbox" class="og-toggle-input" id="og-toggle-notes" ${o?`checked`:``}>
-                <span class="og-toggle-slider" aria-hidden="true"></span>
-              </label>
-              <label class="og-toggle-row">
-                <span class="og-toggle-text">${i?`Lencana (★ Badges)`:`Badges (★ Badges)`}</span>
-                <input type="checkbox" class="og-toggle-input" id="og-toggle-badges" ${s?`checked`:``}>
-                <span class="og-toggle-slider" aria-hidden="true"></span>
-              </label>
-              <label class="og-toggle-row">
-                <span class="og-toggle-text">${i?`Kode Angka (1.2.3)`:`Codes (1.2.3)`}</span>
-                <input type="checkbox" class="og-toggle-input" id="og-toggle-codes" ${c?`checked`:``}>
-                <span class="og-toggle-slider" aria-hidden="true"></span>
-              </label>
-              <label class="og-toggle-row">
-                <span class="og-toggle-text">${i?`Emoji Ikon`:`Emojis`}</span>
-                <input type="checkbox" class="og-toggle-input" id="og-toggle-emojis" ${l?`checked`:``}>
-                <span class="og-toggle-slider" aria-hidden="true"></span>
-              </label>
+              <div class="mds-toggle-row">
+                <span>
+                  <b>${i?`Catatan Paragraf (¶ Notes)`:`Paragraph Notes (¶ Notes)`}</b>
+                  <small>${i?`Penjelasan detail tiap node`:`Detailed context for each node`}</small>
+                </span>
+                <button type="button" role="switch" class="mds-switch ${o?`on`:``}" aria-checked="${o?`true`:`false`}" id="og-toggle-notes" aria-label="${i?`Tampilkan Catatan`:`Show Notes`}"></button>
+              </div>
+
+              <div class="mds-toggle-row">
+                <span>
+                  <b>${i?`Lencana Status (★ Badges)`:`Status Badges (★ Badges)`}</b>
+                  <small>${i?`Lencana Core, Contested, dll.`:`Core, Contested, and metadata pills`}</small>
+                </span>
+                <button type="button" role="switch" class="mds-switch ${s?`on`:``}" aria-checked="${s?`true`:`false`}" id="og-toggle-badges" aria-label="${i?`Tampilkan Lencana`:`Show Badges`}"></button>
+              </div>
+
+              <div class="mds-toggle-row">
+                <span>
+                  <b>${i?`Kode Penomoran (1.2.3)`:`Numeric Codes (1.2.3)`}</b>
+                  <small>${i?`Hirarki nomor kode`:`Hierarchical decimal notation`}</small>
+                </span>
+                <button type="button" role="switch" class="mds-switch ${c?`on`:``}" aria-checked="${c?`true`:`false`}" id="og-toggle-codes" aria-label="${i?`Tampilkan Kode`:`Show Codes`}"></button>
+              </div>
+
+              <div class="mds-toggle-row">
+                <span>
+                  <b>${i?`Ikon Emoji`:`Emoji Icons`}</b>
+                  <small>${i?`Ikon visual tiap konsep`:`Visual concept glyphs`}</small>
+                </span>
+                <button type="button" role="switch" class="mds-switch ${l?`on`:``}" aria-checked="${l?`true`:`false`}" id="og-toggle-emojis" aria-label="${i?`Tampilkan Emoji`:`Show Emojis`}"></button>
+              </div>
             </div>
           </div>
         </div>
@@ -941,19 +976,20 @@ ${t.designSystemCss?`${t.designSystemCss}\n`:``}${t.fontCss?`${t.fontCss}\n`:``}
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
   });
-  var scaleBtns = document.querySelectorAll('.og-scale-btn');
-  scaleBtns.forEach(function(b) {
+  var segBtns = document.querySelectorAll('.mds-seg[data-scale-seg] button');
+  segBtns.forEach(function(b) {
     var sc = b.getAttribute('data-scale-val');
-    if (sc === (document.documentElement.getAttribute('data-scale') || 'default')) b.classList.add('is-active');
-    else b.classList.remove('is-active');
-    b.addEventListener('click', function() {
+    if (sc === (document.documentElement.getAttribute('data-scale') || 'default')) b.classList.add('on');
+    else b.classList.remove('on');
+    b.addEventListener('click', function(e) {
+      e.stopPropagation();
       var val = b.getAttribute('data-scale-val');
       if (!val) return;
       document.documentElement.setAttribute('data-scale', val);
       try { localStorage.setItem('og-doc-scale', val); } catch (e) {}
-      scaleBtns.forEach(function(other) {
-        if (other === b) other.classList.add('is-active');
-        else other.classList.remove('is-active');
+      segBtns.forEach(function(other) {
+        if (other === b) other.classList.add('on');
+        else other.classList.remove('on');
       });
     });
   });
@@ -964,18 +1000,26 @@ ${t.designSystemCss?`${t.designSystemCss}\n`:``}${t.fontCss?`${t.fontCss}\n`:``}
     { id: 'og-toggle-emojis', attr: 'data-show-emojis', storage: 'og-doc-show-emojis' }
   ];
   toggles.forEach(function(item) {
-    var el = document.getElementById(item.id);
-    if (!el) return;
-    el.checked = document.documentElement.getAttribute(item.attr) !== 'false';
-    el.addEventListener('change', function() {
-      var state = el.checked ? 'true' : 'false';
-      document.documentElement.setAttribute(item.attr, state);
-      try { localStorage.setItem(item.storage, state); } catch (e) {}
+    var sw = document.getElementById(item.id);
+    if (!sw) return;
+    var active = document.documentElement.getAttribute(item.attr) !== 'false';
+    sw.setAttribute('aria-checked', String(active));
+    if (active) sw.classList.add('on');
+    else sw.classList.remove('on');
+    sw.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isChecked = sw.getAttribute('aria-checked') === 'true';
+      var nextChecked = !isChecked;
+      sw.setAttribute('aria-checked', String(nextChecked));
+      if (nextChecked) sw.classList.add('on');
+      else sw.classList.remove('on');
+      document.documentElement.setAttribute(item.attr, String(nextChecked));
+      try { localStorage.setItem(item.storage, String(nextChecked)); } catch (e) {}
     });
   });
 })();
 <\/script>
-</body>`)}function Ov(e,t,n){let r=e.document,i=r.getElementById(`og-btn-print`);i&&i.addEventListener(`click`,()=>{try{e.print()}catch(e){console.warn(`win.print() execution error`,e)}});let a=r.getElementById(`og-btn-download`);a&&a.addEventListener(`click`,()=>{fm(uv(t).pdfHtml,Dv(n),`text/html`)});let o=r.getElementById(`og-btn-reading`),s=r.getElementById(`og-reading-popover`),c=r.getElementById(`og-pop-close`);o&&o.addEventListener(`click`,e=>{e?.stopPropagation(),s&&(s.hasAttribute(`hidden`)?(s.removeAttribute(`hidden`),o?.setAttribute(`aria-expanded`,`true`)):(s.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`)))}),c&&c.addEventListener(`click`,e=>{e.stopPropagation(),s?.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`)}),r.addEventListener(`click`,e=>{let t=e.target;s&&!s.hasAttribute(`hidden`)&&!s.contains(t)&&t!==o&&!o?.contains(t)&&(s.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`))}),r.addEventListener(`keydown`,t=>{if(t.key===`Escape`&&s&&!s.hasAttribute(`hidden`))s.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`);else if((t.ctrlKey||t.metaKey)&&(t.key===`p`||t.key===`P`)){t.preventDefault();try{e.print()}catch{}}});let l=r.querySelectorAll(`.og-scale-btn`);l.forEach(e=>{e.addEventListener(`click`,()=>{let t=e.getAttribute(`data-scale-val`);t&&(r.documentElement.setAttribute(`data-scale`,t),l.forEach(t=>{t===e?t.classList.add(`is-active`):t.classList.remove(`is-active`)}))})}),[{id:`og-toggle-notes`,attr:`data-show-notes`},{id:`og-toggle-badges`,attr:`data-show-badges`},{id:`og-toggle-codes`,attr:`data-show-codes`},{id:`og-toggle-emojis`,attr:`data-show-emojis`}].forEach(({id:e,attr:t})=>{let n=r.getElementById(e);n&&n.addEventListener(`change`,()=>{r.documentElement.setAttribute(t,String(n.checked))})})}function kv(e){let{showNotes:t,showEmojis:n,showCodes:r,showBadges:i}=B_(),a=Tv(),o=Ev(),s=hv(e,{lang:Un(),designSystemCss:a,fontCss:o,showNotes:t,showEmojis:n,showCodes:r,showBadges:i});try{let t=window.open(``,`_blank`);if(t){t.document.open();let n=s.replace(/\sonclick="[^"]*"/g,``);t.document.write(n),t.document.close(),t.focus(),Ov(t,e,s),Q(B(`atlas.exportPdfOpened`),{tone:`success`});return}}catch{}fm(uv(e).pdfHtml,Dv(s),`text/html`),Q(B(`atlas.exportPdfDownloaded`),{tone:`neutral`})}function Av(e,t){if(t===`pdf`){kv(e.map);return}let n=uv(e.map),r=t===`json`?n.json:t===`tree`?n.tree:n.markdown;fm(r,t===`json`?av(e.map):t===`tree`?cv(e.map):lv(e.map),t===`json`?`application/json`:t===`tree`?`text/plain`:`text/markdown`),Q(B(`files.downloaded`,{name:r}),{tone:`neutral`})}function jv({tree:e,showEmojis:t,showCodes:n,connect:r}){let[i,a]=(0,O.useState)();(0,O.useEffect)(()=>(r.current=a,()=>{r.current=void 0}),[r]);let o=i?Lg(e,i):[];return o.length===0?null:(0,z.jsxs)(`div`,{className:`og-context`,role:`navigation`,"aria-label":B(`atlas.context`),children:[(0,z.jsx)(`span`,{className:`mds-meta`,children:B(`atlas.context`)}),o.map(e=>(0,z.jsxs)(`span`,{className:`og-context-item`,children:[n&&(0,z.jsx)(`span`,{className:`mds-mono`,children:e.code}),(0,z.jsx)(tm,{text:Sv(e,t)})]},e.code))]})}function Mv({workspace:e,onJump:t}){let n=V_(),[r,i]=(0,O.useState)(!1),[a,o]=(0,O.useState)(0),{selected:s,expanded:c,root:l,query:u,filters:d,level:f,view:p,showNotes:m,showEmojis:h,showCodes:g,showBadges:_,railOpen:v,reveal:y}=n,{meta:b,tree:x}=e.map,S=(0,O.useMemo)(()=>Ug(x),[x]),C=(0,O.useMemo)(()=>l?x.filter(e=>e.code===l):x,[x,l]),w=(0,O.useMemo)(()=>vv(C),[C]),T=(0,O.useMemo)(()=>yv(C,u,d),[C,u,d]),E=(0,O.useMemo)(()=>T?new Set([...c,...T.open]):c,[c,T]),D=(0,O.useMemo)(()=>new Set(e.edited),[e.edited]),[ee,k]=(0,O.useState)(0),A=T?.order.length??0,j=A>0?(a%A+A)%A:0,te=u.trim()&&A>0?T.order[j]:void 0,ne=(0,O.useRef)(u);(0,O.useEffect)(()=>{ne.current!==u&&(ne.current=u,o(0),k(e=>e+1))},[u]),(0,O.useEffect)(()=>{if(!te)return;let e=requestAnimationFrame(()=>{document.querySelector(`[data-tree-id="${CSS.escape(te)}"]`)?.scrollIntoView({block:`center`})});return()=>cancelAnimationFrame(e)},[te,ee]);let re=(0,O.useCallback)(e=>{A<=0||!T?.order||(o(t=>((t+e)%A+A)%A),k(e=>e+1))},[A,T]),ie=(0,O.useCallback)(e=>{e.key===`Enter`&&A>0&&(e.preventDefault(),re(e.shiftKey?-1:1))},[A,re]),ae=(0,O.useRef)(void 0),oe=(0,O.useCallback)(e=>ae.current?.(e?.id),[]),se=e=>z_(t=>{let n=new Set(t.filters);return n.has(e)?n.delete(e):n.add(e),{filters:n}}),ce=b.sig===J_,le=b.sig===$_,N=ce?Q_():le?iv():void 0,ue=(0,O.useRef)(t);ue.current=t;let de=Un(),fe=(0,O.useCallback)(e=>{let t=e.node,n=te===t.code,r=s===t.code,i=ce?X_[t.code]:void 0,a=le?tv[t.code]:void 0;return(0,z.jsxs)(`div`,{className:`og-row ${n?`og-match-target`:``}`,children:[(0,z.jsxs)(`div`,{className:`og-row-head`,children:[g&&(0,z.jsx)(`span`,{className:`mds-mono og-code`,children:t.code}),(0,z.jsx)(tm,{className:`og-label`,text:Sv(t,h)}),_&&i&&(0,z.jsx)($,{tone:`info`,children:B(`atlas.companionRowBadge`,{id:i.id})}),_&&a&&(0,z.jsx)($,{tone:`info`,children:B(`atlas.superstudioRowBadge`,{code:a.nameEn})}),_&&D.has(t.code)&&(0,z.jsx)($,{children:B(`atlas.edited`)}),_&&(0,z.jsx)(xv,{node:t})]}),m&&t.note&&(0,z.jsx)(tm,{className:`og-note`,text:t.note,lines:2}),(m||r)&&t.links.length>0&&(0,z.jsx)(`div`,{className:`og-links`,onClick:e=>e.stopPropagation(),children:t.links.map(e=>{let t=Ig(x,e);return(0,z.jsx)(Z,{size:`sm`,variant:`quiet`,icon:M,disabled:!t,title:B(t?`atlas.goTo`:`atlas.linkMissing`,{code:e}),onClick:()=>ue.current(e),tabIndex:-1,children:(0,z.jsx)(tm,{text:t?`${e} ${t.label}`:e})},e)})})]})},[m,h,g,_,D,x,de,te,s,ce,le]),pe=b.realm?`${b.realm.name} · ${S.totalNodes}`:String(S.totalNodes);return(0,z.jsxs)(`div`,{className:`og-main ${p===`outline`&&u.trim()?`og-searching`:``} ${p===`outline`?``:`tf-fill-body og-main-export`}`,children:[(0,z.jsxs)(`header`,{className:`og-head`,children:[(0,z.jsxs)(`div`,{className:`og-title-row`,children:[(0,z.jsxs)(`div`,{className:`og-title-lead`,children:[(0,z.jsx)(Sg,{side:`left`,open:v,label:B(`atlas.mapIdentity`),onToggle:()=>z_({railOpen:!v},!0),"data-og-rail-toggle":``}),(0,z.jsx)(`h2`,{className:`og-subject`,children:(0,z.jsx)(tm,{text:b.subject})})]}),(0,z.jsxs)(`div`,{className:`mds-inline`,children:[(0,z.jsx)(Am,{label:B(`atlas.view`),value:p,onChange:e=>z_({view:e}),options:[{value:`outline`,label:B(`atlas.outline`)},{value:`tree`,label:B(`atlas.treeText`)},{value:`json`,label:B(`atlas.json`)}]}),(0,z.jsx)(Mm,{label:B(`atlas.exportPdf`),icon:Pe,onClick:()=>Av(e,`pdf`),moreLabel:B(`atlas.exportMore`),entries:[{label:B(`atlas.exportPdf`),onSelect:()=>Av(e,`pdf`)},{label:B(`atlas.exportJson`),onSelect:()=>Av(e,`json`)},{label:B(`atlas.exportTree`),onSelect:()=>Av(e,`tree`)},{label:B(`atlas.exportMarkdown`),onSelect:()=>Av(e,`markdown`)}],"data-og-export-split":``}),(0,z.jsx)(Gm,{title:b.subject,summary:`${pe} · ${B(`atlas.notesProgress`,{percent:Gg(S)})}`,data:{map:e.map,edited:e.edited}})]})]}),(0,z.jsx)(`div`,{className:`mds-inline og-meta-row`,children:[b.intent,b.ground,b.depth,b.lang?.toUpperCase()].filter(Boolean).map(e=>(0,z.jsx)($,{children:e},e))}),(0,z.jsx)(`p`,{className:`mds-meta`,children:B(`atlas.summary`,{nodes:S.totalNodes,depth:S.maxDepth,core:S.core,notes:Gg(S)})}),ce&&(0,z.jsxs)(`div`,{className:`og-companion-banner`,"data-og-companion-banner":`contentos`,children:[(0,z.jsxs)(`div`,{className:`og-companion-copy`,children:[(0,z.jsxs)(`div`,{className:`mds-inline og-companion-badges`,children:[(0,z.jsx)($,{tone:`info`,children:B(`atlas.companionToolBadge`)}),(0,z.jsx)($,{tone:`success`,children:B(`atlas.companionToolStats`)})]}),(0,z.jsx)(`strong`,{className:`og-companion-title`,children:B(`atlas.companionToolTitle`)}),(0,z.jsx)(`span`,{className:`og-companion-desc`,children:B(`atlas.companionToolBody`)})]}),(0,z.jsxs)(`div`,{className:`og-companion-actions`,children:[(0,z.jsx)(Z,{size:`sm`,variant:`secondary`,icon:M,onClick:()=>t(`11.2`),"data-og-jump-socratic":``,children:B(`atlas.companionJumpSocratic`)}),N&&(0,z.jsx)(jm,{size:`sm`,variant:`primary`,icon:Re,href:N,"data-og-open-contentos":``,children:B(`atlas.companionOpenTool`)})]})]}),le&&(0,z.jsxs)(`div`,{className:`og-companion-banner`,"data-og-companion-banner":`superstudio`,children:[(0,z.jsxs)(`div`,{className:`og-companion-copy`,children:[(0,z.jsxs)(`div`,{className:`mds-inline og-companion-badges`,children:[(0,z.jsx)($,{tone:`info`,children:B(`atlas.superstudioToolBadge`)}),(0,z.jsx)($,{tone:`success`,children:B(`atlas.superstudioToolStats`)})]}),(0,z.jsx)(`strong`,{className:`og-companion-title`,children:B(`atlas.superstudioToolTitle`)}),(0,z.jsx)(`span`,{className:`og-companion-desc`,children:B(`atlas.superstudioToolBody`)})]}),(0,z.jsxs)(`div`,{className:`og-companion-actions`,children:[(0,z.jsx)(Z,{size:`sm`,variant:`secondary`,icon:M,onClick:()=>t(`13.1.1`),"data-og-jump-featured-style":``,children:B(`atlas.superstudioJumpFeatured`)}),N&&(0,z.jsx)(jm,{size:`sm`,variant:`primary`,icon:Re,href:N,"data-og-open-superstudio":``,children:B(`atlas.superstudioOpenTool`)})]})]})]}),p===`outline`&&(0,z.jsxs)(z.Fragment,{children:[(0,z.jsxs)(`div`,{className:`og-sticky-bar`,children:[(0,z.jsxs)(`div`,{className:`og-controls-bar`,children:[(0,z.jsx)(Rm,{label:B(`atlas.search`),value:u,onChange:e=>z_({query:e}),onKeyDown:ie}),(0,z.jsx)(Am,{label:B(`atlas.level`),value:f,onChange:t=>z_({level:t,expanded:H_(e,t)}),options:[`1`,`2`,`3`,`all`].map(e=>({value:e,label:e===`all`?B(`atlas.levelAll`):e}))}),(0,z.jsx)(`div`,{className:`og-chips`,role:`group`,"aria-label":B(`atlas.filters`),children:gv.filter(e=>w[e]>0).map(e=>(0,z.jsxs)(vh,{soft:!0,selected:d.has(e),onClick:()=>se(e),children:[B(`badge.${e}`),` `,(0,z.jsx)(`span`,{className:`og-count`,children:w[e]})]},e))}),d.size>0&&(0,z.jsxs)(`div`,{className:`og-match-inline`,children:[(0,z.jsx)(`span`,{className:`mds-meta`,children:T?.matches.size?B(`atlas.matches`,{count:T.matches.size}):B(`atlas.noMatch`)}),(0,z.jsx)(Z,{size:`sm`,variant:`quiet`,onClick:()=>z_({filters:new Set}),children:B(`atlas.clearFilters`)})]})]}),(0,z.jsx)(jv,{tree:x,showEmojis:h,showCodes:g,connect:ae})]}),(0,z.jsx)(qh,{children:(0,z.jsx)(vg,{label:B(`atlas.outlineLabel`),roots:C,getId:Cv,getChildren:wv,expanded:E,onToggle:(e,t)=>z_(n=>{let r=new Set(n.expanded);return t?r.add(e):r.delete(e),{expanded:r}}),selected:s,onSelect:e=>{if(z_({selected:e}),T?.order){let t=T.order.indexOf(e);t!==-1&&o(t)}},renderRow:fe,dimmed:T?e=>!T.matches.has(e.code):void 0,onTopRow:oe,reveal:y})}),u.trim()!==``&&(0,z.jsx)(`div`,{className:`og-search-dock`,role:`region`,"aria-label":B(`atlas.search`),children:(0,z.jsxs)(`div`,{className:`og-search-dock-pill`,children:[(0,z.jsx)(Ot,{size:14,className:`og-search-dock-icon`,"aria-hidden":`true`}),(0,z.jsx)(`span`,{className:`og-search-dock-query`,title:u,children:(0,z.jsx)(tm,{text:u})}),(0,z.jsx)(`span`,{className:`og-search-dock-sep`,"aria-hidden":`true`}),A>0?(0,z.jsxs)(z.Fragment,{children:[(0,z.jsx)(`span`,{className:`og-search-dock-count`,children:B(`atlas.searchCount`,{current:j+1,total:A})}),(0,z.jsxs)(`div`,{className:`og-search-dock-actions`,children:[(0,z.jsx)(km,{size:`sm`,icon:F,label:B(`atlas.searchPrev`),disabled:A<=1,onClick:()=>re(-1)}),(0,z.jsx)(km,{size:`sm`,icon:me,label:B(`atlas.searchNext`),disabled:A<=1,onClick:()=>re(1)})]})]}):(0,z.jsx)(`span`,{className:`og-search-dock-count mds-muted`,children:B(`atlas.noMatch`)}),(0,z.jsx)(`span`,{className:`og-search-dock-sep`,"aria-hidden":`true`}),(0,z.jsx)(km,{size:`sm`,icon:Ht,label:B(`atlas.clearSearch`),onClick:()=>z_({query:``})})]})})]}),p!==`outline`&&(0,z.jsx)(qh,{children:(0,z.jsxs)(`div`,{className:`og-export-view ${r?`og-wrap`:`og-nowrap`}`,children:[(0,z.jsxs)(`div`,{className:`mds-inline og-export-bar`,children:[(0,z.jsx)(Z,{icon:Pe,onClick:()=>Av(e,p===`json`?`json`:`tree`),children:B(`atlas.download`)}),(0,z.jsx)(Am,{label:B(`atlas.wrapMode`),value:r?`wrap`:`nowrap`,onChange:e=>i(e===`wrap`),options:[{value:`nowrap`,label:B(`atlas.noWrap`)},{value:`wrap`,label:B(`atlas.wrap`)}]})]}),(0,z.jsx)(yh,{code:p===`json`?av(e.map):cv(e.map),copy:!0,label:B(p===`json`?`atlas.json`:`atlas.treeText`)})]})})]})}var Nv=`[PASTE SUBJECT / CONFIGURATION / OPTIONAL SOURCE MATERIAL HERE]`,Pv=[`AUTO`,`LEARN`,`BUILD`,`CATALOG`,`DECIDE`,`AUDIT`],Fv=[`TOPIC`,`SOURCE`,`COMPARE`],Iv=[`MASTERY`,`OVERVIEW`,`LITE`],Lv=[`none`,`pure-catalog`,`process-matrix`,`slot-registry`,`action-manual`,`scope-filter`,`custom`],Rv={"pure-catalog":`- STRUCTURE LOCK: L1 Roots = 10–15 orthogonal functional families or mediums; L2 = Sub-families; L3 Leaves = 100% specific named archetypes, entities, or styles.
+</body>`)}function Ov(e,t,n){let r=e.document,i=r.getElementById(`og-btn-print`);i&&i.addEventListener(`click`,()=>{try{e.print()}catch(e){console.warn(`win.print() execution error`,e)}});let a=r.getElementById(`og-btn-download`);a&&a.addEventListener(`click`,()=>{fm(uv(t).pdfHtml,Dv(n),`text/html`)});let o=r.getElementById(`og-btn-reading`),s=r.getElementById(`og-reading-popover`),c=r.getElementById(`og-pop-close`);o&&o.addEventListener(`click`,e=>{e?.stopPropagation(),s&&(s.hasAttribute(`hidden`)?(s.removeAttribute(`hidden`),o?.setAttribute(`aria-expanded`,`true`)):(s.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`)))}),c&&c.addEventListener(`click`,e=>{e.stopPropagation(),s?.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`)}),r.addEventListener(`click`,e=>{let t=e.target;s&&!s.hasAttribute(`hidden`)&&!s.contains(t)&&t!==o&&!o?.contains(t)&&(s.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`))}),r.addEventListener(`keydown`,t=>{if(t.key===`Escape`&&s&&!s.hasAttribute(`hidden`))s.setAttribute(`hidden`,``),o?.setAttribute(`aria-expanded`,`false`);else if((t.ctrlKey||t.metaKey)&&(t.key===`p`||t.key===`P`)){t.preventDefault();try{e.print()}catch{}}});let l=r.querySelectorAll(`.mds-seg[data-scale-seg] button`);l.forEach(e=>{e.addEventListener(`click`,t=>{t.stopPropagation();let n=e.getAttribute(`data-scale-val`);n&&(r.documentElement.setAttribute(`data-scale`,n),l.forEach(t=>{t===e?t.classList.add(`on`):t.classList.remove(`on`)}))})}),[{id:`og-toggle-notes`,attr:`data-show-notes`},{id:`og-toggle-badges`,attr:`data-show-badges`},{id:`og-toggle-codes`,attr:`data-show-codes`},{id:`og-toggle-emojis`,attr:`data-show-emojis`}].forEach(({id:e,attr:t})=>{let n=r.getElementById(e);n&&n.addEventListener(`click`,e=>{e.stopPropagation();let i=n.getAttribute(`aria-checked`)!==`true`;n.setAttribute(`aria-checked`,String(i)),i?n.classList.add(`on`):n.classList.remove(`on`),r.documentElement.setAttribute(t,String(i))})})}function kv(e){let{showNotes:t,showEmojis:n,showCodes:r,showBadges:i}=B_(),a=Tv(),o=Ev(),s=hv(e,{lang:Un(),designSystemCss:a,fontCss:o,showNotes:t,showEmojis:n,showCodes:r,showBadges:i});try{let t=window.open(``,`_blank`);if(t){t.document.open();let n=s.replace(/\sonclick="[^"]*"/g,``);t.document.write(n),t.document.close(),t.focus(),Ov(t,e,s),Q(B(`atlas.exportPdfOpened`),{tone:`success`});return}}catch{}fm(uv(e).pdfHtml,Dv(s),`text/html`),Q(B(`atlas.exportPdfDownloaded`),{tone:`neutral`})}function Av(e,t){if(t===`pdf`){kv(e.map);return}let n=uv(e.map),r=t===`json`?n.json:t===`tree`?n.tree:n.markdown;fm(r,t===`json`?av(e.map):t===`tree`?cv(e.map):lv(e.map),t===`json`?`application/json`:t===`tree`?`text/plain`:`text/markdown`),Q(B(`files.downloaded`,{name:r}),{tone:`neutral`})}function jv({tree:e,showEmojis:t,showCodes:n,connect:r}){let[i,a]=(0,O.useState)();(0,O.useEffect)(()=>(r.current=a,()=>{r.current=void 0}),[r]);let o=i?Lg(e,i):[];return o.length===0?null:(0,z.jsxs)(`div`,{className:`og-context`,role:`navigation`,"aria-label":B(`atlas.context`),children:[(0,z.jsx)(`span`,{className:`mds-meta`,children:B(`atlas.context`)}),o.map(e=>(0,z.jsxs)(`span`,{className:`og-context-item`,children:[n&&(0,z.jsx)(`span`,{className:`mds-mono`,children:e.code}),(0,z.jsx)(tm,{text:Sv(e,t)})]},e.code))]})}function Mv({workspace:e,onJump:t}){let n=V_(),[r,i]=(0,O.useState)(!1),[a,o]=(0,O.useState)(0),{selected:s,expanded:c,root:l,query:u,filters:d,level:f,view:p,showNotes:m,showEmojis:h,showCodes:g,showBadges:_,railOpen:v,reveal:y}=n,{meta:b,tree:x}=e.map,S=(0,O.useMemo)(()=>Ug(x),[x]),C=(0,O.useMemo)(()=>l?x.filter(e=>e.code===l):x,[x,l]),w=(0,O.useMemo)(()=>vv(C),[C]),T=(0,O.useMemo)(()=>yv(C,u,d),[C,u,d]),E=(0,O.useMemo)(()=>T?new Set([...c,...T.open]):c,[c,T]),D=(0,O.useMemo)(()=>new Set(e.edited),[e.edited]),[ee,k]=(0,O.useState)(0),A=T?.order.length??0,j=A>0?(a%A+A)%A:0,te=u.trim()&&A>0?T.order[j]:void 0,ne=(0,O.useRef)(u);(0,O.useEffect)(()=>{ne.current!==u&&(ne.current=u,o(0),k(e=>e+1))},[u]),(0,O.useEffect)(()=>{if(!te)return;let e=requestAnimationFrame(()=>{document.querySelector(`[data-tree-id="${CSS.escape(te)}"]`)?.scrollIntoView({block:`center`})});return()=>cancelAnimationFrame(e)},[te,ee]);let re=(0,O.useCallback)(e=>{A<=0||!T?.order||(o(t=>((t+e)%A+A)%A),k(e=>e+1))},[A,T]),ie=(0,O.useCallback)(e=>{e.key===`Enter`&&A>0&&(e.preventDefault(),re(e.shiftKey?-1:1))},[A,re]),ae=(0,O.useRef)(void 0),oe=(0,O.useCallback)(e=>ae.current?.(e?.id),[]),se=e=>z_(t=>{let n=new Set(t.filters);return n.has(e)?n.delete(e):n.add(e),{filters:n}}),ce=b.sig===J_,le=b.sig===$_,N=ce?Q_():le?iv():void 0,ue=(0,O.useRef)(t);ue.current=t;let de=Un(),fe=(0,O.useCallback)(e=>{let t=e.node,n=te===t.code,r=s===t.code,i=ce?X_[t.code]:void 0,a=le?tv[t.code]:void 0;return(0,z.jsxs)(`div`,{className:`og-row ${n?`og-match-target`:``}`,children:[(0,z.jsxs)(`div`,{className:`og-row-head`,children:[g&&(0,z.jsx)(`span`,{className:`mds-mono og-code`,children:t.code}),(0,z.jsx)(tm,{className:`og-label`,text:Sv(t,h)}),_&&i&&(0,z.jsx)($,{tone:`info`,children:B(`atlas.companionRowBadge`,{id:i.id})}),_&&a&&(0,z.jsx)($,{tone:`info`,children:B(`atlas.superstudioRowBadge`,{code:a.nameEn})}),_&&D.has(t.code)&&(0,z.jsx)($,{children:B(`atlas.edited`)}),_&&(0,z.jsx)(xv,{node:t})]}),m&&t.note&&(0,z.jsx)(tm,{className:`og-note`,text:t.note,lines:2}),(m||r)&&t.links.length>0&&(0,z.jsx)(`div`,{className:`og-links`,onClick:e=>e.stopPropagation(),children:t.links.map(e=>{let t=Ig(x,e);return(0,z.jsx)(Z,{size:`sm`,variant:`quiet`,icon:M,disabled:!t,title:B(t?`atlas.goTo`:`atlas.linkMissing`,{code:e}),onClick:()=>ue.current(e),tabIndex:-1,children:(0,z.jsx)(tm,{text:t?`${e} ${t.label}`:e})},e)})})]})},[m,h,g,_,D,x,de,te,s,ce,le]),pe=b.realm?`${b.realm.name} · ${S.totalNodes}`:String(S.totalNodes);return(0,z.jsxs)(`div`,{className:`og-main ${p===`outline`&&u.trim()?`og-searching`:``} ${p===`outline`?``:`tf-fill-body og-main-export`}`,children:[(0,z.jsxs)(`header`,{className:`og-head`,children:[(0,z.jsxs)(`div`,{className:`og-title-row`,children:[(0,z.jsxs)(`div`,{className:`og-title-lead`,children:[(0,z.jsx)(Sg,{side:`left`,open:v,label:B(`atlas.mapIdentity`),onToggle:()=>z_({railOpen:!v},!0),"data-og-rail-toggle":``}),(0,z.jsx)(`h2`,{className:`og-subject`,children:(0,z.jsx)(tm,{text:b.subject})})]}),(0,z.jsxs)(`div`,{className:`mds-inline`,children:[(0,z.jsx)(Am,{label:B(`atlas.view`),value:p,onChange:e=>z_({view:e}),options:[{value:`outline`,label:B(`atlas.outline`)},{value:`tree`,label:B(`atlas.treeText`)},{value:`json`,label:B(`atlas.json`)}]}),(0,z.jsx)(Mm,{label:B(`atlas.exportPdf`),icon:Pe,onClick:()=>Av(e,`pdf`),moreLabel:B(`atlas.exportMore`),entries:[{label:B(`atlas.exportPdf`),onSelect:()=>Av(e,`pdf`)},{label:B(`atlas.exportJson`),onSelect:()=>Av(e,`json`)},{label:B(`atlas.exportTree`),onSelect:()=>Av(e,`tree`)},{label:B(`atlas.exportMarkdown`),onSelect:()=>Av(e,`markdown`)}],"data-og-export-split":``}),(0,z.jsx)(Gm,{title:b.subject,summary:`${pe} · ${B(`atlas.notesProgress`,{percent:Gg(S)})}`,data:{map:e.map,edited:e.edited}})]})]}),(0,z.jsx)(`div`,{className:`mds-inline og-meta-row`,children:[b.intent,b.ground,b.depth,b.lang?.toUpperCase()].filter(Boolean).map(e=>(0,z.jsx)($,{children:e},e))}),(0,z.jsx)(`p`,{className:`mds-meta`,children:B(`atlas.summary`,{nodes:S.totalNodes,depth:S.maxDepth,core:S.core,notes:Gg(S)})}),ce&&(0,z.jsxs)(`div`,{className:`og-companion-banner`,"data-og-companion-banner":`contentos`,children:[(0,z.jsxs)(`div`,{className:`og-companion-copy`,children:[(0,z.jsxs)(`div`,{className:`mds-inline og-companion-badges`,children:[(0,z.jsx)($,{tone:`info`,children:B(`atlas.companionToolBadge`)}),(0,z.jsx)($,{tone:`success`,children:B(`atlas.companionToolStats`)})]}),(0,z.jsx)(`strong`,{className:`og-companion-title`,children:B(`atlas.companionToolTitle`)}),(0,z.jsx)(`span`,{className:`og-companion-desc`,children:B(`atlas.companionToolBody`)})]}),(0,z.jsxs)(`div`,{className:`og-companion-actions`,children:[(0,z.jsx)(Z,{size:`sm`,variant:`secondary`,icon:M,onClick:()=>t(`11.2`),"data-og-jump-socratic":``,children:B(`atlas.companionJumpSocratic`)}),N&&(0,z.jsx)(jm,{size:`sm`,variant:`primary`,icon:Re,href:N,"data-og-open-contentos":``,children:B(`atlas.companionOpenTool`)})]})]}),le&&(0,z.jsxs)(`div`,{className:`og-companion-banner`,"data-og-companion-banner":`superstudio`,children:[(0,z.jsxs)(`div`,{className:`og-companion-copy`,children:[(0,z.jsxs)(`div`,{className:`mds-inline og-companion-badges`,children:[(0,z.jsx)($,{tone:`info`,children:B(`atlas.superstudioToolBadge`)}),(0,z.jsx)($,{tone:`success`,children:B(`atlas.superstudioToolStats`)})]}),(0,z.jsx)(`strong`,{className:`og-companion-title`,children:B(`atlas.superstudioToolTitle`)}),(0,z.jsx)(`span`,{className:`og-companion-desc`,children:B(`atlas.superstudioToolBody`)})]}),(0,z.jsxs)(`div`,{className:`og-companion-actions`,children:[(0,z.jsx)(Z,{size:`sm`,variant:`secondary`,icon:M,onClick:()=>t(`13.1.1`),"data-og-jump-featured-style":``,children:B(`atlas.superstudioJumpFeatured`)}),N&&(0,z.jsx)(jm,{size:`sm`,variant:`primary`,icon:Re,href:N,"data-og-open-superstudio":``,children:B(`atlas.superstudioOpenTool`)})]})]})]}),p===`outline`&&(0,z.jsxs)(z.Fragment,{children:[(0,z.jsxs)(`div`,{className:`og-sticky-bar`,children:[(0,z.jsxs)(`div`,{className:`og-controls-bar`,children:[(0,z.jsx)(Rm,{label:B(`atlas.search`),value:u,onChange:e=>z_({query:e}),onKeyDown:ie}),(0,z.jsx)(Am,{label:B(`atlas.level`),value:f,onChange:t=>z_({level:t,expanded:H_(e,t)}),options:[`1`,`2`,`3`,`all`].map(e=>({value:e,label:e===`all`?B(`atlas.levelAll`):e}))}),(0,z.jsx)(`div`,{className:`og-chips`,role:`group`,"aria-label":B(`atlas.filters`),children:gv.filter(e=>w[e]>0).map(e=>(0,z.jsxs)(vh,{soft:!0,selected:d.has(e),onClick:()=>se(e),children:[B(`badge.${e}`),` `,(0,z.jsx)(`span`,{className:`og-count`,children:w[e]})]},e))}),d.size>0&&(0,z.jsxs)(`div`,{className:`og-match-inline`,children:[(0,z.jsx)(`span`,{className:`mds-meta`,children:T?.matches.size?B(`atlas.matches`,{count:T.matches.size}):B(`atlas.noMatch`)}),(0,z.jsx)(Z,{size:`sm`,variant:`quiet`,onClick:()=>z_({filters:new Set}),children:B(`atlas.clearFilters`)})]})]}),(0,z.jsx)(jv,{tree:x,showEmojis:h,showCodes:g,connect:ae})]}),(0,z.jsx)(qh,{children:(0,z.jsx)(vg,{label:B(`atlas.outlineLabel`),roots:C,getId:Cv,getChildren:wv,expanded:E,onToggle:(e,t)=>z_(n=>{let r=new Set(n.expanded);return t?r.add(e):r.delete(e),{expanded:r}}),selected:s,onSelect:e=>{if(z_({selected:e}),T?.order){let t=T.order.indexOf(e);t!==-1&&o(t)}},renderRow:fe,dimmed:T?e=>!T.matches.has(e.code):void 0,onTopRow:oe,reveal:y})}),u.trim()!==``&&(0,z.jsx)(`div`,{className:`og-search-dock`,role:`region`,"aria-label":B(`atlas.search`),children:(0,z.jsxs)(`div`,{className:`og-search-dock-pill`,children:[(0,z.jsx)(Ot,{size:14,className:`og-search-dock-icon`,"aria-hidden":`true`}),(0,z.jsx)(`span`,{className:`og-search-dock-query`,title:u,children:(0,z.jsx)(tm,{text:u})}),(0,z.jsx)(`span`,{className:`og-search-dock-sep`,"aria-hidden":`true`}),A>0?(0,z.jsxs)(z.Fragment,{children:[(0,z.jsx)(`span`,{className:`og-search-dock-count`,children:B(`atlas.searchCount`,{current:j+1,total:A})}),(0,z.jsxs)(`div`,{className:`og-search-dock-actions`,children:[(0,z.jsx)(km,{size:`sm`,icon:F,label:B(`atlas.searchPrev`),disabled:A<=1,onClick:()=>re(-1)}),(0,z.jsx)(km,{size:`sm`,icon:me,label:B(`atlas.searchNext`),disabled:A<=1,onClick:()=>re(1)})]})]}):(0,z.jsx)(`span`,{className:`og-search-dock-count mds-muted`,children:B(`atlas.noMatch`)}),(0,z.jsx)(`span`,{className:`og-search-dock-sep`,"aria-hidden":`true`}),(0,z.jsx)(km,{size:`sm`,icon:Ht,label:B(`atlas.clearSearch`),onClick:()=>z_({query:``})})]})})]}),p!==`outline`&&(0,z.jsx)(qh,{children:(0,z.jsxs)(`div`,{className:`og-export-view ${r?`og-wrap`:`og-nowrap`}`,children:[(0,z.jsxs)(`div`,{className:`mds-inline og-export-bar`,children:[(0,z.jsx)(Z,{icon:Pe,onClick:()=>Av(e,p===`json`?`json`:`tree`),children:B(`atlas.download`)}),(0,z.jsx)(Am,{label:B(`atlas.wrapMode`),value:r?`wrap`:`nowrap`,onChange:e=>i(e===`wrap`),options:[{value:`nowrap`,label:B(`atlas.noWrap`)},{value:`wrap`,label:B(`atlas.wrap`)}]})]}),(0,z.jsx)(yh,{code:p===`json`?av(e.map):cv(e.map),copy:!0,label:B(p===`json`?`atlas.json`:`atlas.treeText`)})]})})]})}var Nv=`[PASTE SUBJECT / CONFIGURATION / OPTIONAL SOURCE MATERIAL HERE]`,Pv=[`AUTO`,`LEARN`,`BUILD`,`CATALOG`,`DECIDE`,`AUDIT`],Fv=[`TOPIC`,`SOURCE`,`COMPARE`],Iv=[`MASTERY`,`OVERVIEW`,`LITE`],Lv=[`none`,`pure-catalog`,`process-matrix`,`slot-registry`,`action-manual`,`scope-filter`,`custom`],Rv={"pure-catalog":`- STRUCTURE LOCK: L1 Roots = 10–15 orthogonal functional families or mediums; L2 = Sub-families; L3 Leaves = 100% specific named archetypes, entities, or styles.
 - SCOPE OUT: Exclude generic meta-chapters (history, pioneers, career paths, industry politics, or general textbook intros); weave historical/ecosystem context directly into leaf badges ([§Source], [◍]) and ¶ notes.
 - ¶ NOTE FORMULA: Sentence 1 states the defining structural/physical mechanism; Sentence 2 states its signature application, key parameters, or boundary condition.`,"process-matrix":`- STRUCTURE LOCK: Sequence L1 Roots strictly from upstream intake/foundations to downstream execution/delivery; L2 = Operational sub-stages; L3 Leaves = Concrete atomic techniques, methods, or protocols.
 - SCOPE FOCUS: Every leaf node must represent an actionable operation or formal method rather than a vague topic header.
