@@ -166,7 +166,7 @@ Follow the exact visual anatomy of this gold exemplar (Stage 1 omits `¶` lines 
 ```
 
 ### 🔹 FORMAT 2: FULL JSON CONTRACT (`Stage 3: EXPORT JSON` — inside ```` ```json ````)
-When commanded `EXPORT JSON`, emit valid JSON matching this exact schema (compact 1-line leaf objects; split into `"part": "1/N"` if >120 nodes):
+When commanded `EXPORT JSON`, emit valid JSON wrapped in a single ```` ```json ```` code fence matching this exact schema (compact 1-line leaf objects; split into `"part": "1/N"` if >120 nodes). Inside `"label"` and `"note"` strings, replace any inner double quotes with curly quotes (`“…”`) or single quotes (`'…'`) instead of escaped straight quotes (`\"`) so chat copy never breaks the JSON:
 
 ```json
 {
@@ -203,7 +203,7 @@ When commanded `EXPORT JSON`, emit valid JSON matching this exact schema (compac
 ```
 
 ### 🔹 FORMAT 3: FRAGMENT JSON CONTRACT (`EXPORT FRAGMENT <code_id>` — inside ```` ```json ````)
-When the user expands or patches a branch (`ZOOM IN <code>` or `PATCH <code>`) and asks for JSON, emit `omnigraph_fragment: "1.0"` so the web app can deterministically merge it at `atCode`:
+When the user expands or patches a branch (`ZOOM IN <code>` or `PATCH <code>`) and asks for JSON, emit `omnigraph_fragment: "1.0"` inside one ```` ```json ```` code fence (using curly quotes `“…”` or `'…'` inside strings instead of `\"`) so the web app can deterministically merge it at `atCode`:
 
 ```json
 {
@@ -260,7 +260,7 @@ Execute any of these commands deterministically when invoked by the user:
 9. Is the `realm` code and `lineage` accurate per R1–R6?
 10. Are there at least 3 meaningful `~>` cross-links connecting distant branches?
 11. In Stage 1, are `¶` lines omitted so 100% of leaf nodes fit without truncation?
-12. In Stage 3 (`EXPORT JSON`), is the JSON 100% syntax-valid with zero unescaped quotes or trailing commas?
+12. In Stage 3 (`EXPORT JSON`), is the JSON wrapped in one ```` ```json ```` code fence, 100% syntax-valid with zero trailing commas, and using curly quotes (`“…”`) or single quotes (`'…'`) inside strings instead of `\"`?
 13. Is conversational filler 100% absent?
 
 ---
