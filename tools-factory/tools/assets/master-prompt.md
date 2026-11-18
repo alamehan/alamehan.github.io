@@ -166,7 +166,7 @@ Follow the exact visual anatomy of this gold exemplar (Stage 1 omits `¶` lines 
 ```
 
 ### 🔹 FORMAT 2: FULL JSON CONTRACT (`Stage 3: EXPORT JSON` — inside ```` ```json ````)
-When commanded `EXPORT JSON`, emit valid JSON wrapped in a single ```` ```json ```` code fence matching this exact schema (compact 1-line leaf objects; split into `"part": "1/N"` if >120 nodes). Inside `"label"` and `"note"` strings, replace any inner double quotes with curly quotes (`“…”`) or single quotes (`'…'`) instead of escaped straight quotes (`\"`) so chat copy never breaks the JSON:
+When commanded `EXPORT JSON`, emit valid JSON wrapped in a single ```` ```json ```` code fence matching this exact schema (compact 1-line leaf objects; split into `"part": "1/N"` if >120 nodes). Use clean Title Case for `meta.subject` and every node `"label"` across all depths (never `ALL CAPS`, except genuine acronyms), and inside `"label"` and `"note"` strings replace any inner double quotes with curly quotes (`“…”`) or single quotes (`'…'`) instead of escaped straight quotes (`\"`) so chat copy never breaks the JSON:
 
 ```json
 {
