@@ -44,9 +44,8 @@ Every invariant above is locked by automated tests in `tools/console/tests/portf
 
 ---
 
-## 4. Reference Blueprint for V5 Roadmap (Phase 2: Tools View `Orbit` & Swipeable Deck)
+## 4. Reference Lineage Realized in Portfolio V5 (`Console 1.15.0`)
 
-`archive/v3/index.html` (**V3 · Portfolio OS**) is preserved as the live interactive reference for the next V5 Tools Factory view upgrade:
-- **`ORBIT` mode (OrbitWheel):** Radial project selector wheel with orbital navigation and active spotlight focus.
-- **`STACK` mode (Swipeable Card Deck):** Tactile swipeable card deck with drag/swipe gesture transitions.
-- **Next V5 Target:** Extend the **Tools Factory** view switcher from `Cards | Table` to **`Cards | Orbit | Table`**, re-forged natively on the **Mehan Design System (`D-36`)** with 2.5D forged icons (`tficon: 2`) and full mobile touch swipe support.
+`archive/v3/index.html` (**V3 · Portfolio OS**) and `archive/v4/tools/index.html` (**V4 · Tools Showcase**) served as the live interactive design references for V5's 4-way auto-synced Tools Factory catalog switcher (**`Cards | Table | Deck | Orbit`**):
+- **`Deck` (`ToolsDeckView.tsx`):** Collectible 5-card fanned stack across every viewport (`1366 px`, `590 px`, and `375 px`) with 2-beat physical throw-out & tuck-behind choreography, pointer swipe & flick velocity physics, subtle 3D tilt & specular glare sheen, `42 px` raised circular Mehan orb controls, and a Mehan Tactile Control Dock.
+- **`Orbit` (`ToolsOrbitView.tsx`):** Adaptive dual-ring counter-rotating astrolabe (`CW` Inner ⇄ `CCW` Outer) with sculpted rounded-corner annular sectors, seamless 12-o'clock crown auto-sync (paired with Center Hub reading lock), ring-only velvet hover-brake & Light/Dark pastel wedge tints, counter-geared circular drag-to-spin, upright WebKit-safe forged `tficon: 2` icons, search ghosting, automatic promotion from Precision Astrolabe Bezel (`N <= 8`) to Dual Active Tool Rings (`N >= 9`), twin Mehan Control Dock, and a unified above-the-fold phone Summary-Dock.
