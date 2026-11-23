@@ -2,7 +2,7 @@
 
 - **Factory:** Tools Factory (Raihan Allaam · `@alamehan`)
 - **SDK:** `@tf/sdk@0.18.1`
-- **Console (`index.html`):** `console@1.13.0` (3037.9 KB)
+- **Console (`index.html`):** `console@1.14.0` (3092.9 KB)
 - **Verification:** every HTML file opened offline from `file://` in Chromium with zero page errors and zero network requests; Console → Tool → Home and Console → Docs (PRD, Flows with SVG diagrams, Tech spec) → Home verified.
 
 ## Included Tools
@@ -16,3 +16,7 @@
 | **OmniGraph** (`omnigraph`) | `1.10.2` | `tools/omnigraph.html` | 4022.6 KB | `docs/omnigraph/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Map any subject into a navigable knowledge atlas with the AI you choose. |
 | **SuperDocs** (`superdocs`) | `1.5.6` | `tools/superdocs.html` | 1213.4 KB | `docs/superdocs/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Turn raw project notes into interactive showcases, slide decks, and brand kits. |
 | **SuperStudio** (`superstudio`) | `1.1.6` | `tools/superstudio.html` | 1100.6 KB | `docs/superstudio/index.html` (`prd.html`, `flows.html`, `tech-spec.html`) | Visual style DNA, storyboard blueprint, and deterministic image-prompt studio. |
+
+## Portfolio Archive (`V1–V4`)
+
+- **Included Offline Editions:** `archive/v1/index.html`, `archive/v2/index.html`, `archive/v3/index.html`, `archive/v4/index.html`, plus `archive/v4/tools/index.html` (verified offline from `file://` with zero page errors, zero external requests, and zero private phone/CV leaks).
