@@ -2,7 +2,7 @@
 
 - **Factory:** Tools Factory (Raihan Allaam · `@alamehan`)
 - **SDK:** `@tf/sdk@0.18.2`
-- **Console (`index.html`):** `console@1.20.1` (3734.0 KB)
+- **Console (`index.html`):** `console@1.23.1` (3796.6 KB)
 - **Verification:** every HTML file opened offline from `file://` in Chromium with zero page errors and zero network requests; Console → Tool → Home and Console → Docs (PRD, Flows with SVG diagrams, Tech spec) → Home verified.
 
 ## Included Tools
