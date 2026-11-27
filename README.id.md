@@ -84,9 +84,8 @@ alamehan.github.io/
 ├── tools/              8 aplikasi single-file HTML mandiri
 ├── docs/               Dokumen spesifikasi produk, alur pengguna & arsitektur teknis per studio
 ├── archive/            Museum interaktif offline Portfolio V1–V4 + Early Labs (2021–2022)
-├── alamehan-v1/        Redirect ringan 1 KB penjaga tautan lama bebas 404
 ├── assets/             Mockup visual portofolio (.webp), og-cover.png & banner header SVG 2.5D adaptif
-├── 404.html & .nojekyll Routing statis GitHub Pages & dukungan folder underscore
+├── 404.html & .nojekyll Routing statis GitHub Pages (termasuk redirect URL lama) & dukungan underscore
 └── REPORT.md           Laporan otomatis hasil kompilasi, ukuran file & verifikasi offline (2026-11-27)
 ```
 

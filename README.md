@@ -84,9 +84,8 @@ alamehan.github.io/
 ├── tools/              8 self-contained single-file HTML studios
 ├── docs/               Offline product requirements, user flows & technical specs per studio
 ├── archive/            Curated offline Portfolio V1–V4 + Early Labs (2021–2022) capsule
-├── alamehan-v1/        Lightweight 1 KB redirect stubs preserving legacy URLs
 ├── assets/             Portfolio visual mockups (.webp), og-cover.png & adaptive README banners
-├── 404.html & .nojekyll Static GitHub Pages routing & underscore-asset support
+├── 404.html & .nojekyll Static GitHub Pages routing (incl. legacy URL redirects) & underscore support
 └── REPORT.md           Automated build, size & offline smoke-verification report (2026-11-27)
 ```
 
