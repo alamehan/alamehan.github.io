@@ -1,3 +1,0 @@
-Source:
-https://github.com/mozilla/pdf.js/
-https://github.com/mozilla/pdf.js/wiki/Setup-pdf.js-in-a-website#examples

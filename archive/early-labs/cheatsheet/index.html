@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="destyle.css">
+  <link rel="stylesheet" href="../_shared/sweetalert2.css">
+  <link rel="stylesheet" href="style-general.css">
+  <link rel="icon" href="assets/favicon.ico">
+  <title>Cheat Sheet · Early Labs (@alamehan)</title>
+  <style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}</style>
+</head>
+<body>
+  <section class="overflow-hidden">
+    <div class="container">
+      <div>
+        <h1 class="t1">Cheat</h1>
+        <h1 class="t2">Sheet<span class="dot">.</span></h1>
+      </div>
+      <div class="bungkus">
+        <a class="k1 alert-k1" role="button" tabindex="0"><img class="ukuran-svg" src="assets/logo-css-layouting.svg" alt="CSS Layouting"></a>
+        <a class="k2 alert-k2" role="button" tabindex="0"><img class="ukuran-svg" src="assets/logo-css-flexbox.svg" alt="CSS Flexbox"></a>
+        <a class="k3 alert-k3" role="button" tabindex="0"><img class="ukuran-svg" src="assets/logo-css-grid.svg" alt="CSS Grid"></a>
+        <a class="k4 alert-k4" role="button" tabindex="0"><img class="ukuran-svg" src="assets/logo-javascript.svg" alt="JavaScript"></a>
+      </div>
+      <h6 style="margin-top: 52px">© 2021 | <a href="../index.html">Early Labs · @alamehan</a></h6>
+    </div>
+  </section>
+  <script src="../_shared/jquery.min.js"></script>
+  <script src="../_shared/sweetalert2.all.min.js"></script>
+  <script>
+    $('.alert-k1').click(function () {
+      Swal.fire({
+        imageUrl: 'assets/cover-css-layouting.webp',
+        customClass: { popup: 'popup-noproject', confirmButton: 'confirm-button-noproject', cancelButton: 'cancel-button-noproject' },
+        width: 400, background: '#000', backdrop: 'rgba(13, 13, 13, 0.92)',
+        confirmButtonText: '<a href="../_shared/viewer.html?doc=css-layouting">Open Sheet</a>',
+        showCancelButton: true, cancelButtonText: 'Close',
+      });
+    });
+    $('.alert-k2').click(function () {
+      Swal.fire({
+        imageUrl: 'assets/cover-css-flexbox.webp',
+        customClass: { popup: 'popup-noproject', confirmButton: 'confirm-button-noproject', cancelButton: 'cancel-button-noproject' },
+        width: 400, background: '#000', backdrop: 'rgba(13, 13, 13, 0.92)',
+        confirmButtonText: '<span>🔒 Upcoming (2021)</span>',
+        showCancelButton: true, cancelButtonText: 'Close',
+      });
+    });
+    $('.alert-k3').click(function () {
+      Swal.fire({
+        imageUrl: 'assets/cover-css-grid.webp',
+        customClass: { popup: 'popup-noproject', confirmButton: 'confirm-button-noproject', cancelButton: 'cancel-button-noproject' },
+        width: 400, background: '#000', backdrop: 'rgba(13, 13, 13, 0.92)',
+        confirmButtonText: '<span>🔒 Upcoming (2021)</span>',
+        showCancelButton: true, cancelButtonText: 'Close',
+      });
+    });
+    $('.alert-k4').click(function () {
+      Swal.fire({
+        imageUrl: 'assets/cover-javascript.webp',
+        customClass: { popup: 'popup-noproject', confirmButton: 'confirm-button-noproject', cancelButton: 'cancel-button-noproject' },
+        width: 400, background: '#000', backdrop: 'rgba(13, 13, 13, 0.92)',
+        confirmButtonText: '<a href="https://github.com/alamehan/book-summary/tree/main/the-only-javascript" target="_blank" rel="noopener">Visit Repo ↗</a>',
+        showCancelButton: true, cancelButtonText: 'Close',
+      });
+    });
+  </script>
+  <script src="../_shared/capsule-bar.js"></script>
+</body>
+</html>

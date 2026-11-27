@@ -27,7 +27,7 @@
 2. **Inside Portfolio V5 (`@alamehan · Console` — Strictly 2 Secret Doors):**
    - **Door 1 (Desktop Keyboard):** Type **`alamehan`** anywhere outside text inputs.
    - **Door 2 (Mobile & Universal):** Triple-click / **3× tap** on the **`Portfolio V5`** colophon in the footer.
-   - **Extensible Commands:** `help`, `archive` / `ls`, `v1` (`classic`) .. `v4` (`spec`), `v5` (`factory`), `compare`, `whoami`, `clear`, `exit` — accompanied by an offline canvas confetti burst, Web Audio unlock fanfare, and welcome toast.
+   - **Extensible Commands:** `help`, `archive` / `ls`, `v1` (`classic`) .. `v4` (`spec`), `v5` (`factory`), `labs` (`early-labs` — opens the standalone **Early Labs (2021–2022)** pre-factory experiments hub in [early-labs/index.html](early-labs/index.html)), `compare`, `whoami`, `cats`, `clear`, `exit` — accompanied by an offline canvas confetti burst, Web Audio unlock fanfare, and welcome toast.
 
 ---
 

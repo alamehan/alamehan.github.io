@@ -1,0 +1,7 @@
+
+.uil { font-style: normal; display: inline-block; line-height: 1; font-weight: 700; }
+.uil-arrow-down::before { content: "↓"; }
+.uil-arrow-right::before { content: "→"; }
+.uil-plus::before { content: "+"; }
+.uil-lock::before { content: "🔒"; font-size: 0.88em; }
+.uil-external-link-alt::before { content: "↗"; }
