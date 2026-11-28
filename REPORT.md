@@ -1,8 +1,8 @@
-# Tools Factory Release · 2026-11-27
+# Tools Factory Release · 2026-11-28
 
 - **Factory:** Tools Factory (Raihan Allaam · `@alamehan`)
 - **SDK:** `@tf/sdk@0.18.2`
-- **Console (`index.html`):** `console@1.23.1` (3796.6 KB)
+- **Console (`index.html`):** `console@1.24.0` (3804.8 KB)
 - **Verification:** every HTML file opened offline from `file://` in Chromium with zero page errors and zero network requests; Console → Tool → Home and Console → Docs (PRD, Flows with SVG diagrams, Tech spec) → Home verified.
 
 ## Included Tools
